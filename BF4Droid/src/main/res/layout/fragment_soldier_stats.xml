@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/test_soldier_bg"
+    android:orientation="vertical"
+    android:padding="8dp"
+>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large"
+        android:text="NINETWOZERO"
+    />
+    <RelativeLayout
+        android:id="@+id/wrap_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    >
+        <TextView
+            style="@style/heading"
+            android:id="@+id/heading_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PROGRESS"
+        />
+        <TextView
+            android:id="@+id/value_rank_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MASTER GUNNERY SERGEANT 2 STAR"
+            android:textAppearance="@android:style/TextAppearance.Holo"
+            android:layout_below="@id/heading_progress"
+        />
+        <ImageView
+            android:id="@+id/image_rank"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/test_rank31"
+            android:layout_alignParentRight="true"
+        />
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:id="@+id/progress_rank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/image_rank"
+            android:layout_below="@id/value_rank_title"
+            android:indeterminate="false"
+        />
+        <TextView
+            android:id="@+id/value_rank_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="29,613/50,000"
+            android:layout_below="@id/progress_rank"
+            android:layout_alignLeft="@id/progress_rank"
+            android:textAppearance="@android:style/TextAppearance.Holo"
+        />
+        <TextView
+            android:id="@+id/value_rank_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20,387 until rank up"
+            android:layout_below="@id/progress_rank"
+            android:layout_alignRight="@id/progress_rank"
+            android:textAppearance="@android:style/TextAppearance.Holo.Small"
+        />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/wrap_service_stars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    >
+        <TextView
+            style="@style/heading"
+            android:id="@+id/heading_service_stars"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SERVICE STARS"
+        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SERVICE STARS HERE"
+            android:gravity="center"
+            android:layout_below="@id/heading_service_stars"
+            android:textAppearance="@android:style/TextAppearance.Holo.Large"
+        />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/wrap_average_scores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    >
+    <TextView
+        style="@style/heading"
+        android:id="@+id/heading_average_scores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="QUICK STATS"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="QUICK STATS HERE"
+        android:gravity="center"
+        android:layout_below="@id/heading_average_scores"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large"
+        />
+</RelativeLayout>
+</LinearLayout>

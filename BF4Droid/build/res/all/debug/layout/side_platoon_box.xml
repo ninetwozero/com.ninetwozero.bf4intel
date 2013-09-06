@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wrap_platoons"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/platoon_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp" />
+
+    <TextView
+        android:id="@+id/platoon_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium.Inverse"
+        android:layout_toRightOf="@id/platoon_image"
+        android:layout_marginLeft="8dp" />
+
+    <ImageView
+        android:id="@+id/platoon_platform"
+        android:layout_width="39dp"
+        android:layout_height="11dp"
+        android:layout_below="@id/platoon_name"
+        android:layout_toRightOf="@id/platoon_image"
+        android:layout_marginLeft="8dp" />
+</RelativeLayout><!-- From: file:/C:/Users/Karl/Documents/GitHub/com.ninetwozero.battlelog/BF4Droid/src/main/res/layout/side_platoon_box.xml -->

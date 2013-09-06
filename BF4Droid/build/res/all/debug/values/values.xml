@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/C:/Users/Karl/Documents/GitHub/com.ninetwozero.battlelog/BF4Droid/src/main/res/values/dimens.xml -->
+    <dimen name="list_padding">10dp</dimen>
+    <dimen name="shadow_width">15dp</dimen>
+    <dimen name="slidingmenu_offset">60dp</dimen>
+
+    <integer name="num_cols">1</integer>
+    <!-- From: file:/C:/Users/Karl/Documents/GitHub/com.ninetwozero.battlelog/BF4Droid/src/main/res/values/strings.xml -->
+    <string name="action_settings">Settings</string>
+    <string name="app_name">BF4 Droid</string>
+    <string name="hello_world">Hello world!</string>
+    <!-- From: file:/C:/Users/Karl/Documents/GitHub/com.ninetwozero.battlelog/BF4Droid/src/main/res/values/styles.xml -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:homeAsUpIndicator">@drawable/indicator</item>
+    </style>
+
+    <style name="heading">
+        <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="separator">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#FFCCCCCC</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+</resources>
