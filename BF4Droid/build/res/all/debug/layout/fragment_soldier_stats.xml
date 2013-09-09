@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/test_soldier_bg"
-    >
-
-</RelativeLayout><!-- From: file:/C:/Users/Karl/Documents/GitHub/com.ninetwozero.battlelog/BF4Droid/src/main/res/layout/fragment_soldier_stats.xml -->
