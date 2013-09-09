@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo.Large"
+        android:textColor="@color/blue"
         android:text="NINETWOZERO"
     />
     <RelativeLayout
@@ -39,6 +40,7 @@
             android:layout_height="64dp"
             android:src="@drawable/test_rank31"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
         />
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -93,21 +95,42 @@
         android:id="@+id/wrap_average_scores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-    >
-    <TextView
-        style="@style/heading"
-        android:id="@+id/heading_average_scores"
+        >
+        <TextView
+            style="@style/heading"
+            android:id="@+id/heading_average_scores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUICK STATISTICS"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUICK STATS HERE"
+            android:gravity="center"
+            android:layout_below="@id/heading_average_scores"
+            android:textAppearance="@android:style/TextAppearance.Holo.Large"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/wrap_detailed_scores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="QUICK STATS"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="QUICK STATS HERE"
-        android:gravity="center"
-        android:layout_below="@id/heading_average_scores"
-        android:textAppearance="@android:style/TextAppearance.Holo.Large"
-        />
-</RelativeLayout>
+        >
+        <TextView
+            style="@style/heading"
+            android:id="@+id/heading_detailed_scores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IN-DEPTH STATISTICS"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DETAILED STATS HERE"
+            android:gravity="center"
+            android:layout_below="@id/heading_detailed_scores"
+            android:textAppearance="@android:style/TextAppearance.Holo.Large"
+            />
+    </RelativeLayout>
 </LinearLayout>

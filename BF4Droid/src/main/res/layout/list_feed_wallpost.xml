@@ -26,7 +26,7 @@
         android:id="@+id/username"
         android:text="NINETWOZERO"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="0dp"
     />
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_toRightOf="@id/avatar2"
         android:layout_below="@id/username"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:textAppearance="@android:style/TextAppearance.Holo"
     />
     <TextView
