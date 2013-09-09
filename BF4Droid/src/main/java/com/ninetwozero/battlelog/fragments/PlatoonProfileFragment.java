@@ -16,13 +16,13 @@ import com.ninetwozero.battlelog.factories.ListRowFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoldierStatsFragment extends Fragment {
+public class PlatoonProfileFragment extends ListFragment {
     private LayoutInflater mInflater;
 
-    public SoldierStatsFragment() {}
+    public PlatoonProfileFragment() {}
 
-    public static SoldierStatsFragment newInstance() {
-        final SoldierStatsFragment fragment = new SoldierStatsFragment();
+    public static PlatoonProfileFragment newInstance() {
+        final PlatoonProfileFragment fragment = new PlatoonProfileFragment();
         fragment.setArguments(new Bundle());
         return fragment;
     }
@@ -37,19 +37,22 @@ public class SoldierStatsFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         mInflater = inflater;
 
-        final View view = mInflater.inflate(R.layout.fragment_soldier_stats, parent, false);
+        final View view = mInflater.inflate(R.layout.fragment_platoon_profile, parent, false);
         initialize(view);
         return view;
     }
 
     private void initialize(final View view) {
         final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getActivity(), getItemsForMenu());
-        // TODO: setListAdapter(slidingMenuAdapter);
+        setListAdapter(slidingMenuAdapter);
     }
 
     private List<ListRow> getItemsForMenu() {
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.HEADING, "SOLDIERS"));
+        items.add(ListRowFactory.create(ListRowType.HEADING, "BASIC INFORMATION"));
+        items.add(ListRowFactory.create(ListRowType.PROFILE_SOLDIER, new Bundle()));
+        items.add(ListRowFactory.create(ListRowType.HEADING, "PRESENTATION"));
+        items.add(ListRowFactory.create(ListRowType.PROFILE_PLATOON, new Bundle()));
         return items;
     }
 }

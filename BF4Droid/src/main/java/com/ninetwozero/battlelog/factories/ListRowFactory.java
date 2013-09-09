@@ -98,7 +98,7 @@ public class ListRowFactory {
 
         return new ListRow(
             type,
-            null,  //TODO: Create fragment that opens *displayed* platoon?
+            FragmentFactory.Type.PLATOON_PROFILE,
             stringMappings,
             drawableMappings
         );
