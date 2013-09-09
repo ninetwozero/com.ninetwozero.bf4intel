@@ -22,6 +22,8 @@ public class ListRowFactory {
             case SIDE_PLATOON:
             case PROFILE_PLATOON:
                 return getItemForPlatoonType(type, data);
+            case SIDE_FEED:
+                return getItemForFeedType(type, data);
             default:
                 throw new UnsupportedOperationException("Invalid call for type: " + type);
         }
@@ -97,6 +99,20 @@ public class ListRowFactory {
         return new ListRow(
             type,
             null,  //TODO: Create fragment that opens *displayed* platoon?
+            stringMappings,
+            drawableMappings
+        );
+    }
+
+    private static ListRow getItemForFeedType(final ListRowType type, final Bundle data) {
+        final Bundle stringMappings = new Bundle();
+        final Bundle drawableMappings = new Bundle();
+
+        stringMappings.putString(String.valueOf(R.id.text1), "BATTLE FEED");
+
+        return new ListRow(
+            type,
+            FragmentFactory.Type.BATTLE_FEED,
             stringMappings,
             drawableMappings
         );

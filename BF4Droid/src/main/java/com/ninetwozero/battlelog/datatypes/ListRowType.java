@@ -9,6 +9,8 @@ public enum ListRowType {
     SIDE_REGULAR(R.layout.side_regular),
     SIDE_REGULAR_OPTION(R.layout.side_regular_option),
     SIDE_HEADING(R.layout.side_heading),
+    SIDE_FEED(R.layout.side_regular),
+
 
     PROFILE_ACCOUNT(R.layout.list_profile_account),
     PROFILE_SOLDIER(R.layout.list_profile_soldier),

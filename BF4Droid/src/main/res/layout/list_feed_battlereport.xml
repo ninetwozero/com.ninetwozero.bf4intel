@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    >
+    <ImageView
+        style="@style/feed_avatar"
+        android:id="@+id/avatar"
+        android:src="@drawable/test_gravatar"
+    />
+    <TextView
+        style="@style/feed_username"
+        android:id="@+id/username"
+        android:text="NINETWOZERO"
+    />
+    <TextView
+        style="@style/feed_content"
+        android:id="@+id/content"
+        android:text="TODO: Show things below that the user has unlocked"
+    />
+    <TextView
+        style="@style/feed_timestamp"
+        android:id="@+id/timestamp"
+        android:text="4 hours ago"
+        android:layout_below="@id/content"
+    />
+</RelativeLayout>

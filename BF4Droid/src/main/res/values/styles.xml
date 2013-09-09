@@ -29,6 +29,48 @@
         <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
         <item name="android:textColor">@android:color/darker_gray</item>
         <item name="android:textAllCaps">true</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <!-- FEED -->
+
+
+    <style name="feed_avatar">
+        <item name="android:id">@+id/avatar</item>
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="feed_username">
+        <item name="android:id">@+id/username</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Holo.Medium</item>
+
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_toRightOf">@id/avatar</item>
+    </style>
+
+    <style name="feed_content">
+        <item name="android:id">@+id/content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
+        <item name="android:layout_below">@id/avatar</item>
+    </style>
+
+    <style name="feed_timestamp">
+        <item name="android:id">@+id/timestamp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textColor">@color/grey</item>
     </style>
 
 </resources>

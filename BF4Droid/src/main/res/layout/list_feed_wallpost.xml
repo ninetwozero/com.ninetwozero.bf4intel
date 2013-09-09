@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    >
+    <ImageView
+        style="@style/feed_avatar"
+        android:id="@+id/avatar"
+        android:src="@drawable/test_gravatar"
+    />
+
+    <ImageView
+        android:id="@+id/avatar2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/test_soldier"
+        android:layout_toRightOf="@id/avatar"
+        android:layout_alignBottom="@id/avatar"
+    />
+
+    <TextView
+        style="@style/feed_username"
+        android:id="@+id/username"
+        android:text="NINETWOZERO"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="2dp"
+    />
+
+    <TextView
+        style="@style/feed_username"
+        android:id="@+id/username2"
+        android:layout_width="match_parent"
+        android:text="LittleBoySVK"
+        android:layout_toRightOf="@id/avatar2"
+        android:layout_below="@id/username"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:textAppearance="@android:style/TextAppearance.Holo"
+    />
+    <TextView
+        style="@style/feed_content"
+        android:id="@+id/content"
+        android:text="Hey Peter, check this wall post out. Quite OK layout if you ask me. Should also work for platoon wall posts, same concept imo. Smell you later!"
+        android:textAppearance="@android:style/TextAppearance.Holo"
+    />
+
+    <TextView
+        style="@style/feed_timestamp"
+        android:id="@+id/timestamp"
+        android:text="5 hours ago"
+        android:layout_below="@id/content"
+    />
+</RelativeLayout>

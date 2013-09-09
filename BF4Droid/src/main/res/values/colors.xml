@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	This file is part of BF4 Droid
+
+    BF4 Droid is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    BF4 Droid is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+-->
+<resources>
+    <color name="green">#309030</color>
+    <color name="darkgreen">#ff63975f</color>
+    <color name="blue">#308DBF</color>
+    <color name="dirtywhite">#EEEEEE</color>
+    <color name="grey">#848484</color>
+    <color name="orange">#e7ab0a</color>
+</resources>
