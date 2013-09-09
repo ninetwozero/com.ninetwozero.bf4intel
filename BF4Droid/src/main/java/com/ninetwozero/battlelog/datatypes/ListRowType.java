@@ -3,29 +3,21 @@ package com.ninetwozero.battlelog.datatypes;
 import com.ninetwozero.battlelog.R;
 
 public enum ListRowType {
-    SIDE_ACCOUNT(R.layout.side_account_box),
-    SIDE_SOLDIER(R.layout.side_soldier_box),
-    SIDE_PLATOON(R.layout.side_platoon_box),
-    SIDE_REGULAR(R.layout.side_regular),
-    SIDE_REGULAR_OPTION(R.layout.side_regular_option),
-    SIDE_HEADING(R.layout.side_heading),
-    SIDE_FEED(R.layout.side_regular),
+    SIDE_ACCOUNT,
+    SIDE_SOLDIER,
+    SIDE_PLATOON,
+    SIDE_REGULAR,
+    SIDE_REGULAR_OPTION,
+    SIDE_HEADING,
+    SIDE_FEED,
 
+    PROFILE_ACCOUNT,
+    PROFILE_SOLDIER,
+    PROFILE_PLATOON,
 
-    PROFILE_ACCOUNT(R.layout.list_profile_account),
-    PROFILE_SOLDIER(R.layout.list_profile_soldier),
-    PROFILE_PLATOON(R.layout.list_profile_platoon),
+    HEADING;
 
-    HEADING(R.layout.generic_heading);
-
-    private int mId;
-    ListRowType(final int id) {
-        mId = id;
-    }
-
-    public int getId() {
-        return mId;
-    }
+    public static final int SIZE = ListRowType.values().length;
 
     public boolean isEnabled() {
         switch( this ) {
@@ -35,6 +27,35 @@ public enum ListRowType {
                 return false;
             default:
                 return true;
+        }
+    }
+
+    public static int getResource(final ListRowType type) {
+        switch( type ) {
+            case SIDE_ACCOUNT:
+                return R.layout.side_account_box;
+            case SIDE_SOLDIER:
+                return R.layout.side_soldier_box;
+            case SIDE_PLATOON:
+                return R.layout.side_platoon_box;
+            case SIDE_REGULAR_OPTION:
+                return R.layout.side_regular_option;
+            case SIDE_HEADING:
+                return R.layout.side_heading;
+            case SIDE_FEED:
+            case SIDE_REGULAR:
+                return R.layout.side_regular;
+            case PROFILE_ACCOUNT:
+                return R.layout.list_profile_account;
+            case PROFILE_SOLDIER:
+                return R.layout.list_profile_soldier;
+            case PROFILE_PLATOON:
+                return R.layout.list_profile_platoon;
+            case HEADING:
+                return R.layout.generic_heading;
+
+            default:
+                return R.layout.side_regular;
         }
     }
 }

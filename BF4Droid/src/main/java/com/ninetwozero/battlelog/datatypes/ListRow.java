@@ -50,7 +50,7 @@ public class ListRow {
     }
 
     public int getLayout() {
-        return mType.getId();
+        return ListRowType.getResource(mType);
     }
 
     public Intent getIntent() {

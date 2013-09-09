@@ -38,6 +38,16 @@ public class ListRowAdapter extends BaseAdapter {
     }
 
     @Override
+    public int getViewTypeCount() {
+        return ListRowType.SIZE;
+    }
+
+    @Override
+    public int getItemViewType(final int position) {
+        return getItem(position).getType().ordinal();
+    }
+
+    @Override
     public ListRow getItem(int i) {
         return mItems.get(i);
     }
@@ -63,7 +73,7 @@ public class ListRowAdapter extends BaseAdapter {
         final ListRowType type = item.getType();
 
         if( view == null ) {
-            view = LayoutInflater.from(mContext).inflate(item.getLayout(), null, false);
+            view = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
         }
 
         return populateViewFromItem(view, item);
