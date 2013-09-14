@@ -14,7 +14,7 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
-        <item name="android:homeAsUpIndicator">@drawable/indicator</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_navigation_drawer</item>
     </style>
 
     <style name="separator">
