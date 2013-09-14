@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ninetwozero.battlelog"
-    android:versionCode="1"
+    android:versionCode="1423100"
     android:versionName="1.0" >
 
     <uses-sdk
@@ -15,7 +15,6 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activities.MainActivity"
-            android:label="@string/app_name"
             android:icon="@drawable/ic_actionbar_logo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
