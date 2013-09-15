@@ -32,6 +32,15 @@ public class ListRow {
         mDrawableMappings = new Bundle();
     }
 
+    public ListRow(final ListRowType type, final String title, final FragmentFactory.Type fragmentType) {
+        mType = type;
+        mTitle = title;
+        mFragmentType = fragmentType;
+
+        mStringMappings = new Bundle();
+        mDrawableMappings = new Bundle();
+    }
+
     public ListRow(final ListRowType type, final FragmentFactory.Type fragmentType, final Bundle strings, final Bundle drawables) {
         mType = type;
         mFragmentType = fragmentType;

@@ -93,7 +93,7 @@ public class SlidingMenuFragment extends ListFragment {
         //items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SETTINGS"));
 
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SOCIAL"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "NEWS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "NEWS", FragmentFactory.Type.NEWS_LISTING));
         items.add(ListRowFactory.create(ListRowType.SIDE_FEED, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "BATTLE CHAT", ExternalAppLauncher.getIntent(getActivity(), "com.ninetwozero.battlechat")));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SERVERS"));

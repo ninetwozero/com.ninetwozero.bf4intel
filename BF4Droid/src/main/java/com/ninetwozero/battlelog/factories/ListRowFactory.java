@@ -37,6 +37,10 @@ public class ListRowFactory {
         return new ListRow(type, text, intent);
     }
 
+    public static ListRow create(final ListRowType type, final String text, final FragmentFactory.Type fragmentType) {
+        return new ListRow(type, text, fragmentType);
+    }
+
     private static ListRow getItemForAccountTypeInMenu(final ListRowType type, final Bundle data) {
         final Bundle stringMappings = new Bundle();
         final Bundle drawableMappings = new Bundle();

@@ -4,6 +4,7 @@ import android.app.Fragment;
 
 import com.ninetwozero.battlelog.fragments.AccountProfileFragment;
 import com.ninetwozero.battlelog.fragments.BattleFeedFragment;
+import com.ninetwozero.battlelog.fragments.NewsListingFragment;
 import com.ninetwozero.battlelog.fragments.PlatoonProfileFragment;
 import com.ninetwozero.battlelog.fragments.SlidingMenuFragment;
 import com.ninetwozero.battlelog.fragments.SoldierStatsFragment;
@@ -13,7 +14,8 @@ public class FragmentFactory {
         ACCOUNT_PROFILE,
         BATTLE_FEED,
         PLATOON_PROFILE,
-        SOLDIER_STATS
+        SOLDIER_STATS,
+        NEWS_LISTING,
     }
 
     public static Fragment get(final Type type) {
@@ -26,6 +28,8 @@ public class FragmentFactory {
                 return PlatoonProfileFragment.newInstance();
             case SOLDIER_STATS:
                 return SoldierStatsFragment.newInstance();
+            case NEWS_LISTING:
+                return NewsListingFragment.newInstance();
             default:
                 throw new TypeNotPresentException("No fragment corresponds to: " + type, null);
         }
