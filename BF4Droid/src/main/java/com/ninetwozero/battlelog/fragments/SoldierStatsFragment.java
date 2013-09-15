@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ninetwozero.battlelog.R;
+import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.adapters.ListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;
 import com.ninetwozero.battlelog.datatypes.ListRowType;
@@ -16,9 +17,7 @@ import com.ninetwozero.battlelog.factories.ListRowFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoldierStatsFragment extends Fragment {
-    private LayoutInflater mInflater;
-
+public class SoldierStatsFragment extends AbstractListFragment {
     public SoldierStatsFragment() {}
 
     public static SoldierStatsFragment newInstance() {
@@ -28,14 +27,8 @@ public class SoldierStatsFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(final Bundle icicle) {
-        super.onCreate(icicle);
-        setRetainInstance(true);
-    }
-
-    @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
-        mInflater = inflater;
+        super.onCreateView(inflater, parent, state);
 
         final View view = mInflater.inflate(R.layout.fragment_soldier_stats, parent, false);
         initialize(view);
@@ -45,6 +38,8 @@ public class SoldierStatsFragment extends Fragment {
     private void initialize(final View view) {
         final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getActivity(), getItemsForMenu());
         // TODO: setListAdapter(slidingMenuAdapter);
+
+        updateActionBar(getActivity(), "NINETWOZERO", R.drawable.test_soldier);
     }
 
     private List<ListRow> getItemsForMenu() {

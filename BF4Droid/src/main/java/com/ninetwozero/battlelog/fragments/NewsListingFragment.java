@@ -2,21 +2,28 @@ package com.ninetwozero.battlelog.fragments;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ninetwozero.battlelog.R;
+import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
+import com.ninetwozero.battlelog.factories.FragmentFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsListingFragment extends ListFragment {
-    private LayoutInflater mInflater;
-
+public class NewsListingFragment extends AbstractListFragment {
     public NewsListingFragment() {}
 
     public static NewsListingFragment newInstance() {
@@ -26,14 +33,8 @@ public class NewsListingFragment extends ListFragment {
     }
 
     @Override
-    public void onCreate(final Bundle icicle) {
-        super.onCreate(icicle);
-        setRetainInstance(true);
-    }
-
-    @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
-        mInflater = inflater;
+        super.onCreateView(inflater, parent, state);
 
         final View view = mInflater.inflate(R.layout.fragment_news_listing, parent, false);
         initialize(view);
@@ -41,19 +42,8 @@ public class NewsListingFragment extends ListFragment {
     }
 
     private void initialize(final View view) {
-        setupActionBar();
         setupListView(view);
-    }
-
-    private void setupActionBar() {
-        final Activity activity = getActivity();
-        if( activity == null ) {
-            return;
-        }
-
-        final ActionBar actionBar = activity.getActionBar();
-        actionBar.setTitle("NEWS");
-        actionBar.setIcon(R.drawable.ic_actionbar_news);
+        updateActionBar(getActivity(), "NEWS", R.drawable.ic_actionbar_news);
     }
 
     private void setupListView(final View view) {
@@ -61,10 +51,27 @@ public class NewsListingFragment extends ListFragment {
             return;
         }
 
-        // TODO: Setup ListView here
-
         final FeedAdapter feedAdapter = new FeedAdapter(getActivity(), getDummyItems());
         setListAdapter(feedAdapter);
+    }
+
+    @Override
+    public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
+        final FragmentManager manager = getFragmentManager();
+        final Fragment itemFragment = manager.findFragmentByTag("NewsItemFragment");
+
+        if( itemFragment != null && itemFragment instanceof NewsItemFragment ) {
+            ((NewsItemFragment) itemFragment).loadArticle(id);
+        } else {
+            final Bundle data = new Bundle();
+            data.putLong(NewsItemFragment.ID, id);
+
+            final FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.NEWS_ITEM), "NewsItemFragment");
+            transaction.addToBackStack(null);
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            transaction.commit();
+        }
     }
 
     private List<Integer> getDummyItems() {

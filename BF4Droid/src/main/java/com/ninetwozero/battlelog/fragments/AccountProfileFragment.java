@@ -1,5 +1,7 @@
 package com.ninetwozero.battlelog.fragments;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.ListFragment;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ninetwozero.battlelog.R;
+import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.adapters.ListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;
 import com.ninetwozero.battlelog.datatypes.ListRowType;
@@ -19,9 +22,7 @@ import com.ninetwozero.battlelog.factories.ListRowFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountProfileFragment extends ListFragment {
-    private LayoutInflater mInflater;
-
+public class AccountProfileFragment extends AbstractListFragment {
     public AccountProfileFragment() {}
 
     public static AccountProfileFragment newInstance() {
@@ -31,14 +32,8 @@ public class AccountProfileFragment extends ListFragment {
     }
 
     @Override
-    public void onCreate(final Bundle icicle) {
-        super.onCreate(icicle);
-        setRetainInstance(true);
-    }
-
-    @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
-        mInflater = inflater;
+        super.onCreateView(inflater, parent, state);
 
         final View view = mInflater.inflate(R.layout.generic_list, parent, false);
         initialize(view);
@@ -46,11 +41,13 @@ public class AccountProfileFragment extends ListFragment {
     }
 
     private void initialize(final View view) {
-        final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getActivity(), getItemsForMenu());
+        final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getActivity(), getItems());
         setListAdapter(slidingMenuAdapter);
+
+        updateActionBar(getActivity(), "NINETWOZERO", R.drawable.test_gravatar);
     }
 
-    private List<ListRow> getItemsForMenu() {
+    private List<ListRow> getItems() {
         final List<ListRow> items = new ArrayList<ListRow>();
 
         items.add(ListRowFactory.create(ListRowType.PROFILE_ACCOUNT, new Bundle()));

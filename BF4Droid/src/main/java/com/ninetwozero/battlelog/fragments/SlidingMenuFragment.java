@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ninetwozero.battlelog.R;
+import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.activities.SlidingMenuAccessInterface;
 import com.ninetwozero.battlelog.adapters.ListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;
@@ -24,7 +25,7 @@ import com.ninetwozero.battlelog.utils.ExternalAppLauncher;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SlidingMenuFragment extends ListFragment {
+public class SlidingMenuFragment extends AbstractListFragment {
     public SlidingMenuFragment() {}
 
     public static SlidingMenuFragment newInstance() {
@@ -34,13 +35,9 @@ public class SlidingMenuFragment extends ListFragment {
     }
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        setRetainInstance(true);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle state) {
+        super.onCreateView(inflater, parent, state);
+
         final View view = inflater.inflate(R.layout.fragment_slidingmenu, parent, false);
         initialize(view);
         return view;
@@ -56,12 +53,6 @@ public class SlidingMenuFragment extends ListFragment {
             final FragmentTransaction transaction = manager.beginTransaction();
             transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType()));
             transaction.commit();
-
-            /* This should be taken from future item.getArguments() */
-            if( item.getType() == ListRowType.SIDE_ACCOUNT ) {
-                getActivity().getActionBar().setIcon(R.drawable.test_gravatar);
-                getActivity().getActionBar().setTitle("NINETWOZERO");
-            }
         }
         ((SlidingMenuAccessInterface) getActivity()).toggle();
     }

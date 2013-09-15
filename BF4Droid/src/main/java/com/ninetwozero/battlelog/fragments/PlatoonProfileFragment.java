@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ninetwozero.battlelog.R;
+import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.adapters.ListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;
 import com.ninetwozero.battlelog.datatypes.ListRowType;
@@ -16,9 +17,7 @@ import com.ninetwozero.battlelog.factories.ListRowFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlatoonProfileFragment extends ListFragment {
-    private LayoutInflater mInflater;
-
+public class PlatoonProfileFragment extends AbstractListFragment {
     public PlatoonProfileFragment() {}
 
     public static PlatoonProfileFragment newInstance() {
@@ -28,14 +27,8 @@ public class PlatoonProfileFragment extends ListFragment {
     }
 
     @Override
-    public void onCreate(final Bundle icicle) {
-        super.onCreate(icicle);
-        setRetainInstance(true);
-    }
-
-    @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
-        mInflater = inflater;
+        super.onCreateView(inflater, parent, state);
 
         final View view = mInflater.inflate(R.layout.fragment_platoon_profile, parent, false);
         initialize(view);
@@ -45,6 +38,8 @@ public class PlatoonProfileFragment extends ListFragment {
     private void initialize(final View view) {
         final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getActivity(), getItemsForMenu());
         setListAdapter(slidingMenuAdapter);
+
+        updateActionBar(getActivity(), "Chili-powered Zebras", R.drawable.test_platoon);
     }
 
     private List<ListRow> getItemsForMenu() {
