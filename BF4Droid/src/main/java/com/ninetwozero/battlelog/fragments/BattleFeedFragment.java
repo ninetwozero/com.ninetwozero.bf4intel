@@ -2,6 +2,7 @@ package com.ninetwozero.battlelog.fragments;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.ninetwozero.battlelog.adapters.FeedAdapter;
 import com.ninetwozero.battlelog.adapters.ListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;
 import com.ninetwozero.battlelog.datatypes.ListRowType;
+import com.ninetwozero.battlelog.factories.FragmentFactory;
 import com.ninetwozero.battlelog.factories.ListRowFactory;
 
 import java.util.ArrayList;
@@ -55,7 +57,10 @@ public class BattleFeedFragment extends AbstractListFragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if( item.getItemId() == R.id.action_new ) {
-            showToast("TODO: Open new fragment here: BattleFeedPostingFragment");
+            final FragmentTransaction transaction = mFragmentManager.beginTransaction();
+            transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.BATTLE_FEED_POSTING));
+            transaction.addToBackStack(null);
+            transaction.commit();
             return true;
         }
         return super.onOptionsItemSelected(item);

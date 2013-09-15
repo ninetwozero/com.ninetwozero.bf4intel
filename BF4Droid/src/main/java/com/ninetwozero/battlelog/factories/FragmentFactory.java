@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.ninetwozero.battlelog.fragments.AccountProfileFragment;
 import com.ninetwozero.battlelog.fragments.BattleFeedFragment;
+import com.ninetwozero.battlelog.fragments.BattleFeedPostingFragment;
 import com.ninetwozero.battlelog.fragments.NewsItemFragment;
 import com.ninetwozero.battlelog.fragments.NewsListingFragment;
 import com.ninetwozero.battlelog.fragments.PlatoonProfileFragment;
@@ -14,9 +15,12 @@ import com.ninetwozero.battlelog.fragments.SoldierStatsFragment;
 public class FragmentFactory {
     public enum Type {
         ACCOUNT_PROFILE,
-        BATTLE_FEED,
-        PLATOON_PROFILE,
         SOLDIER_STATS,
+
+        BATTLE_FEED,
+        BATTLE_FEED_POSTING,
+
+        PLATOON_PROFILE,
 
         NEWS_LISTING,
         NEWS_ITEM,
@@ -40,6 +44,8 @@ public class FragmentFactory {
                 return NewsListingFragment.newInstance();
             case NEWS_ITEM:
                 return NewsItemFragment.newInstance(data);
+            case BATTLE_FEED_POSTING:
+                return BattleFeedPostingFragment.newInstance();
             default:
                 throw new TypeNotPresentException("No fragment corresponds to: " + type, null);
         }
