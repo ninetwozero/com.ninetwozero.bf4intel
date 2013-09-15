@@ -32,7 +32,7 @@
         android:layout_below="@id/content"
     />
     <TextView
-        style="@style/feed_timestamp"
+        style="@style/meta"
         android:id="@+id/timestamp"
         android:text="4 hours ago"
         android:layout_below="@id/server_name"

@@ -29,7 +29,7 @@
         android:textColor="@color/blue"
     />
     <TextView
-        style="@style/feed_timestamp"
+        style="@style/meta"
         android:text="4 hours ago"
         android:layout_below="@id/game_name"
     />

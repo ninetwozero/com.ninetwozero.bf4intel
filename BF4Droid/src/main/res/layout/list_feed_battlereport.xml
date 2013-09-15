@@ -22,7 +22,7 @@
         android:text="TODO: Show things below that the user has unlocked"
     />
     <TextView
-        style="@style/feed_timestamp"
+        style="@style/meta"
         android:id="@+id/timestamp"
         android:text="4 hours ago"
         android:layout_below="@id/content"

@@ -48,7 +48,7 @@
     />
 
     <TextView
-        style="@style/feed_timestamp"
+        style="@style/meta"
         android:id="@+id/timestamp"
         android:text="5 hours ago"
         android:layout_below="@id/content"

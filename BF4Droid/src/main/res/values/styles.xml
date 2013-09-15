@@ -15,6 +15,7 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:homeAsUpIndicator">@drawable/ic_navigation_drawer</item>
+        <item name="android:icon">@drawable/ic_actionbar_logo</item>
     </style>
 
     <style name="separator">
@@ -31,6 +32,20 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingBottom">4dp</item>
+    </style>
+
+
+    <style name="meta">
+        <item name="android:id">@+id/timestamp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="TextAppearance.Holo.MediumLarge" parent="@android:style/TextAppearance.Holo.Medium">
+        <item name="android:textSize">20sp</item>
     </style>
 
     <!-- FEED -->
@@ -62,15 +77,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
         <item name="android:layout_below">@id/avatar</item>
-    </style>
-
-    <style name="feed_timestamp">
-        <item name="android:id">@+id/timestamp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
-        <item name="android:layout_marginTop">4dp</item>
-        <item name="android:textColor">@color/grey</item>
     </style>
 
 </resources>
