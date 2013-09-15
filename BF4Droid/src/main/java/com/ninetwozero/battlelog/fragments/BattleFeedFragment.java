@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
+import com.ninetwozero.battlelog.activities.SingleFragmentActivity;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
 import com.ninetwozero.battlelog.adapters.ListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;
@@ -57,10 +59,10 @@ public class BattleFeedFragment extends AbstractListFragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if( item.getItemId() == R.id.action_new ) {
-            final FragmentTransaction transaction = mFragmentManager.beginTransaction();
-            transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.BATTLE_FEED_POSTING));
-            transaction.addToBackStack(null);
-            transaction.commit();
+            Intent intent = new Intent(getActivity(), SingleFragmentActivity.class);
+            intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, new Bundle());
+            intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.BATTLE_FEED_POSTING.ordinal());
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

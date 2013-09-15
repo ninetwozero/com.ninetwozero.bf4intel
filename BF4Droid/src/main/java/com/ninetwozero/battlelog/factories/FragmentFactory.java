@@ -50,4 +50,18 @@ public class FragmentFactory {
                 throw new TypeNotPresentException("No fragment corresponds to: " + type, null);
         }
     }
+
+    public static Fragment fromOrdinal(final int ordinal) {
+        return fromOrdinal(ordinal, null);
+    }
+
+    public static Fragment fromOrdinal(final int ordinal, final Bundle data) {
+        for( Type type : Type.values() ) {
+            if( type.ordinal() == ordinal ) {
+                return get(type, data);
+            }
+        }
+        throw new IllegalArgumentException("Invalid ordinal: " + ordinal);
+
+    }
 }
