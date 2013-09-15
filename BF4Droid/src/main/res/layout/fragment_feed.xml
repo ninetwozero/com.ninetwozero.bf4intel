@@ -4,36 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 >
-    <LinearLayout
-        android:id="@+id/wrap_form"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:paddingTop="4dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:layout_alignParentBottom="true"
-    >
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:layout_marginRight="8dp"
-            android:hint="What's on your mind?"
-        />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:text="Post!"
-        />
-    </LinearLayout>
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/wrap_form"
     />
     <TextView
         android:id="@android:id/empty"
