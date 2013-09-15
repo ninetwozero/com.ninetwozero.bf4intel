@@ -1,5 +1,6 @@
 package com.ninetwozero.battlelog.fragments;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractFragment;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
+import com.ninetwozero.battlelog.activities.SingleFragmentActivity;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
 import com.ninetwozero.battlelog.factories.FragmentFactory;
 
@@ -86,6 +88,12 @@ public class BattleFeedPostingFragment extends AbstractFragment {
         }
 
         showToast("TODO: Trigger API call (POST)");
-        mFragmentManager.popBackStackImmediate();
+
+        final Activity activity = getActivity();
+        if( activity == null || !(activity instanceof SingleFragmentActivity) ) {
+            mFragmentManager.popBackStackImmediate();
+        } else {
+            activity.finish();
+        }
     }
 }
