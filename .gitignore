@@ -26,3 +26,4 @@ local.properties
 app/build/*
 core/build/*
 BF4Droid/build/*
+Thumbs.db
