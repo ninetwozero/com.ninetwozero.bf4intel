@@ -49,8 +49,7 @@ public class SlidingMenuFragment extends AbstractListFragment {
         if( item.hasIntent() ) {
             startActivity(item.getIntent());
         } else if( item.hasFragmentType() ) {
-            final FragmentManager manager = getFragmentManager();
-            final FragmentTransaction transaction = manager.beginTransaction();
+            final FragmentTransaction transaction = mFragmentManager.beginTransaction();
             transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType()));
             transaction.commit();
         }

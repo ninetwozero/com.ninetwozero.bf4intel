@@ -57,8 +57,7 @@ public class NewsListingFragment extends AbstractListFragment {
 
     @Override
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
-        final FragmentManager manager = getFragmentManager();
-        final Fragment itemFragment = manager.findFragmentByTag("NewsItemFragment");
+        final Fragment itemFragment = mFragmentManager.findFragmentByTag("NewsItemFragment");
 
         if( itemFragment != null && itemFragment instanceof NewsItemFragment ) {
             ((NewsItemFragment) itemFragment).loadArticle(id);
@@ -66,7 +65,7 @@ public class NewsListingFragment extends AbstractListFragment {
             final Bundle data = new Bundle();
             data.putLong(NewsItemFragment.ID, id);
 
-            final FragmentTransaction transaction = manager.beginTransaction();
+            final FragmentTransaction transaction = mFragmentManager.beginTransaction();
             transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.NEWS_ITEM), "NewsItemFragment");
             transaction.addToBackStack(null);
             transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);

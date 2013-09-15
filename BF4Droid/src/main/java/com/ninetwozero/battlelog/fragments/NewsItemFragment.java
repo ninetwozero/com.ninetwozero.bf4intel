@@ -1,5 +1,6 @@
 package com.ninetwozero.battlelog.fragments;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +50,7 @@ public class NewsItemFragment extends AbstractListFragment {
 
     @Override
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
+        final FragmentTransaction transaction = mFragmentManager.beginTransaction();
         /* TODO: CommentListFragment, which the user drags up from the bottom in some way like G+ app a while back? */
     }
 

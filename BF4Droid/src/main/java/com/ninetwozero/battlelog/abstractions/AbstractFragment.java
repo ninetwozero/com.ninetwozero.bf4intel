@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.ninetwozero.battlelog.R;
-
-public abstract class AbstractListFragment extends ListFragment {
+public abstract class AbstractFragment extends Fragment {
     private static Toast mToast;
 
     protected FragmentManager mFragmentManager;
