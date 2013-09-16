@@ -79,7 +79,7 @@ public class BattleFeedFragment extends AbstractListFragment {
     private List<Integer> getDummyItems() {
         List<Integer> items = new ArrayList<Integer>(10);
         items.add(R.layout.list_item_feed_status);
-        items.add(R.layout.list_feed_wallpost);
+        items.add(R.layout.list_item_feed_wallpost);
         items.add(R.layout.list_item_feed_favorite_server);
         items.add(R.layout.list_item_feed_gameaccess);
         items.add(R.layout.list_item_feed_battlereport);

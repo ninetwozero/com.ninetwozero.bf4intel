@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
+        android:text="Dummy thread #0001"
+        android:textColor="@color/blue"
+    />
+
+    <LinearLayout
+        android:id="@+id/wrap_creator"
+        android:layout_below="@id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    >
+        <TextView
+            style="@style/meta"
+            android:id="@+id/string_creator"
+            android:layout_below="@id/username"
+            android:text="Created by "
+        />
+
+        <ImageView
+            style="@style/meta"
+            android:id="@+id/creator_avatar"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/test_gravatar"
+            />
+
+        <TextView
+            style="@style/meta"
+            android:id="@+id/creator_username"
+            android:text="NINETWOZERO"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/blue"
+        />
+
+        <TextView
+            style="@style/meta"
+            android:id="@+id/creation_timestamp"
+            android:text=" 4 hours ago"
+            android:layout_below="@id/title"
+            android:layout_toRightOf="@id/string_lastact"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/wrap_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wrap_creator"
+    >
+    <TextView
+        style="@style/meta"
+        android:id="@+id/string_lastuser"
+        android:layout_below="@id/username"
+        android:text="Latest activity "
+        />
+
+
+        <TextView
+            style="@style/meta"
+            android:id="@+id/last_timestamp"
+            android:text="4 hours ago"
+            android:layout_below="@id/title"
+            android:layout_toRightOf="@id/string_lastact"
+        />
+
+
+        <TextView
+            style="@style/meta"
+            android:text=" by "
+            android:layout_below="@id/title"
+            android:layout_toRightOf="@id/string_lastact"
+        />
+
+    <ImageView
+        style="@style/meta"
+        android:id="@+id/last_avatar"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/test_gravatar"
+        />
+
+    <TextView
+        style="@style/meta"
+        android:id="@+id/last_username"
+        android:text="NINETWOZERO"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/blue"
+        />
+</LinearLayout>
+</RelativeLayout>

@@ -51,36 +51,32 @@ public class ForumListingFragment extends AbstractListFragment {
     @Override
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
         final Fragment itemFragment = mFragmentManager.findFragmentByTag("ThreadListingFragment");
-/* TODO:
-        if( itemFragment != null && itemFragment instanceof NewsItemFragment ) {
-            ((NewsItemFragment) itemFragment).loadArticle(id);
-        } else {
 
-            final Bundle data = new Bundle();
-            data.putLong(NewsItemFragment.ID, id);
+        /* FIXME: Get actual id's */
+        final Bundle data = new Bundle();
+        data.putLong(ThreadListingFragment.ID, id);
 
-            final FragmentTransaction transaction = mFragmentManager.beginTransaction();
-            transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.NEWS_ITEM), "ForumItemFragment");
-            transaction.addToBackStack(null);
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            transaction.commit();
-        }*/
+        final FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.THREAD_LISTING), "ThreadListingFragment");
+        transaction.addToBackStack(null);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.commit();
 
         showToast("Opening forum ID: " + id);
     }
 
     private List<Integer> getDummyItems() {
         List<Integer> items = new ArrayList<Integer>(10);
-        items.add(R.layout.list_forums);
-        items.add(R.layout.list_forums);
-        items.add(R.layout.list_forums);
-        items.add(R.layout.list_forums);
-        items.add(R.layout.list_forums);
-        items.add(R.layout.list_forums);
-        items.add(R.layout.list_forums);
-        items.add(R.layout.list_forums);
-        items.add(R.layout.list_forums);
-        items.add(R.layout.list_forums);
+        items.add(R.layout.list_item_forum);
+        items.add(R.layout.list_item_forum);
+        items.add(R.layout.list_item_forum);
+        items.add(R.layout.list_item_forum);
+        items.add(R.layout.list_item_forum);
+        items.add(R.layout.list_item_forum);
+        items.add(R.layout.list_item_forum);
+        items.add(R.layout.list_item_forum);
+        items.add(R.layout.list_item_forum);
+        items.add(R.layout.list_item_forum);
         return items;
     }
 }

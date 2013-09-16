@@ -12,6 +12,7 @@ import com.ninetwozero.battlelog.fragments.NewsListingFragment;
 import com.ninetwozero.battlelog.fragments.PlatoonProfileFragment;
 import com.ninetwozero.battlelog.fragments.SlidingMenuFragment;
 import com.ninetwozero.battlelog.fragments.SoldierStatsFragment;
+import com.ninetwozero.battlelog.fragments.ThreadListingFragment;
 
 public class FragmentFactory {
     public enum Type {
@@ -55,6 +56,8 @@ public class FragmentFactory {
                 return BattleFeedPostingFragment.newInstance();
             case FORUM_LISTING:
                 return ForumListingFragment.newInstance();
+            case THREAD_LISTING:
+                return ThreadListingFragment.newInstance();
             default:
                 throw new TypeNotPresentException("" + type, null);
         }
