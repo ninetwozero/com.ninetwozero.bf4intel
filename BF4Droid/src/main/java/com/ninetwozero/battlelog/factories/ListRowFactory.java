@@ -13,19 +13,23 @@ public class ListRowFactory {
     private ListRowFactory() {}
 
     public static ListRow create(final ListRowType type, final Bundle data) {
+        return create(type, data, null);
+    }
+
+    public static ListRow create(final ListRowType type, final Bundle data, final List<ListRow> children) {
         switch( type ) {
             case SIDE_ACCOUNT:
-                return getItemForAccountTypeInMenu(type, data);
+                return getItemForAccountTypeInMenu(type, data, children);
             case PROFILE_ACCOUNT:
-                return getItemForAccountTypeInProfile(type, data);
+                return getItemForAccountTypeInProfile(type, data, children);
             case SIDE_SOLDIER:
             case PROFILE_SOLDIER:
-                return getItemForSoldierType(type, data);
+                return getItemForSoldierType(type, data, children);
             case SIDE_PLATOON:
             case PROFILE_PLATOON:
-                return getItemForPlatoonType(type, data);
+                return getItemForPlatoonType(type, data, children);
             case SIDE_FEED:
-                return getItemForFeedType(type, data);
+                return getItemForFeedType(type, data, children);
             default:
                 throw new UnsupportedOperationException("Invalid call for type: " + type);
         }
@@ -44,14 +48,14 @@ public class ListRowFactory {
     }
 
     public static ListRow create(final ListRowType type, final String text, final FragmentFactory.Type fragmentType) {
-        return new ListRow.Builder(type).fragmentType(fragmentType).build();
+        return new ListRow.Builder(type).title(text).fragmentType(fragmentType).build();
     }
 
     public static ListRow create(final ListRowType type, final String text, final FragmentFactory.Type fragmentType, final List<ListRow> children) {
-        return new ListRow.Builder(type).fragmentType(fragmentType).children(children).build();
+        return new ListRow.Builder(type).title(text).fragmentType(fragmentType).children(children).build();
     }
 
-    private static ListRow getItemForAccountTypeInMenu(final ListRowType type, final Bundle data) {
+    private static ListRow getItemForAccountTypeInMenu(final ListRowType type, final Bundle data, final List<ListRow> children) {
         final Bundle stringMappings = new Bundle();
         final Bundle drawableMappings = new Bundle();
 
@@ -63,10 +67,11 @@ public class ListRowFactory {
             .fragmentType(FragmentFactory.Type.ACCOUNT_PROFILE)
             .stringMappings(stringMappings)
             .drawableMappings(drawableMappings)
+            .children(children)
             .build();
     }
 
-    private static ListRow getItemForAccountTypeInProfile(final ListRowType type, final Bundle data) {
+    private static ListRow getItemForAccountTypeInProfile(final ListRowType type, final Bundle data, final List<ListRow> children) {
         final Bundle stringMappings = new Bundle();
         final Bundle drawableMappings = new Bundle();
 
@@ -79,10 +84,11 @@ public class ListRowFactory {
         return new ListRow.Builder(type)
             .stringMappings(stringMappings)
             .drawableMappings(drawableMappings)
+            .children(children)
             .build();
     }
 
-    private static ListRow getItemForSoldierType(final ListRowType type, final Bundle data) {
+    private static ListRow getItemForSoldierType(final ListRowType type, final Bundle data, final List<ListRow> children) {
         final Bundle stringMappings = new Bundle();
         final Bundle drawableMappings = new Bundle();
 
@@ -95,10 +101,11 @@ public class ListRowFactory {
             .fragmentType(FragmentFactory.Type.SOLDIER_STATS)
             .stringMappings(stringMappings)
             .drawableMappings(drawableMappings)
+            .children(children)
             .build();
     }
 
-    private static ListRow getItemForPlatoonType(final ListRowType type, final Bundle data) {
+    private static ListRow getItemForPlatoonType(final ListRowType type, final Bundle data, final List<ListRow> children) {
         final Bundle stringMappings = new Bundle();
         final Bundle drawableMappings = new Bundle();
 
@@ -110,10 +117,11 @@ public class ListRowFactory {
             .fragmentType(FragmentFactory.Type.PLATOON_PROFILE)
             .stringMappings(stringMappings)
             .drawableMappings(drawableMappings)
+            .children(children)
             .build();
     }
 
-    private static ListRow getItemForFeedType(final ListRowType type, final Bundle data) {
+    private static ListRow getItemForFeedType(final ListRowType type, final Bundle data, final List<ListRow> children) {
         final Bundle stringMappings = new Bundle();
         final Bundle drawableMappings = new Bundle();
 
@@ -123,6 +131,7 @@ public class ListRowFactory {
             .fragmentType(FragmentFactory.Type.BATTLE_FEED)
             .stringMappings(stringMappings)
             .drawableMappings(drawableMappings)
+            .children(children)
             .build();
     }
 }
