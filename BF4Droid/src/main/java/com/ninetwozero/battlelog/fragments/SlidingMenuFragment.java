@@ -54,11 +54,22 @@ public class SlidingMenuFragment extends AbstractListFragment {
             transaction.commit();
         }
         ((SlidingMenuAccessInterface) getActivity()).toggle();
+        listView.setItemChecked(position, true);
     }
 
     private void initialize(final View view) {
+        setupAdapter();
+        setupListView(view);
+    }
+
+    private void setupAdapter() {
         final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getActivity(), getItemsForMenu());
         setListAdapter(slidingMenuAdapter);
+    }
+
+    private void setupListView(final View view) {
+        final ListView listView = (ListView) view.findViewById(android.R.id.list);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
     }
 
     private List<ListRow> getItemsForMenu() {
