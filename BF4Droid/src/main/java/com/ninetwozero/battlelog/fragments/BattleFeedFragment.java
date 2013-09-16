@@ -1,9 +1,5 @@
 package com.ninetwozero.battlelog.fragments;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.FragmentTransaction;
-import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,11 +13,7 @@ import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.activities.SingleFragmentActivity;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
-import com.ninetwozero.battlelog.adapters.ListRowAdapter;
-import com.ninetwozero.battlelog.datatypes.ListRow;
-import com.ninetwozero.battlelog.datatypes.ListRowType;
 import com.ninetwozero.battlelog.factories.FragmentFactory;
-import com.ninetwozero.battlelog.factories.ListRowFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,11 +78,11 @@ public class BattleFeedFragment extends AbstractListFragment {
 
     private List<Integer> getDummyItems() {
         List<Integer> items = new ArrayList<Integer>(10);
-        items.add(R.layout.list_feed_status);
+        items.add(R.layout.list_item_feed_status);
         items.add(R.layout.list_feed_wallpost);
-        items.add(R.layout.list_feed_favorite_server);
-        items.add(R.layout.list_feed_gameaccess);
-        items.add(R.layout.list_feed_battlereport);
+        items.add(R.layout.list_item_feed_favorite_server);
+        items.add(R.layout.list_item_feed_gameaccess);
+        items.add(R.layout.list_item_feed_battlereport);
         return items;
     }
 }

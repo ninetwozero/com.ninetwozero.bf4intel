@@ -46,11 +46,11 @@ public enum ListRowType {
             case SIDE_REGULAR:
                 return R.layout.side_regular;
             case PROFILE_ACCOUNT:
-                return R.layout.list_profile_account;
+                return R.layout.list_item_profile_account;
             case PROFILE_SOLDIER:
-                return R.layout.list_profile_soldier;
+                return R.layout.list_item_profile_soldier;
             case PROFILE_PLATOON:
-                return R.layout.list_profile_platoon;
+                return R.layout.list_item_profile_platoon;
             case HEADING:
                 return R.layout.generic_heading;
 

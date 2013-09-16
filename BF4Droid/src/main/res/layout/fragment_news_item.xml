@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 >
-    <include android:id="@+id/wrap_news_top" layout="@layout/list_news" />
+    <include android:id="@+id/wrap_news_top" layout="@layout/list_item_news" />
     <TextView
         android:id="@+id/content"
         android:layout_width="match_parent"

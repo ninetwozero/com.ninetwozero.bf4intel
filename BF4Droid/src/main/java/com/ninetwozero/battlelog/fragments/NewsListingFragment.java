@@ -1,19 +1,12 @@
 package com.ninetwozero.battlelog.fragments;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
@@ -75,10 +68,10 @@ public class NewsListingFragment extends AbstractListFragment {
 
     private List<Integer> getDummyItems() {
         List<Integer> items = new ArrayList<Integer>(10);
-        items.add(R.layout.list_news);
-        items.add(R.layout.list_news);
-        items.add(R.layout.list_news);
-        items.add(R.layout.list_news);
+        items.add(R.layout.list_item_news);
+        items.add(R.layout.list_item_news);
+        items.add(R.layout.list_item_news);
+        items.add(R.layout.list_item_news);
         return items;
     }
 }
