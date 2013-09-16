@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.ninetwozero.battlelog.fragments.AccountProfileFragment;
 import com.ninetwozero.battlelog.fragments.BattleFeedFragment;
 import com.ninetwozero.battlelog.fragments.BattleFeedPostingFragment;
+import com.ninetwozero.battlelog.fragments.ForumListingFragment;
 import com.ninetwozero.battlelog.fragments.NewsItemFragment;
 import com.ninetwozero.battlelog.fragments.NewsListingFragment;
 import com.ninetwozero.battlelog.fragments.PlatoonProfileFragment;
@@ -52,8 +53,10 @@ public class FragmentFactory {
                 return NewsItemFragment.newInstance(data);
             case BATTLE_FEED_POSTING:
                 return BattleFeedPostingFragment.newInstance();
+            case FORUM_LISTING:
+                return ForumListingFragment.newInstance();
             default:
-                throw new TypeNotPresentException("No fragment corresponds to: " + type, null);
+                throw new TypeNotPresentException("" + type, null);
         }
     }
 
