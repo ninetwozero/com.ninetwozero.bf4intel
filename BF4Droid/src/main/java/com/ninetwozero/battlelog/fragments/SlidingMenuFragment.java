@@ -1,26 +1,18 @@
 package com.ninetwozero.battlelog.fragments;
 
-import android.app.ExpandableListActivity;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.ListFragment;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.activities.SlidingMenuAccessInterface;
 import com.ninetwozero.battlelog.adapters.ExpandableListRowAdapter;
-import com.ninetwozero.battlelog.adapters.ListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;
 import com.ninetwozero.battlelog.datatypes.ListRowType;
 import com.ninetwozero.battlelog.factories.FragmentFactory;
@@ -59,29 +51,59 @@ public class SlidingMenuFragment extends AbstractListFragment {
         final ExpandableListAdapter slidingMenuAdapter = new ExpandableListRowAdapter(getActivity(), getItemsForMenu());
         listView.setAdapter(slidingMenuAdapter);
         listView.setOnGroupClickListener(
-           new ExpandableListView.OnGroupClickListener() {
-               @Override
-               public boolean onGroupClick(final ExpandableListView listView, final View view, final int position, final long id) {
-                   onListItemClick(listView, view, position, id);
-                   return false;
-               }
-           }
+                new ExpandableListView.OnGroupClickListener() {
+                    @Override
+                    public boolean onGroupClick(final ExpandableListView listView, final View view, final int group, final long id) {
+                        return onGroupItemClick(listView, view, group);
+                    }
+                }
+        );
+
+        listView.setOnChildClickListener(
+                new ExpandableListView.OnChildClickListener() {
+                    @Override
+                    public boolean onChildClick(ExpandableListView expandableListView, View view, int group, int child, long id) {
+                        return onChildItemClick(listView, group, child);
+                    }
+                }
         );
     }
 
-    private void onListItemClick(final ExpandableListView listView, final View view, final int position, final long id) {
+    private boolean onGroupItemClick(final ExpandableListView listView, final View view, final int position) {
         final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getGroup(position);
+        if( item.getType() == ListRowType.SIDE_HEADING ) {
+            return true;
+        }
+
+        handleItemClick(item);
+        listView.setItemChecked(position, true);
+
+        if( item.getChildCount() == 0 ) {
+            ((SlidingMenuAccessInterface) getActivity()).toggle();
+        }
+        return false;
+    }
+
+    private boolean onChildItemClick(final ExpandableListView listView, final int group, final int child) {
+        final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getChild(group, child);
+        final int positionOfChild = listView.getFlatListPosition(ExpandableListView.getPackedPositionForChild(group, child));
+
+        handleItemClick(item);
+        listView.setItemChecked(positionOfChild, true);
+
+        ((SlidingMenuAccessInterface) getActivity()).toggle();
+        return false;
+    }
+
+
+    private void handleItemClick(final ListRow item) {
         if( item.hasIntent() ) {
             startActivity(item.getIntent());
         } else if( item.hasFragmentType() ) {
             final FragmentTransaction transaction = mFragmentManager.beginTransaction();
             transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType()));
             transaction.commit();
-        } else if( item.getChildCount() > 0 ) {
-            showToast("BABIES!!!!");
         }
-        ((SlidingMenuAccessInterface) getActivity()).toggle();
-        listView.setItemChecked(position, true);
     }
 
     private List<ListRow> getItemsForMenu() {
@@ -92,33 +114,41 @@ public class SlidingMenuFragment extends AbstractListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SELECTED SOLDIER"));
         items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle()));
         // TODO: These should be displayed in the "sidebar" while viewing "profile"?
-        //items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "WEAPONS"));
-        //items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "UNLOCKS"));
-        //items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "ASSIGNMENTS"));
-        //items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SETTINGS"));
-
 
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SELECTED PLATOON"));
         items.add(ListRowFactory.create(ListRowType.SIDE_PLATOON, new Bundle()));
-        // TODO: These should be displayed in the "sidebar" while viewing "platoon"?
-        //items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "CREATE NEW"));
-        //items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "INVITES"));
-        //items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SETTINGS"));
 
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SOCIAL"));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "NEWS", FragmentFactory.Type.NEWS_LISTING));
         items.add(ListRowFactory.create(ListRowType.SIDE_FEED, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "BATTLE CHAT", ExternalAppLauncher.getIntent(getActivity(), "com.ninetwozero.battlechat")));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SERVERS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "FORUMS", getChildrenForForum()));
+        return items;
+    }
 
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "FORUMS"); //getChildrenForForum()));
+    private List<ListRow> getChildrenForProfile() {
+        final List<ListRow> items = new ArrayList<ListRow>();
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "WEAPONS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "UNLOCKS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "ASSIGNMENTS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SETTINGS"));
+        return items;
+    }
+
+    private List<ListRow> getChildrenForPlatoon() {
+        final List<ListRow> items = new ArrayList<ListRow>();
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "VIEW"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "CREATE NEW"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "INVITES"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "SETTINGS"));
         return items;
     }
 
     private List<ListRow> getChildrenForForum() {
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "VIEW FORUMS", FragmentFactory.Type.FORUM_LISTING));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SAVED THREADS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "VIEW FORUMS", FragmentFactory.Type.FORUM_LISTING));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "SAVED THREADS"));
         return items;
     }
 }

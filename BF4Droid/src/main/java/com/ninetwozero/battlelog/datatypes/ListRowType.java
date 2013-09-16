@@ -7,7 +7,7 @@ public enum ListRowType {
     SIDE_SOLDIER,
     SIDE_PLATOON,
     SIDE_REGULAR,
-    SIDE_REGULAR_OPTION,
+    SIDE_REGULAR_CHILD,
     SIDE_HEADING,
     SIDE_FEED,
 
@@ -38,8 +38,8 @@ public enum ListRowType {
                 return R.layout.side_soldier_box;
             case SIDE_PLATOON:
                 return R.layout.side_platoon_box;
-            case SIDE_REGULAR_OPTION:
-                return R.layout.side_regular_option;
+            case SIDE_REGULAR_CHILD:
+                return R.layout.side_regular_child;
             case SIDE_HEADING:
                 return R.layout.side_heading;
             case SIDE_FEED:

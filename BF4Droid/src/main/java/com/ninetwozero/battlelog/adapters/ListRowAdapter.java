@@ -83,7 +83,7 @@ public class ListRowAdapter extends BaseAdapter {
         final Bundle stringMappings = item.getStringMappings();
         final Bundle drawableMappings = item.getDrawableMappings();
         final ListRowType type = item.getType();
-        final boolean isRegular = type == SIDE_REGULAR || type == SIDE_REGULAR_OPTION;
+        final boolean isRegular = type == SIDE_REGULAR || type == SIDE_REGULAR_CHILD;
         final boolean isHeading = type == HEADING || type == SIDE_HEADING;
 
         if( isRegular || isHeading ) {

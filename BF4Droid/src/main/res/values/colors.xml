@@ -19,4 +19,5 @@
     <color name="dirtywhite">#EEEEEE</color>
     <color name="grey">#848484</color>
     <color name="orange">#e7ab0a</color>
+    <color name="almostblack">#111111</color>
 </resources>

@@ -20,7 +20,7 @@ import java.util.List;
 import static com.ninetwozero.battlelog.datatypes.ListRowType.HEADING;
 import static com.ninetwozero.battlelog.datatypes.ListRowType.SIDE_HEADING;
 import static com.ninetwozero.battlelog.datatypes.ListRowType.SIDE_REGULAR;
-import static com.ninetwozero.battlelog.datatypes.ListRowType.SIDE_REGULAR_OPTION;
+import static com.ninetwozero.battlelog.datatypes.ListRowType.SIDE_REGULAR_CHILD;
 
 public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
     private Context mContext;
@@ -100,7 +100,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
             convertView = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
         }
 
-        convertView.setClickable(type == SIDE_HEADING);
+        convertView.setEnabled(type != ListRowType.SIDE_HEADING);
 
         return populateViewFromItem(convertView, item);
     }
@@ -121,7 +121,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
         final Bundle stringMappings = item.getStringMappings();
         final Bundle drawableMappings = item.getDrawableMappings();
         final ListRowType type = item.getType();
-        final boolean isRegular = type == SIDE_REGULAR || type == SIDE_REGULAR_OPTION;
+        final boolean isRegular = type == SIDE_REGULAR || type == SIDE_REGULAR_CHILD;
         final boolean isHeading = type == HEADING || type == SIDE_HEADING;
 
         if( isRegular || isHeading ) {
