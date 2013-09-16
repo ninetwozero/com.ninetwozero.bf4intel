@@ -111,7 +111,7 @@ public class SlidingMenuFragment extends AbstractListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "BATTLE CHAT", ExternalAppLauncher.getIntent(getActivity(), "com.ninetwozero.battlechat")));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SERVERS"));
 
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "FORUMS", getChildrenForForum()));
+        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "FORUMS"); //getChildrenForForum()));
         return items;
     }
 

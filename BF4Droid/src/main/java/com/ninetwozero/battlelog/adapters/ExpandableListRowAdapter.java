@@ -100,6 +100,8 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
             convertView = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
         }
 
+        convertView.setClickable(type == SIDE_HEADING);
+
         return populateViewFromItem(convertView, item);
     }
 
