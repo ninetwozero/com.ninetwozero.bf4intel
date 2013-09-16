@@ -7,6 +7,8 @@ import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.datatypes.ListRow;
 import com.ninetwozero.battlelog.datatypes.ListRowType;
 
+import java.util.List;
+
 public class ListRowFactory {
     private ListRowFactory() {}
 
@@ -30,15 +32,23 @@ public class ListRowFactory {
     }
 
     public static ListRow create(final ListRowType type, final String text) {
-        return new ListRow(type, text);
+        return new ListRow.Builder(type).title(text).build();
+    }
+
+    public static ListRow create(final ListRowType type, final String text, final List<ListRow> children) {
+        return new ListRow.Builder(type).title(text).children(children).build();
     }
 
     public static ListRow create(final ListRowType type, final String text, final Intent intent) {
-        return new ListRow(type, text, intent);
+        return new ListRow.Builder(type).title(text).intent(intent).build();
     }
 
     public static ListRow create(final ListRowType type, final String text, final FragmentFactory.Type fragmentType) {
-        return new ListRow(type, text, fragmentType);
+        return new ListRow.Builder(type).fragmentType(fragmentType).build();
+    }
+
+    public static ListRow create(final ListRowType type, final String text, final FragmentFactory.Type fragmentType, final List<ListRow> children) {
+        return new ListRow.Builder(type).fragmentType(fragmentType).children(children).build();
     }
 
     private static ListRow getItemForAccountTypeInMenu(final ListRowType type, final Bundle data) {
@@ -49,12 +59,11 @@ public class ListRowFactory {
         stringMappings.putString(String.valueOf(R.id.user_email), "kalle@n20.se");
         drawableMappings.putInt(String.valueOf(R.id.gravatar), R.drawable.test_gravatar);
 
-        return new ListRow(
-            type,
-            FragmentFactory.Type.ACCOUNT_PROFILE,
-            stringMappings,
-            drawableMappings
-        );
+        return new ListRow.Builder(type)
+            .fragmentType(FragmentFactory.Type.ACCOUNT_PROFILE)
+            .stringMappings(stringMappings)
+            .drawableMappings(drawableMappings)
+            .build();
     }
 
     private static ListRow getItemForAccountTypeInProfile(final ListRowType type, final Bundle data) {
@@ -67,12 +76,10 @@ public class ListRowFactory {
         stringMappings.putString(String.valueOf(R.id.user_presentation), "Hello world!");
         stringMappings.putString(String.valueOf(R.id.user_country), "SWEDEN");
 
-        return new ListRow(
-            type,
-            null,
-            stringMappings,
-            drawableMappings
-        );
+        return new ListRow.Builder(type)
+            .stringMappings(stringMappings)
+            .drawableMappings(drawableMappings)
+            .build();
     }
 
     private static ListRow getItemForSoldierType(final ListRowType type, final Bundle data) {
@@ -84,12 +91,11 @@ public class ListRowFactory {
         drawableMappings.putInt(String.valueOf(R.id.soldier_platform), R.drawable.test_platform);
         drawableMappings.putInt(String.valueOf(R.id.soldier_rank), R.drawable.test_rank31);
 
-        return new ListRow(
-            type,
-            FragmentFactory.Type.SOLDIER_STATS, //TODO: Create fragment that opens *displayed* soldier?
-            stringMappings,
-            drawableMappings
-        );
+        return new ListRow.Builder(type)
+            .fragmentType(FragmentFactory.Type.SOLDIER_STATS)
+            .stringMappings(stringMappings)
+            .drawableMappings(drawableMappings)
+            .build();
     }
 
     private static ListRow getItemForPlatoonType(final ListRowType type, final Bundle data) {
@@ -100,12 +106,11 @@ public class ListRowFactory {
         drawableMappings.putInt(String.valueOf(R.id.platoon_image), R.drawable.test_platoon);
         drawableMappings.putInt(String.valueOf(R.id.platoon_platform), R.drawable.test_platform);
 
-        return new ListRow(
-            type,
-            FragmentFactory.Type.PLATOON_PROFILE,
-            stringMappings,
-            drawableMappings
-        );
+        return new ListRow.Builder(type)
+            .fragmentType(FragmentFactory.Type.PLATOON_PROFILE)
+            .stringMappings(stringMappings)
+            .drawableMappings(drawableMappings)
+            .build();
     }
 
     private static ListRow getItemForFeedType(final ListRowType type, final Bundle data) {
@@ -114,11 +119,10 @@ public class ListRowFactory {
 
         stringMappings.putString(String.valueOf(R.id.text1), "BATTLE FEED");
 
-        return new ListRow(
-            type,
-            FragmentFactory.Type.BATTLE_FEED,
-            stringMappings,
-            drawableMappings
-        );
+        return new ListRow.Builder(type)
+            .fragmentType(FragmentFactory.Type.BATTLE_FEED)
+            .stringMappings(stringMappings)
+            .drawableMappings(drawableMappings)
+            .build();
     }
 }

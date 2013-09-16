@@ -37,6 +37,7 @@ public class MainActivity extends Activity implements SlidingMenuAccessInterface
     private void setupActionBar() {
         final ActionBar actionbar = getActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setDisplayShowHomeEnabled(true);
         actionbar.setTitle("");
     }
 

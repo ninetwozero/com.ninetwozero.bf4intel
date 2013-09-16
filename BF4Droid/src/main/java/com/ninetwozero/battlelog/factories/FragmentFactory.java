@@ -24,6 +24,12 @@ public class FragmentFactory {
 
         NEWS_LISTING,
         NEWS_ITEM,
+
+        FORUM_LISTING,
+        THREAD_LISTING,
+        THREAD_CREATING,
+        POST_LISTING,
+        POST_CREATING,
     }
 
     public static Fragment get(final Type type) {

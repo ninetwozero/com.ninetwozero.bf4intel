@@ -1,5 +1,6 @@
 package com.ninetwozero.battlelog.fragments;
 
+import android.app.ExpandableListActivity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
@@ -9,12 +10,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.activities.SlidingMenuAccessInterface;
+import com.ninetwozero.battlelog.adapters.ExpandableListRowAdapter;
 import com.ninetwozero.battlelog.adapters.ListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;
 import com.ninetwozero.battlelog.datatypes.ListRowType;
@@ -43,33 +48,40 @@ public class SlidingMenuFragment extends AbstractListFragment {
         return view;
     }
 
-    @Override
-    public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
-        final ListRow item = ((ListRowAdapter) getListAdapter()).getItem(position);
+    private void initialize(final View view) {
+        setupListView(view);
+    }
+
+    private void setupListView(final View view) {
+        final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        final ExpandableListAdapter slidingMenuAdapter = new ExpandableListRowAdapter(getActivity(), getItemsForMenu());
+        listView.setAdapter(slidingMenuAdapter);
+        listView.setOnGroupClickListener(
+           new ExpandableListView.OnGroupClickListener() {
+               @Override
+               public boolean onGroupClick(final ExpandableListView listView, final View view, final int position, final long id) {
+                   onListItemClick(listView, view, position, id);
+                   return false;
+               }
+           }
+        );
+    }
+
+    private void onListItemClick(final ExpandableListView listView, final View view, final int position, final long id) {
+        final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getGroup(position);
         if( item.hasIntent() ) {
             startActivity(item.getIntent());
         } else if( item.hasFragmentType() ) {
             final FragmentTransaction transaction = mFragmentManager.beginTransaction();
             transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType()));
             transaction.commit();
+        } else if( item.getChildCount() > 0 ) {
+            showToast("BABIES!!!!");
         }
         ((SlidingMenuAccessInterface) getActivity()).toggle();
         listView.setItemChecked(position, true);
-    }
-
-    private void initialize(final View view) {
-        setupAdapter();
-        setupListView(view);
-    }
-
-    private void setupAdapter() {
-        final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getActivity(), getItemsForMenu());
-        setListAdapter(slidingMenuAdapter);
-    }
-
-    private void setupListView(final View view) {
-        final ListView listView = (ListView) view.findViewById(android.R.id.list);
-        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
     }
 
     private List<ListRow> getItemsForMenu() {
@@ -98,10 +110,15 @@ public class SlidingMenuFragment extends AbstractListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_FEED, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "BATTLE CHAT", ExternalAppLauncher.getIntent(getActivity(), "com.ninetwozero.battlechat")));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SERVERS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "FORUMS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "VIEW FORUMS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SAVED THREADS"));
 
+        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "FORUMS", getChildrenForForum()));
+        return items;
+    }
+
+    private List<ListRow> getChildrenForForum() {
+        final List<ListRow> items = new ArrayList<ListRow>();
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "VIEW FORUMS", FragmentFactory.Type.FORUM_LISTING));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SAVED THREADS"));
         return items;
     }
 }

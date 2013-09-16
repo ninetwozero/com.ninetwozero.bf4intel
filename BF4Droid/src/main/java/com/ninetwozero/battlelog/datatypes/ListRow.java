@@ -5,9 +5,11 @@ import android.os.Bundle;
 
 import com.ninetwozero.battlelog.factories.FragmentFactory;
 
+import java.util.List;
+
 public class ListRow {
-    private String mTitle;
     private ListRowType mType;
+    private String mTitle;
 
     private Intent mIntent;
     private FragmentFactory.Type mFragmentType;
@@ -15,39 +17,19 @@ public class ListRow {
     private Bundle mStringMappings;
     private Bundle mDrawableMappings;
 
-    public ListRow(final ListRowType type, final String title) {
-        mType = type;
-        mTitle = title;
+    private List<ListRow> mChildren;
 
-        mStringMappings = new Bundle();
-        mDrawableMappings = new Bundle();
-    }
+    protected ListRow(final Builder builder) {
+        mType = builder.type;
+        mTitle = builder.title;
 
-    public ListRow(final ListRowType type, final String title, final Intent intent) {
-        mType = type;
-        mTitle = title;
-        mIntent = intent;
+        mIntent = builder.intent;
+        mFragmentType = builder.fragmentType;
 
-        mStringMappings = new Bundle();
-        mDrawableMappings = new Bundle();
-    }
+        mStringMappings = builder.stringMappings;
+        mDrawableMappings = builder.drawableMappings;
 
-    public ListRow(final ListRowType type, final String title, final FragmentFactory.Type fragmentType) {
-        mType = type;
-        mTitle = title;
-        mFragmentType = fragmentType;
-
-        mStringMappings = new Bundle();
-        mDrawableMappings = new Bundle();
-    }
-
-    public ListRow(final ListRowType type, final FragmentFactory.Type fragmentType, final Bundle strings, final Bundle drawables) {
-        mType = type;
-        mFragmentType = fragmentType;
-        mTitle = "N/A";
-
-        mStringMappings = strings;
-        mDrawableMappings = drawables;
+        mChildren = builder.children;
     }
 
     public String getTitle() {
@@ -84,5 +66,68 @@ public class ListRow {
 
     public boolean hasFragmentType() {
         return mFragmentType != null;
+    }
+
+    public int getChildCount() {
+        return mChildren == null? 0 : mChildren.size();
+    }
+
+    public ListRow getChild(final int position) {
+        return mChildren.get(position);
+    }
+
+    public List<ListRow> getChildren() {
+        return mChildren;
+    }
+
+    public static class Builder {
+        // Required
+        private final ListRowType type;
+
+        // Optional
+        private String title;
+        private Intent intent;
+        private FragmentFactory.Type fragmentType;
+        private Bundle stringMappings;
+        private Bundle drawableMappings;
+        private List<ListRow> children;
+
+        public Builder(final ListRowType t) {
+            type = t;
+        }
+
+        public Builder title(final String t) {
+            title = t;
+            return this;
+        }
+
+        public Builder intent(final Intent i) {
+            intent = i;
+            return this;
+        }
+
+        public Builder fragmentType(final FragmentFactory.Type ft) {
+            fragmentType = ft;
+            return this;
+        }
+
+        public Builder stringMappings(final Bundle b) {
+            stringMappings = b;
+            return this;
+        }
+
+        public Builder drawableMappings(final Bundle b) {
+            drawableMappings = b;
+            return this;
+        }
+
+        public Builder children(final List<ListRow> c) {
+            children = c;
+            return this;
+        }
+
+        public ListRow build() {
+            return new ListRow(this);
+        }
     }
 }
