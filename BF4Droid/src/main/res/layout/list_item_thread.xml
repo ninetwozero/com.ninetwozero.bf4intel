@@ -25,31 +25,15 @@
         <TextView
             style="@style/meta"
             android:id="@+id/string_creator"
-            android:layout_below="@id/username"
             android:text="Created by "
         />
-        <ImageView
-            style="@style/meta"
-            android:id="@+id/creator_avatar"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@drawable/test_gravatar"
-            />
 
-        <TextView
-            style="@style/meta"
-            android:id="@+id/creator_username"
-            android:text="NINETWOZERO"
-            android:layout_marginLeft="3dp"
-            android:textColor="@color/blue"
-        />
+        <include layout="@layout/list_item_feed_tpl_user_small" />
 
         <TextView
             style="@style/meta"
             android:id="@+id/creation_timestamp"
             android:text=" 4 hours ago"
-            android:layout_below="@id/title"
-            android:layout_toRightOf="@id/string_lastact"
         />
     </LinearLayout>
 
@@ -74,19 +58,6 @@
             style="@style/meta"
             android:text=" by "
         />
-        <ImageView
-            style="@style/meta"
-            android:id="@+id/last_avatar"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@drawable/test_gravatar"
-        />
-        <TextView
-            style="@style/meta"
-            android:id="@+id/last_username"
-            android:text="NINETWOZERO"
-            android:layout_marginLeft="3dp"
-            android:textColor="@color/blue"
-        />
+        <include layout="@layout/list_item_feed_tpl_user_small" />
     </LinearLayout>
 </RelativeLayout>

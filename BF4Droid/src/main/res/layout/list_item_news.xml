@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -14,39 +13,28 @@
         android:text="Youtube.com: A story about a tank"
         android:textColor="@color/blue"
     />
-    <TextView
-        style="@style/meta"
-        android:id="@+id/timestamp"
-        android:text="4 hours ago"
-        android:layout_below="@id/title"
-    />
-    <TextView
-        style="@style/meta"
-        android:id="@+id/string_by"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/wrap_meta"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" by "
         android:layout_below="@id/title"
-        android:layout_toRightOf="@id/timestamp"
-    />
-    <ImageView
-        style="@style/meta"
-        android:id="@+id/avatar"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:src="@drawable/test_gravatar"
-        android:layout_below="@id/title"
-        android:layout_toRightOf="@id/string_by"
-    />
-
-    <TextView
-        style="@style/meta"
-        android:id="@+id/username"
-        android:text="NINETWOZERO"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/blue"
-        android:layout_below="@id/title"
-        android:layout_toRightOf="@id/avatar"
+        android:gravity="left|center"
+    >
+        <TextView
+            style="@style/meta"
+            android:id="@+id/timestamp"
+            android:text="4 hours ago"
         />
+        <TextView
+            style="@style/meta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" by "
+        />
+        <include
+            layout="@layout/list_item_feed_tpl_user_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        />
+    </LinearLayout>
 </RelativeLayout>
