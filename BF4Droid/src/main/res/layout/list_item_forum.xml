@@ -37,51 +37,53 @@
         android:layout_below="@id/title"
         android:layout_toRightOf="@id/timestamp"
     />
-    <ImageView
-        style="@style/meta"
-        android:id="@+id/avatar"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:src="@drawable/test_gravatar"
+    <LinearLayout
+        android:id="@+id/wrap_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left|center"
         android:layout_below="@id/title"
         android:layout_toRightOf="@id/string_by"
-    />
-
-    <TextView
-        style="@style/meta"
-        android:id="@+id/username"
-        android:text="NINETWOZERO"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/blue"
-        android:layout_below="@id/title"
-        android:layout_toRightOf="@id/avatar"
-    />
-
+    >
+        <ImageView
+            style="@style/meta"
+            android:id="@+id/avatar"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/test_gravatar"
+        />
+        <TextView
+            style="@style/meta"
+            android:id="@+id/username"
+            android:text="NINETWOZERO"
+            android:layout_marginLeft="3dp"
+            android:textColor="@color/blue"
+        />
+    </LinearLayout>
     <TextView
         style="@style/meta"
         android:id="@+id/num_posts"
-        android:layout_below="@id/username"
+        android:layout_below="@id/wrap_user"
         android:text="403"
     />
     <TextView
         style="@style/meta"
         android:id="@+id/string_postcount"
-        android:layout_below="@id/username"
+        android:layout_below="@id/wrap_user"
         android:layout_toRightOf="@id/num_posts"
         android:text=" posts in "
     />
     <TextView
         style="@style/meta"
         android:id="@+id/num_threads"
-        android:layout_below="@id/username"
+        android:layout_below="@id/wrap_user"
         android:layout_toRightOf="@id/string_postcount"
         android:text="201"
     />
     <TextView
         style="@style/meta"
         android:id="@+id/string_threadcount"
-        android:layout_below="@id/username"
+        android:layout_below="@id/wrap_user"
         android:layout_toRightOf="@id/num_threads"
         android:text=" threads"
     />

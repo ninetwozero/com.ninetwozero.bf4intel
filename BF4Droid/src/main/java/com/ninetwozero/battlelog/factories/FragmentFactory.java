@@ -10,6 +10,7 @@ import com.ninetwozero.battlelog.fragments.ForumListingFragment;
 import com.ninetwozero.battlelog.fragments.NewsItemFragment;
 import com.ninetwozero.battlelog.fragments.NewsListingFragment;
 import com.ninetwozero.battlelog.fragments.PlatoonProfileFragment;
+import com.ninetwozero.battlelog.fragments.PostListingFragment;
 import com.ninetwozero.battlelog.fragments.SlidingMenuFragment;
 import com.ninetwozero.battlelog.fragments.SoldierStatsFragment;
 import com.ninetwozero.battlelog.fragments.ThreadListingFragment;
@@ -58,6 +59,8 @@ public class FragmentFactory {
                 return ForumListingFragment.newInstance();
             case THREAD_LISTING:
                 return ThreadListingFragment.newInstance();
+            case POST_LISTING:
+                return PostListingFragment.newInstance();
             default:
                 throw new TypeNotPresentException("" + type, null);
         }
