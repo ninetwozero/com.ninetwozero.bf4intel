@@ -112,8 +112,7 @@ public class SlidingMenuFragment extends AbstractListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "LOGGED IN AS"));
         items.add(ListRowFactory.create(ListRowType.SIDE_ACCOUNT, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SELECTED SOLDIER"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle()));
-        // TODO: These should be displayed in the "sidebar" while viewing "profile"?
+        items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle(), getChildrenForSoldier()));
 
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SELECTED PLATOON"));
         items.add(ListRowFactory.create(ListRowType.SIDE_PLATOON, new Bundle()));
@@ -127,12 +126,13 @@ public class SlidingMenuFragment extends AbstractListFragment {
         return items;
     }
 
-    private List<ListRow> getChildrenForProfile() {
+    private List<ListRow> getChildrenForSoldier() {
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "WEAPONS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "UNLOCKS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "ASSIGNMENTS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SETTINGS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "STATISTICS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "WEAPONS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "UNLOCKS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "ASSIGNMENTS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "SETTINGS"));
         return items;
     }
 
