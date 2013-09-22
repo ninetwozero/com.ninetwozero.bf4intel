@@ -3,6 +3,7 @@ package com.ninetwozero.battlelog.adapters;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,16 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
     public ExpandableListRowAdapter(final Context context, final List<ListRow> items) {
         mContext = context;
         mItems = items;
+    }
+
+    @Override
+    public int getGroupTypeCount () {
+        return ListRowType.SIZE;
+    }
+
+    @Override
+    public int getGroupType(final int position) {
+        return getGroup(position).getType().ordinal();
     }
 
     @Override
