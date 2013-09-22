@@ -70,13 +70,14 @@ public class SlidingMenuFragment extends AbstractListFragment {
     }
 
     private boolean onGroupItemClick(final ExpandableListView listView, final View view, final int position) {
+        final int positionOfGroup = listView.getFlatListPosition(ExpandableListView.getPackedPositionForGroup(position));
         final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getGroup(position);
         if( item.getType() == ListRowType.SIDE_HEADING ) {
             return true;
         }
 
         handleItemClick(item);
-        listView.setItemChecked(position, true);
+        listView.setItemChecked(positionOfGroup, true);
 
         if( item.getChildCount() == 0 ) {
             ((SlidingMenuAccessInterface) getActivity()).toggle();
@@ -85,8 +86,8 @@ public class SlidingMenuFragment extends AbstractListFragment {
     }
 
     private boolean onChildItemClick(final ExpandableListView listView, final int group, final int child) {
-        final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getChild(group, child);
         final int positionOfChild = listView.getFlatListPosition(ExpandableListView.getPackedPositionForChild(group, child));
+        final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getChild(group, child);
 
         handleItemClick(item);
         listView.setItemChecked(positionOfChild, true);
