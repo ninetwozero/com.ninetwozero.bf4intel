@@ -1,6 +1,7 @@
 package com.ninetwozero.battlelog.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +11,13 @@ import android.widget.ListView;
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
+import com.ninetwozero.battlelog.factories.FragmentFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ThreadListingFragment extends AbstractListFragment {
-    public static final String ID = "threadId";
+    public static final String FORUM_ID = "forumId";
 
     public ThreadListingFragment() {}
 
@@ -36,7 +38,7 @@ public class ThreadListingFragment extends AbstractListFragment {
 
     private void initialize(final View view) {
         setupListView(view);
-        updateActionBar(getActivity(), "THREADS", R.drawable.ic_actionbar_forums);
+        updateActionBar(getActivity(), "Dummy Forum (Uncategorized)", R.drawable.ic_actionbar_forums);
     }
 
     private void setupListView(final View view) {
@@ -51,22 +53,18 @@ public class ThreadListingFragment extends AbstractListFragment {
     @Override
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
         final Fragment itemFragment = mFragmentManager.findFragmentByTag("PostListingFragment");
-/* TODO:
-        if( itemFragment != null && itemFragment instanceof NewsItemFragment ) {
-            ((NewsItemFragment) itemFragment).loadArticle(id);
-        } else {
 
-            final Bundle data = new Bundle();
-            data.putLong(NewsItemFragment.ID, id);
+        /* FIXME: Get actual id's */
+        final Bundle data = new Bundle();
+        data.putLong(PostListingFragment.THREAD_ID, id);
 
-            final FragmentTransaction transaction = mFragmentManager.beginTransaction();
-            transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.NEWS_ITEM), "ForumItemFragment");
-            transaction.addToBackStack(null);
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            transaction.commit();
-        }*/
+        final FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.POST_LISTING), "PostListingFragment");
+        transaction.addToBackStack(null);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.commit();
 
-        showToast("Opening thread ID: " + id);
+        showToast("Opening thread THREAD_ID: " + id);
     }
 
     private List<Integer> getDummyItems() {

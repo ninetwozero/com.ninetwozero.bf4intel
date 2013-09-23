@@ -6,14 +6,7 @@
     android:layout_height="match_parent"
     android:padding="8dp"
 >
-    <ImageView
-        style="@style/feed_avatar"
-        android:src="@drawable/test_gravatar"
-    />
-    <TextView
-        style="@style/feed_username"
-        android:text="NINETWOZERO"
-    />
+    <include layout="@layout/list_item_feed_tpl_user" />
     <TextView
         style="@style/feed_content"
         android:text="Activated new game/expansion:"

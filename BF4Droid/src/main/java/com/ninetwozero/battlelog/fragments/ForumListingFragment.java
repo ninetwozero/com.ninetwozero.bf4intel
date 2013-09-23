@@ -54,7 +54,7 @@ public class ForumListingFragment extends AbstractListFragment {
 
         /* FIXME: Get actual id's */
         final Bundle data = new Bundle();
-        data.putLong(ThreadListingFragment.ID, id);
+        data.putLong(ThreadListingFragment.FORUM_ID, id);
 
         final FragmentTransaction transaction = mFragmentManager.beginTransaction();
         transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.THREAD_LISTING), "ThreadListingFragment");
@@ -62,7 +62,7 @@ public class ForumListingFragment extends AbstractListFragment {
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         transaction.commit();
 
-        showToast("Opening forum ID: " + id);
+        showToast("Opening forum FORUM_ID: " + id);
     }
 
     private List<Integer> getDummyItems() {

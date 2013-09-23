@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+>
+
+    <LinearLayout
+        android:id="@+id/wrap_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center"
+    >
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/test_gravatar"
+        />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NINETWOZERO"
+            android:layout_marginLeft="3dp"
+            android:textColor="@color/blue"
+            android:textAppearance="@android:style/TextAppearance.Holo"
+        />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wrap_user"
+        android:layout_marginTop="4dp"
+        android:textAppearance="@android:style/TextAppearance.Holo"
+        android:text="Bladabalablabadadadaldadalada\nldladldal"
+    />
+    <TextView
+        style="@style/meta"
+        android:id="@+id/timestamp"
+        android:text="4 hours ago"
+        android:layout_below="@id/content"
+    />
+</RelativeLayout>

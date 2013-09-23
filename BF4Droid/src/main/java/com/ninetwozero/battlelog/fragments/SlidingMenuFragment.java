@@ -70,13 +70,14 @@ public class SlidingMenuFragment extends AbstractListFragment {
     }
 
     private boolean onGroupItemClick(final ExpandableListView listView, final View view, final int position) {
+        final int positionOfGroup = listView.getFlatListPosition(ExpandableListView.getPackedPositionForGroup(position));
         final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getGroup(position);
         if( item.getType() == ListRowType.SIDE_HEADING ) {
             return true;
         }
 
         handleItemClick(item);
-        listView.setItemChecked(position, true);
+        listView.setItemChecked(positionOfGroup, true);
 
         if( item.getChildCount() == 0 ) {
             ((SlidingMenuAccessInterface) getActivity()).toggle();
@@ -85,8 +86,8 @@ public class SlidingMenuFragment extends AbstractListFragment {
     }
 
     private boolean onChildItemClick(final ExpandableListView listView, final int group, final int child) {
-        final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getChild(group, child);
         final int positionOfChild = listView.getFlatListPosition(ExpandableListView.getPackedPositionForChild(group, child));
+        final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getChild(group, child);
 
         handleItemClick(item);
         listView.setItemChecked(positionOfChild, true);
@@ -112,27 +113,27 @@ public class SlidingMenuFragment extends AbstractListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "LOGGED IN AS"));
         items.add(ListRowFactory.create(ListRowType.SIDE_ACCOUNT, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SELECTED SOLDIER"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle()));
-        // TODO: These should be displayed in the "sidebar" while viewing "profile"?
+        items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle(), getChildrenForSoldier()));
 
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SELECTED PLATOON"));
         items.add(ListRowFactory.create(ListRowType.SIDE_PLATOON, new Bundle()));
 
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SOCIAL"));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "NEWS", FragmentFactory.Type.NEWS_LISTING));
         items.add(ListRowFactory.create(ListRowType.SIDE_FEED, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "BATTLE CHAT", ExternalAppLauncher.getIntent(getActivity(), "com.ninetwozero.battlechat")));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "NOTIFICATIONS", FragmentFactory.Type.NOTIFICATION));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SERVERS"));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "FORUMS", getChildrenForForum()));
         return items;
     }
 
-    private List<ListRow> getChildrenForProfile() {
+    private List<ListRow> getChildrenForSoldier() {
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "WEAPONS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "UNLOCKS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "ASSIGNMENTS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SETTINGS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "STATISTICS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "WEAPONS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "UNLOCKS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "ASSIGNMENTS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "SETTINGS"));
         return items;
     }
 

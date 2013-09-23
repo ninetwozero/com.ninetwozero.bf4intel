@@ -35,9 +35,8 @@
         android:layout_width="match_parent"
         android:text="LittleBoySVK"
         android:layout_toRightOf="@id/avatar2"
-        android:layout_below="@id/username"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="2dp"
+        android:layout_alignBottom="@id/avatar2"
         android:textAppearance="@android:style/TextAppearance.Holo"
     />
     <TextView
@@ -45,6 +44,7 @@
         android:id="@+id/content"
         android:text="Hey Peter, check this wall post out. Quite OK layout if you ask me. Should also work for platoon wall posts, same concept imo. Smell you later!"
         android:textAppearance="@android:style/TextAppearance.Holo"
+        android:layout_below="@id/avatar"
     />
 
     <TextView

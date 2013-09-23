@@ -9,7 +9,9 @@ import com.ninetwozero.battlelog.fragments.BattleFeedPostingFragment;
 import com.ninetwozero.battlelog.fragments.ForumListingFragment;
 import com.ninetwozero.battlelog.fragments.NewsItemFragment;
 import com.ninetwozero.battlelog.fragments.NewsListingFragment;
+import com.ninetwozero.battlelog.fragments.NotificationFragment;
 import com.ninetwozero.battlelog.fragments.PlatoonProfileFragment;
+import com.ninetwozero.battlelog.fragments.PostListingFragment;
 import com.ninetwozero.battlelog.fragments.SlidingMenuFragment;
 import com.ninetwozero.battlelog.fragments.SoldierStatsFragment;
 import com.ninetwozero.battlelog.fragments.ThreadListingFragment;
@@ -32,6 +34,8 @@ public class FragmentFactory {
         THREAD_CREATING,
         POST_LISTING,
         POST_CREATING,
+
+        NOTIFICATION,
     }
 
     public static Fragment get(final Type type) {
@@ -58,6 +62,10 @@ public class FragmentFactory {
                 return ForumListingFragment.newInstance();
             case THREAD_LISTING:
                 return ThreadListingFragment.newInstance();
+            case POST_LISTING:
+                return PostListingFragment.newInstance();
+            case NOTIFICATION:
+                return NotificationFragment.newInstance();
             default:
                 throw new TypeNotPresentException("" + type, null);
         }
