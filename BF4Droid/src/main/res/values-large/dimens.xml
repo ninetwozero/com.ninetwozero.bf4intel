@@ -16,8 +16,8 @@
 
 <resources>
 
-    <dimen name="slidingmenu_offset">300dp</dimen>
+  <dimen name="slidingmenu_offset">300dp</dimen>
 
-    <integer name="num_cols">1</integer>
+  <integer name="num_cols">1</integer>
 
 </resources>

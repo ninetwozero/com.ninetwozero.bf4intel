@@ -20,7 +20,7 @@ public enum ListRowType {
     public static final int SIZE = ListRowType.values().length;
 
     public boolean isEnabled() {
-        switch( this ) {
+        switch (this) {
             case SIDE_HEADING:
             case HEADING:
             case PROFILE_ACCOUNT:
@@ -31,7 +31,7 @@ public enum ListRowType {
     }
 
     public static int getResource(final ListRowType type) {
-        switch( type ) {
+        switch (type) {
             case SIDE_ACCOUNT:
                 return R.layout.side_account_box;
             case SIDE_SOLDIER:

@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NewsListingFragment extends AbstractListFragment {
-    public NewsListingFragment() {}
+    public NewsListingFragment() {
+    }
 
     public static NewsListingFragment newInstance() {
         final NewsListingFragment fragment = new NewsListingFragment();
@@ -40,7 +41,7 @@ public class NewsListingFragment extends AbstractListFragment {
     }
 
     private void setupListView(final View view) {
-        if( view == null ) {
+        if (view == null) {
             return;
         }
 
@@ -52,7 +53,7 @@ public class NewsListingFragment extends AbstractListFragment {
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
         final Fragment itemFragment = mFragmentManager.findFragmentByTag("NewsItemFragment");
 
-        if( itemFragment != null && itemFragment instanceof NewsItemFragment ) {
+        if (itemFragment != null && itemFragment instanceof NewsItemFragment) {
             ((NewsItemFragment) itemFragment).loadArticle(id);
         } else {
             final Bundle data = new Bundle();

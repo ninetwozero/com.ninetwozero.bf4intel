@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/wrap_soldiers"
-    android:layout_width="fill_parent"
+  android:id="@+id/wrap_soldiers"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:padding="8dp">
+
+  <ImageView
+    android:id="@+id/soldier_image"
+    android:layout_width="48dp"
+    android:layout_height="48dp" />
+
+  <TextView
+    android:id="@+id/soldier_name"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="8dp"
- >
-    <ImageView
-        android:id="@+id/soldier_image"
-        android:layout_width="48dp"
-        android:layout_height="48dp" />
+    android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+    android:layout_toRightOf="@id/soldier_image"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="3dp" />
 
-    <TextView
-        android:id="@+id/soldier_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-        android:layout_toRightOf="@id/soldier_image"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="3dp" />
+  <ImageView
+    android:id="@+id/soldier_platform"
+    android:layout_width="39dp"
+    android:layout_height="11dp"
+    android:layout_below="@id/soldier_name"
+    android:layout_toRightOf="@id/soldier_image"
+    android:layout_marginLeft="8dp" />
 
-    <ImageView
-        android:id="@+id/soldier_platform"
-        android:layout_width="39dp"
-        android:layout_height="11dp"
-        android:layout_below="@id/soldier_name"
-        android:layout_toRightOf="@id/soldier_image"
-        android:layout_marginLeft="8dp" />
-
-    <ImageView
-        android:id="@+id/soldier_rank"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:layout_alignParentRight="true" />
+  <ImageView
+    android:id="@+id/soldier_rank"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:layout_marginTop="4dp"
+    android:layout_alignParentRight="true" />
 </RelativeLayout>

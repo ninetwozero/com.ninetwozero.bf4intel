@@ -19,7 +19,8 @@ import java.util.List;
 public class ThreadListingFragment extends AbstractListFragment {
     public static final String FORUM_ID = "forumId";
 
-    public ThreadListingFragment() {}
+    public ThreadListingFragment() {
+    }
 
     public static ThreadListingFragment newInstance() {
         final ThreadListingFragment fragment = new ThreadListingFragment();
@@ -42,7 +43,7 @@ public class ThreadListingFragment extends AbstractListFragment {
     }
 
     private void setupListView(final View view) {
-        if( view == null ) {
+        if (view == null) {
             return;
         }
 

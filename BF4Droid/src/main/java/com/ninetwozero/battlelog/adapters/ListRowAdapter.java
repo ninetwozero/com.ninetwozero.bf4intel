@@ -34,7 +34,7 @@ public class ListRowAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mItems == null? 0 : mItems.size();
+        return mItems == null ? 0 : mItems.size();
     }
 
     @Override
@@ -72,7 +72,7 @@ public class ListRowAdapter extends BaseAdapter {
         final ListRow item = mItems.get(position);
         final ListRowType type = item.getType();
 
-        if( view == null ) {
+        if (view == null) {
             view = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
         }
 
@@ -86,36 +86,36 @@ public class ListRowAdapter extends BaseAdapter {
         final boolean isRegular = type == SIDE_REGULAR || type == SIDE_REGULAR_CHILD;
         final boolean isHeading = type == HEADING || type == SIDE_HEADING;
 
-        if( isRegular || isHeading ) {
+        if (isRegular || isHeading) {
             ((TextView) view.findViewById(R.id.text1)).setText(item.getTitle());
         } else {
             int resourceId = 0;
             Object drawable = null;
             ImageView imageView = null;
 
-            for( String key : stringMappings.keySet() ) {
+            for (String key : stringMappings.keySet()) {
                 resourceId = Integer.parseInt(key);
                 ((TextView) view.findViewById(resourceId)).setText(stringMappings.getString(key));
             }
 
-            for( String key : drawableMappings.keySet() ) {
+            for (String key : drawableMappings.keySet()) {
                 drawable = drawableMappings.get(key);
-                if( drawable == null ) {
+                if (drawable == null) {
                     continue;
                 }
                 resourceId = Integer.parseInt(key);
                 imageView = (ImageView) view.findViewById(resourceId);
 
-                if( drawable instanceof String ) {
+                if (drawable instanceof String) {
                     final String path = mContext.getExternalFilesDir(null) + "/" + drawable + ".png";
                     final File image = new File(path);
 
-                    if( image.exists() ) {
+                    if (image.exists()) {
                         imageView.setImageURI(Uri.fromFile(image));
                     } else {
                         imageView.setImageResource(R.drawable.ic_launcher);
                     }
-                } else if( drawable instanceof Integer ) {
+                } else if (drawable instanceof Integer) {
                     imageView.setImageResource((Integer) drawable);
                 }
             }

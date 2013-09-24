@@ -15,7 +15,8 @@ public class NewsItemFragment extends AbstractListFragment {
 
     private long mId;
 
-    public NewsItemFragment() {}
+    public NewsItemFragment() {
+    }
 
     public static NewsItemFragment newInstance() {
         final NewsItemFragment fragment = new NewsItemFragment();
@@ -56,7 +57,7 @@ public class NewsItemFragment extends AbstractListFragment {
 
     public void loadArticle(final long id) {
         mId = id;
-        if( mId > 0 ) {
+        if (mId > 0) {
             /* TODO: Do actual loading */
 
         }

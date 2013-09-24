@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/feed_wrap_user"
-    android:id="@+id/wrap_user"
->
-    <ImageView
-        style="@style/feed_avatar"
-        android:id="@+id/avatar"
-        android:src="@drawable/test_gravatar"
-    />
-    <TextView
-        style="@style/feed_username"
-        android:id="@+id/username"
-        android:text="NINETWOZERO"
-    />
+  style="@style/feed_wrap_user"
+  android:id="@+id/wrap_user">
+
+  <ImageView
+    style="@style/feed_avatar"
+    android:id="@+id/avatar"
+    android:src="@drawable/test_gravatar" />
+
+  <TextView
+    style="@style/feed_username"
+    android:id="@+id/username"
+    android:text="NINETWOZERO" />
 </LinearLayout>

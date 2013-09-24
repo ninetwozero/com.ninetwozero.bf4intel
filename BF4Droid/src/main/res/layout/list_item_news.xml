@@ -1,40 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:padding="8dp">
+
+  <TextView
+    android:id="@+id/title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
->
+    android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
+    android:text="Youtube.com: A story about a tank"
+    android:textColor="@color/blue" />
+
+  <LinearLayout
+    android:id="@+id/wrap_meta"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/title"
+    android:gravity="left|center">
+
     <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
-        android:text="Youtube.com: A story about a tank"
-        android:textColor="@color/blue"
-    />
-    <LinearLayout
-        android:id="@+id/wrap_meta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:gravity="left|center"
-    >
-        <TextView
-            style="@style/meta"
-            android:id="@+id/timestamp"
-            android:text="4 hours ago"
-        />
-        <TextView
-            style="@style/meta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" by "
-        />
-        <include
-            layout="@layout/list_item_feed_tpl_user_small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-        />
-    </LinearLayout>
+      style="@style/meta"
+      android:id="@+id/timestamp"
+      android:text="4 hours ago" />
+
+    <TextView
+      style="@style/meta"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text=" by " />
+
+    <include
+      layout="@layout/list_item_feed_tpl_user_small"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" />
+  </LinearLayout>
 </RelativeLayout>

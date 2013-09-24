@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp"
-    >
-    <include layout="@layout/list_item_feed_tpl_user" />
-    <TextView
-        style="@style/feed_content"
-        android:id="@+id/content"
-        android:text="TODO: Show things below that the user has unlocked"
-    />
-    <TextView
-        style="@style/meta"
-        android:id="@+id/timestamp"
-        android:text="4 hours ago"
-        android:layout_below="@id/content"
-    />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="8dp">
+
+  <include layout="@layout/list_item_feed_tpl_user" />
+
+  <TextView
+    style="@style/feed_content"
+    android:id="@+id/content"
+    android:text="TODO: Show things below that the user has unlocked" />
+
+  <TextView
+    style="@style/meta"
+    android:id="@+id/timestamp"
+    android:text="4 hours ago"
+    android:layout_below="@id/content" />
 </RelativeLayout>

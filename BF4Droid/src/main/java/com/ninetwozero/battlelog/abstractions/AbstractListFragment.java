@@ -2,7 +2,6 @@ package com.ninetwozero.battlelog.abstractions;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ListFragment;
 import android.os.Bundle;
@@ -10,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
-import com.ninetwozero.battlelog.R;
 
 public abstract class AbstractListFragment extends ListFragment {
     private static Toast mToast;
@@ -33,7 +30,7 @@ public abstract class AbstractListFragment extends ListFragment {
     }
 
     protected void updateActionBar(final Activity activity, final String text) {
-        if( activity == null ) {
+        if (activity == null) {
             return;
         }
 
@@ -42,7 +39,7 @@ public abstract class AbstractListFragment extends ListFragment {
     }
 
     protected void updateActionBar(final Activity activity, final String text, final int icon) {
-        if( activity == null ) {
+        if (activity == null) {
             return;
         }
 
@@ -53,7 +50,7 @@ public abstract class AbstractListFragment extends ListFragment {
 
     protected void showToast(final int resource) {
         final Activity activity = getActivity();
-        if( activity == null ) {
+        if (activity == null) {
             return;
         }
         doShowToast(activity, activity.getString(resource));
@@ -61,14 +58,14 @@ public abstract class AbstractListFragment extends ListFragment {
 
     protected void showToast(final String text) {
         final Activity activity = getActivity();
-        if( activity == null ) {
+        if (activity == null) {
             return;
         }
         doShowToast(activity, text);
     }
 
     private void doShowToast(final Activity activity, final String text) {
-        if( mToast != null ) {
+        if (mToast != null) {
             mToast.cancel();
             mToast = null;
         }

@@ -23,7 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SlidingMenuFragment extends AbstractListFragment {
-    public SlidingMenuFragment() {}
+    public SlidingMenuFragment() {
+    }
 
     public static SlidingMenuFragment newInstance() {
         final SlidingMenuFragment fragment = new SlidingMenuFragment();
@@ -72,14 +73,14 @@ public class SlidingMenuFragment extends AbstractListFragment {
     private boolean onGroupItemClick(final ExpandableListView listView, final View view, final int position) {
         final int positionOfGroup = listView.getFlatListPosition(ExpandableListView.getPackedPositionForGroup(position));
         final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getGroup(position);
-        if( item.getType() == ListRowType.SIDE_HEADING ) {
+        if (item.getType() == ListRowType.SIDE_HEADING) {
             return true;
         }
 
         handleItemClick(item);
         listView.setItemChecked(positionOfGroup, true);
 
-        if( item.getChildCount() == 0 ) {
+        if (item.getChildCount() == 0) {
             ((SlidingMenuAccessInterface) getActivity()).toggle();
         }
         return false;
@@ -96,11 +97,10 @@ public class SlidingMenuFragment extends AbstractListFragment {
         return false;
     }
 
-
     private void handleItemClick(final ListRow item) {
-        if( item.hasIntent() ) {
+        if (item.hasIntent()) {
             startActivity(item.getIntent());
-        } else if( item.hasFragmentType() ) {
+        } else if (item.hasFragmentType()) {
             final FragmentTransaction transaction = mFragmentManager.beginTransaction();
             transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType()));
             transaction.commit();

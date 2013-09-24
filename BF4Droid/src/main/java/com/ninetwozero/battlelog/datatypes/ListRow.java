@@ -69,7 +69,7 @@ public class ListRow {
     }
 
     public int getChildCount() {
-        return mChildren == null? 0 : mChildren.size();
+        return mChildren == null ? 0 : mChildren.size();
     }
 
     public ListRow getChild(final int position) {

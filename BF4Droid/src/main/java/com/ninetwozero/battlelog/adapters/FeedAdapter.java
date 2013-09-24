@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.ninetwozero.battlelog.datatypes.ListRow;
-
 import java.util.List;
 
 public class FeedAdapter extends BaseAdapter {
@@ -34,12 +32,12 @@ public class FeedAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mItems == null? 0 : mItems.size();
+        return mItems == null ? 0 : mItems.size();
     }
 
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
-        if( convertView == null ) {
+        if (convertView == null) {
             convertView = mInflater.inflate(getItem(position), parent, false);
         }
         return convertView;

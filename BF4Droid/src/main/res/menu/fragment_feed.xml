@@ -1,11 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/action_new"
-        android:title="New"
-        android:icon="@android:drawable/ic_menu_add"
-        android:orderInCategory="000"
-        android:showAsAction="always" />
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never" />
+  <item
+    android:id="@+id/action_new"
+    android:title="New"
+    android:icon="@android:drawable/ic_menu_add"
+    android:orderInCategory="000"
+    android:showAsAction="always" />
+  <item
+    android:id="@+id/action_settings"
+    android:title="@string/action_settings"
+    android:orderInCategory="100"
+    android:showAsAction="never" />
 </menu>

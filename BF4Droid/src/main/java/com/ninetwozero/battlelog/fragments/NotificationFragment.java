@@ -1,7 +1,5 @@
 package com.ninetwozero.battlelog.fragments;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +9,6 @@ import android.widget.ListView;
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
-import com.ninetwozero.battlelog.factories.FragmentFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +16,8 @@ import java.util.List;
 public class NotificationFragment extends AbstractListFragment {
     public static final String FORUM_ID = "forumId";
 
-    public NotificationFragment() {}
+    public NotificationFragment() {
+    }
 
     public static NotificationFragment newInstance() {
         final NotificationFragment fragment = new NotificationFragment();
@@ -42,7 +40,7 @@ public class NotificationFragment extends AbstractListFragment {
     }
 
     private void setupListView(final View view) {
-        if( view == null ) {
+        if (view == null) {
             return;
         }
 

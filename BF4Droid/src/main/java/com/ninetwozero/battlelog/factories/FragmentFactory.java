@@ -3,18 +3,7 @@ package com.ninetwozero.battlelog.factories;
 import android.app.Fragment;
 import android.os.Bundle;
 
-import com.ninetwozero.battlelog.fragments.AccountProfileFragment;
-import com.ninetwozero.battlelog.fragments.BattleFeedFragment;
-import com.ninetwozero.battlelog.fragments.BattleFeedPostingFragment;
-import com.ninetwozero.battlelog.fragments.ForumListingFragment;
-import com.ninetwozero.battlelog.fragments.NewsItemFragment;
-import com.ninetwozero.battlelog.fragments.NewsListingFragment;
-import com.ninetwozero.battlelog.fragments.NotificationFragment;
-import com.ninetwozero.battlelog.fragments.PlatoonProfileFragment;
-import com.ninetwozero.battlelog.fragments.PostListingFragment;
-import com.ninetwozero.battlelog.fragments.SlidingMenuFragment;
-import com.ninetwozero.battlelog.fragments.SoldierStatsFragment;
-import com.ninetwozero.battlelog.fragments.ThreadListingFragment;
+import com.ninetwozero.battlelog.fragments.*;
 
 public class FragmentFactory {
     public enum Type {
@@ -43,7 +32,7 @@ public class FragmentFactory {
     }
 
     public static Fragment get(final Type type, final Bundle data) {
-        switch( type ) {
+        switch (type) {
             case ACCOUNT_PROFILE:
                 return AccountProfileFragment.newInstance();
             case BATTLE_FEED:
@@ -76,8 +65,8 @@ public class FragmentFactory {
     }
 
     public static Fragment fromOrdinal(final int ordinal, final Bundle data) {
-        for( Type type : Type.values() ) {
-            if( type.ordinal() == ordinal ) {
+        for (Type type : Type.values()) {
+            if (type.ordinal() == ordinal) {
                 return get(type, data);
             }
         }

@@ -1,33 +1,18 @@
 package com.ninetwozero.battlelog.fragments;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.*;
 import android.widget.EditText;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractFragment;
-import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.activities.SingleFragmentActivity;
-import com.ninetwozero.battlelog.adapters.FeedAdapter;
-import com.ninetwozero.battlelog.factories.FragmentFactory;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
 
 public class BattleFeedPostingFragment extends AbstractFragment {
-    public BattleFeedPostingFragment() {}
+    public BattleFeedPostingFragment() {
+    }
 
     public static BattleFeedPostingFragment newInstance() {
         final BattleFeedPostingFragment fragment = new BattleFeedPostingFragment();
@@ -58,7 +43,7 @@ public class BattleFeedPostingFragment extends AbstractFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if( item.getItemId() == R.id.action_new ) {
+        if (item.getItemId() == R.id.action_new) {
             doPostStatus();
             return true;
         }
@@ -77,12 +62,12 @@ public class BattleFeedPostingFragment extends AbstractFragment {
         final String content = inputContent.getText().toString();
         final String extra = inputExtra.getText().toString();
 
-        if( "".equals(content) ) {
+        if ("".equals(content)) {
             inputContent.setError("You need to enter some content!");
             return;
         }
 
-        if( !"".equals(extra) && !extra.matches(Patterns.WEB_URL.pattern()) ) {
+        if (!"".equals(extra) && !extra.matches(Patterns.WEB_URL.pattern())) {
             inputExtra.setError("Invalid URL!");
             return;
         }
@@ -90,7 +75,7 @@ public class BattleFeedPostingFragment extends AbstractFragment {
         showToast("TODO: Trigger API call (POST)");
 
         final Activity activity = getActivity();
-        if( activity == null || !(activity instanceof SingleFragmentActivity) ) {
+        if (activity == null || !(activity instanceof SingleFragmentActivity)) {
             mFragmentManager.popBackStackImmediate();
         } else {
             activity.finish();

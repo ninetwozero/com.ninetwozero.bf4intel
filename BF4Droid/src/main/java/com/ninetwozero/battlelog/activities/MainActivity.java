@@ -49,7 +49,7 @@ public class MainActivity extends Activity implements SlidingMenuAccessInterface
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
-        switch( item.getItemId() ) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 mSlidingMenu.toggle(true);
                 return true;
@@ -57,10 +57,9 @@ public class MainActivity extends Activity implements SlidingMenuAccessInterface
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
-      public void onBackPressed() {
-        if( mSlidingMenu.isMenuShowing()) {
+    public void onBackPressed() {
+        if (mSlidingMenu.isMenuShowing()) {
             mSlidingMenu.showContent();
         } else {
             super.onBackPressed();

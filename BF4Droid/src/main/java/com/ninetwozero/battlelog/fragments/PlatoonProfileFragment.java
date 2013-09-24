@@ -1,7 +1,5 @@
 package com.ninetwozero.battlelog.fragments;
 
-import android.app.Fragment;
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlatoonProfileFragment extends AbstractListFragment {
-    public PlatoonProfileFragment() {}
+    public PlatoonProfileFragment() {
+    }
 
     public static PlatoonProfileFragment newInstance() {
         final PlatoonProfileFragment fragment = new PlatoonProfileFragment();

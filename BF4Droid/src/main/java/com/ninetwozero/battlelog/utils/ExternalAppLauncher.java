@@ -8,7 +8,7 @@ import android.net.Uri;
 public class ExternalAppLauncher {
     public static Intent getIntent(final Activity activity, final String packageName) {
         final PackageManager manager = activity.getPackageManager();
-        if( hasPackageInstalled(manager, packageName) ) {
+        if (hasPackageInstalled(manager, packageName)) {
             return manager.getLaunchIntentForPackage(packageName);
         } else {
             final Uri marketUri = Uri.parse("market://details?id=" + packageName);
@@ -20,7 +20,7 @@ public class ExternalAppLauncher {
         try {
             manager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
             return true;
-        } catch(PackageManager.NameNotFoundException ex ) {
+        } catch (PackageManager.NameNotFoundException ex) {
             return false;
         }
     }

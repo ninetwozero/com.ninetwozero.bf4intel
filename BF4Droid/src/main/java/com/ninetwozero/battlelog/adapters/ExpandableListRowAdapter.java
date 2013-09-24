@@ -3,7 +3,6 @@ package com.ninetwozero.battlelog.adapters;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +17,7 @@ import com.ninetwozero.battlelog.datatypes.ListRowType;
 import java.io.File;
 import java.util.List;
 
-import static com.ninetwozero.battlelog.datatypes.ListRowType.HEADING;
-import static com.ninetwozero.battlelog.datatypes.ListRowType.SIDE_HEADING;
-import static com.ninetwozero.battlelog.datatypes.ListRowType.SIDE_REGULAR;
-import static com.ninetwozero.battlelog.datatypes.ListRowType.SIDE_REGULAR_CHILD;
+import static com.ninetwozero.battlelog.datatypes.ListRowType.*;
 
 public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
     private Context mContext;
@@ -33,7 +29,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public int getGroupTypeCount () {
+    public int getGroupTypeCount() {
         return ListRowType.SIZE;
     }
 
@@ -44,7 +40,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupCount() {
-        return mItems == null? 0 : mItems.size();
+        return mItems == null ? 0 : mItems.size();
     }
 
     @Override
@@ -69,7 +65,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
 
     @Override
     public long getChildId(final int position, final int childPosition) {
-        return (position*100)+childPosition;
+        return (position * 100) + childPosition;
     }
 
     @Override
@@ -79,7 +75,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int position, int childPosition) {
-       return getGroup(position).getChild(childPosition).getType().isEnabled();
+        return getGroup(position).getChild(childPosition).getType().isEnabled();
     }
 
     @Override
@@ -107,7 +103,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
         final ListRow item = getGroup(position);
         final ListRowType type = item.getType();
 
-        if( convertView == null ) {
+        if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
         }
 
@@ -121,7 +117,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
         final ListRow item = getChild(group, child);
         final ListRowType type = item.getType();
 
-        if( convertView == null ) {
+        if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
         }
 
@@ -135,36 +131,36 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
         final boolean isRegular = type == SIDE_REGULAR || type == SIDE_REGULAR_CHILD;
         final boolean isHeading = type == HEADING || type == SIDE_HEADING;
 
-        if( isRegular || isHeading ) {
+        if (isRegular || isHeading) {
             ((TextView) view.findViewById(R.id.text1)).setText(item.getTitle());
         } else {
             int resourceId = 0;
             Object drawable = null;
             ImageView imageView = null;
 
-            for( String key : stringMappings.keySet() ) {
+            for (String key : stringMappings.keySet()) {
                 resourceId = Integer.parseInt(key);
                 ((TextView) view.findViewById(resourceId)).setText(stringMappings.getString(key));
             }
 
-            for( String key : drawableMappings.keySet() ) {
+            for (String key : drawableMappings.keySet()) {
                 drawable = drawableMappings.get(key);
-                if( drawable == null ) {
+                if (drawable == null) {
                     continue;
                 }
                 resourceId = Integer.parseInt(key);
                 imageView = (ImageView) view.findViewById(resourceId);
 
-                if( drawable instanceof String ) {
+                if (drawable instanceof String) {
                     final String path = mContext.getExternalFilesDir(null) + "/" + drawable + ".png";
                     final File image = new File(path);
 
-                    if( image.exists() ) {
+                    if (image.exists()) {
                         imageView.setImageURI(Uri.fromFile(image));
                     } else {
                         imageView.setImageResource(R.drawable.ic_launcher);
                     }
-                } else if( drawable instanceof Integer ) {
+                } else if (drawable instanceof Integer) {
                     imageView.setImageResource((Integer) drawable);
                 }
             }

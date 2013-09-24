@@ -2,12 +2,7 @@ package com.ninetwozero.battlelog.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
@@ -19,7 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BattleFeedFragment extends AbstractListFragment {
-    public BattleFeedFragment() {}
+    public BattleFeedFragment() {
+    }
 
     public static BattleFeedFragment newInstance() {
         final BattleFeedFragment fragment = new BattleFeedFragment();
@@ -50,7 +46,7 @@ public class BattleFeedFragment extends AbstractListFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if( item.getItemId() == R.id.action_new ) {
+        if (item.getItemId() == R.id.action_new) {
             Intent intent = new Intent(getActivity(), SingleFragmentActivity.class);
             intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, new Bundle());
             intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.BATTLE_FEED_POSTING.ordinal());
@@ -66,7 +62,7 @@ public class BattleFeedFragment extends AbstractListFragment {
     }
 
     private void setupListView(final View view) {
-        if( view == null ) {
+        if (view == null) {
             return;
         }
 

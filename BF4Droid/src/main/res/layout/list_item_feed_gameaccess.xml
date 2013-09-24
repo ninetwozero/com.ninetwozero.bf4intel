@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="8dp">
+
+  <include layout="@layout/list_item_feed_tpl_user" />
+
+  <TextView
+    style="@style/feed_content"
+    android:text="Activated new game/expansion:" />
+
+  <TextView
+    android:id="@+id/game_name"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp"
->
-    <include layout="@layout/list_item_feed_tpl_user" />
-    <TextView
-        style="@style/feed_content"
-        android:text="Activated new game/expansion:"
-    />
-    <TextView
-        android:id="@+id/game_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Battlefield 3: Back To Karkand"
-        android:layout_below="@id/content"
-        android:layout_marginTop="2dp"
-        android:textAppearance="@android:style/TextAppearance.Holo"
-        android:textColor="@color/blue"
-    />
-    <TextView
-        style="@style/meta"
-        android:text="4 hours ago"
-        android:layout_below="@id/game_name"
-    />
+    android:layout_height="wrap_content"
+    android:text="Battlefield 3: Back To Karkand"
+    android:layout_below="@id/content"
+    android:layout_marginTop="2dp"
+    android:textAppearance="@android:style/TextAppearance.Holo"
+    android:textColor="@color/blue" />
+
+  <TextView
+    style="@style/meta"
+    android:text="4 hours ago"
+    android:layout_below="@id/game_name" />
 </RelativeLayout>

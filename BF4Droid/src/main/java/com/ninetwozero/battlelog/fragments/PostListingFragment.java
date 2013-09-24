@@ -1,6 +1,5 @@
 package com.ninetwozero.battlelog.fragments;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,8 @@ import java.util.List;
 public class PostListingFragment extends AbstractListFragment {
     public static final String THREAD_ID = "threadId";
 
-    public PostListingFragment() {}
+    public PostListingFragment() {
+    }
 
     public static PostListingFragment newInstance() {
         final PostListingFragment fragment = new PostListingFragment();
@@ -40,7 +40,7 @@ public class PostListingFragment extends AbstractListFragment {
     }
 
     private void setupListView(final View view) {
-        if( view == null ) {
+        if (view == null) {
             return;
         }
 

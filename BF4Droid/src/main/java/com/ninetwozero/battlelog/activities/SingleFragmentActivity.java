@@ -1,14 +1,13 @@
 package com.ninetwozero.battlelog.activities;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import android.view.MenuItem;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.factories.FragmentFactory;

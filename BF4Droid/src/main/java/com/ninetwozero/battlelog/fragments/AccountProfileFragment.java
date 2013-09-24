@@ -1,16 +1,9 @@
 package com.ninetwozero.battlelog.fragments;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
@@ -23,7 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountProfileFragment extends AbstractListFragment {
-    public AccountProfileFragment() {}
+    public AccountProfileFragment() {
+    }
 
     public static AccountProfileFragment newInstance() {
         final AccountProfileFragment fragment = new AccountProfileFragment();
@@ -53,12 +47,12 @@ public class AccountProfileFragment extends AbstractListFragment {
         items.add(ListRowFactory.create(ListRowType.PROFILE_ACCOUNT, new Bundle()));
 
         items.add(ListRowFactory.create(ListRowType.HEADING, "SOLDIERS"));
-        for( int i = 0, numSoldiers = 3; i < numSoldiers; i++ ) {
+        for (int i = 0, numSoldiers = 3; i < numSoldiers; i++) {
             items.add(ListRowFactory.create(ListRowType.PROFILE_SOLDIER, new Bundle()));
         }
 
         items.add(ListRowFactory.create(ListRowType.HEADING, "PLATOONS"));
-        for( int i = 0, numSoldiers = 3; i < numSoldiers; i++ ) {
+        for (int i = 0, numSoldiers = 3; i < numSoldiers; i++) {
             items.add(ListRowFactory.create(ListRowType.PROFILE_PLATOON, new Bundle()));
         }
         return items;

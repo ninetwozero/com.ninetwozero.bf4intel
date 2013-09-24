@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ForumListingFragment extends AbstractListFragment {
-    public ForumListingFragment() {}
+    public ForumListingFragment() {
+    }
 
     public static ForumListingFragment newInstance() {
         final ForumListingFragment fragment = new ForumListingFragment();
@@ -40,7 +41,7 @@ public class ForumListingFragment extends AbstractListFragment {
     }
 
     private void setupListView(final View view) {
-        if( view == null ) {
+        if (view == null) {
             return;
         }
 

@@ -10,14 +10,15 @@ import com.ninetwozero.battlelog.datatypes.ListRowType;
 import java.util.List;
 
 public class ListRowFactory {
-    private ListRowFactory() {}
+    private ListRowFactory() {
+    }
 
     public static ListRow create(final ListRowType type, final Bundle data) {
         return create(type, data, null);
     }
 
     public static ListRow create(final ListRowType type, final Bundle data, final List<ListRow> children) {
-        switch( type ) {
+        switch (type) {
             case SIDE_ACCOUNT:
                 return getItemForAccountTypeInMenu(type, data, children);
             case PROFILE_ACCOUNT:
@@ -64,11 +65,11 @@ public class ListRowFactory {
         drawableMappings.putInt(String.valueOf(R.id.gravatar), R.drawable.test_gravatar);
 
         return new ListRow.Builder(type)
-            .fragmentType(FragmentFactory.Type.ACCOUNT_PROFILE)
-            .stringMappings(stringMappings)
-            .drawableMappings(drawableMappings)
-            .children(children)
-            .build();
+                .fragmentType(FragmentFactory.Type.ACCOUNT_PROFILE)
+                .stringMappings(stringMappings)
+                .drawableMappings(drawableMappings)
+                .children(children)
+                .build();
     }
 
     private static ListRow getItemForAccountTypeInProfile(final ListRowType type, final Bundle data, final List<ListRow> children) {
@@ -82,10 +83,10 @@ public class ListRowFactory {
         stringMappings.putString(String.valueOf(R.id.user_country), "SWEDEN");
 
         return new ListRow.Builder(type)
-            .stringMappings(stringMappings)
-            .drawableMappings(drawableMappings)
-            .children(children)
-            .build();
+                .stringMappings(stringMappings)
+                .drawableMappings(drawableMappings)
+                .children(children)
+                .build();
     }
 
     private static ListRow getItemForSoldierType(final ListRowType type, final Bundle data, final List<ListRow> children) {
@@ -98,11 +99,11 @@ public class ListRowFactory {
         drawableMappings.putInt(String.valueOf(R.id.soldier_rank), R.drawable.test_rank31);
 
         return new ListRow.Builder(type)
-            .fragmentType(FragmentFactory.Type.SOLDIER_STATS)
-            .stringMappings(stringMappings)
-            .drawableMappings(drawableMappings)
-            .children(children)
-            .build();
+                .fragmentType(FragmentFactory.Type.SOLDIER_STATS)
+                .stringMappings(stringMappings)
+                .drawableMappings(drawableMappings)
+                .children(children)
+                .build();
     }
 
     private static ListRow getItemForPlatoonType(final ListRowType type, final Bundle data, final List<ListRow> children) {
@@ -114,11 +115,11 @@ public class ListRowFactory {
         drawableMappings.putInt(String.valueOf(R.id.platoon_platform), R.drawable.test_platform);
 
         return new ListRow.Builder(type)
-            .fragmentType(FragmentFactory.Type.PLATOON_PROFILE)
-            .stringMappings(stringMappings)
-            .drawableMappings(drawableMappings)
-            .children(children)
-            .build();
+                .fragmentType(FragmentFactory.Type.PLATOON_PROFILE)
+                .stringMappings(stringMappings)
+                .drawableMappings(drawableMappings)
+                .children(children)
+                .build();
     }
 
     private static ListRow getItemForFeedType(final ListRowType type, final Bundle data, final List<ListRow> children) {
@@ -128,10 +129,10 @@ public class ListRowFactory {
         stringMappings.putString(String.valueOf(R.id.text1), "BATTLE FEED");
 
         return new ListRow.Builder(type)
-            .fragmentType(FragmentFactory.Type.BATTLE_FEED)
-            .stringMappings(stringMappings)
-            .drawableMappings(drawableMappings)
-            .children(children)
-            .build();
+                .fragmentType(FragmentFactory.Type.BATTLE_FEED)
+                .stringMappings(stringMappings)
+                .drawableMappings(drawableMappings)
+                .children(children)
+                .build();
     }
 }
