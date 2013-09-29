@@ -51,8 +51,12 @@ public class FragmentFactory {
                 return ForumListingFragment.newInstance();
             case THREAD_LISTING:
                 return ThreadListingFragment.newInstance();
+            case THREAD_CREATING:
+                return ThreadCreationFragment.newInstance();
             case POST_LISTING:
                 return PostListingFragment.newInstance();
+            case POST_CREATING:
+                return PostCreationFragment.newInstance();
             case NOTIFICATION:
                 return NotificationFragment.newInstance();
             default:
