@@ -3,32 +3,16 @@
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:padding="8dp">
-
-  <LinearLayout
-    android:id="@+id/wrap_user"
-    android:layout_width="match_parent"
+  <TextView
+    android:id="@+id/content"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="top|left">
-
-    <ImageView
-      android:id="@+id/avatar"
-      android:layout_width="24dp"
-      android:layout_height="24dp"
-      android:src="@drawable/test_gravatar" />
-
-    <TextView
-      android:id="@+id/content"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="4dp"
-      android:text="*NINETWOZERO* commented on your *wallpost*."
-      android:textAppearance="@android:style/TextAppearance.Holo.Small" />
-  </LinearLayout>
-
+    android:layout_marginLeft="4dp"
+    android:text="*NINETWOZERO* commented on your *wallpost*."
+    android:textAppearance="@android:style/TextAppearance.Holo.Small" />
   <TextView
     style="@style/meta"
     android:id="@+id/timestamp"
     android:text="4 hours ago"
-    android:layout_below="@id/wrap_user" />
+    android:layout_below="@id/content" />
 </RelativeLayout>
