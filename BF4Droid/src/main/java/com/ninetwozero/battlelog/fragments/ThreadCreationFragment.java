@@ -2,7 +2,6 @@ package com.ninetwozero.battlelog.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -50,7 +49,7 @@ public class ThreadCreationFragment extends AbstractFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_new) {
+        if (item.getItemId() == R.id.ab_action_new) {
             doCreateThread();
             return true;
         }
@@ -63,8 +62,8 @@ public class ThreadCreationFragment extends AbstractFragment {
 
     private void doCreateThread() {
         final View root = getView();
-        final EditText inputTitle = (EditText) root.findViewById(R.id.input_title);
-        final EditText inputContent = (EditText) root.findViewById(R.id.input_content);
+        final EditText inputTitle = (EditText) root.findViewById(R.id.new_thread_title_input);
+        final EditText inputContent = (EditText) root.findViewById(R.id.new_thread_content_input);
 
         final String title = inputTitle.getText().toString();
         final String content = inputContent.getText().toString();

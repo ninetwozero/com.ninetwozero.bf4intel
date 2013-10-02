@@ -7,35 +7,35 @@
 
   <TextView
     style="@style/heading"
-    android:id="@+id/string_title"
-    android:text="Thread title"
+    android:id="@+id/new_thread_header"
+    android:text="@string/new_thread_header"
     android:layout_alignParentTop="true"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp" />
 
   <EditText
-    android:id="@+id/input_title"
+    android:id="@+id/new_thread_title_input"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="When is BF5 coming out?"
-    android:layout_below="@id/string_title"
+    android:hint="@string/new_thread_title_hint"
+    android:layout_below="@id/new_thread_header"
     android:gravity="top|left"
     android:maxLength="200"
     android:maxLines="1" />
 
   <TextView
     style="@style/heading"
-    android:id="@+id/string_content"
-    android:text="Content"
-    android:layout_below="@id/input_title"
+    android:id="@+id/new_thread_content_header"
+    android:text="@string/new_thread_content_header"
+    android:layout_below="@id/new_thread_title_input"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginTop="8dp" />
 
   <EditText
-    android:id="@+id/input_content"
+    android:id="@+id/new_thread_content_input"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="I think BF5 should come out tomorrow."
-    android:layout_below="@id/string_content" />
+    android:hint="@string/new_thread_content_hint"
+    android:layout_below="@id/new_thread_content_header" />
 </RelativeLayout>
