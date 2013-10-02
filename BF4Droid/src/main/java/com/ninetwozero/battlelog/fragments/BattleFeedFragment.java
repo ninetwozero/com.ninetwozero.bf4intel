@@ -46,7 +46,7 @@ public class BattleFeedFragment extends AbstractListFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_new) {
+        if (item.getItemId() == R.id.ab_action_new) {
             Intent intent = new Intent(getActivity(), SingleFragmentActivity.class);
             intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, new Bundle());
             intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.BATTLE_FEED_POSTING.ordinal());

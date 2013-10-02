@@ -61,7 +61,7 @@ public class PostListingFragment extends AbstractListFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_new) {
+        if (item.getItemId() == R.id.ab_action_new) {
             Intent intent = new Intent(getActivity(), SingleFragmentActivity.class);
             intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, getDataForPostCreation());
             intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.POST_CREATING.ordinal());

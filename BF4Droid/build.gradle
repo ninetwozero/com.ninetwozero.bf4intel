@@ -8,13 +8,15 @@ buildscript {
 }
 apply plugin: 'android'
 
+project.archivesBaseName = 'com.ninetwozero.battlelog.bf4droid'
+
 repositories {
     mavenCentral()
 }
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion "18.1.0"
+    compileSdkVersion 18
+    buildToolsVersion '18.1.0'
 
     defaultConfig {
         minSdkVersion 14

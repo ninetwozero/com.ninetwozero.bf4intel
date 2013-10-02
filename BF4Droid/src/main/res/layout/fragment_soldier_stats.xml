@@ -26,7 +26,7 @@
       android:text="PROGRESS" />
 
     <TextView
-      android:id="@+id/value_rank_title"
+      android:id="@+id/current_rank_title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="MASTER GUNNERY SERGEANT 2 STAR"
@@ -47,7 +47,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_toLeftOf="@id/image_rank"
-      android:layout_below="@id/value_rank_title"
+      android:layout_below="@id/current_rank_title"
       android:indeterminate="false" />
 
     <TextView
@@ -79,7 +79,7 @@
       android:id="@+id/heading_service_stars"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="SERVICE STARS" />
+      android:text="@string/service_stars" />
 
     <TextView
       android:layout_width="match_parent"
