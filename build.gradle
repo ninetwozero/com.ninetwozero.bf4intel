@@ -1,1 +1,32 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+def ciDir = new File(buildscript.sourceFile.parentFile, 'ci-configs')
+
+subprojects {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    apply plugin: 'checkstyle'
+
+
+    checkstyle {
+        ignoreFailures = true
+        configFile = new File(ciDir, "checkstyle.xml")
+    }
+
+    apply plugin: 'findbugs'
+    findbugs {
+        ignoreFailures = true
+    }
+
+    apply plugin: 'pmd'
+    pmd {
+        ignoreFailures = true
+    }
+}
