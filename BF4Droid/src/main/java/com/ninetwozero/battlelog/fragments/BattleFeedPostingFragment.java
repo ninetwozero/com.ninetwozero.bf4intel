@@ -43,7 +43,7 @@ public class BattleFeedPostingFragment extends AbstractFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_new) {
+        if (item.getItemId() == R.id.ab_action_new) {
             doPostStatus();
             return true;
         }
@@ -56,7 +56,7 @@ public class BattleFeedPostingFragment extends AbstractFragment {
 
     private void doPostStatus() {
         final View root = getView();
-        final EditText inputContent = (EditText) root.findViewById(R.id.input_content);
+        final EditText inputContent = (EditText) root.findViewById(R.id.update_status_input);
         final EditText inputExtra = (EditText) root.findViewById(R.id.input_extra);
 
         final String content = inputContent.getText().toString();

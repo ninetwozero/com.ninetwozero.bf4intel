@@ -7,16 +7,16 @@
 
   <TextView
     style="@style/heading"
-    android:id="@+id/string_content"
-    android:text="Post content"
+    android:id="@+id/update_status_header"
+    android:text="@string/create_post_header"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginTop="8dp" />
 
   <EditText
-    android:id="@+id/input_content"
+    android:id="@+id/update_status_input"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="What is this, sorcery?"
-    android:layout_below="@id/string_content" />
+    android:hint="@string/create_post_hint"
+    android:layout_below="@id/update_status_header" />
 </RelativeLayout>

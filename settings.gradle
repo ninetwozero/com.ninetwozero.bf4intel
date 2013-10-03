@@ -1,1 +1,1 @@
-include ':BF4Droid'
+include 'BF4Droid'
