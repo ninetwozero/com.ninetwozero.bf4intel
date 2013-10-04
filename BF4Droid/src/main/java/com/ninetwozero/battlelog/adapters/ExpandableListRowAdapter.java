@@ -115,8 +115,6 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(final int group, final int child, final boolean isLastChild, View convertView, final ViewGroup viewGroup) {
         final ListRow item = getChild(group, child);
-        final ListRowType type = item.getType();
-
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
         }
@@ -134,9 +132,9 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
         if (isRegular || isHeading) {
             ((TextView) view.findViewById(R.id.text1)).setText(item.getTitle());
         } else {
-            int resourceId = 0;
-            Object drawable = null;
-            ImageView imageView = null;
+            int resourceId;
+            Object drawable;
+            ImageView imageView;
 
             for (String key : stringMappings.keySet()) {
                 resourceId = Integer.parseInt(key);

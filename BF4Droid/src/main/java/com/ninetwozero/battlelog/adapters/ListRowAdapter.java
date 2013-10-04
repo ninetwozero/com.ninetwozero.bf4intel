@@ -70,12 +70,9 @@ public class ListRowAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
         final ListRow item = mItems.get(position);
-        final ListRowType type = item.getType();
-
         if (view == null) {
             view = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
         }
-
         return populateViewFromItem(view, item);
     }
 
@@ -89,9 +86,9 @@ public class ListRowAdapter extends BaseAdapter {
         if (isRegular || isHeading) {
             ((TextView) view.findViewById(R.id.text1)).setText(item.getTitle());
         } else {
-            int resourceId = 0;
-            Object drawable = null;
-            ImageView imageView = null;
+            int resourceId;
+            Object drawable;
+            ImageView imageView;
 
             for (String key : stringMappings.keySet()) {
                 resourceId = Integer.parseInt(key);
