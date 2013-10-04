@@ -24,5 +24,6 @@
     android:layout_height="11dp"
     android:layout_toRightOf="@id/platoon_image"
     android:layout_marginLeft="8dp"
-    android:layout_below="@id/platoon_name" />
+    android:layout_below="@id/platoon_name"
+    android:contentDescription="@string/contentdesc_platform" />
 </RelativeLayout>
