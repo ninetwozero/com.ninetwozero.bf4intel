@@ -129,11 +129,9 @@ public class SlidingMenuFragment extends AbstractListFragment {
 
     private List<ListRow> getChildrenForSoldier() {
         final List<ListRow> items = new ArrayList<ListRow>();
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "OVERVIEW"));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "STATISTICS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "WEAPONS"));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "UNLOCKS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "ASSIGNMENTS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "SETTINGS"));
         return items;
     }
 
