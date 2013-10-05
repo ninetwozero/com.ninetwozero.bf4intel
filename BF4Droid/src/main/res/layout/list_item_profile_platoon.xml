@@ -25,5 +25,5 @@
     android:layout_toRightOf="@id/platoon_image"
     android:layout_marginLeft="8dp"
     android:layout_below="@id/platoon_name"
-    android:contentDescription="@string/cdesc_platform" />
+    android:contentDescription="@string/cdesc_platform_icon" />
 </RelativeLayout>

@@ -9,7 +9,7 @@
     android:id="@+id/soldier_image"
     android:layout_width="48dp"
     android:layout_height="48dp"
-    android:contentDescription="@string/cdesc_avatar" />
+    android:contentDescription="@string/cdesc_soldier_avatar" />
 
   <TextView
     android:id="@+id/soldier_name"
@@ -27,7 +27,7 @@
     android:layout_below="@id/soldier_name"
     android:layout_toRightOf="@id/soldier_image"
     android:layout_marginLeft="8dp"
-    android:contentDescription="@string/cdesc_platform" />
+    android:contentDescription="@string/cdesc_platform_icon" />
 
   <ImageView
     android:id="@+id/soldier_rank"
@@ -35,5 +35,5 @@
     android:layout_height="48dp"
     android:layout_marginTop="4dp"
     android:layout_alignParentRight="true"
-    android:contentDescription="@string/cdesc_rank" />
+    android:contentDescription="@string/cdesc_rank_image" />
 </RelativeLayout>

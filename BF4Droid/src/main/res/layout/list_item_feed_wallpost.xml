@@ -9,7 +9,7 @@
     style="@style/feed_avatar"
     android:id="@+id/avatar"
     android:src="@drawable/test_gravatar"
-    android:contentDescription="@string/cdesc_avatar" />
+    android:contentDescription="@string/cdesc_gravatar" />
 
   <ImageView
     android:id="@+id/avatar2"
@@ -18,7 +18,7 @@
     android:src="@drawable/test_soldier"
     android:layout_toRightOf="@id/avatar"
     android:layout_alignBottom="@id/avatar"
-    android:contentDescription="@string/cdesc_avatar" />
+    android:contentDescription="@string/cdesc_gravatar" />
 
   <TextView
     style="@style/feed_username"

@@ -16,7 +16,7 @@
       android:layout_width="24dp"
       android:layout_height="24dp"
       android:src="@drawable/test_gravatar"
-      android:contentDescription="@string/cdesc_avatar" />
+      android:contentDescription="@string/cdesc_gravatar" />
 
     <TextView
       android:id="@+id/username"
