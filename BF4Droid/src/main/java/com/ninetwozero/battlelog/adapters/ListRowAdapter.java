@@ -70,14 +70,25 @@ public class ListRowAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
         final ListRow item = mItems.get(position);
-        final ListRowType type = item.getType();
-
         if (view == null) {
             view = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
         }
-
         return populateViewFromItem(view, item);
     }
+
+    /*
+        TODO:
+        Inherit AbstractListAdapter from com.ninetwozero.common (release pending)
+        These two methods need to be removed when this dependency is in place
+    */
+    private void setText(final View parent, final int resourceId, final String text) {
+        ((TextView) parent.findViewById(resourceId)).setText(text);
+    }
+
+    private void setText(final View parent, final int resourceId, final int textResourceId) {
+        ((TextView) parent.findViewById(resourceId)).setText(textResourceId);
+    }
+    /* END OF TODO */
 
     private View populateViewFromItem(final View view, final ListRow item) {
         final Bundle stringMappings = item.getStringMappings();
@@ -87,39 +98,51 @@ public class ListRowAdapter extends BaseAdapter {
         final boolean isHeading = type == HEADING || type == SIDE_HEADING;
 
         if (isRegular || isHeading) {
-            ((TextView) view.findViewById(R.id.text1)).setText(item.getTitle());
+            setText(view, R.id.text1, item.getTitle());
         } else {
-            int resourceId = 0;
-            Object drawable = null;
-            ImageView imageView = null;
-
-            for (String key : stringMappings.keySet()) {
-                resourceId = Integer.parseInt(key);
-                ((TextView) view.findViewById(resourceId)).setText(stringMappings.getString(key));
-            }
-
-            for (String key : drawableMappings.keySet()) {
-                drawable = drawableMappings.get(key);
-                if (drawable == null) {
-                    continue;
-                }
-                resourceId = Integer.parseInt(key);
-                imageView = (ImageView) view.findViewById(resourceId);
-
-                if (drawable instanceof String) {
-                    final String path = mContext.getExternalFilesDir(null) + "/" + drawable + ".png";
-                    final File image = new File(path);
-
-                    if (image.exists()) {
-                        imageView.setImageURI(Uri.fromFile(image));
-                    } else {
-                        imageView.setImageResource(R.drawable.ic_launcher);
-                    }
-                } else if (drawable instanceof Integer) {
-                    imageView.setImageResource((Integer) drawable);
-                }
-            }
+            populateTextViews(view, stringMappings);
+            populateImageViews(view, drawableMappings);
         }
         return view;
+    }
+
+    private void populateTextViews(final View view, final Bundle mappings) {
+        int resourceId;
+        for (String key : mappings.keySet()) {
+            resourceId = Integer.parseInt(key);
+            setText(view, resourceId, mappings.getString(key));
+        }
+    }
+
+    private void populateImageViews(final View view, final Bundle mappings) {
+        Object drawable;
+        ImageView imageView;
+        int resourceId;
+
+        for (String key : mappings.keySet()) {
+            drawable = mappings.get(key);
+            if (drawable == null) {
+                continue;
+            }
+
+            resourceId = Integer.parseInt(key);
+            imageView = (ImageView) view.findViewById(resourceId);
+
+            if (drawable instanceof String) {
+                populateImageViewFromString(imageView, String.valueOf(drawable));
+            } else if (drawable instanceof Integer) {
+                imageView.setImageResource((Integer) drawable);
+            }
+        }
+    }
+
+    private void populateImageViewFromString(final ImageView imageView, final String filename) {
+        final String path = mContext.getExternalFilesDir(null) + "/" + filename + ".png";
+        final File image = new File(path);
+        if (image.exists()) {
+            imageView.setImageURI(Uri.fromFile(image));
+        } else {
+            imageView.setImageResource(R.drawable.ic_launcher);
+        }
     }
 }

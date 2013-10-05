@@ -1,6 +1,5 @@
 package com.ninetwozero.battlelog.fragments;
 
-import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
@@ -54,7 +53,6 @@ public class ThreadListingFragment extends AbstractListFragment {
         final Bundle data = new Bundle();
         data.putLong(PostListingFragment.THREAD_ID, id);
 
-        final Fragment itemFragment = mFragmentManager.findFragmentByTag("PostListingFragment");
         final FragmentTransaction transaction = mFragmentManager.beginTransaction();
         transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.POST_LISTING), "PostListingFragment");
         transaction.addToBackStack(null);
