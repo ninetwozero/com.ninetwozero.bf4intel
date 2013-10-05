@@ -129,7 +129,15 @@ public class SlidingMenuFragment extends AbstractListFragment {
 
     private List<ListRow> getChildrenForSoldier() {
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "OVERVIEW"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "OVERVIEW", FragmentFactory.Type.SOLDIER_OVERVIEW));
+
+        /*
+            TODO:
+            Open ViewPagerActivity? Create ViewPagerFragment and display other fragments in it?
+
+            Need to investigate pros/cons of that approach as well as how nested fragments work
+        */
+
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "STATISTICS"));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "UNLOCKS"));
         return items;

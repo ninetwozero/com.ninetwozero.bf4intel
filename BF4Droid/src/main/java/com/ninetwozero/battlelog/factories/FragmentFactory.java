@@ -8,7 +8,10 @@ import com.ninetwozero.battlelog.fragments.*;
 public class FragmentFactory {
     public enum Type {
         ACCOUNT_PROFILE,
+
+        SOLDIER_OVERVIEW,
         SOLDIER_STATS,
+        SOLDIER_UNLOCKS,
 
         BATTLE_FEED,
         BATTLE_FEED_POSTING,
@@ -39,8 +42,8 @@ public class FragmentFactory {
                 return BattleFeedFragment.newInstance();
             case PLATOON_PROFILE:
                 return PlatoonProfileFragment.newInstance();
-            case SOLDIER_STATS:
-                return SoldierStatsFragment.newInstance();
+            case SOLDIER_OVERVIEW:
+                return SoldierOverviewFragment.newInstance();
             case NEWS_LISTING:
                 return NewsListingFragment.newInstance();
             case NEWS_ITEM:
