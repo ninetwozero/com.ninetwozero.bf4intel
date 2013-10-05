@@ -29,7 +29,7 @@
     android:src="@drawable/slidingmenu_background"
     android:layout_marginTop="2dp"
     android:layout_below="@id/link_title"
-    android:contentDescription="@string/contentdesc_link_image" />
+    android:contentDescription="@string/cdesc_link_image" />
 
   <TextView
     style="@style/meta"

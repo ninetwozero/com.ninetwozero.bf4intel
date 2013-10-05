@@ -27,9 +27,9 @@
   <string name="msg_no_notifications">No notifications found.</string>
   <string name="msg_no_menu_items">No menu items found</string>
 
-  <string name="contentdesc_avatar">User avatar</string>
-  <string name="contentdesc_platoon_avatar">Platoon avatar</string>
-  <string name="contentdesc_platform">Platform</string>
-  <string name="contentdesc_rank">Rank</string>
-  <string name="contentdesc_link_image">Link image</string>
+  <string name="cdesc_avatar">User avatar</string>
+  <string name="cdesc_platoon_avatar">Platoon avatar</string>
+  <string name="cdesc_platform">Platform</string>
+  <string name="cdesc_rank">Rank</string>
+  <string name="cdesc_link_image">Link image</string>
 </resources>

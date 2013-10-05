@@ -7,7 +7,7 @@
     android:id="@+id/gravatar"
     android:layout_width="64dp"
     android:layout_height="64dp"
-    android:contentDescription="@string/contentdesc_avatar" />
+    android:contentDescription="@string/cdesc_avatar" />
 
   <TextView
     android:id="@+id/user_account"
@@ -30,5 +30,5 @@
     android:id="@+id/gravatar"
     android:layout_width="64dp"
     android:layout_height="64dp"
-    android:contentDescription="@string/contentdesc_avatar" />
+    android:contentDescription="@string/cdesc_avatar" />
 </RelativeLayout>

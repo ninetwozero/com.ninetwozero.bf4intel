@@ -40,7 +40,7 @@
       android:src="@drawable/test_rank31"
       android:layout_alignParentRight="true"
       android:layout_marginTop="16dp"
-      android:contentDescription="@string/contentdesc_rank" />
+      android:contentDescription="@string/cdesc_rank" />
 
     <ProgressBar
       style="?android:attr/progressBarStyleHorizontal"

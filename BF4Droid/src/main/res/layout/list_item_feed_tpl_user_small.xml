@@ -11,7 +11,7 @@
     android:layout_width="16dp"
     android:layout_height="16dp"
     android:src="@drawable/test_gravatar"
-    android:contentDescription="@string/contentdesc_avatar" />
+    android:contentDescription="@string/cdesc_avatar" />
 
   <TextView
     style="@style/meta"
