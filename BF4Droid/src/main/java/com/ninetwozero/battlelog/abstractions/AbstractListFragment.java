@@ -26,7 +26,7 @@ public abstract class AbstractListFragment extends ListFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         mInflater = inflater;
-        return null;
+        return new View(getActivity());
     }
 
     protected void updateActionBar(final Activity activity, final String text) {

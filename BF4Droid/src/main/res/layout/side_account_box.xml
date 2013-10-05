@@ -6,7 +6,8 @@
   <ImageView
     android:id="@+id/gravatar"
     android:layout_width="64dp"
-    android:layout_height="64dp" />
+    android:layout_height="64dp"
+    android:contentDescription="@string/cdesc_gravatar" />
 
   <TextView
     android:id="@+id/user_account"
@@ -28,5 +29,6 @@
   <ImageView
     android:id="@+id/gravatar"
     android:layout_width="64dp"
-    android:layout_height="64dp" />
+    android:layout_height="64dp"
+    android:contentDescription="@string/cdesc_gravatar" />
 </RelativeLayout>

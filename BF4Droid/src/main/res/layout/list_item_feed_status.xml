@@ -28,7 +28,8 @@
     android:layout_gravity="center"
     android:src="@drawable/slidingmenu_background"
     android:layout_marginTop="2dp"
-    android:layout_below="@id/link_title" />
+    android:layout_below="@id/link_title"
+    android:contentDescription="@string/cdesc_status_link_image" />
 
   <TextView
     style="@style/meta"

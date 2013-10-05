@@ -59,7 +59,6 @@ public class NewsItemFragment extends AbstractListFragment {
         mId = id;
         if (mId > 0) {
             /* TODO: Do actual loading */
-
         }
     }
 }

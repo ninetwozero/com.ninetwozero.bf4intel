@@ -26,4 +26,11 @@
   <string name="msg_forums_not_found">Forums not found.</string>
   <string name="msg_no_notifications">No notifications found.</string>
   <string name="msg_no_menu_items">No menu items found</string>
+
+  <string name="cdesc_gravatar">Gravatar</string>
+  <string name="cdesc_soldier_avatar">Soldier avatar</string>
+  <string name="cdesc_platoon_badge">Platoon badge</string>
+  <string name="cdesc_platform_icon">Platform icon</string>
+  <string name="cdesc_rank_image">Rank image</string>
+  <string name="cdesc_status_link_image">Extra content image</string>
 </resources>

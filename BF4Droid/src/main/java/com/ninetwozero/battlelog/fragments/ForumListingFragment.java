@@ -1,6 +1,5 @@
 package com.ninetwozero.battlelog.fragments;
 
-import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -51,8 +50,6 @@ public class ForumListingFragment extends AbstractListFragment {
 
     @Override
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
-        final Fragment itemFragment = mFragmentManager.findFragmentByTag("ThreadListingFragment");
-
         /* FIXME: Get actual id's */
         final Bundle data = new Bundle();
         data.putLong(ThreadListingFragment.FORUM_ID, id);
