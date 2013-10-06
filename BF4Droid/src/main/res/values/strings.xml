@@ -14,6 +14,7 @@
   <string name="create_post_header">Post content</string>
   <string name="create_post_hint">Post message here&#8230;</string>
   <string name="service_stars">SERVICE STARS</string>
+  <string name="comments">COMMENTS</string>
   <string name="new_thread_header">Thread title</string>
   <string name="new_thread_title_hint">When is BF5 coming out?</string>
   <string name="new_thread_content_header">Content</string>
@@ -23,6 +24,8 @@
   <string name="ab_action_send">Send</string>
 
   <string name="msg_empty_feed">The Battle Feed is empty.</string>
+  <string name="msg_empty_comments">No comments found.</string>
+  <string name="msg_empty_news">No news found.</string>
   <string name="msg_forums_not_found">Forums not found.</string>
   <string name="msg_no_notifications">No notifications found.</string>
   <string name="msg_no_menu_items">No menu items found</string>
@@ -36,4 +39,10 @@
 
   <string name="profile_information_header">BASIC INFORMATION</string>
   <string name="profile_presentation_header">PRESENTATION</string>
+
+  <string name="soldier_left_until_rankup" formatted="true">%s until rank up</string>
+  <string name="soldier_quick_stats">QUICK STATISTICS</string>
+  <string name="soldier_detailed_stats">IN-DEPTH STATISTICS</string>
+
+  <string name="activated_new_game">Activated new game/expansion:</string>
 </resources>

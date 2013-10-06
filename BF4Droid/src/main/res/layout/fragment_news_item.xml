@@ -43,12 +43,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_above="@id/wrap_comment_form"
+    android:visibility="gone"
   >
     <include layout="@layout/list_header_news_item" />
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="No comments found."
+      android:text="@string/msg_empty_comments"
       android:gravity="center"/>
   </LinearLayout>
 </RelativeLayout>
