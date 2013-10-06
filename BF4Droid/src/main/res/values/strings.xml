@@ -20,7 +20,7 @@
   <string name="new_thread_content_hint">I think BF5 should come out tomorrow.</string>
 
   <string name="ab_action_new">New entry</string>
-  <string name="ab_action_send">Send entry</string>
+  <string name="ab_action_send">Send</string>
 
   <string name="msg_empty_feed">The Battle Feed is empty.</string>
   <string name="msg_forums_not_found">Forums not found.</string>
