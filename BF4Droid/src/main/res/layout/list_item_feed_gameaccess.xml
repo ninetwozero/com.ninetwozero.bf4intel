@@ -9,7 +9,7 @@
 
   <TextView
     style="@style/feed_content"
-    android:text="Activated new game/expansion:" />
+    android:text="@string/activated_new_game" />
 
   <TextView
     android:id="@+id/game_name"
