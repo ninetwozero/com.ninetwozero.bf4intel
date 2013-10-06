@@ -16,22 +16,22 @@ import com.ninetwozero.battlelog.adapters.NewsItemAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsItemFragment extends AbstractListFragment {
+public class NewsArticleFragment extends AbstractListFragment {
     public static final String ID = "articleId";
 
     private long mId;
 
-    public NewsItemFragment() {
+    public NewsArticleFragment() {
     }
 
-    public static NewsItemFragment newInstance() {
-        final NewsItemFragment fragment = new NewsItemFragment();
+    public static NewsArticleFragment newInstance() {
+        final NewsArticleFragment fragment = new NewsArticleFragment();
         fragment.setArguments(new Bundle());
         return fragment;
     }
 
-    public static NewsItemFragment newInstance(final Bundle data) {
-        final NewsItemFragment fragment = new NewsItemFragment();
+    public static NewsArticleFragment newInstance(final Bundle data) {
+        final NewsArticleFragment fragment = new NewsArticleFragment();
         fragment.setArguments(data);
         return fragment;
     }
@@ -69,6 +69,7 @@ public class NewsItemFragment extends AbstractListFragment {
         final ListView listView = (ListView) view.findViewById(android.R.id.list);
         final NewsItemAdapter adapter = new NewsItemAdapter(getActivity(), getDummyItems());
 
+        // TODO: Pass Bundle instead of new Object() in the future when things are in place
         listView.addHeaderView(mInflater.inflate(R.layout.list_header_news_item, null, false), new Object(), false);
         listView.setHeaderDividersEnabled(true);
         listView.setAdapter(adapter);
@@ -96,18 +97,18 @@ public class NewsItemFragment extends AbstractListFragment {
         final String comment = input.getText().toString();
 
         if( "".equals(comment) ) {
-            input.setError("Enter a comment!");
+            input.setError(getString(R.string.msg_enter_comment));
             return;
         }
 
         button.setEnabled(false);
-        button.setText("Sending...");
+        button.setText(R.string.msg_sending);
 
         // TODO: Do actual network transmission
 
         button.setEnabled(true);
         button.setText(R.string.ab_action_send);
-        showToast("Comment posted!");
+        showToast(R.string.msg_comment_ok);
     }
 
     public void loadArticle(final long id) {

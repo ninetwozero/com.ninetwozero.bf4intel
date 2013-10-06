@@ -52,13 +52,13 @@ public class NewsListingFragment extends AbstractListFragment {
 
     @Override
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
-        final Fragment itemFragment = mFragmentManager.findFragmentByTag("NewsItemFragment");
+        final Fragment itemFragment = mFragmentManager.findFragmentByTag("NewsArticleFragment");
 
-        if (itemFragment != null && itemFragment instanceof NewsItemFragment) {
-            ((NewsItemFragment) itemFragment).loadArticle(id);
+        if (itemFragment != null && itemFragment instanceof NewsArticleFragment) {
+            ((NewsArticleFragment) itemFragment).loadArticle(id);
         } else {
             final Bundle data = new Bundle();
-            data.putLong(NewsItemFragment.ID, id);
+            data.putLong(NewsArticleFragment.ID, id);
 
             final Intent intent = new Intent(getActivity(), SingleFragmentActivity.class)
                 .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, data)

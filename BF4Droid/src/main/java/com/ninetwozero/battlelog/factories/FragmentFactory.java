@@ -47,7 +47,7 @@ public class FragmentFactory {
             case NEWS_LISTING:
                 return NewsListingFragment.newInstance();
             case NEWS_ITEM:
-                return NewsItemFragment.newInstance(data);
+                return NewsArticleFragment.newInstance(data);
             case BATTLE_FEED_POSTING:
                 return BattleFeedPostingFragment.newInstance();
             case FORUM_LISTING:
