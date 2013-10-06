@@ -99,7 +99,7 @@ public class ListRowFactory {
         drawableMappings.putInt(String.valueOf(R.id.soldier_rank), R.drawable.test_rank31);
 
         return new ListRow.Builder(type)
-                .fragmentType(FragmentFactory.Type.SOLDIER_STATS)
+                .fragmentType(FragmentFactory.Type.SOLDIER_OVERVIEW)
                 .stringMappings(stringMappings)
                 .drawableMappings(drawableMappings)
                 .children(children)
