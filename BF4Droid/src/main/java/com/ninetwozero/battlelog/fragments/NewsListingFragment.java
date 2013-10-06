@@ -1,7 +1,7 @@
 package com.ninetwozero.battlelog.fragments;
 
 import android.app.Fragment;
-import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
+import com.ninetwozero.battlelog.activities.SingleFragmentActivity;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
 import com.ninetwozero.battlelog.factories.FragmentFactory;
 
@@ -59,11 +60,10 @@ public class NewsListingFragment extends AbstractListFragment {
             final Bundle data = new Bundle();
             data.putLong(NewsItemFragment.ID, id);
 
-            final FragmentTransaction transaction = mFragmentManager.beginTransaction();
-            transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.NEWS_ITEM), "NewsItemFragment");
-            transaction.addToBackStack(null);
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            transaction.commit();
+            final Intent intent = new Intent(getActivity(), SingleFragmentActivity.class)
+                .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, data)
+                .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.NEWS_ITEM.ordinal());
+            startActivity(intent);
         }
     }
 
