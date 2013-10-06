@@ -9,7 +9,7 @@
     style="@style/heading"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="BASIC INFORMATION" />
+    android:text="@string/profile_information_header" />
 
   <RelativeLayout
     android:layout_width="match_parent"
@@ -86,7 +86,7 @@
     style="@style/heading"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="PRESENTATION"
+    android:text="@string/profile_presentation_header"
     android:layout_marginTop="4dp" />
 
   <TextView

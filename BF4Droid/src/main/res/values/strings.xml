@@ -33,4 +33,7 @@
   <string name="cdesc_platform_icon">Platform icon</string>
   <string name="cdesc_rank_image">Rank image</string>
   <string name="cdesc_status_link_image">Extra content image</string>
+
+  <string name="profile_information_header">BASIC INFORMATION</string>
+  <string name="profile_presentation_header">PRESENTATION</string>
 </resources>
