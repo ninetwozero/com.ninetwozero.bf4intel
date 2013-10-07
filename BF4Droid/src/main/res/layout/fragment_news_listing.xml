@@ -13,7 +13,7 @@
     android:id="@android:id/empty"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="No news found."
+    android:text="@string/msg_empty_news"
     android:layout_centerInParent="true"
     android:paddingBottom="8dp" />
 </RelativeLayout>

@@ -3,36 +3,53 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <include
-    android:id="@+id/wrap_news_top"
-    layout="@layout/list_item_news" />
+    <LinearLayout
+        android:id="@+id/wrap_comment_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:padding="4dp"
+    >
+        <EditText
+            android:id="@+id/input_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Ex: This is some great news"
+            android:layout_weight="0.8"
+            android:singleLine="true"
+            android:layout_marginRight="8dp"
+        />
 
-  <TextView
-    android:id="@+id/content"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="This is a story all about how"
-    android:layout_below="@id/wrap_news_top"
-    android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-    android:paddingTop="0dp"
-    android:paddingRight="8dp"
-    android:paddingBottom="8dp"
-    android:paddingLeft="8dp"
-    android:autoLink="web|email" />
+        <Button
+            android:id="@+id/button_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_send"
+            android:layout_weight="0.2"
+            android:text="@string/ab_action_send"
+        />
+    </LinearLayout>
 
-  <!-- TODO: Own fragment for comments? -->
   <ListView
     android:id="@android:id/list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_below="@id/content" />
+    android:layout_above="@id/wrap_comment_form" />
 
-  <TextView
+  <LinearLayout
     android:id="@android:id/empty"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="No comments found."
-    android:layout_centerInParent="true"
-    android:paddingBottom="8dp"
-    android:layout_below="@id/content" />
+    android:orientation="vertical"
+    android:layout_above="@id/wrap_comment_form"
+    android:visibility="gone"
+  >
+    <include layout="@layout/list_header_news_item" />
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/msg_empty_comments"
+      android:gravity="center"/>
+  </LinearLayout>
 </RelativeLayout>

@@ -15,12 +15,12 @@ import com.ninetwozero.battlelog.factories.ListRowFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoldierStatsFragment extends AbstractListFragment {
-    public SoldierStatsFragment() {
+public class SoldierOverviewFragment extends AbstractListFragment {
+    public SoldierOverviewFragment() {
     }
 
-    public static SoldierStatsFragment newInstance() {
-        final SoldierStatsFragment fragment = new SoldierStatsFragment();
+    public static SoldierOverviewFragment newInstance() {
+        final SoldierOverviewFragment fragment = new SoldierOverviewFragment();
         fragment.setArguments(new Bundle());
         return fragment;
     }
@@ -29,7 +29,7 @@ public class SoldierStatsFragment extends AbstractListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = mInflater.inflate(R.layout.fragment_soldier_stats, parent, false);
+        final View view = mInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
         initialize(view);
         return view;
     }

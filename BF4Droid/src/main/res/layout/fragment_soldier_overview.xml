@@ -64,7 +64,7 @@
       android:id="@+id/value_rank_left"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="20,387 until rank up"
+      android:text="@string/soldier_left_until_rankup"
       android:layout_below="@id/progress_rank"
       android:layout_alignRight="@id/progress_rank"
       android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -101,7 +101,7 @@
       android:id="@+id/heading_average_scores"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="QUICK STATISTICS" />
+      android:text="@string/soldier_quick_stats" />
 
     <TextView
       android:layout_width="match_parent"
@@ -122,7 +122,7 @@
       android:id="@+id/heading_detailed_scores"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="IN-DEPTH STATISTICS" />
+      android:text="@string/soldier_detailed_stats" />
 
     <TextView
       android:layout_width="match_parent"
