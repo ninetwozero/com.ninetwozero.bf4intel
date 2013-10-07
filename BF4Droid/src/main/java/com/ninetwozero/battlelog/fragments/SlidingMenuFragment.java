@@ -101,9 +101,13 @@ public class SlidingMenuFragment extends AbstractListFragment {
         if (item.hasIntent()) {
             startActivity(item.getIntent());
         } else if (item.hasFragmentType()) {
-            final FragmentTransaction transaction = mFragmentManager.beginTransaction();
-            transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType()));
-            transaction.commit();
+            try {
+                final FragmentTransaction transaction = mFragmentManager.beginTransaction();
+                transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType()));
+                transaction.commit();
+            } catch (TypeNotPresentException ex) {
+                showToast(ex.getMessage());
+            }
         }
     }
 
