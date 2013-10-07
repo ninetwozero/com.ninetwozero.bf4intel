@@ -113,46 +113,49 @@ public class SlidingMenuFragment extends AbstractListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "LOGGED IN AS"));
         items.add(ListRowFactory.create(ListRowType.SIDE_ACCOUNT, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SELECTED SOLDIER"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle(), getChildrenForSoldier()));
+        items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle()));
+        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "MY SOLDIER"));
+        items.addAll(getRowsForSoldier());
 
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SELECTED PLATOON"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_PLATOON, new Bundle()));
+        //items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SELECTED PLATOON"));
+        //items.add(ListRowFactory.create(ListRowType.SIDE_PLATOON, new Bundle()));
+        //items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "MY PLATOON"));
+        //items.addAll(getRowsForPlatoon());
 
+        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SOCIAL"));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "NEWS", FragmentFactory.Type.NEWS_LISTING));
         items.add(ListRowFactory.create(ListRowType.SIDE_FEED, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "BATTLE CHAT", ExternalAppLauncher.getIntent(getActivity(), "com.ninetwozero.battlechat")));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "NOTIFICATIONS", FragmentFactory.Type.NOTIFICATION));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "SERVERS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "FORUMS", getChildrenForForum()));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "FORUMS", getRowsForForum()));
         return items;
     }
 
-    private List<ListRow> getChildrenForSoldier() {
+    /*
+        TODO:
+        Open ViewPagerActivity? Create ViewPagerFragment and display other fragments in it?
+
+        Need to investigate pros/cons of that approach as well as how nested fragments work
+    */
+    private List<ListRow> getRowsForSoldier() {
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "OVERVIEW", FragmentFactory.Type.SOLDIER_OVERVIEW));
-
-        /*
-            TODO:
-            Open ViewPagerActivity? Create ViewPagerFragment and display other fragments in it?
-
-            Need to investigate pros/cons of that approach as well as how nested fragments work
-        */
-
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "STATISTICS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "UNLOCKS"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "OVERVIEW", FragmentFactory.Type.SOLDIER_OVERVIEW));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "STATISTICS", FragmentFactory.Type.SOLDIER_STATS));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "UNLOCKS", FragmentFactory.Type.SOLDIER_UNLOCKS));
         return items;
     }
 
-    private List<ListRow> getChildrenForPlatoon() {
+    private List<ListRow> getRowsForPlatoon() {
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "VIEW"));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "VIEW", FragmentFactory.Type.PLATOON_PROFILE));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "CREATE NEW"));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "INVITES"));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "SETTINGS"));
         return items;
     }
 
-    private List<ListRow> getChildrenForForum() {
+    private List<ListRow> getRowsForForum() {
         final List<ListRow> items = new ArrayList<ListRow>();
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "VIEW FORUMS", FragmentFactory.Type.FORUM_LISTING));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "SAVED THREADS"));
