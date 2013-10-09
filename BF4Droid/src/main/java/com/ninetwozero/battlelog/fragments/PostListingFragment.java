@@ -32,6 +32,12 @@ public class PostListingFragment extends AbstractListFragment {
         return fragment;
     }
 
+    public static PostListingFragment newInstance(final Bundle data) {
+        final PostListingFragment fragment = new PostListingFragment();
+        fragment.setArguments(data);
+        return fragment;
+    }
+
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);

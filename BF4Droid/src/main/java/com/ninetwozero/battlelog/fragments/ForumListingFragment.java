@@ -25,6 +25,12 @@ public class ForumListingFragment extends AbstractListFragment {
         return fragment;
     }
 
+    public static ForumListingFragment newInstance(final Bundle data) {
+        final ForumListingFragment fragment = new ForumListingFragment();
+        fragment.setArguments(data);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);

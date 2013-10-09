@@ -27,6 +27,12 @@ public class NewsListingFragment extends AbstractListFragment {
         return fragment;
     }
 
+    public static NewsListingFragment newInstance(final Bundle data) {
+        final NewsListingFragment fragment = new NewsListingFragment();
+        fragment.setArguments(data);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
@@ -15,18 +16,18 @@ import com.ninetwozero.battlelog.factories.ListRowFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlatoonProfileFragment extends AbstractListFragment {
-    public PlatoonProfileFragment() {
+public class SoldierStatsFragment extends AbstractListFragment {
+    public SoldierStatsFragment() {
     }
 
-    public static PlatoonProfileFragment newInstance() {
-        final PlatoonProfileFragment fragment = new PlatoonProfileFragment();
+    public static SoldierStatsFragment newInstance() {
+        final SoldierStatsFragment fragment = new SoldierStatsFragment();
         fragment.setArguments(new Bundle());
         return fragment;
     }
 
-    public static PlatoonProfileFragment newInstance(final Bundle data) {
-        final PlatoonProfileFragment fragment = new PlatoonProfileFragment();
+    public static SoldierStatsFragment newInstance(final Bundle data) {
+        final SoldierStatsFragment fragment = new SoldierStatsFragment();
         fragment.setArguments(data);
         return fragment;
     }
@@ -35,24 +36,25 @@ public class PlatoonProfileFragment extends AbstractListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = mInflater.inflate(R.layout.fragment_platoon_profile, parent, false);
+        final View view = mInflater.inflate(R.layout.fragment_soldier_stats, parent, false);
         initialize(view);
         return view;
     }
 
     private void initialize(final View view) {
         final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getActivity(), getItemsForMenu());
-        setListAdapter(slidingMenuAdapter);
+        // TODO: setListAdapter(slidingMenuAdapter);
 
-        updateActionBar(getActivity(), "Chili-powered Zebras", R.drawable.test_platoon);
+        final Bundle arguments = getArguments();
+        if( arguments != null ) {
+            ((TextView) view.findViewById(R.id.internal_title)).setText(arguments.getString("TEST"));
+        }
+
     }
 
     private List<ListRow> getItemsForMenu() {
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.HEADING, "BASIC INFORMATION"));
-        items.add(ListRowFactory.create(ListRowType.PROFILE_SOLDIER, new Bundle()));
-        items.add(ListRowFactory.create(ListRowType.HEADING, "PRESENTATION"));
-        items.add(ListRowFactory.create(ListRowType.PROFILE_PLATOON, new Bundle()));
+        items.add(ListRowFactory.create(ListRowType.HEADING, "SOLDIERS"));
         return items;
     }
 }

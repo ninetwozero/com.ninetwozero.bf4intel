@@ -25,6 +25,12 @@ public class NotificationFragment extends AbstractListFragment {
         return fragment;
     }
 
+    public static NotificationFragment newInstance(final Bundle data) {
+        final NotificationFragment fragment = new NotificationFragment();
+        fragment.setArguments(data);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);

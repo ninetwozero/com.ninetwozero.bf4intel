@@ -23,6 +23,12 @@ public class BattleFeedFragment extends AbstractListFragment {
         return fragment;
     }
 
+    public static BattleFeedFragment newInstance(final Bundle data) {
+        final BattleFeedFragment fragment = new BattleFeedFragment();
+        fragment.setArguments(data);
+        return fragment;
+    }
+
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);

@@ -1,6 +1,7 @@
 package com.ninetwozero.battlelog.fragments;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
 import com.ninetwozero.battlelog.activities.SlidingMenuAccessInterface;
+import com.ninetwozero.battlelog.activities.SoldierStatisticsActivity;
 import com.ninetwozero.battlelog.adapters.ExpandableListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;
 import com.ninetwozero.battlelog.datatypes.ListRowType;
@@ -145,7 +147,7 @@ public class SlidingMenuFragment extends AbstractListFragment {
     private List<ListRow> getRowsForSoldier() {
         final List<ListRow> items = new ArrayList<ListRow>();
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "OVERVIEW", FragmentFactory.Type.SOLDIER_OVERVIEW));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "STATISTICS", FragmentFactory.Type.SOLDIER_STATS));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "STATISTICS", getSoldierStatisticsIntent(0))); // TODO: Pass real value
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "UNLOCKS", FragmentFactory.Type.SOLDIER_UNLOCKS));
         return items;
     }
@@ -164,5 +166,11 @@ public class SlidingMenuFragment extends AbstractListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "VIEW FORUMS", FragmentFactory.Type.FORUM_LISTING));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, "SAVED THREADS"));
         return items;
+    }
+
+    private Intent getSoldierStatisticsIntent(final long id) {
+        Intent intent = new Intent(getActivity(), SoldierStatisticsActivity.class);
+        intent = intent.putExtra(SoldierStatisticsActivity.INTENT_ID, id);
+        return intent;
     }
 }

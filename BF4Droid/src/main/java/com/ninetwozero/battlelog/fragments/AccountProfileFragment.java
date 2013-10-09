@@ -25,6 +25,12 @@ public class AccountProfileFragment extends AbstractListFragment {
         return fragment;
     }
 
+    public static AccountProfileFragment newInstance(final Bundle data) {
+        final AccountProfileFragment fragment = new AccountProfileFragment();
+        fragment.setArguments(data);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);

@@ -26,6 +26,12 @@ public class ThreadCreationFragment extends AbstractFragment {
         return fragment;
     }
 
+    public static ThreadCreationFragment newInstance(final Bundle data) {
+        final ThreadCreationFragment fragment = new ThreadCreationFragment();
+        fragment.setArguments(data);
+        return fragment;
+    }
+
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);

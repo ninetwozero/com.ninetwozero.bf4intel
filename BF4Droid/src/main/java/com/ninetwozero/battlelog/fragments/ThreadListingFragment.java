@@ -33,6 +33,12 @@ public class ThreadListingFragment extends AbstractListFragment {
         return fragment;
     }
 
+    public static ThreadListingFragment newInstance(final Bundle data) {
+        final ThreadListingFragment fragment = new ThreadListingFragment();
+        fragment.setArguments(data);
+        return fragment;
+    }
+
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
