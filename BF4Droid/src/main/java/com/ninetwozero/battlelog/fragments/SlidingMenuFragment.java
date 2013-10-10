@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
-import com.ninetwozero.battlelog.activities.SlidingMenuAccessInterface;
+import com.ninetwozero.battlelog.interfaces.SlidingMenuAccessInterface;
 import com.ninetwozero.battlelog.activities.SoldierStatisticsActivity;
 import com.ninetwozero.battlelog.adapters.ExpandableListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;

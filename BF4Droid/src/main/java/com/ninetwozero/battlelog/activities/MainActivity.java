@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.ninetwozero.battlelog.R;
+import com.ninetwozero.battlelog.interfaces.SlidingMenuAccessInterface;
 
 public class MainActivity extends Activity implements SlidingMenuAccessInterface {
     private SlidingMenu mSlidingMenu;
