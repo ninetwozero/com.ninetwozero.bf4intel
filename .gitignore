@@ -28,6 +28,6 @@ core/build/*
 BF4Droid/build/*
 
 # Various shit
-Thumbs.db
+*Thumbs.db
 *.swp
 .DS_STORE
