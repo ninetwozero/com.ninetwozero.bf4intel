@@ -54,6 +54,10 @@
     <item name="android:textSize">20sp</item>
   </style>
 
+  <style name="TextAppearance.Holo.Huge" parent="@android:style/TextAppearance.Holo.Large">
+    <item name="android:textSize">40sp</item>
+  </style>
+
   <!-- MENU -->
 
   <style name="SlidingMenuRow">
