@@ -12,6 +12,7 @@ public class FragmentFactory {
         SOLDIER_OVERVIEW,
         SOLDIER_STATS,
         SOLDIER_UNLOCKS,
+        SOLDIER_ASSIGNMENTS,
 
         BATTLE_FEED,
         BATTLE_FEED_POSTING,
@@ -48,6 +49,8 @@ public class FragmentFactory {
                 return SoldierStatsFragment.newInstance(data);
             //case SOLDIER_UNLOCKS:
             //    return SoldierOverviewFragment.newInstance(data);
+            case SOLDIER_ASSIGNMENTS:
+                return AssignmentListFragment.newInstance(data);
             case NEWS_LISTING:
                 return NewsListingFragment.newInstance(data);
             case NEWS_ITEM:

@@ -149,6 +149,7 @@ public class SlidingMenuFragment extends AbstractListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "OVERVIEW", FragmentFactory.Type.SOLDIER_OVERVIEW));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "STATISTICS", getSoldierStatisticsIntent(0))); // TODO: Pass real value
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "UNLOCKS", FragmentFactory.Type.SOLDIER_UNLOCKS));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, "ASSIGNMENTS", FragmentFactory.Type.SOLDIER_ASSIGNMENTS));
         return items;
     }
 
