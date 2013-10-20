@@ -46,7 +46,7 @@ public class AssignmentListFragment extends AbstractListFragment {
 
     private void initialize(final View view) {
         // Todo: Appropriate ICON for assignments
-        updateActionBar(getActivity(), "ASSIGNMENTS", R.drawable.icons_platform);
+        updateActionBar(getActivity(), R.string.assignments, R.drawable.ic_actionbar_logo);
         setupListView(view);
     }
 

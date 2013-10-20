@@ -38,7 +38,26 @@ public abstract class AbstractListFragment extends ListFragment {
         actionBar.setTitle(text);
     }
 
+    protected void updateActionBar(final Activity activity, final int resource) {
+        if( activity == null ) {
+            return;
+        }
+
+        final ActionBar actionBar = activity.getActionBar();
+        actionBar.setTitle(resource);
+    }
+
     protected void updateActionBar(final Activity activity, final String text, final int icon) {
+        if (activity == null) {
+            return;
+        }
+
+        final ActionBar actionBar = activity.getActionBar();
+        actionBar.setTitle(text);
+        actionBar.setIcon(icon);
+    }
+
+    protected void updateActionBar(final Activity activity, final int text, final int icon) {
         if (activity == null) {
             return;
         }
