@@ -4,13 +4,43 @@
   android:layout_height="match_parent"
   android:background="@drawable/slidingmenu_background">
 
+  <LinearLayout
+    android:id="@+id/wrap_login_name"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    android:gravity="left|center"
+    android:paddingLeft="@dimen/spacing_single"
+    android:paddingRight="@dimen/spacing_single"
+    android:orientation="horizontal">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/logged_in_as"
+      android:textAllCaps="true"
+      android:layout_marginRight="@dimen/spacing_onefourth"
+      android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
+      android:textColor="@color/grey"
+    />
+
+    <TextView
+      android:id="@+id/login_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="true"
+      android:layout_marginLeft="@dimen/spacing_half"
+      android:textAppearance="@android:style/TextAppearance.Holo.Inverse"
+      />
+    </LinearLayout>
+
   <ExpandableListView
     android:id="@android:id/list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
-    android:groupIndicator="@android:color/transparent" />
+    android:groupIndicator="@android:color/transparent"
+    android:layout_below="@id/wrap_login_name"/>
 
   <TextView
     android:id="@android:id/empty"

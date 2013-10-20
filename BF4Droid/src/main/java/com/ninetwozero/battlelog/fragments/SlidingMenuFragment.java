@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
@@ -44,7 +45,14 @@ public class SlidingMenuFragment extends AbstractListFragment {
     }
 
     private void initialize(final View view) {
+        setupRegularViews(view);
         setupListView(view);
+    }
+
+    private void setupRegularViews(final View view) {
+        // TODO: Needs to get username from session storage
+        final View wrapper = view.findViewById(R.id.wrap_login_name);
+        ((TextView) wrapper.findViewById(R.id.login_name)).setText("NINETWOZERO");
     }
 
     private void setupListView(final View view) {
@@ -116,8 +124,8 @@ public class SlidingMenuFragment extends AbstractListFragment {
     private List<ListRow> getItemsForMenu() {
         final List<ListRow> items = new ArrayList<ListRow>();
 
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "LOGGED IN AS"));
-        items.add(ListRowFactory.create(ListRowType.SIDE_ACCOUNT, new Bundle()));
+        //items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "LOGGED IN AS"));
+        //items.add(ListRowFactory.create(ListRowType.SIDE_ACCOUNT, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "SELECTED SOLDIER"));
         items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, "MY SOLDIER"));

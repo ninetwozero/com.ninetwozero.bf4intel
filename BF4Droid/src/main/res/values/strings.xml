@@ -37,6 +37,7 @@
     <string name="cdesc_status_link_image">Extra content image</string>
     <string name="soldier_left_until_rankup" formatted="true">%s until rank up</string>
     <string name="activated_new_game">Activated new game/expansion:</string>
+    <string name="logged_in_as">Logged in as</string>
     <string name="assignment_goals_completed" formatted="false">%s/%s goals completed</string>
 
     <!-- HEADINGS -->
