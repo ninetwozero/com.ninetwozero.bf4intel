@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="56dp"
-  android:padding="8dp">
+  android:padding="@dimen/spacing_single">
 
   <ImageView
     android:id="@+id/platoon_image"
@@ -15,15 +15,15 @@
     android:layout_height="wrap_content"
     android:textAppearance="@android:style/TextAppearance.Holo.Medium"
     android:layout_toRightOf="@id/platoon_image"
-    android:layout_marginLeft="8dp"
-    android:layout_marginTop="3dp" />
+    android:layout_marginLeft="@dimen/spacing_single"
+    android:layout_marginTop="@dimen/spacing_half" />
 
   <ImageView
     android:id="@+id/platoon_platform"
     android:layout_width="39dp"
     android:layout_height="11dp"
     android:layout_toRightOf="@id/platoon_image"
-    android:layout_marginLeft="8dp"
+    android:layout_marginLeft="@dimen/spacing_single"
     android:layout_below="@id/platoon_name"
     android:contentDescription="@string/cdesc_platform_icon" />
 </RelativeLayout>

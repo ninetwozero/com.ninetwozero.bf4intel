@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:padding="8dp">
+  android:padding="@dimen/spacing_single">
   <TextView
     android:id="@+id/content"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="4dp"
+    android:layout_marginLeft="@dimen/spacing_half"
     android:text="*NINETWOZERO* commented on your *wallpost*."
     android:textAppearance="@android:style/TextAppearance.Holo.Small" />
   <TextView

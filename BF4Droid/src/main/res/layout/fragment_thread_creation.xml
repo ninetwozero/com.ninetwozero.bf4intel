@@ -3,7 +3,7 @@
   android:id="@+id/wrap_form"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:padding="8dp">
+  android:padding="@dimen/spacing_single">
 
   <TextView
     style="@style/heading"
@@ -28,9 +28,9 @@
     android:id="@+id/new_thread_content_header"
     android:text="@string/new_thread_content_header"
     android:layout_below="@id/new_thread_title_input"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginTop="8dp" />
+    android:layout_marginLeft="@dimen/spacing_single"
+    android:layout_marginRight="@dimen/spacing_single"
+    android:layout_marginTop="@dimen/spacing_single" />
 
   <EditText
     android:id="@+id/new_thread_content_input"

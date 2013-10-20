@@ -4,7 +4,7 @@
   android:layout_height="match_parent"
   android:background="@drawable/test_soldier_bg"
   android:orientation="vertical"
-  android:padding="8dp">
+  android:padding="@dimen/spacing_single">
 
   <TextView
     android:id="@+id/internal_title"

@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:padding="4dp"
+        android:padding="@dimen/spacing_half"
     >
         <EditText
             android:id="@+id/input_content"
@@ -18,7 +18,7 @@
             android:hint="Ex: This is some great news"
             android:layout_weight="0.8"
             android:singleLine="true"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="@dimen/spacing_single"
         />
 
         <Button

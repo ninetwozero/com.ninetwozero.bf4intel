@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:padding="8dp">
+  android:padding="@dimen/spacing_single">
 
   <TextView
     android:id="@+id/title"
@@ -17,5 +17,5 @@
     style="@style/meta"
     android:id="@+id/status"
     android:layout_below="@id/title"
-    android:text="3/4 goals completed"/>
+    android:text="@string/assignment_goals_completed"/>
 </RelativeLayout>
