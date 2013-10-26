@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ninetwozero.battlelog.R;
-import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
+import com.ninetwozero.battlelog.abstractions.BaseListFragment;
 import com.ninetwozero.battlelog.adapters.ListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;
 import com.ninetwozero.battlelog.datatypes.ListRowType;
@@ -16,7 +16,7 @@ import com.ninetwozero.battlelog.factories.ListRowFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoldierStatsFragment extends AbstractListFragment {
+public class SoldierStatsFragment extends BaseListFragment {
     public SoldierStatsFragment() {
     }
 

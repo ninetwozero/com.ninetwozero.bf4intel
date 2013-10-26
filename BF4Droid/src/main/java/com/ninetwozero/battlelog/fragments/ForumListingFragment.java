@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ninetwozero.battlelog.R;
-import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
+import com.ninetwozero.battlelog.abstractions.BaseListFragment;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
 import com.ninetwozero.battlelog.factories.FragmentFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ForumListingFragment extends AbstractListFragment {
+public class ForumListingFragment extends BaseListFragment {
     public ForumListingFragment() {
     }
 

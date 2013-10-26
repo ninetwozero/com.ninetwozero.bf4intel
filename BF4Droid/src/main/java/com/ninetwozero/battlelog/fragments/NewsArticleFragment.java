@@ -10,13 +10,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.ninetwozero.battlelog.R;
-import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
+import com.ninetwozero.battlelog.abstractions.BaseListFragment;
 import com.ninetwozero.battlelog.adapters.NewsItemAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsArticleFragment extends AbstractListFragment {
+public class NewsArticleFragment extends BaseListFragment {
     public static final String ID = "articleId";
 
     private long mId;
