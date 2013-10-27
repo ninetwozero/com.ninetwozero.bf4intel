@@ -111,11 +111,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
         }
 
         selectItem(item, positionOfGroup);
-
-        if (item.getChildCount() == 0) {
-            ((NavigationDrawerCallbacks) getActivity()).onNavigationDrawerItemSelected(positionOfGroup, item.getTitle());
-        }
-
         storePositionState(positionOfGroup, 0, true);
         return false;
     }
@@ -125,9 +120,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getChild(group, child);
 
         selectItem(item, positionOfChild);
-
         storePositionState(group, child, false);
-        ((NavigationDrawerCallbacks) getActivity()).onNavigationDrawerItemSelected(positionOfChild, item.getTitle());
         return false;
     }
 
