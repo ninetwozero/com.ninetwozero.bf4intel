@@ -51,7 +51,8 @@
   <string name="soldier_detailed_stats">In-depth Statistics</string>
   <string name="profile_information_header">Basic Information</string>
   <string name="profile_presentation_header">Presentation</string>
-  <string name="selected_soldier">Selected soldier</string>
+  <string name="progress">Progress</string>
+  <string name="navigationdrawer_selected_soldier">Selected soldier</string>
   <string name="navigationdrawer_my_soldier">My soldier</string>
   <string name="navigationdrawer_overview">Overview</string>
   <string name="navigationdrawer_statistics">Statistics</string>

@@ -197,7 +197,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private List<ListRow> getRowsForSoldier() {
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.selected_soldier)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_selected_soldier)));
         items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_overview), FragmentFactory.Type.SOLDIER_OVERVIEW));
