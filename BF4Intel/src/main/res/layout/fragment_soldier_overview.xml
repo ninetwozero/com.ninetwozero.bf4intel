@@ -1,172 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:orientation="vertical"
-  android:padding="@dimen/spacing_single">
-
-  <RelativeLayout
-    android:id="@+id/wrap_progress"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-      android:id="@+id/soldier_name"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textAppearance="@android:style/TextAppearance.Holo.Large"
-      android:textColor="@color/blue"
-      android:text="NINETWOZERO"/>
-
-    <TextView
-      style="@style/heading"
-      android:id="@+id/heading_progress"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="@string/progress"
-      android:layout_below="@id/soldier_name"/>
-
-    <TextView
-      android:id="@+id/current_rank_title"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="MASTER GUNNERY SERGEANT 2 STAR"
-      android:textAppearance="@android:style/TextAppearance.Holo"
-      android:layout_below="@id/heading_progress"/>
-
-    <ImageView
-      android:id="@+id/image_rank"
-      android:layout_width="64dp"
-      android:layout_height="64dp"
-      android:src="@drawable/test_rank31"
-      android:layout_alignParentRight="true"
-      android:layout_marginTop="36dp"
-      android:contentDescription="@string/cdesc_rank_image"/>
-
-    <ProgressBar
-      style="?android:attr/progressBarStyleHorizontal"
-      android:id="@+id/progress_rank"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_toLeftOf="@id/image_rank"
-      android:layout_below="@id/current_rank_title"
-      android:indeterminate="false"/>
-
-    <TextView
-      android:id="@+id/value_rank_progress"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="29,613/50,000"
-      android:layout_below="@id/progress_rank"
-      android:layout_alignLeft="@id/progress_rank"
-      android:textAppearance="@android:style/TextAppearance.Holo"/>
-
-    <TextView
-      android:id="@+id/value_rank_left"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/soldier_left_until_rankup"
-      android:layout_below="@id/progress_rank"
-      android:layout_alignRight="@id/progress_rank"
-      android:textAppearance="@android:style/TextAppearance.Holo.Small"/>
-  </RelativeLayout>
+  >
 
   <LinearLayout
-    android:id="@+id/wrap_service_stars"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_single"
+    android:background="@color/lightgrey">
+
+    <RelativeLayout
+      style="@style/SoldierInfoBox"
+      android:id="@+id/wrap_progress"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <TextView
+        android:id="@+id/soldier_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large"
+        android:textColor="@color/blue"
+        android:text="NINETWOZERO"/>
+
+      <TextView
+        style="@style/heading"
+        android:id="@+id/heading_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/progress"
+        android:layout_below="@id/soldier_name"/>
+
+      <TextView
+        android:id="@+id/current_rank_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MASTER GUNNERY SERGEANT 2 STAR"
+        android:textAppearance="@android:style/TextAppearance.Holo"
+        android:layout_below="@id/heading_progress"/>
+
+      <ImageView
+        android:id="@+id/image_rank"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/test_rank31"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="36dp"
+        android:contentDescription="@string/cdesc_rank_image"/>
+
+      <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/progress_rank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/image_rank"
+        android:layout_below="@id/current_rank_title"
+        android:indeterminate="false"/>
+
+      <TextView
+        android:id="@+id/value_rank_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="29,613/50,000"
+        android:layout_below="@id/progress_rank"
+        android:layout_alignLeft="@id/progress_rank"
+        android:textAppearance="@android:style/TextAppearance.Holo"/>
+
+      <TextView
+        android:id="@+id/value_rank_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/soldier_left_until_rankup"
+        android:layout_below="@id/progress_rank"
+        android:layout_alignRight="@id/progress_rank"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small"/>
+
+      <ImageView
+        android:layout_height="36dp"
+        android:layout_width="36dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/test_soldier"
+        android:layout_alignStart="@id/image_rank"/>
+    </RelativeLayout>
+
+    <LinearLayout
+      style="@style/SoldierInfoBox"
+      android:id="@+id/wrap_service_stars"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+      <TextView
+        style="@style/heading"
+        android:id="@+id/heading_service_stars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/service_stars"/>
+
+      <include
+        layout="@layout/list_item_soldier_service_stars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+      <include
+        layout="@layout/list_item_soldier_service_stars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+      <include
+        layout="@layout/list_item_soldier_service_stars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+      <include
+        layout="@layout/list_item_soldier_service_stars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+      <include
+        layout="@layout/list_item_soldier_service_stars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+      style="@style/SoldierInfoBox"
+      android:id="@+id/wrap_average_scores"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+      <TextView
+        style="@style/heading"
+        android:id="@+id/heading_average_scores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/soldier_skill"/>
+
+      <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Rating"
+        android:textColor="@color/darkgrey"
+        android:gravity="center_horizontal"
+        android:textAllCaps="true"
+        />
+
+      <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="164"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/text_xxl"
+        />
+
+      <TableLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="3"
+          >
+
+          <include
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/list_item_soldier_skills"/>
+
+          <include
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/list_item_soldier_skills"/>
+
+          <include
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/list_item_soldier_skills"/>
+        </LinearLayout>
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_weight="3"
+          >
+
+          <include
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/list_item_soldier_skills"/>
+
+          <include
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/list_item_soldier_skills"/>
+
+          <include
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            layout="@layout/list_item_soldier_skills"/>
+        </LinearLayout>
+      </TableLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+      style="@style/SoldierInfoBox"
+      android:id="@+id/wrap_detailed_scores"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="0dp">
+
+      <TextView
+        style="@style/heading"
+        android:id="@+id/heading_detailed_scores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/soldier_detailed_stats"/>
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DETAILED STATS HERE"
+        android:gravity="center"
+        android:layout_below="@id/heading_detailed_scores"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large"/>
+    </RelativeLayout>
+
+    <!-- TODO: This should probably (maybe) be ListRow'd -->
+
+    <ListView
+      android:id="@android:id/list"
+      android:layout_width="0dp"
+      android:layout_height="0dp"/>
 
     <TextView
-      style="@style/heading"
-      android:id="@+id/heading_service_stars"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="@string/service_stars"/>
-
-    <include
-      layout="@layout/list_item_service_stars"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      />
-
-    <include
-      layout="@layout/list_item_service_stars"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      />
-
-    <include
-      layout="@layout/list_item_service_stars"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      />
-
-    <include
-      layout="@layout/list_item_service_stars"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      />
-
-    <include
-      layout="@layout/list_item_service_stars"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      />
+      android:id="@android:id/empty"
+      android:layout_width="0dp"
+      android:layout_height="0dp"/>
   </LinearLayout>
-
-  <RelativeLayout
-    android:id="@+id/wrap_average_scores"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-      style="@style/heading"
-      android:id="@+id/heading_average_scores"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="@string/soldier_quick_stats"/>
-
-    <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="QUICK STATS HERE"
-      android:gravity="center"
-      android:layout_below="@id/heading_average_scores"
-      android:textAppearance="@android:style/TextAppearance.Holo.Large"/>
-  </RelativeLayout>
-
-  <RelativeLayout
-    android:id="@+id/wrap_detailed_scores"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-      style="@style/heading"
-      android:id="@+id/heading_detailed_scores"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="@string/soldier_detailed_stats"/>
-
-    <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="DETAILED STATS HERE"
-      android:gravity="center"
-      android:layout_below="@id/heading_detailed_scores"
-      android:textAppearance="@android:style/TextAppearance.Holo.Large"/>
-  </RelativeLayout>
-
-  <!-- TODO: This should probably (maybe) be ListRow'd -->
-
-  <ListView
-    android:id="@android:id/list"
-    android:layout_width="0dp"
-    android:layout_height="0dp"/>
-
-  <TextView
-    android:id="@android:id/empty"
-    android:layout_width="0dp"
-    android:layout_height="0dp"/>
-</LinearLayout>
+</ScrollView>

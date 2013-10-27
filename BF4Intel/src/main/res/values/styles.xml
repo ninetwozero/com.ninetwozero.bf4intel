@@ -71,6 +71,13 @@
     <item name="android:textAllCaps">true</item>
   </style>
 
+  <!-- Soldier "card" pseudo style -->
+  <style name="SoldierInfoBox">
+    <item name="android:padding">@dimen/spacing_single</item>
+    <item name="android:background">@android:color/white</item>
+    <item name="android:layout_marginBottom">@dimen/spacing_single</item>
+  </style>
+
   <!-- FEED -->
 
   <style name="feed_wrap_user">
