@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/wrap_form"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="@dimen/spacing_single">
+
+  <TextView
+    style="@style/heading"
+    android:id="@+id/update_status_header"
+    android:text="@string/create_post_header"
+    android:layout_marginLeft="@dimen/spacing_single"
+    android:layout_marginRight="@dimen/spacing_single"
+    android:layout_marginTop="@dimen/spacing_single" />
+
+  <EditText
+    android:id="@+id/update_status_input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/create_post_hint"
+    android:layout_below="@id/update_status_header" />
+</RelativeLayout><!-- From: file:/Users/karllindmark/Documents/Git/com.ninetwozero.bf4intel/BF4%20Intel/src/main/res/layout/fragment_post_creation.xml -->
