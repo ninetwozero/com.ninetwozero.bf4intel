@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spacing_single">
+
+    <LinearLayout
+            android:id="@+id/wrap_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center">
+
+        <ImageView
+                android:id="@+id/gravatar"
+                android:layout_width="@dimen/spacing_double"
+                android:layout_height="@dimen/spacing_double"
+                android:src="@drawable/test_gravatar"
+                android:contentDescription="@string/cdesc_gravatar" />
+
+        <TextView
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NINETWOZERO"
+                android:layout_marginLeft="@dimen/spacing_half"
+                android:textColor="@color/blue"
+                android:textAppearance="@android:style/TextAppearance.Holo.Small" />
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wrap_user"
+            android:layout_marginTop="@dimen/spacing_half"
+            android:textAppearance="@android:style/TextAppearance.Holo.Small"
+            android:text="Bladabalablabadadadaldadalada\nldladldal" />
+
+    <TextView
+            style="@style/meta"
+            android:id="@+id/timestamp"
+            android:text="4 hours ago"
+            android:layout_below="@id/content" />
+</RelativeLayout><!-- From: file:/Users/karllindmark/Documents/Git/com.ninetwozero.bf4intel/BF4%20Intel/src/main/res/layout/list_item_news_comment.xml -->

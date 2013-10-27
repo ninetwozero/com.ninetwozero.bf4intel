@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:drawable="@android:color/transparent" />
+</selector>
+<!-- From: file:/Users/karllindmark/Documents/Git/com.ninetwozero.bf4intel/BF4%20Intel/src/main/res/drawable/slidingmenu_heading_selector.xml -->

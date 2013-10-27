@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/wrap_form"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="@dimen/spacing_single">
+
+  <TextView
+    style="@style/heading"
+    android:id="@+id/new_thread_header"
+    android:text="@string/new_thread_header"
+    android:layout_alignParentTop="true"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp" />
+
+  <EditText
+    android:id="@+id/new_thread_title_input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/new_thread_title_hint"
+    android:layout_below="@id/new_thread_header"
+    android:gravity="top|left"
+    android:maxLength="200"
+    android:maxLines="1" />
+
+  <TextView
+    style="@style/heading"
+    android:id="@+id/new_thread_content_header"
+    android:text="@string/new_thread_content_header"
+    android:layout_below="@id/new_thread_title_input"
+    android:layout_marginLeft="@dimen/spacing_single"
+    android:layout_marginRight="@dimen/spacing_single"
+    android:layout_marginTop="@dimen/spacing_single" />
+
+  <EditText
+    android:id="@+id/new_thread_content_input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/new_thread_content_hint"
+    android:layout_below="@id/new_thread_content_header" />
+</RelativeLayout><!-- From: file:/Users/karllindmark/Documents/Git/com.ninetwozero.bf4intel/BF4%20Intel/src/main/res/layout/fragment_thread_creation.xml -->

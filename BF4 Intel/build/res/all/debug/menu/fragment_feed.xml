@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/ab_action_new"
+    android:title="@string/ab_action_new"
+    android:icon="@android:drawable/ic_menu_add"
+    android:orderInCategory="000"
+    android:showAsAction="always" />
+  <item
+    android:id="@+id/ab_action_settings"
+    android:title="@string/action_settings"
+    android:orderInCategory="100"
+    android:showAsAction="never" />
+</menu>
+<!-- From: file:/Users/karllindmark/Documents/Git/com.ninetwozero.bf4intel/BF4%20Intel/src/main/res/menu/fragment_feed.xml -->
