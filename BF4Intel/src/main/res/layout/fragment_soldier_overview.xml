@@ -42,21 +42,11 @@
         android:textAppearance="@android:style/TextAppearance.Holo"
         android:layout_below="@id/heading_progress"/>
 
-      <ImageView
-        android:id="@+id/image_rank"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:src="@drawable/test_rank31"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="36dp"
-        android:contentDescription="@string/cdesc_rank_image"/>
-
       <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:id="@+id/progress_rank"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/image_rank"
         android:layout_below="@id/current_rank_title"
         android:indeterminate="false"/>
 
@@ -79,11 +69,20 @@
         android:textAppearance="@android:style/TextAppearance.Holo.Small"/>
 
       <ImageView
+        android:id="@+id/image_rank"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/test_rank31"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/cdesc_rank_image"/>
+
+      <ImageView
+        android:id="@+id/soldier_icon"
         android:layout_height="36dp"
         android:layout_width="36dp"
-        android:layout_alignParentRight="true"
         android:src="@drawable/test_soldier"
-        android:layout_alignStart="@id/image_rank"/>
+        android:layout_toLeftOf="@id/image_rank"/>
+
     </RelativeLayout>
 
     <LinearLayout
@@ -233,12 +232,17 @@
         android:layout_height="wrap_content"
         android:text="@string/soldier_completion"/>
 
-      <include layout="@layout/list_item_soldier_completion" />
-      <include layout="@layout/list_item_soldier_completion" />
-      <include layout="@layout/list_item_soldier_completion" />
-      <include layout="@layout/list_item_soldier_completion" />
-      <include layout="@layout/list_item_soldier_completion" />
-      <include layout="@layout/list_item_soldier_completion" />
+      <include layout="@layout/list_item_soldier_completion"/>
+
+      <include layout="@layout/list_item_soldier_completion"/>
+
+      <include layout="@layout/list_item_soldier_completion"/>
+
+      <include layout="@layout/list_item_soldier_completion"/>
+
+      <include layout="@layout/list_item_soldier_completion"/>
+
+      <include layout="@layout/list_item_soldier_completion"/>
     </LinearLayout>
 
     <!-- TODO: This should probably (maybe) be ListRow'd -->
