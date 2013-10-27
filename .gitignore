@@ -23,9 +23,7 @@ local.properties
 #Gradle#
 #########
 .gradle
-app/build/*
-core/build/*
-BF4Droid/build/*
+*/build/*
 
 # Various shit
 *Thumbs.db
