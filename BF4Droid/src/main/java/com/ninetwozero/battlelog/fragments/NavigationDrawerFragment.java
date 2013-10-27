@@ -35,7 +35,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private static final String STATE_SELECTED_CHILD = "selected_navigation_drawer_child_position";
     private static final String STATE_SELECTION_IS_GROUP = "selected_navigation_drawer_is_group";
     public static final String BATTLE_CHAT = "BATTLE CHAT";
-    public static final String BATTLECHAT_PACKAGE = "com.ninetwozero.battlechat";
+    public static final String BATTLE_CHAT_PACKAGE = "com.ninetwozero.battlechat";
 
     private ExpandableListView mListView;
     private NavigationDrawerCallbacks mCallbacks;
@@ -200,7 +200,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_social)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_news), FragmentFactory.Type.NEWS_LISTING));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_battle_feed), FragmentFactory.Type.BATTLE_FEED));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, BATTLE_CHAT, ExternalAppLauncher.getIntent(getActivity(), BATTLECHAT_PACKAGE)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, BATTLE_CHAT, ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_notifications), FragmentFactory.Type.NOTIFICATION));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_servers)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_forums), getRowsForForum()));
