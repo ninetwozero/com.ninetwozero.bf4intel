@@ -20,5 +20,6 @@
     android:layout_height="wrap_content"
     android:indeterminate="false"
     android:layout_gravity="center_vertical"
-    android:layout_marginLeft="@dimen/spacing_single"/>
+    android:layout_marginLeft="@dimen/spacing_single"
+  />
 </LinearLayout>

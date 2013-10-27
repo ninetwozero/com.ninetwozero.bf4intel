@@ -39,6 +39,7 @@
   <string name="activated_new_game">Activated new game/expansion:</string>
   <string name="logged_in_as">Logged in as</string>
   <string name="assignment_goals_completed" formatted="false">%s/%s goals completed</string>
+  <string name="generic_x_of_y" formatted="false">%s/%s</string>
 
   <!-- HEADINGS -->
   <string name="weapons">Weapons</string>

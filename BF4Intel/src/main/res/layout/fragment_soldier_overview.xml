@@ -14,7 +14,7 @@
 
     <RelativeLayout
       style="@style/SoldierInfoBox"
-      android:id="@+id/wrap_progress"
+      android:id="@+id/wrap_soldier_general"
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
@@ -87,7 +87,7 @@
 
     <LinearLayout
       style="@style/SoldierInfoBox"
-      android:id="@+id/wrap_service_stars"
+      android:id="@+id/wrap_soldier_service_stars"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical">
@@ -132,7 +132,7 @@
 
     <LinearLayout
       style="@style/SoldierInfoBox"
-      android:id="@+id/wrap_average_scores"
+      android:id="@+id/wrap_soldier_skills"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical">
@@ -219,7 +219,7 @@
 
     <LinearLayout
       style="@style/SoldierInfoBox"
-      android:id="@+id/wrap_detailed_scores"
+      android:id="@+id/wrap_soldier_completions"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginBottom="0dp"
@@ -244,17 +244,5 @@
 
       <include layout="@layout/list_item_soldier_completion"/>
     </LinearLayout>
-
-    <!-- TODO: This should probably (maybe) be ListRow'd -->
-
-    <ListView
-      android:id="@android:id/list"
-      android:layout_width="0dp"
-      android:layout_height="0dp"/>
-
-    <TextView
-      android:id="@android:id/empty"
-      android:layout_width="0dp"
-      android:layout_height="0dp"/>
   </LinearLayout>
 </ScrollView>
