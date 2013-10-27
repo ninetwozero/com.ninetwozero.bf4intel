@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/wrap_user"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:gravity="center">
+
+  <ImageView
+    style="@style/meta"
+    android:id="@+id/avatar"
+    android:layout_width="@dimen/spacing_double"
+    android:layout_height="@dimen/spacing_double"
+    android:src="@drawable/test_gravatar"
+    android:contentDescription="@string/cdesc_gravatar" />
+
+  <TextView
+    style="@style/meta"
+    android:id="@+id/username"
+    android:text="NINETWOZERO"
+    android:layout_marginLeft="@dimen/spacing_onefourth"
+    android:textColor="@color/blue" />
+</LinearLayout><!-- From: file:/Users/karllindmark/Documents/Git/com.ninetwozero.bf4intel/BF4%20Intel/src/main/res/layout/list_item_feed_tpl_user_small.xml -->

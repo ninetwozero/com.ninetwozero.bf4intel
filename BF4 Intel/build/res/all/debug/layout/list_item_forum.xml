@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:padding="@dimen/spacing_single">
+
+  <TextView
+    android:id="@+id/title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
+    android:text="Dummy Forum (Uncategorized)"
+    android:textColor="@color/blue" />
+
+  <LinearLayout
+    android:id="@+id/wrap_activity"
+    android:layout_width="match_parent"
+    android:layout_height="24dp"
+    android:layout_below="@id/title"
+    android:gravity="left|center_vertical">
+
+    <TextView
+      style="@style/meta"
+      android:text="Last activity " />
+
+    <TextView
+      style="@style/meta"
+      android:id="@+id/timestamp"
+      android:text="4 hours ago" />
+
+    <TextView
+      style="@style/meta"
+      android:id="@+id/string_by"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text=" by " />
+
+    <include
+      android:id="@+id/wrap_user"
+      layout="@layout/list_item_feed_tpl_user_small" />
+  </LinearLayout>
+
+  <TextView
+    style="@style/meta"
+    android:id="@+id/num_posts"
+    android:layout_below="@id/wrap_activity"
+    android:text="403" />
+
+  <TextView
+    style="@style/meta"
+    android:id="@+id/string_postcount"
+    android:layout_below="@id/wrap_activity"
+    android:layout_toRightOf="@id/num_posts"
+    android:text=" posts in " />
+
+  <TextView
+    style="@style/meta"
+    android:id="@+id/num_threads"
+    android:layout_below="@id/wrap_activity"
+    android:layout_toRightOf="@id/string_postcount"
+    android:text="201" />
+
+  <TextView
+    style="@style/meta"
+    android:id="@+id/string_threadcount"
+    android:layout_below="@id/wrap_activity"
+    android:layout_toRightOf="@id/num_threads"
+    android:text=" threads" />
+</RelativeLayout><!-- From: file:/Users/karllindmark/Documents/Git/com.ninetwozero.bf4intel/BF4%20Intel/src/main/res/layout/list_item_forum.xml -->
