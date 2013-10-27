@@ -30,12 +30,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NavigationDrawerFragment extends BaseListFragment {
+    public static final String BATTLE_CHAT = "BATTLE CHAT";
+    public static final String BATTLE_CHAT_PACKAGE = "com.ninetwozero.battlechat";
 
     private static final String STATE_SELECTED_GROUP = "selected_navigation_drawer_group_position";
     private static final String STATE_SELECTED_CHILD = "selected_navigation_drawer_child_position";
     private static final String STATE_SELECTION_IS_GROUP = "selected_navigation_drawer_is_group";
-    public static final String BATTLE_CHAT = "BATTLE CHAT";
-    public static final String BATTLE_CHAT_PACKAGE = "com.ninetwozero.battlechat";
 
     private ExpandableListView mListView;
     private NavigationDrawerCallbacks mCallbacks;
@@ -155,7 +155,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
             return true;
         }
 
-        selectItem(item, positionOfGroup, true);
+        selectItem(item, positionOfGroup, !item.hasChildren());
         storePositionState(positionOfGroup, 0, true);
         return false;
     }
@@ -164,7 +164,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         final int positionOfChild = listView.getFlatListPosition(ExpandableListView.getPackedPositionForChild(group, child));
         final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getChild(group, child);
 
-        selectItem(item, positionOfChild, false);
+        selectItem(item, positionOfChild, true);
         storePositionState(group, child, false);
         return false;
     }
@@ -232,15 +232,15 @@ public class NavigationDrawerFragment extends BaseListFragment {
             row = adapter.getChild(group, child);
             position = mListView.getFlatListPosition(ExpandableListView.getPackedPositionChild(child));
         }
-        selectItem(row, position, isGroup);
+        selectItem(row, position, true);
     }
 
-    private void selectItem(final ListRow item, final int position, final boolean isGroup) {
+    private void selectItem(final ListRow item, final int position, final boolean closeDrawer) {
         if (mListView != null) {
             mListView.setItemChecked(position, true);
         }
 
-        if (mCallbacks != null && !isGroup) {
+        if (mCallbacks != null && closeDrawer) {
             mCallbacks.onNavigationDrawerItemSelected(position, item.getTitle());
         }
 
