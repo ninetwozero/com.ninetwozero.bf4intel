@@ -35,6 +35,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private static final String STATE_SELECTED_CHILD = "selected_navigation_drawer_child_position";
     private static final String STATE_SELECTION_IS_GROUP = "selected_navigation_drawer_is_group";
     public static final String BATTLE_CHAT = "BATTLE CHAT";
+    public static final String BATTLECHAT_PACKAGE = "com.ninetwozero.battlechat";
 
     private ExpandableListView mListView;
     private NavigationDrawerCallbacks mCallbacks;
@@ -186,30 +187,30 @@ public class NavigationDrawerFragment extends BaseListFragment {
         final List<ListRow> items = new ArrayList<ListRow>();
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.selected_soldier)));
         items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle()));
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.my_soldier)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.overview), FragmentFactory.Type.SOLDIER_OVERVIEW));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.statistics), getSoldierStatisticsIntent(0))); // TODO: Pass real value
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.unlocks), FragmentFactory.Type.SOLDIER_UNLOCKS));
+        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_overview), FragmentFactory.Type.SOLDIER_OVERVIEW));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_statistics), getSoldierStatisticsIntent(0))); // TODO: Pass real value
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_unlocks), FragmentFactory.Type.SOLDIER_UNLOCKS));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.assignments), FragmentFactory.Type.SOLDIER_ASSIGNMENTS));
         return items;
     }
 
     private List<ListRow> getRowsForSocial() {
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.social)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.news), FragmentFactory.Type.NEWS_LISTING));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.battle_feed), FragmentFactory.Type.BATTLE_FEED));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, BATTLE_CHAT, ExternalAppLauncher.getIntent(getActivity(), "com.ninetwozero.battlechat")));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.notifications), FragmentFactory.Type.NOTIFICATION));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.servers)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.forums), getRowsForForum()));
+        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_social)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_news), FragmentFactory.Type.NEWS_LISTING));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_battle_feed), FragmentFactory.Type.BATTLE_FEED));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, BATTLE_CHAT, ExternalAppLauncher.getIntent(getActivity(), BATTLECHAT_PACKAGE)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_notifications), FragmentFactory.Type.NOTIFICATION));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_servers)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_forums), getRowsForForum()));
         return items;
     }
 
     private List<ListRow> getRowsForForum() {
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, getString(R.string.view_forums), FragmentFactory.Type.FORUM_LISTING));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, getString(R.string.saved_threads)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, getString(R.string.navigationdrawer_view_forums), FragmentFactory.Type.FORUM_LISTING));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, getString(R.string.navigationdrawer_saved_threads)));
         return items;
     }
 
