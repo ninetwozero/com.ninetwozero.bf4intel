@@ -50,6 +50,7 @@
   <string name="soldier_quick_stats">Quick Statistics</string>
   <string name="soldier_detailed_stats">In-depth Statistics</string>
   <string name="soldier_skill">Skill</string>
+  <string name="soldier_completion">Completion level</string>
   <string name="profile_information_header">Basic Information</string>
   <string name="profile_presentation_header">Presentation</string>
   <string name="progress">Progress</string>

@@ -218,28 +218,28 @@
       </TableLayout>
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
       style="@style/SoldierInfoBox"
       android:id="@+id/wrap_detailed_scores"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="0dp">
+      android:layout_marginBottom="0dp"
+      android:orientation="vertical">
 
       <TextView
         style="@style/heading"
         android:id="@+id/heading_detailed_scores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/soldier_detailed_stats"/>
+        android:text="@string/soldier_completion"/>
 
-      <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="DETAILED STATS HERE"
-        android:gravity="center"
-        android:layout_below="@id/heading_detailed_scores"
-        android:textAppearance="@android:style/TextAppearance.Holo.Large"/>
-    </RelativeLayout>
+      <include layout="@layout/list_item_soldier_completion" />
+      <include layout="@layout/list_item_soldier_completion" />
+      <include layout="@layout/list_item_soldier_completion" />
+      <include layout="@layout/list_item_soldier_completion" />
+      <include layout="@layout/list_item_soldier_completion" />
+      <include layout="@layout/list_item_soldier_completion" />
+    </LinearLayout>
 
     <!-- TODO: This should probably (maybe) be ListRow'd -->
 
