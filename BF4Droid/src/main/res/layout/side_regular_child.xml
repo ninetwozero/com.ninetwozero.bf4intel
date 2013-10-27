@@ -4,4 +4,5 @@
   android:id="@+id/text1"
   android:textAppearance="@android:style/TextAppearance.Holo.Inverse"
   android:paddingLeft="24dp"
-  android:paddingRight="24dp" />
+  android:paddingRight="24dp"
+  android:gravity="left|center"/>

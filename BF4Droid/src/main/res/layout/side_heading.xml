@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/text1"
-  android:padding="8dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
-  android:textAllCaps="true"
-  android:background="@drawable/slidingmenu_heading_selector"
-  android:textColor="@color/slidingmenu_heading_selector" />
+  android:orientation="vertical"
+  android:gravity="left|bottom"
+>
+  <TextView android:id="@+id/text1"
+    android:paddingTop="@dimen/spacing_single"
+    android:paddingRight="@dimen/spacing_single"
+    android:paddingBottom="@dimen/spacing_half"
+    android:paddingLeft="@dimen/spacing_single"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
+    android:textAllCaps="true"
+    android:background="@drawable/slidingmenu_heading_selector"
+    android:textColor="@color/slidingmenu_heading_selector" />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:background="@android:color/white" />
+</LinearLayout>

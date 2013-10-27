@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ninetwozero.battlelog.R;
-import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
+import com.ninetwozero.battlelog.abstractions.BaseListFragment;
 import com.ninetwozero.battlelog.activities.SingleFragmentActivity;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
 import com.ninetwozero.battlelog.factories.FragmentFactory;
@@ -20,7 +20,7 @@ import com.ninetwozero.battlelog.factories.FragmentFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ThreadListingFragment extends AbstractListFragment {
+public class ThreadListingFragment extends BaseListFragment {
     public static final String FORUM_ID = "forumId";
     private long mForumId;
 
@@ -30,6 +30,12 @@ public class ThreadListingFragment extends AbstractListFragment {
     public static ThreadListingFragment newInstance() {
         final ThreadListingFragment fragment = new ThreadListingFragment();
         fragment.setArguments(new Bundle());
+        return fragment;
+    }
+
+    public static ThreadListingFragment newInstance(final Bundle data) {
+        final ThreadListingFragment fragment = new ThreadListingFragment();
+        fragment.setArguments(data);
         return fragment;
     }
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ninetwozero.battlelog.R;
 import com.ninetwozero.battlelog.abstractions.BaseListFragment;
@@ -15,18 +16,18 @@ import com.ninetwozero.battlelog.factories.ListRowFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoldierOverviewFragment extends BaseListFragment {
-    public SoldierOverviewFragment() {
+public class SoldierStatsFragment extends BaseListFragment {
+    public SoldierStatsFragment() {
     }
 
-    public static SoldierOverviewFragment newInstance() {
-        final SoldierOverviewFragment fragment = new SoldierOverviewFragment();
+    public static SoldierStatsFragment newInstance() {
+        final SoldierStatsFragment fragment = new SoldierStatsFragment();
         fragment.setArguments(new Bundle());
         return fragment;
     }
 
-    public static SoldierOverviewFragment newInstance(final Bundle data) {
-        final SoldierOverviewFragment fragment = new SoldierOverviewFragment();
+    public static SoldierStatsFragment newInstance(final Bundle data) {
+        final SoldierStatsFragment fragment = new SoldierStatsFragment();
         fragment.setArguments(data);
         return fragment;
     }
@@ -35,7 +36,7 @@ public class SoldierOverviewFragment extends BaseListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = mInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
+        final View view = mInflater.inflate(R.layout.fragment_soldier_stats, parent, false);
         initialize(view);
         return view;
     }
@@ -44,7 +45,11 @@ public class SoldierOverviewFragment extends BaseListFragment {
         final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getActivity(), getItemsForMenu());
         // TODO: setListAdapter(slidingMenuAdapter);
 
-        updateActionBar(getActivity(), "NINETWOZERO", R.drawable.test_soldier);
+        final Bundle arguments = getArguments();
+        if( arguments != null ) {
+            ((TextView) view.findViewById(R.id.internal_title)).setText(arguments.getString("TEST"));
+        }
+
     }
 
     private List<ListRow> getItemsForMenu() {

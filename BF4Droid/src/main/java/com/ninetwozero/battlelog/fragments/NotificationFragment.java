@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ninetwozero.battlelog.R;
-import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
+import com.ninetwozero.battlelog.abstractions.BaseListFragment;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationFragment extends AbstractListFragment {
+public class NotificationFragment extends BaseListFragment {
     public static final String FORUM_ID = "forumId";
 
     public NotificationFragment() {
@@ -22,6 +22,12 @@ public class NotificationFragment extends AbstractListFragment {
     public static NotificationFragment newInstance() {
         final NotificationFragment fragment = new NotificationFragment();
         fragment.setArguments(new Bundle());
+        return fragment;
+    }
+
+    public static NotificationFragment newInstance(final Bundle data) {
+        final NotificationFragment fragment = new NotificationFragment();
+        fragment.setArguments(data);
         return fragment;
     }
 

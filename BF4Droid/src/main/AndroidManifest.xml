@@ -24,7 +24,16 @@
     </activity>
     <activity
       android:name="com.ninetwozero.battlelog.activities.SingleFragmentActivity"
-      android:label="@string/title_activity_single_fragment"
+      android:label="@string/title_activity_soldier_statistics"
+      android:parentActivityName="com.ninetwozero.battlelog.activities.MainActivity"
+      android:theme="@style/AppTheme">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value="com.ninetwozero.battlelog.activities.MainActivity" />
+    </activity>
+    <activity
+      android:name="com.ninetwozero.battlelog.activities.SoldierStatisticsActivity"
+      android:label="@string/title_activity_soldier_statistics"
       android:parentActivityName="com.ninetwozero.battlelog.activities.MainActivity"
       android:theme="@style/AppTheme">
       <meta-data

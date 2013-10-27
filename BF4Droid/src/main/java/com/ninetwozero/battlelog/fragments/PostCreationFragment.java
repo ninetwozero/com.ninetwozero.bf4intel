@@ -26,6 +26,12 @@ public class PostCreationFragment extends AbstractFragment {
         return fragment;
     }
 
+    public static PostCreationFragment newInstance(final Bundle data) {
+        final PostCreationFragment fragment = new PostCreationFragment();
+        fragment.setArguments(data);
+        return fragment;
+    }
+
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);

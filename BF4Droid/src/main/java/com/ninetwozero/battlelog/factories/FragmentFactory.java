@@ -12,6 +12,7 @@ public class FragmentFactory {
         SOLDIER_OVERVIEW,
         SOLDIER_STATS,
         SOLDIER_UNLOCKS,
+        SOLDIER_ASSIGNMENTS,
 
         BATTLE_FEED,
         BATTLE_FEED_POSTING,
@@ -37,31 +38,37 @@ public class FragmentFactory {
     public static Fragment get(final Type type, final Bundle data) {
         switch (type) {
             case ACCOUNT_PROFILE:
-                return AccountProfileFragment.newInstance();
+                return AccountProfileFragment.newInstance(data);
             case BATTLE_FEED:
-                return BattleFeedFragment.newInstance();
+                return BattleFeedFragment.newInstance(data);
             case PLATOON_PROFILE:
-                return PlatoonProfileFragment.newInstance();
+                return PlatoonProfileFragment.newInstance(data);
             case SOLDIER_OVERVIEW:
-                return SoldierOverviewFragment.newInstance();
+                return SoldierOverviewFragment.newInstance(data);
+            case SOLDIER_STATS:
+                return SoldierStatsFragment.newInstance(data);
+            //case SOLDIER_UNLOCKS:
+            //    return SoldierOverviewFragment.newInstance(data);
+            case SOLDIER_ASSIGNMENTS:
+                return AssignmentListFragment.newInstance(data);
             case NEWS_LISTING:
-                return NewsListingFragment.newInstance();
+                return NewsListingFragment.newInstance(data);
             case NEWS_ITEM:
                 return NewsArticleFragment.newInstance(data);
             case BATTLE_FEED_POSTING:
-                return BattleFeedPostingFragment.newInstance();
+                return BattleFeedPostingFragment.newInstance(data);
             case FORUM_LISTING:
-                return ForumListingFragment.newInstance();
+                return ForumListingFragment.newInstance(data);
             case THREAD_LISTING:
-                return ThreadListingFragment.newInstance();
+                return ThreadListingFragment.newInstance(data);
             case THREAD_CREATING:
-                return ThreadCreationFragment.newInstance();
+                return ThreadCreationFragment.newInstance(data);
             case POST_LISTING:
-                return PostListingFragment.newInstance();
+                return PostListingFragment.newInstance(data);
             case POST_CREATING:
-                return PostCreationFragment.newInstance();
+                return PostCreationFragment.newInstance(data);
             case NOTIFICATION:
-                return NotificationFragment.newInstance();
+                return NotificationFragment.newInstance(data);
             default:
                 throw new TypeNotPresentException("" + type, null);
         }

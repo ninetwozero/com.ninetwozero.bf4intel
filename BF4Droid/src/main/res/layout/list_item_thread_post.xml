@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:padding="8dp">
+  android:padding="@dimen/spacing_single">
 
   <LinearLayout
     android:id="@+id/wrap_user"
@@ -23,7 +23,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="NINETWOZERO"
-      android:layout_marginLeft="3dp"
+      android:layout_marginLeft="@dimen/spacing_half"
       android:textColor="@color/blue"
       android:textAppearance="@android:style/TextAppearance.Holo" />
   </LinearLayout>
@@ -33,7 +33,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/wrap_user"
-    android:layout_marginTop="4dp"
+    android:layout_marginTop="@dimen/spacing_half"
     android:textAppearance="@android:style/TextAppearance.Holo"
     android:text="Bladabalablabadadadaldadalada\nldladldal" />
 

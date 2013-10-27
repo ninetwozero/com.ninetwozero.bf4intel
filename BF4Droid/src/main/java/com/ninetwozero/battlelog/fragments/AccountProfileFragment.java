@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ninetwozero.battlelog.R;
-import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
+import com.ninetwozero.battlelog.abstractions.BaseListFragment;
 import com.ninetwozero.battlelog.adapters.ListRowAdapter;
 import com.ninetwozero.battlelog.datatypes.ListRow;
 import com.ninetwozero.battlelog.datatypes.ListRowType;
@@ -15,13 +15,19 @@ import com.ninetwozero.battlelog.factories.ListRowFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountProfileFragment extends AbstractListFragment {
+public class AccountProfileFragment extends BaseListFragment {
     public AccountProfileFragment() {
     }
 
     public static AccountProfileFragment newInstance() {
         final AccountProfileFragment fragment = new AccountProfileFragment();
         fragment.setArguments(new Bundle());
+        return fragment;
+    }
+
+    public static AccountProfileFragment newInstance(final Bundle data) {
+        final AccountProfileFragment fragment = new AccountProfileFragment();
+        fragment.setArguments(data);
         return fragment;
     }
 

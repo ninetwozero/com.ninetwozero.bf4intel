@@ -15,7 +15,7 @@
     android:layout_height="wrap_content"
     android:textAppearance="@android:style/TextAppearance.Holo.Medium.Inverse"
     android:layout_toRightOf="@id/platoon_image"
-    android:layout_marginLeft="8dp" />
+    android:layout_marginLeft="@dimen/spacing_single" />
 
   <ImageView
     android:id="@+id/platoon_platform"
@@ -23,6 +23,6 @@
     android:layout_height="11dp"
     android:layout_below="@id/platoon_name"
     android:layout_toRightOf="@id/platoon_image"
-    android:layout_marginLeft="8dp"
+    android:layout_marginLeft="@dimen/spacing_single"
     android:contentDescription="@string/cdesc_platform_icon" />
 </RelativeLayout>

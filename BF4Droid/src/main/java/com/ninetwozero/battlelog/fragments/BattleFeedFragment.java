@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.*;
 
 import com.ninetwozero.battlelog.R;
-import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
+import com.ninetwozero.battlelog.abstractions.BaseListFragment;
 import com.ninetwozero.battlelog.activities.SingleFragmentActivity;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
 import com.ninetwozero.battlelog.factories.FragmentFactory;
@@ -13,13 +13,19 @@ import com.ninetwozero.battlelog.factories.FragmentFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BattleFeedFragment extends AbstractListFragment {
+public class BattleFeedFragment extends BaseListFragment {
     public BattleFeedFragment() {
     }
 
     public static BattleFeedFragment newInstance() {
         final BattleFeedFragment fragment = new BattleFeedFragment();
         fragment.setArguments(new Bundle());
+        return fragment;
+    }
+
+    public static BattleFeedFragment newInstance(final Bundle data) {
+        final BattleFeedFragment fragment = new BattleFeedFragment();
+        fragment.setArguments(data);
         return fragment;
     }
 

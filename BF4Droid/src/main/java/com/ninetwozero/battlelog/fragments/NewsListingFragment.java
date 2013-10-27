@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ninetwozero.battlelog.R;
-import com.ninetwozero.battlelog.abstractions.AbstractListFragment;
+import com.ninetwozero.battlelog.abstractions.BaseListFragment;
 import com.ninetwozero.battlelog.activities.SingleFragmentActivity;
 import com.ninetwozero.battlelog.adapters.FeedAdapter;
 import com.ninetwozero.battlelog.factories.FragmentFactory;
@@ -17,13 +17,19 @@ import com.ninetwozero.battlelog.factories.FragmentFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsListingFragment extends AbstractListFragment {
+public class NewsListingFragment extends BaseListFragment {
     public NewsListingFragment() {
     }
 
     public static NewsListingFragment newInstance() {
         final NewsListingFragment fragment = new NewsListingFragment();
         fragment.setArguments(new Bundle());
+        return fragment;
+    }
+
+    public static NewsListingFragment newInstance(final Bundle data) {
+        final NewsListingFragment fragment = new NewsListingFragment();
+        fragment.setArguments(data);
         return fragment;
     }
 

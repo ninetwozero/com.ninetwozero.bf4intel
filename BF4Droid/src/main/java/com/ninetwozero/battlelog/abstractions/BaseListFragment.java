@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-public abstract class AbstractListFragment extends ListFragment {
+public abstract class BaseListFragment extends ListFragment {
     private static Toast mToast;
 
     protected FragmentManager mFragmentManager;
@@ -35,7 +35,16 @@ public abstract class AbstractListFragment extends ListFragment {
         }
 
         final ActionBar actionBar = activity.getActionBar();
-        actionBar.setTitle(text);
+        actionBar.setTitle(text.toUpperCase());
+    }
+
+    protected void updateActionBar(final Activity activity, final int resource) {
+        if( activity == null ) {
+            return;
+        }
+
+        final ActionBar actionBar = activity.getActionBar();
+        actionBar.setTitle(getString(resource).toUpperCase());
     }
 
     protected void updateActionBar(final Activity activity, final String text, final int icon) {
@@ -44,7 +53,17 @@ public abstract class AbstractListFragment extends ListFragment {
         }
 
         final ActionBar actionBar = activity.getActionBar();
-        actionBar.setTitle(text);
+        actionBar.setTitle(text.toUpperCase());
+        actionBar.setIcon(icon);
+    }
+
+    protected void updateActionBar(final Activity activity, final int text, final int icon) {
+        if (activity == null) {
+            return;
+        }
+
+        final ActionBar actionBar = activity.getActionBar();
+        actionBar.setTitle(getString(text).toUpperCase());
         actionBar.setIcon(icon);
     }
 

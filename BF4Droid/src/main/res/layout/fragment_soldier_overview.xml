@@ -4,7 +4,7 @@
   android:layout_height="match_parent"
   android:background="@drawable/test_soldier_bg"
   android:orientation="vertical"
-  android:padding="8dp">
+  android:padding="@dimen/spacing_single">
 
   <TextView
     android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
       android:layout_height="64dp"
       android:src="@drawable/test_rank31"
       android:layout_alignParentRight="true"
-      android:layout_marginTop="16dp"
+      android:layout_marginTop="@dimen/spacing_double"
       android:contentDescription="@string/cdesc_rank_image" />
 
     <ProgressBar
@@ -132,6 +132,8 @@
       android:layout_below="@id/heading_detailed_scores"
       android:textAppearance="@android:style/TextAppearance.Holo.Large" />
   </RelativeLayout>
+
+  <!-- TODO: This should probably (maybe) be ListRow'd -->
 
   <ListView
     android:id="@android:id/list"

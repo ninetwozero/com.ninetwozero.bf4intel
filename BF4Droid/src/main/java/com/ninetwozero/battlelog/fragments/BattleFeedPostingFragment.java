@@ -20,6 +20,12 @@ public class BattleFeedPostingFragment extends AbstractFragment {
         return fragment;
     }
 
+    public static BattleFeedPostingFragment newInstance(final Bundle data) {
+        final BattleFeedPostingFragment fragment = new BattleFeedPostingFragment();
+        fragment.setArguments(data);
+        return fragment;
+    }
+
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
