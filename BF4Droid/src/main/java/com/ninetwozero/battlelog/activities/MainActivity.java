@@ -81,7 +81,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
             }
         };
 
-        if (!mUserLearnedDrawer /*&& !mFromSavedInstanceState*/) {
+        if (!mUserLearnedDrawer) {
             mDrawerLayout.openDrawer(mFragmentContainerView);
         }
 

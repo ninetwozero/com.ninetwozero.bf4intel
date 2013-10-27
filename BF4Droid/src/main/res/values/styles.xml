@@ -68,6 +68,7 @@
     <item name="android:paddingBottom">@dimen/spacing_single</item>
     <item name="android:paddingLeft">@dimen/spacing_single</item>
     <item name="android:background">?android:attr/activatedBackgroundIndicator</item>
+    <item name="android:textAllCaps">true</item>
   </style>
 
   <!-- FEED -->
