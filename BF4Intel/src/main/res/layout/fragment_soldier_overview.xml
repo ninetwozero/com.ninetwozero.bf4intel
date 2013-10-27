@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@drawable/test_soldier_bg"
   android:orientation="vertical"
   android:padding="@dimen/spacing_single">
-
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="@android:style/TextAppearance.Holo.Large"
-    android:textColor="@color/blue"
-    android:text="NINETWOZERO" />
 
   <RelativeLayout
     android:id="@+id/wrap_progress"
@@ -19,11 +12,20 @@
     android:layout_height="wrap_content">
 
     <TextView
+      android:id="@+id/soldier_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo.Large"
+      android:textColor="@color/blue"
+      android:text="NINETWOZERO"/>
+
+    <TextView
       style="@style/heading"
       android:id="@+id/heading_progress"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="PROGRESS" />
+      android:text="@string/progress"
+      android:layout_below="@id/soldier_name"/>
 
     <TextView
       android:id="@+id/current_rank_title"
@@ -31,7 +33,7 @@
       android:layout_height="wrap_content"
       android:text="MASTER GUNNERY SERGEANT 2 STAR"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:layout_below="@id/heading_progress" />
+      android:layout_below="@id/heading_progress"/>
 
     <ImageView
       android:id="@+id/image_rank"
@@ -39,8 +41,8 @@
       android:layout_height="64dp"
       android:src="@drawable/test_rank31"
       android:layout_alignParentRight="true"
-      android:layout_marginTop="@dimen/spacing_double"
-      android:contentDescription="@string/cdesc_rank_image" />
+      android:layout_marginTop="36dp"
+      android:contentDescription="@string/cdesc_rank_image"/>
 
     <ProgressBar
       style="?android:attr/progressBarStyleHorizontal"
@@ -49,7 +51,7 @@
       android:layout_height="wrap_content"
       android:layout_toLeftOf="@id/image_rank"
       android:layout_below="@id/current_rank_title"
-      android:indeterminate="false" />
+      android:indeterminate="false"/>
 
     <TextView
       android:id="@+id/value_rank_progress"
@@ -58,7 +60,7 @@
       android:text="29,613/50,000"
       android:layout_below="@id/progress_rank"
       android:layout_alignLeft="@id/progress_rank"
-      android:textAppearance="@android:style/TextAppearance.Holo" />
+      android:textAppearance="@android:style/TextAppearance.Holo"/>
 
     <TextView
       android:id="@+id/value_rank_left"
@@ -67,29 +69,52 @@
       android:text="@string/soldier_left_until_rankup"
       android:layout_below="@id/progress_rank"
       android:layout_alignRight="@id/progress_rank"
-      android:textAppearance="@android:style/TextAppearance.Holo.Small" />
+      android:textAppearance="@android:style/TextAppearance.Holo.Small"/>
   </RelativeLayout>
 
-  <RelativeLayout
+  <LinearLayout
     android:id="@+id/wrap_service_stars"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
       style="@style/heading"
       android:id="@+id/heading_service_stars"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="@string/service_stars" />
+      android:text="@string/service_stars"/>
 
-    <TextView
+    <include
+      layout="@layout/list_item_service_stars"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="SERVICE STARS HERE"
-      android:gravity="center"
-      android:layout_below="@id/heading_service_stars"
-      android:textAppearance="@android:style/TextAppearance.Holo.Large" />
-  </RelativeLayout>
+      />
+
+    <include
+      layout="@layout/list_item_service_stars"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      />
+
+    <include
+      layout="@layout/list_item_service_stars"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      />
+
+    <include
+      layout="@layout/list_item_service_stars"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      />
+
+    <include
+      layout="@layout/list_item_service_stars"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      />
+  </LinearLayout>
 
   <RelativeLayout
     android:id="@+id/wrap_average_scores"
@@ -101,7 +126,7 @@
       android:id="@+id/heading_average_scores"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="@string/soldier_quick_stats" />
+      android:text="@string/soldier_quick_stats"/>
 
     <TextView
       android:layout_width="match_parent"
@@ -109,7 +134,7 @@
       android:text="QUICK STATS HERE"
       android:gravity="center"
       android:layout_below="@id/heading_average_scores"
-      android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+      android:textAppearance="@android:style/TextAppearance.Holo.Large"/>
   </RelativeLayout>
 
   <RelativeLayout
@@ -122,7 +147,7 @@
       android:id="@+id/heading_detailed_scores"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="@string/soldier_detailed_stats" />
+      android:text="@string/soldier_detailed_stats"/>
 
     <TextView
       android:layout_width="match_parent"
@@ -130,7 +155,7 @@
       android:text="DETAILED STATS HERE"
       android:gravity="center"
       android:layout_below="@id/heading_detailed_scores"
-      android:textAppearance="@android:style/TextAppearance.Holo.Large" />
+      android:textAppearance="@android:style/TextAppearance.Holo.Large"/>
   </RelativeLayout>
 
   <!-- TODO: This should probably (maybe) be ListRow'd -->
@@ -138,10 +163,10 @@
   <ListView
     android:id="@android:id/list"
     android:layout_width="0dp"
-    android:layout_height="0dp" />
+    android:layout_height="0dp"/>
 
   <TextView
     android:id="@android:id/empty"
     android:layout_width="0dp"
-    android:layout_height="0dp" />
+    android:layout_height="0dp"/>
 </LinearLayout>
