@@ -37,7 +37,8 @@ public class SoldierOverviewFragment extends BaseFragment {
     }
 
     private void initialize(final View view) {
-        updateActionBar(getActivity(), "NINETWOZERO", R.drawable.test_soldier);
+        updateActionBar(getActivity(), "Loading...");
+        displayInformation(view );
     }
 
     private void displayInformation() {
@@ -45,6 +46,11 @@ public class SoldierOverviewFragment extends BaseFragment {
         if (baseView == null ) {
             return;
         }
+        displayInformation(baseView);
+    }
+
+    private void displayInformation(final View baseView) {
+        updateActionBar(getActivity(), "Some username", R.drawable.test_soldier);
 
         displayGeneralInformation(baseView);
         displayServiceStars(baseView);
@@ -54,18 +60,17 @@ public class SoldierOverviewFragment extends BaseFragment {
 
     private void displayGeneralInformation(final View baseView) {
         final View root = baseView.findViewById(R.id.wrap_soldier_general);
+        final ProgressBar progressBar = (ProgressBar) baseView.findViewById(R.id.progress_rank);
 
         ((TextView) root.findViewById(R.id.soldier_name)).setText("Some username");
         ((TextView) root.findViewById(R.id.current_rank_title)).setText("Test Rank Title 1234567");
         ((TextView) root.findViewById(R.id.value_rank_progress)).setText(
             String.format(getString(R.string.generic_x_of_y), 12345, 56789)
         );
-        ((TextView) root.findViewById(R.id.value_rank_left)).setText(
-            String.format(getString(R.string.soldier_left_until_rankup), 56789-12345)
-        );
-
         ((ImageView) root.findViewById(R.id.image_rank)).setImageResource(R.drawable.test_rank31);
-        ((ImageView) root.findViewById(R.id.soldier_image)).setImageResource(R.drawable.test_soldier);
+
+        progressBar.setProgress(1337);
+        progressBar.setMax(2674);
     }
 
     private void displayServiceStars(final View baseView) {
@@ -86,14 +91,14 @@ public class SoldierOverviewFragment extends BaseFragment {
 
     private void displaySkills(final View baseView) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_skills);
-        // TODO
+
     }
 
     private void displayCompletions(final View baseView) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_completions);
         root.removeAllViews();
 
-        for (int i = 0, max = 5; i < max; i++) {
+        for (int i = 0, max = 8; i < max; i++) {
             final View parent = mInflater.inflate(R.layout.list_item_soldier_completion,  null, false);
             final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
 

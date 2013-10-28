@@ -19,28 +19,38 @@
       android:layout_height="wrap_content">
 
       <TextView
+        style="@style/heading"
+        android:id="@+id/heading_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/navigationdrawer_overview"/>
+
+      <TextView
         android:id="@+id/soldier_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo.Large"
         android:textColor="@color/blue"
-        android:text="NINETWOZERO"/>
+        android:text="xBOSS_der_BOSSEx"
+        android:layout_below="@id/heading_progress"/>
 
-      <TextView
-        style="@style/heading"
-        android:id="@+id/heading_progress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/progress"
-        android:layout_below="@id/soldier_name"/>
+      <ImageView
+        android:id="@+id/image_rank"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/test_rank31"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/cdesc_rank_image"/>
+
 
       <TextView
         android:id="@+id/current_rank_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MASTER GUNNERY SERGEANT 2 STAR"
-        android:textAppearance="@android:style/TextAppearance.Holo"
-        android:layout_below="@id/heading_progress"/>
+        android:textAppearance="@android:style/TextAppearance.Holo.Small"
+        android:layout_below="@id/image_rank"
+        android:textAllCaps="true"/>
 
       <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
@@ -51,38 +61,11 @@
         android:indeterminate="false"/>
 
       <TextView
+        style="@style/heading"
         android:id="@+id/value_rank_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="29,613/50,000"
         android:layout_below="@id/progress_rank"
-        android:layout_alignLeft="@id/progress_rank"
-        android:textAppearance="@android:style/TextAppearance.Holo"/>
-
-      <TextView
-        android:id="@+id/value_rank_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/soldier_left_until_rankup"
-        android:layout_below="@id/progress_rank"
-        android:layout_alignRight="@id/progress_rank"
-        android:textAppearance="@android:style/TextAppearance.Holo.Small"/>
-
-      <ImageView
-        android:id="@+id/image_rank"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:src="@drawable/test_rank31"
-        android:layout_alignParentRight="true"
-        android:contentDescription="@string/cdesc_rank_image"/>
-
-      <ImageView
-        android:id="@+id/soldier_icon"
-        android:layout_height="36dp"
-        android:layout_width="36dp"
-        android:src="@drawable/test_soldier"
-        android:layout_toLeftOf="@id/image_rank"/>
-
+        android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -231,6 +214,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/soldier_completion"/>
+
+      <include layout="@layout/list_item_soldier_completion"/>
+
+      <include layout="@layout/list_item_soldier_completion"/>
 
       <include layout="@layout/list_item_soldier_completion"/>
 
