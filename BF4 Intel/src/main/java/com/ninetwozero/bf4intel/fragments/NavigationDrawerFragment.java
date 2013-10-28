@@ -132,8 +132,8 @@ public class NavigationDrawerFragment extends BaseListFragment {
         mListView.setOnGroupClickListener(
                 new ExpandableListView.OnGroupClickListener() {
                     @Override
-                    public boolean onGroupClick(final ExpandableListView listView, final View view, final int group, final long id) {
-                        return onGroupItemClick(listView, view, group);
+                    public boolean onGroupClick(final ExpandableListView expandableListView, final View view, final int group, final long id) {
+                        return onGroupItemClick(expandableListView, view, group);
                     }
                 }
         );
