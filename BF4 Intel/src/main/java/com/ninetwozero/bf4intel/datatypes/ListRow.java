@@ -83,6 +83,7 @@ public class ListRow {
     public boolean hasChildren() {
         return mChildren == null? false : mChildren.size() > 0;
     }
+    
     public static class Builder {
         // Required
         private final ListRowType type;

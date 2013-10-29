@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.ListFragment;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,12 @@ public abstract class BaseListFragment extends ListFragment {
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         setRetainInstance(true);
+        mFragmentManager = getFragmentManager();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         mFragmentManager = getFragmentManager();
     }
 

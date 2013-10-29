@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -50,19 +51,14 @@ public class NavigationDrawerFragment extends BaseListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (savedInstanceState != null) {
-            mCurrentSelectedGroupPosition = savedInstanceState.getInt(STATE_SELECTED_GROUP);
-            mCurrentSelectedChildPosition = savedInstanceState.getInt(STATE_SELECTED_CHILD);
-            mCurrentSelectionIsGroup = savedInstanceState.getBoolean(STATE_SELECTION_IS_GROUP, true);
-        }
+        setRetainInstance(false);
         setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
         final View baseView = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-        initialize(baseView);
+        initialize(baseView, savedState);
         return baseView;
     }
 
@@ -86,7 +82,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(STATE_SELECTED_GROUP, mCurrentSelectedGroupPosition);
-        outState.putInt(STATE_SELECTED_CHILD, mCurrentSelectedGroupPosition);
+        outState.putInt(STATE_SELECTED_CHILD, mCurrentSelectedChildPosition);
         outState.putBoolean(STATE_SELECTION_IS_GROUP, mCurrentSelectionIsGroup);
     }
 
@@ -101,19 +97,35 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.ab_action_settings:
-                Toast.makeText(getActivity(), "Settings...", Toast.LENGTH_SHORT).show();
-                return true;
+        final Activity activity = getActivity();
+        if (activity != null) {
+            switch (item.getItemId()) {
+                case R.id.ab_action_settings:
+                    Toast.makeText(activity, "Settings...", Toast.LENGTH_SHORT).show();
+                    return true;
+            }
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    private void initialize(final View view) {
+    @Override
+    public void onResume() {
+        super.onResume();
+        selectItemFromState(mCurrentSelectedGroupPosition, mCurrentSelectedChildPosition, mCurrentSelectionIsGroup); // Put this where?
+    }
+
+    private void initialize(final View view, final Bundle state) {
+        setupDataFromState(state);
         setupRegularViews(view);
         setupListView(view);
-        selectItemFromState(mCurrentSelectedGroupPosition, mCurrentSelectedChildPosition, mCurrentSelectionIsGroup);
+    }
+
+    private void setupDataFromState(final Bundle state) {
+        if (state != null) {
+            mCurrentSelectedGroupPosition = state.getInt(STATE_SELECTED_GROUP);
+            mCurrentSelectedChildPosition = state.getInt(STATE_SELECTED_CHILD);
+            mCurrentSelectionIsGroup = state.getBoolean(STATE_SELECTION_IS_GROUP, true);
+        }
     }
 
     private void setupRegularViews(final View view) {
@@ -133,7 +145,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 new ExpandableListView.OnGroupClickListener() {
                     @Override
                     public boolean onGroupClick(final ExpandableListView expandableListView, final View view, final int group, final long id) {
-                        return onGroupItemClick(expandableListView, view, group);
+                        return onGroupItemClick(expandableListView, group);
                     }
                 }
         );
@@ -148,15 +160,15 @@ public class NavigationDrawerFragment extends BaseListFragment {
         );
     }
 
-    private boolean onGroupItemClick(final ExpandableListView listView, final View view, final int position) {
+    private boolean onGroupItemClick(final ExpandableListView listView, final int position) {
         final int positionOfGroup = listView.getFlatListPosition(ExpandableListView.getPackedPositionForGroup(position));
         final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getGroup(position);
         if (item.getType() == ListRowType.SIDE_HEADING) {
             return true;
         }
 
-        selectItem(item, positionOfGroup, !item.hasChildren());
-        storePositionState(positionOfGroup, 0, true);
+        selectItem(item, positionOfGroup, !item.hasChildren(), false);
+        storePositionState(positionOfGroup, -1, true);
         return false;
     }
 
@@ -164,7 +176,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         final int positionOfChild = listView.getFlatListPosition(ExpandableListView.getPackedPositionForChild(group, child));
         final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getChild(group, child);
 
-        selectItem(item, positionOfChild, true);
+        selectItem(item, positionOfChild, true, false);
         storePositionState(group, child, false);
         return false;
     }
@@ -227,15 +239,15 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
         if( isGroup ) {
             row = adapter.getGroup(group);
-            position = mListView.getFlatListPosition(ExpandableListView.getPackedPositionGroup(group));
+            position = mListView.getFlatListPosition(mListView.getPackedPositionForGroup(group));
         } else {
             row = adapter.getChild(group, child);
-            position = mListView.getFlatListPosition(ExpandableListView.getPackedPositionChild(child));
+            position = mListView.getFlatListPosition(mListView.getPackedPositionForChild(group, child));
         }
-        selectItem(row, position, true);
+        selectItem(row, position, true, true);
     }
 
-    private void selectItem(final ListRow item, final int position, final boolean closeDrawer) {
+    private void selectItem(final ListRow item, final int position, final boolean closeDrawer, final boolean isOnResume) {
         if (mListView != null) {
             mListView.setItemChecked(position, true);
         }
@@ -244,17 +256,17 @@ public class NavigationDrawerFragment extends BaseListFragment {
             mCallbacks.onNavigationDrawerItemSelected(position, item.getTitle());
         }
 
-        startItem(item);
+        startItem(item, isOnResume);
     }
 
-    private void startItem(final ListRow item) {
-        if (item.hasIntent()) {
+    private void startItem(final ListRow item, final boolean isOnResume) {
+        if (item.hasIntent() && !isOnResume) {
             startActivity(item.getIntent());
         } else if (item.hasFragmentType()) {
             try {
                 final FragmentTransaction transaction = mFragmentManager.beginTransaction();
                 transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType()));
-                transaction.commitAllowingStateLoss();
+                transaction.commit();
             } catch (TypeNotPresentException ex) {
                 showToast(ex.getMessage());
             }
