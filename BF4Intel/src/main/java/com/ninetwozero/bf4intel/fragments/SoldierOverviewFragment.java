@@ -1,15 +1,21 @@
 package com.ninetwozero.bf4intel.fragments;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.abstractions.BaseFragment;
+import com.ninetwozero.bf4intel.datatypes.ListRow;
 
 public class SoldierOverviewFragment extends BaseFragment {
     public SoldierOverviewFragment() {
@@ -100,7 +106,33 @@ public class SoldierOverviewFragment extends BaseFragment {
 
     private void displaySkills(final View baseView) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_skills);
+        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.skills_table);
+        final Activity activity = getActivity();
+        final TableLayout.LayoutParams rowLayoutParams = new TableLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        final TableRow.LayoutParams cellLayoutParams = new TableRow.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            1f
+        );
 
+        contentArea.removeAllViews();
+        ((TextView) root.findViewById(R.id.rating)).setText(String.valueOf(164));
+        for (int i = 0, maxRows = 2; i < maxRows; i++) {
+            final TableRow tableRow = new TableRow(activity);
+            tableRow.setLayoutParams(rowLayoutParams);
+            tableRow.setWeightSum(3f);
+
+            for (int j = 0, maxCols = 3; j < maxCols; j++) {
+                final View cell = mInflater.inflate(R.layout.list_item_soldier_skills, null, false);
+                ((TextView) cell.findViewById(R.id.title)).setText("Title " + i + "x" + j);
+                ((TextView) cell.findViewById(R.id.value)).setText("999,999,990");
+                tableRow.addView(cell, cellLayoutParams);
+            }
+            contentArea.addView(tableRow);
+        }
     }
 
     private void displayCompletions(final View baseView) {
