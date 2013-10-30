@@ -17,6 +17,8 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.abstractions.BaseFragment;
 import com.ninetwozero.bf4intel.datatypes.ListRow;
 
+import java.util.Random;
+
 public class SoldierOverviewFragment extends BaseFragment {
     public SoldierOverviewFragment() {
     }
@@ -43,8 +45,7 @@ public class SoldierOverviewFragment extends BaseFragment {
     }
 
     private void initialize(final View view) {
-        updateActionBar(getActivity(), "Loading...");
-        displayInformation(view );
+        displayInformation(view);
     }
 
     private void displayInformation() {
@@ -56,12 +57,14 @@ public class SoldierOverviewFragment extends BaseFragment {
     }
 
     private void displayInformation(final View baseView) {
-
         displayGeneralInformation(baseView);
         displayServiceStars(baseView);
         displaySkills(baseView);
+        displayToplist(baseView, R.id.wrap_soldier_top3_weapons, new String[] {"M40A3", "SUPER KNIFE", "VIDEO GAME CONTROLLER"});
+        displayToplist(baseView, R.id.wrap_soldier_top3_vehicles, new String[] {"DV-15", "LAV-25", "UH-1Y VENOM"});
         displayCompletions(baseView);
-        updateActionBar(getActivity(), "Some soldier name", R.drawable.test_soldier);
+
+        updateActionBarIcon(getActivity(), R.drawable.test_soldier);
     }
 
     private void displayGeneralInformation(final View baseView) {
@@ -135,22 +138,49 @@ public class SoldierOverviewFragment extends BaseFragment {
         }
     }
 
+    private void displayToplist(final View baseView, final int wrapId, final String[] titles) {
+        final ViewGroup root = (ViewGroup) baseView.findViewById(wrapId);
+        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
+        contentArea.removeAllViews();
+
+        final Random random = new Random();
+        int topValue = 10000;
+        for (int i = 0, max = 3; i < max; i++) {
+            final View parent = mInflater.inflate(R.layout.list_item_soldier_toplist,  null, false);
+            topValue = random.nextInt(topValue);
+
+            ((TextView) parent.findViewById(R.id.title)).setText(titles[i]);
+            ((TextView) parent.findViewById(R.id.value)).setText(
+                    String.format(getString(R.string.soldier_num_kills), topValue)
+            );
+            contentArea.addView(parent);
+        }
+    }
+
     private void displayCompletions(final View baseView) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_completions);
         final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
         contentArea.removeAllViews();
 
+        final String titles[] = new String[] {
+            "Campaign", "Assignments", "Medals",
+            "Ribbons", "Weapons", "Vehicle Unlocks",
+            "Kits", "Dog tags"
+        };
+        final Random random = new Random();
         for (int i = 0, max = 8; i < max; i++) {
             final View parent = mInflater.inflate(R.layout.list_item_soldier_completion,  null, false);
             final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
+            final int topValue = random.nextInt(500);
+            final int currValue = random.nextInt(topValue);
 
-            progressBar.setProgress(13);
-            progressBar.setMax(249);
+            progressBar.setProgress(currValue);
+            progressBar.setMax(topValue);
 
+            ((TextView) parent.findViewById(R.id.title)).setText(titles[i]);
             ((TextView) parent.findViewById(R.id.progress_text)).setText(
-                String.format(getString(R.string.generic_x_of_y), 13, 249)
+                    String.format(getString(R.string.generic_x_of_y), currValue, topValue)
             );
-            ((ImageView) parent.findViewById(R.id.image)).setImageResource(R.drawable.test_gravatar);
             contentArea.addView(parent);
         }
     }

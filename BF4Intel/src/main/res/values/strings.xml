@@ -52,6 +52,9 @@
   <string name="soldier_detailed_stats">In-depth Statistics</string>
   <string name="soldier_skill">Skill</string>
   <string name="soldier_completion">Completion level</string>
+  <string name="soldier_top_weapons">Top Weapons</string>
+  <string name="soldier_top_vehicles">Top Vehicles</string>
+  <string name="soldier_num_kills" formatted="false">%s kills</string>
   <string name="profile_information_header">Basic Information</string>
   <string name="profile_presentation_header">Presentation</string>
   <string name="progress">Progress</string>

@@ -210,6 +210,52 @@
     </LinearLayout>
 
     <LinearLayout
+      android:id="@+id/wrap_soldier_top3_weapons"
+      style="@style/SoldierInfoBox"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+      <TextView
+        android:id="@+id/heading_top3_weapons"
+        style="@style/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/soldier_top_weapons"/>
+
+      <LinearLayout
+        android:id="@+id/content_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+      android:id="@+id/wrap_soldier_top3_vehicles"
+      style="@style/SoldierInfoBox"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+      <TextView
+        android:id="@+id/heading_top3_vehicles"
+        style="@style/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/soldier_top_vehicles"/>
+
+      <LinearLayout
+        android:id="@+id/content_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
       android:id="@+id/wrap_soldier_completions"
       style="@style/SoldierInfoBox"
       android:layout_width="match_parent"
@@ -229,22 +275,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <include layout="@layout/list_item_soldier_completion"/>
-
-        <include layout="@layout/list_item_soldier_completion"/>
-
-        <include layout="@layout/list_item_soldier_completion"/>
-
-        <include layout="@layout/list_item_soldier_completion"/>
-
-        <include layout="@layout/list_item_soldier_completion"/>
-
-        <include layout="@layout/list_item_soldier_completion"/>
-
-        <include layout="@layout/list_item_soldier_completion"/>
-
-        <include layout="@layout/list_item_soldier_completion"/>
       </LinearLayout>
     </LinearLayout>
   </LinearLayout>
