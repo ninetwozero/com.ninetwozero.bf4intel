@@ -50,19 +50,19 @@ public class SoldierOverviewFragment extends BaseFragment {
     }
 
     private void displayInformation(final View baseView) {
-        updateActionBar(getActivity(), "Some username", R.drawable.test_soldier);
 
         displayGeneralInformation(baseView);
         displayServiceStars(baseView);
         displaySkills(baseView);
         displayCompletions(baseView);
+        updateActionBar(getActivity(), "Some soldier name", R.drawable.test_soldier);
     }
 
     private void displayGeneralInformation(final View baseView) {
         final View root = baseView.findViewById(R.id.wrap_soldier_general);
         final ProgressBar progressBar = (ProgressBar) baseView.findViewById(R.id.progress_rank);
 
-        ((TextView) root.findViewById(R.id.soldier_name)).setText("Some username");
+        ((TextView) root.findViewById(R.id.soldier_name)).setText("Some soldier name");
         ((TextView) root.findViewById(R.id.current_rank_title)).setText("Test Rank Title 1234567");
         ((TextView) root.findViewById(R.id.value_rank_progress)).setText(
             String.format(getString(R.string.generic_x_of_y), 12345, 56789)
@@ -75,7 +75,16 @@ public class SoldierOverviewFragment extends BaseFragment {
 
     private void displayServiceStars(final View baseView) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_service_stars);
-        root.removeAllViews();
+        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
+        contentArea.removeAllViews();
+
+        final int[] testImages = new int[] {
+            R.drawable.kit_icon_engineer,
+            R.drawable.kit_icon_medic,
+            R.drawable.kit_icon_support,
+            R.drawable.kit_icon_recon,
+            R.drawable.kit_icon_commander
+        };
 
         for (int i = 0, max = 5; i < max; i++) {
             final View parent = mInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
@@ -84,8 +93,8 @@ public class SoldierOverviewFragment extends BaseFragment {
             progressBar.setProgress(33);
             progressBar.setMax(100);
 
-            ((ImageView) parent.findViewById(R.id.image)).setImageResource(R.drawable.test_gravatar);
-            root.addView(parent);
+            ((ImageView) parent.findViewById(R.id.image)).setImageResource(testImages[i]);
+            contentArea.addView(parent);
         }
     }
 
@@ -96,7 +105,8 @@ public class SoldierOverviewFragment extends BaseFragment {
 
     private void displayCompletions(final View baseView) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_completions);
-        root.removeAllViews();
+        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
+        contentArea.removeAllViews();
 
         for (int i = 0, max = 8; i < max; i++) {
             final View parent = mInflater.inflate(R.layout.list_item_soldier_completion,  null, false);
@@ -109,7 +119,7 @@ public class SoldierOverviewFragment extends BaseFragment {
                 String.format(getString(R.string.generic_x_of_y), 13, 249)
             );
             ((ImageView) parent.findViewById(R.id.image)).setImageResource(R.drawable.test_gravatar);
-            root.addView(parent);
+            contentArea.addView(parent);
         }
     }
 }
