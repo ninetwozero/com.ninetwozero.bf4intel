@@ -21,13 +21,13 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     private static final String STATE_DRAWER_OPENED = "isDrawerOpened";
 
-    boolean mUserLearnedDrawer;
+    private boolean mIsRecreated = false;
+    private boolean mUserLearnedDrawer;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private View mFragmentContainerView;
     private NavigationDrawerFragment mNavigationDrawer;
     private String mTitle;
-    private boolean mIsRecreated = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
