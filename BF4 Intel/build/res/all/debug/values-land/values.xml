@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- From: file:/Users/karllindmark/Documents/Git/com.ninetwozero.bf4intel/BF4%20Intel/src/main/res/values-land/dimens.xml -->
-    <dimen name="slidingmenu_offset">200dp</dimen>
-
-    <integer name="num_cols">2</integer>
-
-</resources>

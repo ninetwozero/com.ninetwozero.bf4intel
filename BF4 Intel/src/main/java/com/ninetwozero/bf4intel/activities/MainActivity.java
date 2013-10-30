@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,8 +19,10 @@ import com.ninetwozero.bf4intel.fragments.NavigationDrawerFragment;
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
+    private static final String STATE_DRAWER_OPENED = "isDrawerOpened";
 
-    boolean mUserLearnedDrawer;
+    private boolean mIsRecreated = false;
+    private boolean mUserLearnedDrawer;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private View mFragmentContainerView;
@@ -34,6 +37,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
         setupNavigationDrawer();
         setupActionBar();
         setupActionBarToggle();
+        setupActivityFromState(savedInstanceState);
     }
 
     private void setupNavigationDrawer() {
@@ -104,6 +108,13 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
         actionbar.setTitle("");
     }
 
+    private void setupActivityFromState(final Bundle state) {
+        if (state != null) {
+            toggleNavigationDrawer(state.getBoolean(STATE_DRAWER_OPENED, false));
+            mIsRecreated = true;
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -114,7 +125,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
     public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                mNavigationDrawer.setMenuVisibility(true);
+                toggleNavigationDrawer(!isDrawerOpen());
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -123,10 +134,16 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
     @Override
     public void onBackPressed() {
         if (isDrawerOpen()) {
-            mNavigationDrawer.setMenuVisibility(false);
+            toggleNavigationDrawer(false);
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(STATE_DRAWER_OPENED, isDrawerOpen());
     }
 
     @Override
@@ -144,8 +161,19 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
     @Override
     public void onNavigationDrawerItemSelected(final int position, final String title) {
         mTitle = title == null? mTitle : title.toUpperCase();
-        if (mDrawerLayout != null) {
+        if (mDrawerLayout != null && !mIsRecreated ) {
+            toggleNavigationDrawer(false);
+        }
+        mIsRecreated = false;
+    }
+
+    private void toggleNavigationDrawer(final boolean show) {
+        if (show) {
+            mDrawerLayout.openDrawer(mFragmentContainerView);
+            mNavigationDrawer.setMenuVisibility(true);
+        } else {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
+            mNavigationDrawer.setMenuVisibility(false);
         }
     }
 }
