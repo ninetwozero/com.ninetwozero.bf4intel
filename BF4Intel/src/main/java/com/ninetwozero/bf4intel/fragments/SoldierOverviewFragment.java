@@ -17,6 +17,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.abstractions.BaseFragment;
 import com.ninetwozero.bf4intel.datatypes.ListRow;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class SoldierOverviewFragment extends BaseFragment {
@@ -64,7 +65,7 @@ public class SoldierOverviewFragment extends BaseFragment {
         displayToplist(baseView, R.id.wrap_soldier_top3_vehicles, new String[] {"DV-15", "LAV-25", "UH-1Y VENOM"});
         displayCompletions(baseView);
 
-        updateActionBarIcon(getActivity(), R.drawable.test_soldier);
+        updateActionBar(getActivity(), "Some user here", R.drawable.test_soldier);
     }
 
     private void displayGeneralInformation(final View baseView) {
@@ -123,15 +124,23 @@ public class SoldierOverviewFragment extends BaseFragment {
 
         contentArea.removeAllViews();
         ((TextView) root.findViewById(R.id.rating)).setText(String.valueOf(164));
-        for (int i = 0, maxRows = 2; i < maxRows; i++) {
+
+        final String[] titles = new String[] { "K/D", "SPM", "KPM", "KILLS", "SCORE", "TIME" };
+        final Random random = new Random();
+        final DecimalFormat formatter = new DecimalFormat();
+        formatter.setGroupingUsed(true);
+
+        for (int i = 0, counter = 0, maxRows = 2; i < maxRows; i++) {
             final TableRow tableRow = new TableRow(activity);
             tableRow.setLayoutParams(rowLayoutParams);
             tableRow.setWeightSum(3f);
 
-            for (int j = 0, maxCols = 3; j < maxCols; j++) {
+            for (int j = 1, maxCols = 3; j <= maxCols; j++, counter++) {
                 final View cell = mInflater.inflate(R.layout.list_item_soldier_skills, null, false);
-                ((TextView) cell.findViewById(R.id.title)).setText("Title " + i + "x" + j);
-                ((TextView) cell.findViewById(R.id.value)).setText("999,999,990");
+                ((TextView) cell.findViewById(R.id.title)).setText(titles[counter]);
+                ((TextView) cell.findViewById(R.id.value)).setText(
+                        formatter.format(random.nextInt(999999999))
+                );
                 tableRow.addView(cell, cellLayoutParams);
             }
             contentArea.addView(tableRow);

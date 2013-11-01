@@ -14,7 +14,7 @@
 
     <RelativeLayout
       android:id="@+id/wrap_soldier_general"
-      style="@style/SoldierInfoBox"
+      style="@style/WhiteContainer"
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
 
@@ -70,7 +70,7 @@
 
     <LinearLayout
       android:id="@+id/wrap_soldier_service_stars"
-      style="@style/SoldierInfoBox"
+      style="@style/WhiteContainer"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical">
@@ -122,7 +122,7 @@
 
     <LinearLayout
       android:id="@+id/wrap_soldier_skills"
-      style="@style/SoldierInfoBox"
+      style="@style/WhiteContainer"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical">
@@ -211,7 +211,7 @@
 
     <LinearLayout
       android:id="@+id/wrap_soldier_top3_weapons"
-      style="@style/SoldierInfoBox"
+      style="@style/WhiteContainer"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical">
@@ -234,7 +234,7 @@
 
     <LinearLayout
       android:id="@+id/wrap_soldier_top3_vehicles"
-      style="@style/SoldierInfoBox"
+      style="@style/WhiteContainer"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical">
@@ -257,7 +257,7 @@
 
     <LinearLayout
       android:id="@+id/wrap_soldier_completions"
-      style="@style/SoldierInfoBox"
+      style="@style/WhiteContainer"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginBottom="0dp"
