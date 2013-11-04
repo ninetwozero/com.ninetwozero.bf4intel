@@ -27,9 +27,13 @@ public class SoldierOverview {
     @SerializedName("gameProgress")
     private List<CompletionProgress> mCompletions;
 
+    @SerializedName("overviewStats")
+    private SkillOverview mBasicSoldierStats;
+
     public SoldierOverview(
-        final PersonaInfo personaInfo, final Rank currentRank, final Rank nextRank, final Map<Integer, Integer> kitScores,
-        final List<WeaponStats> topWeapons, final List<VehicleStats> topVehicles, final List<CompletionProgress> completions
+        final PersonaInfo personaInfo, final Rank currentRank, final Rank nextRank,
+        final Map<Integer, Integer> kitScores, final List<WeaponStats> topWeapons, final List<VehicleStats> topVehicles,
+        final List<CompletionProgress> completions, final SkillOverview basicSoldierStats
     ) {
         mPersonaInfo = personaInfo;
         mCurrentRank = currentRank;
@@ -38,6 +42,7 @@ public class SoldierOverview {
         mTopWeapons = topWeapons;
         mTopVehicles = topVehicles;
         mCompletions = completions;
+        mBasicSoldierStats = basicSoldierStats;
     }
 
     public PersonaInfo getPersonaInfo() {
@@ -68,7 +73,15 @@ public class SoldierOverview {
         return mCompletions;
     }
 
+    public SkillOverview getBasicSoldierStats() {
+        return mBasicSoldierStats;
+    }
+
     public int getMaxScoreCurrentRank() {
         return mNextRank.getPointsNeeded() - mCurrentRank.getPointsNeeded();
+    }
+
+    public int getScoreLeftToNextRank() {
+        return mNextRank.getPointsNeeded() - mBasicSoldierStats.getScore();
     }
 }
