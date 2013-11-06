@@ -1,6 +1,13 @@
 package com.ninetwozero.bf4intel.jsonmodels;
 
 import com.google.gson.annotations.SerializedName;
+import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.datatypes.Skill;
+import com.ninetwozero.bf4intel.utils.DateUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class SkillOverview {
     @SerializedName("skill")
@@ -13,7 +20,7 @@ public class SkillOverview {
     private double mKillDeathRatio;
 
     @SerializedName("timePlayed")
-    private long mTimePlayed;
+    private int mTimePlayed;
 
     @SerializedName("score")
     private int mScore;
@@ -21,14 +28,11 @@ public class SkillOverview {
     @SerializedName("scorePerMinute")
     private int mScorePerMinute;
 
-    public SkillOverview(final String skillRating, final long killCount, final double killDeathRatio, final long timePlayed, final int score, final int scorePerMinute) {
-        mSkillRating = skillRating;
-        mKillCount = killCount;
-        mKillDeathRatio = killDeathRatio;
-        mTimePlayed = timePlayed;
-        mScore = score;
-        mScorePerMinute = scorePerMinute;
-    }
+    @SerializedName("serviceStars")
+    private Map<Integer, Integer> mServiceStars;
+
+    @SerializedName("serviceStarsProgress")
+    private Map<Integer, Double> mServiceStarProgress;
 
     public String getSkillRating() {
         return mSkillRating;
@@ -42,7 +46,7 @@ public class SkillOverview {
         return mKillDeathRatio;
     }
 
-    public long getTimePlayed() {
+    public int getTimePlayed() {
         return mTimePlayed;
     }
 
@@ -55,6 +59,25 @@ public class SkillOverview {
     }
 
     public double getKillsPerMinute() {
-        return ((double) mKillCount)/mTimePlayed;
+        return((double) mKillCount)/(mTimePlayed / 60);
+    }
+
+    public Map<Integer, Integer> getServiceStars() {
+        return mServiceStars;
+    }
+
+    public Map<Integer, Double> getServiceStarProgress() {
+        return mServiceStarProgress;
+    }
+
+    public List<Skill> asList() {
+        final List<Skill> skillList = new ArrayList<Skill>(6);
+        skillList.add(new Skill(R.string.skills_kd, mKillDeathRatio));
+        skillList.add(new Skill(R.string.skills_spm, mScorePerMinute));
+        skillList.add(new Skill(R.string.skills_kpm, String.format("%.2f", getKillsPerMinute())));
+        skillList.add(new Skill(R.string.skills_kills, mKillCount));
+        skillList.add(new Skill(R.string.skills_score, String.format("%,d", mScore)));
+        skillList.add(new Skill(R.string.skills_time, DateUtils.toLiteral(mTimePlayed)));
+        return skillList;
     }
 }

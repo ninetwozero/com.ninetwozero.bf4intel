@@ -71,4 +71,12 @@
   <string name="navigationdrawer_forums">Forums</string>
   <string name="navigationdrawer_view_forums">View forums</string>
   <string name="navigationdrawer_saved_threads">Saved threads</string>
+
+  <!-- Strings for the Skills -->
+  <string name="skills_kd">K/D</string>
+  <string name="skills_spm">SPM</string>
+  <string name="skills_kpm">KPM</string>
+  <string name="skills_kills">Kills</string>
+  <string name="skills_score">Score</string>
+  <string name="skills_time">Time</string>
 </resources>

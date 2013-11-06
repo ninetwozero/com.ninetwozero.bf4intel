@@ -3,7 +3,6 @@ package com.ninetwozero.bf4intel.jsonmodels;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-import java.util.Map;
 
 public class SoldierOverview {
     @SerializedName("viewedPersonaInfo")
@@ -15,35 +14,17 @@ public class SoldierOverview {
     @SerializedName("nextRankNeeded")
     private Rank mNextRank;
 
-    @SerializedName("kitScores")
-    private Map<Integer, Integer> mKitScores;
-
     @SerializedName("topWeapons")
-    private List<WeaponStats> mTopWeapons;
+    private List<BaseStatsModel> mTopWeapons;
 
     @SerializedName("topVehicles")
-    private List<VehicleStats> mTopVehicles;
+    private List<BaseStatsModel> mTopVehicles;
 
     @SerializedName("gameProgress")
     private List<CompletionProgress> mCompletions;
 
     @SerializedName("overviewStats")
     private SkillOverview mBasicSoldierStats;
-
-    public SoldierOverview(
-        final PersonaInfo personaInfo, final Rank currentRank, final Rank nextRank,
-        final Map<Integer, Integer> kitScores, final List<WeaponStats> topWeapons, final List<VehicleStats> topVehicles,
-        final List<CompletionProgress> completions, final SkillOverview basicSoldierStats
-    ) {
-        mPersonaInfo = personaInfo;
-        mCurrentRank = currentRank;
-        mNextRank = nextRank;
-        mKitScores = kitScores;
-        mTopWeapons = topWeapons;
-        mTopVehicles = topVehicles;
-        mCompletions = completions;
-        mBasicSoldierStats = basicSoldierStats;
-    }
 
     public PersonaInfo getPersonaInfo() {
         return mPersonaInfo;
@@ -57,15 +38,9 @@ public class SoldierOverview {
         return mNextRank;
     }
 
-    public Map<Integer, Integer> getKitScores() {
-        return mKitScores;
-    }
+    public List<BaseStatsModel> getTopWeapons() { return mTopWeapons; }
 
-    public List<WeaponStats> getTopWeapons() {
-        return mTopWeapons;
-    }
-
-    public List<VehicleStats> getTopVehicles() {
+    public List<BaseStatsModel> getTopVehicles() {
         return mTopVehicles;
     }
 

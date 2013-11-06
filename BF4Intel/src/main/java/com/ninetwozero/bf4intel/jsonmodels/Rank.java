@@ -12,12 +12,6 @@ public class Rank {
     @SerializedName("pointsNeeded")
     private int mPointsNeeded;
 
-    public Rank(final String name, final int level, final int pointsNeeded) {
-        mName = name;
-        mLevel = level;
-        mPointsNeeded = pointsNeeded;
-    }
-
     public String getName() {
         return mName;
     }

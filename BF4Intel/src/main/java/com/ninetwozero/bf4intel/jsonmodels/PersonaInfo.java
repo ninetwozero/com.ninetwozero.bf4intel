@@ -21,15 +21,6 @@ public class PersonaInfo {
     @SerializedName("game")
     private int mGame;
 
-    public PersonaInfo(final String userId, final String personaId, final String tag, final String picture, final int platform, final int game) {
-        mUserId = userId;
-        mPersonaId = personaId;
-        mTag = tag;
-        mPicture = picture;
-        mPlatform = platform;
-        mGame = game;
-    }
-
     public String getUserId() {
         return mUserId;
     }

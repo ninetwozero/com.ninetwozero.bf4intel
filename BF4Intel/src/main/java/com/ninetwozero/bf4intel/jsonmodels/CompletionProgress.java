@@ -15,13 +15,6 @@ public class CompletionProgress {
     @SerializedName("percent")
     private int mPercent;
 
-    public CompletionProgress(final String name, final int current, final int max, final int percent) {
-        mName = name;
-        mCurrentValue = current;
-        mMaxValue = max;
-        mPercent = percent;
-    }
-
     public String getName() {
         return mName;
     }
