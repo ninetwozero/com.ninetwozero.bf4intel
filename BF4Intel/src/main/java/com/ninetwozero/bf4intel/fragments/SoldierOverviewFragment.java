@@ -81,8 +81,8 @@ public class SoldierOverviewFragment extends BaseFragment {
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {
         displayGeneralInformation(baseView, soldierOverview);
-        displayServiceStars(baseView, soldierOverview.getBasicSoldierStats());
         displaySkills(baseView, soldierOverview.getBasicSoldierStats());
+        displayServiceStars(baseView, soldierOverview.getBasicSoldierStats());
         displayToplist(baseView, R.id.wrap_soldier_top3_weapons, soldierOverview.getTopWeapons());
         displayToplist(baseView, R.id.wrap_soldier_top3_vehicles, soldierOverview.getTopVehicles());
         displayCompletions(baseView, soldierOverview.getCompletions());
