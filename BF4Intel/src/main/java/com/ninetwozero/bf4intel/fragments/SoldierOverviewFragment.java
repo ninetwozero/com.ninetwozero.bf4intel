@@ -1,24 +1,33 @@
 package com.ninetwozero.bf4intel.fragments;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.abstractions.BaseFragment;
-import com.ninetwozero.bf4intel.datatypes.ListRow;
+import com.ninetwozero.bf4intel.datatypes.Skill;
+import com.ninetwozero.bf4intel.jsonmodels.BaseStatsModel;
+import com.ninetwozero.bf4intel.jsonmodels.CompletionProgress;
+import com.ninetwozero.bf4intel.jsonmodels.SkillOverview;
+import com.ninetwozero.bf4intel.jsonmodels.SoldierOverview;
+import com.ninetwozero.bf4intel.utils.PersonaUtils;
 
-import java.text.DecimalFormat;
-import java.util.Random;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.List;
+import java.util.Map;
 
 public class SoldierOverviewFragment extends BaseFragment {
     public SoldierOverviewFragment() {
@@ -45,70 +54,84 @@ public class SoldierOverviewFragment extends BaseFragment {
         return view;
     }
 
-    private void initialize(final View view) {
-        displayInformation(view);
+    @Override
+    public void onResume() {
+        super.onResume();
+        mockSettingUpLayoutFromJson();
     }
 
-    private void displayInformation() {
-        final View baseView = getView();
-        if (baseView == null ) {
-            return;
+    private void mockSettingUpLayoutFromJson() {
+        try {
+            final Reader reader = new InputStreamReader(
+                getActivity().getAssets().open("soldieroverview.json")
+            );
+            Gson gson = new Gson();
+            JsonParser parser = new JsonParser();
+
+            JsonObject rootObject = parser.parse(reader).getAsJsonObject().getAsJsonObject("data");
+            SoldierOverview soldierOverview = gson.fromJson(rootObject, SoldierOverview.class);
+            displayInformation(getView(), soldierOverview);
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-        displayInformation(baseView);
     }
 
-    private void displayInformation(final View baseView) {
-        displayGeneralInformation(baseView);
-        displayServiceStars(baseView);
-        displaySkills(baseView);
-        displayToplist(baseView, R.id.wrap_soldier_top3_weapons, new String[] {"M40A3", "SUPER KNIFE", "VIDEO GAME CONTROLLER"});
-        displayToplist(baseView, R.id.wrap_soldier_top3_vehicles, new String[] {"DV-15", "LAV-25", "UH-1Y VENOM"});
-        displayCompletions(baseView);
+    private void initialize(final View view) {
+    }
+
+    private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {
+        displayGeneralInformation(baseView, soldierOverview);
+        displayServiceStars(baseView, soldierOverview.getBasicSoldierStats());
+        displaySkills(baseView, soldierOverview.getBasicSoldierStats());
+        displayToplist(baseView, R.id.wrap_soldier_top3_weapons, soldierOverview.getTopWeapons());
+        displayToplist(baseView, R.id.wrap_soldier_top3_vehicles, soldierOverview.getTopVehicles());
+        displayCompletions(baseView, soldierOverview.getCompletions());
 
         updateActionBar(getActivity(), "Some user here", R.drawable.test_soldier);
     }
 
-    private void displayGeneralInformation(final View baseView) {
+    private void displayGeneralInformation(final View baseView, final SoldierOverview soldierOverview) {
         final View root = baseView.findViewById(R.id.wrap_soldier_general);
         final ProgressBar progressBar = (ProgressBar) baseView.findViewById(R.id.progress_rank);
+        final int maxScore = soldierOverview.getMaxScoreCurrentRank();
+        final int scoreLeftToNextRank = soldierOverview.getScoreLeftToNextRank();
+        final int currentScoreThisRank = maxScore-scoreLeftToNextRank;
 
         ((TextView) root.findViewById(R.id.soldier_name)).setText("Some soldier name");
-        ((TextView) root.findViewById(R.id.current_rank_title)).setText("Test Rank Title 1234567");
+        ((TextView) root.findViewById(R.id.current_rank_title)).setText(
+            soldierOverview.getCurrentRank().getName()
+        );
         ((TextView) root.findViewById(R.id.value_rank_progress)).setText(
-            String.format(getString(R.string.generic_x_of_y), 12345, 56789)
+            String.format(getString(R.string.generic_x_of_y), currentScoreThisRank, maxScore)
         );
         ((ImageView) root.findViewById(R.id.image_rank)).setImageResource(R.drawable.test_rank31);
 
-        progressBar.setProgress(1337);
-        progressBar.setMax(2674);
+        progressBar.setProgress(currentScoreThisRank);
+        progressBar.setMax(maxScore);
     }
 
-    private void displayServiceStars(final View baseView) {
+    private void displayServiceStars(final View baseView, final SkillOverview basicSoldierStats) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_service_stars);
         final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
+        final Map<Integer, Integer> serviceStars = basicSoldierStats.getServiceStars();
+        final Map<Integer, Double> serviceStarProgress = basicSoldierStats.getServiceStarProgress();
+
         contentArea.removeAllViews();
-
-        final int[] testImages = new int[] {
-            R.drawable.kit_icon_engineer,
-            R.drawable.kit_icon_medic,
-            R.drawable.kit_icon_support,
-            R.drawable.kit_icon_recon,
-            R.drawable.kit_icon_commander
-        };
-
-        for (int i = 0, max = 5; i < max; i++) {
+        for (int key : serviceStars.keySet()) {
             final View parent = mInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
             final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
 
-            progressBar.setProgress(33);
+            progressBar.setProgress((int)Math.round(serviceStarProgress.get(key)));
             progressBar.setMax(100);
 
-            ((ImageView) parent.findViewById(R.id.image)).setImageResource(testImages[i]);
+            ((ImageView) parent.findViewById(R.id.image)).setImageResource(
+                PersonaUtils.getIconForKit(key)
+            );
             contentArea.addView(parent);
         }
     }
 
-    private void displaySkills(final View baseView) {
+    private void displaySkills(final View baseView, final SkillOverview basicSoldierStats) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_skills);
         final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.skills_table);
         final Activity activity = getActivity();
@@ -121,74 +144,63 @@ public class SoldierOverviewFragment extends BaseFragment {
             ViewGroup.LayoutParams.WRAP_CONTENT,
             1f
         );
+        final List<Skill> skillsList = basicSoldierStats.asList();
 
         contentArea.removeAllViews();
-        ((TextView) root.findViewById(R.id.rating)).setText(String.valueOf(164));
+        ((TextView) root.findViewById(R.id.rating)).setText(
+            String.valueOf(basicSoldierStats.getSkillRating())
+        );
 
-        final String[] titles = new String[] { "K/D", "SPM", "KPM", "KILLS", "SCORE", "TIME" };
-        final Random random = new Random();
-        final DecimalFormat formatter = new DecimalFormat();
-        formatter.setGroupingUsed(true);
-
+        // TODO: Why is this not creating three equally large cells per row?
         for (int i = 0, counter = 0, maxRows = 2; i < maxRows; i++) {
             final TableRow tableRow = new TableRow(activity);
             tableRow.setLayoutParams(rowLayoutParams);
             tableRow.setWeightSum(3f);
 
-            for (int j = 1, maxCols = 3; j <= maxCols; j++, counter++) {
+            for (int j = 0, maxCols = 3; j < maxCols; j++, counter++) {
                 final View cell = mInflater.inflate(R.layout.list_item_soldier_skills, null, false);
-                ((TextView) cell.findViewById(R.id.title)).setText(titles[counter]);
-                ((TextView) cell.findViewById(R.id.value)).setText(
-                        formatter.format(random.nextInt(999999999))
-                );
+                ((TextView) cell.findViewById(R.id.title)).setText(skillsList.get(counter).getStringResource());
+                ((TextView) cell.findViewById(R.id.value)).setText(skillsList.get(counter).getValue());
                 tableRow.addView(cell, cellLayoutParams);
             }
             contentArea.addView(tableRow);
         }
     }
 
-    private void displayToplist(final View baseView, final int wrapId, final String[] titles) {
+    private void displayToplist(final View baseView, final int wrapId, final List<BaseStatsModel> stats) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(wrapId);
         final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
         contentArea.removeAllViews();
 
-        final Random random = new Random();
-        int topValue = 10000;
         for (int i = 0, max = 3; i < max; i++) {
             final View parent = mInflater.inflate(R.layout.list_item_soldier_toplist,  null, false);
-            topValue = random.nextInt(topValue);
-
-            ((TextView) parent.findViewById(R.id.title)).setText(titles[i]);
+            ((TextView) parent.findViewById(R.id.title)).setText(stats.get(i).getName());
             ((TextView) parent.findViewById(R.id.value)).setText(
-                    String.format(getString(R.string.soldier_num_kills), topValue)
+                    String.format(getString(R.string.soldier_num_kills), stats.get(i).getKillCount())
             );
             contentArea.addView(parent);
         }
     }
 
-    private void displayCompletions(final View baseView) {
+    private void displayCompletions(final View baseView, final List<CompletionProgress> completions) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_completions);
         final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
         contentArea.removeAllViews();
 
-        final String titles[] = new String[] {
-            "Campaign", "Assignments", "Medals",
-            "Ribbons", "Weapons", "Vehicle Unlocks",
-            "Kits", "Dog tags"
-        };
-        final Random random = new Random();
-        for (int i = 0, max = 8; i < max; i++) {
-            final View parent = mInflater.inflate(R.layout.list_item_soldier_completion,  null, false);
+        for (CompletionProgress completionProgress : completions) {
+            final View parent = mInflater.inflate(R.layout.list_item_soldier_completion, null, false);
             final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
-            final int topValue = random.nextInt(500);
-            final int currValue = random.nextInt(topValue);
 
-            progressBar.setProgress(currValue);
-            progressBar.setMax(topValue);
+            progressBar.setProgress(completionProgress.getCurrentValue());
+            progressBar.setMax(completionProgress.getMaxValue());
 
-            ((TextView) parent.findViewById(R.id.title)).setText(titles[i]);
+            ((TextView) parent.findViewById(R.id.title)).setText(completionProgress.getName());
             ((TextView) parent.findViewById(R.id.progress_text)).setText(
-                    String.format(getString(R.string.generic_x_of_y), currValue, topValue)
+                    String.format(
+                        getString(R.string.generic_x_of_y),
+                        completionProgress.getCurrentValue(),
+                        completionProgress.getMaxValue()
+                    )
             );
             contentArea.addView(parent);
         }
