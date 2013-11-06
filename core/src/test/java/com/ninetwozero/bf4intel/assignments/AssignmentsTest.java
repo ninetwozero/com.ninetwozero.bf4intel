@@ -24,6 +24,6 @@ public class AssignmentsTest {
         Assignments assignments = gson.fromJson( dataJson, Assignments.class);
         assertEquals(200661244, assignments.getPersonaId());
         assertEquals("LittleBoySVK", assignments.getPersonaName());
-        assertEquals(4, assignments.getAssignmentCategory().keySet().size());
+        assertEquals(51, assignments.getAssignments().size());
     }
 }

@@ -4,6 +4,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@color/lightgrey"
   >
 
   <ImageView
@@ -21,6 +22,13 @@
     android:contentDescription="@string/cdesc_assignment_pre_requirement"
     android:layout_alignParentBottom="true"
     android:layout_alignParentRight="true"
+    />
+
+  <ProgressBar
+    android:id="@+id/assignment_completion"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:visibility="invisible"
     />
 
 </RelativeLayout>

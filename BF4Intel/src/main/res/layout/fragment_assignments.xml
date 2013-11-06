@@ -7,5 +7,7 @@
   android:numColumns="auto_fit"
   android:stretchMode="columnWidth"
   android:gravity="center"
-  android:background="@color/lightgrey"
+  android:verticalSpacing="@dimen/padding_s"
+  android:horizontalSpacing="@dimen/padding_s"
+  android:background="@color/grey"
   />

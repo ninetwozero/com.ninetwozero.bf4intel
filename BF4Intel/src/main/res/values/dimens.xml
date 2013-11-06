@@ -37,4 +37,6 @@
 
   <!-- Sliding menu related -->
   <dimen name="navigation_drawer_width">320dp</dimen>
+
+  <dimen name="padding_s">4dp</dimen>
 </resources>

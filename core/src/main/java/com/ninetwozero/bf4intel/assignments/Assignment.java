@@ -7,15 +7,8 @@ public class Assignment {
     private int completion;
     @SerializedName("isTracking")
     private boolean isTracking;
-    private int image;
-    private AssignmentPrerequirement prerequirement;
-
-    public Assignment(int completion, boolean isTracking, int image, AssignmentPrerequirement prerequirement) {
-        this.completion = completion;
-        this.isTracking = isTracking;
-        this.image = image;
-        this.prerequirement = prerequirement;
-    }
+    @SerializedName("award")
+    private AssignmentAward award;
 
     public int getCompletion() {
         return completion;
@@ -25,11 +18,7 @@ public class Assignment {
         return isTracking;
     }
 
-    public int getImage() {
-        return image;
-    }
-
-    public AssignmentPrerequirement getPrerequirement() {
-        return prerequirement;
+    public AssignmentAward getAward() {
+        return award;
     }
 }
