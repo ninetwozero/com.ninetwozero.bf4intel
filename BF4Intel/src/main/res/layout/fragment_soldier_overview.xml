@@ -86,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Rating"
+        android:text="@string/soldier_rating"
         android:textAllCaps="true"
         android:textColor="@color/darkgrey"
         />
@@ -103,7 +103,8 @@
       <TableLayout
         android:id="@+id/skills_table"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_half">
 
         <LinearLayout
           android:layout_width="match_parent"
