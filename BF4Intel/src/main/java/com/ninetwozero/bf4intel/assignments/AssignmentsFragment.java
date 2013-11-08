@@ -11,10 +11,11 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class AssignmentsFragment extends Fragment {
+
+    private static final List<String> ASSIGNMENT_TYPE = new ArrayList<String>(Arrays.asList("bronze", "silver", "gold", "sp"));
 
     private Assignments assignments;
     private GridView gridView;
@@ -52,6 +53,27 @@ public class AssignmentsFragment extends Fragment {
     }
 
     private List<Assignment> assignments() {
-        return assignments != null ? new ArrayList<Assignment>(assignments.getAssignments().values()) : new ArrayList<Assignment>();
+        return assignments != null ? orderAssignments() : new ArrayList<Assignment>();
+    }
+
+    private List<Assignment> orderAssignments() {
+        List<Assignment> orderedAssignments = new ArrayList<Assignment>();
+        Map<String, List<String>> missions = assignments.getAssignmentCategory();
+        for(String assignmentType : ASSIGNMENT_TYPE) {
+            List<String> groupedAssignments = missions.get(assignmentType);
+            Collections.sort(groupedAssignments);
+            orderedAssignments.addAll(cherryPickAssignments(groupedAssignments));
+        }
+        return orderedAssignments;
+    }
+
+    private List<Assignment> cherryPickAssignments(List<String> groupedAssignments) {
+        List<Assignment> orderedGroup = new ArrayList<Assignment>();
+        for(String key: groupedAssignments) {
+            if(assignments.getAssignments().containsKey(key)) {
+                orderedGroup.add(assignments.getAssignments().get(key));
+            }
+        }
+        return orderedGroup;
     }
 }
