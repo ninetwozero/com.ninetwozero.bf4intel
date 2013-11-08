@@ -48,9 +48,10 @@ public class AssignmentsFragment extends Fragment {
     private void setGrid() {
         AssignmentsAdapter adapter = new AssignmentsAdapter(assignments(), getActivity().getApplicationContext());
         gridView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     private List<Assignment> assignments() {
-        return assignments != null ? new ArrayList<Assignment>() :new ArrayList<Assignment>(assignments.getAssignments().values());
+        return assignments != null ? new ArrayList<Assignment>(assignments.getAssignments().values()) : new ArrayList<Assignment>();
     }
 }

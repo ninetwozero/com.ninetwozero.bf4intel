@@ -47,7 +47,7 @@ public class AssignmentsAdapter extends BaseAdapter {
         Assignment assignment = assignments.get(position);
 
         ImageView imgAssignment = (ImageView) view.findViewById(R.id.img_assignment);
-        imgAssignment.setImageResource(imageResources.get(assignment.getAward().getAssignmentKey()));
+        imgAssignment.setImageResource(getAssignmentImg(assignment.getAward().getAssignmentKey().toLowerCase()));
         ImageView imgPrerequirement = (ImageView) view.findViewById(R.id.img_assignment_pre_requirement);
 
         if (assignment.getAward().getAwardGroup().equalsIgnoreCase(AssignmentPrerequirement.RANK.toString())) {
@@ -66,7 +66,11 @@ public class AssignmentsAdapter extends BaseAdapter {
         }
         return view;
     }
-    
+
+    private Integer getAssignmentImg(String assignmentKey) {
+        return imageResources.containsKey(assignmentKey) ? imageResources.get(assignmentKey) : R.drawable.as_unknown;
+    }
+
     private static final Map<String, Integer> imageResources = new HashMap<String, Integer>(){
         {
             put("as01a", R.drawable.as01a);
