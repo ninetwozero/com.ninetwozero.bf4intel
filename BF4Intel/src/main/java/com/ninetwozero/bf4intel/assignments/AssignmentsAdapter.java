@@ -57,12 +57,12 @@ public class AssignmentsAdapter extends BaseAdapter {
         }
 
         if (assignment.isTracking()) {
-            imgPrerequirement.setVisibility(View.VISIBLE);
-        } else {
             imgPrerequirement.setVisibility(View.INVISIBLE);
             ProgressBar completion = (ProgressBar) view.findViewById(R.id.assignment_completion);
             completion.setProgress(assignment.getCompletion());
             completion.setVisibility(View.VISIBLE);
+        } else {
+            imgPrerequirement.setVisibility(View.VISIBLE);
         }
         return view;
     }
