@@ -32,6 +32,7 @@
   <dimen name="activity_vertical_margin">@dimen/spacing_double</dimen>
 
   <!-- Text related -->
+  <dimen name="text_m">18sp</dimen>
   <dimen name="text_ml">20sp</dimen>
   <dimen name="text_xxl">40sp</dimen>
 
