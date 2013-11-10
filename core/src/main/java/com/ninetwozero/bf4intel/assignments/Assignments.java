@@ -17,6 +17,7 @@ public class Assignments {
     @SerializedName("missionCategory")
     private Map<String, List<String>> assignmentCategory = new HashMap<String, List<String>>();
 
+
     public long getPersonaId() {
         return personaId;
     }

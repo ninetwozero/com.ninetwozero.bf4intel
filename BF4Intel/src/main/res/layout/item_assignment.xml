@@ -28,7 +28,6 @@
     android:id="@+id/assignment_completion"
     android:layout_height="wrap_content"
     android:layout_width="fill_parent"
-    android:visibility="invisible"
     android:layout_below="@id/img_assignment"
     style="@android:style/Widget.Holo.ProgressBar.Horizontal"
     />

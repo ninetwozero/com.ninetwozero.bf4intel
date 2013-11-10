@@ -39,4 +39,8 @@
   <dimen name="navigation_drawer_width">320dp</dimen>
 
   <dimen name="padding_s">4dp</dimen>
+
+  <!--Action bar-->
+  <dimen name="action_button_min_width">64dp</dimen>
+  <dimen name="indeterminate_progress_size">32dp</dimen>
 </resources>

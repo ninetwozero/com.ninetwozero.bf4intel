@@ -48,30 +48,40 @@ public class AssignmentsAdapter extends BaseAdapter {
 
         ImageView imgAssignment = (ImageView) view.findViewById(R.id.img_assignment);
         imgAssignment.setImageResource(getAssignmentImg(assignment.getAward().getAssignmentKey().toLowerCase()));
-        ImageView imgPrerequirement = (ImageView) view.findViewById(R.id.img_assignment_pre_requirement);
 
-        if (assignment.getAward().getAwardGroup().equalsIgnoreCase(AssignmentPrerequirement.RANK.toString())) {
-            imgPrerequirement.setImageResource(R.drawable.rank_prerequirement);
-        } else {
-            imgPrerequirement.setImageResource(R.drawable.group_prerequirement);
-        }
+        ImageView imgPrerequirement = (ImageView) view.findViewById(R.id.img_assignment_pre_requirement);
+        imgPrerequirement.setImageResource(prerequirementImgResource(assignment.getDependencyGroup()));
+
+        ProgressBar completionProgress = (ProgressBar) view.findViewById(R.id.assignment_completion);
+        completionProgress.setProgress(assignment.getCompletion());
 
         if (assignment.isTracking()) {
             imgPrerequirement.setVisibility(View.INVISIBLE);
-            ProgressBar completion = (ProgressBar) view.findViewById(R.id.assignment_completion);
-            completion.setProgress(assignment.getCompletion());
-            completion.setVisibility(View.VISIBLE);
+            completionProgress.setVisibility(View.VISIBLE);
         } else {
             imgPrerequirement.setVisibility(View.VISIBLE);
+            completionProgress.setVisibility(View.INVISIBLE);
+            //TODO would like to be able to give overlay to whole view when assignment is not tracked (unlocked)
+            //imgAssignment.setColorFilter(R.color.almostblack);
         }
         return view;
+    }
+
+    private Integer prerequirementImgResource(String group) {
+        if (group.equalsIgnoreCase(AssignmentPrerequirement.RANK.toString())) {
+            return R.drawable.rank_prerequirement;
+        } else if (group.equalsIgnoreCase(AssignmentPrerequirement.MISSION.toString())) {
+            return R.drawable.group_prerequirement;
+        } else {
+            return R.drawable.empty;
+        }
     }
 
     private Integer getAssignmentImg(String assignmentKey) {
         return imageResources.containsKey(assignmentKey) ? imageResources.get(assignmentKey) : R.drawable.as_unknown;
     }
 
-    private static final Map<String, Integer> imageResources = new HashMap<String, Integer>(){
+    private static final Map<String, Integer> imageResources = new HashMap<String, Integer>() {
         {
             put("as01a", R.drawable.as01a);
             put("as02", R.drawable.as02);

@@ -3,7 +3,7 @@ package com.ninetwozero.bf4intel.assignments;
 public enum AssignmentPrerequirement {
     MISSION("AwardGroup_Mission"),
     RANK("AwardGroup_Ranks"),
-    NONE("");
+    NONE("single_player");
     private final String prerequirement;
 
     private AssignmentPrerequirement(String prerequirement){
