@@ -44,13 +44,6 @@ public class IntelActivity extends FragmentActivity implements LoaderManager.Loa
         return parser.parse(json).getAsJsonObject().getAsJsonObject("data");
     }
 
-    /*@Override
-    public boolean onPreparePanel(int featureId, View view, Menu menu) {
-        super.onPrepareOptionsMenu(menu);
-        MenuItem refresh = (MenuItem)menu.findItem(R.id.assignment_completion);
-        return true;
-    }*/
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -59,20 +52,14 @@ public class IntelActivity extends FragmentActivity implements LoaderManager.Loa
         return true;
     }
 
-    protected void setLoadingState(boolean isLoading) {
-        if(optionsMenu == null) {
+    protected void hideABProgressBar(boolean hideProgressBar) {
+        if (optionsMenu == null) {
             return;
         }
 
-        final MenuItem refreshItem = optionsMenu.findItem(R.id.menu_refresh);
-        if(refreshItem != null) {
-            if(isLoading) {
-                //refreshItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-                refreshItem.setActionView(R.layout.actionbar_indeterminate_progress);
-            } else {
-                //refreshItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-                refreshItem.setActionView(null);
-            }
+        final MenuItem refreshItem = optionsMenu.findItem(R.id.indeterminated_progress);
+        if (refreshItem != null && hideProgressBar) {
+            refreshItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         }
     }
 }

@@ -1,1 +1,1 @@
-include 'core', 'BF4Intel'
+include ':core', ':BF4Intel'
