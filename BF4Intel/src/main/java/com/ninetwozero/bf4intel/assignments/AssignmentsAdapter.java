@@ -67,7 +67,7 @@ public class AssignmentsAdapter extends BaseAdapter {
         return view;
     }
 
-    private Integer prerequirementImgResource(String group) {
+    private int prerequirementImgResource(String group) {
         if (group.equalsIgnoreCase(AssignmentPrerequirement.RANK.toString())) {
             return R.drawable.rank_prerequirement;
         } else if (group.equalsIgnoreCase(AssignmentPrerequirement.MISSION.toString())) {
@@ -77,7 +77,7 @@ public class AssignmentsAdapter extends BaseAdapter {
         }
     }
 
-    private Integer getAssignmentImg(String assignmentKey) {
+    private int getAssignmentImg(String assignmentKey) {
         return imageResources.containsKey(assignmentKey) ? imageResources.get(assignmentKey) : R.drawable.as_unknown;
     }
 

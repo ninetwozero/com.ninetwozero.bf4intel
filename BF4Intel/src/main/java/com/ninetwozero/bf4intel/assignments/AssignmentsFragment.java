@@ -31,7 +31,7 @@ public class AssignmentsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         BusProvider.getInstance().register(this);
-        setGrid();
+        setupGrid();
     }
 
     @Override
@@ -43,10 +43,10 @@ public class AssignmentsFragment extends Fragment {
     @Subscribe
     public void assignments(Assignments assignments) {
         this.assignments = assignments;
-        setGrid();
+        setupGrid();
     }
 
-    private void setGrid() {
+    private void setupGrid() {
         AssignmentsAdapter adapter = new AssignmentsAdapter(assignments(), getActivity().getApplicationContext());
         gridView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
