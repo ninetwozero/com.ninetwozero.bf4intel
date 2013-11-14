@@ -6,8 +6,13 @@
   <string name="app_name">BF4 Intel</string>
   <string name="action_settings">Settings</string>
   <string name="hello_world">Hello world!</string>
-  <string name="title_activity_single_fragment">@string/app_name</string>
-  <string name="title_activity_soldier_statistics">Statistics</string>
+
+  <!--Manifest labels-->
+  <string name="label_activity_single_fragment">@string/app_name</string>
+  <string name="label_activity_soldier_statistics">Statistics</string>
+  <string name="label_activity_assignments">Assignments</string>
+
+
   <string name="update_status_header">Update your status</string>
   <string name="update_status_hint">Update message here…</string>
   <string name="update_attachment_header">Attach item to post</string>
@@ -29,12 +34,6 @@
   <string name="msg_sending">Sending…</string>
   <string name="msg_enter_comment">Enter a comment!</string>
   <string name="msg_comment_ok">Comment posted!</string>
-  <string name="cdesc_gravatar">Gravatar</string>
-  <string name="cdesc_soldier_avatar">Soldier avatar</string>
-  <string name="cdesc_platoon_badge">Platoon badge</string>
-  <string name="cdesc_platform_icon">Platform icon</string>
-  <string name="cdesc_rank_image">Rank image</string>
-  <string name="cdesc_status_link_image">Extra content image</string>
   <string name="soldier_left_until_rankup" formatted="true">%s until rank up</string>
   <string name="activated_new_game">Activated new game/expansion:</string>
   <string name="logged_in_as">Logged in as</string>
