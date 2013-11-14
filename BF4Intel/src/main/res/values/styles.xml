@@ -26,8 +26,8 @@
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">1dp</item>
     <item name="android:background">#FFCCCCCC</item>
-    <item name="android:layout_marginTop">@dimen/spacing_single</item>
-    <item name="android:layout_marginBottom">@dimen/spacing_single</item>
+    <item name="android:layout_marginTop">@dimen/spacing_m</item>
+    <item name="android:layout_marginBottom">@dimen/spacing_m</item>
   </style>
 
   <style name="heading">
@@ -36,8 +36,8 @@
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
     <item name="android:textColor">@android:color/darker_gray</item>
     <item name="android:textAllCaps">true</item>
-    <item name="android:paddingTop">@dimen/spacing_half</item>
-    <item name="android:paddingBottom">@dimen/spacing_half</item>
+    <item name="android:paddingTop">@dimen/spacing_s</item>
+    <item name="android:paddingBottom">@dimen/spacing_s</item>
   </style>
 
 
@@ -46,7 +46,7 @@
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
-    <item name="android:layout_marginTop">@dimen/spacing_half</item>
+    <item name="android:layout_marginTop">@dimen/spacing_s</item>
     <item name="android:textColor">@color/grey</item>
   </style>
 
@@ -63,19 +63,19 @@
   <style name="SlidingMenuRow">
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:paddingTop">@dimen/spacing_single</item>
-    <item name="android:paddingRight">@dimen/spacing_single</item>
-    <item name="android:paddingBottom">@dimen/spacing_single</item>
-    <item name="android:paddingLeft">@dimen/spacing_single</item>
+    <item name="android:paddingTop">@dimen/spacing_m</item>
+    <item name="android:paddingRight">@dimen/spacing_m</item>
+    <item name="android:paddingBottom">@dimen/spacing_m</item>
+    <item name="android:paddingLeft">@dimen/spacing_m</item>
     <item name="android:background">?android:attr/activatedBackgroundIndicator</item>
     <item name="android:textAllCaps">true</item>
   </style>
 
   <!-- Soldier "card" pseudo style -->
   <style name="WhiteContainer">
-    <item name="android:padding">@dimen/spacing_single</item>
+    <item name="android:padding">@dimen/spacing_m</item>
     <item name="android:background">@android:color/white</item>
-    <item name="android:layout_marginBottom">@dimen/spacing_single</item>
+    <item name="android:layout_marginBottom">@dimen/spacing_m</item>
   </style>
 
   <!-- FEED -->
@@ -85,7 +85,7 @@
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:gravity">left|center</item>
-    <item name="android:layout_marginBottom">@dimen/spacing_half</item>
+    <item name="android:layout_marginBottom">@dimen/spacing_s</item>
   </style>
 
 
@@ -102,7 +102,7 @@
 
     <item name="android:textColor">@color/blue</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Medium</item>
-    <item name="android:layout_marginLeft">@dimen/spacing_single</item>
+    <item name="android:layout_marginLeft">@dimen/spacing_m</item>
     <item name="android:layout_toRightOf">@id/avatar</item>
   </style>
 
@@ -112,7 +112,7 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
     <item name="android:layout_below">@id/wrap_user</item>
-    <item name="android:layout_marginTop">@dimen/spacing_single</item>
+    <item name="android:layout_marginTop">@dimen/spacing_m</item>
   </style>
 
 </resources>

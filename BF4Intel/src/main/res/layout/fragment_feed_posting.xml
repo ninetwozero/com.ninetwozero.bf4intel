@@ -3,15 +3,15 @@
   android:id="@+id/wrap_form"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:padding="@dimen/spacing_single">
+  android:padding="@dimen/spacing_m">
 
   <TextView
     style="@style/heading"
     android:id="@+id/update_status_header"
     android:text="@string/update_status_header"
     android:layout_alignParentTop="true"
-    android:layout_marginLeft="@dimen/spacing_single"
-    android:layout_marginRight="@dimen/spacing_single" />
+    android:layout_marginLeft="@dimen/spacing_m"
+    android:layout_marginRight="@dimen/spacing_m" />
 
   <EditText
     android:id="@+id/update_status_input"
@@ -28,9 +28,9 @@
     android:id="@+id/string_extra"
     android:text="@string/update_attachment_header"
     android:layout_below="@id/update_status_input"
-    android:layout_marginLeft="@dimen/spacing_single"
-    android:layout_marginRight="@dimen/spacing_single"
-    android:layout_marginTop="@dimen/spacing_double" />
+    android:layout_marginLeft="@dimen/spacing_m"
+    android:layout_marginRight="@dimen/spacing_m"
+    android:layout_marginTop="@dimen/spacing_l" />
 
   <EditText
     android:id="@+id/input_extra"
