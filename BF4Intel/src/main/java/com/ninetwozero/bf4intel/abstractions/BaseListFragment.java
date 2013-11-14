@@ -2,9 +2,8 @@ package com.ninetwozero.bf4intel.abstractions;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.ListFragment;
-import android.content.res.Configuration;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

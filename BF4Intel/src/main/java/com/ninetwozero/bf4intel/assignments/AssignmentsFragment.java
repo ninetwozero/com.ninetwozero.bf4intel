@@ -1,19 +1,23 @@
 package com.ninetwozero.bf4intel.assignments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.abstractions.BaseFragment;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
-public class AssignmentsFragment extends Fragment {
+public class AssignmentsFragment extends BaseFragment {
 
     private static final List<String> ASSIGNMENT_TYPE = new ArrayList<String>(Arrays.asList("bronze", "silver", "gold", "sp"));
 

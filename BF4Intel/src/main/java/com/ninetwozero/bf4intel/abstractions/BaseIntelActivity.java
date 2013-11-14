@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.base;
+package com.ninetwozero.bf4intel.abstractions;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -13,7 +13,7 @@ import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.utils.Result;
 
-public class IntelActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<Result> {
+public class BaseIntelActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<Result> {
 
     protected Gson gson;
     private Menu optionsMenu;

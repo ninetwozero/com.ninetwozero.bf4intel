@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.abstractions.AbstractFragment;
+import com.ninetwozero.bf4intel.abstractions.BaseFragment;
 import com.ninetwozero.bf4intel.activities.SingleFragmentActivity;
 
-public class PostCreationFragment extends AbstractFragment {
+public class PostCreationFragment extends BaseFragment {
     public static final String FORUM_ID = "threadId";
 
     public PostCreationFragment() {

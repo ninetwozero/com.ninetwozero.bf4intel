@@ -6,13 +6,13 @@ import android.util.Log;
 
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.IntelActivity;
+import com.ninetwozero.bf4intel.abstractions.BaseIntelActivity;
 import com.ninetwozero.bf4intel.connection.ConnectionRequest;
 import com.ninetwozero.bf4intel.connection.IntelLoader;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
 
-public class AssignmentsActivity extends IntelActivity {
+public class AssignmentsActivity extends BaseIntelActivity {
 
     private static final int ID_LOADER = 1000;
     //TODO will be replaced with some url building logic in near future

@@ -1,7 +1,6 @@
 package com.ninetwozero.bf4intel.activities;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -9,15 +8,15 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.abstractions.BaseIntelActivity;
 import com.ninetwozero.bf4intel.fragments.NavigationDrawerFragment;
 
-public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     private static final String STATE_DRAWER_OPENED = "isDrawerOpened";
 
@@ -41,7 +40,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
     }
 
     private void setupNavigationDrawer() {
-        mNavigationDrawer = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
+        mNavigationDrawer = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
     }
 
     private void setupActionBarToggle() {
