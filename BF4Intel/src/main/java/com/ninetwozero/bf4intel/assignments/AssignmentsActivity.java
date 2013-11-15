@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.abstractions.BaseIntelActivity;
+import com.ninetwozero.bf4intel.base.BaseIntelActivity;
 import com.ninetwozero.bf4intel.connection.ConnectionRequest;
 import com.ninetwozero.bf4intel.connection.IntelLoader;
 import com.ninetwozero.bf4intel.utils.BusProvider;

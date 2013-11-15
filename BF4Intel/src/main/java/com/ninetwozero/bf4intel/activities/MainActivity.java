@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.abstractions.BaseIntelActivity;
+import com.ninetwozero.bf4intel.base.BaseIntelActivity;
 import com.ninetwozero.bf4intel.fragments.NavigationDrawerFragment;
 
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.abstractions.BaseFragment;
+import com.ninetwozero.bf4intel.base.BaseFragment;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 

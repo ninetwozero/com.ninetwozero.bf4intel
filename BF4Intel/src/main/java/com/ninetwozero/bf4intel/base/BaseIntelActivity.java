@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.abstractions;
+package com.ninetwozero.bf4intel.base;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;

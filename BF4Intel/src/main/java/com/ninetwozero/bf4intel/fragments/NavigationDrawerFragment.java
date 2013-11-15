@@ -9,7 +9,7 @@ import android.view.*;
 import android.widget.*;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.abstractions.BaseListFragment;
+import com.ninetwozero.bf4intel.base.BaseListFragment;
 import com.ninetwozero.bf4intel.activities.SoldierStatisticsActivity;
 import com.ninetwozero.bf4intel.adapters.ExpandableListRowAdapter;
 import com.ninetwozero.bf4intel.assignments.AssignmentsActivity;

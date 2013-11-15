@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.abstractions;
+package com.ninetwozero.bf4intel.base;
 
 import android.app.ActionBar;
 import android.app.Activity;
