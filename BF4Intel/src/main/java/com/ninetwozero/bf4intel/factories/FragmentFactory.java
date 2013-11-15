@@ -1,6 +1,6 @@
 package com.ninetwozero.bf4intel.factories;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
 import com.ninetwozero.bf4intel.fragments.*;

@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:padding="@dimen/spacing_single">
+  android:padding="@dimen/spacing_m">
 
   <include layout="@layout/list_item_feed_tpl_user" />
 
@@ -18,7 +18,7 @@
     android:layout_height="wrap_content"
     android:textAppearance="@android:style/TextAppearance.Holo.Small"
     android:text="Youtube.com: A story about a tank"
-    android:layout_marginTop="@dimen/spacing_single"
+    android:layout_marginTop="@dimen/spacing_m"
     android:layout_below="@id/content" />
 
   <ImageView
@@ -27,7 +27,7 @@
     android:layout_height="100dp"
     android:layout_gravity="center"
     android:src="@drawable/slidingmenu_background"
-    android:layout_marginTop="@dimen/spacing_onefourth"
+    android:layout_marginTop="@dimen/spacing_xs"
     android:layout_below="@id/link_title"
     android:contentDescription="@string/cdesc_status_link_image" />
 

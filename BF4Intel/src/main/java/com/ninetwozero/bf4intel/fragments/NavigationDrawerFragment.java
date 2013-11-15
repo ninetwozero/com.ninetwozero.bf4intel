@@ -1,7 +1,7 @@
 package com.ninetwozero.bf4intel.fragments;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +9,7 @@ import android.view.*;
 import android.widget.*;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.abstractions.BaseListFragment;
+import com.ninetwozero.bf4intel.base.BaseListFragment;
 import com.ninetwozero.bf4intel.activities.SoldierStatisticsActivity;
 import com.ninetwozero.bf4intel.adapters.ExpandableListRowAdapter;
 import com.ninetwozero.bf4intel.assignments.AssignmentsActivity;

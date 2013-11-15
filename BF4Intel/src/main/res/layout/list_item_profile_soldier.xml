@@ -3,7 +3,7 @@
   android:id="@+id/wrap_soldiers"
   android:layout_width="fill_parent"
   android:layout_height="wrap_content"
-  android:padding="@dimen/spacing_single">
+  android:padding="@dimen/spacing_m">
 
   <ImageView
     android:id="@+id/soldier_image"
@@ -17,8 +17,8 @@
     android:layout_height="wrap_content"
     android:textAppearance="@android:style/TextAppearance.Holo.Medium"
     android:layout_toRightOf="@id/soldier_image"
-    android:layout_marginLeft="@dimen/spacing_single"
-    android:layout_marginTop="@dimen/spacing_half" />
+    android:layout_marginLeft="@dimen/spacing_m"
+    android:layout_marginTop="@dimen/spacing_s" />
 
   <ImageView
     android:id="@+id/soldier_platform"
@@ -26,14 +26,14 @@
     android:layout_height="11dp"
     android:layout_below="@id/soldier_name"
     android:layout_toRightOf="@id/soldier_image"
-    android:layout_marginLeft="@dimen/spacing_single"
+    android:layout_marginLeft="@dimen/spacing_m"
     android:contentDescription="@string/cdesc_platform_icon" />
 
   <ImageView
     android:id="@+id/soldier_rank"
     android:layout_width="48dp"
     android:layout_height="48dp"
-    android:layout_marginTop="@dimen/spacing_half"
+    android:layout_marginTop="@dimen/spacing_s"
     android:layout_alignParentRight="true"
     android:contentDescription="@string/cdesc_rank_image" />
 </RelativeLayout>
