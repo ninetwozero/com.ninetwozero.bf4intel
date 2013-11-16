@@ -2,30 +2,30 @@ package com.ninetwozero.bf4intel.base;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 public abstract class BaseFragment extends Fragment {
-    private static Toast mToast;
+    private static Toast toast;
 
-    protected FragmentManager mFragmentManager;
-    protected LayoutInflater mInflater;
+    protected FragmentManager fragmentManager;
+    protected LayoutInflater inflater;
 
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         setRetainInstance(true);
-        mFragmentManager = getFragmentManager();
+        fragmentManager = getFragmentManager();
     }
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
-        mInflater = inflater;
+        this.inflater = inflater;
         return null;
     }
 
@@ -65,12 +65,12 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private void doShowToast(final Activity activity, final String text) {
-        if (mToast != null) {
-            mToast.cancel();
-            mToast = null;
+        if (toast != null) {
+            toast.cancel();
+            toast = null;
         }
 
-        mToast = Toast.makeText(activity, text, Toast.LENGTH_SHORT);
-        mToast.show();
+        toast = Toast.makeText(activity, text, Toast.LENGTH_SHORT);
+        toast.show();
     }
 }
