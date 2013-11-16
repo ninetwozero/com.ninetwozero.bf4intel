@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:padding="@dimen/spacing_single">
+  android:padding="@dimen/spacing_m">
 
   <include layout="@layout/list_item_feed_tpl_user" />
 
@@ -17,7 +17,7 @@
     android:layout_height="wrap_content"
     android:text="Battlefield 3: Back To Karkand"
     android:layout_below="@id/content"
-    android:layout_marginTop="@dimen/spacing_onefourth"
+    android:layout_marginTop="@dimen/spacing_xs"
     android:textAppearance="@android:style/TextAppearance.Holo"
     android:textColor="@color/blue" />
 

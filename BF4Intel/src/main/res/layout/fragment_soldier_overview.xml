@@ -10,7 +10,7 @@
     android:layout_height="wrap_content"
     android:background="@color/lightgrey"
     android:orientation="vertical"
-    android:padding="@dimen/spacing_single">
+    android:padding="@dimen/spacing_m">
 
     <RelativeLayout
       android:id="@+id/wrap_soldier_general"
@@ -38,10 +38,10 @@
         android:id="@+id/image_rank"
         android:layout_width="64dp"
         android:layout_height="64dp"
+        android:src="@drawable/test_rank31"
         android:layout_alignParentRight="true"
-        android:contentDescription="@string/cdesc_rank_image"
-        android:src="@drawable/test_rank31"/>
-
+        android:layout_marginTop="@dimen/spacing_l"
+        android:contentDescription="@string/cdesc_rank_image"/>
 
       <TextView
         android:id="@+id/current_rank_title"
@@ -104,7 +104,7 @@
         android:id="@+id/skills_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_half">
+        android:layout_marginTop="@dimen/spacing_s">
 
         <LinearLayout
           android:layout_width="match_parent"
@@ -157,7 +157,7 @@
         </LinearLayout>
       </TableLayout>
     </LinearLayout>
-    
+
     <LinearLayout
       android:id="@+id/wrap_soldier_service_stars"
       style="@style/WhiteContainer"

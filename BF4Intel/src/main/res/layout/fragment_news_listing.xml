@@ -15,5 +15,5 @@
     android:layout_height="wrap_content"
     android:text="@string/msg_empty_news"
     android:layout_centerInParent="true"
-    android:paddingBottom="@dimen/spacing_single" />
+    android:paddingBottom="@dimen/spacing_m" />
 </RelativeLayout>

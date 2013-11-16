@@ -1,26 +1,18 @@
 package com.ninetwozero.bf4intel.fragments;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.*;
+import android.widget.*;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.abstractions.BaseListFragment;
+import com.ninetwozero.bf4intel.base.BaseListFragment;
 import com.ninetwozero.bf4intel.activities.SoldierStatisticsActivity;
 import com.ninetwozero.bf4intel.adapters.ExpandableListRowAdapter;
+import com.ninetwozero.bf4intel.assignments.AssignmentsActivity;
 import com.ninetwozero.bf4intel.datatypes.ListRow;
 import com.ninetwozero.bf4intel.datatypes.ListRowType;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -37,6 +29,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private static final String STATE_SELECTED_GROUP = "selected_navigation_drawer_group_position";
     private static final String STATE_SELECTED_CHILD = "selected_navigation_drawer_child_position";
     private static final String STATE_SELECTION_IS_GROUP = "selected_navigation_drawer_is_group";
+
+    private static final int INTENT_SOLDIER_STATISTICS = 1;
+    private static final int INTENT_ASSIGNMENTS = 2;
 
     private ExpandableListView mListView;
     private NavigationDrawerCallbacks mCallbacks;
@@ -201,9 +196,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_overview), FragmentFactory.Type.SOLDIER_OVERVIEW));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_statistics), getSoldierStatisticsIntent(0))); // TODO: Pass real value
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_statistics), intentToStart(INTENT_SOLDIER_STATISTICS)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_unlocks), FragmentFactory.Type.SOLDIER_UNLOCKS));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.assignments), FragmentFactory.Type.SOLDIER_ASSIGNMENTS));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.assignments), intentToStart(INTENT_ASSIGNMENTS)));
         return items;
     }
 
@@ -226,9 +221,21 @@ public class NavigationDrawerFragment extends BaseListFragment {
         return items;
     }
 
-    private Intent getSoldierStatisticsIntent(final long id) {
-        Intent intent = new Intent(getActivity(), SoldierStatisticsActivity.class);
-        intent = intent.putExtra(SoldierStatisticsActivity.INTENT_ID, id);
+    private Intent intentToStart(final int intentID) {
+        int soldierID = 0; //TODO will replace with real soldier id once it become available
+        Intent intent = null;
+        switch(intentID){
+            case INTENT_SOLDIER_STATISTICS:
+                intent = new Intent(getActivity(), SoldierStatisticsActivity.class);
+                intent = intent.putExtra(SoldierStatisticsActivity.INTENT_ID, soldierID);
+                break;
+            case INTENT_ASSIGNMENTS:
+                intent = new Intent(getActivity(), AssignmentsActivity.class);
+                break;
+            default:
+                Log.i(NavigationDrawerFragment.class.getSimpleName(), "Did not found any matching activity for intent " + intentID);
+        }
+
         return intent;
     }
 

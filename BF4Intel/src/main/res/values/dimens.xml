@@ -22,14 +22,14 @@
   <integer name="num_cols">1</integer>
 
   <!-- Spacing -->
-  <dimen name="spacing_onefourth">2dp</dimen>
-  <dimen name="spacing_half">4dp</dimen>
-  <dimen name="spacing_single">8dp</dimen>
-  <dimen name="spacing_double">16dp</dimen>
+  <dimen name="spacing_xs">2dp</dimen>
+  <dimen name="spacing_s">4dp</dimen>
+  <dimen name="spacing_m">8dp</dimen>
+  <dimen name="spacing_l">16dp</dimen>
 
 
-  <dimen name="activity_horizontal_margin">@dimen/spacing_double</dimen>
-  <dimen name="activity_vertical_margin">@dimen/spacing_double</dimen>
+  <dimen name="activity_horizontal_margin">@dimen/spacing_l</dimen>
+  <dimen name="activity_vertical_margin">@dimen/spacing_l</dimen>
 
   <!-- Text related -->
   <dimen name="text_m">18sp</dimen>
@@ -38,4 +38,8 @@
 
   <!-- Sliding menu related -->
   <dimen name="navigation_drawer_width">320dp</dimen>
+
+  <!--Action bar-->
+  <dimen name="action_button_min_width">64dp</dimen>
+  <dimen name="indeterminate_progress_size">32dp</dimen>
 </resources>

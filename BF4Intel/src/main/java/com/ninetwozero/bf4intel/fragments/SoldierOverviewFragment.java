@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.abstractions.BaseFragment;
+import com.ninetwozero.bf4intel.base.BaseFragment;
 import com.ninetwozero.bf4intel.datatypes.Skill;
 import com.ninetwozero.bf4intel.jsonmodels.BaseStatsModel;
 import com.ninetwozero.bf4intel.jsonmodels.CompletionProgress;

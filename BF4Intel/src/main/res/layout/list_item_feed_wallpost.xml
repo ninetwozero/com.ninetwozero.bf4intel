@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:padding="@dimen/spacing_single">
+  android:padding="@dimen/spacing_m">
 
   <ImageView
     style="@style/feed_avatar"
@@ -24,7 +24,7 @@
     style="@style/feed_username"
     android:id="@+id/username"
     android:text="NINETWOZERO"
-    android:layout_marginLeft="@dimen/spacing_single"
+    android:layout_marginLeft="@dimen/spacing_m"
     android:layout_marginTop="0dp" />
 
   <TextView
@@ -33,7 +33,7 @@
     android:layout_width="match_parent"
     android:text="LittleBoySVK"
     android:layout_toRightOf="@id/avatar2"
-    android:layout_marginLeft="@dimen/spacing_single"
+    android:layout_marginLeft="@dimen/spacing_m"
     android:layout_alignBottom="@id/avatar2"
     android:textAppearance="@android:style/TextAppearance.Holo" />
 

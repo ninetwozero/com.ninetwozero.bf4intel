@@ -1,17 +1,16 @@
-package com.ninetwozero.bf4intel.abstractions;
+package com.ninetwozero.bf4intel.base;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.drm.DrmStore;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseListFragment extends ListFragment {
     private static Toast mToast;
 
     protected FragmentManager mFragmentManager;
@@ -25,9 +24,15 @@ public abstract class BaseFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mFragmentManager = getFragmentManager();
+    }
+
+    @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         mInflater = inflater;
-        return null;
+        return new View(getActivity());
     }
 
     protected void updateActionBar(final Activity activity, final String text) {
@@ -36,7 +41,16 @@ public abstract class BaseFragment extends Fragment {
         }
 
         final ActionBar actionBar = activity.getActionBar();
-        actionBar.setTitle(text);
+        actionBar.setTitle(text.toUpperCase());
+    }
+
+    protected void updateActionBar(final Activity activity, final int resource) {
+        if( activity == null ) {
+            return;
+        }
+
+        final ActionBar actionBar = activity.getActionBar();
+        actionBar.setTitle(getString(resource).toUpperCase());
     }
 
     protected void updateActionBar(final Activity activity, final String text, final int icon) {
@@ -45,15 +59,18 @@ public abstract class BaseFragment extends Fragment {
         }
 
         final ActionBar actionBar = activity.getActionBar();
-        actionBar.setTitle(text);
+        actionBar.setTitle(text.toUpperCase());
         actionBar.setIcon(icon);
     }
 
-    protected void updateActionBarIcon(final Activity activity, final int icon) {
+    protected void updateActionBar(final Activity activity, final int text, final int icon) {
         if (activity == null) {
             return;
         }
-        activity.getActionBar().setIcon(icon);
+
+        final ActionBar actionBar = activity.getActionBar();
+        actionBar.setTitle(getString(text).toUpperCase());
+        actionBar.setIcon(icon);
     }
 
     protected void showToast(final int resource) {

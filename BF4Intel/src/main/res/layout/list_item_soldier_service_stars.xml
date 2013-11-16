@@ -4,8 +4,8 @@
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:orientation="horizontal"
-  android:paddingTop="@dimen/spacing_half"
-  android:paddingBottom="@dimen/spacing_half">
+  android:paddingTop="@dimen/spacing_s"
+  android:paddingBottom="@dimen/spacing_s">
 
   <ImageView
     android:id="@+id/image"
@@ -20,6 +20,6 @@
     android:layout_height="wrap_content"
     android:indeterminate="false"
     android:layout_gravity="center_vertical"
-    android:layout_marginLeft="@dimen/spacing_single"
+    android:layout_marginLeft="@dimen/spacing_m"
   />
 </LinearLayout>

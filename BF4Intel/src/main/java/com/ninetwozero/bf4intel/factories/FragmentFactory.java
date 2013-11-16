@@ -1,6 +1,6 @@
 package com.ninetwozero.bf4intel.factories;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
 import com.ninetwozero.bf4intel.fragments.*;
@@ -49,8 +49,8 @@ public class FragmentFactory {
                 return SoldierStatsFragment.newInstance(data);
             //case SOLDIER_UNLOCKS:
             //    return SoldierOverviewFragment.newInstance(data);
-            case SOLDIER_ASSIGNMENTS:
-                return AssignmentListFragment.newInstance(data);
+            /*case SOLDIER_ASSIGNMENTS:
+                return AssignmentsFragment.newInstance(data);*/
             case NEWS_LISTING:
                 return NewsListingFragment.newInstance(data);
             case NEWS_ITEM:
