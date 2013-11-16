@@ -72,6 +72,17 @@
   <string name="navigationdrawer_view_forums">View forums</string>
   <string name="navigationdrawer_saved_threads">Saved threads</string>
 
+  <!-- Soldier Overview -->
+  <string name="overview_campaign">Campaign</string>
+  <string name="overview_assignments">Assignments</string>
+  <string name="overview_medals">Medals</string>
+  <string name="overview_ribbons">Ribbons</string>
+  <string name="overview_weapons">Weapons</string>
+  <string name="overview_vehicles">Vehicle Unlocks</string>
+  <string name="overview_kits">Kits</string>
+  <string name="overview_dogtags">Dog Tags</string>
+  <string name="na">N/A</string>
+
   <!-- Strings for the Skills -->
   <string name="skills_kd">K/D</string>
   <string name="skills_spm">SPM</string>
