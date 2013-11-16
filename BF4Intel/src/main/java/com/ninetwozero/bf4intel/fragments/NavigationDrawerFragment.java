@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.*;
 import android.widget.*;
 
+import com.ninetwozero.bf4intel.Keys;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.BaseListFragment;
 import com.ninetwozero.bf4intel.activities.SoldierStatisticsActivity;
@@ -124,7 +125,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void setupRegularViews(final View view) {
-        // TODO: Needs to get username from session storage
+        // TODO: Needs to build username from session storage
         final View wrapper = view.findViewById(R.id.wrap_login_name);
         ((TextView) wrapper.findViewById(R.id.login_name)).setText("NINETWOZERO");
     }
@@ -191,32 +192,43 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private List<ListRow> getRowsForSoldier() {
+        final Bundle data = new Bundle();
         final List<ListRow> items = new ArrayList<ListRow>();
+
+        // TODO: Get these from session storage somewhere -also, extract to constants somewhere
+        data.putString(Keys.Soldier.NAME, "NINETWOZERO");
+        data.putString(Keys.Soldier.ID, "177958806");
+        data.putInt(Keys.Soldier.PLATFORM, 2);
+
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_selected_soldier)));
         items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_overview), FragmentFactory.Type.SOLDIER_OVERVIEW));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_statistics), intentToStart(INTENT_SOLDIER_STATISTICS)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_unlocks), FragmentFactory.Type.SOLDIER_UNLOCKS));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.assignments), intentToStart(INTENT_ASSIGNMENTS)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_overview), data, FragmentFactory.Type.SOLDIER_OVERVIEW));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_statistics), data, intentToStart(INTENT_SOLDIER_STATISTICS)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_unlocks), data, FragmentFactory.Type.SOLDIER_UNLOCKS));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.assignments), data, intentToStart(INTENT_ASSIGNMENTS)));
         return items;
     }
 
     private List<ListRow> getRowsForSocial() {
+        // FIXME: Separate bundles per fragment type
+        final Bundle data = new Bundle();
         final List<ListRow> items = new ArrayList<ListRow>();
+
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_social)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_news), FragmentFactory.Type.NEWS_LISTING));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_battle_feed), FragmentFactory.Type.BATTLE_FEED));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, BATTLE_CHAT, ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_notifications), FragmentFactory.Type.NOTIFICATION));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_news), data, FragmentFactory.Type.NEWS_LISTING));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_battle_feed), data, FragmentFactory.Type.BATTLE_FEED));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, BATTLE_CHAT, data, ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_notifications), data, FragmentFactory.Type.NOTIFICATION));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_servers)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_forums), getRowsForForum()));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_forums), data, getRowsForForum()));
         return items;
     }
 
     private List<ListRow> getRowsForForum() {
+        final Bundle data = new Bundle();
         final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, getString(R.string.navigationdrawer_view_forums), FragmentFactory.Type.FORUM_LISTING));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, getString(R.string.navigationdrawer_view_forums), data, FragmentFactory.Type.FORUM_LISTING));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, getString(R.string.navigationdrawer_saved_threads)));
         return items;
     }
@@ -272,7 +284,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         } else if (item.hasFragmentType()) {
             try {
                 final FragmentTransaction transaction = mFragmentManager.beginTransaction();
-                transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType()));
+                transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType(), item.getData()));
                 transaction.commit();
             } catch (TypeNotPresentException ex) {
                 showToast(ex.getMessage());

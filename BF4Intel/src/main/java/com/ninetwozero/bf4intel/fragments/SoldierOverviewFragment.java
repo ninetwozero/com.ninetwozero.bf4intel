@@ -2,6 +2,8 @@ package com.ninetwozero.bf4intel.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,25 +13,30 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.Keys;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.BaseFragment;
+import com.ninetwozero.bf4intel.base.BaseLoadingFragment;
+import com.ninetwozero.bf4intel.connection.ConnectionRequest;
+import com.ninetwozero.bf4intel.connection.IntelLoader;
 import com.ninetwozero.bf4intel.datatypes.Skill;
+import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.jsonmodels.BaseStatsModel;
 import com.ninetwozero.bf4intel.jsonmodels.CompletionProgress;
 import com.ninetwozero.bf4intel.jsonmodels.SkillOverview;
 import com.ninetwozero.bf4intel.jsonmodels.SoldierOverview;
+import com.ninetwozero.bf4intel.resourcemaps.CompletionStringMap;
+import com.ninetwozero.bf4intel.resourcemaps.RankStringMap;
+import com.ninetwozero.bf4intel.resourcemaps.VehicleStringMap;
+import com.ninetwozero.bf4intel.resourcemaps.WeaponStringMap;
 import com.ninetwozero.bf4intel.utils.PersonaUtils;
+import com.ninetwozero.bf4intel.utils.Result;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.List;
 import java.util.Map;
 
-public class SoldierOverviewFragment extends BaseFragment {
+public class SoldierOverviewFragment extends BaseLoadingFragment implements LoaderManager.LoaderCallbacks<Result> {
+    private static final int ID_LOADER = SoldierOverview.class.hashCode();
+
     public SoldierOverviewFragment() {
     }
 
@@ -49,7 +56,7 @@ public class SoldierOverviewFragment extends BaseFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = mInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
+        final View view = this.inflater.inflate(R.layout.fragment_soldier_overview, parent, false);
         initialize(view);
         return view;
     }
@@ -57,49 +64,71 @@ public class SoldierOverviewFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        mockSettingUpLayoutFromJson();
+        getActivity().getSupportLoaderManager().initLoader(ID_LOADER, getArguments(), this);
     }
 
-    private void mockSettingUpLayoutFromJson() {
-        try {
-            final Reader reader = new InputStreamReader(
-                getActivity().getAssets().open("soldieroverview.json")
-            );
-            Gson gson = new Gson();
-            JsonParser parser = new JsonParser();
+    @Override
+    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
+        return new IntelLoader(
+            getActivity(),
+            new ConnectionRequest(
+                UrlFactory.build(
+                    UrlFactory.Type.SOLDIER_OVERVIEW,
+                    bundle.getString(Keys.Soldier.ID),
+                    bundle.getInt(Keys.Soldier.PLATFORM)
+                )
+            )
+        );
+    }
 
-            JsonObject rootObject = parser.parse(reader).getAsJsonObject().getAsJsonObject("data");
-            SoldierOverview soldierOverview = gson.fromJson(rootObject, SoldierOverview.class);
-            displayInformation(getView(), soldierOverview);
-        } catch (IOException ex) {
-            ex.printStackTrace();
+    @Override
+    public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
+        if (result == Result.SUCCESS) {
+            onLoadSuccess(result.getResultMessage());
+        } else {
+            onLoadFailure(result.getResultMessage());
         }
     }
 
+    @Override
+    protected void onLoadSuccess(final String resultMessage) {
+        SoldierOverview soldierOverview = fromJson(resultMessage, SoldierOverview.class);
+        displayInformation(getView(), soldierOverview);
+    }
+
+    @Override
+    protected void onLoadFailure(final String resultMessage) {
+        showToast(resultMessage);
+    }
+
     private void initialize(final View view) {
+        /* TODO: NEED TO INIT? */
     }
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {
+        final Bundle args = getArguments();
+
         displayGeneralInformation(baseView, soldierOverview);
         displaySkills(baseView, soldierOverview.getBasicSoldierStats());
         displayServiceStars(baseView, soldierOverview.getBasicSoldierStats());
-        displayToplist(baseView, R.id.wrap_soldier_top3_weapons, soldierOverview.getTopWeapons());
-        displayToplist(baseView, R.id.wrap_soldier_top3_vehicles, soldierOverview.getTopVehicles());
+        displayToplist(baseView, R.id.wrap_soldier_top3_weapons, soldierOverview.getTopWeapons(), true);
+        displayToplist(baseView, R.id.wrap_soldier_top3_vehicles, soldierOverview.getTopVehicles(), false);
         displayCompletions(baseView, soldierOverview.getCompletions());
 
-        updateActionBar(getActivity(), "Some user here", R.drawable.test_soldier);
+        updateActionBar(getActivity(), args.getString(Keys.Soldier.NAME), R.drawable.test_soldier);
     }
 
     private void displayGeneralInformation(final View baseView, final SoldierOverview soldierOverview) {
+        final Bundle args = getArguments();
         final View root = baseView.findViewById(R.id.wrap_soldier_general);
         final ProgressBar progressBar = (ProgressBar) baseView.findViewById(R.id.progress_rank);
         final int maxScore = soldierOverview.getMaxScoreCurrentRank();
         final int scoreLeftToNextRank = soldierOverview.getScoreLeftToNextRank();
         final int currentScoreThisRank = maxScore-scoreLeftToNextRank;
 
-        ((TextView) root.findViewById(R.id.soldier_name)).setText("Some soldier name");
+        ((TextView) root.findViewById(R.id.soldier_name)).setText(args.getString(Keys.Soldier.NAME));
         ((TextView) root.findViewById(R.id.current_rank_title)).setText(
-            soldierOverview.getCurrentRank().getName()
+            RankStringMap.get(soldierOverview.getCurrentRank().getName())
         );
         ((TextView) root.findViewById(R.id.value_rank_progress)).setText(
             String.format(getString(R.string.generic_x_of_y), currentScoreThisRank, maxScore)
@@ -118,7 +147,7 @@ public class SoldierOverviewFragment extends BaseFragment {
 
         contentArea.removeAllViews();
         for (int key : serviceStars.keySet()) {
-            final View parent = mInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
+            final View parent = inflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
             final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
 
             progressBar.setProgress((int)Math.round(serviceStarProgress.get(key)));
@@ -158,7 +187,7 @@ public class SoldierOverviewFragment extends BaseFragment {
             tableRow.setWeightSum(3f);
 
             for (int j = 0, maxCols = 3; j < maxCols; j++, counter++) {
-                final View cell = mInflater.inflate(R.layout.list_item_soldier_skills, null, false);
+                final View cell = inflater.inflate(R.layout.list_item_soldier_skills, null, false);
                 ((TextView) cell.findViewById(R.id.title)).setText(skillsList.get(counter).getStringResource());
                 ((TextView) cell.findViewById(R.id.value)).setText(skillsList.get(counter).getValue());
                 tableRow.addView(cell, cellLayoutParams);
@@ -167,14 +196,16 @@ public class SoldierOverviewFragment extends BaseFragment {
         }
     }
 
-    private void displayToplist(final View baseView, final int wrapId, final List<BaseStatsModel> stats) {
+    private void displayToplist(final View baseView, final int wrapId, final List<BaseStatsModel> stats, final boolean isWeapon) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(wrapId);
         final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
         contentArea.removeAllViews();
 
         for (int i = 0, max = 3; i < max; i++) {
-            final View parent = mInflater.inflate(R.layout.list_item_soldier_toplist,  null, false);
-            ((TextView) parent.findViewById(R.id.title)).setText(stats.get(i).getName());
+            final View parent = inflater.inflate(R.layout.list_item_soldier_toplist,  null, false);
+            ((TextView) parent.findViewById(R.id.title)).setText(
+                    isWeapon? WeaponStringMap.get(stats.get(i).getName()) : VehicleStringMap.get(stats.get(i).getName())
+            );
             ((TextView) parent.findViewById(R.id.value)).setText(
                     String.format(getString(R.string.soldier_num_kills), stats.get(i).getKillCount())
             );
@@ -188,13 +219,13 @@ public class SoldierOverviewFragment extends BaseFragment {
         contentArea.removeAllViews();
 
         for (CompletionProgress completionProgress : completions) {
-            final View parent = mInflater.inflate(R.layout.list_item_soldier_completion, null, false);
+            final View parent = inflater.inflate(R.layout.list_item_soldier_completion, null, false);
             final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
 
             progressBar.setProgress(completionProgress.getCurrentValue());
             progressBar.setMax(completionProgress.getMaxValue());
 
-            ((TextView) parent.findViewById(R.id.title)).setText(completionProgress.getName());
+            ((TextView) parent.findViewById(R.id.title)).setText(CompletionStringMap.get(completionProgress.getName()));
             ((TextView) parent.findViewById(R.id.progress_text)).setText(
                     String.format(
                         getString(R.string.generic_x_of_y),
