@@ -8,8 +8,8 @@
   <ImageView
     style="@style/meta"
     android:id="@+id/avatar"
-    android:layout_width="@dimen/spacing_double"
-    android:layout_height="@dimen/spacing_double"
+    android:layout_width="@dimen/spacing_l"
+    android:layout_height="@dimen/spacing_l"
     android:src="@drawable/test_gravatar"
     android:contentDescription="@string/cdesc_gravatar" />
 
@@ -17,6 +17,6 @@
     style="@style/meta"
     android:id="@+id/username"
     android:text="NINETWOZERO"
-    android:layout_marginLeft="@dimen/spacing_onefourth"
+    android:layout_marginLeft="@dimen/spacing_xs"
     android:textColor="@color/blue" />
 </LinearLayout>

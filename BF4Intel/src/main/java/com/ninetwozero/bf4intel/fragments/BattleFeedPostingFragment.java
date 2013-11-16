@@ -7,10 +7,10 @@ import android.view.*;
 import android.widget.EditText;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.abstractions.AbstractFragment;
+import com.ninetwozero.bf4intel.base.BaseFragment;
 import com.ninetwozero.bf4intel.activities.SingleFragmentActivity;
 
-public class BattleFeedPostingFragment extends AbstractFragment {
+public class BattleFeedPostingFragment extends BaseFragment {
     public BattleFeedPostingFragment() {
     }
 

@@ -1,16 +1,16 @@
-package com.ninetwozero.bf4intel.abstractions;
+package com.ninetwozero.bf4intel.base;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-public abstract class AbstractFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
     private static Toast mToast;
 
     protected FragmentManager mFragmentManager;

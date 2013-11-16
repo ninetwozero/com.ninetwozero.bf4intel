@@ -9,8 +9,8 @@
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
     android:gravity="left|center"
-    android:paddingLeft="@dimen/spacing_single"
-    android:paddingRight="@dimen/spacing_single"
+    android:paddingLeft="@dimen/spacing_m"
+    android:paddingRight="@dimen/spacing_m"
     android:orientation="horizontal">
 
     <TextView
@@ -18,7 +18,7 @@
       android:layout_height="wrap_content"
       android:text="@string/logged_in_as"
       android:textAllCaps="true"
-      android:layout_marginRight="@dimen/spacing_onefourth"
+      android:layout_marginRight="@dimen/spacing_xs"
       android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
       android:textColor="@color/grey"
     />
@@ -28,7 +28,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAllCaps="true"
-      android:layout_marginLeft="@dimen/spacing_half"
+      android:layout_marginLeft="@dimen/spacing_s"
       android:textAppearance="@android:style/TextAppearance.Holo.Inverse"
       />
     </LinearLayout>

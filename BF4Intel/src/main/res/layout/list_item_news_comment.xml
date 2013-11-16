@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/spacing_single">
+    android:padding="@dimen/spacing_m">
 
     <LinearLayout
             android:id="@+id/wrap_user"
@@ -13,8 +13,8 @@
 
         <ImageView
                 android:id="@+id/gravatar"
-                android:layout_width="@dimen/spacing_double"
-                android:layout_height="@dimen/spacing_double"
+                android:layout_width="@dimen/spacing_l"
+                android:layout_height="@dimen/spacing_l"
                 android:src="@drawable/test_gravatar"
                 android:contentDescription="@string/cdesc_gravatar" />
 
@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="NINETWOZERO"
-                android:layout_marginLeft="@dimen/spacing_half"
+                android:layout_marginLeft="@dimen/spacing_s"
                 android:textColor="@color/blue"
                 android:textAppearance="@android:style/TextAppearance.Holo.Small" />
     </LinearLayout>
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/wrap_user"
-            android:layout_marginTop="@dimen/spacing_half"
+            android:layout_marginTop="@dimen/spacing_s"
             android:textAppearance="@android:style/TextAppearance.Holo.Small"
             android:text="Bladabalablabadadadaldadalada\nldladldal" />
 
