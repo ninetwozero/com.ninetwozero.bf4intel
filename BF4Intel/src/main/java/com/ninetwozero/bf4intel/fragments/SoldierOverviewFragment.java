@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,11 +65,15 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
     @Override
     public void onResume() {
         super.onResume();
-        getActivity().getSupportLoaderManager().initLoader(ID_LOADER, getArguments(), this);
+
+        // TODO: if/else around this to init/restart
+        final LoaderManager manager = getActivity().getSupportLoaderManager();
+        manager.initLoader(ID_LOADER, getArguments(), this);
     }
 
     @Override
     public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
+        displayAsLoading(true);
         return new IntelLoader(
             getActivity(),
             new ConnectionRequest(
@@ -92,8 +97,18 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
 
     @Override
     protected void onLoadSuccess(final String resultMessage) {
-        SoldierOverview soldierOverview = fromJson(resultMessage, SoldierOverview.class);
+        /*
+            FIXME:
+            1. Open overview
+            2. Open assignments
+            3. Jump to the homescreen
+            4. Open app after a few seconds
+            5. Back out to the previous section
+            6. Tadaa!
+         */
+        final SoldierOverview soldierOverview = fromJson(resultMessage, SoldierOverview.class);
         displayInformation(getView(), soldierOverview);
+        displayAsLoading(false);
     }
 
     @Override
@@ -107,6 +122,8 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {
         final Bundle args = getArguments();
+
+        Log.d("YOLO", "soldierOverview => " + soldierOverview);
 
         displayGeneralInformation(baseView, soldierOverview);
         displaySkills(baseView, soldierOverview.getBasicSoldierStats());
@@ -124,7 +141,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
         final ProgressBar progressBar = (ProgressBar) baseView.findViewById(R.id.progress_rank);
         final int maxScore = soldierOverview.getMaxScoreCurrentRank();
         final int scoreLeftToNextRank = soldierOverview.getScoreLeftToNextRank();
-        final int currentScoreThisRank = maxScore-scoreLeftToNextRank;
+        final int currentScoreThisRank = maxScore - scoreLeftToNextRank;
 
         ((TextView) root.findViewById(R.id.soldier_name)).setText(args.getString(Keys.Soldier.NAME));
         ((TextView) root.findViewById(R.id.current_rank_title)).setText(
@@ -150,7 +167,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
             final View parent = inflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
             final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
 
-            progressBar.setProgress((int)Math.round(serviceStarProgress.get(key)));
+            progressBar.setProgress((int) Math.round(serviceStarProgress.get(key)));
             progressBar.setMax(100);
 
             ((ImageView) parent.findViewById(R.id.image)).setImageResource(
@@ -165,8 +182,8 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
         final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.skills_table);
         final Activity activity = getActivity();
         final TableLayout.LayoutParams rowLayoutParams = new TableLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
         );
         final TableRow.LayoutParams cellLayoutParams = new TableRow.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -202,12 +219,12 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
         contentArea.removeAllViews();
 
         for (int i = 0, max = 3; i < max; i++) {
-            final View parent = inflater.inflate(R.layout.list_item_soldier_toplist,  null, false);
+            final View parent = inflater.inflate(R.layout.list_item_soldier_toplist, null, false);
             ((TextView) parent.findViewById(R.id.title)).setText(
-                    isWeapon? WeaponStringMap.get(stats.get(i).getName()) : VehicleStringMap.get(stats.get(i).getName())
+                isWeapon ? WeaponStringMap.get(stats.get(i).getName()) : VehicleStringMap.get(stats.get(i).getName())
             );
             ((TextView) parent.findViewById(R.id.value)).setText(
-                    String.format(getString(R.string.soldier_num_kills), stats.get(i).getKillCount())
+                String.format(getString(R.string.soldier_num_kills), stats.get(i).getKillCount())
             );
             contentArea.addView(parent);
         }
@@ -227,11 +244,11 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
 
             ((TextView) parent.findViewById(R.id.title)).setText(CompletionStringMap.get(completionProgress.getName()));
             ((TextView) parent.findViewById(R.id.progress_text)).setText(
-                    String.format(
-                        getString(R.string.generic_x_of_y),
-                        completionProgress.getCurrentValue(),
-                        completionProgress.getMaxValue()
-                    )
+                String.format(
+                    getString(R.string.generic_x_of_y),
+                    completionProgress.getCurrentValue(),
+                    completionProgress.getMaxValue()
+                )
             );
             contentArea.addView(parent);
         }
