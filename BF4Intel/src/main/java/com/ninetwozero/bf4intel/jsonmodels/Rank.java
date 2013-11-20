@@ -4,27 +4,36 @@ import com.google.gson.annotations.SerializedName;
 
 public class Rank {
     @SerializedName("name")
-    private String mName;
+    private String name;
 
     @SerializedName("level")
-    private int mLevel;
+    private int level;
 
     @SerializedName("pointsNeeded")
-    private int mPointsNeeded;
+    private int pointsNeeded;
 
     public String getName() {
-        return mName;
+        return name;
     }
 
     public int getLevel() {
-        return mLevel;
+        return level;
     }
 
     public int getPointsNeeded() {
-        return mPointsNeeded;
+        return pointsNeeded;
     }
 
     public String getImageSlug() {
-        return "r" + mLevel;
+        return "r" + level;
+    }
+
+    @Override
+    public String toString() {
+        return "Rank{" +
+            "name='" + name + '\'' +
+            ", level=" + level +
+            ", pointsNeeded=" + pointsNeeded +
+            '}';
     }
 }

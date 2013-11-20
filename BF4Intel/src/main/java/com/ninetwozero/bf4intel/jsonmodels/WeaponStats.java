@@ -4,37 +4,48 @@ import com.google.gson.annotations.SerializedName;
 
 public class WeaponStats extends BaseStatsModel {
     @SerializedName("timeEquipped")
-    private int mTimeEquipped;
+    private int timeEquipped;
 
     @SerializedName("shotsFired")
-    private int mShotsFired;
+    private int shotsFired;
 
     @SerializedName("shotsHit")
-    private int mShotsHit;
+    private int shotsHit;
 
     @SerializedName("accuracy")
-    private double mAccuracy;
+    private double accuracy;
 
     @SerializedName("headshots")
-    private int mHeadshotCount;
+    private int headshotCount;
 
     public int getTimeEquipped() {
-        return mTimeEquipped;
+        return timeEquipped;
     }
 
     public int getShotsFired() {
-        return mShotsFired;
+        return shotsFired;
     }
 
     public int getShotsHit() {
-        return mShotsHit;
+        return shotsHit;
     }
 
     public double getAccuracy() {
-        return mAccuracy;
+        return accuracy;
     }
 
     public int getHeadshotCount() {
-        return mHeadshotCount;
+        return headshotCount;
+    }
+
+    @Override
+    public String toString() {
+        return "WeaponStats{" +
+            "timeEquipped=" + timeEquipped +
+            ", shotsFired=" + shotsFired +
+            ", shotsHit=" + shotsHit +
+            ", accuracy=" + accuracy +
+            ", headshotCount=" + headshotCount +
+            '}';
     }
 }

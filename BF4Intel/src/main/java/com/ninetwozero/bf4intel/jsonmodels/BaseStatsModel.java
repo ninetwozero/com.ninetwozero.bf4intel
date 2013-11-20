@@ -4,58 +4,72 @@ import com.google.gson.annotations.SerializedName;
 
 public class BaseStatsModel {
     @SerializedName("name")
-    protected String mName;
+    protected String name;
 
     @SerializedName("slug")
-    protected String mSlug;
+    protected String slug;
 
     @SerializedName("guid")
-    protected String mGuid;
+    protected String guid;
 
     @SerializedName("category")
-    protected String mCategory;
+    protected String category;
 
     @SerializedName("code")
-    protected String mCode;
+    protected String code;
 
     @SerializedName("serviceStars")
-    protected int mServiceStars;
+    protected int serviceStars;
 
     @SerializedName("serviceStarsProgress")
-    protected int mServiceStarProgress;
+    protected int serviceStarProgress;
 
     @SerializedName("kills")
-    protected int mKillCount;
+    protected int killCount;
 
     public String getName() {
-        return mName;
+        return name;
     }
 
     public String getSlug() {
-        return mSlug;
+        return slug;
     }
 
     public String getGuid() {
-        return mGuid;
+        return guid;
     }
 
     public String getCategory() {
-        return mCategory;
+        return category;
     }
 
     public String getCode() {
-        return mCode;
+        return code;
     }
 
     public int getServiceStars() {
-        return mServiceStars;
+        return serviceStars;
     }
 
     public int getServiceStarProgress() {
-        return mServiceStarProgress;
+        return serviceStarProgress;
     }
 
     public int getKillCount() {
-        return mKillCount;
+        return killCount;
+    }
+
+    @Override
+    public String toString() {
+        return "BaseStatsModel{" +
+            "name='" + name + '\'' +
+            ", slug='" + slug + '\'' +
+            ", guid='" + guid + '\'' +
+            ", category='" + category + '\'' +
+            ", code='" + code + '\'' +
+            ", serviceStars=" + serviceStars +
+            ", serviceStarProgress=" + serviceStarProgress +
+            ", killCount=" + killCount +
+            '}';
     }
 }

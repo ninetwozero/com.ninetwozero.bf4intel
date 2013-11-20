@@ -4,44 +4,56 @@ import com.google.gson.annotations.SerializedName;
 
 public class PersonaInfo {
     @SerializedName("userId")
-    private String mUserId;
+    private String userId;
 
     @SerializedName("personaId")
-    private String mPersonaId;
+    private String personaId;
 
     @SerializedName("tag")
-    private String mTag;
+    private String tag;
 
     @SerializedName("picture")
-    private String mPicture;
+    private String picture;
 
     @SerializedName("platform")
-    private int mPlatform;
+    private int platform;
 
     @SerializedName("game")
-    private int mGame;
+    private int game;
 
     public String getUserId() {
-        return mUserId;
+        return userId;
     }
 
     public String getPersonaId() {
-        return mPersonaId;
+        return personaId;
     }
 
     public String getTag() {
-        return mTag;
+        return tag;
     }
 
     public String getPicture() {
-        return mPicture;
+        return picture;
     }
 
     public int getPlatform() {
-        return mPlatform;
+        return platform;
     }
 
     public int getGame() {
-        return mGame;
+        return game;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonaInfo{" +
+            "userId='" + userId + '\'' +
+            ", personaId='" + personaId + '\'' +
+            ", tag='" + tag + '\'' +
+            ", picture='" + picture + '\'' +
+            ", platform=" + platform +
+            ", game=" + game +
+            '}';
     }
 }

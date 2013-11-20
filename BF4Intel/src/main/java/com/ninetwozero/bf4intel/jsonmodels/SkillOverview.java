@@ -11,73 +11,87 @@ import java.util.Map;
 
 public class SkillOverview {
     @SerializedName("skill")
-    private String mSkillRating;
+    private String skillRating;
 
     @SerializedName("kills")
-    private long mKillCount;
+    private long killCount;
 
     @SerializedName("kdRatio")
-    private double mKillDeathRatio;
+    private double killDeathRatio;
 
     @SerializedName("timePlayed")
-    private int mTimePlayed;
+    private int timePlayed;
 
     @SerializedName("score")
-    private int mScore;
+    private int score;
 
     @SerializedName("scorePerMinute")
-    private int mScorePerMinute;
+    private int scorePerMinute;
 
     @SerializedName("serviceStars")
-    private Map<Integer, Integer> mServiceStars;
+    private Map<Integer, Integer> serviceStars;
 
     @SerializedName("serviceStarsProgress")
-    private Map<Integer, Double> mServiceStarProgress;
+    private Map<Integer, Double> serviceStarProgress;
 
     public String getSkillRating() {
-        return mSkillRating;
+        return skillRating;
     }
 
     public long getKillCount() {
-        return mKillCount;
+        return killCount;
     }
 
     public double getKillDeathRatio() {
-        return mKillDeathRatio;
+        return killDeathRatio;
     }
 
     public int getTimePlayed() {
-        return mTimePlayed;
+        return timePlayed;
     }
 
     public int getScore() {
-        return mScore;
+        return score;
     }
 
     public int getScorePerMinute() {
-        return mScorePerMinute;
+        return scorePerMinute;
     }
 
     public double getKillsPerMinute() {
-        return((double) mKillCount)/(mTimePlayed / 60);
+        return((double) killCount)/(timePlayed / 60);
     }
 
     public Map<Integer, Integer> getServiceStars() {
-        return mServiceStars;
+        return serviceStars;
     }
 
     public Map<Integer, Double> getServiceStarProgress() {
-        return mServiceStarProgress;
+        return serviceStarProgress;
     }
 
     public List<Skill> asList() {
         final List<Skill> skillList = new ArrayList<Skill>(6);
-        skillList.add(new Skill(R.string.skills_kd, mKillDeathRatio));
-        skillList.add(new Skill(R.string.skills_spm, mScorePerMinute));
+        skillList.add(new Skill(R.string.skills_kd, killDeathRatio));
+        skillList.add(new Skill(R.string.skills_spm, scorePerMinute));
         skillList.add(new Skill(R.string.skills_kpm, String.format("%.2f", getKillsPerMinute())));
-        skillList.add(new Skill(R.string.skills_kills, mKillCount));
-        skillList.add(new Skill(R.string.skills_score, String.format("%,d", mScore)));
-        skillList.add(new Skill(R.string.skills_time, DateUtils.toLiteral(mTimePlayed)));
+        skillList.add(new Skill(R.string.skills_kills, killCount));
+        skillList.add(new Skill(R.string.skills_score, String.format("%,d", score)));
+        skillList.add(new Skill(R.string.skills_time, DateUtils.toLiteral(timePlayed)));
         return skillList;
+    }
+
+    @Override
+    public String toString() {
+        return "SkillOverview{" +
+            "skillRating='" + skillRating + '\'' +
+            ", killCount=" + killCount +
+            ", killDeathRatio=" + killDeathRatio +
+            ", timePlayed=" + timePlayed +
+            ", score=" + score +
+            ", scorePerMinute=" + scorePerMinute +
+            ", serviceStars=" + serviceStars +
+            ", serviceStarProgress=" + serviceStarProgress +
+            '}';
     }
 }

@@ -4,30 +4,40 @@ import com.google.gson.annotations.SerializedName;
 
 public class CompletionProgress {
     @SerializedName("name")
-    private String mName;
+    private String name;
 
     @SerializedName("current")
-    private int mCurrentValue;
+    private int currentValue;
 
     @SerializedName("max")
-    private int mMaxValue;
+    private int maxValue;
 
-    @SerializedName("percent")
-    private int mPercent;
+    @SerializedName("percentage")
+    private int percentage;
 
     public String getName() {
-        return mName;
+        return name;
     }
 
     public int getCurrentValue() {
-        return mCurrentValue;
+        return currentValue;
     }
 
     public int getMaxValue() {
-        return mMaxValue;
+        return maxValue;
     }
 
-    public int getPercent() {
-        return mPercent;
+    public int getPercentage() {
+        return percentage;
+    }
+
+    @Override
+    public String toString() {
+        return "CompletionProgress{" +
+            "name='" + name + '\'' +
+            ", currentValue=" + currentValue +
+            ", maxValue=" + maxValue +
+            ", percentage=" + percentage +
+            '}';
     }
 }

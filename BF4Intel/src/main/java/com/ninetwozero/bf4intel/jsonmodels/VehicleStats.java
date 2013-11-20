@@ -4,16 +4,24 @@ import com.google.gson.annotations.SerializedName;
 
 public class VehicleStats extends BaseStatsModel {
     @SerializedName("timeIn")
-    private int mTimeIn;
+    private int timeIn;
 
     @SerializedName("destroyXinY")
-    private int mDestroyedEnemySameVehicle;
+    private int destroyedEnemySameVehicle;
 
     public int getTimeIn() {
-        return mTimeIn;
+        return timeIn;
     }
 
     public int getDestroyedEnemySameVehicle() {
-        return mDestroyedEnemySameVehicle;
+        return destroyedEnemySameVehicle;
+    }
+
+    @Override
+    public String toString() {
+        return "VehicleStats{" +
+            "timeIn=" + timeIn +
+            ", destroyedEnemySameVehicle=" + destroyedEnemySameVehicle +
+            '}';
     }
 }

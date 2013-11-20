@@ -6,57 +6,70 @@ import java.util.List;
 
 public class SoldierOverview {
     @SerializedName("viewedPersonaInfo")
-    private PersonaInfo mPersonaInfo;
+    private PersonaInfo personaInfo;
 
     @SerializedName("currentRankNeeded")
-    private Rank mCurrentRank;
+    private Rank currentRank;
 
     @SerializedName("nextRankNeeded")
-    private Rank mNextRank;
+    private Rank nextRank;
 
     @SerializedName("topWeapons")
-    private List<BaseStatsModel> mTopWeapons;
+    private List<BaseStatsModel> topWeapons;
 
     @SerializedName("topVehicles")
-    private List<BaseStatsModel> mTopVehicles;
+    private List<BaseStatsModel> topVehicles;
 
     @SerializedName("gameProgress")
-    private List<CompletionProgress> mCompletions;
+    private List<CompletionProgress> completions;
 
     @SerializedName("overviewStats")
-    private SkillOverview mBasicSoldierStats;
+    private SkillOverview basicSoldierStats;
 
     public PersonaInfo getPersonaInfo() {
-        return mPersonaInfo;
+        return personaInfo;
     }
 
     public Rank getCurrentRank() {
-        return mCurrentRank;
+        return currentRank;
     }
 
     public Rank getNextRank() {
-        return mNextRank;
+        return nextRank;
     }
 
-    public List<BaseStatsModel> getTopWeapons() { return mTopWeapons; }
+    public List<BaseStatsModel> getTopWeapons() { return topWeapons; }
 
     public List<BaseStatsModel> getTopVehicles() {
-        return mTopVehicles;
+        return topVehicles;
     }
 
     public List<CompletionProgress> getCompletions() {
-        return mCompletions;
+        return completions;
     }
 
     public SkillOverview getBasicSoldierStats() {
-        return mBasicSoldierStats;
+        return basicSoldierStats;
     }
 
     public int getMaxScoreCurrentRank() {
-        return mNextRank.getPointsNeeded() - mCurrentRank.getPointsNeeded();
+        return nextRank.getPointsNeeded() - currentRank.getPointsNeeded();
     }
 
     public int getScoreLeftToNextRank() {
-        return mNextRank.getPointsNeeded() - mBasicSoldierStats.getScore();
+        return nextRank.getPointsNeeded() - basicSoldierStats.getScore();
+    }
+
+    @Override
+    public String toString() {
+        return "SoldierOverview{" +
+            "personaInfo=" + personaInfo +
+            ", currentRank=" + currentRank +
+            ", nextRank=" + nextRank +
+            ", topWeapons=" + topWeapons +
+            ", topVehicles=" + topVehicles +
+            ", completions=" + completions +
+            ", basicSoldierStats=" + basicSoldierStats +
+            '}';
     }
 }
