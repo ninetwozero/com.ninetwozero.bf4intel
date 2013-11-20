@@ -1,11 +1,14 @@
 package com.ninetwozero.bf4intel.base;
 
+import android.app.Activity;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.view.View;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.utils.Result;
 
 /*
@@ -19,9 +22,17 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Loader
     @Override
     public void onLoaderReset(final Loader<Result> resultLoader) {}
 
-    protected <T> T fromJson(final String jsonString, final Class<T> outClass) {
+    protected <T extends Object> T fromJson(final String jsonString, final Class<T> outClass) {
         final JsonObject jsonObject = parser.parse(jsonString).getAsJsonObject().getAsJsonObject("data");
         return gson.fromJson(jsonObject, outClass);
+    }
+
+    protected void displayAsLoading(final boolean isLoading) {
+        final Activity activity = getActivity();
+        if (activity == null) {
+            return;
+        }
+        activity.findViewById(R.id.wrap_loading_progress).setVisibility(isLoading? View.VISIBLE : View.GONE);
     }
 
     protected abstract void onLoadSuccess(final String resultMessage);
