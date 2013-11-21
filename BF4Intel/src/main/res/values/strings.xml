@@ -90,4 +90,7 @@
   <string name="skills_kills">Kills</string>
   <string name="skills_score">Score</string>
   <string name="skills_time">Time</string>
+
+  <!-- Menu -->
+  <string name="menu_refresh">Refresh</string>
 </resources>
