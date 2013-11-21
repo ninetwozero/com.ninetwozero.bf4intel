@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -56,7 +59,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = this.inflater.inflate(R.layout.fragment_soldier_overview, parent, false);
+        final View view = layoutInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
         initialize(view);
         return view;
     }
@@ -65,6 +68,12 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
     public void onResume() {
         super.onResume();
         startLoadingData();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        Log.d("YOLO", "CALLING ALL OPTIONS MENU");
     }
 
     @Override
@@ -95,7 +104,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
     protected void onLoadSuccess(final String resultMessage) {
         final SoldierOverview soldierOverview = fromJson(resultMessage, SoldierOverview.class);
         displayInformation(getView(), soldierOverview);
-        displayAsLoading(false);
     }
 
     @Override
@@ -106,7 +114,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
     private void initialize(final View view) {
         /* TODO: NEED TO INIT? */
     }
-
 
     /*
         TODO: We need to figure out a way to not download new data upon rotating the screen!
@@ -131,6 +138,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
         displayCompletions(baseView, soldierOverview.getCompletions());
 
         updateActionBar(getActivity(), args.getString(Keys.Soldier.NAME), R.drawable.test_soldier);
+        displayAsLoading(false);
     }
 
     private void displayGeneralInformation(final View baseView, final SoldierOverview soldierOverview) {
@@ -164,7 +172,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
 
         contentArea.removeAllViews();
         for (int key : serviceStars.keySet()) {
-            final View parent = inflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
+            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
             final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
 
             progressBar.setProgress((int) Math.round(serviceStarProgress.get(key)));
@@ -204,7 +212,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
             tableRow.setWeightSum(3f);
 
             for (int j = 0, maxCols = 3; j < maxCols; j++, counter++) {
-                final View cell = inflater.inflate(R.layout.list_item_soldier_skills, null, false);
+                final View cell = layoutInflater.inflate(R.layout.list_item_soldier_skills, null, false);
                 ((TextView) cell.findViewById(R.id.title)).setText(skillsList.get(counter).getStringResource());
                 ((TextView) cell.findViewById(R.id.value)).setText(skillsList.get(counter).getValue());
                 tableRow.addView(cell, cellLayoutParams);
@@ -219,7 +227,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
         contentArea.removeAllViews();
 
         for (int i = 0, max = 3; i < max; i++) {
-            final View parent = inflater.inflate(R.layout.list_item_soldier_toplist, null, false);
+            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_toplist, null, false);
             ((TextView) parent.findViewById(R.id.title)).setText(
                 isWeapon ? WeaponStringMap.get(stats.get(i).getName()) : VehicleStringMap.get(stats.get(i).getName())
             );
@@ -236,7 +244,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
         contentArea.removeAllViews();
 
         for (CompletionProgress completionProgress : completions) {
-            final View parent = inflater.inflate(R.layout.list_item_soldier_completion, null, false);
+            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_completion, null, false);
             final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
 
             progressBar.setProgress(completionProgress.getCurrentValue());

@@ -14,7 +14,7 @@ public abstract class BaseFragment extends Fragment {
     private static Toast toast;
 
     protected FragmentManager fragmentManager;
-    protected LayoutInflater inflater;
+    protected LayoutInflater layoutInflater;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -25,7 +25,7 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
-        this.inflater = inflater;
+        layoutInflater = inflater;
         return null;
     }
 
