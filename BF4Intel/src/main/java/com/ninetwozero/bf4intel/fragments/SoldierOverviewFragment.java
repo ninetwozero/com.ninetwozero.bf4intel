@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,10 +64,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
     @Override
     public void onResume() {
         super.onResume();
-
-        // TODO: if/else around this to init/restart
-        final LoaderManager manager = getActivity().getSupportLoaderManager();
-        manager.initLoader(ID_LOADER, getArguments(), this);
+        startLoadingData();
     }
 
     @Override
@@ -97,15 +93,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
 
     @Override
     protected void onLoadSuccess(final String resultMessage) {
-        /*
-            FIXME:
-            1. Open overview
-            2. Open assignments
-            3. Jump to the homescreen
-            4. Open app after a few seconds
-            5. Back out to the previous section
-            6. Tadaa!
-         */
         final SoldierOverview soldierOverview = fromJson(resultMessage, SoldierOverview.class);
         displayInformation(getView(), soldierOverview);
         displayAsLoading(false);
@@ -120,10 +107,21 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
         /* TODO: NEED TO INIT? */
     }
 
+
+    /*
+        TODO: We need to figure out a way to not download new data upon rotating the screen!
+    */
+    private void startLoadingData() {
+        final LoaderManager manager = getActivity().getSupportLoaderManager();
+        if (manager.getLoader(ID_LOADER) == null) {
+            manager.initLoader(ID_LOADER, getArguments(), this);
+        } else {
+            manager.restartLoader(ID_LOADER, getArguments(), this);
+        }
+    }
+
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {
         final Bundle args = getArguments();
-
-        Log.d("YOLO", "soldierOverview => " + soldierOverview);
 
         displayGeneralInformation(baseView, soldierOverview);
         displaySkills(baseView, soldierOverview.getBasicSoldierStats());
@@ -150,6 +148,8 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
         ((TextView) root.findViewById(R.id.value_rank_progress)).setText(
             String.format(getString(R.string.generic_x_of_y), currentScoreThisRank, maxScore)
         );
+
+        // FIXME: Display appropriate image in ActionBar
         ((ImageView) root.findViewById(R.id.image_rank)).setImageResource(R.drawable.test_rank31);
 
         progressBar.setProgress(currentScoreThisRank);
