@@ -20,13 +20,13 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     private static final String STATE_DRAWER_OPENED = "isDrawerOpened";
 
-    private boolean mIsRecreated = false;
-    private boolean mUserLearnedDrawer;
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private View mFragmentContainerView;
-    private NavigationDrawerFragment mNavigationDrawer;
-    private String mTitle;
+    private boolean isRecreated = false;
+    private boolean userLearnedDrawer;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle drawerToggle;
+    private View fragmentContainerView;
+    private NavigationDrawerFragment navigationDrawer;
+    private String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,42 +40,42 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     private void setupNavigationDrawer() {
-        mNavigationDrawer = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        navigationDrawer = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
     }
 
     private void setupActionBarToggle() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
+        userLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
 
-        mFragmentContainerView = findViewById(R.id.navigation_drawer);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+        fragmentContainerView = findViewById(R.id.navigation_drawer);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
-        mDrawerToggle = new ActionBarDrawerToggle(
+        drawerToggle = new ActionBarDrawerToggle(
                 this,
-                mDrawerLayout,
+            drawerLayout,
                 R.drawable.ic_navigation_drawer,
                 R.string.app_name,
                 R.string.app_name
         ) {
             @Override
             public void onDrawerClosed(View drawerView) {
-                if (!mNavigationDrawer.isAdded()) {
+                if (!navigationDrawer.isAdded()) {
                     return;
                 }
-                getActionBar().setTitle(mTitle);
+                getActionBar().setTitle(title);
 
                 invalidateOptionsMenu();
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
-                if (!mNavigationDrawer.isAdded()) {
+                if (!navigationDrawer.isAdded()) {
                     return;
                 }
 
-                if (!mUserLearnedDrawer) {
-                    mUserLearnedDrawer = true;
+                if (!userLearnedDrawer) {
+                    userLearnedDrawer = true;
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
                 }
@@ -84,19 +84,19 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
             }
         };
 
-        if (!mUserLearnedDrawer) {
-            mDrawerLayout.openDrawer(mFragmentContainerView);
+        if (!userLearnedDrawer) {
+            drawerLayout.openDrawer(fragmentContainerView);
         }
 
-        mDrawerLayout.post(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        mDrawerToggle.syncState();
-                    }
+        drawerLayout.post(
+            new Runnable() {
+                @Override
+                public void run() {
+                    drawerToggle.syncState();
                 }
+            }
         );
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        drawerLayout.setDrawerListener(drawerToggle);
     }
 
 
@@ -110,13 +110,14 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     private void setupActivityFromState(final Bundle state) {
         if (state != null) {
             toggleNavigationDrawer(state.getBoolean(STATE_DRAWER_OPENED, false));
-            mIsRecreated = true;
+            isRecreated = true;
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        super.onCreateOptionsMenu(menu);
+        menu.findItem(R.id.indeterminated_progress).setActionView(null);
         return true;
     }
 
@@ -148,31 +149,31 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
     public boolean isDrawerOpen() {
-        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);
+        return drawerLayout != null && drawerLayout.isDrawerOpen(fragmentContainerView);
     }
 
 
     @Override
     public void onNavigationDrawerItemSelected(final int position, final String title) {
-        mTitle = title == null? mTitle : title.toUpperCase();
-        if (mDrawerLayout != null && !mIsRecreated ) {
+        this.title = title == null? this.title : title.toUpperCase();
+        if (drawerLayout != null && !isRecreated) {
             toggleNavigationDrawer(false);
         }
-        mIsRecreated = false;
+        isRecreated = false;
     }
 
     private void toggleNavigationDrawer(final boolean show) {
         if (show) {
-            mDrawerLayout.openDrawer(mFragmentContainerView);
-            mNavigationDrawer.setMenuVisibility(true);
+            drawerLayout.openDrawer(fragmentContainerView);
+            navigationDrawer.setMenuVisibility(true);
         } else {
-            mDrawerLayout.closeDrawer(mFragmentContainerView);
-            mNavigationDrawer.setMenuVisibility(false);
+            drawerLayout.closeDrawer(fragmentContainerView);
+            navigationDrawer.setMenuVisibility(false);
         }
     }
 }
