@@ -64,8 +64,6 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
                     return;
                 }
                 getActionBar().setTitle(title);
-
-                invalidateOptionsMenu();
             }
 
             @Override
@@ -79,8 +77,6 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
                 }
-
-                invalidateOptionsMenu();
             }
         };
 

@@ -7,16 +7,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ninetwozero.bf4intel.Keys;
 import com.ninetwozero.bf4intel.R;
@@ -58,7 +54,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(false);
-        setHasOptionsMenu(true);
     }
 
     @Override
@@ -90,28 +85,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
         outState.putInt(STATE_SELECTED_GROUP, mCurrentSelectedGroupPosition);
         outState.putInt(STATE_SELECTED_CHILD, mCurrentSelectedChildPosition);
         outState.putBoolean(STATE_SELECTION_IS_GROUP, mCurrentSelectionIsGroup);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        final NavigationDrawerCallbacks callback = ((NavigationDrawerCallbacks) getActivity());
-        if (callback != null && callback.isDrawerOpen()) {
-            inflater.inflate(R.menu.main, menu);
-        }
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        final Activity activity = getActivity();
-        if (activity != null) {
-            switch (item.getItemId()) {
-                case R.id.ab_action_settings:
-                    Toast.makeText(activity, "Settings...", Toast.LENGTH_SHORT).show();
-                    return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
