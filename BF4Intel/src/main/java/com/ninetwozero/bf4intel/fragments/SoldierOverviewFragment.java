@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -68,12 +65,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
     public void onResume() {
         super.onResume();
         startLoadingData();
-    }
-
-    @Override
-    public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        Log.d("YOLO", "CALLING ALL OPTIONS MENU");
     }
 
     @Override
@@ -194,7 +185,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
             ViewGroup.LayoutParams.WRAP_CONTENT
         );
         final TableRow.LayoutParams cellLayoutParams = new TableRow.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
+            0,
             ViewGroup.LayoutParams.WRAP_CONTENT,
             1f
         );
@@ -205,7 +196,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
             String.valueOf(basicSoldierStats.getSkillRating())
         );
 
-        // TODO: Why is this not creating three equally large cells per row?
         for (int i = 0, counter = 0, maxRows = 2; i < maxRows; i++) {
             final TableRow tableRow = new TableRow(activity);
             tableRow.setLayoutParams(rowLayoutParams);
