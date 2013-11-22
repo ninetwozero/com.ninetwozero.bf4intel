@@ -1,19 +1,29 @@
 package com.ninetwozero.bf4intel.fragments;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.*;
-import android.widget.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ninetwozero.bf4intel.Keys;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.BaseListFragment;
 import com.ninetwozero.bf4intel.activities.SoldierStatisticsActivity;
 import com.ninetwozero.bf4intel.adapters.ExpandableListRowAdapter;
 import com.ninetwozero.bf4intel.assignments.AssignmentsActivity;
+import com.ninetwozero.bf4intel.base.BaseListFragment;
 import com.ninetwozero.bf4intel.datatypes.ListRow;
 import com.ninetwozero.bf4intel.datatypes.ListRowType;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -284,7 +294,13 @@ public class NavigationDrawerFragment extends BaseListFragment {
         } else if (item.hasFragmentType()) {
             try {
                 final FragmentTransaction transaction = mFragmentManager.beginTransaction();
-                transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType(), item.getData()));
+                final String tag = item.getFragmentType().toString();
+                final Fragment fragment = mFragmentManager.findFragmentByTag(tag);
+                if (fragment == null) {
+                    transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType(), item.getData()), tag);
+                } else {
+                    transaction.show(fragment);
+                }
                 transaction.commit();
             } catch (TypeNotPresentException ex) {
                 showToast(ex.getMessage());
