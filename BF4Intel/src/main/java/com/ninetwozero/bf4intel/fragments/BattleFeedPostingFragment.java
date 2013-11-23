@@ -36,7 +36,7 @@ public class BattleFeedPostingFragment extends BaseFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = mInflater.inflate(R.layout.fragment_feed_posting, parent, false);
+        final View view = this.layoutInflater.inflate(R.layout.fragment_feed_posting, parent, false);
         initialize(view);
         return view;
     }
@@ -82,7 +82,7 @@ public class BattleFeedPostingFragment extends BaseFragment {
 
         final Activity activity = getActivity();
         if (activity == null || !(activity instanceof SingleFragmentActivity)) {
-            mFragmentManager.popBackStackImmediate();
+            fragmentManager.popBackStackImmediate();
         } else {
             activity.finish();
         }

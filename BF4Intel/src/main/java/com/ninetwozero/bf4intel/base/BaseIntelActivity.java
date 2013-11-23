@@ -31,7 +31,6 @@ public class BaseIntelActivity extends FragmentActivity implements LoaderManager
 
     @Override
     public void onLoadFinished(Loader<Result> resultLoader, Result result) {
-
     }
 
     @Override
@@ -47,19 +46,24 @@ public class BaseIntelActivity extends FragmentActivity implements LoaderManager
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        optionsMenu = menu;
         getMenuInflater().inflate(R.menu.intel_activity, menu);
+        optionsMenu = menu;
         return true;
     }
 
-    protected void hideABProgressBar(boolean hideProgressBar) {
+    protected void showLoadingStateInActionBar(boolean isLoading) {
         if (optionsMenu == null) {
             return;
         }
 
-        final MenuItem refreshItem = optionsMenu.findItem(R.id.indeterminated_progress);
-        if (refreshItem != null && hideProgressBar) {
-            refreshItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        final MenuItem refreshItem = optionsMenu.findItem(R.id.ab_action_refresh);
+        if (refreshItem != null) {
+            refreshItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            if (isLoading) {
+                refreshItem.setActionView(R.layout.actionbar_indeterminate_progress);
+            } else {
+                refreshItem.setActionView(null);
+            }
         }
     }
 }

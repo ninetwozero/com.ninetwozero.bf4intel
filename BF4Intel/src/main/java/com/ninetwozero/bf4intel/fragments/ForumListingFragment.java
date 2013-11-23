@@ -35,7 +35,7 @@ public class ForumListingFragment extends BaseListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = mInflater.inflate(R.layout.fragment_forum_listing, parent, false);
+        final View view = this.layoutInflater.inflate(R.layout.fragment_forum_listing, parent, false);
         initialize(view);
         return view;
     }
@@ -60,7 +60,7 @@ public class ForumListingFragment extends BaseListFragment {
         final Bundle data = new Bundle();
         data.putLong(ThreadListingFragment.FORUM_ID, id);
 
-        final FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        final FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.activity_root, FragmentFactory.get(FragmentFactory.Type.THREAD_LISTING), "ThreadListingFragment");
         transaction.addToBackStack(null);
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);

@@ -14,25 +14,25 @@ import java.util.List;
 
 public class NewsItemAdapter extends BaseAdapter {
 
-    private Context mContext;
-    final LayoutInflater mInflater;
-    private List<Object> mItems;
+    private Context context;
+    final LayoutInflater layoutInflater;
+    private List<Object> items;
 
 
     public NewsItemAdapter(final Context context) {
-        mContext = context;
-        mInflater = LayoutInflater.from(mContext);
+        this.context = context;
+        layoutInflater = LayoutInflater.from(this.context);
     }
 
     // TODO: Remove when hooked to website
     public NewsItemAdapter(final Context context, final List<Object> objects) {
         this(context);
-        mItems = objects;
+        items = objects;
     }
 
     @Override
     public Object getItem(final int position) {
-        return mItems.get(position);
+        return items.get(position);
     }
 
     @Override
@@ -42,13 +42,13 @@ public class NewsItemAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mItems == null ? 0 : mItems.size();
+        return items == null ? 0 : items.size();
     }
 
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.list_item_news_comment, parent, false);
+            convertView = layoutInflater.inflate(R.layout.list_item_news_comment, parent, false);
         }
         return convertView;
     }

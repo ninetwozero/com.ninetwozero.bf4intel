@@ -38,6 +38,7 @@
   <string name="activated_new_game">Activated new game/expansion:</string>
   <string name="logged_in_as">Logged in as</string>
   <string name="assignment_goals_completed" formatted="false">%s/%s goals completed</string>
+  <string name="generic_x_of_y" formatted="false">%s/%s</string>
 
   <!-- HEADINGS -->
   <string name="weapons">Weapons</string>
@@ -48,9 +49,16 @@
   <string name="comments">Comments</string>
   <string name="soldier_quick_stats">Quick Statistics</string>
   <string name="soldier_detailed_stats">In-depth Statistics</string>
+  <string name="soldier_skill">Skill</string>
+  <string name="soldier_rating">Rating</string>
+  <string name="soldier_completion">Completion level</string>
+  <string name="soldier_top_weapons">Top Weapons</string>
+  <string name="soldier_top_vehicles">Top Vehicles</string>
+  <string name="soldier_num_kills" formatted="false">%s kills</string>
   <string name="profile_information_header">Basic Information</string>
   <string name="profile_presentation_header">Presentation</string>
-  <string name="selected_soldier">Selected soldier</string>
+  <string name="progress">Progress</string>
+  <string name="navigationdrawer_selected_soldier">Selected soldier</string>
   <string name="navigationdrawer_my_soldier">My soldier</string>
   <string name="navigationdrawer_overview">Overview</string>
   <string name="navigationdrawer_statistics">Statistics</string>
@@ -63,4 +71,26 @@
   <string name="navigationdrawer_forums">Forums</string>
   <string name="navigationdrawer_view_forums">View forums</string>
   <string name="navigationdrawer_saved_threads">Saved threads</string>
+
+  <!-- Soldier Overview -->
+  <string name="overview_campaign">Campaign</string>
+  <string name="overview_assignments">Assignments</string>
+  <string name="overview_medals">Medals</string>
+  <string name="overview_ribbons">Ribbons</string>
+  <string name="overview_weapons">Weapons</string>
+  <string name="overview_vehicles">Vehicle Unlocks</string>
+  <string name="overview_kits">Kits</string>
+  <string name="overview_dogtags">Dog Tags</string>
+  <string name="na">N/A</string>
+
+  <!-- Strings for the Skills -->
+  <string name="skills_kd">K/D</string>
+  <string name="skills_spm">SPM</string>
+  <string name="skills_kpm">KPM</string>
+  <string name="skills_kills">Kills</string>
+  <string name="skills_score">Score</string>
+  <string name="skills_time">Time</string>
+
+  <!-- Menu -->
+  <string name="menu_refresh">Refresh</string>
 </resources>
