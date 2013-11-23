@@ -73,6 +73,7 @@ public class FragmentFactory {
             case NOTIFICATION:
                 return NotificationFragment.newInstance(data);
             case BATTLE_REPORT:
+                return BattleReportFragment.newInstance(data);
             case BATTLE_REPORT_LISTING:
                 return BattleReportListingFragment.newInstance(data);
             default:

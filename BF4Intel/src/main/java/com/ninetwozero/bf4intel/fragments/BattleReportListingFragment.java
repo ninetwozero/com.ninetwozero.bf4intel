@@ -60,15 +60,15 @@ public class BattleReportListingFragment extends BaseListFragment {
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
         final Fragment itemFragment = mFragmentManager.findFragmentByTag("BattleReportFragment");
 
-        if (itemFragment != null && itemFragment instanceof NewsArticleFragment) {
-            ((NewsArticleFragment) itemFragment).loadArticle(id);
+        if (itemFragment != null && itemFragment instanceof BattleReportFragment) {
+            ((BattleReportFragment) itemFragment).loadReport(id);
         } else {
             final Bundle data = new Bundle();
-            data.putLong(NewsArticleFragment.ID, id);
+            data.putLong(BattleReportFragment.ID, id);
 
             final Intent intent = new Intent(getActivity(), SingleFragmentActivity.class)
                 .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, data)
-                .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.NEWS_ITEM.ordinal());
+                .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.BATTLE_REPORT.ordinal());
             startActivity(intent);
         }
     }
