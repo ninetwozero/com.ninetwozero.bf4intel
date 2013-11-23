@@ -22,6 +22,9 @@ public class FragmentFactory {
         NEWS_LISTING,
         NEWS_ITEM,
 
+        BATTLE_REPORT_LISTING,
+        BATTLE_REPORT,
+
         FORUM_LISTING,
         THREAD_LISTING,
         THREAD_CREATING,
@@ -69,6 +72,9 @@ public class FragmentFactory {
                 return PostCreationFragment.newInstance(data);
             case NOTIFICATION:
                 return NotificationFragment.newInstance(data);
+            case BATTLE_REPORT:
+            case BATTLE_REPORT_LISTING:
+                return BattleReportListingFragment.newInstance(data);
             default:
                 throw new TypeNotPresentException("" + type, null);
         }

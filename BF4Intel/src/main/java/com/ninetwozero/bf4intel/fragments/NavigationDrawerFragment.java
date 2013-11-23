@@ -121,21 +121,21 @@ public class NavigationDrawerFragment extends BaseListFragment {
         final ExpandableListAdapter slidingMenuAdapter = new ExpandableListRowAdapter(getActivity(), getItemsForMenu());
         listView.setAdapter(slidingMenuAdapter);
         listView.setOnGroupClickListener(
-            new ExpandableListView.OnGroupClickListener() {
-                @Override
-                public boolean onGroupClick(final ExpandableListView expandableListView, final View view, final int group, final long id) {
-                    return onGroupItemClick(expandableListView, group);
+                new ExpandableListView.OnGroupClickListener() {
+                    @Override
+                    public boolean onGroupClick(final ExpandableListView expandableListView, final View view, final int group, final long id) {
+                        return onGroupItemClick(expandableListView, group);
+                    }
                 }
-            }
         );
 
         listView.setOnChildClickListener(
-            new ExpandableListView.OnChildClickListener() {
-                @Override
-                public boolean onChildClick(ExpandableListView expandableListView, View view, int group, int child, long id) {
-                    return onChildItemClick(expandableListView, group, child);
+                new ExpandableListView.OnChildClickListener() {
+                    @Override
+                    public boolean onChildClick(ExpandableListView expandableListView, View view, int group, int child, long id) {
+                        return onChildItemClick(expandableListView, group, child);
+                    }
                 }
-            }
         );
     }
 
@@ -186,6 +186,8 @@ public class NavigationDrawerFragment extends BaseListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_selected_soldier)));
         items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.battlereports), FragmentFactory.Type.BATTLE_REPORT_LISTING));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.battlereports), FragmentFactory.Type.BATTLE_REPORT_LISTING));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_overview), data, FragmentFactory.Type.SOLDIER_OVERVIEW));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_statistics), data, intentToStart(INTENT_SOLDIER_STATISTICS)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_unlocks), data, FragmentFactory.Type.SOLDIER_UNLOCKS));
