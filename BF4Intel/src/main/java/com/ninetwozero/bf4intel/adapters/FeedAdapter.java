@@ -10,19 +10,19 @@ import java.util.List;
 
 public class FeedAdapter extends BaseAdapter {
 
-    private Context mContext;
-    final LayoutInflater mInflater;
-    private List<Integer> mItems;
+    private Context context;
+    final LayoutInflater layoutInflater;
+    private List<Integer> items;
 
     public FeedAdapter(final Context context, final List<Integer> objects) {
-        mContext = context;
-        mInflater = LayoutInflater.from(mContext);
-        mItems = objects;
+        this.context = context;
+        layoutInflater = LayoutInflater.from(this.context);
+        items = objects;
     }
 
     @Override
     public Integer getItem(final int position) {
-        return mItems.get(position);
+        return items.get(position);
     }
 
     @Override
@@ -32,13 +32,13 @@ public class FeedAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mItems == null ? 0 : mItems.size();
+        return items == null ? 0 : items.size();
     }
 
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         if (convertView == null) {
-            convertView = mInflater.inflate(getItem(position), parent, false);
+            convertView = layoutInflater.inflate(getItem(position), parent, false);
         }
         return convertView;
     }

@@ -40,12 +40,12 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private static final int INTENT_SOLDIER_STATISTICS = 1;
     private static final int INTENT_ASSIGNMENTS = 2;
 
-    private ExpandableListView mListView;
-    private NavigationDrawerCallbacks mCallbacks;
+    private ExpandableListView listView;
+    private NavigationDrawerCallbacks callbacks;
 
-    private int mCurrentSelectedGroupPosition = 0;
-    private int mCurrentSelectedChildPosition = 0;
-    private boolean mCurrentSelectionIsGroup = true;
+    private int currentSelectedGroupPosition = 0;
+    private int currentSelectedChildPosition = 0;
+    private boolean currentSelectionIsGroup = true;
 
     public NavigationDrawerFragment() {
     }
@@ -67,7 +67,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mCallbacks = (NavigationDrawerCallbacks) activity;
+            callbacks = (NavigationDrawerCallbacks) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
         }
@@ -76,21 +76,21 @@ public class NavigationDrawerFragment extends BaseListFragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mCallbacks = null;
+        callbacks = null;
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(STATE_SELECTED_GROUP, mCurrentSelectedGroupPosition);
-        outState.putInt(STATE_SELECTED_CHILD, mCurrentSelectedChildPosition);
-        outState.putBoolean(STATE_SELECTION_IS_GROUP, mCurrentSelectionIsGroup);
+        outState.putInt(STATE_SELECTED_GROUP, currentSelectedGroupPosition);
+        outState.putInt(STATE_SELECTED_CHILD, currentSelectedChildPosition);
+        outState.putBoolean(STATE_SELECTION_IS_GROUP, currentSelectionIsGroup);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        selectItemFromState(mCurrentSelectedGroupPosition, mCurrentSelectedChildPosition, mCurrentSelectionIsGroup); // Put this where?
+        selectItemFromState(currentSelectedGroupPosition, currentSelectedChildPosition, currentSelectionIsGroup); // Put this where?
     }
 
     private void initialize(final View view, final Bundle state) {
@@ -101,9 +101,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private void setupDataFromState(final Bundle state) {
         if (state != null) {
-            mCurrentSelectedGroupPosition = state.getInt(STATE_SELECTED_GROUP);
-            mCurrentSelectedChildPosition = state.getInt(STATE_SELECTED_CHILD);
-            mCurrentSelectionIsGroup = state.getBoolean(STATE_SELECTION_IS_GROUP, true);
+            currentSelectedGroupPosition = state.getInt(STATE_SELECTED_GROUP);
+            currentSelectedChildPosition = state.getInt(STATE_SELECTED_CHILD);
+            currentSelectionIsGroup = state.getBoolean(STATE_SELECTION_IS_GROUP, true);
         }
     }
 
@@ -115,27 +115,27 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
 
     private void setupListView(final View view) {
-        mListView = (ExpandableListView) view.findViewById(android.R.id.list);
-        mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listView = (ExpandableListView) view.findViewById(android.R.id.list);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         final ExpandableListAdapter slidingMenuAdapter = new ExpandableListRowAdapter(getActivity(), getItemsForMenu());
-        mListView.setAdapter(slidingMenuAdapter);
-        mListView.setOnGroupClickListener(
-                new ExpandableListView.OnGroupClickListener() {
-                    @Override
-                    public boolean onGroupClick(final ExpandableListView expandableListView, final View view, final int group, final long id) {
-                        return onGroupItemClick(expandableListView, group);
-                    }
+        listView.setAdapter(slidingMenuAdapter);
+        listView.setOnGroupClickListener(
+            new ExpandableListView.OnGroupClickListener() {
+                @Override
+                public boolean onGroupClick(final ExpandableListView expandableListView, final View view, final int group, final long id) {
+                    return onGroupItemClick(expandableListView, group);
                 }
+            }
         );
 
-        mListView.setOnChildClickListener(
-                new ExpandableListView.OnChildClickListener() {
-                    @Override
-                    public boolean onChildClick(ExpandableListView expandableListView, View view, int group, int child, long id) {
-                        return onChildItemClick(expandableListView, group, child);
-                    }
+        listView.setOnChildClickListener(
+            new ExpandableListView.OnChildClickListener() {
+                @Override
+                public boolean onChildClick(ExpandableListView expandableListView, View view, int group, int child, long id) {
+                    return onChildItemClick(expandableListView, group, child);
                 }
+            }
         );
     }
 
@@ -161,9 +161,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void storePositionState(final int group, final int child, final boolean isGroup) {
-        mCurrentSelectedGroupPosition = group;
-        mCurrentSelectedChildPosition = child;
-        mCurrentSelectionIsGroup = isGroup;
+        currentSelectedGroupPosition = group;
+        currentSelectedChildPosition = child;
+        currentSelectionIsGroup = isGroup;
     }
 
     private List<ListRow> getItemsForMenu() {
@@ -237,25 +237,25 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private void selectItemFromState(final int group, final int child, final boolean isGroup) {
         ListRow row;
         int position;
-        ExpandableListRowAdapter adapter = (ExpandableListRowAdapter) mListView.getExpandableListAdapter();
+        ExpandableListRowAdapter adapter = (ExpandableListRowAdapter) listView.getExpandableListAdapter();
 
         if( isGroup ) {
             row = adapter.getGroup(group);
-            position = mListView.getFlatListPosition(mListView.getPackedPositionForGroup(group));
+            position = listView.getFlatListPosition(listView.getPackedPositionForGroup(group));
         } else {
             row = adapter.getChild(group, child);
-            position = mListView.getFlatListPosition(mListView.getPackedPositionForChild(group, child));
+            position = listView.getFlatListPosition(listView.getPackedPositionForChild(group, child));
         }
         selectItem(row, position, true, true);
     }
 
     private void selectItem(final ListRow item, final int position, final boolean closeDrawer, final boolean isOnResume) {
-        if (mListView != null) {
-            mListView.setItemChecked(position, true);
+        if (listView != null) {
+            listView.setItemChecked(position, true);
         }
 
-        if (mCallbacks != null && closeDrawer) {
-            mCallbacks.onNavigationDrawerItemSelected(position, item.getTitle());
+        if (callbacks != null && closeDrawer) {
+            callbacks.onNavigationDrawerItemSelected(position, item.getTitle());
         }
 
         startItem(item, isOnResume);
@@ -266,9 +266,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
             startActivity(item.getIntent());
         } else if (item.hasFragmentType()) {
             try {
-                final FragmentTransaction transaction = mFragmentManager.beginTransaction();
+                final FragmentTransaction transaction = fragmentManager.beginTransaction();
                 final String tag = item.getFragmentType().toString();
-                final Fragment fragment = mFragmentManager.findFragmentByTag(tag);
+                final Fragment fragment = fragmentManager.findFragmentByTag(tag);
                 if (fragment == null) {
                     transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType(), item.getData()), tag);
                 } else {

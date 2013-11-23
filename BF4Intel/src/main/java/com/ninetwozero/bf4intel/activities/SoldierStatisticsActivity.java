@@ -19,7 +19,7 @@ import java.util.List;
 public class SoldierStatisticsActivity extends BaseIntelActivity {
     public static final String INTENT_ID = "soldierId";
 
-    private List<Fragment> mFragments;
+    private List<Fragment> fragmentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +55,10 @@ public class SoldierStatisticsActivity extends BaseIntelActivity {
     }
 
     private void setupFragments() {
-        mFragments = new ArrayList<Fragment>();
-        mFragments.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForWeapons()));
-        mFragments.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForVehicles()));
-        mFragments.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForReports()));
+        fragmentList = new ArrayList<Fragment>();
+        fragmentList.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForWeapons()));
+        fragmentList.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForVehicles()));
+        fragmentList.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForReports()));
     }
 
     private Bundle getBundleForWeapons() {
@@ -92,7 +92,7 @@ public class SoldierStatisticsActivity extends BaseIntelActivity {
                         @Override
                         public void onTabSelected(final ActionBar.Tab tab, final android.app.FragmentTransaction ft) { final FragmentManager manager = getSupportFragmentManager();
                             final FragmentTransaction transaction = manager.beginTransaction();
-                            transaction.replace(R.id.activity_root, mFragments.get(tab.getPosition()));
+                            transaction.replace(R.id.activity_root, fragmentList.get(tab.getPosition()));
                             transaction.commit();
                         }
 

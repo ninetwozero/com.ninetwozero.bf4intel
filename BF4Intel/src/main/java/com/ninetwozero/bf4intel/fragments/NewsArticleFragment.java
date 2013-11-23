@@ -40,7 +40,7 @@ public class NewsArticleFragment extends BaseListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = mInflater.inflate(R.layout.fragment_news_item, parent, false);
+        final View view = this.layoutInflater.inflate(R.layout.fragment_news_item, parent, false);
         initialize(view);
         return view;
     }
@@ -54,7 +54,7 @@ public class NewsArticleFragment extends BaseListFragment {
     @Override
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
         final int actualPosition = position-1; // -Header view
-        final FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        final FragmentTransaction transaction = fragmentManager.beginTransaction();
 
         /* TODO: CommentListFragment, which the user drags up from the bottom in some way like G+ app a while back? */
     }
@@ -70,7 +70,7 @@ public class NewsArticleFragment extends BaseListFragment {
         final NewsItemAdapter adapter = new NewsItemAdapter(getActivity(), getDummyItems());
 
         // TODO: Pass Bundle instead of new Object() in the future when things are in place
-        listView.addHeaderView(mInflater.inflate(R.layout.list_header_news_item, null, false), new Object(), false);
+        listView.addHeaderView(layoutInflater.inflate(R.layout.list_header_news_item, null, false), new Object(), false);
         listView.setHeaderDividersEnabled(true);
         listView.setAdapter(adapter);
     }

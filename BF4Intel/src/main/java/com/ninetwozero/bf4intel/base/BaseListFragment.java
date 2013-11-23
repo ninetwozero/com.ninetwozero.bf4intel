@@ -11,27 +11,27 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 public abstract class BaseListFragment extends ListFragment {
-    private static Toast mToast;
+    private static Toast toast;
 
-    protected FragmentManager mFragmentManager;
-    protected LayoutInflater mInflater;
+    protected FragmentManager fragmentManager;
+    protected LayoutInflater layoutInflater;
 
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         setRetainInstance(true);
-        mFragmentManager = getFragmentManager();
+        fragmentManager = getFragmentManager();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mFragmentManager = getFragmentManager();
+        fragmentManager = getFragmentManager();
     }
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
-        mInflater = inflater;
+        this.layoutInflater = inflater;
         return new View(getActivity());
     }
 
@@ -90,12 +90,12 @@ public abstract class BaseListFragment extends ListFragment {
     }
 
     private void doShowToast(final Activity activity, final String text) {
-        if (mToast != null) {
-            mToast.cancel();
-            mToast = null;
+        if (toast != null) {
+            toast.cancel();
+            toast = null;
         }
 
-        mToast = Toast.makeText(activity, text, Toast.LENGTH_SHORT);
-        mToast.show();
+        toast = Toast.makeText(activity, text, Toast.LENGTH_SHORT);
+        toast.show();
     }
 }
