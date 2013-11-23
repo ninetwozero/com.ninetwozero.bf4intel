@@ -56,7 +56,7 @@ public class BaseIntelActivity extends FragmentActivity implements LoaderManager
             return;
         }
 
-        final MenuItem refreshItem = optionsMenu.findItem(R.id.indeterminated_progress);
+        final MenuItem refreshItem = optionsMenu.findItem(R.id.ab_action_refresh);
         if (refreshItem != null) {
             refreshItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
             if (isLoading) {

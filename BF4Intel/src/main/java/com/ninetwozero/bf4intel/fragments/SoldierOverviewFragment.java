@@ -95,6 +95,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
     protected void onLoadSuccess(final String resultMessage) {
         final SoldierOverview soldierOverview = fromJson(resultMessage, SoldierOverview.class);
         displayInformation(getView(), soldierOverview);
+        displayAsLoading(false);
     }
 
     @Override
@@ -109,7 +110,8 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
     /*
         TODO: We need to figure out a way to not download new data upon rotating the screen!
     */
-    private void startLoadingData() {
+    @Override
+    protected void startLoadingData() {
         final LoaderManager manager = getActivity().getSupportLoaderManager();
         if (manager.getLoader(ID_LOADER) == null) {
             manager.initLoader(ID_LOADER, getArguments(), this);
@@ -129,7 +131,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
         displayCompletions(baseView, soldierOverview.getCompletions());
 
         updateActionBar(getActivity(), args.getString(Keys.Soldier.NAME), R.drawable.test_soldier);
-        displayAsLoading(false);
     }
 
     private void displayGeneralInformation(final View baseView, final SoldierOverview soldierOverview) {

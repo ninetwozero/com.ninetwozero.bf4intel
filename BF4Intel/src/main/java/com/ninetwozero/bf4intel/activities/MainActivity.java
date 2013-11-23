@@ -113,7 +113,11 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.findItem(R.id.indeterminated_progress).setActionView(null);
+
+        final MenuItem menuItem = menu.findItem(R.id.ab_action_refresh);
+        if ( menuItem != null ) {
+            menuItem.setVisible(false);
+        }
         return true;
     }
 

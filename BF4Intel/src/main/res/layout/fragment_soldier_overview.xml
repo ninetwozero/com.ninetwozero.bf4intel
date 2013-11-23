@@ -35,7 +35,6 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_below="@id/heading_progress"
-          android:text="xBOSS_der_BOSSEx"
           android:textAppearance="@android:style/TextAppearance.Holo.Large"
           android:textColor="@color/blue"/>
 
@@ -53,7 +52,6 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_below="@id/image_rank"
-          android:text="MASTER GUNNERY SERGEANT 2 STAR"
           android:textAllCaps="true"
           android:textAppearance="@android:style/TextAppearance.Holo.Small"/>
 
@@ -69,8 +67,7 @@
           style="@style/meta"
           android:id="@+id/value_rank_progress"
           android:layout_alignParentRight="true"
-          android:layout_below="@id/progress_rank"
-          android:text="29,613/50,000"/>
+          android:layout_below="@id/progress_rank"/>
       </RelativeLayout>
 
       <LinearLayout
@@ -102,7 +99,6 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:gravity="center_horizontal"
-          android:text="164"
           android:textSize="@dimen/text_xxl"
           />
 
