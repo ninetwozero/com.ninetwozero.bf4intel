@@ -45,14 +45,13 @@
     />
 
   <RelativeLayout
-    android:id="@+id/wrap_score"
+    android:id="@+id/wrap_team1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_below="@id/heading_results"
-    >
+    android:layout_below="@id/heading_results">
 
     <TextView
-      android:id="@+id/team_first"
+      android:id="@+id/team"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo"
@@ -61,7 +60,7 @@
       />
 
     <TextView
-      android:id="@+id/score_first"
+      android:id="@+id/score"
       android:layout_width="28dp"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo"
@@ -73,81 +72,84 @@
 
     <ProgressBar
       style="?android:progressBarStyleHorizontal"
-      android:id="@+id/progress_first"
+      android:id="@+id/progress"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:indeterminate="false"
-      android:layout_toRightOf="@id/team_first"
-      android:layout_toLeftOf="@id/score_first"
-      android:layout_alignBottom="@id/team_first"
+      android:layout_toRightOf="@id/team"
+      android:layout_toLeftOf="@id/score"
+      android:layout_alignBottom="@id/team"
       android:progress="380"
       android:max="400"
       />
+  </RelativeLayout>
+
+  <RelativeLayout
+    android:id="@+id/wrap_team2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/wrap_team1"
+    >
 
     <TextView
-      android:id="@+id/team_second"
+      android:id="@+id/team"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:text="RU"
+      android:text="US"
       android:layout_marginRight="@dimen/spacing_m"
-      android:layout_below="@id/team_first"
       />
 
     <TextView
-      android:id="@+id/score_second"
+      android:id="@+id/score"
       android:layout_width="28dp"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:text="0"
+      android:text="380"
       android:layout_alignParentRight="true"
       android:layout_marginLeft="@dimen/spacing_m"
-      android:layout_below="@id/score_first"
       android:gravity="right"
       />
 
     <ProgressBar
       style="?android:progressBarStyleHorizontal"
-      android:id="@+id/progress_second"
+      android:id="@+id/progress"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:indeterminate="false"
-      android:layout_alignBottom="@id/team_second"
-      android:layout_toRightOf="@id/team_second"
-      android:layout_toLeftOf="@id/score_second"
-      android:layout_below="@id/progress_first"
-      />
-
-    <TextView
-      android:id="@+id/string_round_time"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Time:"
-      android:textAllCaps="true"
-      android:textAppearance="@android:style/TextAppearance.Holo"
-      android:layout_below="@id/progress_second"
-      />
-
-    <TextView
-      android:id="@+id/round_time"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="29m 23s"
-      android:textAppearance="@android:style/TextAppearance.Holo.Small"
-      android:layout_below="@id/progress_second"
-      android:layout_toRightOf="@id/string_round_time"
-      android:layout_alignBaseline="@id/string_round_time"
-      android:layout_marginLeft="@dimen/spacing_m"
+      android:layout_toRightOf="@id/team"
+      android:layout_toLeftOf="@id/score"
+      android:layout_alignBottom="@id/team"
+      android:progress="380"
+      android:max="400"
       />
   </RelativeLayout>
 
   <TextView
-    style="@style/meta"
-    android:id="@+id/date"
-    android:layout_width="match_parent"
+    style="@style/heading"
+    android:id="@+id/string_round_time"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="4 hours ago"
-    android:layout_below="@id/wrap_score"
+    android:text="@string/battlereport_time"
+    android:layout_below="@id/wrap_team2"
     />
 
+  <TextView
+    android:id="@+id/round_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="29m 23s"
+    android:textAppearance="@android:style/TextAppearance.Holo"
+    android:layout_below="@id/string_round_time"
+    />
+
+  <TextView
+    style="@style/meta"
+    android:id="@+id/date"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="4 hours ago"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentRight="true"
+    />
 </RelativeLayout>
