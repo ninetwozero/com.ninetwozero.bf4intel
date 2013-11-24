@@ -3,7 +3,7 @@ package com.ninetwozero.bf4intel.jsonmodels.soldieroverview;
 import com.google.gson.annotations.SerializedName;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.datatypes.Skill;
-import com.ninetwozero.bf4intel.utils.DateUtils;
+import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +77,7 @@ public class SkillOverview {
         skillList.add(new Skill(R.string.skills_kpm, String.format("%.2f", getKillsPerMinute())));
         skillList.add(new Skill(R.string.skills_kills, killCount));
         skillList.add(new Skill(R.string.skills_score, String.format("%,d", score)));
-        skillList.add(new Skill(R.string.skills_time, DateUtils.toLiteral(timePlayed)));
+        skillList.add(new Skill(R.string.skills_time, DateTimeUtils.toLiteral(timePlayed)));
         return skillList;
     }
 
