@@ -12,13 +12,15 @@
     GNU General Public License for more details.
 -->
 <resources>
+  <color name="red">#ffcc0000</color>
   <color name="orange">#e7ab0a</color>
   <color name="green">#309030</color>
-  <color name="darkgreen">#ff63975f</color>
+  <color name="darkgreen">#ff669900</color>
   <color name="blue">#308DBF</color>
   <color name="dirtywhite">#EEEEEE</color>
   <color name="lightgrey">#CCCCCC</color>
   <color name="grey">#848484</color>
   <color name="darkgrey">#555555</color>
   <color name="almostblack">#111111</color>
+  <color name="black">#000000</color>
 </resources>
