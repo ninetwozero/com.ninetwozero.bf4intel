@@ -32,7 +32,7 @@ public class BattleReportFragment extends BaseFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = mInflater.inflate(R.layout.fragment_battle_report, parent, false);
+        final View view = inflater.inflate(R.layout.fragment_battle_report, parent, false);
         initialize(view);
         return view;
     }

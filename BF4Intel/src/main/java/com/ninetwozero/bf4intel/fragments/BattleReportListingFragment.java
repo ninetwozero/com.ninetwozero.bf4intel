@@ -37,7 +37,7 @@ public class BattleReportListingFragment extends BaseListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = mInflater.inflate(R.layout.generic_list, parent, false);
+        final View view = inflater.inflate(R.layout.generic_list, parent, false);
         initialize(view);
         return view;
     }
@@ -58,7 +58,7 @@ public class BattleReportListingFragment extends BaseListFragment {
 
     @Override
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
-        final Fragment itemFragment = mFragmentManager.findFragmentByTag("BattleReportFragment");
+        final Fragment itemFragment = fragmentManager.findFragmentByTag("BattleReportFragment");
 
         if (itemFragment != null && itemFragment instanceof BattleReportFragment) {
             ((BattleReportFragment) itemFragment).loadReport(id);
