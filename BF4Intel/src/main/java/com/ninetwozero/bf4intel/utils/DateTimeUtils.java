@@ -1,18 +1,23 @@
 package com.ninetwozero.bf4intel.utils;
 
+import android.content.Context;
+import android.text.format.DateUtils;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class DateTimeUtils {
+    public final static int SECOND = 0;
     public final static int MINUTE = 60;
     public final static int HOUR = MINUTE*60;
     public final static int DAY = HOUR*24;
 
     private final static int OUTPUT_LIMIT = 2;
-    private final static Map<Integer, String> mLiteralMapping = new LinkedHashMap<Integer, String>() {{
-        put(DAY, "D");
-        put(HOUR, "H");
-        put(MINUTE, "M");
+    private final static Map<Integer, String> literalMapping = new LinkedHashMap<Integer, String>() {{
+        put(DAY, "d");
+        put(HOUR, "h");
+        put(MINUTE, "m");
+        put(SECOND, "s");
     }};
 
     public static String toLiteral(final int seconds) {
@@ -21,11 +26,11 @@ public class DateTimeUtils {
         int count = 0;
         int numOutputs = 0;
 
-        for (int key : mLiteralMapping.keySet()) {
-            count = secondsKeeper / key;
+        for (int key : literalMapping.keySet()) {
+            count = key == 0? secondsKeeper : secondsKeeper / key;
             if (count > 0 || numOutputs > 0) {
-                stringBuilder.append(count).append(mLiteralMapping.get(key)).append(" ");
-                secondsKeeper = secondsKeeper % key;
+                stringBuilder.append(count).append(literalMapping.get(key)).append(" ");
+                secondsKeeper = key == 0? secondsKeeper : secondsKeeper % key;
                 if (++numOutputs == OUTPUT_LIMIT) {
                     break;
                 }
@@ -34,8 +39,7 @@ public class DateTimeUtils {
         return stringBuilder.toString().trim();
     }
 
-    public static String toRelative(final long timeInSeconds) {
-        return "TODO";
-        DateTimeUtils.getRelativeDateTimeString()
+    public static String toRelative(final Context context, final long timeInSeconds) {
+        return DateUtils.getRelativeDateTimeString(context, timeInSeconds*1000, DateUtils.SECOND_IN_MILLIS, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
     }
 }
