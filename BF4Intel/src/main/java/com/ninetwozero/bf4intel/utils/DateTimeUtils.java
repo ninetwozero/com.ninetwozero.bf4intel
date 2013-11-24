@@ -3,7 +3,7 @@ package com.ninetwozero.bf4intel.utils;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class DateUtils {
+public class DateTimeUtils {
     public final static int MINUTE = 60;
     public final static int HOUR = MINUTE*60;
     public final static int DAY = HOUR*24;
@@ -32,5 +32,10 @@ public class DateUtils {
             }
         }
         return stringBuilder.toString().trim();
+    }
+
+    public static String toRelative(final long timeInSeconds) {
+        return "TODO";
+        DateTimeUtils.getRelativeDateTimeString()
     }
 }
