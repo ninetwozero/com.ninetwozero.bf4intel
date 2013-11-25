@@ -1,8 +1,6 @@
 package com.ninetwozero.bf4intel.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
@@ -13,12 +11,10 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.Keys;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.adapters.BattleReportAdapter;
 import com.ninetwozero.bf4intel.base.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.connection.ConnectionRequest;
 import com.ninetwozero.bf4intel.connection.IntelLoader;
-import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.jsonmodels.battlereports.SummaryBattleReport;
 import com.ninetwozero.bf4intel.utils.Result;
@@ -109,8 +105,10 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     @Override
      public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
-        final Fragment itemFragment = fragmentManager.findFragmentByTag("BattleReportFragment");
+        // TODO: Not sure what to display in the next view, website is crammed!
 
+        /*
+        final Fragment itemFragment = fragmentManager.findFragmentByTag("BattleReportFragment");
         if (itemFragment != null && itemFragment instanceof BattleReportFragment) {
             ((BattleReportFragment) itemFragment).loadReport(id);
         } else {
@@ -122,6 +120,8 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
                 .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.BATTLE_REPORT.ordinal());
             startActivity(intent);
         }
+        */
+        showToast("Unimplemented functionality.");
     }
 
 
