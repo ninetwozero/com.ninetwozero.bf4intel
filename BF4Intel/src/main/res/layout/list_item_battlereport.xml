@@ -17,6 +17,16 @@
     />
 
   <TextView
+    style="@style/meta"
+    android:id="@+id/date"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="4 hours ago"
+    android:layout_alignParentRight="true"
+    android:layout_alignBaseline="@id/map_name"
+    />
+
+  <TextView
     android:id="@+id/game_mode"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -126,11 +136,11 @@
   </RelativeLayout>
 
   <TextView
-    style="@style/heading"
     android:id="@+id/string_round_time"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/battlereport_time"
+    android:textAppearance="@android:style/TextAppearance.Holo.Small"
     android:layout_below="@id/wrap_team2"
     />
 
@@ -138,18 +148,10 @@
     android:id="@+id/round_time"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="29m 23s"
-    android:textAppearance="@android:style/TextAppearance.Holo"
-    android:layout_below="@id/string_round_time"
-    />
-
-  <TextView
-    style="@style/meta"
-    android:id="@+id/date"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="4 hours ago"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentRight="true"
+    android:text="29m"
+    android:textAppearance="@android:style/TextAppearance.Holo.Small"
+    android:layout_toRightOf="@id/string_round_time"
+    android:layout_below="@id/wrap_team2"
+    android:layout_marginLeft="@dimen/spacing_s"
     />
 </RelativeLayout>

@@ -40,6 +40,7 @@ public class DateTimeUtils {
     }
 
     public static String toRelative(final Context context, final long timeInSeconds) {
-        return DateUtils.getRelativeDateTimeString(context, timeInSeconds*1000, DateUtils.SECOND_IN_MILLIS, DateUtils.WEEK_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL).toString();
+        return DateUtils.getRelativeTimeSpanString(timeInSeconds*1000, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+            //timeInSeconds * 1000, SystemClock.currentThreadTimeMillis(), DateUtils.SECOND_IN_MILLIS);
     }
 }

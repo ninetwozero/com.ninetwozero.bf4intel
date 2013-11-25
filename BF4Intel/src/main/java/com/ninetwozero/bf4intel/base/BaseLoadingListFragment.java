@@ -1,8 +1,6 @@
 package com.ninetwozero.bf4intel.base;
 
 import android.app.Activity;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -10,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -83,15 +80,7 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     }
 
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
-        final View loadingContainer = activity.findViewById(R.id.wrap_loading_progress);
-        if (isLoading) {
-            final ProgressBar progressBar = (ProgressBar) loadingContainer.findViewById(R.id.progress_bar);
-            final Drawable progressDrawable = progressBar.getIndeterminateDrawable();
-            if (progressDrawable != null) {
-                progressDrawable.setColorFilter(R.color.blue, PorterDuff.Mode.MULTIPLY);
-            }
-        }
-        loadingContainer.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+        activity.findViewById(R.id.wrap_loading_progress).setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
     protected abstract void onLoadSuccess(final String resultMessage);
     protected abstract void onLoadFailure(final String resultMessage);

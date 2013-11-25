@@ -85,7 +85,7 @@
   <string name="na">N/A</string>
 
   <!-- Battle reports -->
-  <string name="battlereport_time">Time played:</string>
+  <string name="battlereport_time">Duration:</string>
   <string name="msg_no_battlereports">No Battle Reports found.</string>
 
   <!-- Strings for the Skills -->

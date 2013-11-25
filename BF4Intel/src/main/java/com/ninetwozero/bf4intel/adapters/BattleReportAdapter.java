@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,13 +66,18 @@ public class BattleReportAdapter extends BaseAdapter {
             final TextView teamScoreView = (TextView) wrap.findViewById(R.id.score);
             final ProgressBar progressBar = (ProgressBar) wrap.findViewById(R.id.progress);
 
-            final int colorId = team.isWinner()? R.color.green : R.color.red;
-            final int statusColor = context.getResources().getColor(colorId);
+            final boolean playerIsInTeam = report.isPlayerInTeam(personaId, team.getId());
+            final int statusColorId = team.isWinner()? R.color.green : R.color.red;
+            final int colorId = playerIsInTeam? statusColorId : R.color.black;
+            final int colorCode = context.getResources().getColor(colorId);
+            final int typeFaceId = playerIsInTeam? Typeface.BOLD : Typeface.NORMAL;
 
             teamNameView.setText(team.getName());
-            teamNameView.setTextColor(statusColor);
+            teamNameView.setTextColor(colorCode);
+            teamNameView.setTypeface(null, typeFaceId);
             teamScoreView.setText(String.valueOf(team.getFinalscore()));
-            teamScoreView.setTextColor(statusColor);
+            teamScoreView.setTextColor(colorCode);
+            teamScoreView.setTypeface(null, typeFaceId);
 
             progressBar.setMax(team.getStartingScore());
             progressBar.setProgress(team.getFinalscore());
