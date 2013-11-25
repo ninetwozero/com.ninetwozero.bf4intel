@@ -45,6 +45,7 @@
   <string name="vehicles">Vehicles</string>
   <string name="reports">Reports</string>
   <string name="assignments">Assignments</string>
+  <string name="battlereports">Battle Reports</string>
   <string name="service_stars">Service Stars</string>
   <string name="comments">Comments</string>
   <string name="soldier_quick_stats">Quick Statistics</string>
@@ -82,6 +83,10 @@
   <string name="overview_kits">Kits</string>
   <string name="overview_dogtags">Dog Tags</string>
   <string name="na">N/A</string>
+
+  <!-- Battle reports -->
+  <string name="battlereport_time">Duration:</string>
+  <string name="msg_no_battlereports">No Battle Reports found.</string>
 
   <!-- Strings for the Skills -->
   <string name="skills_kd">K/D</string>

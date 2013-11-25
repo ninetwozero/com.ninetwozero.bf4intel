@@ -20,10 +20,10 @@ import com.ninetwozero.bf4intel.connection.ConnectionRequest;
 import com.ninetwozero.bf4intel.connection.IntelLoader;
 import com.ninetwozero.bf4intel.datatypes.Skill;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.jsonmodels.BaseStatsModel;
-import com.ninetwozero.bf4intel.jsonmodels.CompletionProgress;
-import com.ninetwozero.bf4intel.jsonmodels.SkillOverview;
-import com.ninetwozero.bf4intel.jsonmodels.SoldierOverview;
+import com.ninetwozero.bf4intel.jsonmodels.soldieroverview.BaseStatsModel;
+import com.ninetwozero.bf4intel.jsonmodels.soldieroverview.CompletionProgress;
+import com.ninetwozero.bf4intel.jsonmodels.soldieroverview.SkillOverview;
+import com.ninetwozero.bf4intel.jsonmodels.soldieroverview.SoldierOverview;
 import com.ninetwozero.bf4intel.resourcemaps.CompletionStringMap;
 import com.ninetwozero.bf4intel.resourcemaps.RankStringMap;
 import com.ninetwozero.bf4intel.resourcemaps.VehicleStringMap;
@@ -34,7 +34,7 @@ import com.ninetwozero.bf4intel.utils.Result;
 import java.util.List;
 import java.util.Map;
 
-public class SoldierOverviewFragment extends BaseLoadingFragment implements LoaderManager.LoaderCallbacks<Result> {
+public class SoldierOverviewFragment extends BaseLoadingFragment {
     private static final int ID_LOADER = SoldierOverview.class.hashCode();
 
     public SoldierOverviewFragment() {
@@ -65,6 +65,19 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
     public void onResume() {
         super.onResume();
         startLoadingData();
+    }
+
+    /*
+        TODO: We need to figure out a way to not download new data upon rotating the screen!
+    */
+    @Override
+    protected void startLoadingData() {
+        final LoaderManager manager = getActivity().getSupportLoaderManager();
+        if (manager.getLoader(ID_LOADER) == null) {
+            manager.initLoader(ID_LOADER, getArguments(), this);
+        } else {
+            manager.restartLoader(ID_LOADER, getArguments(), this);
+        }
     }
 
     @Override
@@ -105,19 +118,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment implements Load
 
     private void initialize(final View view) {
         /* TODO: NEED TO INIT? */
-    }
-
-    /*
-        TODO: We need to figure out a way to not download new data upon rotating the screen!
-    */
-    @Override
-    protected void startLoadingData() {
-        final LoaderManager manager = getActivity().getSupportLoaderManager();
-        if (manager.getLoader(ID_LOADER) == null) {
-            manager.initLoader(ID_LOADER, getArguments(), this);
-        } else {
-            manager.restartLoader(ID_LOADER, getArguments(), this);
-        }
     }
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {

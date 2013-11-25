@@ -4,6 +4,7 @@ public class UrlFactory {
     private static final String BASE_URL = "http://battlelog.battlefield.com/bf4/";
 
     public enum Type {
+        BATTLE_REPORT_LISTING("warsawbattlereportspopulate/{SOLDIER_ID}/2048/{PLATFORM}/"),
         SOLDIER_OVERVIEW("warsawoverviewpopulate/{SOLDIER_ID}/{PLATFORM}/"),
         ASSIGNMENTS("soldier/missionsPopulateStats/LittleBoySVK/{SOLDIER_ID}/{USER_ID}/{PLATFORM}/");
 
