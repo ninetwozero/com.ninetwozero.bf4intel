@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.jsonmodels.battlereports.SummaryBattleReport;
 import com.ninetwozero.bf4intel.jsonmodels.battlereports.Team;
+import com.ninetwozero.bf4intel.resourcemaps.GameModeStringMap;
 import com.ninetwozero.bf4intel.resourcemaps.LevelStringMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 
@@ -55,7 +56,7 @@ public class BattleReportAdapter extends BaseAdapter {
         }
 
         ((TextView) convertView.findViewById(R.id.map_name)).setText(LevelStringMap.get(report.getMap()));
-        ((TextView) convertView.findViewById(R.id.game_mode)).setText(getGameModeStringFromId(report.getGameMode()));
+        ((TextView) convertView.findViewById(R.id.game_mode)).setText(GameModeStringMap.get(report.getGameMode()));
         ((TextView) convertView.findViewById(R.id.server_name)).setText(report.getServerName());
 
         for (int i = 0; i < teamWraps.length; i++) {
@@ -90,27 +91,5 @@ public class BattleReportAdapter extends BaseAdapter {
     public void setItems(final List<SummaryBattleReport> items) {
         this.items = items;
         notifyDataSetChanged();
-    }
-
-    /* TODO: Missing Squad Deathmatch? */
-    private String getGameModeStringFromId(final int id) {
-        switch(id) {
-            case 1:
-                return "Conquest";
-            case 2:
-                return "Rush";
-            case 32:
-                return "Team Deathmatch";
-            case 64:
-                return "Conquest Large";
-            case 1024:
-                return "Domination";
-            case 2097152:
-                return "Obliteration";
-            case 16777216:
-                return "Defuse";
-            default:
-                return String.valueOf(id);
-        }
     }
 }
