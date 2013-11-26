@@ -7,4 +7,11 @@ public class Keys {
         public static final String PLATFORM = "platformId";
         public static final String AVATAR = "avatar";
     }
+
+    public static class Profile {
+        public static final String ID = "profileId";
+        public static final String USERNAME = "username";
+        public static final String NAME = "name";
+        public static final String GRAVATAR_HASH = "gravatarHash";
+    }
 }
