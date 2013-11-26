@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/WhiteContainer"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:minHeight="100dp"
   android:padding="@dimen/spacing_m">
 
   <include layout="@layout/list_item_feed_tpl_user" />
