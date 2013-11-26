@@ -21,7 +21,7 @@ public class AssignmentsTest {
         JsonParser parser = new JsonParser();
         JsonObject dataJson = parser.parse(reader).getAsJsonObject().getAsJsonObject("data");
         reader.close();
-        Assignments assignments = gson.fromJson( dataJson, Assignments.class);
+        Assignments assignments = gson.fromJson(dataJson, Assignments.class);
         assertEquals(200661244, assignments.getPersonaId());
         assertEquals("LittleBoySVK", assignments.getPersonaName());
         assertEquals(51, assignments.getAssignments().size());

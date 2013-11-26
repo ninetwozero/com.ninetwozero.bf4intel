@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.adapters;
+package com.ninetwozero.bf4intel.battlereport;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -10,8 +10,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.jsonmodels.battlereports.SummaryBattleReport;
-import com.ninetwozero.bf4intel.jsonmodels.battlereports.Team;
+import com.ninetwozero.bf4intel.battlereports.SummaryBattleReport;
+import com.ninetwozero.bf4intel.battlereports.Team;
 import com.ninetwozero.bf4intel.resourcemaps.GameModeStringMap;
 import com.ninetwozero.bf4intel.resourcemaps.LevelStringMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;

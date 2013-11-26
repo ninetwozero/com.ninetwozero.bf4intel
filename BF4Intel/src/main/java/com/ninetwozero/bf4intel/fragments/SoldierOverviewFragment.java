@@ -20,17 +20,19 @@ import com.ninetwozero.bf4intel.connection.ConnectionRequest;
 import com.ninetwozero.bf4intel.connection.IntelLoader;
 import com.ninetwozero.bf4intel.datatypes.Skill;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.jsonmodels.soldieroverview.BaseStatsModel;
-import com.ninetwozero.bf4intel.jsonmodels.soldieroverview.CompletionProgress;
-import com.ninetwozero.bf4intel.jsonmodels.soldieroverview.SkillOverview;
-import com.ninetwozero.bf4intel.jsonmodels.soldieroverview.SoldierOverview;
+import com.ninetwozero.bf4intel.soldieroverview.BaseStatsModel;
+import com.ninetwozero.bf4intel.soldieroverview.CompletionProgress;
+import com.ninetwozero.bf4intel.soldieroverview.SkillOverview;
+import com.ninetwozero.bf4intel.soldieroverview.SoldierOverview;
 import com.ninetwozero.bf4intel.resourcemaps.CompletionStringMap;
 import com.ninetwozero.bf4intel.resourcemaps.RankStringMap;
 import com.ninetwozero.bf4intel.resourcemaps.VehicleStringMap;
 import com.ninetwozero.bf4intel.resourcemaps.WeaponStringMap;
+import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.PersonaUtils;
 import com.ninetwozero.bf4intel.utils.Result;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -190,7 +192,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             ViewGroup.LayoutParams.WRAP_CONTENT,
             1f
         );
-        final List<Skill> skillsList = basicSoldierStats.asList();
+        final List<Skill> skillsList = skillsListFrom(basicSoldierStats);
 
         contentArea.removeAllViews();
         ((TextView) root.findViewById(R.id.rating)).setText(
@@ -251,5 +253,16 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             );
             contentArea.addView(parent);
         }
+    }
+
+    private List<Skill> skillsListFrom(SkillOverview so) {
+        final List<Skill> skillList = new ArrayList<Skill>(6);
+        skillList.add(new Skill(R.string.skills_kd, so.getKillDeathRatio()));
+        skillList.add(new Skill(R.string.skills_spm, so.getScorePerMinute()));
+        skillList.add(new Skill(R.string.skills_kpm, String.format("%.2f", so.getKillsPerMinute())));
+        skillList.add(new Skill(R.string.skills_kills, so.getKillCount()));
+        skillList.add(new Skill(R.string.skills_score, String.format("%,d", so.getScore())));
+        skillList.add(new Skill(R.string.skills_time, DateTimeUtils.toLiteral(so.getTimePlayed())));
+        return skillList;
     }
 }

@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.jsonmodels.soldieroverview;
+package com.ninetwozero.bf4intel.soldieroverview;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -36,16 +36,5 @@ public class WeaponStats extends BaseStatsModel {
 
     public int getHeadshotCount() {
         return headshotCount;
-    }
-
-    @Override
-    public String toString() {
-        return "WeaponStats{" +
-            "timeEquipped=" + timeEquipped +
-            ", shotsFired=" + shotsFired +
-            ", shotsHit=" + shotsHit +
-            ", accuracy=" + accuracy +
-            ", headshotCount=" + headshotCount +
-            '}';
     }
 }

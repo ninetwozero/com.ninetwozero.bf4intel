@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.jsonmodels.soldieroverview;
+package com.ninetwozero.bf4intel.soldieroverview;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -29,15 +29,5 @@ public class CompletionProgress {
 
     public int getPercentage() {
         return percentage;
-    }
-
-    @Override
-    public String toString() {
-        return "CompletionProgress{" +
-            "name='" + name + '\'' +
-            ", currentValue=" + currentValue +
-            ", maxValue=" + maxValue +
-            ", percentage=" + percentage +
-            '}';
     }
 }

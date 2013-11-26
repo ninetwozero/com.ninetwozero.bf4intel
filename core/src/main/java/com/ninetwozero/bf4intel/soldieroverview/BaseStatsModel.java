@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.jsonmodels.soldieroverview;
+package com.ninetwozero.bf4intel.soldieroverview;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -57,19 +57,5 @@ public class BaseStatsModel {
 
     public int getKillCount() {
         return killCount;
-    }
-
-    @Override
-    public String toString() {
-        return "BaseStatsModel{" +
-            "name='" + name + '\'' +
-            ", slug='" + slug + '\'' +
-            ", guid='" + guid + '\'' +
-            ", category='" + category + '\'' +
-            ", code='" + code + '\'' +
-            ", serviceStars=" + serviceStars +
-            ", serviceStarProgress=" + serviceStarProgress +
-            ", killCount=" + killCount +
-            '}';
     }
 }

@@ -3,6 +3,8 @@ package com.ninetwozero.bf4intel.factories;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
+import com.ninetwozero.bf4intel.battlereport.BattleReportFragment;
+import com.ninetwozero.bf4intel.battlereport.BattleReportListingFragment;
 import com.ninetwozero.bf4intel.fragments.*;
 
 public class FragmentFactory {

@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.jsonmodels.soldieroverview;
+package com.ninetwozero.bf4intel.soldieroverview;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -43,17 +43,5 @@ public class PersonaInfo {
 
     public int getGame() {
         return game;
-    }
-
-    @Override
-    public String toString() {
-        return "PersonaInfo{" +
-            "userId='" + userId + '\'' +
-            ", personaId='" + personaId + '\'' +
-            ", tag='" + tag + '\'' +
-            ", picture='" + picture + '\'' +
-            ", platform=" + platform +
-            ", game=" + game +
-            '}';
     }
 }

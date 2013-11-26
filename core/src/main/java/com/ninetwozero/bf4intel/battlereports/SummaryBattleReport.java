@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.jsonmodels.battlereports;
+package com.ninetwozero.bf4intel.battlereports;
 
 import com.google.gson.annotations.SerializedName;
 

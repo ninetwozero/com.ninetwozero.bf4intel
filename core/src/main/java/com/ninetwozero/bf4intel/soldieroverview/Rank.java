@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.jsonmodels.soldieroverview;
+package com.ninetwozero.bf4intel.soldieroverview;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -26,14 +26,5 @@ public class Rank {
 
     public String getImageSlug() {
         return "r" + level;
-    }
-
-    @Override
-    public String toString() {
-        return "Rank{" +
-            "name='" + name + '\'' +
-            ", level=" + level +
-            ", pointsNeeded=" + pointsNeeded +
-            '}';
     }
 }

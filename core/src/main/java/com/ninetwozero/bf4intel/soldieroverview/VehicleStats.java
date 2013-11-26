@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.jsonmodels.soldieroverview;
+package com.ninetwozero.bf4intel.soldieroverview;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -15,13 +15,5 @@ public class VehicleStats extends BaseStatsModel {
 
     public int getDestroyedEnemySameVehicle() {
         return destroyedEnemySameVehicle;
-    }
-
-    @Override
-    public String toString() {
-        return "VehicleStats{" +
-            "timeIn=" + timeIn +
-            ", destroyedEnemySameVehicle=" + destroyedEnemySameVehicle +
-            '}';
     }
 }

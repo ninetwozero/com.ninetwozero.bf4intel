@@ -6,7 +6,7 @@ public enum AssignmentPrerequirement {
     NONE("single_player");
     private final String prerequirement;
 
-    private AssignmentPrerequirement(String prerequirement){
+    private AssignmentPrerequirement(String prerequirement) {
         this.prerequirement = prerequirement;
     }
 

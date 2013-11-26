@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.jsonmodels.soldieroverview;
+package com.ninetwozero.bf4intel.soldieroverview;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -58,18 +58,5 @@ public class SoldierOverview {
 
     public int getScoreLeftToNextRank() {
         return nextRank.getPointsNeeded() - basicSoldierStats.getScore();
-    }
-
-    @Override
-    public String toString() {
-        return "SoldierOverview{" +
-            "personaInfo=" + personaInfo +
-            ", currentRank=" + currentRank +
-            ", nextRank=" + nextRank +
-            ", topWeapons=" + topWeapons +
-            ", topVehicles=" + topVehicles +
-            ", completions=" + completions +
-            ", basicSoldierStats=" + basicSoldierStats +
-            '}';
     }
 }
