@@ -1,19 +1,32 @@
-package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.*;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import com.ninetwozero.bf4intel.Keys;
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.connection.ConnectionRequest;
+import com.ninetwozero.bf4intel.connection.IntelLoader;
 import com.ninetwozero.bf4intel.ui.adapters.FeedAdapter;
-import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
+import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class BattleFeedFragment extends BaseListFragment {
+public class BattleFeedFragment extends BaseLoadingListFragment {
+    private static final int ID_LOADER = BattleFeedFragment.class.hashCode();
+
     public BattleFeedFragment() {
     }
 
@@ -39,9 +52,15 @@ public class BattleFeedFragment extends BaseListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = this.layoutInflater.inflate(R.layout.fragment_feed, parent, false);
+        final View view = this.layoutInflater.inflate(R.layout.generic_list, parent, false);
         initialize(view);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        startLoadingData();
     }
 
     @Override
@@ -62,6 +81,47 @@ public class BattleFeedFragment extends BaseListFragment {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void startLoadingData() {
+        final LoaderManager manager = getActivity().getSupportLoaderManager();
+        if (manager.getLoader(ID_LOADER) == null) {
+            manager.initLoader(ID_LOADER, getArguments(), this);
+        } else {
+            manager.restartLoader(ID_LOADER, getArguments(), this);
+        }
+    }
+
+    @Override
+    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
+        final int count = 0;
+        final String userId = bundle.getString(Keys.Profile.ID, "");
+        final UrlFactory.Type url = "".equals(userId)? UrlFactory.Type.GLOBAL_FEED : UrlFactory.Type.USER_FEED;
+
+        return new IntelLoader(
+            getActivity(),
+            new ConnectionRequest(
+                UrlFactory.build(
+                    url,
+                    userId,
+                    count
+                )
+            )
+        );
+    }
+
+    @Override
+    protected void onLoadSuccess(final String resultMessage) {
+        final List<FeedItem> events = fromJsonArray(resultMessage, FeedItem.class, "feedEvents");
+        Log.d("YOLO", "events => " + events);
+        sendDataToListView(events);
+        displayAsLoading(false);
+    }
+
+    @Override
+    protected void onLoadFailure(final String resultMessage) {
+        Log.e("YOLO", "resultMessage => " + resultMessage);
+    }
+
     private void initialize(final View view) {
         updateActionBar(getActivity(), "BATTLE FEED", R.drawable.ic_actionbar_feed);
         setupListView(view);
@@ -72,19 +132,22 @@ public class BattleFeedFragment extends BaseListFragment {
             return;
         }
 
-        // TODO: Setup ListView here
+        if (view == null) {
+            return;
+        }
 
-        final FeedAdapter feedAdapter = new FeedAdapter(getActivity(), getDummyItems());
-        setListAdapter(feedAdapter);
+        final ListView listView = (ListView) view.findViewById(android.R.id.list);
+        final TextView emptyView = (TextView) view.findViewById(android.R.id.empty);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        emptyView.setText(R.string.msg_empty_feed);
     }
 
-    private List<Integer> getDummyItems() {
-        List<Integer> items = new ArrayList<Integer>(10);
-        items.add(R.layout.list_item_feed_status);
-        items.add(R.layout.list_item_feed_wallpost);
-        items.add(R.layout.list_item_feed_favorite_server);
-        items.add(R.layout.list_item_feed_gameaccess);
-        items.add(R.layout.list_item_feed_battlereport);
-        return items;
+    private void sendDataToListView(final List<FeedItem> feedItems) {
+        FeedAdapter feedAdapter = new FeedAdapter(getActivity());
+        if (feedAdapter == null) {
+            feedAdapter = new FeedAdapter(getActivity());
+        }
+        feedAdapter.setItems(feedItems);
+        setListAdapter(feedAdapter);
     }
 }

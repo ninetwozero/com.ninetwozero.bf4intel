@@ -82,18 +82,9 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
-        if (result == Result.SUCCESS) {
-            onLoadSuccess(result.getResultMessage());
-        } else {
-            onLoadFailure(result.getResultMessage());
-        }
-    }
-
-    @Override
     protected void onLoadSuccess(final String resultMessage) {
         final List<SummaryBattleReport> reports = fromJsonArray(resultMessage, SummaryBattleReport.class, "gameReports");
-        setupListView(getView(), reports);
+        sendDataToListView(reports);
         displayAsLoading(false);
     }
 
@@ -125,20 +116,23 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
 
     private void initialize(final View view) {
+        setupListView(view);
         updateActionBar(getActivity(), "BATTLE REPORTS", R.drawable.ic_actionbar_feed);
     }
 
-    private void setupListView(final View view, final List<SummaryBattleReport> reports) {
+    private void setupListView(final View view) {
         if (view == null) {
             return;
         }
 
-        final String personaId = getArguments().getString(Keys.Soldier.ID);
         final ListView listView = (ListView) view.findViewById(android.R.id.list);
         final TextView emptyView = (TextView) view.findViewById(android.R.id.empty);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         emptyView.setText(R.string.msg_no_battlereports);
+    }
 
+    private void sendDataToListView(final List<SummaryBattleReport> reports) {
+        final String personaId = getArguments().getString(Keys.Soldier.ID);
         BattleReportAdapter reportAdapter = (BattleReportAdapter) getListAdapter();
         if (reportAdapter == null) {
             reportAdapter = new BattleReportAdapter(getActivity(), personaId);
@@ -146,4 +140,5 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         reportAdapter.setItems(reports);
         setListAdapter(reportAdapter);
     }
+
 }

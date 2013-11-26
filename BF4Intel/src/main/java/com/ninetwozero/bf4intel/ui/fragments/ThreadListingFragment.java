@@ -7,6 +7,7 @@ import android.view.*;
 import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.adapters.DummyAdapter;
 import com.ninetwozero.bf4intel.ui.adapters.FeedAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -91,7 +92,7 @@ public class ThreadListingFragment extends BaseListFragment {
             return;
         }
 
-        final FeedAdapter feedAdapter = new FeedAdapter(getActivity(), getDummyItems());
+        final DummyAdapter feedAdapter = new DummyAdapter(getActivity(), getDummyItems());
         setListAdapter(feedAdapter);
     }
 

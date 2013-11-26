@@ -6,22 +6,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.ninetwozero.bf4intel.jsonmodels.battlefeed.FeedItem;
+import com.ninetwozero.bf4intel.resourcemaps.FeedEventLayoutMap;
+
 import java.util.List;
 
 public class FeedAdapter extends BaseAdapter {
 
     private Context context;
     final LayoutInflater layoutInflater;
-    private List<Integer> items;
+    private List<FeedItem> items;
 
-    public FeedAdapter(final Context context, final List<Integer> objects) {
+    public FeedAdapter(final Context context) {
         this.context = context;
         layoutInflater = LayoutInflater.from(this.context);
-        items = objects;
     }
 
     @Override
-    public Integer getItem(final int position) {
+    public FeedItem getItem(final int position) {
         return items.get(position);
     }
 
@@ -38,9 +40,14 @@ public class FeedAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         if (convertView == null) {
-            convertView = layoutInflater.inflate(getItem(position), parent, false);
+            convertView = layoutInflater.inflate(FeedEventLayoutMap.get(getItem(position).getEvent()), parent, false);
         }
         return convertView;
+    }
+
+    public void setItems(final List<FeedItem> items) {
+        this.items = items;
+        notifyDataSetChanged();
     }
 
 }

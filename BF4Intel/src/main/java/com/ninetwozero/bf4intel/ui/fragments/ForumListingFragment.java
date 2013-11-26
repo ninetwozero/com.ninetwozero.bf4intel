@@ -50,7 +50,7 @@ public class ForumListingFragment extends BaseListFragment {
             return;
         }
 
-        final FeedAdapter feedAdapter = new FeedAdapter(getActivity(), getDummyItems());
+        final DummyAdapter feedAdapter = new DummyAdapter(getActivity(), getDummyItems());
         setListAdapter(feedAdapter);
     }
 

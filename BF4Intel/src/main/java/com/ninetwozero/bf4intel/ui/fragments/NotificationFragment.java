@@ -1,4 +1,3 @@
-package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.adapters.DummyAdapter;
 import com.ninetwozero.bf4intel.ui.adapters.FeedAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 
@@ -53,7 +53,7 @@ public class NotificationFragment extends BaseListFragment {
         final ListView listView = (ListView) view.findViewById(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
-        final FeedAdapter feedAdapter = new FeedAdapter(getActivity(), getDummyItems());
+        final DummyAdapter feedAdapter = new DummyAdapter(getActivity(), getDummyItems());
         setListAdapter(feedAdapter);
     }
 

@@ -26,6 +26,16 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         setHasOptionsMenu(true);
     }
 
+
+    @Override
+    public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
+        if (result == Result.SUCCESS) {
+            onLoadSuccess(result.getResultMessage());
+        } else {
+            onLoadFailure(result.getResultMessage());
+        }
+    }
+
     @Override
     public void onLoaderReset(final Loader<Result> resultLoader) {}
 
