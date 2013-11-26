@@ -6,7 +6,10 @@ public class UrlFactory {
     public enum Type {
         BATTLE_REPORT_LISTING("warsawbattlereportspopulate/{SOLDIER_ID}/2048/{PLATFORM}/"),
         SOLDIER_OVERVIEW("warsawoverviewpopulate/{SOLDIER_ID}/{PLATFORM}/"),
-        ASSIGNMENTS("soldier/missionsPopulateStats/LittleBoySVK/{SOLDIER_ID}/{USER_ID}/{PLATFORM}/");
+        ASSIGNMENTS("soldier/missionsPopulateStats/LittleBoySVK/{SOLDIER_ID}/{USER_ID}/{PLATFORM}/"),
+
+        GLOBAL_FEED("feed/homeevents/?start={COUNT}"),
+        USER_FEED("feed/profileevents/{PROFILE_ID}/?start={COUNT}");
 
         private String url;
         Type(final String url) {
