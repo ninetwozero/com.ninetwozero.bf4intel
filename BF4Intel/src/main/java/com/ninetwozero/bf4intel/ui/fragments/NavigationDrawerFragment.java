@@ -21,8 +21,8 @@ import com.ninetwozero.bf4intel.base.datatypes.ListRow;
 import com.ninetwozero.bf4intel.base.datatypes.ListRowType;
 import com.ninetwozero.bf4intel.base.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.base.factories.ListRowFactory;
-import com.ninetwozero.bf4intel.base.resource.Keys;
-import com.ninetwozero.bf4intel.base.utils.ExternalAppLauncher;
+import com.ninetwozero.bf4intel.resource.Keys;
+import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
 import com.ninetwozero.bf4intel.ui.activities.SoldierStatisticsActivity;
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
 

@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.google.gson.*;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.utils.Result;
+import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.ArrayList;
 import java.util.List;

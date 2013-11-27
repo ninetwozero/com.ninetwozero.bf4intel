@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.base.utils;
+package com.ninetwozero.bf4intel.utils;
 
 public enum Result {
     SUCCESS, FAILURE, ERROR, NETWORK_FAILURE("network error"), CANCELLED("cancelled");

@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.utils.Result;
+import com.ninetwozero.bf4intel.utils.Result;
 
 public class BaseIntelActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<Result> {
 

@@ -14,8 +14,8 @@ import com.ninetwozero.bf4intel.base.app.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.base.connection.ConnectionRequest;
 import com.ninetwozero.bf4intel.base.connection.IntelLoader;
 import com.ninetwozero.bf4intel.base.factories.UrlFactory;
-import com.ninetwozero.bf4intel.base.resource.Keys;
-import com.ninetwozero.bf4intel.base.utils.Result;
+import com.ninetwozero.bf4intel.resource.Keys;
+import com.ninetwozero.bf4intel.utils.Result;
 import com.ninetwozero.bf4intel.json.battlereports.SummaryBattleReport;
 
 import java.util.List;

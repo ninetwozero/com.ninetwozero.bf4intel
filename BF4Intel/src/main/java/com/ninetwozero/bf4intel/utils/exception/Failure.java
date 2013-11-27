@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.base.utils.exception;
+package com.ninetwozero.bf4intel.utils.exception;
 
 public class Failure extends Exception {
     public Failure(Exception e) {

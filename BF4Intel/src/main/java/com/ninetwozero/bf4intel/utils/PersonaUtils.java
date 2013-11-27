@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.base.utils;
+package com.ninetwozero.bf4intel.utils;
 
 import com.ninetwozero.bf4intel.R;
 

@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.base.resource;
+package com.ninetwozero.bf4intel.resource;
 
 public class Keys {
     public static class Soldier {

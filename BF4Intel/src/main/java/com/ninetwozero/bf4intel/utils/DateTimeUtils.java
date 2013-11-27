@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.base.utils;
+package com.ninetwozero.bf4intel.utils;
 
 import android.content.Context;
 import android.text.format.DateUtils;

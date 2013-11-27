@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.base.resource.maps;
+package com.ninetwozero.bf4intel.resource.maps;
 
 import com.ninetwozero.bf4intel.R;
 

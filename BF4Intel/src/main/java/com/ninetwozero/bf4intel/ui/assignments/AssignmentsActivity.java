@@ -9,8 +9,8 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.app.BaseIntelActivity;
 import com.ninetwozero.bf4intel.base.connection.ConnectionRequest;
 import com.ninetwozero.bf4intel.base.connection.IntelLoader;
-import com.ninetwozero.bf4intel.base.utils.BusProvider;
-import com.ninetwozero.bf4intel.base.utils.Result;
+import com.ninetwozero.bf4intel.utils.BusProvider;
+import com.ninetwozero.bf4intel.utils.Result;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;
 
 public class AssignmentsActivity extends BaseIntelActivity {

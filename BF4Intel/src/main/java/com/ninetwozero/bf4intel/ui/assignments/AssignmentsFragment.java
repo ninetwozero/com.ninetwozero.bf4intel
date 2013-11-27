@@ -8,7 +8,7 @@ import android.widget.GridView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.app.BaseFragment;
-import com.ninetwozero.bf4intel.base.utils.BusProvider;
+import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;
 import com.squareup.otto.Subscribe;

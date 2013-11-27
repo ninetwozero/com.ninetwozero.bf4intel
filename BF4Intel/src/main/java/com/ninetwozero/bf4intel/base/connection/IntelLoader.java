@@ -4,8 +4,8 @@ import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 
 import com.github.kevinsawicki.http.HttpRequest;
-import com.ninetwozero.bf4intel.base.utils.Result;
-import com.ninetwozero.bf4intel.base.utils.exception.Failure;
+import com.ninetwozero.bf4intel.utils.Result;
+import com.ninetwozero.bf4intel.utils.exception.Failure;
 
 public class IntelLoader extends AsyncTaskLoader<Result> {
 

@@ -1,7 +1,7 @@
 package com.ninetwozero.bf4intel.base.connection;
 
 import com.github.kevinsawicki.http.HttpRequest;
-import com.ninetwozero.bf4intel.base.utils.exception.Failure;
+import com.ninetwozero.bf4intel.utils.exception.Failure;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.base.resource.maps;
+package com.ninetwozero.bf4intel.resource.maps;
 
 import java.util.HashMap;
 import java.util.Map;
