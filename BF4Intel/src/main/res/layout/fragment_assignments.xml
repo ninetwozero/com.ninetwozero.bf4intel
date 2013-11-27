@@ -10,4 +10,5 @@
   android:verticalSpacing="@dimen/spacing_s"
   android:horizontalSpacing="@dimen/spacing_s"
   android:background="@color/grey"
+  android:listSelector="@drawable/bg_grid_item"
   />

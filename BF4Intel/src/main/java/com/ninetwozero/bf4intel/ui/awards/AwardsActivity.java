@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.awards;
+package com.ninetwozero.bf4intel.ui.awards;
 
 import android.os.Bundle;
 import android.support.v4.content.Loader;
@@ -6,14 +6,15 @@ import android.util.Log;
 
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.assignments.AssignmentsActivity;
-import com.ninetwozero.bf4intel.base.IntelActivity;
-import com.ninetwozero.bf4intel.connection.ConnectionRequest;
-import com.ninetwozero.bf4intel.connection.IntelLoader;
+import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
+import com.ninetwozero.bf4intel.json.awards.Awards;
+import com.ninetwozero.bf4intel.network.ConnectionRequest;
+import com.ninetwozero.bf4intel.network.IntelLoader;
+import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
 
-public class AwardsActivity extends IntelActivity {
+public class AwardsActivity extends BaseIntelActivity {
     //TODO temporary absolute url
     private static final String AWARDS_URL = "http://battlelog.battlefield.com/bf4/warsawawardspopulate/200661244/1/";
     private static final int ID_LOADER = 1100;
@@ -51,7 +52,7 @@ public class AwardsActivity extends IntelActivity {
     private void processResult(String resultMessage) {
         JsonObject dataJson = extractFromJson(resultMessage);
         Awards awards = gson.fromJson(dataJson, Awards.class);
-        hideABProgressBar(true);
+        showLoadingStateInActionBar(true);
         BusProvider.getInstance().post(awards);
     }
 

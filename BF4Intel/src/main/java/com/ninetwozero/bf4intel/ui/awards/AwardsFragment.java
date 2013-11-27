@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.awards;
+package com.ninetwozero.bf4intel.ui.awards;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.json.awards.Awards;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 

@@ -1,9 +1,11 @@
-package com.ninetwozero.bf4intel.awards;
+package com.ninetwozero.bf4intel.ui.awards;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import com.ninetwozero.bf4intel.json.awards.Awards;
 
 import java.util.List;
 
