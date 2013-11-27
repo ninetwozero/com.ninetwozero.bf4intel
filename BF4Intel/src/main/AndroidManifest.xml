@@ -17,7 +17,7 @@
     android:label="@string/app_name"
     android:theme="@style/AppThemeSpecialSpecial">
     <activity
-      android:name=".activities.MainActivity"
+      android:name=".ui.activities.MainActivity"
       android:icon="@drawable/ic_launcher">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,7 @@
       </intent-filter>
     </activity>
     <activity
-      android:name=".activities.SingleFragmentActivity"
+      android:name=".ui.activities.SingleFragmentActivity"
       android:label="@string/label_activity_soldier_statistics"
       android:parentActivityName=".activities.MainActivity"
       android:theme="@style/AppTheme">
@@ -35,7 +35,7 @@
         android:value=".activities.MainActivity" />
     </activity>
     <activity
-      android:name=".activities.SoldierStatisticsActivity"
+      android:name=".ui.activities.SoldierStatisticsActivity"
       android:label="@string/label_activity_soldier_statistics"
       android:parentActivityName=".activities.MainActivity"
       android:theme="@style/AppTheme">
@@ -43,7 +43,7 @@
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".activities.MainActivity" />
     </activity>
-    <activity android:name=".assignments.AssignmentsActivity"
+    <activity android:name=".ui.assignments.AssignmentsActivity"
       android:label="@string/label_activity_assignments"
       android:screenOrientation="portrait"
       android:parentActivityName=".activities.MainActivity"

@@ -16,7 +16,7 @@
     android:layout_width="@dimen/navigation_drawer_width"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:name="com.ninetwozero.bf4intel.fragments.NavigationDrawerFragment"
+    android:name="com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment"
   />
 
 </android.support.v4.widget.DrawerLayout>
