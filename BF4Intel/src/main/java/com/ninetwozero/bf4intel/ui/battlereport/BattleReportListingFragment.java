@@ -10,11 +10,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.app.BaseLoadingListFragment;
-import com.ninetwozero.bf4intel.base.connection.ConnectionRequest;
-import com.ninetwozero.bf4intel.base.connection.IntelLoader;
-import com.ninetwozero.bf4intel.base.factories.UrlFactory;
-import com.ninetwozero.bf4intel.resource.Keys;
+import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
+import com.ninetwozero.bf4intel.network.ConnectionRequest;
+import com.ninetwozero.bf4intel.network.IntelLoader;
+import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.utils.Result;
 import com.ninetwozero.bf4intel.json.battlereports.SummaryBattleReport;
 

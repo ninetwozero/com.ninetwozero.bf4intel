@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.adapters.FeedAdapter;
-import com.ninetwozero.bf4intel.base.app.BaseListFragment;
+import com.ninetwozero.bf4intel.ui.adapters.FeedAdapter;
+import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 
 import java.util.ArrayList;
 import java.util.List;

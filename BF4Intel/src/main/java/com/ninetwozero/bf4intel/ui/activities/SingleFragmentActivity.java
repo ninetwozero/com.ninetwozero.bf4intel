@@ -9,8 +9,8 @@ import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.app.BaseIntelActivity;
-import com.ninetwozero.bf4intel.base.factories.FragmentFactory;
+import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
+import com.ninetwozero.bf4intel.factories.FragmentFactory;
 
 public class SingleFragmentActivity extends BaseIntelActivity {
     public static final String INTENT_FRAGMENT_TYPE = "fragmentType";

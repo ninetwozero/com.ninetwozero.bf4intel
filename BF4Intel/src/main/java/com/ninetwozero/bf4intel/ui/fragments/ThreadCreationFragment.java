@@ -6,7 +6,7 @@ import android.view.*;
 import android.widget.EditText;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.app.BaseFragment;
+import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 
 public class ThreadCreationFragment extends BaseFragment {

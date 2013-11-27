@@ -10,8 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.app.BaseIntelActivity;
-import com.ninetwozero.bf4intel.base.factories.FragmentFactory;
+import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
+import com.ninetwozero.bf4intel.factories.FragmentFactory;
 
 import java.util.ArrayList;
 import java.util.List;

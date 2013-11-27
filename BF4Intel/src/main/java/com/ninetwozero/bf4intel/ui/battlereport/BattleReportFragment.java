@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.app.BaseFragment;
+import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 
 public class BattleReportFragment extends BaseFragment {
     public static final String ID = "reportId";
