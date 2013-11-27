@@ -24,17 +24,17 @@ import static com.ninetwozero.bf4intel.datatypes.ListRowType.*;
  */
 
 public class ListRowAdapter extends BaseAdapter {
-    private Context mContext;
-    private List<ListRow> mItems;
+    private Context context;
+    private List<ListRow> items;
 
     public ListRowAdapter(final Context context, final List<ListRow> items) {
-        mContext = context;
-        mItems = items;
+        this.context = context;
+        this.items = items;
     }
 
     @Override
     public int getCount() {
-        return mItems == null ? 0 : mItems.size();
+        return items == null ? 0 : items.size();
     }
 
     @Override
@@ -49,7 +49,7 @@ public class ListRowAdapter extends BaseAdapter {
 
     @Override
     public ListRow getItem(int i) {
-        return mItems.get(i);
+        return items.get(i);
     }
 
     @Override
@@ -69,9 +69,9 @@ public class ListRowAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        final ListRow item = mItems.get(position);
+        final ListRow item = items.get(position);
         if (view == null) {
-            view = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
+            view = LayoutInflater.from(context).inflate(item.getLayout(), viewGroup, false);
         }
         return populateViewFromItem(view, item);
     }
@@ -137,7 +137,7 @@ public class ListRowAdapter extends BaseAdapter {
     }
 
     private void populateImageViewFromString(final ImageView imageView, final String filename) {
-        final String path = mContext.getExternalFilesDir(null) + "/" + filename + ".png";
+        final String path = context.getExternalFilesDir(null) + "/" + filename + ".png";
         final File image = new File(path);
         if (image.exists()) {
             imageView.setImageURI(Uri.fromFile(image));

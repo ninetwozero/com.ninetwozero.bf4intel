@@ -35,6 +35,7 @@ public class AssignmentsActivity extends BaseIntelActivity {
 
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
+        showLoadingStateInActionBar(true);
         return new IntelLoader(getApplicationContext(), new ConnectionRequest(ASSIGNMENTS_URL));
     }
 
@@ -50,7 +51,7 @@ public class AssignmentsActivity extends BaseIntelActivity {
     private void processResult(String resultMessage) {
         JsonObject dataJson = extractFromJson(resultMessage);
         Assignments assignments = gson.fromJson(dataJson, Assignments.class);
-        hideABProgressBar(true);
+        showLoadingStateInActionBar(false);
         BusProvider.getInstance().post(assignments);
     }
 

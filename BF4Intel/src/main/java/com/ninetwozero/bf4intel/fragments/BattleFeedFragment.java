@@ -39,7 +39,7 @@ public class BattleFeedFragment extends BaseListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = mInflater.inflate(R.layout.fragment_feed, parent, false);
+        final View view = this.layoutInflater.inflate(R.layout.fragment_feed, parent, false);
         initialize(view);
         return view;
     }

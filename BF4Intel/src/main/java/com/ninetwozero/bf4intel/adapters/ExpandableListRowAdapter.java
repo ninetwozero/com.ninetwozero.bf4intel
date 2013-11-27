@@ -23,12 +23,12 @@ import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_REGULAR;
 import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_REGULAR_CHILD;
 
 public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
-    private Context mContext;
-    private List<ListRow> mItems;
+    private Context context;
+    private List<ListRow> items;
 
     public ExpandableListRowAdapter(final Context context, final List<ListRow> items) {
-        mContext = context;
-        mItems = items;
+        this.context = context;
+        this.items = items;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupCount() {
-        return mItems == null ? 0 : mItems.size();
+        return items == null ? 0 : items.size();
     }
 
     @Override
@@ -53,7 +53,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
 
     @Override
     public ListRow getGroup(final int position) {
-        return mItems.get(position);
+        return items.get(position);
     }
 
     @Override
@@ -107,7 +107,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
         final ListRowType type = item.getType();
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
+            convertView = LayoutInflater.from(context).inflate(item.getLayout(), viewGroup, false);
         }
 
         convertView.setEnabled(type != ListRowType.SIDE_HEADING);
@@ -119,7 +119,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
     public View getChildView(final int group, final int child, final boolean isLastChild, View convertView, final ViewGroup viewGroup) {
         final ListRow item = getChild(group, child);
         if (convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(item.getLayout(), viewGroup, false);
+            convertView = LayoutInflater.from(context).inflate(item.getLayout(), viewGroup, false);
         }
 
         return populateViewFromItem(convertView, item);
@@ -186,7 +186,7 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
     }
 
     private void populateImageViewFromString(final ImageView imageView, final String filename) {
-        final String path = mContext.getExternalFilesDir(null) + "/" + filename + ".png";
+        final String path = context.getExternalFilesDir(null) + "/" + filename + ".png";
         final File image = new File(path);
         if (image.exists()) {
             imageView.setImageURI(Uri.fromFile(image));

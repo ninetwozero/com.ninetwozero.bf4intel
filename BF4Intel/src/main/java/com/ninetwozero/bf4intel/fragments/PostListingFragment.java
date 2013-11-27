@@ -48,7 +48,7 @@ public class PostListingFragment extends BaseListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = mInflater.inflate(R.layout.fragment_forum_listing, parent, false);
+        final View view = this.layoutInflater.inflate(R.layout.fragment_forum_listing, parent, false);
         initialize(view);
         return view;
     }

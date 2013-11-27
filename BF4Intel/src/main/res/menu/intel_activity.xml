@@ -6,10 +6,11 @@
     android:showAsAction="never" />
 
   <item
-    android:id="@+id/indeterminated_progress"
+    android:id="@+id/ab_action_refresh"
     android:actionLayout="@layout/actionbar_indeterminate_progress"
     android:menuCategory="container"
-    android:title="Loader"
+    android:title="@string/menu_refresh"
     android:showAsAction="always"
+    android:icon="@drawable/ic_action_refresh"
     />
 </menu>

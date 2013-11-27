@@ -13,6 +13,10 @@ public class ListRowFactory {
     private ListRowFactory() {
     }
 
+    public static ListRow create(final ListRowType type, final String text) {
+        return new ListRow.Builder(type).title(text).build();
+    }
+
     public static ListRow create(final ListRowType type, final Bundle data) {
         return create(type, data, null);
     }
@@ -36,24 +40,24 @@ public class ListRowFactory {
         }
     }
 
-    public static ListRow create(final ListRowType type, final String text) {
-        return new ListRow.Builder(type).title(text).build();
+    public static ListRow create(final ListRowType type, final String text, final Bundle data) {
+        return new ListRow.Builder(type).title(text).data(data).build();
     }
 
-    public static ListRow create(final ListRowType type, final String text, final List<ListRow> children) {
-        return new ListRow.Builder(type).title(text).children(children).build();
+    public static ListRow create(final ListRowType type, final String text, final Bundle data, final List<ListRow> children) {
+        return new ListRow.Builder(type).title(text).data(data).children(children).build();
     }
 
-    public static ListRow create(final ListRowType type, final String text, final Intent intent) {
-        return new ListRow.Builder(type).title(text).intent(intent).build();
+    public static ListRow create(final ListRowType type, final String text, final Bundle data, final Intent intent) {
+        return new ListRow.Builder(type).title(text).data(data).intent(intent).build();
     }
 
-    public static ListRow create(final ListRowType type, final String text, final FragmentFactory.Type fragmentType) {
-        return new ListRow.Builder(type).title(text).fragmentType(fragmentType).build();
+    public static ListRow create(final ListRowType type, final String text, final Bundle data, final FragmentFactory.Type fragmentType) {
+        return new ListRow.Builder(type).title(text).data(data).fragmentType(fragmentType).build();
     }
 
-    public static ListRow create(final ListRowType type, final String text, final FragmentFactory.Type fragmentType, final List<ListRow> children) {
-        return new ListRow.Builder(type).title(text).fragmentType(fragmentType).children(children).build();
+    public static ListRow create(final ListRowType type, final String text, final Bundle data, final FragmentFactory.Type fragmentType, final List<ListRow> children) {
+        return new ListRow.Builder(type).title(text).data(data).fragmentType(fragmentType).children(children).build();
     }
 
     private static ListRow getItemForAccountTypeInMenu(final ListRowType type, final Bundle data, final List<ListRow> children) {
@@ -69,6 +73,7 @@ public class ListRowFactory {
                 .stringMappings(stringMappings)
                 .drawableMappings(drawableMappings)
                 .children(children)
+                .data(data)
                 .build();
     }
 
@@ -86,6 +91,7 @@ public class ListRowFactory {
                 .stringMappings(stringMappings)
                 .drawableMappings(drawableMappings)
                 .children(children)
+                .data(data)
                 .build();
     }
 
@@ -103,6 +109,7 @@ public class ListRowFactory {
                 .stringMappings(stringMappings)
                 .drawableMappings(drawableMappings)
                 .children(children)
+                .data(data)
                 .build();
     }
 
@@ -119,6 +126,7 @@ public class ListRowFactory {
                 .stringMappings(stringMappings)
                 .drawableMappings(drawableMappings)
                 .children(children)
+                .data(data)
                 .build();
     }
 
@@ -133,6 +141,7 @@ public class ListRowFactory {
                 .stringMappings(stringMappings)
                 .drawableMappings(drawableMappings)
                 .children(children)
+                .data(data)
                 .build();
     }
 }
