@@ -1,37 +1,36 @@
 package com.ninetwozero.bf4intel.jsonmodels.battlefeed;
 
-import com.google.gson.annotations.SerializedName;
-
 public class FeedItem {
-    @SerializedName("id")
     private String id;
-
-    @SerializedName("event")
-    private String event;
-
-    @SerializedName("ownerId")
+    private EventData event;
     private String ownerId;
-
-    @SerializedName("owner")
     private Profile owner;
-
-    @SerializedName("owner2")
     private Profile owner2;
-
-    @SerializedName("numLikes")
     private int likeCount;
-
-    @SerializedName("numComments")
     private int commentCount;
-
-    @SerializedName("creationDate")
     private long date;
+
+
+    public FeedItem(
+        final String id, final EventData event, final String ownerId,
+        final Profile owner, final Profile owner2,
+        final int likeCount, final int commentCount, final long date
+    ) {
+        this.id = id;
+        this.event = event;
+        this.ownerId = ownerId;
+        this.owner = owner;
+        this.owner2 = owner2;
+        this.likeCount = likeCount;
+        this.commentCount = commentCount;
+        this.date = date;
+    }
 
     public String getId() {
         return id;
     }
 
-    public String getEvent() {
+    public EventData getEvent() {
         return event;
     }
 
