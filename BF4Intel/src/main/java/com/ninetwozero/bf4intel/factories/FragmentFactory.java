@@ -1,9 +1,11 @@
 package com.ninetwozero.bf4intel.factories;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
-import com.ninetwozero.bf4intel.fragments.*;
+import com.ninetwozero.bf4intel.ui.battlereport.BattleReportFragment;
+import com.ninetwozero.bf4intel.ui.battlereport.BattleReportListingFragment;
+import com.ninetwozero.bf4intel.ui.fragments.*;
 
 public class FragmentFactory {
     public enum Type {
