@@ -1,3 +1,4 @@
+package com.ninetwozero.bf4intel.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.ninetwozero.bf4intel.Keys;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.connection.ConnectionRequest;
@@ -20,6 +23,10 @@ import com.ninetwozero.bf4intel.connection.IntelLoader;
 import com.ninetwozero.bf4intel.ui.adapters.FeedAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
+import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.jsonmodels.battlefeed.FeedItem;
+import com.ninetwozero.bf4intel.utils.FeedItemDeserializer;
+import com.ninetwozero.bf4intel.utils.Result;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 
 import java.util.List;
@@ -111,7 +118,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
 
     @Override
     protected void onLoadSuccess(final String resultMessage) {
-        final List<FeedItem> events = fromJsonArray(resultMessage, FeedItem.class, "feedEvents");
+        final List<FeedItem> events = fromJsonArray(generateCustomGson(), resultMessage, FeedItem.class, "feedEvents");
         Log.d("YOLO", "events => " + events);
         sendDataToListView(events);
         displayAsLoading(false);
@@ -140,6 +147,12 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
         final TextView emptyView = (TextView) view.findViewById(android.R.id.empty);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         emptyView.setText(R.string.msg_empty_feed);
+    }
+
+    private Gson generateCustomGson() {
+        final GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(FeedItem.class, new FeedItemDeserializer());
+        return builder.create();
     }
 
     private void sendDataToListView(final List<FeedItem> feedItems) {

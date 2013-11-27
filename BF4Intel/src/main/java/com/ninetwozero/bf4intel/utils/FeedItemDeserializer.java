@@ -19,7 +19,7 @@ public class FeedItemDeserializer implements JsonDeserializer<FeedItem> {
     public FeedItem deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
         final Gson gson = new Gson();
         final JsonObject jsonObject = json.getAsJsonObject();
-        final String eventString = jsonObject.get("event").getAsString();
+        final String eventString = jsonObject.get("eventName").getAsString();
         final JsonObject specialObject = jsonObject.getAsJsonObject(eventString.toUpperCase());
 
         Log.d("YOLO", "specialObject => " + specialObject);
