@@ -26,15 +26,15 @@ abstract public class EventData {
         UNKNOWN // OUR CATCH-ALL
     }
 
-    protected String event;
+    protected String eventName;
     protected EventType eventType;
 
     public EventData(final String event, final EventType type) {
-        this.event = event;
+        this.eventName = event;
         this.eventType = eventType;
     }
 
-    public String getEvent() {
-        return this.event;
+    public String getEventName() {
+        return this.eventName;
     }
 }

@@ -1,5 +1,8 @@
 package com.ninetwozero.bf4intel.jsonmodels.battlefeed;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FeedItem {
     private String id;
     private EventData event;
@@ -56,5 +59,10 @@ public class FeedItem {
 
     public long getDate() {
         return date;
+    }
+
+    // TODO
+    public List<FeedItemElement> toElementMap() {
+        return new ArrayList<FeedItemElement>();
     }
 }
