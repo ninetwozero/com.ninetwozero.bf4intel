@@ -150,4 +150,10 @@ public class AssignmentsAdapter extends BaseAdapter {
             put("xp1as10", R.drawable.xp1as10);
         }
     };
+
+    private static final Map<String, Integer> expansionResources = new HashMap<String, Integer>() {
+        {
+            put("xp1", R.drawable.icon_xp1);
+        }
+    };
 }
