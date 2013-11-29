@@ -1,35 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/lightgrey"
-  >
+  android:background="@color/lightgrey">
 
   <ImageView
     android:id="@+id/img_assignment"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
+    android:layout_height="@dimen/grid_view_image_height"
+    android:layout_width="@dimen/grid_view_image_width"
     android:layout_centerInParent="true"
     android:contentDescription="@string/cdesc_assignment_image"
     />
 
-  <ImageView
-    android:id="@+id/img_assignment_pre_requirement"
+  <LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:contentDescription="@string/cdesc_assignment_pre_requirement"
     android:layout_alignParentBottom="true"
     android:layout_alignParentRight="true"
-    />
+    >
+
+    <ImageView
+      android:id="@+id/expansion_icon"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:contentDescription="@string/cdesc_assignment_expansion_icon"
+      />
+    <ImageView
+      android:id="@+id/img_assignment_pre_requirement"
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      android:contentDescription="@string/cdesc_assignment_pre_requirement"
+      />
+  </LinearLayout>
 
   <ProgressBar
     android:id="@+id/assignment_completion"
     android:layout_height="wrap_content"
     android:layout_width="fill_parent"
     android:layout_below="@id/img_assignment"
-    style="@android:style/Widget.Holo.ProgressBar.Horizontal"
-    />
+    style="@android:style/Widget.Holo.ProgressBar.Horizontal" />
 
 </RelativeLayout>

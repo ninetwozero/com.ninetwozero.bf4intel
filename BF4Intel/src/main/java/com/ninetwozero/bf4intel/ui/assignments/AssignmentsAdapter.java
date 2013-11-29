@@ -130,12 +130,24 @@ public class AssignmentsAdapter extends BaseAdapter {
             put("as43", R.drawable.as43);
             put("as44", R.drawable.as44);
             put("as45", R.drawable.as45);
+            /*Single player assignments*/
             put("sp_as01", R.drawable.sp_as01);
             put("sp_as02", R.drawable.sp_as02);
             put("sp_as03", R.drawable.sp_as03);
             put("sp_as04", R.drawable.sp_as04);
             put("sp_as05", R.drawable.sp_as05);
             put("sp_as06", R.drawable.sp_as06);
+            /*Expansion pack 1 assignments*/
+            put("xp1as01", R.drawable.xp1as01);
+            put("xp1as02", R.drawable.xp1as02);
+            put("xp1as03", R.drawable.xp1as03);
+            put("xp1as04", R.drawable.xp1as04);
+            put("xp1as05", R.drawable.xp1as05);
+            put("xp1as06", R.drawable.xp1as06);
+            put("xp1as07", R.drawable.xp1as07);
+            put("xp1as08", R.drawable.xp1as08);
+            put("xp1as09", R.drawable.xp1as09);
+            put("xp1as10", R.drawable.xp1as10);
         }
     };
 }
