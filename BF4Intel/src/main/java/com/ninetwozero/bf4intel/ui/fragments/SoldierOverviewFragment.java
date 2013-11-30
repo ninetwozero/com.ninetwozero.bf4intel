@@ -26,6 +26,7 @@ import com.ninetwozero.bf4intel.json.soldieroverview.SkillOverview;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -158,7 +159,9 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         final Map<Integer, Double> serviceStarProgress = basicSoldierStats.getServiceStarProgress();
 
         contentArea.removeAllViews();
-        for (int key : serviceStars.keySet()) {
+        List<Integer> keys = new ArrayList<Integer>(serviceStars.keySet());
+        Collections.sort(keys);
+        for (int key : keys) {
             final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
             final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
 
