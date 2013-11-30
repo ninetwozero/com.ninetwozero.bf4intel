@@ -51,6 +51,14 @@ public class AssignmentsAdapter extends BaseAdapter {
         ImageView imgAssignment = (ImageView) view.findViewById(R.id.img_assignment);
         imgAssignment.setImageResource(getAssignmentImg(assignment.getAward().getAssignmentKey().toLowerCase()));
 
+        ImageView expansionIcon = (ImageView) view.findViewById(R.id.expansion_icon);
+        if(assignment.getAward().getExpansionPack().length() != 0) {
+            expansionIcon.setImageResource(expansionResources.get(assignment.getAward().getExpansionPack()));
+            expansionIcon.setVisibility(View.VISIBLE);
+        } else {
+            expansionIcon.setVisibility(View.INVISIBLE);
+        }
+
         ImageView imgPrerequirement = (ImageView) view.findViewById(R.id.img_assignment_pre_requirement);
         imgPrerequirement.setImageResource(prerequirementImgResource(assignment.getDependencyGroup()));
 

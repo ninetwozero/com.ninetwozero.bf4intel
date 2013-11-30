@@ -43,7 +43,7 @@ public class AssignmentsFragment extends BaseFragment {
     }
 
     @Subscribe
-    public void assignments(Assignments assignments) {
+    public void assignmentSubscription(Assignments assignments) {
         this.assignments = assignments;
         setupGrid();
     }
@@ -55,21 +55,21 @@ public class AssignmentsFragment extends BaseFragment {
     }
 
     private List<Assignment> assignments() {
-        return assignments != null ? orderAssignments() : new ArrayList<Assignment>();
+        return assignments != null ? sortAssignments() : new ArrayList<Assignment>();
     }
 
-    private List<Assignment> orderAssignments() {
+    private List<Assignment> sortAssignments() {
         List<Assignment> orderedAssignments = new ArrayList<Assignment>();
         Map<String, List<String>> missions = assignments.getAssignmentCategory();
         for(String assignmentType : ASSIGNMENT_TYPE) {
             List<String> groupedAssignments = missions.get(assignmentType);
             Collections.sort(groupedAssignments);
-            orderedAssignments.addAll(cherryPickAssignments(groupedAssignments));
+            orderedAssignments.addAll(fetchGroupedAssignments(groupedAssignments));
         }
         return orderedAssignments;
     }
 
-    private List<Assignment> cherryPickAssignments(List<String> groupedAssignments) {
+    private List<Assignment> fetchGroupedAssignments(List<String> groupedAssignments) {
         List<Assignment> orderedGroup = new ArrayList<Assignment>();
         for(String key: groupedAssignments) {
             if(assignments.getAssignments().containsKey(key)) {

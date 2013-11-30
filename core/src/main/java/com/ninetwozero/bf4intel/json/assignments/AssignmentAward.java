@@ -6,7 +6,7 @@ public class AssignmentAward {
 
     @SerializedName("code")
     private String assignmentKey;
-    @SerializedName("licence")
+    @SerializedName("license")
     private String expansionPack;
 
     public String getAssignmentKey() {
@@ -14,6 +14,6 @@ public class AssignmentAward {
     }
 
     public String getExpansionPack() {
-        return expansionPack;
+        return expansionPack != null ? expansionPack : "";
     }
 }
