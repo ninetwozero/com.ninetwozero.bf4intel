@@ -98,4 +98,6 @@
 
   <!-- Menu -->
   <string name="menu_refresh">Refresh</string>
+
+  <string name="unknown">Unknown</string>
 </resources>

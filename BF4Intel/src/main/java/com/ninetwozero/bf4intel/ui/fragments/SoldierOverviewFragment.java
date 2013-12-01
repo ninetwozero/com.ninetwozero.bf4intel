@@ -16,10 +16,7 @@ import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.datatypes.Skill;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.resources.maps.CompletionStringMap;
-import com.ninetwozero.bf4intel.resources.maps.RankStringMap;
-import com.ninetwozero.bf4intel.resources.maps.VehicleStringMap;
-import com.ninetwozero.bf4intel.resources.maps.WeaponStringMap;
+import com.ninetwozero.bf4intel.resources.maps.*;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.PersonaUtils;
 import com.ninetwozero.bf4intel.utils.Result;
@@ -29,6 +26,7 @@ import com.ninetwozero.bf4intel.json.soldieroverview.SkillOverview;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -148,10 +146,10 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         );
 
         // FIXME: Display appropriate image in ActionBar
-        ((ImageView) root.findViewById(R.id.image_rank)).setImageResource(R.drawable.test_rank31);
+        ((ImageView) root.findViewById(R.id.image_rank)).setImageResource(RankImageMap.images.get(soldierOverview.getCurrentRank().getLevel()));
 
-        progressBar.setProgress(currentScoreThisRank);
         progressBar.setMax(maxScore);
+        progressBar.setProgress(currentScoreThisRank);
     }
 
     private void displayServiceStars(final View baseView, final SkillOverview basicSoldierStats) {
@@ -161,7 +159,9 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         final Map<Integer, Double> serviceStarProgress = basicSoldierStats.getServiceStarProgress();
 
         contentArea.removeAllViews();
-        for (int key : serviceStars.keySet()) {
+        List<Integer> keys = new ArrayList<Integer>(serviceStars.keySet());
+        Collections.sort(keys);
+        for (int key : keys) {
             final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
             final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
 
