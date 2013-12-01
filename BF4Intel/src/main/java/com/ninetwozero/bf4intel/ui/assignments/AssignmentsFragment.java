@@ -43,7 +43,7 @@ public class AssignmentsFragment extends BaseFragment {
     }
 
     @Subscribe
-    public void assignmentSubscription(Assignments assignments) {
+    public void onAssignmentsLoaded(Assignments assignments) {
         this.assignments = assignments;
         setupGrid();
     }
