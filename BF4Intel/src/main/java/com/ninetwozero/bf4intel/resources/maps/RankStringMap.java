@@ -113,6 +113,6 @@ public class RankStringMap {
     };
 
     public static int get(final String key) {
-        return map.containsKey(key)? map.get(key) : -1;
+        return map.containsKey(key)? map.get(key) : R.string.unknown;
     }
 }
