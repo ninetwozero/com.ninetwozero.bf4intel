@@ -1,0 +1,4433 @@
+{
+  "type": "success",
+  "message": "OK",
+  "data": {
+    "unlockedStats": {
+      "AwardGroup_Ribbons": 37,
+      "AwardGroup_Medals": 5
+    },
+    "personaId": 200661244,
+    "groupedMedalAwards": {
+      "vehicles": [
+        "m19",
+        "m20",
+        "m21",
+        "m22",
+        "m23",
+        "m24",
+        "m25",
+        "xp1mBD"
+      ],
+      "weapon": [
+        "m10",
+        "m11",
+        "m12",
+        "m13",
+        "m14",
+        "m15",
+        "m16",
+        "m17",
+        "m18"
+      ],
+      "gamemode": [
+        "m26",
+        "m27",
+        "m28",
+        "m29",
+        "m30",
+        "m31",
+        "m32",
+        "m33",
+        "m34",
+        "m35"
+      ],
+      "general": [
+        "m03",
+        "m04",
+        "m41",
+        "xp1mAS"
+      ],
+      "kits": [
+        "m02",
+        "m36",
+        "m37",
+        "m38",
+        "m39",
+        "m40",
+        "m43",
+        "m44",
+        "m45"
+      ],
+      "team": [
+        "m01",
+        "m05",
+        "m06",
+        "m07",
+        "m08",
+        "m09",
+        "m42"
+      ]
+    },
+    "statsTemplate": "profile.warsawawardspopulate",
+    "platformInt": 1,
+    "suggestions": [
+      {
+        "itemCategoryID": null,
+        "description": "WARSAW_ID_P_AWARD_M03_DESC",
+        "image": {
+          "category": "award_medals",
+          "slug": "m03",
+          "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m03_BL",
+          "versions": {
+            "mobile": {
+              "path": "warsaw\/gamedata\/award_medals\/mobile\/m03.png",
+              "isSprite": false,
+              "height": 100,
+              "name": "mobile",
+              "width": 100
+            },
+            "large": {
+              "path": "warsaw\/gamedata\/award_medals\/large\/m03.png",
+              "isSprite": false,
+              "height": 256,
+              "name": "large",
+              "width": 256
+            },
+            "mediumns": {
+              "path": "warsaw\/gamedata\/award_medals\/mediumns\/m03.png",
+              "isSprite": false,
+              "height": 130,
+              "name": "mediumns",
+              "width": 130
+            },
+            "xsmall": {
+              "path": "warsaw\/gamedata\/award_medals\/xsmall.png",
+              "isSprite": true,
+              "height": 43,
+              "name": "xsmall",
+              "width": 43
+            },
+            "small": {
+              "path": "warsaw\/gamedata\/award_medals\/small.png",
+              "isSprite": true,
+              "height": 100,
+              "name": "small",
+              "width": 100
+            },
+            "vsmall": {
+              "path": "warsaw\/gamedata\/award_medals\/vsmall.png",
+              "isSprite": true,
+              "height": 50,
+              "name": "vsmall",
+              "width": 50
+            },
+            "smallns": {
+              "path": "warsaw\/gamedata\/award_medals\/smallns\/m03.png",
+              "isSprite": false,
+              "height": 100,
+              "name": "smallns",
+              "width": 100
+            }
+          }
+        },
+        "guid": "m03",
+        "isTrackedManually": false,
+        "slug": "m03",
+        "category": "award",
+        "index": 1,
+        "name": "WARSAW_ID_P_AWARD_M03_NAME",
+        "playerProgress": [
+          {
+            "descriptionID": null,
+            "actualValue": 3,
+            "parentNameSID": null,
+            "license": null,
+            "codeNeeded": null,
+            "unlockType": null,
+            "valueNeeded": 50,
+            "award": {
+              "code": "m03",
+              "criterias": [
+
+              ],
+              "imageDir": null,
+              "visible": true,
+              "awardRealm": "mp",
+              "index": 6,
+              "stats": {
+                "completioncount": {
+                  "statName": "m03_00",
+                  "type": "completioncount"
+                },
+                "timestamp": {
+                  "statName": "m03_01",
+                  "type": "timestamp"
+                }
+              },
+              "activeOnCreation": true,
+              "awardType": "AwardType_Limited",
+              "visibilityLicense": null,
+              "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m03_BL",
+              "imageName": null,
+              "imageConfig": {
+                "category": "award_medals",
+                "slug": "m03",
+                "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m03_BL",
+                "versions": {
+                  "mobile": {
+                    "path": "warsaw\/gamedata\/award_medals\/mobile\/m03.png",
+                    "isSprite": false,
+                    "height": 100,
+                    "name": "mobile",
+                    "width": 100
+                  },
+                  "large": {
+                    "path": "warsaw\/gamedata\/award_medals\/large\/m03.png",
+                    "isSprite": false,
+                    "height": 256,
+                    "name": "large",
+                    "width": 256
+                  },
+                  "mediumns": {
+                    "path": "warsaw\/gamedata\/award_medals\/mediumns\/m03.png",
+                    "isSprite": false,
+                    "height": 130,
+                    "name": "mediumns",
+                    "width": 130
+                  },
+                  "xsmall": {
+                    "path": "warsaw\/gamedata\/award_medals\/xsmall.png",
+                    "isSprite": true,
+                    "height": 43,
+                    "name": "xsmall",
+                    "width": 43
+                  },
+                  "small": {
+                    "path": "warsaw\/gamedata\/award_medals\/small.png",
+                    "isSprite": true,
+                    "height": 100,
+                    "name": "small",
+                    "width": 100
+                  },
+                  "vsmall": {
+                    "path": "warsaw\/gamedata\/award_medals\/vsmall.png",
+                    "isSprite": true,
+                    "height": 50,
+                    "name": "vsmall",
+                    "width": 50
+                  },
+                  "smallns": {
+                    "path": "warsaw\/gamedata\/award_medals\/smallns\/m03.png",
+                    "isSprite": false,
+                    "height": 100,
+                    "name": "smallns",
+                    "width": 100
+                  }
+                }
+              },
+              "unlocks": [
+
+              ],
+              "stringID": "WARSAW_ID_P_AWARD_M03_NAME",
+              "kit": null,
+              "awardGroup": "AwardGroup_Medals",
+              "dependencies": [
+                {
+                  "count": 50,
+                  "code": "r03"
+                }
+              ],
+              "descriptionID": "WARSAW_ID_P_AWARD_M03_DESC",
+              "name": null,
+              "license": null,
+              "additionalLicenses": null
+            },
+            "complete": 0
+          }
+        ],
+        "aliasing": null,
+        "gameType": 2,
+        "type": 32,
+        "isDefault": null
+      },
+      {
+        "itemCategoryID": null,
+        "description": null,
+        "image": {
+          "category": "award_star",
+          "slug": "servicestar",
+          "texture": "UI\/Art\/Persistence\/Award\/ServiceStar",
+          "versions": {
+            "mediumns": {
+              "path": "warsaw\/gamedata\/award_star\/mediumns\/servicestar.png",
+              "isSprite": false,
+              "height": 130,
+              "name": "mediumns",
+              "width": 130
+            },
+            "small": {
+              "path": "warsaw\/gamedata\/award_star\/small.png",
+              "isSprite": true,
+              "height": 80,
+              "name": "small",
+              "width": 80
+            },
+            "xsmall": {
+              "path": "warsaw\/gamedata\/award_star\/xsmall.png",
+              "isSprite": true,
+              "height": 43,
+              "name": "xsmall",
+              "width": 43
+            },
+            "mobile": {
+              "path": "warsaw\/gamedata\/award_star\/mobile\/servicestar.png",
+              "isSprite": false,
+              "height": 80,
+              "name": "mobile",
+              "width": 80
+            },
+            "smallns": {
+              "path": "warsaw\/gamedata\/award_star\/smallns\/servicestar.png",
+              "isSprite": false,
+              "height": 80,
+              "name": "smallns",
+              "width": 80
+            }
+          }
+        },
+        "guid": "sc_assault",
+        "isTrackedManually": false,
+        "slug": "ssclbas",
+        "category": "servicestar",
+        "index": 2,
+        "name": "WARSAW_ID_P_CLASS_STAR_NAME_ASSAULT",
+        "playerProgress": [
+          {
+            "descriptionID": null,
+            "actualValue": 1379,
+            "parentNameSID": null,
+            "license": null,
+            "codeNeeded": "sc_assault",
+            "unlockType": null,
+            "valueNeeded": 155000,
+            "award": null,
+            "complete": 0
+          }
+        ],
+        "aliasing": null,
+        "gameType": 2,
+        "type": 512,
+        "isDefault": null
+      },
+      {
+        "itemCategoryID": null,
+        "description": null,
+        "image": {
+          "category": "weapon_unlock",
+          "slug": "type88_fancy",
+          "texture": "UI\/Art\/Persistence\/Weapons\/Fancy\/type88_fancy",
+          "versions": {
+            "medium": {
+              "path": "warsaw\/gamedata\/weapon_unlock\/medium.png",
+              "isSprite": true,
+              "height": 88,
+              "name": "medium",
+              "width": 147
+            },
+            "squarelarge": {
+              "path": "warsaw\/gamedata\/weapon_unlock\/squarelarge\/type88_fancy.png",
+              "isSprite": false,
+              "height": 256,
+              "name": "squarelarge",
+              "width": 256
+            },
+            "mobile": {
+              "path": "warsaw\/gamedata\/weapon_unlock\/mobile\/type88_fancy.png",
+              "isSprite": false,
+              "height": 88,
+              "name": "mobile",
+              "width": 147
+            },
+            "small": {
+              "path": "warsaw\/gamedata\/weapon_unlock\/small.png",
+              "isSprite": true,
+              "height": 54,
+              "name": "small",
+              "width": 90
+            },
+            "xsmall": {
+              "path": "warsaw\/gamedata\/weapon_unlock\/xsmall.png",
+              "isSprite": true,
+              "height": 43,
+              "name": "xsmall",
+              "width": 79
+            },
+            "mediumns": {
+              "path": "warsaw\/gamedata\/weapon_unlock\/mediumns\/type88_fancy.png",
+              "isSprite": false,
+              "height": 88,
+              "name": "mediumns",
+              "width": 147
+            },
+            "smallns": {
+              "path": "warsaw\/gamedata\/weapon_unlock\/smallns\/type88_fancy.png",
+              "isSprite": false,
+              "height": 54,
+              "name": "smallns",
+              "width": 90
+            }
+          }
+        },
+        "guid": "D0E124FB-7116-4FBB-AF00-D8994AEB548D",
+        "isTrackedManually": false,
+        "slug": "type-88-lmg",
+        "category": "weapon",
+        "index": 3,
+        "name": "WARSAW_ID_P_WNAME_TYPE88",
+        "playerProgress": [
+          {
+            "descriptionID": null,
+            "actualValue": 125,
+            "parentNameSID": null,
+            "license": null,
+            "codeNeeded": "sc_lmgs",
+            "unlockType": "bucket",
+            "valueNeeded": 4000,
+            "award": null,
+            "complete": 0
+          }
+        ],
+        "aliasing": null,
+        "gameType": 2,
+        "type": 2,
+        "isDefault": null
+      },
+      {
+        "itemCategoryID": null,
+        "description": "WARSAW_ID_P_AWARD_M23_DESC",
+        "image": {
+          "category": "award_medals",
+          "slug": "m23",
+          "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m23_BL",
+          "versions": {
+            "mobile": {
+              "path": "warsaw\/gamedata\/award_medals\/mobile\/m23.png",
+              "isSprite": false,
+              "height": 100,
+              "name": "mobile",
+              "width": 100
+            },
+            "large": {
+              "path": "warsaw\/gamedata\/award_medals\/large\/m23.png",
+              "isSprite": false,
+              "height": 256,
+              "name": "large",
+              "width": 256
+            },
+            "mediumns": {
+              "path": "warsaw\/gamedata\/award_medals\/mediumns\/m23.png",
+              "isSprite": false,
+              "height": 130,
+              "name": "mediumns",
+              "width": 130
+            },
+            "xsmall": {
+              "path": "warsaw\/gamedata\/award_medals\/xsmall.png",
+              "isSprite": true,
+              "height": 43,
+              "name": "xsmall",
+              "width": 43
+            },
+            "small": {
+              "path": "warsaw\/gamedata\/award_medals\/small.png",
+              "isSprite": true,
+              "height": 100,
+              "name": "small",
+              "width": 100
+            },
+            "vsmall": {
+              "path": "warsaw\/gamedata\/award_medals\/vsmall.png",
+              "isSprite": true,
+              "height": 50,
+              "name": "vsmall",
+              "width": 50
+            },
+            "smallns": {
+              "path": "warsaw\/gamedata\/award_medals\/smallns\/m23.png",
+              "isSprite": false,
+              "height": 100,
+              "name": "smallns",
+              "width": 100
+            }
+          }
+        },
+        "guid": "m23",
+        "isTrackedManually": true,
+        "slug": "m23",
+        "category": "award",
+        "index": 4,
+        "name": "WARSAW_ID_P_AWARD_M23_NAME",
+        "playerProgress": [
+          {
+            "descriptionID": null,
+            "actualValue": 12,
+            "parentNameSID": null,
+            "license": null,
+            "codeNeeded": null,
+            "unlockType": null,
+            "valueNeeded": 50,
+            "award": {
+              "code": "m23",
+              "criterias": [
+
+              ],
+              "imageDir": null,
+              "visible": true,
+              "awardRealm": "mp",
+              "index": 27,
+              "stats": {
+                "completioncount": {
+                  "statName": "m23_00",
+                  "type": "completioncount"
+                },
+                "timestamp": {
+                  "statName": "m23_01",
+                  "type": "timestamp"
+                }
+              },
+              "activeOnCreation": true,
+              "awardType": "AwardType_Limited",
+              "visibilityLicense": null,
+              "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m23_BL",
+              "imageName": null,
+              "imageConfig": {
+                "category": "award_medals",
+                "slug": "m23",
+                "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m23_BL",
+                "versions": {
+                  "mobile": {
+                    "path": "warsaw\/gamedata\/award_medals\/mobile\/m23.png",
+                    "isSprite": false,
+                    "height": 100,
+                    "name": "mobile",
+                    "width": 100
+                  },
+                  "large": {
+                    "path": "warsaw\/gamedata\/award_medals\/large\/m23.png",
+                    "isSprite": false,
+                    "height": 256,
+                    "name": "large",
+                    "width": 256
+                  },
+                  "mediumns": {
+                    "path": "warsaw\/gamedata\/award_medals\/mediumns\/m23.png",
+                    "isSprite": false,
+                    "height": 130,
+                    "name": "mediumns",
+                    "width": 130
+                  },
+                  "xsmall": {
+                    "path": "warsaw\/gamedata\/award_medals\/xsmall.png",
+                    "isSprite": true,
+                    "height": 43,
+                    "name": "xsmall",
+                    "width": 43
+                  },
+                  "small": {
+                    "path": "warsaw\/gamedata\/award_medals\/small.png",
+                    "isSprite": true,
+                    "height": 100,
+                    "name": "small",
+                    "width": 100
+                  },
+                  "vsmall": {
+                    "path": "warsaw\/gamedata\/award_medals\/vsmall.png",
+                    "isSprite": true,
+                    "height": 50,
+                    "name": "vsmall",
+                    "width": 50
+                  },
+                  "smallns": {
+                    "path": "warsaw\/gamedata\/award_medals\/smallns\/m23.png",
+                    "isSprite": false,
+                    "height": 100,
+                    "name": "smallns",
+                    "width": 100
+                  }
+                }
+              },
+              "unlocks": [
+
+              ],
+              "stringID": "WARSAW_ID_P_AWARD_M23_NAME",
+              "kit": null,
+              "awardGroup": "AwardGroup_Medals",
+              "dependencies": [
+                {
+                  "count": 50,
+                  "code": "r23"
+                }
+              ],
+              "descriptionID": "WARSAW_ID_P_AWARD_M23_DESC",
+              "name": null,
+              "license": null,
+              "additionalLicenses": null
+            },
+            "complete": 0
+          }
+        ],
+        "aliasing": null,
+        "gameType": 2,
+        "type": 32,
+        "isDefault": null
+      },
+      {
+        "itemCategoryID": null,
+        "description": "WARSAW_ID_P_AWARD_M22_DESC",
+        "image": {
+          "category": "award_medals",
+          "slug": "m22",
+          "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m22_BL",
+          "versions": {
+            "mobile": {
+              "path": "warsaw\/gamedata\/award_medals\/mobile\/m22.png",
+              "isSprite": false,
+              "height": 100,
+              "name": "mobile",
+              "width": 100
+            },
+            "large": {
+              "path": "warsaw\/gamedata\/award_medals\/large\/m22.png",
+              "isSprite": false,
+              "height": 256,
+              "name": "large",
+              "width": 256
+            },
+            "mediumns": {
+              "path": "warsaw\/gamedata\/award_medals\/mediumns\/m22.png",
+              "isSprite": false,
+              "height": 130,
+              "name": "mediumns",
+              "width": 130
+            },
+            "xsmall": {
+              "path": "warsaw\/gamedata\/award_medals\/xsmall.png",
+              "isSprite": true,
+              "height": 43,
+              "name": "xsmall",
+              "width": 43
+            },
+            "small": {
+              "path": "warsaw\/gamedata\/award_medals\/small.png",
+              "isSprite": true,
+              "height": 100,
+              "name": "small",
+              "width": 100
+            },
+            "vsmall": {
+              "path": "warsaw\/gamedata\/award_medals\/vsmall.png",
+              "isSprite": true,
+              "height": 50,
+              "name": "vsmall",
+              "width": 50
+            },
+            "smallns": {
+              "path": "warsaw\/gamedata\/award_medals\/smallns\/m22.png",
+              "isSprite": false,
+              "height": 100,
+              "name": "smallns",
+              "width": 100
+            }
+          }
+        },
+        "guid": "m22",
+        "isTrackedManually": true,
+        "slug": "m22",
+        "category": "award",
+        "index": 5,
+        "name": "WARSAW_ID_P_AWARD_M22_NAME",
+        "playerProgress": [
+          {
+            "descriptionID": null,
+            "actualValue": 5,
+            "parentNameSID": null,
+            "license": null,
+            "codeNeeded": null,
+            "unlockType": null,
+            "valueNeeded": 50,
+            "award": {
+              "code": "m22",
+              "criterias": [
+
+              ],
+              "imageDir": null,
+              "visible": true,
+              "awardRealm": "mp",
+              "index": 22,
+              "stats": {
+                "completioncount": {
+                  "statName": "m22_00",
+                  "type": "completioncount"
+                },
+                "timestamp": {
+                  "statName": "m22_01",
+                  "type": "timestamp"
+                }
+              },
+              "activeOnCreation": true,
+              "awardType": "AwardType_Limited",
+              "visibilityLicense": null,
+              "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m22_BL",
+              "imageName": null,
+              "imageConfig": {
+                "category": "award_medals",
+                "slug": "m22",
+                "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m22_BL",
+                "versions": {
+                  "mobile": {
+                    "path": "warsaw\/gamedata\/award_medals\/mobile\/m22.png",
+                    "isSprite": false,
+                    "height": 100,
+                    "name": "mobile",
+                    "width": 100
+                  },
+                  "large": {
+                    "path": "warsaw\/gamedata\/award_medals\/large\/m22.png",
+                    "isSprite": false,
+                    "height": 256,
+                    "name": "large",
+                    "width": 256
+                  },
+                  "mediumns": {
+                    "path": "warsaw\/gamedata\/award_medals\/mediumns\/m22.png",
+                    "isSprite": false,
+                    "height": 130,
+                    "name": "mediumns",
+                    "width": 130
+                  },
+                  "xsmall": {
+                    "path": "warsaw\/gamedata\/award_medals\/xsmall.png",
+                    "isSprite": true,
+                    "height": 43,
+                    "name": "xsmall",
+                    "width": 43
+                  },
+                  "small": {
+                    "path": "warsaw\/gamedata\/award_medals\/small.png",
+                    "isSprite": true,
+                    "height": 100,
+                    "name": "small",
+                    "width": 100
+                  },
+                  "vsmall": {
+                    "path": "warsaw\/gamedata\/award_medals\/vsmall.png",
+                    "isSprite": true,
+                    "height": 50,
+                    "name": "vsmall",
+                    "width": 50
+                  },
+                  "smallns": {
+                    "path": "warsaw\/gamedata\/award_medals\/smallns\/m22.png",
+                    "isSprite": false,
+                    "height": 100,
+                    "name": "smallns",
+                    "width": 100
+                  }
+                }
+              },
+              "unlocks": [
+
+              ],
+              "stringID": "WARSAW_ID_P_AWARD_M22_NAME",
+              "kit": null,
+              "awardGroup": "AwardGroup_Medals",
+              "dependencies": [
+                {
+                  "count": 50,
+                  "code": "r22"
+                }
+              ],
+              "descriptionID": "WARSAW_ID_P_AWARD_M22_DESC",
+              "name": null,
+              "license": null,
+              "additionalLicenses": null
+            },
+            "complete": 1
+          }
+        ],
+        "aliasing": null,
+        "gameType": 2,
+        "type": 32,
+        "isDefault": null
+      },
+      {
+        "itemCategoryID": null,
+        "description": "WARSAW_ID_P_AWARD_M18_DESC",
+        "image": {
+          "category": "award_medals",
+          "slug": "m18",
+          "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m18_BL",
+          "versions": {
+            "mobile": {
+              "path": "warsaw\/gamedata\/award_medals\/mobile\/m18.png",
+              "isSprite": false,
+              "height": 100,
+              "name": "mobile",
+              "width": 100
+            },
+            "large": {
+              "path": "warsaw\/gamedata\/award_medals\/large\/m18.png",
+              "isSprite": false,
+              "height": 256,
+              "name": "large",
+              "width": 256
+            },
+            "mediumns": {
+              "path": "warsaw\/gamedata\/award_medals\/mediumns\/m18.png",
+              "isSprite": false,
+              "height": 130,
+              "name": "mediumns",
+              "width": 130
+            },
+            "xsmall": {
+              "path": "warsaw\/gamedata\/award_medals\/xsmall.png",
+              "isSprite": true,
+              "height": 43,
+              "name": "xsmall",
+              "width": 43
+            },
+            "small": {
+              "path": "warsaw\/gamedata\/award_medals\/small.png",
+              "isSprite": true,
+              "height": 100,
+              "name": "small",
+              "width": 100
+            },
+            "vsmall": {
+              "path": "warsaw\/gamedata\/award_medals\/vsmall.png",
+              "isSprite": true,
+              "height": 50,
+              "name": "vsmall",
+              "width": 50
+            },
+            "smallns": {
+              "path": "warsaw\/gamedata\/award_medals\/smallns\/m18.png",
+              "isSprite": false,
+              "height": 100,
+              "name": "smallns",
+              "width": 100
+            }
+          }
+        },
+        "guid": "m18",
+        "isTrackedManually": true,
+        "slug": "m18",
+        "category": "award",
+        "index": 6,
+        "name": "WARSAW_ID_P_AWARD_M18_NAME",
+        "playerProgress": [
+          {
+            "descriptionID": null,
+            "actualValue": 5,
+            "parentNameSID": null,
+            "license": null,
+            "codeNeeded": null,
+            "unlockType": null,
+            "valueNeeded": 50,
+            "award": {
+              "code": "m18",
+              "criterias": [
+
+              ],
+              "imageDir": null,
+              "visible": true,
+              "awardRealm": "mp",
+              "index": 20,
+              "stats": {
+                "completioncount": {
+                  "statName": "m18_00",
+                  "type": "completioncount"
+                },
+                "timestamp": {
+                  "statName": "m18_01",
+                  "type": "timestamp"
+                }
+              },
+              "activeOnCreation": true,
+              "awardType": "AwardType_Limited",
+              "visibilityLicense": null,
+              "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m18_BL",
+              "imageName": null,
+              "imageConfig": {
+                "category": "award_medals",
+                "slug": "m18",
+                "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m18_BL",
+                "versions": {
+                  "mobile": {
+                    "path": "warsaw\/gamedata\/award_medals\/mobile\/m18.png",
+                    "isSprite": false,
+                    "height": 100,
+                    "name": "mobile",
+                    "width": 100
+                  },
+                  "large": {
+                    "path": "warsaw\/gamedata\/award_medals\/large\/m18.png",
+                    "isSprite": false,
+                    "height": 256,
+                    "name": "large",
+                    "width": 256
+                  },
+                  "mediumns": {
+                    "path": "warsaw\/gamedata\/award_medals\/mediumns\/m18.png",
+                    "isSprite": false,
+                    "height": 130,
+                    "name": "mediumns",
+                    "width": 130
+                  },
+                  "xsmall": {
+                    "path": "warsaw\/gamedata\/award_medals\/xsmall.png",
+                    "isSprite": true,
+                    "height": 43,
+                    "name": "xsmall",
+                    "width": 43
+                  },
+                  "small": {
+                    "path": "warsaw\/gamedata\/award_medals\/small.png",
+                    "isSprite": true,
+                    "height": 100,
+                    "name": "small",
+                    "width": 100
+                  },
+                  "vsmall": {
+                    "path": "warsaw\/gamedata\/award_medals\/vsmall.png",
+                    "isSprite": true,
+                    "height": 50,
+                    "name": "vsmall",
+                    "width": 50
+                  },
+                  "smallns": {
+                    "path": "warsaw\/gamedata\/award_medals\/smallns\/m18.png",
+                    "isSprite": false,
+                    "height": 100,
+                    "name": "smallns",
+                    "width": 100
+                  }
+                }
+              },
+              "unlocks": [
+
+              ],
+              "stringID": "WARSAW_ID_P_AWARD_M18_NAME",
+              "kit": null,
+              "awardGroup": "AwardGroup_Medals",
+              "dependencies": [
+                {
+                  "count": 50,
+                  "code": "r18"
+                }
+              ],
+              "descriptionID": "WARSAW_ID_P_AWARD_M18_DESC",
+              "name": null,
+              "license": null,
+              "additionalLicenses": null
+            },
+            "complete": 0
+          }
+        ],
+        "aliasing": null,
+        "gameType": 2,
+        "type": 32,
+        "isDefault": null
+      }
+    ],
+    "ribbonAwardByCode": {
+      "r01": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R01_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R01_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r01",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r01_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r01"
+        },
+        "timesTaken": "12",
+        "actualValue": 0.0,
+        "valueNeeded": 5.0
+      },
+      "r03": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R03_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R03_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r03",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r03_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r03"
+        },
+        "timesTaken": "49",
+        "actualValue": 0.0,
+        "valueNeeded": 2.0
+      },
+      "r02": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R02_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R02_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r02",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r02_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r02"
+        },
+        "timesTaken": "161",
+        "actualValue": 0.0,
+        "valueNeeded": 2.0
+      },
+      "r05": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R05_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R05_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r05",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r05_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r05"
+        },
+        "timesTaken": "38",
+        "actualValue": 0.0,
+        "valueNeeded": 2.0
+      },
+      "r04": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R04_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R04_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r04",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r04_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r04"
+        },
+        "timesTaken": "32",
+        "actualValue": 0.0,
+        "valueNeeded": 3.0
+      },
+      "r07": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R07_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R07_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r07",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r07_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r07"
+        },
+        "timesTaken": "8",
+        "actualValue": 0.0,
+        "valueNeeded": 4.0
+      },
+      "r06": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R06_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R06_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r06",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r06_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r06"
+        },
+        "timesTaken": "15",
+        "actualValue": 0.0,
+        "valueNeeded": 2.0
+      },
+      "r09": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R09_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R09_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r09",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r09_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r09"
+        },
+        "timesTaken": "15",
+        "actualValue": 0.0,
+        "valueNeeded": 1.0
+      },
+      "r08": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R08_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R08_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r08",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r08_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r08"
+        },
+        "timesTaken": "33",
+        "actualValue": 0.0,
+        "valueNeeded": 1.0
+      },
+      "r42": {
+        "valueNeededUnit": null,
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R42_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R42_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r42",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r42_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r42"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 10.0
+      },
+      "r45": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R45_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R45_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r45",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r45_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r45"
+        },
+        "timesTaken": "8",
+        "actualValue": 0.0,
+        "valueNeeded": 2.0
+      },
+      "r44": {
+        "valueNeededUnit": null,
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R44_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R44_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r44",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r44_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r44"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 10.0
+      },
+      "r41": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R41_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R41_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r41",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r41_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r41"
+        },
+        "timesTaken": "11",
+        "actualValue": 0.0,
+        "valueNeeded": 8.0
+      },
+      "r40": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R40_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R40_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r40",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r40_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r40"
+        },
+        "timesTaken": "7",
+        "actualValue": 0.0,
+        "valueNeeded": 3.0
+      },
+      "r29": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R29_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R29_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r29",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r29_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r29"
+        },
+        "timesTaken": "57",
+        "actualValue": 0.0,
+        "valueNeeded": 1.0
+      },
+      "r28": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R28_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R28_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r28",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r28_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r28"
+        },
+        "timesTaken": "4",
+        "actualValue": 0.0,
+        "valueNeeded": 1.0
+      },
+      "r27": {
+        "valueNeededUnit": null,
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R27_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R27_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r27",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r27_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r27"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 2.0
+      },
+      "r26": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R26_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R26_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r26",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r26_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r26"
+        },
+        "timesTaken": "246",
+        "actualValue": 0.0,
+        "valueNeeded": 2.0
+      },
+      "r25": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R25_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R25_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r25",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r25_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r25"
+        },
+        "timesTaken": "9",
+        "actualValue": 0.0,
+        "valueNeeded": 4.0
+      },
+      "r24": {
+        "valueNeededUnit": null,
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R24_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R24_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r24",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r24_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r24"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 5.0
+      },
+      "r23": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R23_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R23_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r23",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r23_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r23"
+        },
+        "timesTaken": "12",
+        "actualValue": 0.0,
+        "valueNeeded": 5.0
+      },
+      "r22": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R22_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R22_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r22",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r22_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r22"
+        },
+        "timesTaken": "55",
+        "actualValue": 0.0,
+        "valueNeeded": 5.0
+      },
+      "r21": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R21_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R21_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r21",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r21_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r21"
+        },
+        "timesTaken": "10",
+        "actualValue": 0.0,
+        "valueNeeded": 4.0
+      },
+      "r20": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R20_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R20_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r20",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r20_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r20"
+        },
+        "timesTaken": "11",
+        "actualValue": 0.0,
+        "valueNeeded": 5.0
+      },
+      "r16": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R16_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R16_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r16",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r16_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r16"
+        },
+        "timesTaken": "1",
+        "actualValue": 0.0,
+        "valueNeeded": 6.0
+      },
+      "r17": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R17_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R17_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r17",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r17_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r17"
+        },
+        "timesTaken": "7",
+        "actualValue": 0.0,
+        "valueNeeded": 6.0
+      },
+      "r14": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R14_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R14_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r14",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r14_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r14"
+        },
+        "timesTaken": "25",
+        "actualValue": 0.0,
+        "valueNeeded": 6.0
+      },
+      "r15": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R15_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R15_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r15",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r15_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r15"
+        },
+        "timesTaken": "5",
+        "actualValue": 0.0,
+        "valueNeeded": 6.0
+      },
+      "r12": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R12_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R12_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r12",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r12_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r12"
+        },
+        "timesTaken": "27",
+        "actualValue": 0.0,
+        "valueNeeded": 6.0
+      },
+      "r13": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R13_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R13_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r13",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r13_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r13"
+        },
+        "timesTaken": "20",
+        "actualValue": 0.0,
+        "valueNeeded": 6.0
+      },
+      "r10": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R10_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R10_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r10",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r10_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r10"
+        },
+        "timesTaken": "4",
+        "actualValue": 0.0,
+        "valueNeeded": 4.0
+      },
+      "r11": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R11_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R11_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r11",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r11_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r11"
+        },
+        "timesTaken": "16",
+        "actualValue": 0.0,
+        "valueNeeded": 6.0
+      },
+      "xp1rAS": {
+        "valueNeededUnit": null,
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_XP1_AWARD_R_AIRSUPERIORITY_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_XP1_AWARD_R_AIRSUPERIORITY_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "xp1ras",
+            "texture": "XP1\/Art\/Persistence\/Award\/Ribbons\/battlelog\/Air_superiority_ribbon_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "xp1rAS"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 1.0
+      },
+      "r43": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R43_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R43_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r43",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r43_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r43"
+        },
+        "timesTaken": "5",
+        "actualValue": 0.0,
+        "valueNeeded": 10.0
+      },
+      "r18": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R18_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R18_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r18",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r18_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r18"
+        },
+        "timesTaken": "5",
+        "actualValue": 0.0,
+        "valueNeeded": 4.0
+      },
+      "r19": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R19_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R19_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r19",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r19_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r19"
+        },
+        "timesTaken": "15",
+        "actualValue": 0.0,
+        "valueNeeded": 5.0
+      },
+      "r38": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R38_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R38_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r38",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r38_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r38"
+        },
+        "timesTaken": "73",
+        "actualValue": 0.0,
+        "valueNeeded": 8.0
+      },
+      "r39": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R39_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R39_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r39",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r39_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r39"
+        },
+        "timesTaken": "1",
+        "actualValue": 0.0,
+        "valueNeeded": 250.0
+      },
+      "r34": {
+        "valueNeededUnit": null,
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R34_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R34_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r34",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r34_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r34"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 1.0
+      },
+      "r35": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R35_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R35_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r35",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r35_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r35"
+        },
+        "timesTaken": "8",
+        "actualValue": 0.0,
+        "valueNeeded": 1.0
+      },
+      "r36": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R36_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R36_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r36",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r36_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r36"
+        },
+        "timesTaken": "31",
+        "actualValue": 0.0,
+        "valueNeeded": 8.0
+      },
+      "r37": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R37_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R37_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r37",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r37_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r37"
+        },
+        "timesTaken": "8",
+        "actualValue": 0.0,
+        "valueNeeded": 5.0
+      },
+      "r30": {
+        "valueNeededUnit": null,
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R30_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R30_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r30",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r30_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r30"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 1.0
+      },
+      "r31": {
+        "valueNeededUnit": null,
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R31_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R31_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r31",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r31_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r31"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 1.0
+      },
+      "r32": {
+        "valueNeededUnit": null,
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R32_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R32_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r32",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r32_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r32"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 1.0
+      },
+      "r33": {
+        "valueNeededUnit": null,
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_R33_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_R33_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "r33",
+            "texture": "UI\/Art\/Persistence\/Award\/Ribbons\/battlelog\/r33_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "r33"
+        },
+        "timesTaken": "10",
+        "actualValue": 0.0,
+        "valueNeeded": 1.0
+      },
+      "xp1rBD": {
+        "valueNeededUnit": null,
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_XP1_AWARD_R_BOMBDELIVERY_DESC",
+          "dependencies": [
+
+          ],
+          "stringID": "WARSAW_ID_P_XP1_AWARD_R_BOMBDELIVERY_NAME",
+          "imageConfig": {
+            "category": "award_ribbons",
+            "slug": "xp1rbd",
+            "texture": "XP1\/Art\/Persistence\/Award\/Ribbons\/battlelog\/Bomb_Delivery_ribbon_BL",
+            "versions": {
+              "small": {
+                "path": "warsaw\/gamedata\/award_ribbons\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "xp1rBD"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 3.0
+      }
+    },
+    "awards": {
+
+    },
+    "mySoldier": false,
+    "suggestionsEnabled": true,
+    "medalAwardByCode": {
+      "m27": {
+        "valueNeededUnit": "other",
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M27_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r27"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M27_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m27",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m27_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m27.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m27"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 50
+      },
+      "m33": {
+        "valueNeededUnit": "other",
+        "unlocked": 20,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M33_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r33"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M33_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m33",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m33_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m33.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m33"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "10",
+        "valueNeeded": 50
+      },
+      "m11": {
+        "valueNeededUnit": "other",
+        "unlocked": 32,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M11_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r11"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M11_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m11",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m11_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m11.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m11"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "16",
+        "valueNeeded": 50
+      },
+      "m10": {
+        "valueNeededUnit": "other",
+        "unlocked": 8,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M10_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r10"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M10_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m10",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m10_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m10.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m10"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "4",
+        "valueNeeded": 50
+      },
+      "m13": {
+        "valueNeededUnit": "other",
+        "unlocked": 40,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M13_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r13"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M13_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m13",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m13_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m13.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m13"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "20",
+        "valueNeeded": 50
+      },
+      "m12": {
+        "valueNeededUnit": "other",
+        "unlocked": 54,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M12_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r12"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M12_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m12",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m12_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m12.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m12"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "27",
+        "valueNeeded": 50
+      },
+      "m15": {
+        "valueNeededUnit": "other",
+        "unlocked": 10,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M15_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r15"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M15_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m15",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m15_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m15.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m15"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "5",
+        "valueNeeded": 50
+      },
+      "m14": {
+        "valueNeededUnit": "other",
+        "unlocked": 50,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M14_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r14"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M14_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m14",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m14_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m14.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m14"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "25",
+        "valueNeeded": 50
+      },
+      "m17": {
+        "valueNeededUnit": "other",
+        "unlocked": 14,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M17_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r17"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M17_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m17",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m17_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m17.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m17"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "7",
+        "valueNeeded": 50
+      },
+      "m16": {
+        "valueNeededUnit": "other",
+        "unlocked": 2,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M16_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r16"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M16_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m16",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m16_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m16.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m16"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "1",
+        "valueNeeded": 50
+      },
+      "m19": {
+        "valueNeededUnit": "other",
+        "unlocked": 30,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M19_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r19"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M19_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m19",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m19_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m19.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m19"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "15",
+        "valueNeeded": 50
+      },
+      "m18": {
+        "valueNeededUnit": "other",
+        "unlocked": 10,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M18_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r18"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M18_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m18",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m18_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m18.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m18"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "5",
+        "valueNeeded": 50
+      },
+      "m23": {
+        "valueNeededUnit": "other",
+        "unlocked": 24,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M23_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r23"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M23_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m23",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m23_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m23.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m23"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "12",
+        "valueNeeded": 50
+      },
+      "m39": {
+        "valueNeededUnit": "other",
+        "unlocked": 2,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M39_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r39"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M39_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m39",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m39_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m39.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m39"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "1",
+        "valueNeeded": 50
+      },
+      "m38": {
+        "valueNeededUnit": "other",
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M38_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r38"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M38_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m38",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m38_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m38.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m38"
+        },
+        "timesTaken": "1",
+        "actualValue": "23",
+        "valueNeeded": 50
+      },
+      "m37": {
+        "valueNeededUnit": "other",
+        "unlocked": 16,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M37_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r37"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M37_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m37",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m37_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m37.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m37"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "8",
+        "valueNeeded": 50
+      },
+      "m36": {
+        "valueNeededUnit": "other",
+        "unlocked": 62,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M36_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r36"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M36_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m36",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m36_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m36.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m36"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "31",
+        "valueNeeded": 50
+      },
+      "m35": {
+        "valueNeededUnit": "other",
+        "unlocked": 16,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M35_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r35"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M35_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m35",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m35_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m35.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m35"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "8",
+        "valueNeeded": 50
+      },
+      "m34": {
+        "valueNeededUnit": "other",
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M34_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r34"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M34_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m34",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m34_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m34.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m34"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 50
+      },
+      "xp1mAS": {
+        "valueNeededUnit": "other",
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_XP1_AWARD_M_AIRSUPERIORITY_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "xp1rAS"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_XP1_AWARD_M_AIRSUPERIORITY_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "xp1mas",
+            "texture": "XP1\/Art\/Persistence\/Award\/Medals\/battlelog\/Air_superiority_medal_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/xp1mas.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "xp1mAS"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 50
+      },
+      "m32": {
+        "valueNeededUnit": "other",
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M32_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r32"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M32_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m32",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m32_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m32.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m32"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 50
+      },
+      "m31": {
+        "valueNeededUnit": "other",
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M31_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r31"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M31_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m31",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m31_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m31.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m31"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 50
+      },
+      "m30": {
+        "valueNeededUnit": "other",
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M30_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r30"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M30_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m30",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m30_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m30.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m30"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 50
+      },
+      "m22": {
+        "valueNeededUnit": "other",
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M22_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r22"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M22_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m22",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m22_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m22.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m22"
+        },
+        "timesTaken": "1",
+        "actualValue": "5",
+        "valueNeeded": 50
+      },
+      "m06": {
+        "valueNeededUnit": "other",
+        "unlocked": 30,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M06_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r06"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M06_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m06",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m06_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m06.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m06"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "15",
+        "valueNeeded": 50
+      },
+      "m07": {
+        "valueNeededUnit": "other",
+        "unlocked": 16,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M07_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r07"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M07_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m07",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m07_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m07.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m07"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "8",
+        "valueNeeded": 50
+      },
+      "m04": {
+        "valueNeededUnit": "other",
+        "unlocked": 64,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M04_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r04"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M04_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m04",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m04_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m04.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m04"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "32",
+        "valueNeeded": 50
+      },
+      "m05": {
+        "valueNeededUnit": "other",
+        "unlocked": 76,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M05_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r05"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M05_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m05",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m05_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m05.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m05"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "38",
+        "valueNeeded": 50
+      },
+      "m02": {
+        "valueNeededUnit": "other",
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M02_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r02"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M02_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m02",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m02_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m02.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m02"
+        },
+        "timesTaken": "3",
+        "actualValue": "11",
+        "valueNeeded": 50
+      },
+      "m03": {
+        "valueNeededUnit": "other",
+        "unlocked": 98,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M03_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r03"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M03_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m03",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m03_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m03.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m03"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "49",
+        "valueNeeded": 50
+      },
+      "m01": {
+        "valueNeededUnit": "other",
+        "unlocked": 24,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M01_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r01"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M01_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m01",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m01_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m01.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m01"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "12",
+        "valueNeeded": 50
+      },
+      "m08": {
+        "valueNeededUnit": "other",
+        "unlocked": 66,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M08_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r08"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M08_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m08",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m08_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m08.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m08"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "33",
+        "valueNeeded": 50
+      },
+      "m09": {
+        "valueNeededUnit": "other",
+        "unlocked": 30,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M09_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r09"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M09_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m09",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m09_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m09.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m09"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "15",
+        "valueNeeded": 50
+      },
+      "m28": {
+        "valueNeededUnit": "other",
+        "unlocked": 8,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M28_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r28"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M28_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m28",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m28_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m28.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m28"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "4",
+        "valueNeeded": 50
+      },
+      "m29": {
+        "valueNeededUnit": "other",
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M29_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r29"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M29_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m29",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m29_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m29.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m29"
+        },
+        "timesTaken": "1",
+        "actualValue": "7",
+        "valueNeeded": 50
+      },
+      "m24": {
+        "valueNeededUnit": "other",
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M24_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r24"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M24_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m24",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m24_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m24.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m24"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 50
+      },
+      "m25": {
+        "valueNeededUnit": "other",
+        "unlocked": 18,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M25_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r25"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M25_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m25",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m25_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m25.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m25"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "9",
+        "valueNeeded": 50
+      },
+      "m26": {
+        "valueNeededUnit": "other",
+        "unlocked": 100.0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M26_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r26"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M26_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m26",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m26_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m26.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m26"
+        },
+        "timesTaken": "4",
+        "actualValue": "46",
+        "valueNeeded": 50
+      },
+      "m41": {
+        "valueNeededUnit": "other",
+        "unlocked": 22,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M41_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r41"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M41_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m41",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m41_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m41.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m41"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "11",
+        "valueNeeded": 50
+      },
+      "m20": {
+        "valueNeededUnit": "other",
+        "unlocked": 22,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M20_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r20"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M20_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m20",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m20_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m20.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m20"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "11",
+        "valueNeeded": 50
+      },
+      "m21": {
+        "valueNeededUnit": "other",
+        "unlocked": 20,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M21_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r21"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M21_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m21",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m21_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m21.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m21"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "10",
+        "valueNeeded": 50
+      },
+      "m44": {
+        "valueNeededUnit": "other",
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M43_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r44"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M44_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m44",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m44_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m44.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m44"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 50
+      },
+      "m45": {
+        "valueNeededUnit": "other",
+        "unlocked": 16,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M45_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r45"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M45_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m45",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m45_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m45.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m45"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "8",
+        "valueNeeded": 50
+      },
+      "m42": {
+        "valueNeededUnit": "other",
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M42_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r42"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M42_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m42",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m42_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m42.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m42"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 50
+      },
+      "xp1mBD": {
+        "valueNeededUnit": "other",
+        "unlocked": 0,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_XP1_AWARD_M_BOMBDELIVERY_DESC",
+          "dependencies": [
+            {
+              "count": 20,
+              "code": "xp1rBD"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_XP1_AWARD_M_BOMBDELIVERY_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "xp1mbd",
+            "texture": "XP1\/Art\/Persistence\/Award\/Medals\/battlelog\/Bomb_Delivery_medal_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/xp1mbd.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "xp1mBD"
+        },
+        "timesTaken": 0.0,
+        "actualValue": 0,
+        "valueNeeded": 20
+      },
+      "m43": {
+        "valueNeededUnit": "other",
+        "unlocked": 10,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M44_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r43"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M43_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m43",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m43_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m43.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m43"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "5",
+        "valueNeeded": 50
+      },
+      "m40": {
+        "valueNeededUnit": "other",
+        "unlocked": 14,
+        "unlocks": [
+
+        ],
+        "award": {
+          "descriptionID": "WARSAW_ID_P_AWARD_M40_DESC",
+          "dependencies": [
+            {
+              "count": 50,
+              "code": "r40"
+            }
+          ],
+          "stringID": "WARSAW_ID_P_AWARD_M40_NAME",
+          "imageConfig": {
+            "category": "award_medals",
+            "slug": "m40",
+            "texture": "UI\/Art\/Persistence\/Award\/Medals\/battlelog\/m40_BL",
+            "versions": {
+              "large": {
+                "path": "warsaw\/gamedata\/award_medals\/large\/m40.png",
+                "isSprite": false,
+                "height": 256,
+                "name": "large",
+                "width": 256
+              },
+              "small": {
+                "path": "warsaw\/gamedata\/award_medals\/small.png",
+                "isSprite": true,
+                "height": 100,
+                "name": "small",
+                "width": 100
+              }
+            }
+          },
+          "code": "m40"
+        },
+        "timesTaken": 0.0,
+        "actualValue": "7",
+        "valueNeeded": 50
+      }
+    },
+    "suggestionType": 32,
+    "gameInt": 2048
+  }
+}
