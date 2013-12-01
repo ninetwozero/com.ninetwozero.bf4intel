@@ -49,16 +49,16 @@ public class AssignmentsFragment extends BaseFragment {
     }
 
     private void setupGrid() {
-        AssignmentsAdapter adapter = new AssignmentsAdapter(assignments(), getActivity().getApplicationContext());
+        AssignmentsAdapter adapter = new AssignmentsAdapter(getAssignments(), getActivity().getApplicationContext());
         gridView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
-    private List<Assignment> assignments() {
-        return assignments != null ? sortAssignments() : new ArrayList<Assignment>();
+    private List<Assignment> getAssignments() {
+        return assignments != null ? fetchSortedAssignments() : new ArrayList<Assignment>();
     }
 
-    private List<Assignment> sortAssignments() {
+    private List<Assignment> fetchSortedAssignments() {
         List<Assignment> orderedAssignments = new ArrayList<Assignment>();
         Map<String, List<String>> missions = assignments.getAssignmentCategory();
         for(String assignmentType : ASSIGNMENT_TYPE) {
