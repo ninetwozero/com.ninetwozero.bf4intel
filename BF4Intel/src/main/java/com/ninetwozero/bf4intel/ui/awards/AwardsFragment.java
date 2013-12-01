@@ -1,6 +1,5 @@
 package com.ninetwozero.bf4intel.ui.awards;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,15 +7,19 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.ui.BaseFragment;
+import com.ninetwozero.bf4intel.json.awards.Award;
 import com.ninetwozero.bf4intel.json.awards.Awards;
+import com.ninetwozero.bf4intel.json.awards.Medal;
+import com.ninetwozero.bf4intel.json.awards.Ribbon;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class AwardsFragment extends Fragment {
+public class AwardsFragment extends BaseFragment {
 
+    private static final List<String> AWARD_TYPE = new ArrayList<String>(Arrays.asList("vehicles", "weapon", "gamemode", "general", "kits", "team"));
     private Awards awards;
     private GridView gridView;
 
@@ -41,18 +44,43 @@ public class AwardsFragment extends Fragment {
     }
 
     @Subscribe
-    public void awards(Awards awards) {
+    public void onAwardsLoaded(Awards awards) {
         this.awards = awards;
         setupGrid();
     }
 
     private void setupGrid() {
-        AwardsAdapter adapter = new AwardsAdapter(awards(), getActivity().getApplicationContext());
+        AwardsAdapter adapter = new AwardsAdapter(getAwards(), getActivity().getApplicationContext());
         gridView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
 
-    private List<Awards> awards() {
-        return /*awards != null ? orderAssignments() :*/ new ArrayList<Awards>();
+    private List<Award> getAwards() {
+        return awards != null ? fetchOrderAwards() : new ArrayList<Award>();
+    }
+
+    private List<Award> fetchOrderAwards() {
+        List<Award> orderedAwards = new ArrayList<Award>();
+        Map<String, List<String>> awardsGroups = awards.getAwardsGroups();
+        for(String group : AWARD_TYPE) {
+            List<String> awardsInGroup = awardsGroups.get(group);
+            Collections.sort(awardsInGroup);
+            orderedAwards.addAll(fetchGroupedAwards(awardsInGroup));
+        }
+        return orderedAwards;
+    }
+
+    private List<Award> fetchGroupedAwards(List<String> awardsInGroup) {
+        List<Award> orderedGroup = new ArrayList<Award>();
+        for (String key : awardsInGroup) {
+            if(awards.getMedals().containsKey(key.toLowerCase())) {
+                String medalCode = key;
+                Medal medal = awards.getMedals().get(key);
+                String ribbonCode = medal.getMedalAward().getMedalDepencies().get(0).getRibbonDependency();
+                Ribbon ribbon = awards.getRibbons().get(ribbonCode.toLowerCase());
+                orderedGroup.add(new Award(medalCode, medal, ribbonCode, ribbon ));
+            }
+        }
+        return orderedGroup;
     }
 }

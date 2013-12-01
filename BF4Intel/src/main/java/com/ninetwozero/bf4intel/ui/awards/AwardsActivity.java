@@ -10,7 +10,6 @@ import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.json.awards.Awards;
 import com.ninetwozero.bf4intel.network.ConnectionRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
-import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
 
@@ -18,7 +17,6 @@ public class AwardsActivity extends BaseIntelActivity {
     //TODO temporary absolute url
     private static final String AWARDS_URL = "http://battlelog.battlefield.com/bf4/warsawawardspopulate/200661244/1/";
     private static final int ID_LOADER = 1100;
-    private static final String TAG = "Awards";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +24,7 @@ public class AwardsActivity extends BaseIntelActivity {
         setContentView(R.layout.activity_assignments);
 
         AwardsFragment awardsFragment = new AwardsFragment();
-        //getSupportFragmentManager().beginTransaction().add(R.id.container_assignments, awardsFragment, TAG).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container_assignments, awardsFragment).commit();
     }
 
     @Override
@@ -52,11 +50,11 @@ public class AwardsActivity extends BaseIntelActivity {
     private void processResult(String resultMessage) {
         JsonObject dataJson = extractFromJson(resultMessage);
         Awards awards = gson.fromJson(dataJson, Awards.class);
-        showLoadingStateInActionBar(true);
+        showLoadingStateInActionBar(false);
         BusProvider.getInstance().post(awards);
     }
 
     private void processError(String resultMessage) {
-        Log.e(AssignmentsActivity.class.getSimpleName(), resultMessage);
+        Log.e(AwardsActivity.class.getSimpleName(), resultMessage);
     }
 }

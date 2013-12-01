@@ -11,6 +11,8 @@ public class Medal {
     private int presentProgress;
     @SerializedName("valueNeeded")
     private int maxProgress;
+    @SerializedName("award")
+    private MedalAward medalAward;
 
     public int getUnlocked() {
         return unlocked;
@@ -26,5 +28,9 @@ public class Medal {
 
     public int getMaxProgress() {
         return maxProgress;
+    }
+
+    public MedalAward getMedalAward() {
+        return medalAward;
     }
 }

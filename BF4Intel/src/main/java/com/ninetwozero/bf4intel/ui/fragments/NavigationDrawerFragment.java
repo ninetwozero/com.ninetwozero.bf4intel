@@ -22,6 +22,7 @@ import com.ninetwozero.bf4intel.datatypes.ListRowType;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.ui.awards.AwardsActivity;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
 import com.ninetwozero.bf4intel.ui.activities.SoldierStatisticsActivity;
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
@@ -39,6 +40,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private static final int INTENT_SOLDIER_STATISTICS = 1;
     private static final int INTENT_ASSIGNMENTS = 2;
+    private static final int INTENT_AWARDS = 3;
 
     private ExpandableListView listView;
     private NavigationDrawerCallbacks callbacks;
@@ -190,6 +192,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_statistics), data, intentToStart(INTENT_SOLDIER_STATISTICS)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_unlocks), data, FragmentFactory.Type.SOLDIER_UNLOCKS));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.assignments), data, intentToStart(INTENT_ASSIGNMENTS)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.awards), data, intentToStart(INTENT_AWARDS)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.battlereports), data, FragmentFactory.Type.BATTLE_REPORT_LISTING));
         return items;
     }
@@ -227,6 +230,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 break;
             case INTENT_ASSIGNMENTS:
                 intent = new Intent(getActivity(), AssignmentsActivity.class);
+                break;
+            case INTENT_AWARDS:
+                intent = new Intent(getActivity(), AwardsActivity.class);
                 break;
             default:
                 Log.i(NavigationDrawerFragment.class.getSimpleName(), "Did not found any matching activity for intent " + intentID);
