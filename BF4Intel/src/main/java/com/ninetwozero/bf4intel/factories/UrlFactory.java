@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.factories;
 
 public class UrlFactory {
     private static final String BASE_URL = "http://battlelog.battlefield.com/bf4/";
+    private static final String GRAVATAR_URL = "http://www.gravatar.com/avatar/{HASH}/?s=320";
 
     public enum Type {
         BATTLE_REPORT_LISTING("warsawbattlereportspopulate/{SOLDIER_ID}/2048/{PLATFORM}/"),
@@ -27,5 +28,9 @@ public class UrlFactory {
             urlString = urlString.replaceFirst("\\{\\w+\\}", String.valueOf(value));
         }
         return urlString;
+    }
+
+    public static String buildGravatarUrl(final String hash) {
+        return GRAVATAR_URL.replace("{HASH}", hash);
     }
 }
