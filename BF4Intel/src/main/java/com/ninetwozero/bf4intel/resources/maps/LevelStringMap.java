@@ -18,7 +18,7 @@ public class LevelStringMap {
             // MP
             put("MP_ABANDONED", "Zavod 311");
             put("MP_DAMAGE", "Lancang Dam");
-            put("MP_DISH", "Rogue Transmission");
+            put("MP_THEDISH", "Rogue Transmission");
             put("MP_FLOODED", "Flood Zone");
             put("MP_JOURNEY", "Golmud Railway");
             put("MP_NAVAL", "Paracel Storm");
