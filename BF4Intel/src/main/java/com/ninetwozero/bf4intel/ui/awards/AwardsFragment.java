@@ -56,10 +56,10 @@ public class AwardsFragment extends BaseFragment {
     }
 
     private List<Award> getAwards() {
-        return awards != null ? fetchSotedAwards() : new ArrayList<Award>();
+        return awards != null ? fetchSortedAwards() : new ArrayList<Award>();
     }
 
-    private List<Award> fetchSotedAwards() {
+    private List<Award> fetchSortedAwards() {
         List<Award> orderedAwards = new ArrayList<Award>();
         Map<String, List<String>> awardsGroups = awards.getAwardsGroups();
         for(String group : AWARD_TYPE) {
