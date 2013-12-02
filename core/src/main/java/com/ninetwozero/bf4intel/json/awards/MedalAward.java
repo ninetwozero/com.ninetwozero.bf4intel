@@ -7,9 +7,9 @@ import java.util.List;
 
 public class MedalAward {
     @SerializedName("dependencies")
-    private List<MedalDepency> medalDepencies = new ArrayList<MedalDepency>();
+    private List<MedalDependency> medalDepencies = new ArrayList<MedalDependency>();
 
-    public List<MedalDepency> getMedalDepencies() {
+    public List<MedalDependency> getMedalDepencies() {
         return medalDepencies;
     }
 }

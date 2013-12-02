@@ -2,7 +2,7 @@ package com.ninetwozero.bf4intel.json.awards;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MedalDepency {
+public class MedalDependency {
     @SerializedName("count")
     private int count;
     @SerializedName("code")
