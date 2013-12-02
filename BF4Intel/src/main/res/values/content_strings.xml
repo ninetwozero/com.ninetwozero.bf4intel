@@ -9,4 +9,7 @@
   <string name="cdesc_assignment_image">Assignment image</string>
   <string name="cdesc_assignment_pre_requirement">Assignment pre-requirement image</string>
   <string name="cdesc_assignment_expansion_icon">Assignment expansion icon</string>
+
+  <string name="cdesc_award_medal">Award medal</string>
+  <string name="cdesc_award_ribbon">Award ribbon</string>
 </resources>
