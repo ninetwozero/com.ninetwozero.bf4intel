@@ -5,9 +5,10 @@ import android.view.View;
 import com.ninetwozero.bf4intel.datatypes.EventType;
 import com.ninetwozero.bf4intel.jsonmodels.battlefeed.BaseEvent;
 
-public class UnknownEvent extends BaseEvent {
-    public UnknownEvent(final EventType eventType) {
+public class SharedGameEvent extends BaseEvent {
+    public SharedGameEvent(final EventType eventType) {
         super(eventType);
+        // TODO:
     }
 
     @Override

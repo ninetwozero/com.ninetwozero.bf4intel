@@ -1,21 +1,19 @@
 package com.ninetwozero.bf4intel.jsonmodels.battlefeed;
 
+import android.view.View;
+
 import com.ninetwozero.bf4intel.datatypes.EventType;
 
 abstract public class BaseEvent {
-    protected String eventName;
-    protected EventType eventType;
+    private final EventType eventType;
 
-    public BaseEvent() {
-
-    }
-
-    public BaseEvent(final String event, final EventType type) {
-        this.eventName = event;
+    public BaseEvent(final EventType type) {
         this.eventType = type;
     }
 
-    public String getEventName() {
-        return this.eventName;
+    public final EventType getEventType() {
+        return this.eventType;
     }
+
+    public abstract void populateEventSpecificData(final View view);
 }
