@@ -1,21 +1,21 @@
 package com.ninetwozero.bf4intel.datatypes;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.BaseEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.BattlePackEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.CommentedBlogEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.CommentedGameReportEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.CompletedLevelEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.CreatedForumThreadEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.FavoriteServerEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.ForumPostEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.FriendshipEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.GameAccessEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.GameReportEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.SharedGameEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.StatusMessageEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.UnknownEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.events.WallpostEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.CommentedBlogEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.CommentedGameReportEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.CompletedLevelEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.CreatedForumThreadEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.FavoriteServerEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.ForumPostEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.FriendshipEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.GameAccessEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.GameReportEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.SharedGameEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.StatusMessageEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.UnknownEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.WallpostEvent;
 
 public enum EventType {
     STATUSMESSAGE(StatusMessageEvent.class, R.layout.list_item_feed_status),
@@ -44,6 +44,7 @@ public enum EventType {
     public Class<? extends BaseEvent> getEventClass() {
         return this.eventClass;
     }
+
     public int getLayout() {
         return this.layout;
     }

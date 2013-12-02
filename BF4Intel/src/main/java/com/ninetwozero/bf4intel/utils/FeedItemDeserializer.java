@@ -7,8 +7,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.ninetwozero.bf4intel.factories.FeedEventFactory;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.FeedItem;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.Profile;
+import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
+import com.ninetwozero.bf4intel.json.battlefeed.Profile;
 
 import java.lang.reflect.Type;
 

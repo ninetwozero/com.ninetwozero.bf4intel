@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.datatypes.EventType;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.BaseEvent;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.FeedItem;
+import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 
 import java.util.List;

@@ -1,3 +1,4 @@
+package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,8 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.adapters.DummyAdapter;
-import com.ninetwozero.bf4intel.ui.adapters.FeedAdapter;
+import com.ninetwozero.bf4intel.ui.adapters.DummyAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 
 import java.util.ArrayList;

@@ -5,7 +5,20 @@ import android.support.v4.app.Fragment;
 
 import com.ninetwozero.bf4intel.ui.battlereport.BattleReportFragment;
 import com.ninetwozero.bf4intel.ui.battlereport.BattleReportListingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.*;
+import com.ninetwozero.bf4intel.ui.fragments.AccountProfileFragment;
+import com.ninetwozero.bf4intel.ui.fragments.BattleFeedFragment;
+import com.ninetwozero.bf4intel.ui.fragments.BattleFeedPostingFragment;
+import com.ninetwozero.bf4intel.ui.fragments.ForumListingFragment;
+import com.ninetwozero.bf4intel.ui.fragments.NewsArticleFragment;
+import com.ninetwozero.bf4intel.ui.fragments.NewsListingFragment;
+import com.ninetwozero.bf4intel.ui.fragments.NotificationFragment;
+import com.ninetwozero.bf4intel.ui.fragments.PlatoonProfileFragment;
+import com.ninetwozero.bf4intel.ui.fragments.PostCreationFragment;
+import com.ninetwozero.bf4intel.ui.fragments.PostListingFragment;
+import com.ninetwozero.bf4intel.ui.fragments.SoldierOverviewFragment;
+import com.ninetwozero.bf4intel.ui.fragments.SoldierStatsFragment;
+import com.ninetwozero.bf4intel.ui.fragments.ThreadCreationFragment;
+import com.ninetwozero.bf4intel.ui.fragments.ThreadListingFragment;
 
 public class FragmentFactory {
     public enum Type {

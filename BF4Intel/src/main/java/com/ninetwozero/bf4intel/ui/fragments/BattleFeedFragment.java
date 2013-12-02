@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.fragments;
+package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,18 +16,18 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.ninetwozero.bf4intel.Keys;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.connection.ConnectionRequest;
-import com.ninetwozero.bf4intel.connection.IntelLoader;
-import com.ninetwozero.bf4intel.ui.adapters.FeedAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.jsonmodels.battlefeed.FeedItem;
+import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
+import com.ninetwozero.bf4intel.network.ConnectionRequest;
+import com.ninetwozero.bf4intel.network.IntelLoader;
+import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
+import com.ninetwozero.bf4intel.ui.adapters.FeedAdapter;
 import com.ninetwozero.bf4intel.utils.FeedItemDeserializer;
 import com.ninetwozero.bf4intel.utils.Result;
-import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 
 import java.util.List;
 
