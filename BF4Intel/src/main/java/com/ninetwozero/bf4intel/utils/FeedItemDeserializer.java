@@ -1,7 +1,5 @@
 package com.ninetwozero.bf4intel.utils;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -19,20 +17,21 @@ public class FeedItemDeserializer implements JsonDeserializer<FeedItem> {
     public FeedItem deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
         final Gson gson = new Gson();
         final JsonObject jsonObject = json.getAsJsonObject();
-        final String eventString = jsonObject.get("eventName").getAsString();
+        final String eventString = jsonObject.get("event").getAsString();
         final JsonObject specialObject = jsonObject.getAsJsonObject(eventString.toUpperCase());
-
-        Log.d("YOLO", "specialObject => " + specialObject);
+        final JsonElement owner2Element = jsonObject.get("owner2");
 
         return new FeedItem(
             jsonObject.get("id").getAsString(),
-            FeedEventFactory.create(eventString, specialObject),
+            FeedEventFactory.create(gson, eventString, specialObject),
+            eventString,
             jsonObject.get("ownerId").getAsString(),
             gson.fromJson(jsonObject.getAsJsonObject("owner"), Profile.class),
-            gson.fromJson(jsonObject.getAsJsonObject("owner2"), Profile.class),
+            owner2Element.isJsonNull()? null : gson.fromJson(owner2Element.getAsJsonObject(), Profile.class),
             jsonObject.get("numLikes").getAsInt(),
             jsonObject.get("numComments").getAsInt(),
-            jsonObject.get("creationDate").getAsLong()
+            jsonObject.get("creationDate").getAsLong(),
+            jsonObject.get("itemId").getAsString()
         );
     }
 }

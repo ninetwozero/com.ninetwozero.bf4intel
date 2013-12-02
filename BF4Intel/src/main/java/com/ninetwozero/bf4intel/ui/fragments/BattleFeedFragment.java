@@ -59,7 +59,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = this.layoutInflater.inflate(R.layout.generic_list, parent, false);
+        final View view = layoutInflater.inflate(R.layout.generic_list, parent, false);
         initialize(view);
         return view;
     }
@@ -102,24 +102,16 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         final int count = 0;
         final String userId = bundle.getString(Keys.Profile.ID, "");
-        final UrlFactory.Type url = "".equals(userId)? UrlFactory.Type.GLOBAL_FEED : UrlFactory.Type.USER_FEED;
+        final boolean fetchGlobal = userId.equals("");
 
-        return new IntelLoader(
-            getActivity(),
-            new ConnectionRequest(
-                UrlFactory.build(
-                    url,
-                    userId,
-                    count
-                )
-            )
-        );
+        final UrlFactory.Type url = fetchGlobal? UrlFactory.Type.GLOBAL_FEED : UrlFactory.Type.USER_FEED;
+        final String urlString = fetchGlobal? UrlFactory.build(url, count) : UrlFactory.build(url, userId, count);
+        return new IntelLoader(getActivity(), new ConnectionRequest(urlString));
     }
 
     @Override
     protected void onLoadSuccess(final String resultMessage) {
         final List<FeedItem> events = fromJsonArray(generateCustomGson(), resultMessage, FeedItem.class, "feedEvents");
-        Log.d("YOLO", "events => " + events);
         sendDataToListView(events);
         displayAsLoading(false);
     }

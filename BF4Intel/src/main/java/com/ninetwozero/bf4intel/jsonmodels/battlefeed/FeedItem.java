@@ -1,40 +1,46 @@
 package com.ninetwozero.bf4intel.jsonmodels.battlefeed;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FeedItem {
     private String id;
-    private EventData event;
+    private BaseEvent event;
+    private String eventString;
     private String ownerId;
     private Profile owner;
     private Profile owner2;
     private int likeCount;
     private int commentCount;
     private long date;
+    private String itemId;
 
 
     public FeedItem(
-        final String id, final EventData event, final String ownerId,
-        final Profile owner, final Profile owner2,
-        final int likeCount, final int commentCount, final long date
+        final String id, final BaseEvent event, final String eventString,
+        final String ownerId, final Profile owner, final Profile owner2,
+        final int likeCount, final int commentCount, final long date,
+        final String itemId
     ) {
         this.id = id;
         this.event = event;
+        this.eventString = eventString;
         this.ownerId = ownerId;
         this.owner = owner;
         this.owner2 = owner2;
         this.likeCount = likeCount;
         this.commentCount = commentCount;
         this.date = date;
+        this.itemId = itemId;
     }
 
     public String getId() {
         return id;
     }
 
-    public EventData getEvent() {
+    public BaseEvent getEvent() {
         return event;
+    }
+
+    public String getEventAsString() {
+        return eventString;
     }
 
     public String getOwnerId() {
@@ -61,8 +67,22 @@ public class FeedItem {
         return date;
     }
 
-    // TODO
-    public List<FeedItemElement> toElementMap() {
-        return new ArrayList<FeedItemElement>();
+    public String getItemId() {
+        return itemId;
+    }
+
+    @Override
+    public String toString() {
+        return "FeedItem{" +
+            "id='" + id + '\'' +
+            ", event=" + event +
+            ", ownerId='" + ownerId + '\'' +
+            ", owner=" + owner +
+            ", owner2=" + owner2 +
+            ", likeCount=" + likeCount +
+            ", commentCount=" + commentCount +
+            ", date=" + date +
+            ", itemId='" + itemId + '\'' +
+            '}';
     }
 }
