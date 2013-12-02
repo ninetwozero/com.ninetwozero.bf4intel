@@ -10,22 +10,24 @@
     android:layout_height="wrap_content">
 
     <TextView
-      style="@style/feed_content"
-      android:text="@string/activated_new_game"/>
-
-    <TextView
-      android:id="@+id/game_name"
+      android:id="@+id/thread_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Battlefield 3: Back To Karkand"
-      android:layout_below="@id/content"
-      android:layout_marginTop="@dimen/spacing_xs"
+      android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+      android:textColor="@color/blue"
+      />
+
+    <TextView
+      android:id="@+id/thread_content"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/thread_title"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:textColor="@color/blue"/>
+      />
 
     <TextView
       style="@style/meta"
       android:text="4 hours ago"
-      android:layout_below="@id/game_name"/>
+      android:layout_below="@id/thread_content"/>
   </RelativeLayout>
 </LinearLayout>

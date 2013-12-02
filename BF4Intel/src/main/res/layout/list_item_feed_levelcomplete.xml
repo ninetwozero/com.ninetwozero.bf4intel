@@ -1,52 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout
+<LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  style="@style/WhiteContainer"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:padding="@dimen/spacing_m">
-
-  <include layout="@layout/list_item_feed_tpl_user"/>
-
-  <TextView
-    style="@style/feed_content"
-    android:id="@+id/level_heading"
-    android:text="@string/feed_levelcomplete_heading"
-    />
-
+  style="@style/WhiteContainerFeed">
+  <include layout="@layout/list_item_feed_tpl_top"/>
   <RelativeLayout
-    android:id="@+id/wrap_level_info"
+    style="@style/WhiteContainerContentAreaWrapper"
+    android:id="@+id/wrap_content_area"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/level_heading"
-    >
+    android:layout_height="wrap_content">
 
     <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="LEVEL:"/>
-    <TextView
-      android:id="@+id/level"
+      style="@style/feed_content"
+      android:id="@+id/level_heading"
+      android:text="@string/feed_levelcomplete_heading"
+      />
+
+    <RelativeLayout
+      android:id="@+id/wrap_level_info"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Battlefield 3: Back To Karkand"
-      android:layout_marginTop="@dimen/spacing_xs"
-      android:textAppearance="@android:style/TextAppearance.Holo"
-      android:textColor="@color/blue"
-      android:layout_toRightOf="@id/string_level"/>
+      android:layout_below="@id/level_heading"
+      android:layout_marginTop="@dimen/spacing_s"
+      android:layout_marginLeft="@dimen/spacing_m"
+      >
+
+      <TextView
+        android:id="@+id/level"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Battlefield 3: Back To Karkand"
+        android:textAppearance="@android:style/TextAppearance.Holo"
+        android:textColor="@color/blue"/>
+
+      <TextView
+        android:id="@+id/string_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small"
+        android:text="@string/msg_feed_levelcomplete_difficulty"
+        android:layout_below="@id/level"/>
+
+      <TextView
+        android:id="@+id/difficulty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small"
+        android:layout_toRightOf="@id/string_difficulty"
+        android:layout_below="@id/level"
+        android:layout_marginLeft="@dimen/spacing_s"
+        android:textColor="@color/blue"
+        />
+
+      <LinearLayout
+        android:id="@+id/wrap_partner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/difficulty"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAppearance="@android:style/TextAppearance.Holo.Small"
+          android:text="@string/msg_feed_levelcomplete_partner"
+          />
+
+        <TextView
+          android:id="@+id/partner"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAppearance="@android:style/TextAppearance.Holo.Small"
+          android:textColor="@color/blue"
+          android:layout_marginLeft="@dimen/spacing_s"
+          android:text="@string/na"
+          />
+      </LinearLayout>
+    </RelativeLayout>
+
     <TextView
-      android:id="@+id/difficulty"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="HARD"
-      android:layout_marginTop="@dimen/spacing_xs"
-      android:textAppearance="@android:style/TextAppearance.Holo"
-      android:layout_below="@id/level"/>
+      style="@style/meta"
+      android:text="4 hours ago"
+      android:layout_below="@id/wrap_level_info"/>
   </RelativeLayout>
-
-  <TextView
-    style="@style/meta"
-    android:text="4 hours ago"
-    android:layout_below="@id/wrap_level_info"/>
-</RelativeLayout>
+</LinearLayout>

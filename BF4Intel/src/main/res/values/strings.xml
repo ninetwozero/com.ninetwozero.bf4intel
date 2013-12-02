@@ -99,6 +99,30 @@
 
   <!-- Menu -->
   <string name="menu_refresh">Refresh</string>
+  <string name="msg_unknown_event">Unknown event: %s</string>
+  <string name="feed_levelcomplete_heading">Completed a mission:</string>
+  <string name="feed_createdforumthread_heading">Created a forum thread:</string>
+  <string name="msg_feed_levelcomplete_partner">Partner:</string>
+  <string name="msg_feed_levelcomplete_difficulty">Difficulty:</string>
+  <string name="feed_category_status">Status</string>
+  <string name="feed_category_forumthread">Forum Thread</string>
+  <string name="feed_category_wallpost">Wallpost</string>
+  <string name="feed_category_forumpost">Forum post</string>
+  <string name="feed_category_favoriteserver">Favorite Server</string>
+  <string name="feed_category_mission_completed">Mission completed</string>
+  <string name="feed_category_new_game">New game</string>
+  <string name="feed_category_new_friend">New Friend</string>
+  <string name="feed_category_blog_comment">Blog comment</string>
+  <string name="feed_category_game_comment">Game Comment</string>
+  <string name="feed_category_gamereport">Battle Report</string>
+  <string name="feed_category_battlepack">Battle Pack</string>
+  <string name="feed_category_unlocks">Unlocks</string>
+  <string name="on">on</string>
+  <string name="at">\@</string>
+  <string name="feed_gamereport_playerresults">Player results</string>
+  <string name="gamereport_results">Results</string>
+  <string name="skills_ranking">Ranking</string>
+  <string name="dummy_user">NINETWOZERO</string>
 
   <string name="unknown">Unknown</string>
 </resources>
