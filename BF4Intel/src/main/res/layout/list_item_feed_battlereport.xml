@@ -153,6 +153,7 @@
         android:text="Highlight"
         android:textAllCaps="true"
         android:textColor="@color/darkgrey"
+        android:textAppearance="@android:style/TextAppearance.Holo"
         />
 
       <TextView
@@ -161,6 +162,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textSize="@dimen/text_xxl"
+        android:textAppearance="@android:style/TextAppearance.Holo"
         />
 
       <TableLayout
@@ -169,7 +171,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_s">
 
-        <LinearLayout
+        <TableRow
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:weightSum="3"
@@ -247,14 +249,15 @@
               android:layout_height="wrap_content"
               android:textSize="@dimen/text_m"/>
           </LinearLayout>
-        </LinearLayout>
+        </TableRow>
 
-        <LinearLayout
+        <TableRow
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_weight="3"
           android:baselineAligned="false"
           >
+
           <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -327,9 +330,7 @@
               android:layout_height="wrap_content"
               android:textSize="@dimen/text_m"/>
           </LinearLayout>
-
-
-        </LinearLayout>
+        </TableRow>
       </TableLayout>
     </LinearLayout>
 
