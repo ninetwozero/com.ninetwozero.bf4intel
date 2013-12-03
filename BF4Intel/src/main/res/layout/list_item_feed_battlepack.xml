@@ -51,7 +51,6 @@
           layout="@layout/list_item_battlepack_item"/>
 
         <include
-
           android:layout_weight="1"
           layout="@layout/list_item_battlepack_item"/>
 
