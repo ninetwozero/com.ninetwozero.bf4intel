@@ -8,21 +8,21 @@ import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 public class BattlePackEvent extends BaseEvent {
 
     private final String name;
-    private final String packOrigin;
+    private final String packKey;
     //private List<>
 
-    public BattlePackEvent(final EventType eventType, final String name, final String packOrigin) {
+    public BattlePackEvent(final EventType eventType, final String name, final String packKey) {
         super(eventType);
         this.name = name;
-        this.packOrigin = packOrigin;
+        this.packKey = packKey;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPackOrigin() {
-        return packOrigin;
+    public String getPackKey() {
+        return packKey;
     }
 
     @Override

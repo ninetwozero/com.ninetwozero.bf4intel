@@ -70,19 +70,4 @@ public class FeedItem {
     public String getItemId() {
         return itemId;
     }
-
-    @Override
-    public String toString() {
-        return "FeedItem{" +
-            "id='" + id + '\'' +
-            ", event=" + event +
-            ", ownerId='" + ownerId + '\'' +
-            ", owner=" + owner +
-            ", owner2=" + owner2 +
-            ", likeCount=" + likeCount +
-            ", commentCount=" + commentCount +
-            ", date=" + date +
-            ", itemId='" + itemId + '\'' +
-            '}';
-    }
 }

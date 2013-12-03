@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.interfaces.EventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.generators.BattlePackEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.CommentedBlogEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.CommentedGameReportEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.CompletedLevelEventGenerator;
@@ -33,6 +34,7 @@ public class FeedEventFactory {
         put("commentedgamereport", new CommentedGameReportEvent());
         put("commentedblog", new CommentedBlogEventGenerator());
         put("gameaccess", new GameAccessEventGenerator());
+        put("battlepack", new BattlePackEventGenerator());
         //put("sharedgameevent", EventType.SHAREDGAMEEVENT); // TODO: Don't even get me started on this shit
     }};
 
