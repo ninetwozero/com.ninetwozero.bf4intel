@@ -2,24 +2,19 @@
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   style="@style/WhiteContainerFeed">
+
   <include layout="@layout/list_item_feed_tpl_top"/>
+
   <RelativeLayout
     style="@style/WhiteContainerContentAreaWrapper"
     android:id="@+id/wrap_content_area"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-      style="@style/feed_content"
-      android:id="@+id/level_heading"
-      android:text="@string/feed_levelcomplete_heading"
-      />
-
     <RelativeLayout
       android:id="@+id/wrap_level_info"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_below="@id/level_heading"
       android:layout_marginTop="@dimen/spacing_s"
       android:layout_marginLeft="@dimen/spacing_m"
       >
