@@ -125,4 +125,5 @@
   <string name="dummy_user">NINETWOZERO</string>
 
   <string name="unknown">Unknown</string>
+  <string name="cdesc_battlepack_icon">Battlepack icon</string>
 </resources>
