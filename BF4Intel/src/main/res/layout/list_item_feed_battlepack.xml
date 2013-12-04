@@ -40,49 +40,12 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@id/wrap_battlepack_info">
-
-      <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="3">
-
-        <include
-          android:layout_weight="1"
-          layout="@layout/list_item_battlepack_item"/>
-
-        <include
-          android:layout_weight="1"
-          layout="@layout/list_item_battlepack_item"/>
-
-        <include
-          android:layout_weight="1"
-          layout="@layout/list_item_battlepack_item"/>
-      </TableRow>
-
-      <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="3">
-
-        <include
-          android:layout_weight="1"
-          layout="@layout/list_item_battlepack_item"/>
-
-        <include
-
-          android:layout_weight="1"
-          layout="@layout/list_item_battlepack_item"/>
-
-        <include
-          android:layout_weight="1"
-          layout="@layout/list_item_battlepack_item"/>
-      </TableRow>
-
     </TableLayout>
 
     <TextView
       style="@style/meta"
       android:text="4 hours ago"
+      android:layout_marginTop="@dimen/spacing_m"
       android:layout_below="@id/content_grid"/>
   </RelativeLayout>
 </LinearLayout>

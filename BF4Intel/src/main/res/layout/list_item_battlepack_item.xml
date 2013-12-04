@@ -15,6 +15,7 @@
     android:src="@drawable/test_accessory"/>
 
   <TextView
+    android:id="@+id/content_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Super Scope"
@@ -23,6 +24,7 @@
     android:textStyle="bold"/>
 
   <TextView
+    android:id="@+id/content_parent_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="M40A3"
