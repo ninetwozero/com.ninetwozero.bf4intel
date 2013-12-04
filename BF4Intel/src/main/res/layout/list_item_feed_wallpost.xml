@@ -14,47 +14,45 @@
 
     <ImageView
       style="@style/feed_avatar"
-      android:id="@+id/avatar"
+      android:id="@+id/avatar2"
       android:src="@drawable/test_gravatar"
       android:contentDescription="@string/cdesc_gravatar"/>
 
     <TextView
       style="@style/feed_username"
-      android:id="@+id/username"
+      android:id="@+id/username2"
       android:text="NINETWOZERO"
       android:layout_marginLeft="@dimen/spacing_m"
       android:layout_marginTop="0dp"
-      android:layout_toRightOf="@id/avatar"/>
-
+      android:layout_toRightOf="@id/avatar2"/>
 
     <ImageView
-      android:id="@+id/avatar2"
+      android:id="@+id/avatar"
       android:layout_width="24dp"
       android:layout_height="24dp"
       android:src="@drawable/test_soldier"
       android:layout_marginTop="@dimen/spacing_s"
-      android:layout_toRightOf="@id/avatar"
-      android:layout_below="@id/username"
+      android:layout_toRightOf="@id/avatar2"
+      android:layout_below="@id/username2"
       android:contentDescription="@string/cdesc_gravatar"/>
 
     <TextView
       style="@style/feed_username"
-      android:id="@+id/username2"
+      android:id="@+id/username"
       android:layout_width="match_parent"
       android:text="LittleBoySVK"
       android:textAppearance="@android:style/TextAppearance.Holo"
       android:layout_marginTop="@dimen/spacing_m"
-      android:layout_toRightOf="@id/avatar2"
+      android:layout_toRightOf="@id/avatar"
       android:layout_marginLeft="@dimen/spacing_m"
-      android:layout_below="@id/username"/>
-
+      android:layout_below="@id/username2"/>
 
 
     <TextView
       style="@style/FeedCategoryBox"
       android:id="@+id/category"
       android:layout_centerVertical="false"
-      android:layout_alignBaseline="@id/username"
+      android:layout_alignBaseline="@id/username2"
       android:text="status"/>
   </RelativeLayout>
 
