@@ -30,5 +30,6 @@ public class WallpostEvent extends BaseEvent {
     public void populateEventSpecificData(final View view) {
         ((TextView) view.findViewById(R.id.username2)).setText(sender.getUsername());
         // TODO: ((ImageView) view.findViewById(R.id.avatar2)).setImageUri(sender.getGravatarHash());
+        ((TextView) view.findViewById(R.id.content)).setText(message);
     }
 }
