@@ -146,7 +146,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         );
 
         // FIXME: Display appropriate image in ActionBar
-        ((ImageView) root.findViewById(R.id.image_rank)).setImageResource(RankImageMap.images.get(soldierOverview.getCurrentRank().getLevel()));
+        ((ImageView) root.findViewById(R.id.image_rank)).setImageResource(RankImageMap.get(soldierOverview.getCurrentRank().getLevel()));
 
         progressBar.setMax(maxScore);
         progressBar.setProgress(currentScoreThisRank);

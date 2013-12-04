@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RankImageMap {
-    public static final Map<Integer, Integer> images = new HashMap<Integer, Integer>() {
+    private static final Map<Integer, Integer> images = new HashMap<Integer, Integer>() {
         {
             put(0, R.drawable.r0);
             put(1, R.drawable.r1);
@@ -121,4 +121,8 @@ public class RankImageMap {
             put(110, R.drawable.r110);
         }
     };
+
+    public static int get(final int rank) {
+        return images.containsKey(rank)? images.get(rank) : R.drawable.r0;
+    }
 }
