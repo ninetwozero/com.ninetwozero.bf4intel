@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.resources.maps;
+package com.ninetwozero.bf4intel.resources.maps.camoflagues;
 
 import java.util.HashMap;
 import java.util.Map;

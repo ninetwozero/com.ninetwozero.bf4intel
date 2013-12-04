@@ -13,11 +13,11 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.datatypes.EventType;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.BattlePackItem;
-import com.ninetwozero.bf4intel.resources.maps.MiscBattlePackImageMap;
-import com.ninetwozero.bf4intel.resources.maps.MiscBattlePackStringMap;
-import com.ninetwozero.bf4intel.resources.maps.WeaponAccessoryImageMap;
-import com.ninetwozero.bf4intel.resources.maps.WeaponAccessoryStringMap;
-import com.ninetwozero.bf4intel.resources.maps.WeaponStringMap;
+import com.ninetwozero.bf4intel.resources.maps.battlepacks.MiscBattlePackImageMap;
+import com.ninetwozero.bf4intel.resources.maps.battlepacks.MiscBattlePackStringMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryImageMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryStringMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 
 public class BattlePackEvent extends BaseEvent {
     private final String name;

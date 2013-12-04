@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.resources.maps;
+package com.ninetwozero.bf4intel.resources.maps.ranks;
 
 import com.ninetwozero.bf4intel.R;
 
