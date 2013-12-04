@@ -78,7 +78,7 @@ public class CamoImageMap {
             put("WARSAW_ID_P_CAMO_NAME_FLECKTARN_URBAN", R.drawable.camo_flecktarn_urban);
             put("WARSAW_ID_P_CAMO_NAME_FLECKTARN_WOODLAND", R.drawable.camo_flecktarn_woodland);
             put("WARSAW_ID_P_CAMO_NAME_GREEN_UNDERBRUSH", R.drawable.camo_green_underbrush);
-            put("WARSAW_ID_P_CAMO_NAME_HAVOC", R.drawable.camo_havoc);
+//            put("WARSAW_ID_P_CAMO_NAME_HAVOC", R.drawable.camo_havoc);
             put("WARSAW_ID_P_CAMO_NAME_HEXAGON_ADAPTIVE", R.drawable.camo_hexagon_adaptive);
             put("WARSAW_ID_P_CAMO_NAME_HEXAGON_AUTUMN", R.drawable.camo_hexagon_autumn);
             put("WARSAW_ID_P_CAMO_NAME_HEXAGON_DESERT", R.drawable.camo_hexagon_desert);

@@ -30,7 +30,7 @@ public enum EventType {
     COMMENTEDBLOG(CommentedBlogEvent.class, R.layout.list_item_feed_blogcomment),
     GAMEACCESS(GameAccessEvent.class, R.layout.list_item_feed_gameaccess),
     SHAREDGAMEEVENT(SharedGameEvent.class, R.layout.list_item_feed_status), // TODO
-    BATTLEPACK(BattlePackEvent.class, R.layout.list_item_feed_battlepack), // TODO
+    BATTLEPACK(BattlePackEvent.class, R.layout.list_item_feed_battlepack),
     UNKNOWN(UnknownEvent.class, R.layout.list_item_feed_status);
 
     private final Class<? extends BaseEvent> eventClass;

@@ -126,4 +126,6 @@
 
   <string name="unknown">Unknown</string>
   <string name="cdesc_battlepack_icon">Battlepack icon</string>
+  <string name="battlefeed_emblem">Emblem</string>
+  <string name="battlefeed_paint">Paint</string>
 </resources>
