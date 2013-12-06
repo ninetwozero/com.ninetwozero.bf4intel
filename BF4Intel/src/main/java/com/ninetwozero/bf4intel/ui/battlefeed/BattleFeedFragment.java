@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.fragments;
+package com.ninetwozero.bf4intel.ui.battlefeed;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +25,6 @@ import com.ninetwozero.bf4intel.network.ConnectionRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
-import com.ninetwozero.bf4intel.ui.adapters.FeedAdapter;
 import com.ninetwozero.bf4intel.utils.FeedItemDeserializer;
 import com.ninetwozero.bf4intel.utils.Result;
 
@@ -148,11 +147,11 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     }
 
     private void sendDataToListView(final List<FeedItem> feedItems) {
-        FeedAdapter feedAdapter = new FeedAdapter(getActivity());
-        if (feedAdapter == null) {
-            feedAdapter = new FeedAdapter(getActivity());
+        BattleFeedAdapter battleFeedAdapter = new BattleFeedAdapter(getActivity());
+        if (battleFeedAdapter == null) {
+            battleFeedAdapter = new BattleFeedAdapter(getActivity());
         }
-        feedAdapter.setItems(feedItems);
-        setListAdapter(feedAdapter);
+        battleFeedAdapter.setItems(feedItems);
+        setListAdapter(battleFeedAdapter);
     }
 }

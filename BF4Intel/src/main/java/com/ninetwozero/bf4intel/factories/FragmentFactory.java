@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import com.ninetwozero.bf4intel.ui.battlereport.BattleReportFragment;
 import com.ninetwozero.bf4intel.ui.battlereport.BattleReportListingFragment;
 import com.ninetwozero.bf4intel.ui.fragments.AccountProfileFragment;
-import com.ninetwozero.bf4intel.ui.fragments.BattleFeedFragment;
+import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedFragment;
 import com.ninetwozero.bf4intel.ui.fragments.BattleFeedPostingFragment;
 import com.ninetwozero.bf4intel.ui.fragments.ForumListingFragment;
 import com.ninetwozero.bf4intel.ui.fragments.NewsArticleFragment;
