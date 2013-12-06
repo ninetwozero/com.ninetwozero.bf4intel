@@ -1,9 +1,5 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
-import android.view.View;
-import android.widget.TextView;
-
-import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.datatypes.EventType;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 
@@ -23,11 +19,5 @@ public class ForumPostEvent extends BaseEvent {
 
     public String getThreadTitle() {
         return threadTitle;
-    }
-
-    @Override
-    public void populateEventSpecificData(final View view) {
-        ((TextView) view.findViewById(R.id.thread_title)).setText(threadTitle);
-        ((TextView) view.findViewById(R.id.thread_content)).setText(postBody);
     }
 }

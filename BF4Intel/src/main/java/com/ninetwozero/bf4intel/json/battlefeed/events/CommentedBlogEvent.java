@@ -1,9 +1,5 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
-import android.view.View;
-import android.widget.TextView;
-
-import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.datatypes.EventType;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 
@@ -23,11 +19,5 @@ public class CommentedBlogEvent extends BaseEvent {
 
     public String getComment() {
         return this.comment;
-    }
-
-    @Override
-    public void populateEventSpecificData(final View view) {
-        ((TextView) view.findViewById(R.id.blog_title)).setText(blogTitle);
-        ((TextView) view.findViewById(R.id.comment)).setText(comment);
     }
 }

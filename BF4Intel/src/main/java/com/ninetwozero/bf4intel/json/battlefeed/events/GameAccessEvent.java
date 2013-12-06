@@ -1,9 +1,5 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
-import android.view.View;
-import android.widget.TextView;
-
-import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.datatypes.EventType;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 
@@ -45,10 +41,5 @@ public class GameAccessEvent extends BaseEvent {
             builder.append(": ").append(expansionMap.get(expansion));
         }
         return builder.toString();
-    }
-
-    @Override
-    public void populateEventSpecificData(final View view) {
-        ((TextView) view.findViewById(R.id.game_name)).setText(getFullTitle());
     }
 }

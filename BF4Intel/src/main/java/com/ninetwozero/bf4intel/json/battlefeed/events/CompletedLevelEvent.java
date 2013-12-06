@@ -1,13 +1,8 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
-import android.view.View;
-import android.widget.TextView;
-
-import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.datatypes.EventType;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.Profile;
-import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
 
 public class CompletedLevelEvent extends BaseEvent {
     private final String levelName;
@@ -41,17 +36,5 @@ public class CompletedLevelEvent extends BaseEvent {
 
     public boolean hasPartner() {
         return partner != null;
-    }
-
-    @Override
-    public void populateEventSpecificData(final View view) {
-        ((TextView) view.findViewById(R.id.level)).setText(LevelStringMap.get(levelName));
-        ((TextView) view.findViewById(R.id.difficulty)).setText(difficulty);
-        if (hasPartner()) {
-            ((TextView) view.findViewById(R.id.partner)).setText(partner.getUsername());
-            view.findViewById(R.id.wrap_partner).setVisibility(View.VISIBLE);
-        } else {
-            view.findViewById(R.id.wrap_partner).setVisibility(View.GONE);
-        }
     }
 }

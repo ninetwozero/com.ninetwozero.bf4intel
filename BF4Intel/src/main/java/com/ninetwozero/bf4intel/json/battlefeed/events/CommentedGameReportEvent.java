@@ -1,13 +1,7 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
-import android.view.View;
-import android.widget.TextView;
-
-import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.datatypes.EventType;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
-import com.ninetwozero.bf4intel.resources.maps.GameModeStringMap;
-import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
 
 public class CommentedGameReportEvent extends BaseEvent {
     private final String id;
@@ -53,13 +47,5 @@ public class CommentedGameReportEvent extends BaseEvent {
 
     public String getComment() {
         return comment;
-    }
-
-    @Override
-    public void populateEventSpecificData(final View view) {
-        ((TextView) view.findViewById(R.id.server_name)).setText(server);
-        ((TextView) view.findViewById(R.id.map_name)).setText(LevelStringMap.get(map));
-        ((TextView) view.findViewById(R.id.game_mode)).setText(GameModeStringMap.get(gameMode));
-        ((TextView) view.findViewById(R.id.comment)).setText(comment);
     }
 }
