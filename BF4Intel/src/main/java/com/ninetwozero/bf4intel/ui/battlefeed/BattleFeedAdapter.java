@@ -1,7 +1,6 @@
 package com.ninetwozero.bf4intel.ui.battlefeed;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,49 +9,14 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.datatypes.EventType;
-import com.ninetwozero.bf4intel.interfaces.EventUiBinder;
+import com.ninetwozero.bf4intel.factories.UiBinderFactory;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.BattlePackUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.CommentedBlogUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.CommentedGameReportUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.CompletedLevelUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.CreatedForumThreadUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.FavoriteServerUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.ForumPostUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.FriendshipUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.GameAccessUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.GameReportUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.SharedGameEventUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.StatusMessageUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.UnknownEventUiBinder;
-import com.ninetwozero.bf4intel.json.battlefeed.uibinders.WallpostUiBinder;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class BattleFeedAdapter extends BaseAdapter {
-    private Map<EventType, EventUiBinder<? extends BaseEvent>> uiBinderMap = new HashMap<EventType, EventUiBinder<? extends BaseEvent>>() {
-        {
-            put(EventType.ADDEDFAVSERVER, new FavoriteServerUiBinder());
-            put(EventType.BATTLEPACK, new BattlePackUiBinder());
-            put(EventType.BECAMEFRIENDS, new FriendshipUiBinder());
-            put(EventType.COMMENTEDBLOG, new CommentedBlogUiBinder());
-            put(EventType.COMMENTEDGAMEREPORT, new CommentedGameReportUiBinder());
-            put(EventType.CREATEDFORUMTHREAD, new CreatedForumThreadUiBinder());
-            put(EventType.GAMEACCESS, new GameAccessUiBinder());
-            put(EventType.GAMEREPORT, new GameReportUiBinder());
-            put(EventType.LEVELCOMPLETE, new CompletedLevelUiBinder());
-            put(EventType.RECEIVEDWALLPOST, new WallpostUiBinder());
-            put(EventType.STATUSMESSAGE, new StatusMessageUiBinder());
-            put(EventType.SHAREDGAMEEVENT, new SharedGameEventUiBinder());
-            put(EventType.UNKNOWN, new UnknownEventUiBinder());
-            put(EventType.WROTEFORUMPOST, new ForumPostUiBinder());
-        }
-    };
-
     private Context context;
     final LayoutInflater layoutInflater;
     private List<FeedItem> items;
@@ -100,10 +64,7 @@ public class BattleFeedAdapter extends BaseAdapter {
         if (event.getEventType() == EventType.UNKNOWN) {
             populateUnknownEventView(convertView, item.getEventAsString());   
         } else {
-            Log.d("YOLO", "event => " + event);
-            Log.d("YOLO", "event.getEventType() => " + event.getEventType());
-            Log.d("YOLO", "uiBinderMap => " + uiBinderMap.get(event.getEventType()));
-            // FIXME: uiBinderMap.get(event.getEventType())).populateView(context, convertView, event);
+            UiBinderFactory.get(event.getEventType()).populateView(context, convertView, event);
         }
         return convertView;
     }
