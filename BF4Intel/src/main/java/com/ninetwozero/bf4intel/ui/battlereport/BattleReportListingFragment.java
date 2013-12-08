@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
+import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.json.battlereports.SummaryBattleReport;
 import com.ninetwozero.bf4intel.network.ConnectionRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.utils.Result;
-import com.ninetwozero.bf4intel.json.battlereports.SummaryBattleReport;
 
 import java.util.List;
 

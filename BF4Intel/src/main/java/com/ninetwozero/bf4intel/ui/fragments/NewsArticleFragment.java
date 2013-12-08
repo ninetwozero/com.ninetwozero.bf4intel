@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.adapters.NewsItemAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
+import com.ninetwozero.bf4intel.ui.adapters.NewsItemAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

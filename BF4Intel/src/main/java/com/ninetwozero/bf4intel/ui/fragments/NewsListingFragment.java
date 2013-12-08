@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.adapters.DummyAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
+import com.ninetwozero.bf4intel.ui.adapters.DummyAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

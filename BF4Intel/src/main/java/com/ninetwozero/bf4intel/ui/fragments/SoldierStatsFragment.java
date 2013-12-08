@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.datatypes.ListRow;
 import com.ninetwozero.bf4intel.datatypes.ListRowType;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
+import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

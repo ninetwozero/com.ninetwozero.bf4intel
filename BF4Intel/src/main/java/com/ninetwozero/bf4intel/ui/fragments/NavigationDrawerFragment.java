@@ -15,17 +15,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.adapters.ExpandableListRowAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.datatypes.ListRow;
 import com.ninetwozero.bf4intel.datatypes.ListRowType;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.ui.activities.SoldierStatisticsActivity;
+import com.ninetwozero.bf4intel.ui.adapters.ExpandableListRowAdapter;
+import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
 import com.ninetwozero.bf4intel.ui.awards.AwardsActivity;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
-import com.ninetwozero.bf4intel.ui.activities.SoldierStatisticsActivity;
-import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
