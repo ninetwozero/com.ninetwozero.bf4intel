@@ -29,7 +29,7 @@ public enum EventType {
     COMMENTEDGAMEREPORT(CommentedGameReportEvent.class, R.layout.list_item_feed_gamecomment),
     COMMENTEDBLOG(CommentedBlogEvent.class, R.layout.list_item_feed_blogcomment),
     GAMEACCESS(GameAccessEvent.class, R.layout.list_item_feed_gameaccess),
-    SHAREDGAMEEVENT(SharedGameEvent.class, R.layout.list_item_feed_status), // TODO
+    SHAREDGAMEEVENT(SharedGameEvent.class, R.layout.list_item_feed_sharedgameevent),
     BATTLEPACK(BattlePackEvent.class, R.layout.list_item_feed_battlepack),
     UNKNOWN(UnknownEvent.class, R.layout.list_item_feed_status);
 

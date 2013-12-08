@@ -14,6 +14,7 @@ import com.ninetwozero.bf4intel.json.battlefeed.generators.ForumPostEventGenerat
 import com.ninetwozero.bf4intel.json.battlefeed.generators.FriendshipEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.GameAccessEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.GameReportEventGenerator;
+import com.ninetwozero.bf4intel.json.battlefeed.generators.SharedGameEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.StatusMessageEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.UnknownEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.WallpostEventGenerator;
@@ -35,7 +36,7 @@ public class FeedEventFactory {
         put("commentedblog", new CommentedBlogEventGenerator());
         put("gameaccess", new GameAccessEventGenerator());
         put("battlepack", new BattlePackEventGenerator());
-        //put("sharedgameevent", EventType.SHAREDGAMEEVENT); // TODO: Don't even get me started on this shit
+        put("sharedgameevent", new SharedGameEventGenerator());
     }};
 
     public static BaseEvent create(final String event, final JsonObject jsonObject) {
