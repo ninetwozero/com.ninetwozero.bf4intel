@@ -28,7 +28,7 @@ public class BattlePackEvent extends BaseEvent {
         return items;
     }
 
-    public String fetchPackType() {
+    public static String fetchPackType(final String name) {
         if (name.contains("WEAPON")) {
             return "WEAPON";
         } else {
