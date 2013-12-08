@@ -10,7 +10,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.ninetwozero.bf4intel.Battlelog;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.interfaces.EventUiBinder;
 import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
@@ -85,7 +84,7 @@ public class SharedGameEventUiBinder implements EventUiBinder<SharedGameEvent> {
                 } else if (category.equals("BF4DOGTAGS")) {
                     populateCell(cell, R.drawable.test_dogtag, DogtagStringMap.get(itemKey));
                 } else {
-                    Log.d(Battlelog.TAG, "[populateView] Unable to populate view for '" + category + "'");
+                    Log.d(getClass().getSimpleName(), "[populateView] Unable to populate view for '" + category + "'");
                     populateCell(cell, R.drawable.acc_none, R.string.na);
                 }
 

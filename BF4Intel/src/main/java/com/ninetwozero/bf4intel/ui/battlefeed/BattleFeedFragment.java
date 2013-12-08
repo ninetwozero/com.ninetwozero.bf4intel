@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.ninetwozero.bf4intel.Battlelog;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -118,7 +117,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
 
     @Override
     protected void onLoadFailure(final String resultMessage) {
-        Log.e(Battlelog.TAG, "resultMessage => " + resultMessage);
+        Log.e(getClass().getSimpleName(), "resultMessage => " + resultMessage);
     }
 
     private void initialize(final View view) {
