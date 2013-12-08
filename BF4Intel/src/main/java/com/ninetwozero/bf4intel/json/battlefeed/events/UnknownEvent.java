@@ -5,6 +5,6 @@ import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 
 public class UnknownEvent extends BaseEvent {
     public UnknownEvent(final EventType eventType) {
-        super(eventType);
+
     }
 }

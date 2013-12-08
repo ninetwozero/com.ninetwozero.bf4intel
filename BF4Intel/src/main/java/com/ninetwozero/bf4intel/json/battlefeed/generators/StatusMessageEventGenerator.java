@@ -10,10 +10,8 @@ import com.ninetwozero.bf4intel.json.battlefeed.events.StatusMessageEvent;
 public class StatusMessageEventGenerator implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
-        return new StatusMessageEvent(
-            EventType.STATUS_MESSAGE,
-            jsonObject.get("statusMessage").getAsString(),
-            jsonObject.get("preview").isJsonPrimitive()? null : jsonObject.get("preview").getAsString()
-        );
+        BaseEvent event = gson.fromJson(jsonObject, StatusMessageEvent.class);
+        event.setEventType(EventType.STATUS_MESSAGE);
+        return event;
     }
 }

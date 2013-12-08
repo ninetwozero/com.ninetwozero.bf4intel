@@ -1,20 +1,18 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
-import com.ninetwozero.bf4intel.datatypes.EventType;
+import com.google.gson.annotations.SerializedName;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.BattlePackItem;
 
-public class BattlePackEvent extends BaseEvent {
-    private final String name;
-    private final String packKey;
-    private final BattlePackItem[] items;
+import java.util.List;
 
-    public BattlePackEvent(final EventType eventType, final String nameSID, final String packKey, final BattlePackItem[] items) {
-        super(eventType);
-        this.name = nameSID;
-        this.packKey = packKey;
-        this.items = items;
-    }
+public class BattlePackEvent extends BaseEvent {
+    @SerializedName("nameSID")
+    private String name;
+    @SerializedName("packKey")
+    private String packKey;
+    @SerializedName("items")
+    private List<BattlePackItem> items;
 
     public String getName() {
         return name;
@@ -24,7 +22,7 @@ public class BattlePackEvent extends BaseEvent {
         return packKey;
     }
 
-    public BattlePackItem[] getItems() {
+    public List<BattlePackItem> getItems() {
         return items;
     }
 

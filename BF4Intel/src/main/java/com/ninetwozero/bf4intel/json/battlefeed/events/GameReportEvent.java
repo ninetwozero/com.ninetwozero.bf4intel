@@ -1,6 +1,6 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
-import com.ninetwozero.bf4intel.datatypes.EventType;
+import com.google.gson.annotations.SerializedName;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.BestInCategory;
 import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.PersonalHighlight;
@@ -9,50 +9,41 @@ import com.ninetwozero.bf4intel.json.battlereports.Team;
 import java.util.Map;
 
 public class GameReportEvent extends BaseEvent {
+    @SerializedName("serverName")
     private String serverName;
+    @SerializedName("map")
     private String map;
+    @SerializedName("gameMode")
     private int gameMode;
 
+    @SerializedName("position")
     private int playerRanking;
+    @SerializedName("kills")
     private int killCount;
+    @SerializedName("kdr")
     private double kdRatio;
+    @SerializedName("skill")
     private int skill;
+    @SerializedName("duration")
     private int duration;
+    @SerializedName("score")
     private int score;
+    @SerializedName("spm")
     private int spm;
 
+    @SerializedName("teamScores")
     private Map<String, Team> teams;
+    @SerializedName("playerTeam")
     private int playerTeamId;
+    @SerializedName("winTeam")
     private int winningTeamId;
 
+    @SerializedName("bestVehicle")
     private BestInCategory bestVehicle;
+    @SerializedName("bestWeapon")
     private BestInCategory bestWeapon;
+    @SerializedName("personalPrize")
     private PersonalHighlight personalHighlight;
-
-    public GameReportEvent(
-        final EventType eventType, final String serverName, final String map, final int gameMode, final int playerRanking,
-        final int killCount, final double kdRatio, final int skill, final int duration, final int score, final int spm,
-        final Map<String, Team> teams, final int playerTeamId, final int winningTeamId,
-        final BestInCategory bestVehicle, final BestInCategory bestWeapon, final PersonalHighlight personalHighlight
-    ) {
-        super(eventType);
-        this.serverName = serverName;
-        this.map = map;
-        this.gameMode = gameMode;
-        this.playerRanking = playerRanking;
-        this.killCount = killCount;
-        this.kdRatio = kdRatio;
-        this.skill = skill;
-        this.duration = duration;
-        this.score = score;
-        this.spm = spm;
-        this.teams = teams;
-        this.playerTeamId = playerTeamId;
-        this.winningTeamId = winningTeamId;
-        this.bestVehicle = bestVehicle;
-        this.bestWeapon = bestWeapon;
-        this.personalHighlight = personalHighlight;
-    }
 
     public String getServerName() {
         return serverName;

@@ -6,7 +6,7 @@ import com.ninetwozero.bf4intel.interfaces.EventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.BattlePackEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.CommentedBlogEventGenerator;
-import com.ninetwozero.bf4intel.json.battlefeed.generators.CommentedGameReportEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.generators.CommentedGameReportEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.CompletedLevelEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.CreatedForumThreadEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.FavoriteServerEventGenerator;
@@ -23,21 +23,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FeedEventFactory {
-    private static final Map<String, EventGenerator> GENERATOR_MAP = new HashMap<String, EventGenerator>() {{
-        put("statusmessage", new StatusMessageEventGenerator());
-        put("becamefriends", new FriendshipEventGenerator());
-        put("createdforumthread", new CreatedForumThreadEventGenerator());
-        put("wroteforumpost", new ForumPostEventGenerator());
-        put("receivedwallpost", new WallpostEventGenerator());
-        put("addedfavserver", new FavoriteServerEventGenerator());
-        put("levelcomplete", new CompletedLevelEventGenerator());
-        put("gamereporthighlight", new GameReportEventGenerator());
-        put("commentedgamereport", new CommentedGameReportEvent());
-        put("commentedblog", new CommentedBlogEventGenerator());
-        put("gameaccess", new GameAccessEventGenerator());
-        put("battlepack", new BattlePackEventGenerator());
-        put("sharedgameevent", new SharedGameEventGenerator());
-    }};
+    private static final Map<String, EventGenerator> GENERATOR_MAP = new HashMap<String, EventGenerator>() {
+        {
+            put("statusmessage", new StatusMessageEventGenerator());
+            put("becamefriends", new FriendshipEventGenerator());
+            put("createdforumthread", new CreatedForumThreadEventGenerator());
+            put("wroteforumpost", new ForumPostEventGenerator());
+            put("receivedwallpost", new WallpostEventGenerator());
+            put("addedfavserver", new FavoriteServerEventGenerator());
+            put("levelcomplete", new CompletedLevelEventGenerator());
+            put("gamereporthighlight", new GameReportEventGenerator());
+            put("commentedgamereport", new CommentedGameReportEventGenerator());
+            put("commentedblog", new CommentedBlogEventGenerator());
+            put("gameaccess", new GameAccessEventGenerator());
+            put("battlepack", new BattlePackEventGenerator());
+            put("sharedgameevent", new SharedGameEventGenerator());
+        }
+    };
 
     public static BaseEvent create(final String event, final JsonObject jsonObject) {
         return getGenerator(event).generate(new Gson(), jsonObject);
@@ -48,6 +50,6 @@ public class FeedEventFactory {
     }
 
     private static EventGenerator getGenerator(final String event) {
-        return GENERATOR_MAP.containsKey(event)? GENERATOR_MAP.get(event) : new UnknownEventGenerator();
+        return GENERATOR_MAP.containsKey(event) ? GENERATOR_MAP.get(event) : new UnknownEventGenerator();
     }
 }

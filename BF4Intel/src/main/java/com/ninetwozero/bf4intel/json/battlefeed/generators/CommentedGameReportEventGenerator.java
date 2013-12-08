@@ -5,13 +5,13 @@ import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.datatypes.EventType;
 import com.ninetwozero.bf4intel.interfaces.EventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
-import com.ninetwozero.bf4intel.json.battlefeed.events.ForumPostEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.CommentedGameReportEvent;
 
-public class ForumPostEventGenerator implements EventGenerator {
+public class CommentedGameReportEventGenerator implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
-        BaseEvent event = gson.fromJson(jsonObject, ForumPostEvent.class);
-        event.setEventType(EventType.WROTE_FORUM_POST);
+        BaseEvent event = gson.fromJson(jsonObject, CommentedGameReportEvent.class);
+        event.setEventType(EventType.COMMENTED_GAME_REPORT);
         return event;
     }
 }

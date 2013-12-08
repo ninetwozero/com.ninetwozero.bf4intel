@@ -10,10 +10,8 @@ import com.ninetwozero.bf4intel.json.battlefeed.events.FavoriteServerEvent;
 public class FavoriteServerEventGenerator implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
-        return new FavoriteServerEvent(
-            EventType.ADDED_FAV_SERVER,
-            jsonObject.get("serverName").getAsString(),
-            jsonObject.get("serverGuid").getAsString()
-        );
+        BaseEvent event = gson.fromJson(jsonObject, FavoriteServerEvent.class);
+        event.setEventType(EventType.ADDED_FAV_SERVER);
+        return event;
     }
 }

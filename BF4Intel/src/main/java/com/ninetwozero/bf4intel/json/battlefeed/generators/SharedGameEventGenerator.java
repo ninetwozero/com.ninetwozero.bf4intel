@@ -20,15 +20,17 @@ public class SharedGameEventGenerator implements EventGenerator {
         put("BF4GAMEREPORT", "statItems");
     }};
 
+    // TODO: Can we get rid of manual JSON mess?
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         final String category = jsonObject.get("eventName").getAsString();
-        return new SharedGameEvent(
-            EventType.SHARED_GAME_EVENT,
+        final BaseEvent event = new SharedGameEvent(
             jsonObject.get("gameHistoryId").getAsString(),
             category,
             gson.fromJson(getSpecializedJson(jsonObject, category), SharedGameEventItem[].class)
         );
+        event.setEventType(EventType.SHARED_GAME_EVENT);
+        return event;
     }
 
     private JsonArray getSpecializedJson(final JsonObject jsonObject, final String category) {

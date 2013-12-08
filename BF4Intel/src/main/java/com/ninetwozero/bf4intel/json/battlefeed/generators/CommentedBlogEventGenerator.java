@@ -10,10 +10,8 @@ import com.ninetwozero.bf4intel.json.battlefeed.events.CommentedBlogEvent;
 public class CommentedBlogEventGenerator implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
-        return new CommentedBlogEvent(
-            EventType.COMMENTED_BLOG,
-            jsonObject.get("blogTitle").getAsString(),
-            jsonObject.get("blogCommentBody").getAsString()
-        );
+        BaseEvent event = gson.fromJson(jsonObject, CommentedBlogEvent.class);
+        event.setEventType(EventType.COMMENTED_BLOG);
+        return event;
     }
 }

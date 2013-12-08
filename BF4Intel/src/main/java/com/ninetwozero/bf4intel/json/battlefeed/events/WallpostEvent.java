@@ -1,18 +1,14 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
-import com.ninetwozero.bf4intel.datatypes.EventType;
+import com.google.gson.annotations.SerializedName;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.Profile;
 
 public class WallpostEvent extends BaseEvent {
+    @SerializedName("writerUser")
     private Profile sender;
+    @SerializedName("wallBody")
     private String message;
-
-    public WallpostEvent(final EventType eventType, final Profile sender, final String message) {
-        super(eventType);
-        this.sender = sender;
-        this.message = message;
-    }
 
     public String getMessage() {
         return this.message;

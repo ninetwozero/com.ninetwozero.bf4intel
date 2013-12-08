@@ -1,6 +1,5 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
-import com.ninetwozero.bf4intel.datatypes.EventType;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.SharedGameEventItem;
 
@@ -9,8 +8,7 @@ public class SharedGameEvent extends BaseEvent {
     private String category;
     private SharedGameEventItem[] items;
 
-    public SharedGameEvent(final EventType type, final String gameId, final String category, final SharedGameEventItem[] items) {
-        super(type);
+    public SharedGameEvent(final String gameId, final String category, final SharedGameEventItem[] items) {
         this.gameId = gameId;
         this.category = category;
         this.items = items;

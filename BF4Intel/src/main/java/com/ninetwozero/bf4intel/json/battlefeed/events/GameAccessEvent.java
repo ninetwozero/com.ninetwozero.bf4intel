@@ -1,6 +1,6 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
-import com.ninetwozero.bf4intel.datatypes.EventType;
+import com.google.gson.annotations.SerializedName;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 
 import java.util.HashMap;
@@ -12,16 +12,12 @@ public class GameAccessEvent extends BaseEvent {
         put(1048576, "China Rising");
     }};
 
+    @SerializedName("game")
     private int game;
+    @SerializedName("platform")
     private int expansion;
+    @SerializedName("expansion")
     private int platform;
-
-    public GameAccessEvent(final EventType eventType, final int game, final int platform, final int expansion) {
-        super(eventType);
-        this.game = game;
-        this.platform = platform;
-        this.expansion = expansion;
-    }
 
     public int getGame() {
         return game;

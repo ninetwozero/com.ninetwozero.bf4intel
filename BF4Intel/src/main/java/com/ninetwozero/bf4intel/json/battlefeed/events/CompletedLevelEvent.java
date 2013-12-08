@@ -1,22 +1,18 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
-import com.ninetwozero.bf4intel.datatypes.EventType;
+import com.google.gson.annotations.SerializedName;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.Profile;
 
 public class CompletedLevelEvent extends BaseEvent {
-    private final String levelName;
-    private final int gameType;
-    private final String difficulty;
-    private final Profile partner;
-
-    public CompletedLevelEvent(final EventType eventType, final String levelName, final int gameType, final String difficulty, final Profile partner) {
-        super(eventType);
-        this.levelName = levelName;
-        this.gameType = gameType;
-        this.difficulty = difficulty;
-        this.partner = partner;
-    }
+    @SerializedName("level")
+    private String levelName;
+    @SerializedName("gameType")
+    private int gameType;
+    @SerializedName("difficulty")
+    private String difficulty;
+    @SerializedName("friend")
+    private Profile partner;
 
     public String getLevelName() {
         return levelName;
