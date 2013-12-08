@@ -128,4 +128,6 @@
   <string name="battlefeed_emblem">Emblem</string>
   <string name="battlefeed_appearance">Camo</string>
   <string name="battlefeed_paint">Paint</string>
+  <string name="msg_invalid_url">Invalid URL!</string>
+  <string name="msg_empty_content">You need to enter some content!</string>
 </resources>

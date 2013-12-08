@@ -3,7 +3,12 @@ package com.ninetwozero.bf4intel.ui.battlefeed;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.ninetwozero.bf4intel.R;
@@ -69,17 +74,21 @@ public class BattleFeedPostingFragment extends BaseFragment {
         final String extra = inputExtra.getText().toString();
 
         if ("".equals(content)) {
-            inputContent.setError("You need to enter some content!");
+            inputContent.setError(getString(R.string.msg_empty_content));
             return;
         }
 
         if (!"".equals(extra) && !extra.matches(Patterns.WEB_URL.pattern())) {
-            inputExtra.setError("Invalid URL!");
+            inputExtra.setError(getString(R.string.msg_invalid_url));
             return;
         }
 
+        // TODO: Loader or AsyncTask?
         showToast("TODO: Trigger API call (POST)");
+        closeScreen();
+    }
 
+    private void closeScreen() {
         final Activity activity = getActivity();
         if (activity == null || !(activity instanceof SingleFragmentActivity)) {
             fragmentManager.popBackStackImmediate();
