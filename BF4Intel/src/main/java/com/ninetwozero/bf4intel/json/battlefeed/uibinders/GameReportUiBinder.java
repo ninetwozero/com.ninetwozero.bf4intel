@@ -56,12 +56,16 @@ public class GameReportUiBinder implements EventUiBinder<GameReportEvent> {
             }
         }
 
-        ((TextView) view.findViewById(R.id.highlight_title)).setText(
-            PersonalHighlightStringMap.get(event.getPersonalHighlight().getType())
-        );
-        ((TextView) view.findViewById(R.id.highlight_value)).setText(
-            String.format("%,d", event.getPersonalHighlight().getScore())
-        );
+        final TextView titleTextView = (TextView) view.findViewById(R.id.highlight_title);
+        final TextView valueTextView = (TextView) view.findViewById(R.id.highlight_value);
+        final boolean hasPersonalHighlight = event.getPersonalHighlight() != null;
+        if (hasPersonalHighlight) {
+            titleTextView.setText(PersonalHighlightStringMap.get(event.getPersonalHighlight().getType()));
+            valueTextView.setText(String.format("%,d", event.getPersonalHighlight().getScore()));
+        }
+        titleTextView.setVisibility(hasPersonalHighlight? View.VISIBLE : View.GONE);
+        valueTextView.setVisibility(hasPersonalHighlight? View.VISIBLE : View.GONE);
+
         ((TextView) view.findViewById(R.id.player_ranking)).setText("#" + event.getPlayerRanking());
         ((TextView) view.findViewById(R.id.player_spm)).setText(String.format("%,d", event.getSpm()));
         ((TextView) view.findViewById(R.id.player_score)).setText(String.format("%,d", event.getScore()));
