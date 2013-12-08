@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.fragments;
+package com.ninetwozero.bf4intel.ui.battlefeed;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -61,9 +61,9 @@ public class BattleFeedPostingFragment extends BaseFragment {
     }
 
     private void doPostStatus() {
-        final View root = getView();
-        final EditText inputContent = (EditText) root.findViewById(R.id.update_status_input);
-        final EditText inputExtra = (EditText) root.findViewById(R.id.input_extra);
+        final View baseView = getView();
+        final EditText inputContent = (EditText) baseView.findViewById(R.id.update_status_input);
+        final EditText inputExtra = (EditText) baseView.findViewById(R.id.input_extra);
 
         final String content = inputContent.getText().toString();
         final String extra = inputExtra.getText().toString();

@@ -42,9 +42,6 @@ public class BattlePackUiBinder implements EventUiBinder<BattlePackEvent> {
             ViewGroup.LayoutParams.WRAP_CONTENT
         );
         final TableRow.LayoutParams cellLayoutParams = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
-        int resolvedItemIcon;
-        int resolvedItemName;
-        int resolvedParentName;
 
         contentArea.removeAllViews();
         final int maxRows = (int) Math.ceil(items.length / 3.0f);
@@ -65,31 +62,47 @@ public class BattlePackUiBinder implements EventUiBinder<BattlePackEvent> {
                 final View cell = layoutInflater.inflate(R.layout.list_item_feed_battlepack_item, null, false);
                 final String category = items[counter].getCategory();
                 if (category.equals("weaponaccessory")) {
-                    resolvedItemIcon = WeaponAccessoryImageMap.get(itemKey);
-                    resolvedItemName = WeaponAccessoryStringMap.get(itemKey);
-                    resolvedParentName = WeaponStringMap.get(parentKey);
+                    populateCell(
+                        cell,
+                        WeaponAccessoryImageMap.get(itemKey),
+                        WeaponAccessoryStringMap.get(itemKey),
+                        WeaponStringMap.get(parentKey)
+                    );
                 } else if (category.equals("battlepackitems")) {
-                    resolvedItemIcon = EmblemImageMap.get(itemKey);
-                    resolvedItemName = EmblemStringMap.get(itemKey);
-                    resolvedParentName = itemKey.equals(BATTLEPACK_SOLDIERS) ? -1 : R.string.battlefeed_emblem;
+                    populateCell(
+                        cell,
+                        EmblemImageMap.get(itemKey),
+                        EmblemStringMap.get(itemKey),
+                        itemKey.equals(BATTLEPACK_SOLDIERS) ? -1 : R.string.battlefeed_emblem
+                    );
                 } else if (category.equals("camo") || category.equals("appearance")) {
-                    resolvedItemIcon = CamoImageMap.get(itemKey);
-                    resolvedItemName = CamoStringMap.get(itemKey);
-                    resolvedParentName = category.equals("camo") ? R.string.battlefeed_paint : R.string.battlefeed_appearance;
+                    populateCell(
+                        cell,
+                        CamoImageMap.get(itemKey),
+                        CamoStringMap.get(itemKey),
+                        category.equals("camo") ? R.string.battlefeed_paint : R.string.battlefeed_appearance
+                    );
                 } else {
-                    resolvedItemIcon = MiscBattlePackImageMap.get(itemKey);
-                    resolvedItemName = MiscBattlePackStringMap.get(itemKey);
-                    resolvedParentName = -1;
-                }
-
-                ((ImageView) cell.findViewById(R.id.content_icon)).setImageResource(resolvedItemIcon);
-                ((TextView) cell.findViewById(R.id.content_name)).setText(resolvedItemName);
-                if (resolvedParentName > 0) {
-                    ((TextView) cell.findViewById(R.id.content_parent_name)).setText(resolvedParentName);
+                    populateCell(
+                        cell,
+                        MiscBattlePackImageMap.get(itemKey),
+                        MiscBattlePackStringMap.get(itemKey),
+                        -1
+                    );
                 }
                 tableRow.addView(cell, cellLayoutParams);
             }
             contentArea.addView(tableRow);
+        }
+    }
+
+    private void populateCell(final View cell, final int icon, final int name, final int parent) {
+        ((ImageView) cell.findViewById(R.id.content_icon)).setImageResource(icon);
+        ((TextView) cell.findViewById(R.id.content_name)).setText(name);
+        if (parent > 0) {
+            ((TextView) cell.findViewById(R.id.content_parent_name)).setText(parent);
+        } else {
+            ((TextView) cell.findViewById(R.id.content_parent_name)).setText("");
         }
     }
 }

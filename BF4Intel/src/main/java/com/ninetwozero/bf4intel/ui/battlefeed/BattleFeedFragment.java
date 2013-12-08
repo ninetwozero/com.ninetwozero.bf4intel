@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ninetwozero.bf4intel.Battlelog;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -101,7 +102,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         final int count = 0;
         final String userId = bundle.getString(Keys.Profile.ID, "");
-        final boolean fetchGlobal = userId.equals("");
+        final boolean fetchGlobal = "".equals(userId);
 
         final UrlFactory.Type url = fetchGlobal? UrlFactory.Type.GLOBAL_FEED : UrlFactory.Type.USER_FEED;
         final String urlString = fetchGlobal? UrlFactory.build(url, count) : UrlFactory.build(url, userId, count);
@@ -117,7 +118,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
 
     @Override
     protected void onLoadFailure(final String resultMessage) {
-        Log.e("YOLO", "resultMessage => " + resultMessage);
+        Log.e(Battlelog.TAG, "resultMessage => " + resultMessage);
     }
 
     private void initialize(final View view) {
@@ -126,10 +127,6 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     }
 
     private void setupListView(final View view) {
-        if (view == null) {
-            return;
-        }
-
         if (view == null) {
             return;
         }
@@ -147,11 +144,11 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     }
 
     private void sendDataToListView(final List<FeedItem> feedItems) {
-        BattleFeedAdapter battleFeedAdapter = new BattleFeedAdapter(getActivity());
+        BattleFeedAdapter battleFeedAdapter = (BattleFeedAdapter) getListAdapter();
         if (battleFeedAdapter == null) {
             battleFeedAdapter = new BattleFeedAdapter(getActivity());
+            setListAdapter(battleFeedAdapter);
         }
         battleFeedAdapter.setItems(feedItems);
-        setListAdapter(battleFeedAdapter);
     }
 }

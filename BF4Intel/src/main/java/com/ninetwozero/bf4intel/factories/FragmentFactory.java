@@ -7,7 +7,7 @@ import com.ninetwozero.bf4intel.ui.battlereport.BattleReportFragment;
 import com.ninetwozero.bf4intel.ui.battlereport.BattleReportListingFragment;
 import com.ninetwozero.bf4intel.ui.fragments.AccountProfileFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedFragment;
-import com.ninetwozero.bf4intel.ui.fragments.BattleFeedPostingFragment;
+import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedPostingFragment;
 import com.ninetwozero.bf4intel.ui.fragments.ForumListingFragment;
 import com.ninetwozero.bf4intel.ui.fragments.NewsArticleFragment;
 import com.ninetwozero.bf4intel.ui.fragments.NewsListingFragment;

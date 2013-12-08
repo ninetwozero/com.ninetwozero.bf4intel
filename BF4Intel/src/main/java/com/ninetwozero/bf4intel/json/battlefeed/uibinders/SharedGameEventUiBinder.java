@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.json.battlefeed.uibinders;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.ninetwozero.bf4intel.Battlelog;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.interfaces.EventUiBinder;
 import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
@@ -40,8 +42,6 @@ public class SharedGameEventUiBinder implements EventUiBinder<SharedGameEvent> {
         );
         final TableRow.LayoutParams cellLayoutParams = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
         final SharedGameEventItem[] items = event.getItems();
-        int resolvedItemIcon;
-        int resolvedItemName;
 
         contentArea.removeAllViews();
         final int maxRows = (int) Math.ceil(items.length / 3.0f);
@@ -62,43 +62,41 @@ public class SharedGameEventUiBinder implements EventUiBinder<SharedGameEvent> {
                 final String category = event.getCategory();
                 if (category.equals("BF4AWARDS")) {
                     if (itemKey.contains("STAR_NAME")) {
-                        resolvedItemIcon = R.drawable.award_service_star;
-                        resolvedItemName = ServiceStarStringMap.get(itemKey);
+                        populateCell(cell, R.drawable.award_service_star, ServiceStarStringMap.get(itemKey));
                     } else {
-                        resolvedItemIcon = AwardImageMap.get(itemKey);
-                        resolvedItemName = AwardStringMap.get(itemKey);
+                        populateCell(cell, AwardImageMap.get(itemKey), AwardStringMap.get(itemKey));
                     }
                 } else if (category.equals("BF4ASSIGNMENTS")) {
-                    resolvedItemIcon = AssignmentImageMap.get(itemKey);
-                    resolvedItemName = AssignmentStringMap.get(itemKey);
+                    populateCell(cell, AssignmentImageMap.get(itemKey), AssignmentStringMap.get(itemKey));
                 } else if (category.equals("BF4GAMEREPORT")) {
                     if (itemKey.contains("WNAME") || itemKey.contains("INAME")) {
-                        resolvedItemIcon = WeaponImageMap.get(itemKey);
-                        resolvedItemName = WeaponStringMap.get(itemKey);
+                        populateCell(cell, WeaponImageMap.get(itemKey), WeaponStringMap.get(itemKey));
                     } else if (itemKey.contains("VNAME")) {
-                        resolvedItemIcon = VehicleImageMap.get(itemKey);
-                        resolvedItemName = VehicleStringMap.get(itemKey);
+                        populateCell(cell, VehicleImageMap.get(itemKey), VehicleStringMap.get(itemKey));
                     } else if (itemKey.contains("ANAME")) {
-                        resolvedItemIcon = WeaponAccessoryImageMap.get(itemKey);
-                        resolvedItemName = WeaponAccessoryStringMap.get(itemKey);
+                        populateCell(cell, WeaponAccessoryImageMap.get(itemKey), WeaponAccessoryStringMap.get(itemKey));
                     } else {
-                        resolvedItemIcon = MiscBattlePackImageMap.get(BattlePackEvent.fetchPackType(itemKey));
-                        resolvedItemName = MiscBattlePackStringMap.get(itemKey);
+                        populateCell(
+                            cell,
+                            MiscBattlePackImageMap.get(itemKey),
+                            MiscBattlePackStringMap.get(BattlePackEvent.fetchPackType(itemKey))
+                        );
                     }
                 } else if (category.equals("BF4DOGTAGS")) {
-                    resolvedItemIcon = R.drawable.test_dogtag;
-                    resolvedItemName = DogtagStringMap.get(itemKey);
+                    populateCell(cell, R.drawable.test_dogtag, DogtagStringMap.get(itemKey));
                 } else {
-                    resolvedItemIcon = R.drawable.acc_none;
-                    resolvedItemName = R.string.na;
+                    Log.d(Battlelog.TAG, "[populateView] Unable to populate view for '" + category + "'");
+                    populateCell(cell, R.drawable.acc_none, R.string.na);
                 }
-
-                ((ImageView) cell.findViewById(R.id.content_icon)).setImageResource(resolvedItemIcon);
-                ((TextView) cell.findViewById(R.id.content_name)).setText(resolvedItemName);
 
                 tableRow.addView(cell, cellLayoutParams);
             }
             contentArea.addView(tableRow);
         }
+    }
+
+    private void populateCell(final View cell, final int icon, final int name) {
+        ((ImageView) cell.findViewById(R.id.content_icon)).setImageResource(icon);
+        ((TextView) cell.findViewById(R.id.content_name)).setText(name);
     }
 }
