@@ -200,10 +200,10 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private List<ListRow> getRowsForSocial() {
         // FIXME: Separate bundles per fragment type
         final Bundle data = new Bundle();
-        data.putString(Keys.Profile.ID, "2832658801548551060");
-        data.putString(Keys.Profile.NAME, "Karl Lindmark");
-        data.putString(Keys.Profile.USERNAME, "NINETWOZERO");
-        data.putString(Keys.Profile.GRAVATAR_HASH, "1241459af7d1ba348ec8b258240ea145");
+        //data.putString(Keys.Profile.ID, "2832658801548551060");
+        //data.putString(Keys.Profile.NAME, "Karl Lindmark");
+        //data.putString(Keys.Profile.USERNAME, "NINETWOZERO");
+        //data.putString(Keys.Profile.GRAVATAR_HASH, "1241459af7d1ba348ec8b258240ea145");
 
         final List<ListRow> items = new ArrayList<ListRow>();
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_social)));
