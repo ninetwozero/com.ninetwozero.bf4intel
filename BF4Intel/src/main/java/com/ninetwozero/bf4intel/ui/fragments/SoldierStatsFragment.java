@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.datatypes.ListRow;
 import com.ninetwozero.bf4intel.datatypes.ListRowType;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
+import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,6 @@ public class SoldierStatsFragment extends BaseListFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
-
         final View view = this.layoutInflater.inflate(R.layout.fragment_soldier_stats, parent, false);
         initialize(view);
         return view;

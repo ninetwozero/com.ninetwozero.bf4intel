@@ -12,4 +12,8 @@
 
   <string name="cdesc_award_medal">Award medal</string>
   <string name="cdesc_award_ribbon">Award ribbon</string>
+
+  <string name="cdesc_service_star">Service star image</string>
+  <string name="cdesc_weapon_stats_image">Weapon image</string>
+
 </resources>

@@ -2,7 +2,7 @@ package com.ninetwozero.bf4intel.json.weaponstats;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Weapon {
+public class Weapon implements Comparable<Weapon> {
 
     @SerializedName("serviceStars")
     private int serviceStarsCount;
@@ -51,5 +51,13 @@ public class Weapon {
 
     public String getUniqueName() {
         return uniqueName;
+    }
+
+    public int compareTo(Weapon w) {
+        if(kills == w.kills) {
+            return timeEquipped > w.timeEquipped ? -1 : timeEquipped < w.timeEquipped ? +1 : 0;
+        } else {
+            return kills > w.kills ? -1 : +1;
+        }
     }
 }

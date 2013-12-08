@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import com.ninetwozero.bf4intel.ui.battlereport.BattleReportFragment;
 import com.ninetwozero.bf4intel.ui.battlereport.BattleReportListingFragment;
 import com.ninetwozero.bf4intel.ui.fragments.*;
+import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponStatsFragment;
 
 public class FragmentFactory {
     public enum Type {
@@ -13,6 +14,8 @@ public class FragmentFactory {
 
         SOLDIER_OVERVIEW,
         SOLDIER_STATS,
+        WEAPON_STATS,
+
         SOLDIER_UNLOCKS,
         SOLDIER_ASSIGNMENTS,
 
@@ -52,10 +55,8 @@ public class FragmentFactory {
                 return SoldierOverviewFragment.newInstance(data);
             case SOLDIER_STATS:
                 return SoldierStatsFragment.newInstance(data);
-            //case SOLDIER_UNLOCKS:
-            //    return SoldierOverviewFragment.newInstance(data);
-            /*case SOLDIER_ASSIGNMENTS:
-                return AssignmentsFragment.newInstance(data);*/
+            case WEAPON_STATS:
+                return WeaponStatsFragment.newInstance();
             case NEWS_LISTING:
                 return NewsListingFragment.newInstance(data);
             case NEWS_ITEM:

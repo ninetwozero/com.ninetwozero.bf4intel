@@ -34,6 +34,7 @@
   <!-- Text related -->
   <dimen name="text_m">18sp</dimen>
   <dimen name="text_ml">20sp</dimen>
+  <dimen name="text_xl">32sp</dimen>
   <dimen name="text_xxl">40sp</dimen>
 
   <!-- Sliding menu related -->
@@ -46,4 +47,15 @@
   <!--Grid view images-->
   <dimen name="grid_view_image_height">100dp</dimen>
   <dimen name="grid_view_image_width">@dimen/grid_view_image_height</dimen>
+
+  <!--Round corners for service stars background shape-->
+  <dimen name="round_corners">10dp</dimen>
+  <dimen name="round_corners_stroke">2dp</dimen>
+
+  <!--List index count-->
+  <dimen name="list_index_count">70dp</dimen>
+
+  <!-- Service star shape size-->
+  <dimen name="service_star_count_width">@dimen/list_index_count</dimen>
+  <dimen name="service_star_count_height">@dimen/list_index_count</dimen>
 </resources>
