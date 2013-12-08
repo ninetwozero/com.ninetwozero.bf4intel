@@ -22,11 +22,9 @@
       android:layout_width="100dp"
       android:layout_height="100dp"
       android:layout_weight="1"
-      android:contentDescription="@string/cdesc_weapon_stats_image"
-      />
+      android:contentDescription="@string/cdesc_weapon_stats_image" />
 
-    <include
-      layout="@layout/service_stars_count" />
+    <include layout="@layout/service_stars_count" />
 
   </LinearLayout>
 
@@ -40,40 +38,20 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textSize="@dimen/text_m"
-      android:layout_weight="1"
-      />
+      android:layout_weight="1" />
 
     <TextView
       android:id="@+id/weapon_kills"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textSize="@dimen/text_m"
-      android:paddingRight="@dimen/spacing_xs"
-      />
+      android:paddingRight="@dimen/spacing_xs" />
   </LinearLayout>
 
-  <LinearLayout
-    android:id="@+id/weapon_unlocks"
+  <ProgressBar
+    android:id="@+id/weapon_progress"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <ProgressBar
-      android:id="@+id/weapon_unlock_progress"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="1"
-      style="@android:style/Widget.Holo.ProgressBar.Horizontal"
-      android:max="100"
-      android:progress="88"
-      />
-
-    <TextView
-      android:id="@+id/weapon_unlock_scores"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="@dimen/text_m"
-      android:paddingRight="@dimen/spacing_xs"
-      />
-  </LinearLayout>
+    style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+    android:max="100" />
 </LinearLayout>
