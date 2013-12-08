@@ -11,7 +11,7 @@ public class FavoriteServerEventGenerator implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         return new FavoriteServerEvent(
-            EventType.ADDEDFAVSERVER,
+            EventType.ADDED_FAV_SERVER,
             jsonObject.get("serverName").getAsString(),
             jsonObject.get("serverGuid").getAsString()
         );

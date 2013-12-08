@@ -10,7 +10,7 @@ public class CommentedGameReportEvent implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         return new com.ninetwozero.bf4intel.json.battlefeed.events.CommentedGameReportEvent(
-            EventType.COMMENTEDGAMEREPORT,
+            EventType.COMMENTED_GAME_REPORT,
             jsonObject.get("gameReportHistoryId").getAsString(),
             jsonObject.get("serverName").getAsString(),
             jsonObject.get("map").getAsString(),

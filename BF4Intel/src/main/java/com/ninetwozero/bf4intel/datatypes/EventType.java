@@ -3,19 +3,19 @@ package com.ninetwozero.bf4intel.datatypes;
 import com.ninetwozero.bf4intel.R;
 
 public enum EventType {
-    STATUSMESSAGE(R.layout.list_item_feed_status),
-    BECAMEFRIENDS(R.layout.list_item_feed_friendship),
-    CREATEDFORUMTHREAD(R.layout.list_item_feed_forum),
-    WROTEFORUMPOST(R.layout.list_item_feed_forum),
-    RECEIVEDWALLPOST(R.layout.list_item_feed_wallpost),
-    ADDEDFAVSERVER(R.layout.list_item_feed_favorite_server),
-    LEVELCOMPLETE(R.layout.list_item_feed_levelcomplete),
-    GAMEREPORT(R.layout.list_item_feed_battlereport),
-    COMMENTEDGAMEREPORT(R.layout.list_item_feed_gamecomment),
-    COMMENTEDBLOG(R.layout.list_item_feed_blogcomment),
-    GAMEACCESS(R.layout.list_item_feed_gameaccess),
-    SHAREDGAMEEVENT(R.layout.list_item_feed_sharedgameevent),
-    BATTLEPACK(R.layout.list_item_feed_battlepack),
+    STATUS_MESSAGE(R.layout.list_item_feed_status),
+    BECAME_FRIENDS(R.layout.list_item_feed_friendship),
+    CREATED_FORUM_THREAD(R.layout.list_item_feed_forum),
+    WROTE_FORUM_POST(R.layout.list_item_feed_forum),
+    RECEIVED_WALL_POST(R.layout.list_item_feed_wallpost),
+    ADDED_FAV_SERVER(R.layout.list_item_feed_favorite_server),
+    LEVEL_COMPLETE(R.layout.list_item_feed_levelcomplete),
+    GAME_REPORT(R.layout.list_item_feed_battlereport),
+    COMMENTED_GAME_REPORT(R.layout.list_item_feed_gamecomment),
+    COMMENTED_BLOG(R.layout.list_item_feed_blogcomment),
+    GAME_ACCESS(R.layout.list_item_feed_gameaccess),
+    SHARED_GAME_EVENT(R.layout.list_item_feed_sharedgameevent),
+    BATTLE_PACK(R.layout.list_item_feed_battlepack),
     UNKNOWN(R.layout.list_item_feed_status);
 
     private final int layout;

@@ -11,7 +11,7 @@ public class ForumPostEventGenerator implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         return new ForumPostEvent(
-            EventType.WROTEFORUMPOST,
+            EventType.WROTE_FORUM_POST,
             jsonObject.get("postBody").getAsString(),
             jsonObject.get("threadTitle").getAsString()
         );

@@ -12,7 +12,7 @@ public class CompletedLevelEventGenerator implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         return new CompletedLevelEvent(
-            EventType.LEVELCOMPLETE,
+            EventType.LEVEL_COMPLETE,
             jsonObject.get("level").getAsString(),
             jsonObject.get("gameType").getAsInt(),
             jsonObject.get("difficulty").getAsString(),

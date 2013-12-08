@@ -12,7 +12,7 @@ public class WallpostEventGenerator implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         return new WallpostEvent(
-            EventType.RECEIVEDWALLPOST,
+            EventType.RECEIVED_WALL_POST,
             gson.fromJson(jsonObject.get("writerUser"), Profile.class),
             jsonObject.get("wallBody").getAsString()
         );

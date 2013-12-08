@@ -13,7 +13,7 @@ public class GameAccessEventGenerator implements EventGenerator {
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         final JsonElement element = jsonObject.get("platform");
         return new GameAccessEvent(
-            EventType.GAMEACCESS,
+            EventType.GAME_ACCESS,
             jsonObject.get("game").getAsInt(),
             element.isJsonNull()? 1 : element.getAsInt(),
             jsonObject.get("expansion").getAsInt()

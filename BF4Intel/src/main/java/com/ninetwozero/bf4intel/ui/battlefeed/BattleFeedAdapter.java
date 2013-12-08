@@ -87,31 +87,31 @@ public class BattleFeedAdapter extends BaseAdapter {
 
     private int fetchCategoryForType(final EventType eventType) {
         switch (eventType) {
-            case STATUSMESSAGE:
+            case STATUS_MESSAGE:
                 return R.string.feed_category_status;
-            case BECAMEFRIENDS:
+            case BECAME_FRIENDS:
                 return R.string.feed_category_new_friend;
-            case CREATEDFORUMTHREAD:
+            case CREATED_FORUM_THREAD:
                 return R.string.feed_category_forumthread;
-            case WROTEFORUMPOST:
+            case WROTE_FORUM_POST:
                 return R.string.feed_category_forumpost;
-            case RECEIVEDWALLPOST:
+            case RECEIVED_WALL_POST:
                 return R.string.feed_category_wallpost;
-            case ADDEDFAVSERVER:
+            case ADDED_FAV_SERVER:
                 return R.string.feed_category_favoriteserver;
-            case LEVELCOMPLETE:
+            case LEVEL_COMPLETE:
                 return R.string.feed_category_mission_completed;
-            case GAMEREPORT:
+            case GAME_REPORT:
                 return R.string.feed_category_gamereport;
-            case COMMENTEDGAMEREPORT:
+            case COMMENTED_GAME_REPORT:
                 return R.string.feed_category_game_comment;
-            case COMMENTEDBLOG:
+            case COMMENTED_BLOG:
                 return R.string.feed_category_blog_comment;
-            case GAMEACCESS:
+            case GAME_ACCESS:
                 return R.string.feed_category_new_game;
-            case SHAREDGAMEEVENT:
+            case SHARED_GAME_EVENT:
                 return R.string.feed_category_unlocks;
-            case BATTLEPACK:
+            case BATTLE_PACK:
                 return R.string.feed_category_battlepack;
             default:
                 return R.string.na;

@@ -23,20 +23,20 @@ import java.util.Map;
 public class UiBinderFactory {
     private final static Map<EventType, EventUiBinder> uiBinderMap = new HashMap<EventType, EventUiBinder>() {
         {
-            put(EventType.ADDEDFAVSERVER, new FavoriteServerUiBinder());
-            put(EventType.BATTLEPACK, new BattlePackUiBinder());
-            put(EventType.BECAMEFRIENDS, new FriendshipUiBinder());
-            put(EventType.COMMENTEDBLOG, new CommentedBlogUiBinder());
-            put(EventType.COMMENTEDGAMEREPORT, new CommentedGameReportUiBinder());
-            put(EventType.CREATEDFORUMTHREAD, new CreatedForumThreadUiBinder());
-            put(EventType.GAMEACCESS, new GameAccessUiBinder());
-            put(EventType.GAMEREPORT, new GameReportUiBinder());
-            put(EventType.LEVELCOMPLETE, new CompletedLevelUiBinder());
-            put(EventType.RECEIVEDWALLPOST, new WallpostUiBinder());
-            put(EventType.STATUSMESSAGE, new StatusMessageUiBinder());
-            put(EventType.SHAREDGAMEEVENT, new SharedGameEventUiBinder());
+            put(EventType.ADDED_FAV_SERVER, new FavoriteServerUiBinder());
+            put(EventType.BATTLE_PACK, new BattlePackUiBinder());
+            put(EventType.BECAME_FRIENDS, new FriendshipUiBinder());
+            put(EventType.COMMENTED_BLOG, new CommentedBlogUiBinder());
+            put(EventType.COMMENTED_GAME_REPORT, new CommentedGameReportUiBinder());
+            put(EventType.CREATED_FORUM_THREAD, new CreatedForumThreadUiBinder());
+            put(EventType.GAME_ACCESS, new GameAccessUiBinder());
+            put(EventType.GAME_REPORT, new GameReportUiBinder());
+            put(EventType.LEVEL_COMPLETE, new CompletedLevelUiBinder());
+            put(EventType.RECEIVED_WALL_POST, new WallpostUiBinder());
+            put(EventType.STATUS_MESSAGE, new StatusMessageUiBinder());
+            put(EventType.SHARED_GAME_EVENT, new SharedGameEventUiBinder());
             put(EventType.UNKNOWN, new UnknownEventUiBinder());
-            put(EventType.WROTEFORUMPOST, new ForumPostUiBinder());
+            put(EventType.WROTE_FORUM_POST, new ForumPostUiBinder());
         }
     };
 

@@ -11,7 +11,7 @@ public class CommentedBlogEventGenerator implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         return new CommentedBlogEvent(
-            EventType.COMMENTEDBLOG,
+            EventType.COMMENTED_BLOG,
             jsonObject.get("blogTitle").getAsString(),
             jsonObject.get("blogCommentBody").getAsString()
         );

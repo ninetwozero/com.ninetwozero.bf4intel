@@ -12,7 +12,7 @@ public class BattlePackEventGenerator implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         return new BattlePackEvent(
-            EventType.BATTLEPACK,
+            EventType.BATTLE_PACK,
             jsonObject.get("nameSID").getAsString(),
             jsonObject.get("packKey").getAsString(),
             gson.fromJson(jsonObject.get("items").getAsJsonArray(), BattlePackItem[].class)

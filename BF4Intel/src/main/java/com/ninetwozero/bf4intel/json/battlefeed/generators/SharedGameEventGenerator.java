@@ -24,7 +24,7 @@ public class SharedGameEventGenerator implements EventGenerator {
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         final String category = jsonObject.get("eventName").getAsString();
         return new SharedGameEvent(
-            EventType.SHAREDGAMEEVENT,
+            EventType.SHARED_GAME_EVENT,
             jsonObject.get("gameHistoryId").getAsString(),
             category,
             gson.fromJson(getSpecializedJson(jsonObject, category), SharedGameEventItem[].class)

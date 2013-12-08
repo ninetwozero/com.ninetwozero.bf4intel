@@ -22,7 +22,7 @@ public class GameReportEventGenerator implements EventGenerator {
             new TypeToken<HashMap<String, Team>>(){}.getType()
         );
         return new GameReportEvent(
-            EventType.GAMEREPORT,
+            EventType.GAME_REPORT,
             jsonObject.get("serverName").getAsString(),
             jsonObject.get("map").getAsString(),
             jsonObject.get("gameMode").getAsInt(),

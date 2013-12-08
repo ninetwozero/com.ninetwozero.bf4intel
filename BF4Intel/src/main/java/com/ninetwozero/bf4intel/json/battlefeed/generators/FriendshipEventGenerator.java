@@ -12,7 +12,7 @@ public class FriendshipEventGenerator implements EventGenerator {
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         return new FriendshipEvent(
-            EventType.BECAMEFRIENDS,
+            EventType.BECAME_FRIENDS,
             jsonObject.get("friendUserId").getAsString(),
             gson.fromJson(jsonObject.get("friendUser"), Profile.class)
         );
