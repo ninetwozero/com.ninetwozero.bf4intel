@@ -78,6 +78,7 @@ public class EmblemImageMap {
             put("WARSAW_ID_M_BATTLEPACK_EMBLEM_68", R.drawable.emblem_cracket);
             put("WARSAW_ID_M_BATTLEPACK_EMBLEM_69", R.drawable.emblem_angry_fist);
             put("WARSAW_ID_M_BATTLEPACK_EMBLEM_70", R.drawable.emblem_epic_goat);
+            put("WARSAW_ID_M_BATTLEPACK_ITEM_ICON", R.drawable.emblem_soldiers);
         }
     };
 

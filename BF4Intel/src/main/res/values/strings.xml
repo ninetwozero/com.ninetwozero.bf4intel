@@ -12,13 +12,12 @@
   <string name="label_activity_soldier_statistics">Statistics</string>
   <string name="label_activity_assignments">Assignments</string>
 
-
   <string name="update_status_header">Update your status</string>
   <string name="update_status_hint">Update message here…</string>
   <string name="update_attachment_header">Attach item to post</string>
   <string name="update_attachment_hint">http://</string>
   <string name="create_post_header">Post content</string>
-  <string name="create_post_hint">Post message here…</string>
+  <string name="create_post_hint">Post message here&#8230;</string>
   <string name="new_thread_header">Thread title</string>
   <string name="new_thread_title_hint">When is BF5 coming out?</string>
   <string name="new_thread_content_header">Content</string>
@@ -127,5 +126,6 @@
   <string name="unknown">Unknown</string>
   <string name="cdesc_battlepack_icon">Battlepack icon</string>
   <string name="battlefeed_emblem">Emblem</string>
+  <string name="battlefeed_appearance">Camo</string>
   <string name="battlefeed_paint">Paint</string>
 </resources>

@@ -23,7 +23,7 @@ public class WeaponAccessoryImageMap {
             put("WARSAW_ID_P_ANAME_COMPACT4X", R.drawable.acc_jmg4_scope);
             put("WARSAW_ID_P_ANAME_COMPENSATOR", R.drawable.acc_compensator);
             put("WARSAW_ID_P_ANAME_COYOTE", R.drawable.acc_coyote_sight);
-            put("WARSAW_ID_P_ANAME_DELTA", R.drawable.acc_delta_sights);
+            put("WARSAW_ID_P_ANAME_DELTA", R.drawable.acc_mini_sights);
             put("WARSAW_ID_P_ANAME_DUCKBILL", R.drawable.acc_duckbill);
             put("WARSAW_ID_P_ANAME_EOTECH", R.drawable.acc_holo_sights);
             put("WARSAW_ID_P_ANAME_ERGOFOR", R.drawable.acc_ergo_grip);
@@ -60,7 +60,7 @@ public class WeaponAccessoryImageMap {
             put("WARSAW_ID_P_ANAME_PISTGPA", R.drawable.acc_tgpa_suppressor);
             put("WARSAW_ID_P_ANAME_PISTGREEN", R.drawable.acc_green_laser_sight);
             put("WARSAW_ID_P_ANAME_PISTLASER", R.drawable.acc_laser_sight);
-            put("WARSAW_ID_P_ANAME_PISTQSW06", R.drawable.acc_smg_suppressor);
+            put("WARSAW_ID_P_ANAME_PISTQSW06", R.drawable.acc_tgpa_suppressor);
             put("WARSAW_ID_P_ANAME_PISTSILEN", R.drawable.acc_pistol_suppressor);
             put("WARSAW_ID_P_ANAME_PKA", R.drawable.acc_pka_scope);
             put("WARSAW_ID_P_ANAME_PKAS", R.drawable.acc_pkas_sight);
