@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.json.battlefeed.uibinders;
+package com.ninetwozero.bf4intel.ui.battlefeed.layouts;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,7 +11,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.interfaces.EventUiBinder;
+import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.events.SharedGameEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.SharedGameEventItem;
@@ -30,7 +30,7 @@ import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 
-public class SharedGameEventUiBinder implements EventUiBinder<SharedGameEvent> {
+public class SharedGameEventLayout implements EventLayout<SharedGameEvent> {
     @Override
     public void populateView(final Context context, final View view, final SharedGameEvent event) {
         final LayoutInflater layoutInflater = LayoutInflater.from(context);

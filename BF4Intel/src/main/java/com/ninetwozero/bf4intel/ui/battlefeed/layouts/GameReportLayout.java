@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.json.battlefeed.uibinders;
+package com.ninetwozero.bf4intel.ui.battlefeed.layouts;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -8,14 +8,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.interfaces.EventUiBinder;
+import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.events.GameReportEvent;
 import com.ninetwozero.bf4intel.json.battlereports.Team;
 import com.ninetwozero.bf4intel.resources.maps.GameModeStringMap;
 import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
 import com.ninetwozero.bf4intel.resources.maps.PersonalHighlightStringMap;
 
-public class GameReportUiBinder implements EventUiBinder<GameReportEvent> {
+public class GameReportLayout implements EventLayout<GameReportEvent> {
     @Override
     public void populateView(final Context context, final View view, final GameReportEvent event) {
         final Resources resources = view.getResources();

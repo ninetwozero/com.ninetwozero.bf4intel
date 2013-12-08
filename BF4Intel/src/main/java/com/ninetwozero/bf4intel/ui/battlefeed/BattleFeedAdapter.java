@@ -12,6 +12,7 @@ import com.ninetwozero.bf4intel.datatypes.EventType;
 import com.ninetwozero.bf4intel.factories.UiBinderFactory;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
+import com.ninetwozero.bf4intel.resources.maps.FeedEventLayoutMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 
 import java.util.List;
@@ -57,7 +58,11 @@ public class BattleFeedAdapter extends BaseAdapter {
         final BaseEvent event = item.getEvent();
 
         if (convertView == null) {
-            convertView = layoutInflater.inflate(item.getEvent().getEventType().getLayout(), parent, false);
+            convertView = layoutInflater.inflate(
+                FeedEventLayoutMap.get(item.getEvent().getEventType()),
+                parent,
+                false
+            );
         }
 
         populateGeneralViews(convertView, item);

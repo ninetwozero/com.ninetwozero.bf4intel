@@ -1,5 +1,7 @@
 package com.ninetwozero.bf4intel.json.battlefeed;
 
+import com.ninetwozero.bf4intel.json.Profile;
+
 public class FeedItem {
     private String id;
     private BaseEvent event;

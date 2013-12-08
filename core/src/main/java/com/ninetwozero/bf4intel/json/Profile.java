@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.json.battlefeed;
+package com.ninetwozero.bf4intel.json;
 
 import com.google.gson.annotations.SerializedName;
 

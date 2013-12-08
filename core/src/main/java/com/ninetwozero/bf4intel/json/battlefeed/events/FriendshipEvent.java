@@ -2,7 +2,7 @@ package com.ninetwozero.bf4intel.json.battlefeed.events;
 
 import com.google.gson.annotations.SerializedName;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
-import com.ninetwozero.bf4intel.json.battlefeed.Profile;
+import com.ninetwozero.bf4intel.json.Profile;
 
 public class FriendshipEvent extends BaseEvent {
     @SerializedName("friendUserId")

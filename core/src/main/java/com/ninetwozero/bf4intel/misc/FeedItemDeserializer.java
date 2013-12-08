@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.utils;
+package com.ninetwozero.bf4intel.misc;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;
@@ -7,8 +7,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.ninetwozero.bf4intel.factories.FeedEventFactory;
+import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
-import com.ninetwozero.bf4intel.json.battlefeed.Profile;
 
 import java.lang.reflect.Type;
 

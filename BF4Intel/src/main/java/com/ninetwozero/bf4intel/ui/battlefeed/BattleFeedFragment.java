@@ -25,7 +25,7 @@ import com.ninetwozero.bf4intel.network.ConnectionRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
-import com.ninetwozero.bf4intel.utils.FeedItemDeserializer;
+import com.ninetwozero.bf4intel.misc.FeedItemDeserializer;
 import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.List;

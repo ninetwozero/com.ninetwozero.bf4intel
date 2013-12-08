@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.json.battlefeed.uibinders;
+package com.ninetwozero.bf4intel.ui.battlefeed.layouts;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,7 +11,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.interfaces.EventUiBinder;
+import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.BattlePackItem;
 import com.ninetwozero.bf4intel.resources.maps.battlepacks.MiscBattlePackImageMap;
@@ -26,7 +26,7 @@ import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 
 import java.util.List;
 
-public class BattlePackUiBinder implements EventUiBinder<BattlePackEvent> {
+public class BattlePackLayout implements EventLayout<BattlePackEvent> {
     private final String BATTLEPACK_SOLDIERS = "WARSAW_ID_M_BATTLEPACK_ITEM_ICON";
 
     @Override

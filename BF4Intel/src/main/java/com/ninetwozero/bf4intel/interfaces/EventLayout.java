@@ -6,6 +6,6 @@ import android.view.View;
 
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 
-public interface EventUiBinder<T extends BaseEvent> {
+public interface EventLayout<T extends BaseEvent> {
     public void populateView(final Context context, final View view, final T event);
 }
