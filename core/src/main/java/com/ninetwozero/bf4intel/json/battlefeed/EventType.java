@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.datatypes;
+package com.ninetwozero.bf4intel.json.battlefeed;
 
 public enum EventType {
     STATUS_MESSAGE,

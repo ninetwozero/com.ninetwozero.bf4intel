@@ -2,8 +2,8 @@ package com.ninetwozero.bf4intel.json.battlefeed.events;
 
 import com.google.gson.annotations.SerializedName;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
-import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.BestInCategory;
-import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.PersonalHighlight;
+import com.ninetwozero.bf4intel.json.battlefeed.BestInCategory;
+import com.ninetwozero.bf4intel.json.battlefeed.PersonalHighlight;
 import com.ninetwozero.bf4intel.json.battlereports.Team;
 
 import java.util.Map;

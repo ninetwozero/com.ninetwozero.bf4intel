@@ -2,7 +2,7 @@ package com.ninetwozero.bf4intel.json.battlefeed.events;
 
 import com.google.gson.annotations.SerializedName;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
-import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.BattlePackItem;
+import com.ninetwozero.bf4intel.json.battlefeed.BattlePackItem;
 
 import java.util.List;
 

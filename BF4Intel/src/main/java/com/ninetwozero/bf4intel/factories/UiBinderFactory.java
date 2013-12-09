@@ -1,6 +1,6 @@
 package com.ninetwozero.bf4intel.factories;
 
-import com.ninetwozero.bf4intel.datatypes.EventType;
+import com.ninetwozero.bf4intel.json.battlefeed.EventType;
 import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.ui.battlefeed.layouts.BattlePackLayout;
 import com.ninetwozero.bf4intel.ui.battlefeed.layouts.CommentedBlogLayout;

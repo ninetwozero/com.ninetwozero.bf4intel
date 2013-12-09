@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.datatypes.EventType;
+import com.ninetwozero.bf4intel.json.battlefeed.EventType;
 import com.ninetwozero.bf4intel.factories.UiBinderFactory;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;

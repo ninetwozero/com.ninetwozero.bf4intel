@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
-import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.BattlePackItem;
+import com.ninetwozero.bf4intel.json.battlefeed.BattlePackItem;
 import com.ninetwozero.bf4intel.resources.maps.battlepacks.MiscBattlePackImageMap;
 import com.ninetwozero.bf4intel.resources.maps.battlepacks.MiscBattlePackStringMap;
 import com.ninetwozero.bf4intel.resources.maps.camoflagues.CamoImageMap;

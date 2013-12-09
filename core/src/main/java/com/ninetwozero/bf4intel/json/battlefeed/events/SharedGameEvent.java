@@ -1,7 +1,7 @@
 package com.ninetwozero.bf4intel.json.battlefeed.events;
 
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
-import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.SharedGameEventItem;
+import com.ninetwozero.bf4intel.json.battlefeed.SharedGameEventItem;
 
 public class SharedGameEvent extends BaseEvent {
     private String gameId;

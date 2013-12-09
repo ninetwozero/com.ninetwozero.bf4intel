@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.misc;
+package com.ninetwozero.bf4intel.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;

@@ -14,7 +14,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.events.SharedGameEvent;
-import com.ninetwozero.bf4intel.json.battlefeed.events.datatypes.SharedGameEventItem;
+import com.ninetwozero.bf4intel.json.battlefeed.SharedGameEventItem;
 import com.ninetwozero.bf4intel.resources.maps.ServiceStarStringMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentImageMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentStringMap;

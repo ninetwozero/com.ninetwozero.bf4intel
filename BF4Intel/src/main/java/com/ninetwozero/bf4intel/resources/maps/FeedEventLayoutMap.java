@@ -1,7 +1,7 @@
 package com.ninetwozero.bf4intel.resources.maps;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.datatypes.EventType;
+import com.ninetwozero.bf4intel.json.battlefeed.EventType;
 
 import java.util.HashMap;
 import java.util.Map;
