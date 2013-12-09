@@ -11,7 +11,7 @@
   android:padding="@dimen/spacing_xs"
   android:layout_alignParentRight="true"
   android:layout_centerVertical="true"
-  >
+  android:layout_gravity="center_vertical">
 
   <TextView
     android:id="@+id/service_star_count"
