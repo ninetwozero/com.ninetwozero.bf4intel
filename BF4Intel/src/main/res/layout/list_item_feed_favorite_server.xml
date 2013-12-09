@@ -22,7 +22,7 @@
     <TextView
       style="@style/meta"
       android:id="@+id/timestamp"
-      android:text="4 hours ago"
+
       android:layout_below="@id/server_name"/>
   </RelativeLayout>
 </LinearLayout>

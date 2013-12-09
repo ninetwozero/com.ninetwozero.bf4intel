@@ -142,7 +142,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/feed_gamereport_playerresults"
-        android:layout_below="@id/wrap_team2"
         />
 
       <TextView
@@ -336,7 +335,7 @@
 
     <TextView
       style="@style/meta"
-      android:text="4 hours ago"
+
       android:layout_below="@id/wrap_player_info"/>
   </RelativeLayout>
 </LinearLayout>

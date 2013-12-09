@@ -24,6 +24,7 @@
         style="@style/feed_avatar"
         android:id="@+id/friend_avatar"
         android:src="@drawable/test_gravatar"
+        android:contentDescription="@string/cdesc_user_gravatar"
         />
 
       <TextView
@@ -31,14 +32,13 @@
         android:id="@+id/friend_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/friend_avatar"
         android:text="@string/dummy_user"
       />
     </LinearLayout>
 
     <TextView
       style="@style/meta"
-      android:text="4 hours ago"
+
       android:layout_below="@id/wrap_friend"/>
   </RelativeLayout>
 </LinearLayout>

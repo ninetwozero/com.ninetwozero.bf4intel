@@ -12,13 +12,13 @@
     android:id="@+id/content_icon"
     android:layout_width="64dp"
     android:layout_height="64dp"
-    android:src="@drawable/test_accessory"/>
+    android:src="@drawable/test_accessory"
+    android:contentDescription="@string/cdesc_award_image"/>
 
   <TextView
     android:id="@+id/content_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Super Scope"
     android:textAppearance="@android:style/TextAppearance.Holo.Small"
     android:textColor="@color/blue"
     android:textStyle="bold"

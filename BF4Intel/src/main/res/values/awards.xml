@@ -342,6 +342,6 @@
   <string name="award_xp1rbd_name">COMMANDER GUNSHIP RIBBON</string>
   <string name="award_xp1mas_desc">Receive 50 Air Superiority Ribbons</string>
   <string name="award_xp1mas_name">AIR SUPERIORITY MEDAL</string>
-  <string name="award_xp1mbd_desc">Recieve 20 Bomber Delivery Ribbons</string>
+  <string name="award_xp1mbd_desc">Receive 20 Bomber Delivery Ribbons</string>
   <string name="award_xp1mbd_name">BOMBER DELIVERY MEDAL</string>
 </resources>

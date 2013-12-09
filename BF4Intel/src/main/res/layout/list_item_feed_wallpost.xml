@@ -21,7 +21,7 @@
     <TextView
       style="@style/feed_username"
       android:id="@+id/username2"
-      android:text="NINETWOZERO"
+      android:text="@string/dummy_user"
       android:layout_marginLeft="@dimen/spacing_m"
       android:layout_marginTop="0dp"
       android:layout_toRightOf="@id/avatar2"/>
@@ -40,7 +40,7 @@
       style="@style/feed_username"
       android:id="@+id/username"
       android:layout_width="match_parent"
-      android:text="LittleBoySVK"
+      android:text="@string/dummy_user2"
       android:textAppearance="@android:style/TextAppearance.Holo"
       android:layout_marginTop="@dimen/spacing_m"
       android:layout_toRightOf="@id/avatar"
@@ -53,13 +53,12 @@
       android:id="@+id/category"
       android:layout_centerVertical="false"
       android:layout_alignBaseline="@id/username2"
-      android:text="status"/>
+      android:text="@string/dummy_status"/>
   </RelativeLayout>
 
   <TextView
     style="@style/feed_content"
     android:id="@+id/content"
-    android:text="Hey Peter, check this wall post out. Quite OK layout if you ask me. Should also work for platoon wall posts, same concept imo. Smell you later!"
     android:textAppearance="@android:style/TextAppearance.Holo"
     android:layout_below="@id/wrap_profiles"
     android:paddingLeft="@dimen/spacing_s"
@@ -68,7 +67,6 @@
   <TextView
     style="@style/meta"
     android:id="@+id/timestamp"
-    android:text="5 hours ago"
     android:layout_below="@id/content"
     android:paddingLeft="@dimen/spacing_s"
     android:paddingRight="@dimen/spacing_s"/>

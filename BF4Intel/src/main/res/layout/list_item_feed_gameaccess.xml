@@ -23,7 +23,7 @@
 
     <TextView
       style="@style/meta"
-      android:text="4 hours ago"
+
       android:layout_below="@id/game_name"/>
   </RelativeLayout>
 </LinearLayout>

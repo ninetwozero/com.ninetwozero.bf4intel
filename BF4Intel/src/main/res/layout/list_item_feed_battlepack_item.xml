@@ -12,13 +12,13 @@
     android:id="@+id/content_icon"
     android:layout_width="64dp"
     android:layout_height="64dp"
+    android:contentDescription="@string/cdesc_battle_pack_icon"
     android:src="@drawable/test_accessory"/>
 
   <TextView
     android:id="@+id/content_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Super Scope"
     android:textAppearance="@android:style/TextAppearance.Holo.Small"
     android:textColor="@color/blue"
     android:textStyle="bold"
@@ -28,7 +28,6 @@
     android:id="@+id/content_parent_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="M40A3"
     android:textColor="@color/grey"
     android:textAppearance="@android:style/TextAppearance.Holo.Small"
     android:gravity="center_horizontal"/>
