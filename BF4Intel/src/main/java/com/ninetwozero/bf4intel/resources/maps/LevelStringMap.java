@@ -32,6 +32,12 @@ public class LevelStringMap {
             put("MP_XP0_FIRESTORM", "Operation Firestorm 2014");
             put("MP_XP0_METRO", "Operation Metro 2014");
             put("MP_XP0_OMAN", "Gulf of Oman 2014");
+
+            // XP1
+            put("XP1_001", "SILK ROAD");
+            put("XP1_002", "ALTAI RANGE");
+            put("XP1_003", "GUILIN PEAKS");
+            put("XP1_004", "DRAGON PASS");
         }
     };
 

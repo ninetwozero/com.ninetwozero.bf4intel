@@ -198,7 +198,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private List<ListRow> getRowsForSocial() {
-        // FIXME: Separate bundles per fragment type
+        // FIXME: Separate bundles per fragment type?
         final Bundle data = new Bundle();
         //data.putString(Keys.Profile.ID, "2832658801548551060");
         //data.putString(Keys.Profile.NAME, "Karl Lindmark");
@@ -246,17 +246,11 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void selectItemFromState(final int group, final int child, final boolean isGroup) {
-        ListRow row;
-        int position;
-        ExpandableListRowAdapter adapter = (ExpandableListRowAdapter) listView.getExpandableListAdapter();
-
-        if( isGroup ) {
-            row = adapter.getGroup(group);
-            position = listView.getFlatListPosition(listView.getPackedPositionForGroup(group));
-        } else {
-            row = adapter.getChild(group, child);
-            position = listView.getFlatListPosition(listView.getPackedPositionForChild(group, child));
-        }
+        final ExpandableListRowAdapter adapter = (ExpandableListRowAdapter) listView.getExpandableListAdapter();
+        final ListRow row = isGroup? adapter.getGroup(group) : adapter.getChild(group, child);
+        final int position = listView.getFlatListPosition(
+            isGroup? listView.getPackedPositionForGroup(group) : listView.getPackedPositionForChild(group, child)
+        );
         selectItem(row, position, true, true);
     }
 

@@ -1,7 +1,6 @@
 package com.ninetwozero.bf4intel.ui.battlefeed.layouts;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.interfaces.EventLayout;
-import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.BattlePackItem;
+import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
 import com.ninetwozero.bf4intel.resources.maps.battlepacks.MiscBattlePackImageMap;
 import com.ninetwozero.bf4intel.resources.maps.battlepacks.MiscBattlePackStringMap;
 import com.ninetwozero.bf4intel.resources.maps.camoflagues.CamoImageMap;
@@ -22,12 +21,14 @@ import com.ninetwozero.bf4intel.resources.maps.emblems.EmblemImageMap;
 import com.ninetwozero.bf4intel.resources.maps.emblems.EmblemStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryStringMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 
 import java.util.List;
 
 public class BattlePackLayout implements EventLayout<BattlePackEvent> {
-    private final String BATTLEPACK_SOLDIERS = "WARSAW_ID_M_BATTLEPACK_ITEM_ICON";
+    private static final int NO_SUBTITLE = -1;
+    private static final String BATTLEPACK_SOLDIERS = "WARSAW_ID_M_BATTLEPACK_ITEM_ICON";
 
     @Override
     public void populateView(final Context context, final View view, final BattlePackEvent event) {
@@ -45,7 +46,6 @@ public class BattlePackLayout implements EventLayout<BattlePackEvent> {
         );
         final TableRow.LayoutParams cellLayoutParams = new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
 
-        Log.d(getClass().getSimpleName(), "List<BattlePackItem> => " + items);
         contentArea.removeAllViews();
         final int maxRows = (int) Math.ceil(items.size() / 3.0f);
         for (int i = 0, counter = 0; i < maxRows; i++) {
@@ -76,7 +76,7 @@ public class BattlePackLayout implements EventLayout<BattlePackEvent> {
                         cell,
                         EmblemImageMap.get(itemKey),
                         EmblemStringMap.get(itemKey),
-                        itemKey.equals(BATTLEPACK_SOLDIERS) ? -1 : R.string.battlefeed_emblem
+                        itemKey.equals(BATTLEPACK_SOLDIERS) ? NO_SUBTITLE : R.string.battlefeed_emblem
                     );
                 } else if (category.equals("camo") || category.equals("appearance")) {
                     populateCell(
@@ -85,12 +85,14 @@ public class BattlePackLayout implements EventLayout<BattlePackEvent> {
                         CamoStringMap.get(itemKey),
                         category.equals("camo") ? R.string.battlefeed_paint : R.string.battlefeed_appearance
                     );
+                } else if(category.equals("weapon")) {
+                    populateCell(cell, WeaponImageMap.get(itemKey), WeaponStringMap.get(itemKey), NO_SUBTITLE);
                 } else {
                     populateCell(
                         cell,
                         MiscBattlePackImageMap.get(itemKey),
                         MiscBattlePackStringMap.get(itemKey),
-                        -1
+                        NO_SUBTITLE
                     );
                 }
                 tableRow.addView(cell, cellLayoutParams);
@@ -102,7 +104,7 @@ public class BattlePackLayout implements EventLayout<BattlePackEvent> {
     private void populateCell(final View cell, final int icon, final int name, final int parent) {
         ((ImageView) cell.findViewById(R.id.content_icon)).setImageResource(icon);
         ((TextView) cell.findViewById(R.id.content_name)).setText(name);
-        if (parent > 0) {
+        if (parent != NO_SUBTITLE) {
             ((TextView) cell.findViewById(R.id.content_parent_name)).setText(parent);
         } else {
             ((TextView) cell.findViewById(R.id.content_parent_name)).setText("");
