@@ -21,7 +21,6 @@
     <TextView
       style="@style/feed_username"
       android:id="@+id/username2"
-      android:text="@string/dummy_user"
       android:layout_marginLeft="@dimen/spacing_m"
       android:layout_marginTop="0dp"
       android:layout_toRightOf="@id/avatar2"/>
@@ -40,7 +39,6 @@
       style="@style/feed_username"
       android:id="@+id/username"
       android:layout_width="match_parent"
-      android:text="@string/dummy_user2"
       android:textAppearance="@android:style/TextAppearance.Holo"
       android:layout_marginTop="@dimen/spacing_m"
       android:layout_toRightOf="@id/avatar"

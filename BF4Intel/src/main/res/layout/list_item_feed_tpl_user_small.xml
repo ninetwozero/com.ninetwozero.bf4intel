@@ -16,7 +16,6 @@
   <TextView
     style="@style/meta"
     android:id="@+id/username"
-    android:text="@string/dummy_user"
     android:layout_marginLeft="@dimen/spacing_xs"
     android:textColor="@color/blue" />
 </LinearLayout>

@@ -121,10 +121,8 @@
   <string name="feed_gamereport_playerresults">Player results</string>
   <string name="gamereport_results">Results</string>
   <string name="skills_ranking">Ranking</string>
-  <string name="dummy_user">NINETWOZERO</string>
 
   <string name="unknown">Unknown</string>
-  <string name="cdesc_battlepack_icon">Battlepack icon</string>
   <string name="battlefeed_emblem">Emblem</string>
   <string name="battlefeed_appearance">Camo</string>
   <string name="battlefeed_paint">Paint</string>
@@ -134,9 +132,6 @@
   <string name="forum_last_activity">Last activity</string>
   <string name="forum_x_posts_in_y_threads" formatted="false">%s posts in %s threads</string>
   <string name="forum_created_by">Created by</string>
-  <string name="dummy_user2">LittleBoySVK</string>
   <string name="dummy_status">status</string>
-  <string name="cdesc_battle_pack_icon">Battle Pack Icon</string>
-  <string name="cdesc_award_image">Award image</string>
-  <string name="cdesc_user_gravatar">User gravatar</string>
+
 </resources>

@@ -13,7 +13,6 @@
   <TextView
     style="@style/feed_username"
     android:id="@+id/username"
-    android:text="@string/dummy_user"
     android:layout_centerVertical="true"
     android:layout_toRightOf="@id/avatar" />
 
