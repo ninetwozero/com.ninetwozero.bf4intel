@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.adapters.FeedAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
+import com.ninetwozero.bf4intel.ui.adapters.DummyAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +50,7 @@ public class ForumListingFragment extends BaseListFragment {
             return;
         }
 
-        final FeedAdapter feedAdapter = new FeedAdapter(getActivity(), getDummyItems());
+        final DummyAdapter feedAdapter = new DummyAdapter(getActivity(), getDummyItems());
         setListAdapter(feedAdapter);
     }
 

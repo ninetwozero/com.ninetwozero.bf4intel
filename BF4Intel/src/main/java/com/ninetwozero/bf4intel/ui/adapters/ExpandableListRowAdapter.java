@@ -17,7 +17,10 @@ import com.ninetwozero.bf4intel.datatypes.ListRowType;
 import java.io.File;
 import java.util.List;
 
-import static com.ninetwozero.bf4intel.datatypes.ListRowType.*;
+import static com.ninetwozero.bf4intel.datatypes.ListRowType.HEADING;
+import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_HEADING;
+import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_REGULAR;
+import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_REGULAR_CHILD;
 
 public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
     private Context context;

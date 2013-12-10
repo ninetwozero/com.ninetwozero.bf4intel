@@ -10,11 +10,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.json.battlereports.SummaryBattleReport;
+import com.ninetwozero.bf4intel.json.battlereports.Team;
 import com.ninetwozero.bf4intel.resources.maps.GameModeStringMap;
 import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
-import com.ninetwozero.bf4intel.json.battlereports.SummaryBattleReport;
-import com.ninetwozero.bf4intel.json.battlereports.Team;
 
 import java.util.List;
 

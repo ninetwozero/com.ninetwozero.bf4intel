@@ -18,7 +18,7 @@ public class LevelStringMap {
             // MP
             put("MP_ABANDONED", "Zavod 311");
             put("MP_DAMAGE", "Lancang Dam");
-            put("MP_DISH", "Rogue Transmission");
+            put("MP_THEDISH", "Rogue Transmission");
             put("MP_FLOODED", "Flood Zone");
             put("MP_JOURNEY", "Golmud Railway");
             put("MP_NAVAL", "Paracel Storm");
@@ -32,6 +32,12 @@ public class LevelStringMap {
             put("MP_XP0_FIRESTORM", "Operation Firestorm 2014");
             put("MP_XP0_METRO", "Operation Metro 2014");
             put("MP_XP0_OMAN", "Gulf of Oman 2014");
+
+            // XP1
+            put("XP1_001", "SILK ROAD");
+            put("XP1_002", "ALTAI RANGE");
+            put("XP1_003", "GUILIN PEAKS");
+            put("XP1_004", "DRAGON PASS");
         }
     };
 

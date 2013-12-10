@@ -13,7 +13,7 @@ import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.utils.Result;
 
-public class BaseIntelActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<Result> {
+public abstract class BaseIntelActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<Result> {
 
     protected Gson gson;
     private Menu optionsMenu;

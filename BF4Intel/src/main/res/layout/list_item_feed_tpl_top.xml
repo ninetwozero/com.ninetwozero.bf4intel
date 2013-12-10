@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/feed_wrap_user"
+  android:id="@+id/wrap_user">
+
+  <ImageView
+    style="@style/feed_avatar"
+    android:id="@+id/avatar"
+    android:src="@drawable/test_gravatar"
+    android:contentDescription="@string/cdesc_gravatar"
+    android:layout_centerVertical="true"/>
+
+  <TextView
+    style="@style/feed_username"
+    android:id="@+id/username"
+    android:layout_centerVertical="true"
+    android:layout_toRightOf="@id/avatar" />
+
+  <TextView
+    style="@style/FeedCategoryBox"
+    android:id="@+id/category"
+    android:text="@string/feed_category_status"/>
+</RelativeLayout>

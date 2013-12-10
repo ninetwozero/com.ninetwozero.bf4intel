@@ -12,13 +12,12 @@
   <string name="label_activity_soldier_statistics">Statistics</string>
   <string name="label_activity_assignments">Assignments</string>
 
-
   <string name="update_status_header">Update your status</string>
   <string name="update_status_hint">Update message here…</string>
   <string name="update_attachment_header">Attach item to post</string>
   <string name="update_attachment_hint">http://</string>
   <string name="create_post_header">Post content</string>
-  <string name="create_post_hint">Post message here…</string>
+  <string name="create_post_hint">Post message here&#8230;</string>
   <string name="new_thread_header">Thread title</string>
   <string name="new_thread_title_hint">When is BF5 coming out?</string>
   <string name="new_thread_content_header">Content</string>
@@ -34,7 +33,7 @@
   <string name="msg_sending">Sending…</string>
   <string name="msg_enter_comment">Enter a comment!</string>
   <string name="msg_comment_ok">Comment posted!</string>
-  <string name="soldier_left_until_rankup" formatted="true">%s until rank up</string>
+  <string name="soldier_left_until_rankup" formatted="false">%s until rank up</string>
   <string name="activated_new_game">Activated new game/expansion:</string>
   <string name="logged_in_as">Logged in as</string>
   <string name="assignment_goals_completed" formatted="false">%s/%s goals completed</string>
@@ -99,6 +98,40 @@
 
   <!-- Menu -->
   <string name="menu_refresh">Refresh</string>
+  <string name="msg_unknown_event" formatted="false">Unknown event: %s</string>
+  <string name="feed_levelcomplete_heading">Completed a mission:</string>
+  <string name="feed_createdforumthread_heading">Created a forum thread:</string>
+  <string name="msg_feed_levelcomplete_partner">Partner:</string>
+  <string name="msg_feed_levelcomplete_difficulty">Difficulty:</string>
+  <string name="feed_category_status">Status</string>
+  <string name="feed_category_forumthread">Forum Thread</string>
+  <string name="feed_category_wallpost">Wallpost</string>
+  <string name="feed_category_forumpost">Forum post</string>
+  <string name="feed_category_favoriteserver">Favorite Server</string>
+  <string name="feed_category_mission_completed">Mission completed</string>
+  <string name="feed_category_new_game">New game</string>
+  <string name="feed_category_new_friend">New Friend</string>
+  <string name="feed_category_blog_comment">Blog comment</string>
+  <string name="feed_category_game_comment">Game Comment</string>
+  <string name="feed_category_gamereport">Battle Report</string>
+  <string name="feed_category_battlepack">Battle Pack</string>
+  <string name="feed_category_unlocks">Unlocks</string>
+  <string name="on">on</string>
+  <string name="at">\@</string>
+  <string name="feed_gamereport_playerresults">Player results</string>
+  <string name="gamereport_results">Results</string>
+  <string name="skills_ranking">Ranking</string>
 
   <string name="unknown">Unknown</string>
+  <string name="battlefeed_emblem">Emblem</string>
+  <string name="battlefeed_appearance">Camo</string>
+  <string name="battlefeed_paint">Paint</string>
+  <string name="msg_invalid_url">Invalid URL!</string>
+  <string name="msg_empty_content">You need to enter some content!</string>
+  <string name="string_by">by</string>
+  <string name="forum_last_activity">Last activity</string>
+  <string name="forum_x_posts_in_y_threads" formatted="false">%s posts in %s threads</string>
+  <string name="forum_created_by">Created by</string>
+  <string name="dummy_status">status</string>
+
 </resources>

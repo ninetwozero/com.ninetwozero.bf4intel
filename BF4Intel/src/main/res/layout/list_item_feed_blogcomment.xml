@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/WhiteContainerFeed">
+
+  <include layout="@layout/list_item_feed_tpl_top"/>
+
+  <RelativeLayout
+    style="@style/WhiteContainerContentAreaWrapper"
+    android:id="@+id/wrap_content_area"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+      android:id="@+id/blog_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+      android:text="500,000 free BF4 copies to BF4 Intel devs!!!"
+      android:textColor="@color/blue"
+      android:maxLines="1"/>
+    <TextView
+      android:id="@+id/comment"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo"
+      android:text="Hooah!"
+      android:textAllCaps="true"
+      android:layout_below="@id/blog_title"
+      android:layout_marginTop="@dimen/spacing_s"/>
+
+    <TextView
+      style="@style/meta"
+
+      android:layout_below="@id/comment"/>
+  </RelativeLayout>
+</LinearLayout>

@@ -9,7 +9,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.utils.Result;
 
@@ -24,6 +28,16 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         setHasOptionsMenu(true);
+    }
+
+
+    @Override
+    public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
+        if (result == Result.SUCCESS) {
+            onLoadSuccess(result.getResultMessage());
+        } else {
+            onLoadFailure(result.getResultMessage());
+        }
     }
 
     @Override
@@ -48,21 +62,25 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         return super.onOptionsItemSelected(item);
     }
 
-    protected <T extends Object> T fromJson(final String jsonString, final Class<T> outClass) {
-        final JsonObject jsonObject = parser.parse(jsonString).getAsJsonObject().getAsJsonObject("data");
+    protected <T extends Object> T fromJson(final String json, final Class<T> outClass) {
+        final JsonObject jsonObject = parser.parse(json).getAsJsonObject().getAsJsonObject("data");
         return gson.fromJson(jsonObject, outClass);
     }
 
-    protected <T extends Object> List<T> fromJsonArray(final String jsonString, final Class<T> outClass, final String container) {
+    protected <T extends Object> List<T> fromJsonArray(final Gson gsonToUse, final String json, final Class<T> outClass, final String container) {
         final List<T> objects = new ArrayList<T>();
-        final JsonObject jsonObject = parser.parse(jsonString).getAsJsonObject().getAsJsonObject("data");
+        final JsonObject jsonObject = parser.parse(json).getAsJsonObject().getAsJsonObject("data");
         if (jsonObject.has(container)) {
             final JsonArray elements = jsonObject.getAsJsonArray(container);
             for (JsonElement element : elements) {
-                objects.add(gson.fromJson(element, outClass));
+                objects.add(gsonToUse.fromJson(element, outClass));
             }
         }
         return objects;
+    }
+
+    protected <T extends Object> List<T> fromJsonArray(final String json, final Class<T> outClass, final String container) {
+        return fromJsonArray(gson, json, outClass, container);
     }
 
     protected void displayAsLoading(final boolean isLoading) {

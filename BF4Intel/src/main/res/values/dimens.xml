@@ -26,6 +26,7 @@
   <dimen name="spacing_s">4dp</dimen>
   <dimen name="spacing_m">8dp</dimen>
   <dimen name="spacing_l">16dp</dimen>
+  <dimen name="spacing_xl">32dp</dimen>
 
 
   <dimen name="activity_horizontal_margin">@dimen/spacing_l</dimen>
@@ -35,6 +36,11 @@
   <dimen name="text_m">18sp</dimen>
   <dimen name="text_ml">20sp</dimen>
   <dimen name="text_xxl">40sp</dimen>
+
+  <!-- Avatar size -->
+  <dimen name="avatar_size_l">32dp</dimen>
+  <dimen name="avatar_size_m">24dp</dimen>
+  <dimen name="avatar_size_s">16dp</dimen>
 
   <!-- Sliding menu related -->
   <dimen name="navigation_drawer_width">320dp</dimen>
