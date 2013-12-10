@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.weaponstats.Weapon;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
 
         ((TextView) view.findViewById(R.id.index)).setText(String.valueOf(position + 1));
 
-        ((ImageView)view.findViewById(R.id.weapon_image)).setImageResource(WeaponsImageMap.weaponsMap.get(weapon.getUniqueName()));
+        ((ImageView)view.findViewById(R.id.weapon_image)).setImageResource(WeaponsImageMap.get(weapon.getUniqueName()));
 
         ((TextView) view.findViewById(R.id.service_star_count)).setText(String.valueOf(weapon.getServiceStarsCount()));
 

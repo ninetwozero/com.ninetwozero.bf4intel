@@ -59,7 +59,7 @@ public class WeaponStatsFragment extends BaseListFragment {
 
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
-        //showLoadingStateInActionBar(true);
+        showLoadingStateInActionBar(true);
         return new IntelLoader(getActivity().getApplicationContext(), new ConnectionRequest(WEAPON_STATS_URL));
     }
 
@@ -75,7 +75,7 @@ public class WeaponStatsFragment extends BaseListFragment {
     private void processResult(String resultMessage) {
         JsonObject dataJson = extractFromJson(resultMessage);
         WeaponStatistics ws = gson.fromJson(dataJson, WeaponStatistics.class);
-        //showLoadingStateInActionBar(false);
+        showLoadingStateInActionBar(false);
         List<Weapon> weaponList = ws.getWeaponsList();
         Collections.sort(weaponList);
         adapter = new WeaponStatsAdapter(weaponList, getContext());

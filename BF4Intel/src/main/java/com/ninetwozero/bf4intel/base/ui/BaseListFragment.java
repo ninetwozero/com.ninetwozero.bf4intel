@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.utils.Result;
 
 public abstract class BaseListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Result> {
@@ -129,5 +130,14 @@ public abstract class BaseListFragment extends ListFragment implements LoaderMan
 
     protected Context getContext() {
         return getActivity().getApplicationContext();
+    }
+
+    protected void showLoadingStateInActionBar(final boolean isLoading) {
+        final Activity activity = getActivity();
+        if (activity == null) {
+            return;
+        }
+        activity.findViewById(R.id.wrap_loading_progress).setVisibility(isLoading ? View.VISIBLE : View.GONE);
+
     }
 }

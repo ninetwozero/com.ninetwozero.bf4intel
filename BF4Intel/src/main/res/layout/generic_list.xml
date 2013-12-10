@@ -19,28 +19,5 @@
     android:layout_height="wrap_content"
     android:layout_centerInParent="true"/>
 
-  <LinearLayout
-    android:id="@+id/wrap_loading_progress"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:layout_centerInParent="true"
-    android:background="@color/lightgrey"
-    android:orientation="vertical"
-    android:visibility="gone"
-    >
-
-    <ProgressBar
-      android:id="@+id/progress_bar"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:indeterminate="true"
-      android:layout_marginBottom="@dimen/spacing_m"/>
-
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Downloading information..."
-      android:gravity="center"/>
-  </LinearLayout>
+  <include layout="@layout/loading_progress" />
 </RelativeLayout>

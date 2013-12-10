@@ -15,4 +15,7 @@
     android:id="@android:id/empty"
     android:layout_width="0dp"
     android:layout_height="0dp" />
+
+  <include layout="@layout/loading_progress" />
+
 </LinearLayout>

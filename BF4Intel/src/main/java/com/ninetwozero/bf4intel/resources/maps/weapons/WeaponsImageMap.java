@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.stats.weapons;
+package com.ninetwozero.bf4intel.resources.maps.weapons;
 
 import com.ninetwozero.bf4intel.R;
 
@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class WeaponsImageMap {
 
-    public static final Map<String, Integer> weaponsMap = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> map = new HashMap<String, Integer>() {
         {
             put("WARSAW_ID_P_WNAME_ULTIM", R.drawable.w_ultimax_fancy);
             put("WARSAW_ID_P_WNAME_CSLR4", R.drawable.w_cslr4_fancy);
@@ -147,4 +147,8 @@ public class WeaponsImageMap {
             put("WARSAW_ID_P_INAME_FLARE", R.drawable.w_handflare_fancy);
         }
     };
+
+    public static int get(final String key) {
+        return map.containsKey(key) ? map.get(key) : R.drawable.acc_none;
+    }
 }
