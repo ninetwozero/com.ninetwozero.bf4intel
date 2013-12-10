@@ -15,7 +15,11 @@ import com.ninetwozero.bf4intel.json.awards.Ribbon;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class AwardsFragment extends BaseFragment {
 

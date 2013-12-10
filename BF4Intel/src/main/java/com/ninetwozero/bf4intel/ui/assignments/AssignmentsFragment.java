@@ -8,12 +8,16 @@ import android.widget.GridView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
-import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;
+import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class AssignmentsFragment extends BaseFragment {
 

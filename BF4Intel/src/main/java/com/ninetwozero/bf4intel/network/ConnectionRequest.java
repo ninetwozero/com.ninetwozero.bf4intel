@@ -19,7 +19,7 @@ public class ConnectionRequest {
 
     public String execute() throws Failure {
         try {
-            HttpRequest httpRequest = siginRequest();
+            HttpRequest httpRequest = getHttpRequest();
             return fromStream(httpRequest.buffer());
         } catch (IOException e) {
             throw new Failure(e);
@@ -28,10 +28,12 @@ public class ConnectionRequest {
         }
     }
 
-    private HttpRequest siginRequest() {
+    private HttpRequest getHttpRequest() {
         HttpRequest request = HttpRequest.get(requestUrl)
-                .readTimeout(READ_TIMEOUT)
-                .connectTimeout(CONNECT_TIMEOUT);
+            .readTimeout(READ_TIMEOUT)
+            .connectTimeout(CONNECT_TIMEOUT)
+            .header("X-Requested-With", "XMLHttpRequest")
+            .header("Cookie", "beaker.session.id=<YOUR COOKIE HERE>");
         return request;
     }
 

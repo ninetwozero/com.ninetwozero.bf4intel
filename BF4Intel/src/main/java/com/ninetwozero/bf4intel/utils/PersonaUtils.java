@@ -12,6 +12,14 @@ public class PersonaUtils {
                 return "XBOX 360";
             case 4:
                 return "PS3";
+            case 8:
+                return "XBOX";
+            case 16:
+                return "PS2";
+            case 32:
+                return "PS4";
+            case 64:
+                return "XBOX ONE";
             default:
                 return "N/A";
         }

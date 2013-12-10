@@ -7,11 +7,11 @@ import android.util.Log;
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
+import com.ninetwozero.bf4intel.json.assignments.Assignments;
 import com.ninetwozero.bf4intel.network.ConnectionRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
-import com.ninetwozero.bf4intel.json.assignments.Assignments;
 
 public class AssignmentsActivity extends BaseIntelActivity {
 

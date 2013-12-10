@@ -7,23 +7,31 @@ import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
-import com.ninetwozero.bf4intel.network.ConnectionRequest;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.datatypes.Skill;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.resources.maps.*;
-import com.ninetwozero.bf4intel.utils.DateTimeUtils;
-import com.ninetwozero.bf4intel.utils.PersonaUtils;
-import com.ninetwozero.bf4intel.utils.Result;
 import com.ninetwozero.bf4intel.json.soldieroverview.BaseStatsModel;
 import com.ninetwozero.bf4intel.json.soldieroverview.CompletionProgress;
 import com.ninetwozero.bf4intel.json.soldieroverview.SkillOverview;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
+import com.ninetwozero.bf4intel.network.ConnectionRequest;
+import com.ninetwozero.bf4intel.network.IntelLoader;
+import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.resources.maps.CompletionStringMap;
+import com.ninetwozero.bf4intel.resources.maps.ranks.RankImageMap;
+import com.ninetwozero.bf4intel.resources.maps.ranks.RankStringMap;
+import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
+import com.ninetwozero.bf4intel.utils.DateTimeUtils;
+import com.ninetwozero.bf4intel.utils.PersonaUtils;
+import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -146,7 +154,9 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         );
 
         // FIXME: Display appropriate image in ActionBar
-        ((ImageView) root.findViewById(R.id.image_rank)).setImageResource(RankImageMap.images.get(soldierOverview.getCurrentRank().getLevel()));
+        ((ImageView) root.findViewById(R.id.image_rank)).setImageResource(
+            RankImageMap.get(soldierOverview.getCurrentRank().getName())
+        );
 
         progressBar.setMax(maxScore);
         progressBar.setProgress(currentScoreThisRank);

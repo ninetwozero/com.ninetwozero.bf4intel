@@ -72,38 +72,75 @@
   </style>
 
   <!-- Soldier "card" pseudo style -->
-  <style name="WhiteContainer">
-    <item name="android:padding">@dimen/spacing_m</item>
+  <style name="BaseWhiteContainer">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
     <item name="android:background">@drawable/whitebox_background</item>
-    <item name="android:layout_marginBottom">@dimen/spacing_m</item>
+    <item name="android:layout_marginBottom">@dimen/spacing_s</item>
+  </style>
+
+  <style name="WhiteContainer" parent="BaseWhiteContainer">
+    <item name="android:padding">@dimen/spacing_m</item>
+  </style>
+
+  <style name="WhiteContainerFeed" parent="BaseWhiteContainer">
+    <item name="android:paddingTop">@dimen/spacing_s</item>
+    <item name="android:paddingRight">0dp</item>
+    <item name="android:paddingBottom">@dimen/spacing_s</item>
+    <item name="android:paddingLeft">@dimen/spacing_s</item>
+    <item name="android:minHeight">100dp</item>
+    <item name="android:orientation">vertical</item>
+  </style>
+
+  <style name="WhiteContainerContentAreaWrapper">
+    <item name="android:paddingTop">0dp</item>
+    <item name="android:paddingRight">@dimen/spacing_s</item>
+    <item name="android:paddingBottom">@dimen/spacing_s</item>
+    <item name="android:paddingLeft">@dimen/spacing_s</item>
   </style>
 
   <!-- FEED -->
+
+  <style name="FeedCategoryBox">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_centerVertical">true</item>
+    <item name="android:layout_alignParentRight">true</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
+    <item name="android:textAllCaps">true</item>
+    <item name="android:textColor">@color/blue</item>
+    <item name="android:background">@color/paleblue</item>
+    <item name="android:paddingTop">@dimen/spacing_xs</item>
+    <item name="android:paddingRight">@dimen/spacing_s</item>
+    <item name="android:paddingBottom">@dimen/spacing_xs</item>
+    <item name="android:paddingLeft">@dimen/spacing_s</item>
+  </style>
 
   <style name="feed_wrap_user">
     <item name="android:id">@+id/wrap_user</item>
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:gravity">left|center</item>
+    <item name="android:layout_marginTop">@dimen/spacing_m</item>
     <item name="android:layout_marginBottom">@dimen/spacing_s</item>
+    <item name="android:paddingRight">0dp</item>
+    <item name="android:paddingLeft">@dimen/spacing_m</item>
   </style>
 
 
   <style name="feed_avatar">
     <item name="android:id">@+id/avatar</item>
-    <item name="android:layout_width">48dp</item>
-    <item name="android:layout_height">48dp</item>
+    <item name="android:layout_width">@dimen/avatar_size_l</item>
+    <item name="android:layout_height">@dimen/avatar_size_l</item>
   </style>
 
   <style name="feed_username">
     <item name="android:id">@+id/username</item>
-    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
 
     <item name="android:textColor">@color/blue</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Medium</item>
     <item name="android:layout_marginLeft">@dimen/spacing_m</item>
-    <item name="android:layout_toRightOf">@id/avatar</item>
   </style>
 
   <style name="feed_content">
