@@ -35,17 +35,13 @@
 
     <TextView
       android:id="@+id/weapon_name"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="@dimen/text_m"
+      style="@style/TextViewLightGrey"
       android:layout_weight="1" />
 
     <TextView
       android:id="@+id/weapon_kills"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="@dimen/text_m"
-      android:paddingRight="@dimen/spacing_xs" />
+      style="@style/TextViewLightGrey"
+      android:paddingRight="@dimen/spacing_l" />
   </LinearLayout>
 
   <ProgressBar

@@ -94,7 +94,7 @@ public class SharedGameEventLayout implements EventLayout<SharedGameEvent> {
 
     private void populateAwardCell(final View cell, final String itemKey) {
         if (itemKey.contains("STAR_NAME")) {
-            populateCell(cell, R.drawable.award_service_star, ServiceStarStringMap.get(itemKey));
+            populateCell(cell, R.drawable.service_star, ServiceStarStringMap.get(itemKey));
         } else {
             populateCell(cell, AwardImageMap.get(itemKey), AwardStringMap.get(itemKey));
         }

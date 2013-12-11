@@ -23,7 +23,7 @@ public class BaseIntelAdapter<T> extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public T getItem(int position) {
         return itemsList.get(position);
     }
 

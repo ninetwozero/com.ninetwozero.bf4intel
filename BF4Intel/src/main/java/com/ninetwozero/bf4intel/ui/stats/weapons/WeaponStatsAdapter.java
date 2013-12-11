@@ -30,21 +30,18 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
 
         ((TextView) view.findViewById(R.id.index)).setText(String.valueOf(position + 1));
 
-        ((ImageView)view.findViewById(R.id.weapon_image)).setImageResource(WeaponsImageMap.get(weapon.getUniqueName()));
+        ((ImageView) view.findViewById(R.id.weapon_image)).setImageResource(WeaponsImageMap.get(weapon.getUniqueName()));
 
         ((TextView) view.findViewById(R.id.service_star_count)).setText(String.valueOf(weapon.getServiceStarsCount()));
 
         ((TextView) view.findViewById(R.id.weapon_name)).setText(weapon.getName().toUpperCase());
 
-        ((TextView)view.findViewById(R.id.weapon_kills)).setText(String.valueOf(weapon.getKills()));
+        ((TextView) view.findViewById(R.id.weapon_kills)).setText(String.valueOf(weapon.getKills()));
 
-        if(weapon.getServiceStarsCount() > 0) {
-            view.findViewById(R.id.weapon_progress).setVisibility(View.GONE);
-        } else {
-            ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.weapon_progress);
-            progressBar.setVisibility(View.VISIBLE);
-            progressBar.setProgress(weapon.getServiceStarsProgress());
-        }
+        ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.weapon_progress);
+        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setProgress(weapon.getServiceStarsProgress());
+        
         return view;
     }
 }

@@ -24,6 +24,7 @@
   <color name="shadowgrey">#AAAAAA</color>
   <color name="grey">#848484</color>
   <color name="darkgrey">#555555</color>
+  <color name="very_dark_grey">#1D1D1D</color>
   <color name="almostblack">#111111</color>
   <color name="bg_grid_item">#88212121</color>
   <color name="bg_grid_item_pressed">#77212121</color>
