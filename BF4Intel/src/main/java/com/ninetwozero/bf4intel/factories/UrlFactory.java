@@ -1,6 +1,12 @@
 package com.ninetwozero.bf4intel.factories;
 
 public class UrlFactory {
+    private static final String SCHEME = "http";
+    private static final String HOST = "battlelog.battlefield.com/bf4";
+    private static final String DEFAULT_ENCODING = "UTF-8";
+    private static final int DEFAULT_PORT = -1;
+
+
     private static final String BASE_URL = "http://battlelog.battlefield.com/bf4/";
     private static final String GRAVATAR_URL = "http://www.gravatar.com/avatar/{HASH}/?s=320";
 
