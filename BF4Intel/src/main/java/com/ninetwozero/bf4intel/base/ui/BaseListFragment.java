@@ -2,27 +2,17 @@ package com.ninetwozero.bf4intel.base.ui;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.utils.Result;
-
-public abstract class BaseListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Result> {
+public abstract class BaseListFragment extends ListFragment {
     private static Toast toast;
 
-    protected Gson gson;
     protected FragmentManager fragmentManager;
     protected LayoutInflater layoutInflater;
 
@@ -31,7 +21,6 @@ public abstract class BaseListFragment extends ListFragment implements LoaderMan
         super.onCreate(icicle);
         setRetainInstance(true);
         fragmentManager = getFragmentManager();
-        gson = new Gson();
     }
 
     @Override
@@ -108,36 +97,5 @@ public abstract class BaseListFragment extends ListFragment implements LoaderMan
 
         toast = Toast.makeText(activity, text, Toast.LENGTH_SHORT);
         toast.show();
-    }
-
-    public JsonObject extractFromJson(String json) {
-        JsonParser parser = new JsonParser();
-        return parser.parse(json).getAsJsonObject().getAsJsonObject("data");
-    }
-
-    @Override
-    public Loader<Result> onCreateLoader(int i, Bundle bundle) {
-        return null;
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Result> resultLoader, Result result) {
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Result> resultLoader) {
-    }
-
-    protected Context getContext() {
-        return getActivity().getApplicationContext();
-    }
-
-    protected void showLoadingStateInActionBar(final boolean isLoading) {
-        final Activity activity = getActivity();
-        if (activity == null) {
-            return;
-        }
-        activity.findViewById(R.id.wrap_loading_progress).setVisibility(isLoading ? View.VISIBLE : View.GONE);
-
     }
 }

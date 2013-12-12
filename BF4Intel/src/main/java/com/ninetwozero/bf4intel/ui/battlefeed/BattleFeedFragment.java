@@ -112,7 +112,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     protected void onLoadSuccess(final String resultMessage) {
         final List<FeedItem> events = fromJsonArray(generateCustomGson(), resultMessage, FeedItem.class, "feedEvents");
         sendDataToListView(events);
-        displayAsLoading(false);
+        showLoadingState(false);
     }
 
     @Override

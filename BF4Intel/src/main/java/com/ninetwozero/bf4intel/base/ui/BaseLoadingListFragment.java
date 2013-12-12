@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.base.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -21,8 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseLoadingListFragment extends BaseListFragment implements LoaderManager.LoaderCallbacks<Result> {
-    private Gson gson = new Gson();
-    private JsonParser parser = new JsonParser();
+    protected Gson gson = new Gson();
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -62,14 +62,14 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         return super.onOptionsItemSelected(item);
     }
 
-    protected <T extends Object> T fromJson(final String json, final Class<T> outClass) {
-        final JsonObject jsonObject = parser.parse(json).getAsJsonObject().getAsJsonObject("data");
+    protected <T> T fromJson(final String json, final Class<T> outClass) {
+        final JsonObject jsonObject = extractFromJson(json);
         return gson.fromJson(jsonObject, outClass);
     }
 
-    protected <T extends Object> List<T> fromJsonArray(final Gson gsonToUse, final String json, final Class<T> outClass, final String container) {
+    protected <T> List<T> fromJsonArray(final Gson gsonToUse, final String json, final Class<T> outClass, final String container) {
         final List<T> objects = new ArrayList<T>();
-        final JsonObject jsonObject = parser.parse(json).getAsJsonObject().getAsJsonObject("data");
+        final JsonObject jsonObject = extractFromJson(json);
         if (jsonObject.has(container)) {
             final JsonArray elements = jsonObject.getAsJsonArray(container);
             for (JsonElement element : elements) {
@@ -79,11 +79,16 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         return objects;
     }
 
-    protected <T extends Object> List<T> fromJsonArray(final String json, final Class<T> outClass, final String container) {
+    public JsonObject extractFromJson(String json) {
+        JsonParser parser = new JsonParser();
+        return parser.parse(json).getAsJsonObject().getAsJsonObject("data");
+    }
+
+    protected <T> List<T> fromJsonArray(final String json, final Class<T> outClass, final String container) {
         return fromJsonArray(gson, json, outClass, container);
     }
 
-    protected void displayAsLoading(final boolean isLoading) {
+    protected void showLoadingState(final boolean isLoading) {
         final Activity activity = getActivity();
         if (activity == null) {
             return;
@@ -96,6 +101,11 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
         activity.findViewById(R.id.wrap_loading_progress).setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
+
+    protected Context getContext() {
+        return getActivity().getApplicationContext();
+    }
+
     protected abstract void onLoadSuccess(final String resultMessage);
     protected abstract void onLoadFailure(final String resultMessage);
     protected abstract void startLoadingData();

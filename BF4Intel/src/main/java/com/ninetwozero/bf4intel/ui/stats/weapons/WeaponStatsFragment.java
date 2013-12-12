@@ -11,6 +11,7 @@ import android.widget.ListView;
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
+import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.json.weaponstats.Weapon;
 import com.ninetwozero.bf4intel.json.weaponstats.WeaponStatistics;
 import com.ninetwozero.bf4intel.network.ConnectionRequest;
@@ -20,7 +21,7 @@ import com.ninetwozero.bf4intel.utils.Result;
 import java.util.Collections;
 import java.util.List;
 
-public class WeaponStatsFragment extends BaseListFragment {
+public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     private static final int ID_LOADER = 2100;
     private static final String WEAPON_STATS_URL = "http://battlelog.battlefield.com/bf4/warsawWeaponsPopulateStats/200661244/1/stats/";
@@ -50,32 +51,34 @@ public class WeaponStatsFragment extends BaseListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        startLoader();
+        startLoadingData();
     }
 
-    protected void startLoader() {
+    @Override
+    protected void startLoadingData() {
         getActivity().getSupportLoaderManager().initLoader(ID_LOADER, null, this);
     }
 
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
-        showLoadingStateInActionBar(true);
+        showLoadingState(true);
         return new IntelLoader(getActivity().getApplicationContext(), new ConnectionRequest(WEAPON_STATS_URL));
     }
 
     @Override
     public void onLoadFinished(Loader<Result> resultLoader, Result result) {
         if (result == Result.SUCCESS) {
-            processResult(result.getResultMessage());
+            onLoadSuccess(result.getResultMessage());
         } else {
-            processError(result.getResultMessage());
+            onLoadFailure(result.getResultMessage());
         }
     }
 
-    private void processResult(String resultMessage) {
+    @Override
+    protected void onLoadSuccess(String resultMessage) {
         JsonObject dataJson = extractFromJson(resultMessage);
         WeaponStatistics ws = gson.fromJson(dataJson, WeaponStatistics.class);
-        showLoadingStateInActionBar(false);
+        showLoadingState(false);
         List<Weapon> weaponList = ws.getWeaponsList();
         Collections.sort(weaponList);
         adapter = new WeaponStatsAdapter(weaponList, getContext());
@@ -83,7 +86,8 @@ public class WeaponStatsFragment extends BaseListFragment {
         adapter.notifyDataSetChanged();
     }
 
-    private void processError(String resultMessage) {
+    @Override
+    protected void onLoadFailure(String resultMessage) {
         Log.e(WeaponStatsFragment.class.getSimpleName(), resultMessage);
     }
 }
