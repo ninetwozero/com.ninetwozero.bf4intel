@@ -69,7 +69,7 @@ public class FragmentFactory {
             case SOLDIER_STATS:
                 return SoldierStatsFragment.newInstance(data);
             case WEAPON_STATS:
-                return WeaponStatsFragment.newInstance();
+                return WeaponStatsFragment.newInstance(data);
             case NEWS_LISTING:
                 return NewsListingFragment.newInstance(data);
             case NEWS_ITEM:

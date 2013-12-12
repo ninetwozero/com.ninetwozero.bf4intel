@@ -28,12 +28,6 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     private WeaponStatsAdapter adapter;
     private ListView listView;
 
-    public static WeaponStatsFragment newInstance() {
-        final WeaponStatsFragment fragment = new WeaponStatsFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
-
     public static WeaponStatsFragment newInstance(final Bundle data) {
         final WeaponStatsFragment fragment = new WeaponStatsFragment();
         fragment.setArguments(data);
