@@ -22,6 +22,11 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
     }
 
     @Override
+    public Weapon getItem(int position) {
+        return itemsList.get(position);
+    }
+
+    @Override
     public View getView(int position, View view, ViewGroup parent) {
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.list_item_weapon, parent, false);

@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
-public class BaseIntelAdapter<T> extends BaseAdapter {
+public abstract class BaseIntelAdapter<T> extends BaseAdapter {
 
     protected final List<T> itemsList;
     protected final Context context;
@@ -23,9 +23,7 @@ public class BaseIntelAdapter<T> extends BaseAdapter {
     }
 
     @Override
-    public T getItem(int position) {
-        return itemsList.get(position);
-    }
+    public abstract T getItem(int position);
 
     @Override
     public long getItemId(int position) {
@@ -33,7 +31,5 @@ public class BaseIntelAdapter<T> extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
-    }
+    public abstract View getView(int position, View convertView, ViewGroup parent);
 }
