@@ -100,12 +100,12 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     @Override
     public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         final int count = 0;
-        final String userId = bundle.getString(Keys.Profile.ID, "");
-        final boolean fetchGlobal = "".equals(userId);
+        final long userId = Long.valueOf(bundle.getString(Keys.Profile.ID, ""));
+        final boolean fetchGlobalFeed = "".equals(userId);
 
-        final UrlFactory.Type url = fetchGlobal? UrlFactory.Type.GLOBAL_FEED : UrlFactory.Type.USER_FEED;
-        final String urlString = fetchGlobal? UrlFactory.build(url, count) : UrlFactory.build(url, userId, count);
-        return new IntelLoader(getActivity(), new ConnectionRequest(urlString));
+        return new IntelLoader(getActivity(), new ConnectionRequest(fetchGlobalFeed
+            ? UrlFactory.globalFeedURL(count)
+            : UrlFactory.userFeedURL(userId, count)));
     }
 
     @Override

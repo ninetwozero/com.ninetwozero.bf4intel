@@ -7,6 +7,7 @@ import android.util.Log;
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
+import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;
 import com.ninetwozero.bf4intel.network.ConnectionRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
@@ -16,8 +17,6 @@ import com.ninetwozero.bf4intel.utils.Result;
 public class AssignmentsActivity extends BaseIntelActivity {
 
     private static final int ID_LOADER = 1000;
-    //TODO will be replaced with some url building logic in near future
-    private static final String ASSIGNMENTS_URL = "http://battlelog.battlefield.com/bf4/soldier/missionsPopulateStats/LittleBoySVK/200661244/2832665149443593606/1/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,7 @@ public class AssignmentsActivity extends BaseIntelActivity {
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
         showLoadingStateInActionBar(true);
-        return new IntelLoader(getApplicationContext(), new ConnectionRequest(ASSIGNMENTS_URL));
+        return new IntelLoader(getApplicationContext(), new ConnectionRequest(UrlFactory.assignmentsURL("LittleBoySVK", 200661244, 2832665149443593606L, 1)));
     }
 
     @Override

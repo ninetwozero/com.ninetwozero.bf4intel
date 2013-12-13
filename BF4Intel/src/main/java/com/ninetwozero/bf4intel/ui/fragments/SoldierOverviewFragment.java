@@ -90,9 +90,8 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         return new IntelLoader(
             getActivity(),
             new ConnectionRequest(
-                UrlFactory.build(
-                    UrlFactory.Type.SOLDIER_OVERVIEW,
-                    bundle.getString(Keys.Soldier.ID),
+                UrlFactory.soldierOverviewURL(
+                    Integer.valueOf(bundle.getString(Keys.Soldier.ID)), //not sure why this int was bundled as string
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )
             )

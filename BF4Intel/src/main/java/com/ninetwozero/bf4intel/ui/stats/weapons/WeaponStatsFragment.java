@@ -10,8 +10,8 @@ import android.widget.ListView;
 
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
+import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.weaponstats.Weapon;
 import com.ninetwozero.bf4intel.json.weaponstats.WeaponStatistics;
 import com.ninetwozero.bf4intel.network.ConnectionRequest;
@@ -24,7 +24,6 @@ import java.util.List;
 public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     private static final int ID_LOADER = 2100;
-    private static final String WEAPON_STATS_URL = "http://battlelog.battlefield.com/bf4/warsawWeaponsPopulateStats/200661244/1/stats/";
     private WeaponStatsAdapter adapter;
     private ListView listView;
 
@@ -56,7 +55,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
         showLoadingState(true);
-        return new IntelLoader(getActivity().getApplicationContext(), new ConnectionRequest(WEAPON_STATS_URL));
+        return new IntelLoader(getActivity().getApplicationContext(), new ConnectionRequest(UrlFactory.weaponStatsURL(200661244, 1)));
     }
 
     @Override
