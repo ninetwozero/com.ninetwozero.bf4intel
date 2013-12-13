@@ -1,9 +1,13 @@
 package com.ninetwozero.bf4intel.factories;
 
+import org.apache.http.client.utils.URIUtils;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
 public class UrlFactory {
     private static final String SCHEME = "http";
     private static final String HOST = "battlelog.battlefield.com/bf4";
-    private static final String DEFAULT_ENCODING = "UTF-8";
     private static final int DEFAULT_PORT = -1;
 
 
@@ -19,6 +23,7 @@ public class UrlFactory {
         USER_FEED("feed/profileevents/{PROFILE_ID}/?start={COUNT}");
 
         private String url;
+
         Type(final String url) {
             this.url = url;
         }
@@ -38,5 +43,23 @@ public class UrlFactory {
 
     public static String buildGravatarUrl(final String hash) {
         return GRAVATAR_URL.replace("{HASH}", hash);
+    }
+
+    public static URI assignments(String soldierName, int soldierId, long userId, int platformId) {
+        return createUri(String.format("soldier/missionsPopulateStats/%s/%d/%d/%d/"
+            , soldierName, soldierId, userId, platformId));
+    }
+
+
+    private static URI createUri(String path) {
+        return prepareURI(path, null);
+    }
+
+    private static URI prepareURI(String path, String query) {
+        try {
+            return URIUtils.createURI(SCHEME, HOST, DEFAULT_PORT, path, query, null);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
