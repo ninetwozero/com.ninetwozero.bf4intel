@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.json.battlefeed;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ninetwozero.bf4intel.json.battlefeed.events.CompletedLevelEvent;
 import com.ninetwozero.bf4intel.util.IntelJsonParser;
 import com.ninetwozero.bf4intel.utils.FeedItemDeserializer;
 
@@ -48,20 +49,23 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatWeHaveCorrectFeedItemTypesinList() throws IOException {
+    public void testThatWeHaveCorrectFeedItemTypesinList() {
         for (int i = 0, max = battleFeed.getFeedItems().size(); i < max; i++) {
-            // TODO: Remove when finished debugging
-            System.out.println("LOOP#" + i);
-            System.out.println("get(i) => " + battleFeed.getFeedItems().get(i));
-            System.out.println("getEvent() => " + battleFeed.getFeedItems().get(i).getEvent());
-            System.out.println("getEventType() => " + battleFeed.getFeedItems().get(i).getEvent().getEventType());
-            /*
-            TODO: LOOP#7: get(i) => null
-             */
             assertEquals(
                 validTypes.get(i),
                 battleFeed.getFeedItems().get(i).getEvent().getEventType()
             );
         }
+    }
+
+    @Test
+    public void testThatLevelCompleteIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(0);
+        final CompletedLevelEvent event = (CompletedLevelEvent) feedItem.getEvent();
+
+        assertEquals("SP_Prison", event.getLevelName());
+        assertEquals("NORMAL", event.getDifficulty());
+        assertEquals(2, event.getGameType());
+        assertEquals(null, event.getPartner());
     }
 }
