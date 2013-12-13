@@ -14,5 +14,6 @@ public enum EventType {
     GAME_ACCESS,
     SHARED_GAME_EVENT,
     BATTLE_PACK,
+    RANKED_UP,
     UNKNOWN
 }

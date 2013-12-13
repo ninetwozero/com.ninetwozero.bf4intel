@@ -14,6 +14,7 @@ import com.ninetwozero.bf4intel.json.battlefeed.generators.ForumPostEventGenerat
 import com.ninetwozero.bf4intel.json.battlefeed.generators.FriendshipEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.GameAccessEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.GameReportEventGenerator;
+import com.ninetwozero.bf4intel.json.battlefeed.generators.RankedUpEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.SharedGameEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.StatusMessageEventGenerator;
 import com.ninetwozero.bf4intel.json.battlefeed.generators.UnknownEventGenerator;
@@ -38,6 +39,7 @@ public class FeedEventFactory {
             put("gameaccess", new GameAccessEventGenerator());
             put("battlepack", new BattlePackEventGenerator());
             put("sharedgameevent", new SharedGameEventGenerator());
+            put("rankedup", new RankedUpEventGenerator());
         }
     };
 

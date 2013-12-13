@@ -21,6 +21,7 @@ public class FeedEventLayoutMap {
         put(EventType.GAME_ACCESS, R.layout.list_item_feed_gameaccess);
         put(EventType.SHARED_GAME_EVENT, R.layout.list_item_feed_sharedgameevent);
         put(EventType.BATTLE_PACK, R.layout.list_item_feed_battlepack);
+        put(EventType.RANKED_UP, R.layout.list_item_feed_rankedup);
         put(EventType.UNKNOWN, R.layout.list_item_feed_status);
     }};
 
