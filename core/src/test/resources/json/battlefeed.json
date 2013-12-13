@@ -1144,7 +1144,6 @@
 				"comment1": null,
 				"comment2": null
 			},
-			,
 			{
 				"numLikes": 1,
 				"owner": {
@@ -1636,7 +1635,6 @@
 				"comment1": null,
 				"comment2": null
 			},
-			,
 			{
 				"numLikes": 0,
 				"owner": {
@@ -1756,7 +1754,7 @@
 				"BATTLEPACK": null,
 				"comment1": null,
 				"comment2": null
-			},
+			}
 			
 		]
 	}
