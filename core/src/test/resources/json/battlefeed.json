@@ -1174,7 +1174,7 @@
 				"owner2": null,
 				"section": 1073741824,
 				"RECEIVEDWALLPOST": {
-					"wallBody": "After this week, I'll be working days and i can play with you guys again. Being at work seeing you all playing conquest  makes me so jealous.\n",
+					"wallBody": "After this week, I'll be working days and i can play with you guys again.",
 					"writerUser": {
 						"username": "NerdNugget",
 						"gravatarMd5": "7189d530355024c4dcedb96d996e895e",
@@ -1696,7 +1696,7 @@
 				"hidden": false,
 				"CREATEDFORUMTHREAD": {
 					"threadTitle": "Neat Black Friday deals?",
-					"threadBody": "Hello world!\r\n\r\nJust out of curiousity (of what I'm probably missing out on) - have any of you found any neat Black Friday deals worth their name? Black Friday seems like a great concept, and unfortunately we're a bit slow on that end here in Sweden. :-)"
+					"threadBody": "Hello world!"
 				},
 				"numComments": 0,
 				"creationDate": 1385681971,

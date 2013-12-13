@@ -2,7 +2,19 @@ package com.ninetwozero.bf4intel.json.battlefeed;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.CommentedBlogEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.events.CompletedLevelEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.CreatedForumThreadEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.FavoriteServerEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.ForumPostEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.FriendshipEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.GameAccessEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.GameReportEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.RankedUpEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.SharedGameEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.StatusMessageEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.WallpostEvent;
 import com.ninetwozero.bf4intel.util.IntelJsonParser;
 import com.ninetwozero.bf4intel.utils.FeedItemDeserializer;
 
@@ -51,6 +63,7 @@ public class BattleFeedTest {
     @Test
     public void testThatWeHaveCorrectFeedItemTypesinList() {
         for (int i = 0, max = battleFeed.getFeedItems().size(); i < max; i++) {
+            System.out.println("TYPE[" + i + "] => " + battleFeed.getFeedItems().get(i).getEvent().getEventType());
             assertEquals(
                 validTypes.get(i),
                 battleFeed.getFeedItems().get(i).getEvent().getEventType()
@@ -67,5 +80,120 @@ public class BattleFeedTest {
         assertEquals("NORMAL", event.getDifficulty());
         assertEquals(2, event.getGameType());
         assertEquals(null, event.getPartner());
+    }
+
+    @Test
+    public void testThatAddedFavoriteServerIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(1);
+        final FavoriteServerEvent event = (FavoriteServerEvent) feedItem.getEvent();
+
+        assertEquals("d3f855e9-b9d4-4eda-8339-e387454260c3", event.getServerGuid());
+        assertEquals("=ADK= #1 | 24/7 Domination  | ADKGamers.com |", event.getServerName());
+    }
+
+    @Test
+    public void testThatSharedGameEventIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(2);
+        final SharedGameEvent event = (SharedGameEvent) feedItem.getEvent();
+
+        assertEquals("404735265846516672", event.getGameId());
+        assertEquals("statItems", event.getCategory().getArrayKey());
+        assertEquals(2, event.getItems().length);
+    }
+
+    @Test
+    public void testThatGameReportEventIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(4);
+        final GameReportEvent event = (GameReportEvent) feedItem.getEvent();
+
+        assertEquals("-[DICE]- BF4 CONQUEST - Normal 8318", event.getServerName());
+        assertEquals("MP_Damage", event.getMap());
+        assertEquals(1569, event.getDuration());
+        assertEquals(1, event.getGameMode());
+    }
+
+    @Test
+    public void testThatFriendshipEventIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(5);
+        final FriendshipEvent event = (FriendshipEvent) feedItem.getEvent();
+
+        assertEquals("2832659598363461442", event.getFriendId());
+        assertEquals("kyleglen", event.getFriend().getUsername());
+    }
+
+    @Test
+    public void testThatGameAccessEventIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(6);
+        final GameAccessEvent event = (GameAccessEvent) feedItem.getEvent();
+
+        assertEquals(2048, event.getGame());
+        assertEquals(524288, event.getExpansion());
+        assertEquals(0, event.getPlatform());
+    }
+
+    @Test
+    public void testThatWallpostEventIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(7);
+        final WallpostEvent event = (WallpostEvent) feedItem.getEvent();
+
+        assertEquals("After this week, I'll be working days and i can play with you guys again.", event.getMessage());
+        assertEquals("2955061645803385831", event.getSender().getId());
+        assertEquals("NerdNugget", event.getSender().getUsername());
+    }
+
+    @Test
+    public void testThatRankedUpEventIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(9);
+        final RankedUpEvent event = (RankedUpEvent) feedItem.getEvent();
+
+        assertEquals("410582818208921344", event.getGameHistoryId());
+        assertEquals("WARSAW_ID_P_RANK30_NAME", event.getName());
+        assertEquals(30, event.getRank());
+    }
+
+    @Test
+    public void testThatStatusMessageEventIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(10);
+        final StatusMessageEvent event = (StatusMessageEvent) feedItem.getEvent();
+
+        assertEquals("New assignment been added PHANTOM PROSPECT. COOL!!! Assignment requirements missing, FAIL!!!", event.getMessage());
+        assertEquals("null", event.getPreview()); //Ugh, String "null" in JSON
+    }
+
+    @Test
+    public void testThatBattlePackEventIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(11);
+        final BattlePackEvent event = (BattlePackEvent) feedItem.getEvent();
+
+        assertEquals("WARSAW_ID_P_BATTLEPACK_WEAPON_AK_5C", event.getName());
+        assertEquals("weapon_ak5c_1", event.getPackKey());
+        assertEquals(4, event.getItems().size());
+    }
+
+    @Test
+    public void testThatForumPostEventIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(13);
+        final ForumPostEvent event = (ForumPostEvent) feedItem.getEvent();
+
+        assertEquals("tomorrow is monday", event.getThreadTitle());
+        assertEquals("Technically speaking, tomorrow is Tuesday (here in Sweden). :-", event.getPostBody());
+    }
+
+    @Test
+    public void testThatCreatedForumThreadEventIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(14);
+        final CreatedForumThreadEvent event = (CreatedForumThreadEvent) feedItem.getEvent();
+
+        assertEquals("Neat Black Friday deals?", event.getTitle());
+        assertEquals("Hello world!", event.getContent());
+    }
+
+    @Test
+    public void testThatCommentedBlogEventIsValid() {
+        final FeedItem feedItem = battleFeed.getFeedItems().get(15);
+        final CommentedBlogEvent event = (CommentedBlogEvent) feedItem.getEvent();
+
+        assertEquals("Full Week of Double XP Live", event.getBlogTitle());
+        assertEquals("Hello world!", event.getComment());
     }
 }

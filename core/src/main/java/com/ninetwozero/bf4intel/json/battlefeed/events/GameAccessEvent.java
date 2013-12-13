@@ -14,9 +14,9 @@ public class GameAccessEvent extends BaseEvent {
 
     @SerializedName("game")
     private int game;
-    @SerializedName("platform")
-    private int expansion;
     @SerializedName("expansion")
+    private int expansion;
+    @SerializedName("platform")
     private int platform;
 
     public int getGame() {
