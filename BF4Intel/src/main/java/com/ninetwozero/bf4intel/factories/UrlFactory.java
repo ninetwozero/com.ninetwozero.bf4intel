@@ -17,7 +17,6 @@ public class UrlFactory {
     public enum Type {
         BATTLE_REPORT_LISTING("warsawbattlereportspopulate/{SOLDIER_ID}/2048/{PLATFORM}/"),
         SOLDIER_OVERVIEW("warsawoverviewpopulate/{SOLDIER_ID}/{PLATFORM}/"),
-        ASSIGNMENTS("soldier/missionsPopulateStats/LittleBoySVK/{SOLDIER_ID}/{USER_ID}/{PLATFORM}/"),
 
         GLOBAL_FEED("feed/homeevents/?start={COUNT}"),
         USER_FEED("feed/profileevents/{PROFILE_ID}/?start={COUNT}");
@@ -50,14 +49,18 @@ public class UrlFactory {
             , soldierName, soldierId, userId, platformId));
     }
 
-
-    private static URI createUri(String path) {
-        return prepareURI(path, null);
+    public static URI awards(int soldierId, int platformId) {
+        return createUri(String.format("warsawawardspopulate/%d/%d/", soldierId, platformId));
     }
 
-    private static URI prepareURI(String path, String query) {
+
+    private static URI createUri(String path) {
+        return prepareURI(HOST, path, null);
+    }
+
+    private static URI prepareURI(String host, String path, String query) {
         try {
-            return URIUtils.createURI(SCHEME, HOST, DEFAULT_PORT, path, query, null);
+            return URIUtils.createURI(SCHEME, host, DEFAULT_PORT, path, query, null);
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
