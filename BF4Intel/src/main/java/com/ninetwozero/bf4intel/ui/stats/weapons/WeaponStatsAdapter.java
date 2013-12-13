@@ -22,8 +22,8 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
     }
 
     @Override
-    public Weapon getItem(int position) {
-        return itemsList.get(position);
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override

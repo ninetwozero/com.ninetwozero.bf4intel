@@ -23,12 +23,12 @@ public abstract class BaseIntelAdapter<T> extends BaseAdapter {
     }
 
     @Override
-    public abstract T getItem(int position);
+    public T getItem(int position){
+        return itemsList.get(position);
+    }
 
     @Override
-    public long getItemId(int position) {
-        return 0;
-    }
+    public abstract long getItemId(int position);
 
     @Override
     public abstract View getView(int position, View convertView, ViewGroup parent);
