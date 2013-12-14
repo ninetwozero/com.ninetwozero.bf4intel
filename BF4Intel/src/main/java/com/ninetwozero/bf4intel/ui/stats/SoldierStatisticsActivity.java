@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.activities;
+package com.ninetwozero.bf4intel.ui.stats;
 
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -56,15 +56,9 @@ public class SoldierStatisticsActivity extends BaseIntelActivity {
 
     private void setupFragments() {
         fragmentList = new ArrayList<Fragment>();
-        fragmentList.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForWeapons()));
+        fragmentList.add(FragmentFactory.get(FragmentFactory.Type.WEAPON_STATS, new Bundle()));
         fragmentList.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForVehicles()));
         fragmentList.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForReports()));
-    }
-
-    private Bundle getBundleForWeapons() {
-        final Bundle bundle = new Bundle();
-        bundle.putString("TEST", "This is the weapons tab");
-        return bundle;
     }
 
     private Bundle getBundleForVehicles() {
@@ -84,13 +78,14 @@ public class SoldierStatisticsActivity extends BaseIntelActivity {
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        final int[] titles = new int[] { R.string.weapons, R.string.vehicles, R.string.reports };
+        final int[] titles = new int[]{R.string.weapons, R.string.vehicles, R.string.reports};
         for (int i = 0; i < titles.length; i++) {
             actionBar.addTab(
                 actionBar.newTab().setText(titles[i]).setTabListener(
                     new ActionBar.TabListener() {
                         @Override
-                        public void onTabSelected(final ActionBar.Tab tab, final android.app.FragmentTransaction ft) { final FragmentManager manager = getSupportFragmentManager();
+                        public void onTabSelected(final ActionBar.Tab tab, final android.app.FragmentTransaction ft) {
+                            final FragmentManager manager = getSupportFragmentManager();
                             final FragmentTransaction transaction = manager.beginTransaction();
                             transaction.replace(R.id.activity_root, fragmentList.get(tab.getPosition()));
                             transaction.commit();

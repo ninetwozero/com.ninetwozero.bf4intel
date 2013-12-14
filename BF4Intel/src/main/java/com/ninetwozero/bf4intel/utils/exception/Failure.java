@@ -5,6 +5,7 @@ public class Failure extends Exception {
         super(e);
     }
 
-    public Failure() {
+    public Failure(String message) {
+        super(message);
     }
 }

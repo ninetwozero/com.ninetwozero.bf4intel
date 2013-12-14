@@ -16,4 +16,8 @@
   <string name="cdesc_battle_pack_icon">Battle Pack Icon</string>
   <string name="cdesc_award_image">Award image</string>
   <string name="cdesc_user_gravatar">User gravatar</string>
+
+  <string name="cdesc_service_star">Service star image</string>
+  <string name="cdesc_weapon_stats_image">Weapon image</string>
+
 </resources>

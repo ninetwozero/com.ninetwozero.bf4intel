@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/wrap_sstars"
+  android:layout_width="@dimen/service_star_count_width"
+  android:layout_height="@dimen/service_star_count_height"
+  android:orientation="vertical"
+  android:layout_marginRight="@dimen/spacing_s"
+  android:background="@drawable/bg_rounded_corners"
+  android:gravity="center"
+  android:padding="@dimen/spacing_xs"
+  android:layout_alignParentRight="true"
+  android:layout_centerVertical="true"
+  android:layout_gravity="center_vertical">
+
+  <TextView
+    android:id="@+id/service_star_count"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textColor="@color/white"
+    android:textSize="@dimen/text_xl" />
+
+  <ImageView
+    android:id="@+id/service_star_image"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:src="@drawable/service_star"
+    android:contentDescription="@string/cdesc_service_star" />
+
+</LinearLayout>

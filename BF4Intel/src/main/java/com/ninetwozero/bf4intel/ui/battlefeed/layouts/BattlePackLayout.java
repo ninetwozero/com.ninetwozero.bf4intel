@@ -21,8 +21,8 @@ import com.ninetwozero.bf4intel.resources.maps.emblems.EmblemImageMap;
 import com.ninetwozero.bf4intel.resources.maps.emblems.EmblemStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryStringMap;
-import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 
 import java.util.List;
 
@@ -86,7 +86,7 @@ public class BattlePackLayout implements EventLayout<BattlePackEvent> {
                         category.equals("camo") ? R.string.battlefeed_paint : R.string.battlefeed_appearance
                     );
                 } else if(category.equals("weapon")) {
-                    populateCell(cell, WeaponImageMap.get(itemKey), WeaponStringMap.get(itemKey), NO_SUBTITLE);
+                    populateCell(cell, WeaponsImageMap.get(itemKey), WeaponStringMap.get(itemKey), NO_SUBTITLE);
                 } else {
                     populateCell(
                         cell,

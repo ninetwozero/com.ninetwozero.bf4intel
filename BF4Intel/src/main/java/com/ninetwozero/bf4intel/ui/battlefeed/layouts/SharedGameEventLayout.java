@@ -30,8 +30,8 @@ import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryStringMap;
-import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 
 public class SharedGameEventLayout implements EventLayout<SharedGameEvent> {
     @Override
@@ -94,7 +94,7 @@ public class SharedGameEventLayout implements EventLayout<SharedGameEvent> {
 
     private void populateAwardCell(final View cell, final String itemKey) {
         if (itemKey.contains("STAR_NAME")) {
-            populateCell(cell, R.drawable.award_service_star, ServiceStarStringMap.get(itemKey));
+            populateCell(cell, R.drawable.service_star, ServiceStarStringMap.get(itemKey));
         } else {
             populateCell(cell, AwardImageMap.get(itemKey), AwardStringMap.get(itemKey));
         }
@@ -102,7 +102,7 @@ public class SharedGameEventLayout implements EventLayout<SharedGameEvent> {
 
     private void populateGameReportCell(final View cell, final String itemKey) {
         if (itemKey.contains("WNAME") || itemKey.contains("INAME")) {
-            populateCell(cell, WeaponImageMap.get(itemKey), WeaponStringMap.get(itemKey));
+            populateCell(cell, WeaponsImageMap.get(itemKey), WeaponStringMap.get(itemKey));
         } else if (itemKey.contains("VNAME")) {
             populateCell(cell, VehicleImageMap.get(itemKey), VehicleStringMap.get(itemKey));
         } else if (itemKey.contains("ANAME")) {

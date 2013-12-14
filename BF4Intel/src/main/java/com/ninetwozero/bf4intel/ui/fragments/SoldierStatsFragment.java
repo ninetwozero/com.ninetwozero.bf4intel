@@ -35,7 +35,6 @@ public class SoldierStatsFragment extends BaseListFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
-
         final View view = this.layoutInflater.inflate(R.layout.fragment_soldier_stats, parent, false);
         initialize(view);
         return view;

@@ -68,13 +68,12 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     @Override
     public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
-        displayAsLoading(true);
+        showLoadingState(true);
         return new IntelLoader(
             getActivity(),
             new ConnectionRequest(
-                UrlFactory.build(
-                    UrlFactory.Type.BATTLE_REPORT_LISTING,
-                    bundle.getString(Keys.Soldier.ID),
+                UrlFactory.battleReports(
+                    Integer.valueOf(bundle.getString(Keys.Soldier.ID)), //not sure why int was stored as string in bundle
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )
             )
@@ -85,7 +84,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     protected void onLoadSuccess(final String resultMessage) {
         final List<SummaryBattleReport> reports = fromJsonArray(resultMessage, SummaryBattleReport.class, "gameReports");
         sendDataToListView(reports);
-        displayAsLoading(false);
+        showLoadingState(false);
     }
 
     @Override
