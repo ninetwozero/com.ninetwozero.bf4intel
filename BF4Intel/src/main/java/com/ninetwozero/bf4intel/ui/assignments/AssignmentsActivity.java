@@ -36,7 +36,7 @@ public class AssignmentsActivity extends BaseIntelActivity {
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
         showLoadingStateInActionBar(true);
-        return new IntelLoader(getApplicationContext(), new ConnectionRequest(UrlFactory.assignmentsURL("LittleBoySVK", 200661244, 2832665149443593606L, 1)));
+        return new IntelLoader(getApplicationContext(), new ConnectionRequest(UrlFactory.buildAssignmentsURL("LittleBoySVK", 200661244, 2832665149443593606L, 1)));
     }
 
     @Override

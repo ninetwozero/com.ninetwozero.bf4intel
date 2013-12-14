@@ -35,7 +35,7 @@ public class AwardsActivity extends BaseIntelActivity {
 
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
-        return new IntelLoader(getApplicationContext(), new ConnectionRequest(UrlFactory.awardsURL(200661244, 1)));
+        return new IntelLoader(getApplicationContext(), new ConnectionRequest(UrlFactory.buildAwardsURL(200661244, 1)));
     }
 
     @Override

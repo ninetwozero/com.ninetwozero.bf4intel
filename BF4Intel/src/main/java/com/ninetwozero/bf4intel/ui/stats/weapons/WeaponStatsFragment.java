@@ -55,7 +55,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
         showLoadingState(true);
-        return new IntelLoader(getActivity().getApplicationContext(), new ConnectionRequest(UrlFactory.weaponStatsURL(200661244, 1)));
+        return new IntelLoader(getActivity().getApplicationContext(), new ConnectionRequest(UrlFactory.buildWeaponStatsURL(200661244, 1)));
     }
 
     @Override

@@ -105,8 +105,8 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
         final boolean fetchGlobalFeed = "".equals(userId);
 
         return new IntelLoader(getActivity(), new ConnectionRequest(fetchGlobalFeed
-            ? UrlFactory.globalFeedURL(count)
-            : UrlFactory.userFeedURL(userId, count)));
+            ? UrlFactory.buildGlobalFeedURL(count)
+            : UrlFactory.buildUserFeedURL(userId, count)));
     }
 
     @Override
