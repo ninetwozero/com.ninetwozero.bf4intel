@@ -61,7 +61,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatWeHaveCorrectFeedItemTypesinList() {
+    public void shouldFindTheCorrectFeedItemTypesinList() {
         for (int i = 0, max = battleFeed.getFeedItems().size(); i < max; i++) {
             System.out.println("TYPE[" + i + "] => " + battleFeed.getFeedItems().get(i).getEvent().getEventType());
             assertEquals(
@@ -72,7 +72,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatLevelCompleteIsValid() {
+    public void shouldParseLevelCompleteEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(0);
         final CompletedLevelEvent event = (CompletedLevelEvent) feedItem.getEvent();
 
@@ -83,7 +83,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatAddedFavoriteServerIsValid() {
+    public void shouldParseAddedFavoriteServerEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(1);
         final FavoriteServerEvent event = (FavoriteServerEvent) feedItem.getEvent();
 
@@ -92,7 +92,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatSharedGameEventIsValid() {
+    public void shouldParseSharedGameEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(2);
         final SharedGameEvent event = (SharedGameEvent) feedItem.getEvent();
 
@@ -102,7 +102,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatGameReportEventIsValid() {
+    public void shouldParseGameReportEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(4);
         final GameReportEvent event = (GameReportEvent) feedItem.getEvent();
 
@@ -113,7 +113,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatFriendshipEventIsValid() {
+    public void shouldParseFriendshipEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(5);
         final FriendshipEvent event = (FriendshipEvent) feedItem.getEvent();
 
@@ -122,7 +122,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatGameAccessEventIsValid() {
+    public void shouldParseGameAccessEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(6);
         final GameAccessEvent event = (GameAccessEvent) feedItem.getEvent();
 
@@ -132,7 +132,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatWallpostEventIsValid() {
+    public void shouldParseWallpostEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(7);
         final WallpostEvent event = (WallpostEvent) feedItem.getEvent();
 
@@ -142,7 +142,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatRankedUpEventIsValid() {
+    public void shouldParseRankedUpEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(9);
         final RankedUpEvent event = (RankedUpEvent) feedItem.getEvent();
 
@@ -152,7 +152,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatStatusMessageEventIsValid() {
+    public void shouldParseStatusMessageEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(10);
         final StatusMessageEvent event = (StatusMessageEvent) feedItem.getEvent();
 
@@ -161,7 +161,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatBattlePackEventIsValid() {
+    public void shouldParseBattlePackEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(11);
         final BattlePackEvent event = (BattlePackEvent) feedItem.getEvent();
 
@@ -171,7 +171,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatForumPostEventIsValid() {
+    public void shouldParseForumPostEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(13);
         final ForumPostEvent event = (ForumPostEvent) feedItem.getEvent();
 
@@ -180,7 +180,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatCreatedForumThreadEventIsValid() {
+    public void shouldParseCreatedForumThreadEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(14);
         final CreatedForumThreadEvent event = (CreatedForumThreadEvent) feedItem.getEvent();
 
@@ -189,7 +189,7 @@ public class BattleFeedTest {
     }
 
     @Test
-    public void testThatCommentedBlogEventIsValid() {
+    public void shouldParseCommentedBlogEventCorrectly() {
         final FeedItem feedItem = battleFeed.getFeedItems().get(15);
         final CommentedBlogEvent event = (CommentedBlogEvent) feedItem.getEvent();
 
