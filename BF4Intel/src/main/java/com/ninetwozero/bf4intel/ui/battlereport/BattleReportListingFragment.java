@@ -27,11 +27,6 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     public BattleReportListingFragment() {
     }
 
-    public static BattleReportListingFragment newInstance() {
-        final BattleReportListingFragment fragment = new BattleReportListingFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static BattleReportListingFragment newInstance(final Bundle data) {
         final BattleReportListingFragment fragment = new BattleReportListingFragment();

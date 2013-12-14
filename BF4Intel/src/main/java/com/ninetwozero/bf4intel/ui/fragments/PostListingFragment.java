@@ -26,11 +26,6 @@ public class PostListingFragment extends BaseListFragment {
     public PostListingFragment() {
     }
 
-    public static PostListingFragment newInstance() {
-        final PostListingFragment fragment = new PostListingFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static PostListingFragment newInstance(final Bundle data) {
         final PostListingFragment fragment = new PostListingFragment();

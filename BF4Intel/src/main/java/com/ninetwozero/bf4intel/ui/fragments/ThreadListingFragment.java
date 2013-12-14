@@ -27,11 +27,6 @@ public class ThreadListingFragment extends BaseListFragment {
     public ThreadListingFragment() {
     }
 
-    public static ThreadListingFragment newInstance() {
-        final ThreadListingFragment fragment = new ThreadListingFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static ThreadListingFragment newInstance(final Bundle data) {
         final ThreadListingFragment fragment = new ThreadListingFragment();

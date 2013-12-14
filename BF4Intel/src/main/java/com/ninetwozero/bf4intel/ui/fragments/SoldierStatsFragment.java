@@ -20,11 +20,6 @@ public class SoldierStatsFragment extends BaseListFragment {
     public SoldierStatsFragment() {
     }
 
-    public static SoldierStatsFragment newInstance() {
-        final SoldierStatsFragment fragment = new SoldierStatsFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static SoldierStatsFragment newInstance(final Bundle data) {
         final SoldierStatsFragment fragment = new SoldierStatsFragment();

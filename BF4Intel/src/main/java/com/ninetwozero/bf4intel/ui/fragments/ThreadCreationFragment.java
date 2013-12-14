@@ -20,11 +20,6 @@ public class ThreadCreationFragment extends BaseFragment {
     public ThreadCreationFragment() {
     }
 
-    public static ThreadCreationFragment newInstance() {
-        final ThreadCreationFragment fragment = new ThreadCreationFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static ThreadCreationFragment newInstance(final Bundle data) {
         final ThreadCreationFragment fragment = new ThreadCreationFragment();

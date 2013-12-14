@@ -19,11 +19,6 @@ public class PlatoonProfileFragment extends BaseListFragment {
     public PlatoonProfileFragment() {
     }
 
-    public static PlatoonProfileFragment newInstance() {
-        final PlatoonProfileFragment fragment = new PlatoonProfileFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static PlatoonProfileFragment newInstance(final Bundle data) {
         final PlatoonProfileFragment fragment = new PlatoonProfileFragment();

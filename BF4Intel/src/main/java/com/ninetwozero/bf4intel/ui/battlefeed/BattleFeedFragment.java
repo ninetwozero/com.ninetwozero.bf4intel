@@ -37,12 +37,6 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     public BattleFeedFragment() {
     }
 
-    public static BattleFeedFragment newInstance() {
-        final BattleFeedFragment fragment = new BattleFeedFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
-
     public static BattleFeedFragment newInstance(final Bundle data) {
         final BattleFeedFragment fragment = new BattleFeedFragment();
         fragment.setArguments(data);

@@ -21,11 +21,6 @@ public class NewsListingFragment extends BaseListFragment {
     public NewsListingFragment() {
     }
 
-    public static NewsListingFragment newInstance() {
-        final NewsListingFragment fragment = new NewsListingFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static NewsListingFragment newInstance(final Bundle data) {
         final NewsListingFragment fragment = new NewsListingFragment();

@@ -19,11 +19,6 @@ public class BattleFeedPostingFragment extends BaseFragment {
     public BattleFeedPostingFragment() {
     }
 
-    public static BattleFeedPostingFragment newInstance() {
-        final BattleFeedPostingFragment fragment = new BattleFeedPostingFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static BattleFeedPostingFragment newInstance(final Bundle data) {
         final BattleFeedPostingFragment fragment = new BattleFeedPostingFragment();

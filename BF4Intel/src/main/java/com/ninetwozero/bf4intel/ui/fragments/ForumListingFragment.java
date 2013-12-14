@@ -19,11 +19,6 @@ public class ForumListingFragment extends BaseListFragment {
     public ForumListingFragment() {
     }
 
-    public static ForumListingFragment newInstance() {
-        final ForumListingFragment fragment = new ForumListingFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static ForumListingFragment newInstance(final Bundle data) {
         final ForumListingFragment fragment = new ForumListingFragment();
