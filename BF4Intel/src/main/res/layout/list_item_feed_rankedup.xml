@@ -13,11 +13,12 @@
 
     <ImageView
       android:id="@+id/rank_image"
-      android:layout_width="128dp"
-      android:layout_height="128dp"
+      android:layout_width="@dimen/feed_item_rank_image_width"
+      android:layout_height="@dimen/feed_item_rank_image_height"
       android:layout_centerInParent="true"
       android:layout_marginTop="@dimen/spacing_l"
-      android:src="@drawable/r0"/>
+      android:src="@drawable/r0"
+      android:contentDescription="@string/cdesc_rank_image"/>
 
     <TextView
       android:id="@+id/rank_title"

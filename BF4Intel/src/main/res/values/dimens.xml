@@ -64,4 +64,8 @@
   <!-- Service star shape size-->
   <dimen name="service_star_count_width">@dimen/list_index_count</dimen>
   <dimen name="service_star_count_height">@dimen/list_index_count</dimen>
+
+  <!-- Feed item rank image size-->
+  <dimen name="feed_item_rank_image_height">128dp</dimen>
+  <dimen name="feed_item_rank_image_width">@dimen/feed_item_rank_image_height</dimen>
 </resources>
