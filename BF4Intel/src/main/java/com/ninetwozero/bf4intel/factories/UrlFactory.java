@@ -11,10 +11,11 @@ public class UrlFactory {
     private static final String HOST = "battlelog.battlefield.com/bf4";
     private static final int DEFAULT_PORT = -1;
 
-    private static final String GRAVATAR_URL = "http://www.gravatar.com/avatar/%s/?s=320";
+    private static final String GRAVATAR_URL = "http://www.gravatar.com/avatar/%s/?s=320&d=%s";
+    private static final String DEFAULT_GRAVATAR = "http://battlelog-cdn.battlefield.com/cdnprefix/avatar1/public/base/shared/default-avatar-320.png";
 
-    public static final String buildGravatarUrl(final String hash) {
-        return String.format(GRAVATAR_URL, hash);
+    public static String buildGravatarUrl(final String hash) {
+        return String.format(GRAVATAR_URL, hash, DEFAULT_GRAVATAR);
     }
 
     public static URL buildSoldierOverviewURL(final int soldierId, final int platformId) {
