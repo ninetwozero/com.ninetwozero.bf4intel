@@ -20,6 +20,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.json.battlefeed.BattleFeed;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
 import com.ninetwozero.bf4intel.network.ConnectionRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
@@ -110,8 +111,8 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
 
     @Override
     protected void onLoadSuccess(final String resultMessage) {
-        final List<FeedItem> events = fromJsonArray(generateCustomGson(), resultMessage, FeedItem.class, "feedEvents");
-        sendDataToListView(events);
+        final BattleFeed battleFeed = fromJson(generateCustomGson(), resultMessage, BattleFeed.class);
+        sendDataToListView(battleFeed.getFeedItems());
         showLoadingState(false);
     }
 

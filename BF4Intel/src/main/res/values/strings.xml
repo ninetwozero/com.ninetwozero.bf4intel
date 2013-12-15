@@ -133,5 +133,6 @@
   <string name="forum_x_posts_in_y_threads" formatted="false">%s posts in %s threads</string>
   <string name="forum_created_by">Created by</string>
   <string name="dummy_status">status</string>
+  <string name="feed_category_ranked_up">Ranked up</string>
 
 </resources>

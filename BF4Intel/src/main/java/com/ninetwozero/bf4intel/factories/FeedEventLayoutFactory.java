@@ -1,7 +1,7 @@
 package com.ninetwozero.bf4intel.factories;
 
-import com.ninetwozero.bf4intel.json.battlefeed.EventType;
 import com.ninetwozero.bf4intel.interfaces.EventLayout;
+import com.ninetwozero.bf4intel.json.battlefeed.EventType;
 import com.ninetwozero.bf4intel.ui.battlefeed.layouts.BattlePackLayout;
 import com.ninetwozero.bf4intel.ui.battlefeed.layouts.CommentedBlogLayout;
 import com.ninetwozero.bf4intel.ui.battlefeed.layouts.CommentedGameReportLayout;
@@ -12,6 +12,7 @@ import com.ninetwozero.bf4intel.ui.battlefeed.layouts.ForumPostLayout;
 import com.ninetwozero.bf4intel.ui.battlefeed.layouts.FriendshipLayout;
 import com.ninetwozero.bf4intel.ui.battlefeed.layouts.GameAccessLayout;
 import com.ninetwozero.bf4intel.ui.battlefeed.layouts.GameReportLayout;
+import com.ninetwozero.bf4intel.ui.battlefeed.layouts.RankedUpLayout;
 import com.ninetwozero.bf4intel.ui.battlefeed.layouts.SharedGameEventLayout;
 import com.ninetwozero.bf4intel.ui.battlefeed.layouts.StatusMessageLayout;
 import com.ninetwozero.bf4intel.ui.battlefeed.layouts.UnknownEventLayout;
@@ -20,8 +21,8 @@ import com.ninetwozero.bf4intel.ui.battlefeed.layouts.WallpostLayout;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UiBinderFactory {
-    private final static Map<EventType, EventLayout> uiBinderMap = new HashMap<EventType, EventLayout>() {
+public class FeedEventLayoutFactory {
+    private final static Map<EventType, EventLayout> eventLayoutMap = new HashMap<EventType, EventLayout>() {
         {
             put(EventType.ADDED_FAV_SERVER, new FavoriteServerLayout());
             put(EventType.BATTLE_PACK, new BattlePackLayout());
@@ -37,11 +38,12 @@ public class UiBinderFactory {
             put(EventType.SHARED_GAME_EVENT, new SharedGameEventLayout());
             put(EventType.UNKNOWN, new UnknownEventLayout());
             put(EventType.WROTE_FORUM_POST, new ForumPostLayout());
+            put(EventType.RANKED_UP, new RankedUpLayout());
         }
     };
 
     @SuppressWarnings("unchecked")
     public static <T extends EventLayout> T get(final EventType eventType) {
-        return (T) uiBinderMap.get(eventType);
+        return (T) eventLayoutMap.get(eventType);
     }
 }

@@ -8,8 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.factories.FeedEventLayoutFactory;
 import com.ninetwozero.bf4intel.json.battlefeed.EventType;
-import com.ninetwozero.bf4intel.factories.UiBinderFactory;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
 import com.ninetwozero.bf4intel.resources.maps.FeedEventLayoutMap;
@@ -69,7 +69,7 @@ public class BattleFeedAdapter extends BaseAdapter {
         if (event.getEventType() == EventType.UNKNOWN) {
             populateUnknownEventView(convertView, item.getEventAsString());   
         } else {
-            UiBinderFactory.get(event.getEventType()).populateView(context, convertView, event);
+          FeedEventLayoutFactory.get(event.getEventType()).populateView(context, convertView, event);
         }
         return convertView;
     }
@@ -118,6 +118,8 @@ public class BattleFeedAdapter extends BaseAdapter {
                 return R.string.feed_category_unlocks;
             case BATTLE_PACK:
                 return R.string.feed_category_battlepack;
+            case RANKED_UP:
+                return R.string.feed_category_ranked_up;
             default:
                 return R.string.na;
         }

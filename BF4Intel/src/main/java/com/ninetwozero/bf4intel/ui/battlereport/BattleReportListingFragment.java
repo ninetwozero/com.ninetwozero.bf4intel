@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.json.battlereports.BattleReportOverview;
 import com.ninetwozero.bf4intel.json.battlereports.SummaryBattleReport;
 import com.ninetwozero.bf4intel.network.ConnectionRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
@@ -82,8 +83,8 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     @Override
     protected void onLoadSuccess(final String resultMessage) {
-        final List<SummaryBattleReport> reports = fromJsonArray(resultMessage, SummaryBattleReport.class, "gameReports");
-        sendDataToListView(reports);
+        BattleReportOverview overview = fromJson(resultMessage, BattleReportOverview.class);
+        sendDataToListView(overview.getReports());
         showLoadingState(false);
     }
 

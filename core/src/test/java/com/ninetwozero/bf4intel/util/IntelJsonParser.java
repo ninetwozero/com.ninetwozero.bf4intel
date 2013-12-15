@@ -18,4 +18,12 @@ public class IntelJsonParser {
         reader.close();
         return gson.fromJson(dataJson, clazz);
     }
+
+    public static final <T extends Object> T parse(String fileName, Class<T> clazz, Gson gson) throws IOException {
+        Reader reader = new InputStreamReader(clazz.getResourceAsStream(fileName));
+        JsonParser parser = new JsonParser();
+        JsonObject dataJson = parser.parse(reader).getAsJsonObject().getAsJsonObject("data");
+        reader.close();
+        return gson.fromJson(dataJson, clazz);
+    }
 }
