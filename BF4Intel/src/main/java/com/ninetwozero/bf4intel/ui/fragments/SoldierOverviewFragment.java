@@ -21,7 +21,7 @@ import com.ninetwozero.bf4intel.json.soldieroverview.BaseStatsModel;
 import com.ninetwozero.bf4intel.json.soldieroverview.CompletionProgress;
 import com.ninetwozero.bf4intel.json.soldieroverview.SkillOverview;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
-import com.ninetwozero.bf4intel.network.ConnectionRequest;
+import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.CompletionStringMap;
@@ -84,7 +84,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         displayAsLoading(true);
         return new IntelLoader(
             getActivity(),
-            new ConnectionRequest(
+            new SimpleGetRequest(
                 UrlFactory.buildSoldierOverviewURL(
                     Integer.valueOf(bundle.getString(Keys.Soldier.ID)), //not sure why this int was bundled as string
                     bundle.getInt(Keys.Soldier.PLATFORM)

@@ -32,7 +32,7 @@ public abstract class BaseListFragment extends ListFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         this.layoutInflater = inflater;
-        return new View(getActivity());
+        return new View(getActivity()); // TODO: Return NULL instead?
     }
 
     protected void updateActionBar(final Activity activity, final String text) {

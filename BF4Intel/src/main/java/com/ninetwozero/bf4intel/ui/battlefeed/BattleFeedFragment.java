@@ -22,7 +22,7 @@ import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.battlefeed.BattleFeed;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
-import com.ninetwozero.bf4intel.network.ConnectionRequest;
+import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
@@ -95,12 +95,15 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     @Override
     public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         final int count = 0;
-        final long userId = Long.valueOf(bundle.getString(Keys.Profile.ID, ""));
-        final boolean fetchGlobalFeed = "".equals(userId);
+        final long userId = Long.valueOf(bundle.getString(Keys.Profile.ID, "0")); // TODO: Do we need to get it as long?
+        final boolean fetchGlobalFeed = "0".equals(userId);
 
-        return new IntelLoader(getActivity(), new ConnectionRequest(fetchGlobalFeed
-            ? UrlFactory.buildGlobalFeedURL(count)
-            : UrlFactory.buildUserFeedURL(userId, count)));
+        return new IntelLoader(
+            getActivity(),
+            new SimpleGetRequest(
+                fetchGlobalFeed ? UrlFactory.buildGlobalFeedURL(count) : UrlFactory.buildUserFeedURL(userId, count)
+            )
+        );
     }
 
     @Override
