@@ -39,6 +39,7 @@
   <dimen name="text_xxl">40sp</dimen>
 
   <!-- Avatar size -->
+  <dimen name="avatar_size_xl">64dp</dimen>
   <dimen name="avatar_size_l">32dp</dimen>
   <dimen name="avatar_size_m">24dp</dimen>
   <dimen name="avatar_size_s">16dp</dimen>

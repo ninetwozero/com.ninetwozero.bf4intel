@@ -49,7 +49,7 @@ public class UrlFactory {
         return createURL(String.format("feed/homeevents/?start=%d", offset));
     }
 
-    public static URL buildUserFeedURL(long userId, final int offset) {
+    public static URL buildUserFeedURL(final long userId, final int offset) {
         return createURL(String.format("feed/profileevents/%d/?start=%d", userId, offset));
     }
 

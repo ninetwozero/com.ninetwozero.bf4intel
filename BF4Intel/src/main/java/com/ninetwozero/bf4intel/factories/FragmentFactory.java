@@ -15,6 +15,7 @@ import com.ninetwozero.bf4intel.ui.fragments.NotificationFragment;
 import com.ninetwozero.bf4intel.ui.fragments.PlatoonProfileFragment;
 import com.ninetwozero.bf4intel.ui.fragments.PostCreationFragment;
 import com.ninetwozero.bf4intel.ui.fragments.PostListingFragment;
+import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
 import com.ninetwozero.bf4intel.ui.fragments.SoldierOverviewFragment;
 import com.ninetwozero.bf4intel.ui.fragments.SoldierStatsFragment;
 import com.ninetwozero.bf4intel.ui.fragments.ThreadCreationFragment;
@@ -44,12 +45,14 @@ public class FragmentFactory {
         BATTLE_REPORT,
 
         FORUM_LISTING,
+        FORUM_SEARCH,
         THREAD_LISTING,
         THREAD_CREATING,
         POST_LISTING,
         POST_CREATING,
 
         NOTIFICATION,
+        USER_SEARCH,
     }
 
     public static Fragment get(final Type type) {
@@ -92,6 +95,8 @@ public class FragmentFactory {
                 return BattleReportFragment.newInstance(data);
             case BATTLE_REPORT_LISTING:
                 return BattleReportListingFragment.newInstance(data);
+            case USER_SEARCH:
+                return ProfileSearchFragment.newInstance(data);
             default:
                 throw new TypeNotPresentException("" + type, null);
         }

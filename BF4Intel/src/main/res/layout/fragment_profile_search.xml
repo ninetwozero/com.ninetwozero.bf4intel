@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <LinearLayout
+    android:id="@+id/wrap_form"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spacing_m"
+    android:orientation="vertical">
+
+    <EditText
+      android:id="@+id/input_search"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/hint_search"
+      android:layout_marginBottom="@dimen/spacing_s"
+    />
+    <Button
+      android:id="@+id/button_search"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/search"/>
+  </LinearLayout>
+
+  <ListView
+    android:id="@android:id/list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/spacing_m"
+    android:layout_below="@id/wrap_form"/>
+
+  <TextView
+    android:id="@android:id/empty"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    />
+
+  <include layout="@layout/loading_progress"/>
+</RelativeLayout>
