@@ -6,11 +6,17 @@ public class AssignmentAward {
 
     @SerializedName("code")
     private String assignmentKey;
+    @SerializedName("stringID")
+    private String stringID;
     @SerializedName("license")
     private String expansionPack;
 
     public String getAssignmentKey() {
         return assignmentKey;
+    }
+
+    public String getStringID() {
+        return stringID;
     }
 
     public String getExpansionPack() {
