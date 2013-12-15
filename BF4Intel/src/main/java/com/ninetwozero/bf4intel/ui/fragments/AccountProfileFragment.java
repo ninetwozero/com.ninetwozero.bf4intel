@@ -19,7 +19,6 @@ public class AccountProfileFragment extends BaseListFragment {
     public AccountProfileFragment() {
     }
 
-
     public static AccountProfileFragment newInstance(final Bundle data) {
         final AccountProfileFragment fragment = new AccountProfileFragment();
         fragment.setArguments(data);

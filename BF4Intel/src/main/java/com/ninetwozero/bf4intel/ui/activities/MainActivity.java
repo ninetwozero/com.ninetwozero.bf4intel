@@ -16,7 +16,9 @@ import android.view.View;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
+import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.Profile;
+import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
 
@@ -187,7 +189,18 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         if (resultCode == Activity.RESULT_OK) {
             if (data.hasExtra(ProfileSearchFragment.INTENT_SEARCH_RESULT)) {
                 final Profile profile = (Profile) data.getSerializableExtra(ProfileSearchFragment.INTENT_SEARCH_RESULT);
-                // TODO: Do we want to open an Activity?
+                final Bundle dataBundle = new Bundle();
+                dataBundle.putString(Keys.Profile.ID, profile.getId());
+                dataBundle.putString(Keys.Profile.USERNAME, profile.getUsername());
+                dataBundle.putString(Keys.Profile.GRAVATAR_HASH, profile.getGravatarHash());
+
+                final Intent intent = new Intent(getApplicationContext(), SingleFragmentActivity.class)
+                    .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, dataBundle)
+                    .putExtra(
+                        SingleFragmentActivity.INTENT_FRAGMENT_TYPE,
+                        FragmentFactory.Type.ACCOUNT_PROFILE
+                    );
+                startActivity(intent);
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
