@@ -9,27 +9,30 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/spacing_m"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:weightSum="1">
 
     <EditText
       android:id="@+id/input_search"
-      android:layout_width="match_parent"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:hint="@string/hint_search"
       android:layout_marginBottom="@dimen/spacing_s"
+      android:layout_weight="0.77"
     />
     <Button
       android:id="@+id/button_search"
-      android:layout_width="wrap_content"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:text="@string/search"/>
+      android:text="@string/search"
+      android:layout_marginLeft="@dimen/spacing_s"
+      android:layout_weight="0.25"/>
   </LinearLayout>
 
   <ListView
     android:id="@android:id/list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/spacing_m"
     android:layout_below="@id/wrap_form"/>
 
   <TextView

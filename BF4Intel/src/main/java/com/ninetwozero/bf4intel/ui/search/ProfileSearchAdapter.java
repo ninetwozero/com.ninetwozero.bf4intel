@@ -46,7 +46,9 @@ public class ProfileSearchAdapter extends BaseIntelAdapter<ProfileSearchResult> 
             )
         );
 
-        Picasso.with(context).load(UrlFactory.buildGravatarUrl(profile.getGravatarHash())).into(imageView);
+        Picasso.with(context).load(
+            UrlFactory.buildGravatarUrl(profile.getGravatarHash())
+        ).placeholder(R.drawable.default_gravatar).into(imageView);
         return view;
     }
 }

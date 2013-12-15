@@ -1,5 +1,7 @@
 package com.ninetwozero.bf4intel.ui.search;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
 import android.util.Log;
@@ -18,11 +20,13 @@ import com.ninetwozero.bf4intel.json.search.ProfileSearchResult;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResults;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimplePostRequest;
+import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.List;
 
 public class ProfileSearchFragment extends BaseLoadingListFragment {
+    public static final String INTENT_SEARCH_RESULT = "profile_search_result";
     private static final int ID_LOADER = 10303;
 
     public static ProfileSearchFragment newInstance(final Bundle data) {
@@ -39,6 +43,12 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         final View view = layoutInflater.inflate(R.layout.fragment_profile_search, parent, false);
         initialize(view);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        showLoadingState(false);
     }
 
     @Override
@@ -60,8 +70,8 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         final Bundle postData = new Bundle();
         final String searchTerm = searchField.getText().toString();
 
-        if (searchTerm.length() == 0) {
-            searchField.setError("Enter a search string!");
+        if (searchTerm.length() < 3) {
+            searchField.setError("Min length: 3 characters");
             searchField.requestFocus();
             return;
         }
@@ -86,7 +96,19 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
 
     @Override
     public void onListItemClick(final ListView l, final View v, final int position, final long id) {
+        final Activity activity = getActivity();
+        final ProfileSearchAdapter adapter = (ProfileSearchAdapter) getListAdapter();
+        final ProfileSearchResult result = adapter.getItem(position);
 
+        if (activity.getCallingActivity() == null) {
+            BusProvider.getInstance().post(result);
+        } else {
+            activity.setResult(
+                Activity.RESULT_OK,
+                new Intent().putExtra(INTENT_SEARCH_RESULT, result.getProfile())
+            );
+            activity.finish();
+        }
     }
 
     private void initialize(final View view) {
@@ -117,6 +139,6 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         if (listView == null) {
             return;
         }
-        listView.setAdapter(new ProfileSearchAdapter(results, getContext()));
+        setListAdapter(new ProfileSearchAdapter(results, getContext()));
     }
 }

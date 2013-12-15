@@ -52,7 +52,7 @@ public class FragmentFactory {
         POST_CREATING,
 
         NOTIFICATION,
-        USER_SEARCH,
+        PROFILE_SEARCH,
     }
 
     public static Fragment get(final Type type) {
@@ -95,7 +95,7 @@ public class FragmentFactory {
                 return BattleReportFragment.newInstance(data);
             case BATTLE_REPORT_LISTING:
                 return BattleReportListingFragment.newInstance(data);
-            case USER_SEARCH:
+            case PROFILE_SEARCH:
                 return ProfileSearchFragment.newInstance(data);
             default:
                 throw new TypeNotPresentException("" + type, null);
