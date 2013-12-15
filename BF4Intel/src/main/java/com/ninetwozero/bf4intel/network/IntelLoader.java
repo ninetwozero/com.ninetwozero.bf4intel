@@ -9,9 +9,9 @@ import com.ninetwozero.bf4intel.utils.exception.Failure;
 
 public class IntelLoader extends AsyncTaskLoader<Result> {
 
-    private final ConnectionRequest request;
+    private final BaseSimpleRequest request;
 
-    public IntelLoader(Context context, ConnectionRequest request) {
+    public IntelLoader(Context context, BaseSimpleRequest request) {
         super(context);
         this.request = request;
     }
@@ -35,9 +35,9 @@ public class IntelLoader extends AsyncTaskLoader<Result> {
         }
     }
 
-    private Result actOn(String loginResult) {
+    private Result actOn(final String theResult) {
         Result result = Result.SUCCESS;
-        result.setResultMessage(loginResult);
+        result.setResultMessage(theResult);
         return result;
     }
 }

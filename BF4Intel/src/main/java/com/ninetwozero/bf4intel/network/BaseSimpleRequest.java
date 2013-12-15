@@ -9,16 +9,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-public class ConnectionRequest {
-    private static final int CONNECT_TIMEOUT = 5000;
-    private static final int READ_TIMEOUT = 15000;
-    private final String requestUrl;
+public abstract class BaseSimpleRequest {
+    protected static final int CONNECT_TIMEOUT = 5000;
+    protected  static final int READ_TIMEOUT = 15000;
+    protected final String requestUrl;
 
-    public ConnectionRequest(String requestUrl) {
+    public BaseSimpleRequest(final String requestUrl) {
         this.requestUrl = requestUrl;
     }
 
-    public ConnectionRequest(URL requestUrl) {
+    public BaseSimpleRequest(final URL requestUrl) {
         this.requestUrl = requestUrl.toString();
     }
 
@@ -33,20 +33,11 @@ public class ConnectionRequest {
                 throw new Failure(e);
             }
         } else {
-            throw new Failure("Provided URL been null. Cannot execute ConnectionRequest");
+            throw new Failure("Provided URL is null - cannot execute request!");
         }
     }
 
-    private HttpRequest getHttpRequest() {
-        HttpRequest request = HttpRequest.get(requestUrl)
-            .readTimeout(READ_TIMEOUT)
-            .connectTimeout(CONNECT_TIMEOUT)
-            .header("X-Requested-With", "XMLHttpRequest")
-            .header("Cookie", "beaker.session.id=<YOUR COOKIE HERE>");
-        return request;
-    }
-
-    private String fromStream(InputStream in) throws IOException {
+    private String fromStream(final InputStream in) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         StringBuilder out = new StringBuilder();
         String line;
@@ -57,4 +48,6 @@ public class ConnectionRequest {
         reader.close();
         return out.toString();
     }
+
+    protected abstract HttpRequest getHttpRequest();
 }
