@@ -9,7 +9,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.awards.Awards;
-import com.ninetwozero.bf4intel.network.ConnectionRequest;
+import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
@@ -35,7 +35,7 @@ public class AwardsActivity extends BaseIntelActivity {
 
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
-        return new IntelLoader(getApplicationContext(), new ConnectionRequest(UrlFactory.awardsURL(200661244, 1)));
+        return new IntelLoader(getApplicationContext(), new SimpleGetRequest(UrlFactory.buildAwardsURL(200661244, 1)));
     }
 
     @Override

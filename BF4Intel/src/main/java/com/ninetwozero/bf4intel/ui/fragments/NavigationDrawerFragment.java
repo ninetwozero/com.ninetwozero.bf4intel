@@ -21,6 +21,7 @@ import com.ninetwozero.bf4intel.datatypes.ListRowType;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.ui.adapters.ExpandableListRowAdapter;
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
 import com.ninetwozero.bf4intel.ui.awards.AwardsActivity;
@@ -38,9 +39,12 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private static final String STATE_SELECTED_CHILD = "selected_navigation_drawer_child_position";
     private static final String STATE_SELECTION_IS_GROUP = "selected_navigation_drawer_is_group";
 
+    private static final int DEFAULT_GROUP_POSITION = 10;
+
     private static final int INTENT_SOLDIER_STATISTICS = 1;
     private static final int INTENT_ASSIGNMENTS = 2;
     private static final int INTENT_AWARDS = 3;
+    private static final int INTENT_PROFILE_SEARCH = 4;
 
     private ExpandableListView listView;
     private NavigationDrawerCallbacks callbacks;
@@ -92,7 +96,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        selectItemFromState(currentSelectedGroupPosition, currentSelectedChildPosition, currentSelectionIsGroup); // Put this where?
+        selectItemFromState(currentSelectedGroupPosition, currentSelectedChildPosition, currentSelectionIsGroup);
     }
 
     private void initialize(final View view, final Bundle state) {
@@ -106,6 +110,10 @@ public class NavigationDrawerFragment extends BaseListFragment {
             currentSelectedGroupPosition = state.getInt(STATE_SELECTED_GROUP);
             currentSelectedChildPosition = state.getInt(STATE_SELECTED_CHILD);
             currentSelectionIsGroup = state.getBoolean(STATE_SELECTION_IS_GROUP, true);
+        } else {
+            currentSelectedGroupPosition = DEFAULT_GROUP_POSITION;
+            currentSelectedChildPosition = -1;
+            currentSelectionIsGroup = true;
         }
     }
 
@@ -207,9 +215,10 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
         final List<ListRow> items = new ArrayList<ListRow>();
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_social)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_home), data, FragmentFactory.Type.BATTLE_FEED));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_news), data, FragmentFactory.Type.NEWS_LISTING));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_battle_feed), data, FragmentFactory.Type.BATTLE_FEED));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, BATTLE_CHAT, data, ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE)));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.label_search), data, intentToStart(INTENT_PROFILE_SEARCH)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_notifications), data, FragmentFactory.Type.NOTIFICATION));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_servers)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_forums), data, getRowsForForum()));
@@ -238,6 +247,11 @@ public class NavigationDrawerFragment extends BaseListFragment {
             case INTENT_AWARDS:
                 intent = new Intent(getActivity(), AwardsActivity.class);
                 break;
+            case INTENT_PROFILE_SEARCH:
+                intent = new Intent(getActivity(), SingleFragmentActivity.class);
+                intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, new Bundle());
+                intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.PROFILE_SEARCH.ordinal());
+                break;
             default:
                 Log.i(NavigationDrawerFragment.class.getSimpleName(), "Did not found any matching activity for intent " + intentID);
         }
@@ -255,12 +269,13 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void selectItem(final ListRow item, final int position, final boolean closeDrawer, final boolean isOnResume) {
-        if (listView != null) {
+        final boolean isFragment = !item.hasIntent();
+        if (listView != null && isFragment) {
             listView.setItemChecked(position, true);
         }
 
         if (callbacks != null && closeDrawer) {
-            callbacks.onNavigationDrawerItemSelected(position, item.getTitle());
+            callbacks.onNavigationDrawerItemSelected(position, isFragment ? item.getTitle() : null);
         }
 
         startItem(item, isOnResume);
@@ -268,7 +283,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private void startItem(final ListRow item, final boolean isOnResume) {
         if (item.hasIntent() && !isOnResume) {
-            startActivity(item.getIntent());
+            startActivityForResult(item.getIntent(), 12345);
         } else if (item.hasFragmentType()) {
             try {
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();

@@ -8,14 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.weaponstats.Weapon;
 import com.ninetwozero.bf4intel.json.weaponstats.WeaponStatistics;
-import com.ninetwozero.bf4intel.network.ConnectionRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
+import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.Collections;
@@ -55,7 +54,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
         showLoadingState(true);
-        return new IntelLoader(getActivity().getApplicationContext(), new ConnectionRequest(UrlFactory.weaponStatsURL(200661244, 1)));
+        return new IntelLoader(getActivity().getApplicationContext(), new SimpleGetRequest(UrlFactory.buildWeaponStatsURL(200661244, 1)));
     }
 
     @Override
@@ -69,8 +68,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void onLoadSuccess(String resultMessage) {
-        JsonObject dataJson = extractFromJson(resultMessage);
-        WeaponStatistics ws = gson.fromJson(dataJson, WeaponStatistics.class);
+        WeaponStatistics ws = gson.fromJson(resultMessage, WeaponStatistics.class);
         showLoadingState(false);
         List<Weapon> weaponList = ws.getWeaponsList();
         Collections.sort(weaponList);

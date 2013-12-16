@@ -9,7 +9,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;
-import com.ninetwozero.bf4intel.network.ConnectionRequest;
+import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
@@ -36,7 +36,7 @@ public class AssignmentsActivity extends BaseIntelActivity {
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
         showLoadingStateInActionBar(true);
-        return new IntelLoader(getApplicationContext(), new ConnectionRequest(UrlFactory.assignmentsURL("LittleBoySVK", 200661244, 2832665149443593606L, 1)));
+        return new IntelLoader(getApplicationContext(), new SimpleGetRequest(UrlFactory.buildAssignmentsURL("LittleBoySVK", 200661244, 2832665149443593606L, 1)));
     }
 
     @Override

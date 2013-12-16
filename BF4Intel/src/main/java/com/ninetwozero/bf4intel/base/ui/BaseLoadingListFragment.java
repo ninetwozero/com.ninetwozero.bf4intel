@@ -63,19 +63,29 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     }
 
     protected <T> T fromJson(final String json, final Class<T> outClass) {
-        final JsonObject jsonObject = extractFromJson(json);
+        final JsonObject jsonObject = extractFromJson(json, false);
+        return gson.fromJson(jsonObject, outClass);
+    }
+
+    protected <T> T fromJson(final String json, final Class<T> outClass, final boolean returnTopLevelJson) {
+        final JsonObject jsonObject = extractFromJson(json, returnTopLevelJson);
         return gson.fromJson(jsonObject, outClass);
     }
 
     protected <T> T fromJson(final Gson gsonToUse, final String json, final Class<T> outClass) {
-        final JsonObject jsonObject = extractFromJson(json);
+        final JsonObject jsonObject = extractFromJson(json, false);
+        return gsonToUse.fromJson(jsonObject, outClass);
+    }
+
+    protected <T> T fromJson(final Gson gsonToUse, final String json, final Class<T> outClass, final boolean returnTopLevelJson) {
+        final JsonObject jsonObject = extractFromJson(json, returnTopLevelJson);
         return gsonToUse.fromJson(jsonObject, outClass);
     }
 
     @Deprecated
     protected <T> List<T> fromJsonArray(final Gson gsonToUse, final String json, final Class<T> outClass, final String container) {
         final List<T> objects = new ArrayList<T>();
-        final JsonObject jsonObject = extractFromJson(json);
+        final JsonObject jsonObject = extractFromJson(json, false);
         if (jsonObject.has(container)) {
             final JsonArray elements = jsonObject.getAsJsonArray(container);
             for (JsonElement element : elements) {
@@ -85,9 +95,10 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         return objects;
     }
 
-    public JsonObject extractFromJson(String json) {
+    private JsonObject extractFromJson(final String json, boolean returnTopLevel) {
         JsonParser parser = new JsonParser();
-        return parser.parse(json).getAsJsonObject().getAsJsonObject("data");
+        JsonObject topLevel = parser.parse(json).getAsJsonObject();
+        return returnTopLevel? topLevel : topLevel.getAsJsonObject("data");
     }
 
 	@Deprecated
@@ -106,7 +117,11 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     }
 
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
-        activity.findViewById(R.id.wrap_loading_progress).setVisibility(isLoading ? View.VISIBLE : View.GONE);
+        final View loadingView = activity.findViewById(R.id.wrap_loading_progress);
+        if (loadingView == null) {
+            return;
+        }
+        loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
 
     protected Context getContext() {

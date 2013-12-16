@@ -2,7 +2,9 @@ package com.ninetwozero.bf4intel.json;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Profile {
+import java.io.Serializable;
+
+public class Profile implements Serializable {
     @SerializedName("userId")
     private String id;
 

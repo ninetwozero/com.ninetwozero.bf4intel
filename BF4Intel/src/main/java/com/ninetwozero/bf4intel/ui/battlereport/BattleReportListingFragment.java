@@ -14,7 +14,7 @@ import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.battlereports.BattleReportOverview;
 import com.ninetwozero.bf4intel.json.battlereports.SummaryBattleReport;
-import com.ninetwozero.bf4intel.network.ConnectionRequest;
+import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.utils.Result;
@@ -27,11 +27,6 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     public BattleReportListingFragment() {
     }
 
-    public static BattleReportListingFragment newInstance() {
-        final BattleReportListingFragment fragment = new BattleReportListingFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static BattleReportListingFragment newInstance(final Bundle data) {
         final BattleReportListingFragment fragment = new BattleReportListingFragment();
@@ -72,8 +67,8 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         showLoadingState(true);
         return new IntelLoader(
             getActivity(),
-            new ConnectionRequest(
-                UrlFactory.battleReports(
+            new SimpleGetRequest(
+                UrlFactory.buildBattleReportsURL(
                     Integer.valueOf(bundle.getString(Keys.Soldier.ID)), //not sure why int was stored as string in bundle
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )

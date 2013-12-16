@@ -19,11 +19,6 @@ public class NotificationFragment extends BaseListFragment {
     public NotificationFragment() {
     }
 
-    public static NotificationFragment newInstance() {
-        final NotificationFragment fragment = new NotificationFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static NotificationFragment newInstance(final Bundle data) {
         final NotificationFragment fragment = new NotificationFragment();

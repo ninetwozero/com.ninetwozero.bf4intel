@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:padding="@dimen/spacing_m">
+
+  <ImageView
+    android:id="@+id/gravatar"
+    android:layout_width="@dimen/avatar_size_xl"
+    android:layout_height="@dimen/avatar_size_xl"
+    android:contentDescription="@string/cdesc_user_gravatar"/>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_toRightOf="@id/gravatar"
+    android:layout_centerVertical="true"
+    android:layout_marginLeft="@dimen/spacing_l"
+    >
+
+    <TextView
+      android:id="@+id/username"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo.Large"
+      android:textColor="@android:color/holo_blue_light"
+      />
+
+    <TextView
+      android:id="@+id/persona"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+      android:textColor="@color/darkgrey"
+      />
+
+  </LinearLayout>
+</RelativeLayout>

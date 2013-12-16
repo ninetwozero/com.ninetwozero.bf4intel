@@ -16,11 +16,6 @@ public class BattleReportFragment extends BaseFragment {
     public BattleReportFragment() {
     }
 
-    public static BattleReportFragment newInstance() {
-        final BattleReportFragment fragment = new BattleReportFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static BattleReportFragment newInstance(final Bundle data) {
         final BattleReportFragment fragment = new BattleReportFragment();

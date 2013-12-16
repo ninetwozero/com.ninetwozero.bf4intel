@@ -40,9 +40,9 @@
 
         <ImageView
           android:id="@+id/image_rank"
-          android:layout_width="64dp"
-          android:layout_height="64dp"
-          android:src="@drawable/test_rank31"
+          android:layout_width="@dimen/avatar_size_xl"
+          android:layout_height="@dimen/avatar_size_xl"
+          android:src="@drawable/r0"
           android:layout_alignParentRight="true"
           android:layout_marginTop="@dimen/spacing_l"
           android:contentDescription="@string/cdesc_rank_image"/>
