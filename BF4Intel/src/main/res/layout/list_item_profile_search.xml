@@ -9,7 +9,6 @@
     android:id="@+id/gravatar"
     android:layout_width="@dimen/avatar_size_xl"
     android:layout_height="@dimen/avatar_size_xl"
-    android:src="@drawable/test_gravatar"
     android:contentDescription="@string/cdesc_user_gravatar"/>
 
   <LinearLayout
@@ -27,7 +26,6 @@
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo.Large"
       android:textColor="@android:color/holo_blue_light"
-      android:text="ninetwozero"
       />
 
     <TextView
@@ -36,7 +34,6 @@
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo.Medium"
       android:textColor="@color/darkgrey"
-      android:text="@string/x_on_y"
       />
 
   </LinearLayout>

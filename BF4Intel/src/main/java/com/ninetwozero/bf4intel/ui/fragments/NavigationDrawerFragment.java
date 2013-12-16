@@ -275,7 +275,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         }
 
         if (callbacks != null && closeDrawer) {
-            callbacks.onNavigationDrawerItemSelected(position, isFragment? item.getTitle() : null);
+            callbacks.onNavigationDrawerItemSelected(position, isFragment ? item.getTitle() : null);
         }
 
         startItem(item, isOnResume);

@@ -29,6 +29,16 @@ public class SearchActivity extends BaseIntelActivity {
         final Bundle data = getBundleFromIntent(intent);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initialize(final Intent intent) {
         setupActionBar();
         setupFragment();
@@ -59,17 +69,6 @@ public class SearchActivity extends BaseIntelActivity {
             bundle.putString(ProfileSearchFragment.INTENT_SEARCH_RESULT, query);
         }
         return bundle;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 }
