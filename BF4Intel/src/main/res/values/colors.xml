@@ -28,6 +28,7 @@
   <color name="almostblack">#111111</color>
   <color name="bg_grid_item">#88212121</color>
   <color name="bg_grid_item_pressed">#77212121</color>
+  <color name="item_locked_overlay">#77575757</color>
   <color name="black">#000000</color>
   <color name="translucent_black">#CC000000</color>
 </resources>

@@ -10,29 +10,26 @@
     android:layout_height="@dimen/grid_view_image_height"
     android:layout_width="@dimen/grid_view_image_width"
     android:layout_centerInParent="true"
-    android:contentDescription="@string/cdesc_assignment_image"
-    />
+    android:contentDescription="@string/cdesc_assignment_image" />
 
   <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:layout_alignParentTop="true"
-    android:layout_alignParentRight="true"
-    >
+    android:layout_alignParentRight="true">
 
     <ImageView
       android:id="@+id/expansion_icon"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:contentDescription="@string/cdesc_assignment_expansion_icon"
-      />
+      android:contentDescription="@string/cdesc_assignment_expansion_icon" />
+
     <ImageView
       android:id="@+id/img_assignment_pre_requirement"
       android:layout_height="wrap_content"
       android:layout_width="wrap_content"
-      android:contentDescription="@string/cdesc_assignment_pre_requirement"
-      />
+      android:contentDescription="@string/cdesc_assignment_pre_requirement" />
   </LinearLayout>
 
   <ProgressBar

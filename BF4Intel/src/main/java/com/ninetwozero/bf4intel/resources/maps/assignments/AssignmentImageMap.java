@@ -55,12 +55,12 @@ public class AssignmentImageMap {
             put("WARSAW_ID_P_AWARD_ASGN_NAME_45", R.drawable.as45);
 
             /*Single player assignments*/
-            put("WARSAW_ID_P_XP0_AS_01", R.drawable.sp_as01);
-            put("WARSAW_ID_P_XP0_AS_02", R.drawable.sp_as02);
-            put("WARSAW_ID_P_XP0_AS_03", R.drawable.sp_as03);
-            put("WARSAW_ID_P_XP0_AS_04", R.drawable.sp_as04);
-            put("WARSAW_ID_P_XP0_AS_05", R.drawable.sp_as05);
-            put("WARSAW_ID_P_XP0_AS_06", R.drawable.sp_as06);
+            put("WARSAW_ID_SP_ASGN_NAME_01", R.drawable.sp_as01);
+            put("WARSAW_ID_SP_ASGN_NAME_02", R.drawable.sp_as02);
+            put("WARSAW_ID_SP_ASGN_NAME_03", R.drawable.sp_as03);
+            put("WARSAW_ID_SP_ASGN_NAME_04", R.drawable.sp_as04);
+            put("WARSAW_ID_SP_ASGN_NAME_05", R.drawable.sp_as05);
+            put("WARSAW_ID_SP_ASGN_NAME_06", R.drawable.sp_as06);
 
             /*Expansion pack 1 assignments*/
             put("WARSAW_ID_P_XP1_AWARD_AS_01", R.drawable.xp1as01);
@@ -73,10 +73,13 @@ public class AssignmentImageMap {
             put("WARSAW_ID_P_XP1_AWARD_AS_08", R.drawable.xp1as08);
             put("WARSAW_ID_P_XP1_AWARD_AS_09", R.drawable.xp1as09);
             put("WARSAW_ID_P_XP1_AWARD_AS_10", R.drawable.xp1as10);
+
+            /*Unknown award*/
+            put("WARSAW_ID_P_XP1_AWARD_GHOST", R.drawable.ghost1);
         }
     };
 
     public static int get(final String key) {
-        return map.containsKey(key)? map.get(key) : R.drawable.acc_none;
+        return map.containsKey(key)? map.get(key) : R.drawable.as_unknown;
     }
 }
