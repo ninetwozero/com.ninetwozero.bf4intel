@@ -71,8 +71,12 @@ public class AssignmentsAdapter extends BaseAdapter {
         } else {
             imgPrerequirement.setVisibility(View.VISIBLE);
             completionProgress.setVisibility(View.INVISIBLE);
-            //TODO would like to be able to give overlay to whole view when assignment is not tracked (unlocked)
-            //imgAssignment.setColorFilter(R.color.almostblack);
+        }
+
+        if(assignment.getCompletion() == 100) {
+            view.findViewById(R.id.colour_overlay).setVisibility(View.INVISIBLE);
+        } else {
+            view.findViewById(R.id.colour_overlay).setVisibility(View.VISIBLE);
         }
         return view;
     }
