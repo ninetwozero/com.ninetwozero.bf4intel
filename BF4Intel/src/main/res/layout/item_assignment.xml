@@ -50,9 +50,7 @@
     android:id="@+id/colour_overlay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_grid_item_pressed"
-    >
-
-    </RelativeLayout>
+    android:background="@color/item_locked_overlay"
+    />
 
 </FrameLayout>

@@ -3,46 +3,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:background="@color/lightgrey"
-  >
+  android:background="@color/lightgrey">
 
-  <ImageView
-    android:id="@+id/award_medal"
-    android:layout_width="@dimen/grid_view_image_width"
-    android:layout_height="@dimen/grid_view_image_height"
-    android:layout_centerHorizontal="true"
-    android:contentDescription="@string/cdesc_award_medal"
-    />
-
-  <TextView
-    android:id="@+id/medals_count"
-    style="@style/GridItemCount"
-    android:layout_below="@id/award_medal"
-    android:layout_alignParentRight="true"
-    />
+  <include
+    android:id="@+id/award_medal_container"
+    layout="@layout/item_award_medal" />
 
   <ProgressBar
     android:id="@+id/award_completion"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_below="@id/award_medal"
-    style="@android:style/Widget.Holo.ProgressBar.Horizontal"
-    />
+    android:layout_below="@id/award_medal_container"
+    style="@android:style/Widget.Holo.ProgressBar.Horizontal" />
 
-  <ImageView
-    android:id="@+id/award_ribbon"
-    android:layout_width="wrap_content"
+  <RelativeLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_below="@id/award_completion"
-    android:layout_centerHorizontal="true"
-    android:contentDescription="@string/cdesc_award_ribbon"
-    />
+    android:layout_below="@id/award_completion">
 
-  <TextView
-    android:id="@+id/ribbons_count"
-    style="@style/GridItemCount"
-    android:layout_below="@id/award_ribbon"
-    android:layout_alignParentRight="true"
-    />
-
+    <include layout="@layout/item_award_ribbon" />
+  </RelativeLayout>
 </RelativeLayout>

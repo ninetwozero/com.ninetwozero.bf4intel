@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+      android:id="@+id/award_medal"
+      android:layout_width="@dimen/grid_view_image_width"
+      android:layout_height="@dimen/grid_view_image_height"
+      android:layout_centerHorizontal="true"
+      android:src="@drawable/awards_m01"
+      android:contentDescription="@string/cdesc_award_medal" />
+
+    <TextView
+      android:id="@+id/medals_count"
+      style="@style/GridItemCount"
+      android:layout_below="@id/award_medal"
+      android:layout_alignParentRight="true" />
+  </RelativeLayout>
+
+  <RelativeLayout
+    android:id="@+id/colour_overlay_medal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/item_locked_overlay" />
+</FrameLayout>

@@ -50,16 +50,22 @@ public class AwardsAdapter extends BaseAdapter {
         medal.setImageResource(MedalImagesMap.medalsMap.get(award.getMedalCode().toLowerCase()));
 
         ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.award_completion);
+        progressBar.setMax(50);
+        progressBar.setProgress(award.getMedal().getPresentProgress());
         TextView medalsCount = (TextView) view.findViewById(R.id.medals_count);
-        if(award.getMedal().getUnlocked() < 100) {
-            progressBar.setMax(100);
-            progressBar.setProgress(award.getMedal().getUnlocked());
-            progressBar.setVisibility(View.VISIBLE);
-            medalsCount.setVisibility(View.INVISIBLE);
-        } else {
-            progressBar.setVisibility(View.INVISIBLE);
+        if(award.getMedal().getTimesTaken() > 0) {
             medalsCount.setText(String.format("x%d", award.getMedal().getTimesTaken()));
             medalsCount.setVisibility(View.VISIBLE);
+            view.findViewById(R.id.colour_overlay_medal).setVisibility(View.INVISIBLE);
+        } else {
+            medalsCount.setVisibility(View.INVISIBLE);
+            view.findViewById(R.id.colour_overlay_medal).setVisibility(View.VISIBLE);
+        }
+
+        if(award.getRibbon().getTimesTaken() > 0) {
+            view.findViewById(R.id.colour_overlay_ribbon).setVisibility(View.INVISIBLE);
+        } else {
+            view.findViewById(R.id.colour_overlay_ribbon).setVisibility(View.VISIBLE);
         }
 
         ImageView ribbon = (ImageView) view.findViewById(R.id.award_ribbon);
