@@ -42,7 +42,7 @@ public class ProfileSearchAdapter extends BaseIntelAdapter<ProfileSearchResult> 
             String.format(
                 context.getString(R.string.x_on_y),
                 searchResult.getPersonaName(),
-                searchResult.getPlatform()
+                fetchPlatformNameFromCrypticText(searchResult.getPlatform())
             )
         );
 
@@ -50,5 +50,13 @@ public class ProfileSearchAdapter extends BaseIntelAdapter<ProfileSearchResult> 
             UrlFactory.buildGravatarUrl(profile.getGravatarHash())
         ).placeholder(R.drawable.default_gravatar).into(imageView);
         return view;
+    }
+
+    private String fetchPlatformNameFromCrypticText(final String crypticPlatformName) {
+        if (crypticPlatformName.equals("cem_ea_id")) {
+            return "PC";
+        } else {
+            return crypticPlatformName.toUpperCase();
+        }
     }
 }

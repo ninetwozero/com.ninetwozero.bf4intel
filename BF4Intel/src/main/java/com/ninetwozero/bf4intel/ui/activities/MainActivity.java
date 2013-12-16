@@ -1,8 +1,8 @@
 package com.ninetwozero.bf4intel.ui.activities;
 
 import android.app.ActionBar;
-import android.app.Activity;
-import android.content.Intent;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -13,14 +13,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
-import com.ninetwozero.bf4intel.factories.FragmentFactory;
-import com.ninetwozero.bf4intel.json.Profile;
-import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
-import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
 
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
@@ -43,6 +40,93 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         setupActionBar();
         setupActionBarToggle();
         setupActivityFromState(savedInstanceState);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(final Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        final MenuItem searchMenuItem = menu.findItem(R.id.ab_action_search);
+        final MenuItem refreshMenuItem = menu.findItem(R.id.ab_action_refresh);
+        if (refreshMenuItem != null) {
+            refreshMenuItem.setVisible(false);
+        }
+        if (searchMenuItem != null) {
+            searchMenuItem.setVisible(true);
+        }
+
+        final SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        final SearchView abSearchView = (SearchView) searchMenuItem.getActionView();
+        if (abSearchView != null) {
+            abSearchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+            abSearchView.setOnQueryTextListener(
+                new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(final String s) {
+                        removeSearchView(abSearchView);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(final String s) {
+                        return false;
+                    }
+
+                    private void removeSearchView(final SearchView searchView) {
+                        searchView.setQuery("", false);
+                        searchView.clearFocus();
+                        searchView.onActionViewCollapsed();
+                    }
+                }
+            );
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                toggleNavigationDrawer(!isDrawerOpen());
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isDrawerOpen()) {
+            toggleNavigationDrawer(false);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(STATE_DRAWER_OPENED, isDrawerOpen());
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean isDrawerOpen() {
+        return drawerLayout != null && drawerLayout.isDrawerOpen(fragmentContainerView);
+    }
+
+
+    @Override
+    public void onNavigationDrawerItemSelected(final int position, final String title) {
+        this.title = title == null? this.title : title.toUpperCase();
+        if (drawerLayout != null && !isRecreated) {
+            toggleNavigationDrawer(false);
+        }
+        isRecreated = false;
     }
 
     private void setupNavigationDrawer() {
@@ -102,7 +186,6 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         drawerLayout.setDrawerListener(drawerToggle);
     }
 
-
     private void setupActionBar() {
         final ActionBar actionbar = getActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
@@ -117,63 +200,6 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(final Menu menu) {
-        super.onCreateOptionsMenu(menu);
-
-        final MenuItem menuItem = menu.findItem(R.id.ab_action_refresh);
-        if ( menuItem != null ) {
-            menuItem.setVisible(false);
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                toggleNavigationDrawer(!isDrawerOpen());
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (isDrawerOpen()) {
-            toggleNavigationDrawer(false);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putBoolean(STATE_DRAWER_OPENED, isDrawerOpen());
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public boolean isDrawerOpen() {
-        return drawerLayout != null && drawerLayout.isDrawerOpen(fragmentContainerView);
-    }
-
-
-    @Override
-    public void onNavigationDrawerItemSelected(final int position, final String title) {
-        this.title = title == null? this.title : title.toUpperCase();
-        if (drawerLayout != null && !isRecreated) {
-            toggleNavigationDrawer(false);
-        }
-        isRecreated = false;
-    }
-
     private void toggleNavigationDrawer(final boolean show) {
         if (show) {
             drawerLayout.openDrawer(fragmentContainerView);
@@ -181,29 +207,6 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         } else {
             drawerLayout.closeDrawer(fragmentContainerView);
             navigationDrawer.setMenuVisibility(false);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-        if (resultCode == Activity.RESULT_OK) {
-            if (data.hasExtra(ProfileSearchFragment.INTENT_SEARCH_RESULT)) {
-                final Profile profile = (Profile) data.getSerializableExtra(ProfileSearchFragment.INTENT_SEARCH_RESULT);
-                final Bundle dataBundle = new Bundle();
-                dataBundle.putString(Keys.Profile.ID, profile.getId());
-                dataBundle.putString(Keys.Profile.USERNAME, profile.getUsername());
-                dataBundle.putString(Keys.Profile.GRAVATAR_HASH, profile.getGravatarHash());
-
-                final Intent intent = new Intent(getApplicationContext(), SingleFragmentActivity.class)
-                    .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, dataBundle)
-                    .putExtra(
-                        SingleFragmentActivity.INTENT_FRAGMENT_TYPE,
-                        FragmentFactory.Type.ACCOUNT_PROFILE
-                    );
-                startActivity(intent);
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 }

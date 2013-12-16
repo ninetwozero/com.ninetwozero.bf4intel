@@ -73,7 +73,12 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     }
 
     protected <T> T fromJson(final Gson gsonToUse, final String json, final Class<T> outClass) {
-        final JsonObject jsonObject = extractFromJson(json);
+        final JsonObject jsonObject = extractFromJson(json, false);
+        return gsonToUse.fromJson(jsonObject, outClass);
+    }
+
+    protected <T> T fromJson(final Gson gsonToUse, final String json, final Class<T> outClass, final boolean returnTopLevelJson) {
+        final JsonObject jsonObject = extractFromJson(json, returnTopLevelJson);
         return gsonToUse.fromJson(jsonObject, outClass);
     }
 

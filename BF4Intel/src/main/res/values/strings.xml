@@ -135,9 +135,9 @@
   <string name="forum_created_by">Created by</string>
   <string name="dummy_status">status</string>
   <string name="msg_no_users_found">No users found.</string>
-  <string name="hint_search">Ex. NINETWOZERO</string>
-  <string name="search">Search</string>
   <string name="x_on_y" formatted="false">%s on %s</string>
   <string name="feed_category_ranked_up">Ranked up</string>
+  <string name="label_search">Search</string>
+  <string name="hint_search">Search for users</string>
 
 </resources>

@@ -6,20 +6,27 @@ import android.os.Bundle;
 import android.support.v4.content.Loader;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
+import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResult;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResults;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimplePostRequest;
+import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.ui.activities.SearchActivity;
+import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
 
@@ -28,6 +35,8 @@ import java.util.List;
 public class ProfileSearchFragment extends BaseLoadingListFragment {
     public static final String INTENT_SEARCH_RESULT = "profile_search_result";
     private static final int ID_LOADER = 10303;
+
+    private String queryString;
 
     public static ProfileSearchFragment newInstance(final Bundle data) {
         final ProfileSearchFragment fragment = new ProfileSearchFragment();
@@ -52,6 +61,48 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        final SearchView searchView = (SearchView) menu.findItem(R.id.ab_action_search).getActionView();
+        if (searchView != null) {
+            searchView.setOnQueryTextListener(
+                new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextChange(final String s) {
+                        /*
+                        TODO: Do we really want it to automatically fetch data when you're typing?
+                        If yes => this might be a good strategy
+                        If no => remove this commented block
+
+                        if (s.length() > 2) {
+                            final int oldLength = queryString.length();
+                            final int newLength = s.length();
+
+                            queryString = s;
+                            if (newLength > oldLength) {
+                                startLoadingData();
+                            }
+                        }
+                        */
+                        queryString = s;
+                        return true;
+                    }
+
+                    @Override
+                    public boolean onQueryTextSubmit(final String s) {
+                        queryString = s;
+                        startLoadingData();
+                        return true;
+                    }
+                }
+            );
+            searchView.setIconifiedByDefault(false);
+            searchView.setQuery(queryString, true);
+        }
+    }
+
+    @Override
     protected void onLoadSuccess(final String resultMessage) {
         ProfileSearchResults results = fromJson(resultMessage, ProfileSearchResults.class, true);
         sendDataToListView(results.getResults());
@@ -66,17 +117,14 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        final EditText searchField = (EditText) getView().findViewById(R.id.input_search);
         final Bundle postData = new Bundle();
-        final String searchTerm = searchField.getText().toString();
 
-        if (searchTerm.length() < 3) {
-            searchField.setError("Min length: 3 characters");
-            searchField.requestFocus();
+        if (queryString == null && queryString.length() < 3) {
+            showToast("Min length: 3 characters");
             return;
         }
 
-        postData.putString("query", searchTerm);
+        postData.putString("query", queryString);
         postData.putString("post-check-sum", "0xCAFEBABE");
         getLoaderManager().restartLoader(ID_LOADER, postData, this);
     }
@@ -100,8 +148,13 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         final ProfileSearchAdapter adapter = (ProfileSearchAdapter) getListAdapter();
         final ProfileSearchResult result = adapter.getItem(position);
 
+        // Calling activity will be NULL when triggered from ActionBar
         if (activity.getCallingActivity() == null) {
-            BusProvider.getInstance().post(result);
+            if (activity instanceof SearchActivity) {
+                handleSelectionWhenCalledFromSearchActivity(result);
+            } else {
+                BusProvider.getInstance().post(result);
+            }
         } else {
             activity.setResult(
                 Activity.RESULT_OK,
@@ -111,20 +164,29 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         }
     }
 
+    private void handleSelectionWhenCalledFromSearchActivity(final ProfileSearchResult result) {
+        final Profile profile = result.getProfile();
+        final Bundle dataBundle = new Bundle();
+        dataBundle.putString(Keys.Profile.ID, profile.getId());
+        dataBundle.putString(Keys.Profile.USERNAME, profile.getUsername());
+        dataBundle.putString(Keys.Profile.GRAVATAR_HASH, profile.getGravatarHash());
+
+        final Intent intent = new Intent(getContext(), SingleFragmentActivity.class)
+            .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, dataBundle)
+            .putExtra(
+                SingleFragmentActivity.INTENT_FRAGMENT_TYPE,
+                FragmentFactory.Type.ACCOUNT_PROFILE.ordinal()
+            );
+        startActivity(intent);
+    }
+
     private void initialize(final View view) {
-        setupForm(view);
+        setupDataFromBundle(getArguments());
         setupListView(view);
     }
 
-    private void setupForm(final View view) {
-        view.findViewById(R.id.button_search).setOnClickListener(
-            new View.OnClickListener() {
-                @Override
-                public void onClick(final View view) {
-                    startLoadingData();
-                }
-            }
-        );
+    private void setupDataFromBundle(final Bundle arguments) {
+        queryString = arguments.getString(INTENT_SEARCH_RESULT, "");
     }
 
     private void setupListView(final View view) {
