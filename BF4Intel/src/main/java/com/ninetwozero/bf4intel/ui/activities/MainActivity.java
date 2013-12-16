@@ -1,6 +1,8 @@
 package com.ninetwozero.bf4intel.ui.activities;
 
 import android.app.ActionBar;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -14,7 +16,11 @@ import android.view.View;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
+import com.ninetwozero.bf4intel.factories.FragmentFactory;
+import com.ninetwozero.bf4intel.json.Profile;
+import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
+import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
 
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
@@ -52,11 +58,11 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
         drawerToggle = new ActionBarDrawerToggle(
-                this,
+            this,
             drawerLayout,
-                R.drawable.ic_navigation_drawer,
-                R.string.app_name,
-                R.string.app_name
+            R.drawable.ic_navigation_drawer,
+            R.string.app_name,
+            R.string.app_name
         ) {
             @Override
             public void onDrawerClosed(View drawerView) {
@@ -74,8 +80,9 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
                 if (!userLearnedDrawer) {
                     userLearnedDrawer = true;
-                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
+                    PreferenceManager.getDefaultSharedPreferences(
+                        getApplicationContext()
+                    ).edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
                 }
             }
         };
@@ -174,6 +181,29 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         } else {
             drawerLayout.closeDrawer(fragmentContainerView);
             navigationDrawer.setMenuVisibility(false);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (data.hasExtra(ProfileSearchFragment.INTENT_SEARCH_RESULT)) {
+                final Profile profile = (Profile) data.getSerializableExtra(ProfileSearchFragment.INTENT_SEARCH_RESULT);
+                final Bundle dataBundle = new Bundle();
+                dataBundle.putString(Keys.Profile.ID, profile.getId());
+                dataBundle.putString(Keys.Profile.USERNAME, profile.getUsername());
+                dataBundle.putString(Keys.Profile.GRAVATAR_HASH, profile.getGravatarHash());
+
+                final Intent intent = new Intent(getApplicationContext(), SingleFragmentActivity.class)
+                    .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, dataBundle)
+                    .putExtra(
+                        SingleFragmentActivity.INTENT_FRAGMENT_TYPE,
+                        FragmentFactory.Type.ACCOUNT_PROFILE
+                    );
+                startActivity(intent);
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 }

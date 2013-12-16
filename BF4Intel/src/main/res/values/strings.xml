@@ -65,6 +65,7 @@
   <string name="navigationdrawer_statistics">Statistics</string>
   <string name="navigationdrawer_unlocks">Unlocks</string>
   <string name="navigationdrawer_social">Social</string>
+  <string name="navigationdrawer_home">Home</string>
   <string name="navigationdrawer_news">News</string>
   <string name="navigationdrawer_battle_feed">Battle Feed</string>
   <string name="navigationdrawer_notifications">Notifications</string>
@@ -133,6 +134,10 @@
   <string name="forum_x_posts_in_y_threads" formatted="false">%s posts in %s threads</string>
   <string name="forum_created_by">Created by</string>
   <string name="dummy_status">status</string>
+  <string name="msg_no_users_found">No users found.</string>
+  <string name="hint_search">Ex. NINETWOZERO</string>
+  <string name="search">Search</string>
+  <string name="x_on_y" formatted="false">%s on %s</string>
   <string name="feed_category_ranked_up">Ranked up</string>
 
 </resources>

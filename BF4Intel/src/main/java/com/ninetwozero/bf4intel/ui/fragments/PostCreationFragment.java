@@ -20,11 +20,6 @@ public class PostCreationFragment extends BaseFragment {
     public PostCreationFragment() {
     }
 
-    public static PostCreationFragment newInstance() {
-        final PostCreationFragment fragment = new PostCreationFragment();
-        fragment.setArguments(new Bundle());
-        return fragment;
-    }
 
     public static PostCreationFragment newInstance(final Bundle data) {
         final PostCreationFragment fragment = new PostCreationFragment();
