@@ -56,16 +56,16 @@ public class AwardsAdapter extends BaseAdapter {
         if(award.getMedal().getTimesTaken() > 0) {
             medalsCount.setText(String.format("x%d", award.getMedal().getTimesTaken()));
             medalsCount.setVisibility(View.VISIBLE);
-            view.findViewById(R.id.colour_overlay_medal).setVisibility(View.INVISIBLE);
+            view.findViewById(R.id.award_medal_container).setAlpha(1f);
         } else {
             medalsCount.setVisibility(View.INVISIBLE);
-            view.findViewById(R.id.colour_overlay_medal).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.award_medal_container).setAlpha(0.5f);
         }
 
         if(award.getRibbon().getTimesTaken() > 0) {
-            view.findViewById(R.id.colour_overlay_ribbon).setVisibility(View.INVISIBLE);
+            view.findViewById(R.id.award_ribbon_container).setAlpha(1f);
         } else {
-            view.findViewById(R.id.colour_overlay_ribbon).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.award_ribbon_container).setAlpha(0.5f);
         }
 
         ImageView ribbon = (ImageView) view.findViewById(R.id.award_ribbon);

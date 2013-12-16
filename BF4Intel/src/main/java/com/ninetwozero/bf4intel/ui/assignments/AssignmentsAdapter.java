@@ -49,7 +49,7 @@ public class AssignmentsAdapter extends BaseAdapter {
         Assignment assignment = assignments.get(position);
 
         ImageView imgAssignment = (ImageView) view.findViewById(R.id.img_assignment);
-        imgAssignment.setImageResource(AssignmentImageMap.get(assignment.getAward().getStringID()));
+        imgAssignment.setImageResource(AssignmentImageMap.get(assignment.getAward().getUniqueName()));
 
         ImageView expansionIcon = (ImageView) view.findViewById(R.id.expansion_icon);
         if (assignment.getAward().getExpansionPack().length() != 0) {
@@ -74,9 +74,9 @@ public class AssignmentsAdapter extends BaseAdapter {
         }
 
         if(assignment.getCompletion() == 100) {
-            view.findViewById(R.id.colour_overlay).setVisibility(View.INVISIBLE);
+            view.setAlpha(1f);
         } else {
-            view.findViewById(R.id.colour_overlay).setVisibility(View.VISIBLE);
+            view.setAlpha(0.5f);
         }
         return view;
     }
