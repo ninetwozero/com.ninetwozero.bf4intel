@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -64,7 +65,8 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
-        final SearchView searchView = (SearchView) menu.findItem(R.id.ab_action_search).getActionView();
+        final MenuItem searchItem = menu.findItem(R.id.ab_action_search);
+        final SearchView searchView = (SearchView) searchItem.getActionView();
         if (searchView != null) {
             searchView.setOnQueryTextListener(
                 new SearchView.OnQueryTextListener() {
@@ -99,6 +101,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
             );
             searchView.setIconifiedByDefault(false);
             searchView.setQuery(queryString, true);
+            searchItem.setVisible(true);
         }
     }
 
