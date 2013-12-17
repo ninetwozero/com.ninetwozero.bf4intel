@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
-import com.ninetwozero.bf4intel.json.weaponstats.Weapon;
+import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 
 import java.util.List;
