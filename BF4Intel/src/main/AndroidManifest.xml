@@ -61,6 +61,17 @@
     </activity>
 
     <activity
+      android:name=".ui.unlocks.UnlocksActivity"
+      android:label="@string/label_unlocks"
+      android:screenOrientation="portrait"
+      android:parentActivityName=".ui.activities.MainActivity"
+      android:theme="@style/AppTheme">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".ui.activities.MainActivity"/>
+    </activity>
+
+    <activity
       android:name=".ui.awards.AwardsActivity"
       android:label="@string/label_activity_assignments"
       android:screenOrientation="portrait"
@@ -71,7 +82,7 @@
         android:value=".ui.activities.MainActivity"/>
     </activity>
     <activity
-      android:name=".ui.activities.SearchActivity"
+      android:name=".ui.search.SearchActivity"
       android:label="@string/label_search"
       android:parentActivityName=".ui.activities.MainActivity"
       android:launchMode="singleTop"

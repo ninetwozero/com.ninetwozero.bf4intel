@@ -139,5 +139,7 @@
   <string name="feed_category_ranked_up">Ranked up</string>
   <string name="label_search">Search</string>
   <string name="hint_search">Search for users</string>
+  <string name="label_unlocks">Unlocks</string>
+  <string name="R.string.msg_no_unlocks">No unlocks available</string>
 
 </resources>
