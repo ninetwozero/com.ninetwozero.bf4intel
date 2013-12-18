@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="@dimen/spacing_m"
+  >
+
+  <TextView
+    android:id="@+id/title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="ACOG SCOPE"
+    android:textAppearance="@android:style/TextAppearance.Holo.Large"
+    android:textColor="@color/blue"
+    />
+
+  <TextView
+    android:id="@+id/subtitle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="45/50 SV98 kills"
+    android:textAppearance="@android:style/TextAppearance.Holo.Small"
+    android:layout_below="@id/title"
+    android:textColor="@color/black"
+    />
+
+  <TextView
+    android:id="@+id/category"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Upgrade"
+    android:textAppearance="@android:style/TextAppearance.Holo.Small"
+    android:layout_alignParentRight="true"
+    android:gravity="right"
+    android:textColor="@color/black"
+    />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/subtitle"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    >
+
+    <ProgressBar
+      style="?android:attr/progressBarStyleHorizontal"
+      android:id="@+id/progress"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:max="100"
+      android:layout_weight="0.88"
+      />
+
+    <TextView
+      android:id="@+id/completion"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="0.12"
+      android:text="99.9%"
+      android:gravity="right"
+      android:textColor="@color/black"
+      />
+  </LinearLayout>
+
+</RelativeLayout>

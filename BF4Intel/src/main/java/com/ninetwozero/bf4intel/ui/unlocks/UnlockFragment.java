@@ -22,6 +22,7 @@ import com.ninetwozero.bf4intel.ui.unlocks.vehicles.VehicleUnlockAdapter;
 import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +40,7 @@ public class UnlockFragment extends BaseLoadingListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = layoutInflater.inflate(R.layout.generic_list, parent, false);
+        final View view = layoutInflater.inflate(R.layout.fragment_unlocks, parent, false);
         initialize(view);
         return view;
     }
@@ -110,8 +111,11 @@ public class UnlockFragment extends BaseLoadingListFragment {
         final List<VehicleUnlock> unlocks = new ArrayList<VehicleUnlock>();
         if (unlockMap != null) {
             for (String key : unlockMap.keySet()) {
+                final List<VehicleUnlock> unlockList = unlockMap.get(key);
                 unlocks.add(new VehicleUnlock(key));
-                unlocks.addAll(unlockMap.get(key));
+
+                Collections.sort(unlockList);
+                unlocks.addAll(unlockList);
             }
         }
         return unlocks;
