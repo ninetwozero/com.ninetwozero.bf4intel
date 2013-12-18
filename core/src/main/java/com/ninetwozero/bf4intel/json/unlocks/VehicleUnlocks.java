@@ -9,7 +9,7 @@ public class VehicleUnlocks {
     @SerializedName("unlockProgression")
     private Map<String, List<VehicleUnlock>> unlockMap;
 
-    private Map<String, List<VehicleUnlock>> getUnlockMap() {
+    public Map<String, List<VehicleUnlock>> getUnlockMap() {
         return unlockMap;
     }
 }
