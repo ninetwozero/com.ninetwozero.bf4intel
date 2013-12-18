@@ -42,6 +42,7 @@
   <!-- HEADINGS -->
   <string name="weapons">Weapons</string>
   <string name="vehicles">Vehicles</string>
+  <string name="kits">Kits</string>
   <string name="reports">Reports</string>
   <string name="assignments">Assignments</string>
   <string name="awards">Awards</string>
@@ -140,6 +141,5 @@
   <string name="label_search">Search</string>
   <string name="hint_search">Search for users</string>
   <string name="label_unlocks">Unlocks</string>
-  <string name="R.string.msg_no_unlocks">No unlocks available</string>
-
+  <string name="msg_no_unlocks">No unlocks available</string>
 </resources>

@@ -30,9 +30,6 @@ public class ListRowFactory {
             case SIDE_SOLDIER:
             case PROFILE_SOLDIER:
                 return getItemForSoldierType(type, data, children);
-            case SIDE_PLATOON:
-            case PROFILE_PLATOON:
-                return getItemForPlatoonType(type, data, children);
             case SIDE_FEED:
                 return getItemForFeedType(type, data, children);
             default:
@@ -106,23 +103,6 @@ public class ListRowFactory {
 
         return new ListRow.Builder(type)
                 .fragmentType(FragmentFactory.Type.SOLDIER_OVERVIEW)
-                .stringMappings(stringMappings)
-                .drawableMappings(drawableMappings)
-                .children(children)
-                .data(data)
-                .build();
-    }
-
-    private static ListRow getItemForPlatoonType(final ListRowType type, final Bundle data, final List<ListRow> children) {
-        final Bundle stringMappings = new Bundle();
-        final Bundle drawableMappings = new Bundle();
-
-        stringMappings.putString(String.valueOf(R.id.platoon_name), "Chili-powered Zebras");
-        drawableMappings.putInt(String.valueOf(R.id.platoon_image), R.drawable.test_platoon);
-        drawableMappings.putInt(String.valueOf(R.id.platoon_platform), R.drawable.test_platform);
-
-        return new ListRow.Builder(type)
-                .fragmentType(FragmentFactory.Type.PLATOON_PROFILE)
                 .stringMappings(stringMappings)
                 .drawableMappings(drawableMappings)
                 .children(children)

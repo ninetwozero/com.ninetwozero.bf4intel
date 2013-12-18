@@ -12,15 +12,15 @@ import com.ninetwozero.bf4intel.ui.fragments.ForumListingFragment;
 import com.ninetwozero.bf4intel.ui.fragments.NewsArticleFragment;
 import com.ninetwozero.bf4intel.ui.fragments.NewsListingFragment;
 import com.ninetwozero.bf4intel.ui.fragments.NotificationFragment;
-import com.ninetwozero.bf4intel.ui.fragments.PlatoonProfileFragment;
 import com.ninetwozero.bf4intel.ui.fragments.PostCreationFragment;
 import com.ninetwozero.bf4intel.ui.fragments.PostListingFragment;
-import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
 import com.ninetwozero.bf4intel.ui.fragments.SoldierOverviewFragment;
 import com.ninetwozero.bf4intel.ui.fragments.SoldierStatsFragment;
 import com.ninetwozero.bf4intel.ui.fragments.ThreadCreationFragment;
 import com.ninetwozero.bf4intel.ui.fragments.ThreadListingFragment;
+import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
 import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponStatsFragment;
+import com.ninetwozero.bf4intel.ui.unlocks.UnlockFragment;
 
 public class FragmentFactory {
     public enum Type {
@@ -30,13 +30,14 @@ public class FragmentFactory {
         SOLDIER_STATS,
         WEAPON_STATS,
 
-        SOLDIER_UNLOCKS,
+        WEAPON_UNLOCKS,
+        VEHICLE_UNLOCKS,
+        KIT_UNLOCKS,
+
         SOLDIER_ASSIGNMENTS,
 
         BATTLE_FEED,
         BATTLE_FEED_POSTING,
-
-        PLATOON_PROFILE,
 
         NEWS_LISTING,
         NEWS_ITEM,
@@ -65,8 +66,6 @@ public class FragmentFactory {
                 return AccountProfileFragment.newInstance(data);
             case BATTLE_FEED:
                 return BattleFeedFragment.newInstance(data);
-            case PLATOON_PROFILE:
-                return PlatoonProfileFragment.newInstance(data);
             case SOLDIER_OVERVIEW:
                 return SoldierOverviewFragment.newInstance(data);
             case SOLDIER_STATS:
@@ -97,6 +96,8 @@ public class FragmentFactory {
                 return BattleReportListingFragment.newInstance(data);
             case PROFILE_SEARCH:
                 return ProfileSearchFragment.newInstance(data);
+            case VEHICLE_UNLOCKS:
+                return UnlockFragment.newInstance(data);
             default:
                 throw new TypeNotPresentException("" + type, null);
         }
