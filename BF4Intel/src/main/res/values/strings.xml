@@ -142,4 +142,6 @@
   <string name="hint_search">Search for users</string>
   <string name="label_unlocks">Unlocks</string>
   <string name="msg_no_unlocks">No unlocks available</string>
+  <string name="label_vehicle_unlocks">Vehicle unlocks</string>
+  <string name="cdesc_unlock_image">Unlock image</string>
 </resources>
