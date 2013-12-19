@@ -12,7 +12,7 @@ public class VehicleUnlockCriteria {
     @SerializedName("valueNeeded")
     private int targetValue;
     @SerializedName("completion")
-    private double completion;
+    private int completion;
     @SerializedName("completed")
     private boolean completed;
 
@@ -32,15 +32,11 @@ public class VehicleUnlockCriteria {
         return targetValue;
     }
 
-    public double getCompletion() {
+    public int getCompletion() {
         return completion;
     }
 
     public boolean isCompleted() {
         return completed;
-    }
-
-    public double getCalculatedCompletion() {
-        return currentValue / (targetValue*1.0);
     }
 }
