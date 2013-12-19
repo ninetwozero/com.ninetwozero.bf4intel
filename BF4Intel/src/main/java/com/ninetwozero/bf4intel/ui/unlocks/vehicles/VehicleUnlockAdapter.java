@@ -4,15 +4,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
+import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlockCriteria;
+import com.ninetwozero.bf4intel.resources.maps.UnlockCriteriaStringMap;
+import com.ninetwozero.bf4intel.resources.maps.vehicles.unlocks.VehicleUnlockImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.unlocks.VehicleUnlockStringMap;
 
-import java.text.NumberFormat;
 import java.util.List;
 
 public class VehicleUnlockAdapter extends BaseIntelAdapter<VehicleUnlock> {
@@ -64,17 +65,20 @@ public class VehicleUnlockAdapter extends BaseIntelAdapter<VehicleUnlock> {
     }
 
     private void populateContentRow(final View view, final VehicleUnlock unlock) {
-        ((TextView) view.findViewById(R.id.title)).setText(VehicleUnlockStringMap.get(unlock.getName()));
-        ((TextView) view.findViewById(R.id.subtitle)).setText(unlock.getCriteria().getLabel());
-        ((TextView) view.findViewById(R.id.completion)).setText(
-            NumberFormat.getPercentInstance().format(
-                unlock.getCriteria().getCalculatedCompletion()
-            )
-        );
+        final int completion = unlock.getCriteria().getCompletion();
 
-        final ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progress);
-        progressBar.setMax(100);
-        progressBar.setProgress((int)unlock.getCriteria().getCompletion());
+        setImage(view, R.id.icon, VehicleUnlockImageMap.get(unlock.getName()));
+        setText(view, R.id.title, VehicleUnlockStringMap.get(unlock.getName()));
+        setText(view, R.id.subtitle, resolveCriteriaLabel(unlock.getCriteria()));
+        setProgress(view, R.id.progress, completion, 100);
+
+        if (unlock.getCriteria().isCompleted()) {
+            setText(view, R.id.completion, "Completed");
+            view.setAlpha(0.8f);
+        } else {
+            setText(view, R.id.completion, completion + "%");
+            view.setAlpha(1.0f);
+        }
     }
 
     private int fetchLayoutForType(final int viewType) {
@@ -83,5 +87,14 @@ public class VehicleUnlockAdapter extends BaseIntelAdapter<VehicleUnlock> {
         } else {
             return R.layout.list_item_unlocks;
         }
+    }
+
+    private String resolveCriteriaLabel(final VehicleUnlockCriteria criteria) {
+        final int resource = UnlockCriteriaStringMap.get(criteria.getLabel());
+        return String.format(
+            context.getString(resource),
+            String.format("%,d", criteria.getCurrentValue()),
+            String.format("%,d", criteria.getTargetValue())
+        );
     }
 }

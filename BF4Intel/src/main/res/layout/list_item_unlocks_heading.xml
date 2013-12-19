@@ -5,4 +5,6 @@
   android:layout_height="wrap_content"
   android:id="@+id/text1"
   android:textColor="@color/black"
+  android:textAppearance="@android:style/TextAppearance.Holo.Small"
+  android:padding="@dimen/spacing_s"
   />

@@ -40,7 +40,7 @@ public class UnlockFragment extends BaseLoadingListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = layoutInflater.inflate(R.layout.fragment_unlocks, parent, false);
+        final View view = layoutInflater.inflate(R.layout.generic_list, parent, false);
         initialize(view);
         return view;
     }
