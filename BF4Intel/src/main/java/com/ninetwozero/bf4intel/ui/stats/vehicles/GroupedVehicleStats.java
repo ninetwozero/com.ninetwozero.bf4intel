@@ -6,32 +6,35 @@ import java.util.List;
 
 public class GroupedVehicleStats implements Comparable<GroupedVehicleStats> {
 
+    private final String groupName;
     private final int serviceStarsCount;
+    private final int serviceStarProgress;
     private final int killCount;
     private final long timeInVehicle;
     private final List<VehicleStats> vehicleList;
 
-    public GroupedVehicleStats(int serviceStarsCount, int killCount, long timeInVehicle, List<VehicleStats> vehicleList) {
-
+    public GroupedVehicleStats(String groupName, int serviceStarsCount, int serviceStarProgress, int killCount,
+                               long timeInVehicle, List<VehicleStats> vehicleList)
+    {
+        this.groupName = groupName;
         this.serviceStarsCount = serviceStarsCount;
+        this.serviceStarProgress = serviceStarProgress;
         this.killCount = killCount;
         this.timeInVehicle = timeInVehicle;
         this.vehicleList = vehicleList;
     }
 
-    public int getServiceStarsCount() {
+    public String getGroupName() {
+        return groupName;
+    }public int getServiceStarsCount() {
         return serviceStarsCount;
-    }
-
-    public int getKillCount() {
+    }public int getServiceStarProgress() {
+        return serviceStarProgress;
+    }public int getKillCount() {
         return killCount;
-    }
-
-    public long getTimeInVehicle() {
+    }public long getTimeInVehicle() {
         return timeInVehicle;
-    }
-
-    public List<VehicleStats> getVehicleList() {
+    }public List<VehicleStats> getVehicleList() {
         return vehicleList;
     }
 

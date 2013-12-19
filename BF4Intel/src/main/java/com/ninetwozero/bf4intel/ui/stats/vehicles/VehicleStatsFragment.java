@@ -24,6 +24,7 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
     private static final int ID_LOADER = 2200;
     private ListView listView;
     private VehicleStatistics vs;
+    private VehicleStatsAdapter adapter;
 
     public static VehicleStatsFragment newInstance(final Bundle data) {
         final VehicleStatsFragment fragment = new VehicleStatsFragment();
@@ -70,6 +71,9 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
         vs = gson.fromJson(resultMessage, VehicleStatistics.class);
         showLoadingState(false);
         List<GroupedVehicleStats> vehiclesGrouped =  groupVehicles();
+        adapter = new VehicleStatsAdapter(vehiclesGrouped, getContext());
+        listView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     private List<GroupedVehicleStats> groupVehicles() {
@@ -81,7 +85,9 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
                 GroupedVehicleStats temp = vehicleGroupsMap.get(stat.getVehicleGroup());
                 List<VehicleStats> vehicleStats = new ArrayList<VehicleStats>(temp.getVehicleList());
                 vehicleStatsList.add(stat);
-                group = new GroupedVehicleStats(temp.getServiceStarsCount(),
+                group = new GroupedVehicleStats(temp.getGroupName(),
+                    temp.getServiceStarsCount(),
+                    temp.getServiceStarProgress(),
                     temp.getKillCount() + stat.getKillsCount(),
                     temp.getTimeInVehicle() + stat.getTimeInVehicle(),
                     vehicleStats);
@@ -89,7 +95,10 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
             } else {
                 List<VehicleStats> vehicleStats = new ArrayList<VehicleStats>();
                 vehicleStats.add(stat);
-                group = new GroupedVehicleStats(getServiceStarsCount(stat.getVehicleGroup()),
+                group = new GroupedVehicleStats(
+                    stat.getVehicleGroup(),
+                    getServiceStarsCount(stat.getVehicleGroup()),
+                    stat.getServiceStarProgress(),
                     stat.getKillsCount(),
                     stat.getTimeInVehicle(),
                     vehicleStats);
