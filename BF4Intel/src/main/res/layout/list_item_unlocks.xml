@@ -4,8 +4,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:padding="@dimen/spacing_m"
-  android:background="#FFFFFF">
+  android:padding="@dimen/spacing_m">
 
   <TextView
     android:id="@+id/title"
@@ -13,28 +12,14 @@
     android:layout_height="wrap_content"
     android:textAppearance="@android:style/TextAppearance.Holo.Large"
     android:textColor="@color/blue"
-    android:layout_centerHorizontal="true"
     />
-
-  <ImageView
-    android:id="@+id/icon"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/vuname_stealth_coating"
-    android:layout_centerHorizontal="true"
-    android:layout_below="@id/title"
-    android:layout_marginTop="@dimen/spacing_m"
-    android:layout_marginBottom="@dimen/spacing_m"
-    android:contentDescription="@string/cdesc_unlock_image"/>
 
   <TextView
     android:id="@+id/subtitle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAppearance="@android:style/TextAppearance.Holo.Small"
-    android:layout_below="@id/icon"
-    android:textColor="@color/black"
-    android:layout_centerHorizontal="true"
+    android:layout_below="@id/title"
     />
 
   <LinearLayout
@@ -65,6 +50,5 @@
       android:textColor="@color/black"
       android:layout_weight="0.10"
       />
-
   </LinearLayout>
 </RelativeLayout>

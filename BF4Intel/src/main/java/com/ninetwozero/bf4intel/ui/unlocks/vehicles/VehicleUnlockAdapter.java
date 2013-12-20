@@ -29,7 +29,6 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
             convertView = layoutInflater.inflate(R.layout.list_item_unlocks, viewGroup, false);
         }
 
-        setImage(convertView, R.id.icon, VehicleUnlockImageMap.get(unlock.getName()));
         setText(convertView, R.id.title, VehicleUnlockStringMap.get(unlock.getName()));
         setText(convertView, R.id.subtitle, resolveCriteriaLabel(unlock.getCriteria()));
         setProgress(convertView, R.id.progress, completion, 100);

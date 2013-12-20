@@ -20,7 +20,9 @@ import com.ninetwozero.bf4intel.ui.fragments.ThreadCreationFragment;
 import com.ninetwozero.bf4intel.ui.fragments.ThreadListingFragment;
 import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
 import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponStatsFragment;
-import com.ninetwozero.bf4intel.ui.unlocks.UnlockFragment;
+import com.ninetwozero.bf4intel.ui.unlocks.kits.KitUnlockFragment;
+import com.ninetwozero.bf4intel.ui.unlocks.vehicles.VehicleUnlockFragment;
+import com.ninetwozero.bf4intel.ui.unlocks.weapons.WeaponUnlockFragment;
 
 public class FragmentFactory {
     public enum Type {
@@ -96,8 +98,12 @@ public class FragmentFactory {
                 return BattleReportListingFragment.newInstance(data);
             case PROFILE_SEARCH:
                 return ProfileSearchFragment.newInstance(data);
+            case WEAPON_UNLOCKS:
+                return WeaponUnlockFragment.newInstance(data);
             case VEHICLE_UNLOCKS:
-                return UnlockFragment.newInstance(data);
+                return VehicleUnlockFragment.newInstance(data);
+            case KIT_UNLOCKS:
+                return KitUnlockFragment.newInstance(data);
             default:
                 throw new TypeNotPresentException("" + type, null);
         }

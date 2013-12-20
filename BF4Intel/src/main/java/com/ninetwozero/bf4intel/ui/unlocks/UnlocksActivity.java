@@ -109,9 +109,11 @@ public class UnlocksActivity extends BaseIntelActivity implements ActionBar.TabL
         final List<Fragment> fragments = new ArrayList<Fragment>();
         final Bundle profileBundle = getIntent().getBundleExtra(INTENT_PROFILE);
 
+        //fragments.add(FragmentFactory.get(FragmentFactory.Type.WEAPON_UNLOCKS, profileBundle));
         fragments.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_UNLOCKS, profileBundle));
         fragments.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_UNLOCKS, profileBundle));
         fragments.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_UNLOCKS, profileBundle));
+        //fragments.add(FragmentFactory.get(FragmentFactory.Type.KIT_UNLOCKS, profileBundle));
 
         return fragments;
     }
