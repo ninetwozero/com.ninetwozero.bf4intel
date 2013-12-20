@@ -58,12 +58,13 @@ public class WeaponUnlockFragment extends BaseLoadingListFragment {
     @Override
     protected void onLoadSuccess(final String resultMessage) {
         final WeaponUnlocks unlocks = fromJson(resultMessage, WeaponUnlocks.class);
+        Log.d("YOLO", "unlocks => " + unlocks.getUnlockMap());
         sendDataToListView(sortItemsInMap(unlocks.getUnlockMap()));
         showLoadingState(false);
     }
 
-    private Map<String, List<VehicleUnlock>> sortItemsInMap(final Map<String, List<WeaponUnlock>> unlockMap) {
-        final Map<String, List<VehicleUnlock>> map = new HashMap<String, List<VehicleUnlock>>();
+    private Map<String, List<WeaponUnlock>> sortItemsInMap(final Map<String, List<WeaponUnlock>> unlockMap) {
+        final Map<String, List<WeaponUnlock>> map = new HashMap<String, List<WeaponUnlock>>();
         for (String key : unlockMap.keySet()) {
             final List<WeaponUnlock> unlocks = unlockMap.get(key);
             Collections.sort(unlocks);
@@ -96,7 +97,7 @@ public class WeaponUnlockFragment extends BaseLoadingListFragment {
         return new IntelLoader(
             getActivity(),
             new SimpleGetRequest(
-                UrlFactory.buildVehicleUnlocksURL(
+                UrlFactory.buildWeaponUnlocksURL(
                     bundle.getString(Keys.Soldier.ID),
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )
@@ -115,13 +116,13 @@ public class WeaponUnlockFragment extends BaseLoadingListFragment {
         emptyTextView.setText(R.string.msg_no_unlocks);
     }
 
-    private void sendDataToListView(final Map<String, List<VehicleUnlock>> unlockMap) {
+    private void sendDataToListView(final Map<String, List<WeaponUnlock>> unlockMap) {
         final ExpandableListView listView = (ExpandableListView) getListView();
         if (listView == null) {
             return;
         }
 
-        listView.setAdapter(new VehicleUnlockAdapter(unlockMap, getActivity()));
+        listView.setAdapter(new WeaponUnlockAdapter(unlockMap, getActivity()));
         //TODO: Expand or collapse at start? >>> toggleAllRows(true)
     }
 

@@ -1,27 +1,29 @@
-package com.ninetwozero.bf4intel.ui.unlocks.kits;
+package com.ninetwozero.bf4intel.ui.unlocks.weapons;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.json.unlocks.KitUnlock;
 import com.ninetwozero.bf4intel.json.unlocks.ScoreCriteria;
+import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlock;
 import com.ninetwozero.bf4intel.resources.maps.UnlockCriteriaStringMap;
+import com.ninetwozero.bf4intel.resources.maps.vehicles.unlocks.VehicleUnlockImageMap;
+import com.ninetwozero.bf4intel.resources.maps.vehicles.unlocks.VehicleUnlockStringMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
 
 import java.util.List;
 import java.util.Map;
 
-public class KitUnlockAdapter extends BaseUnlockAdapter<KitUnlock> {
-    public KitUnlockAdapter(final Map<String, List<KitUnlock>> itemMap, final Context context) {
+public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlock> {
+    public WeaponUnlockAdapter(final Map<String, List<WeaponUnlock>> itemMap, final Context context) {
         super(itemMap, context);
     }
 
     @Override
     public View getChildView(final int group, final int child, final boolean isLastChild, View convertView, final ViewGroup viewGroup) {
-        final KitUnlock unlock = getChild(group, child);
+        final WeaponUnlock unlock = getChild(group, child);
         while (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.list_item_unlocks, viewGroup, false);
         }

@@ -14,8 +14,8 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlock;
-import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlocks;
+import com.ninetwozero.bf4intel.json.unlocks.KitUnlock;
+import com.ninetwozero.bf4intel.json.unlocks.KitUnlocks;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
@@ -55,15 +55,15 @@ public class KitUnlockFragment extends BaseLoadingListFragment {
 
     @Override
     protected void onLoadSuccess(final String resultMessage) {
-        final WeaponUnlocks unlocks = fromJson(resultMessage, WeaponUnlocks.class);
+        final KitUnlocks unlocks = fromJson(resultMessage, KitUnlocks.class);
         sendDataToListView(sortItemsInMap(unlocks.getUnlockMap()));
         showLoadingState(false);
     }
 
-    private Map<String, List<WeaponUnlock>> sortItemsInMap(final Map<String, List<WeaponUnlock>> unlockMap) {
-        final Map<String, List<WeaponUnlock>> map = new HashMap<String, List<WeaponUnlock>>();
+    private Map<String, List<KitUnlock>> sortItemsInMap(final Map<String, List<KitUnlock>> unlockMap) {
+        final Map<String, List<KitUnlock>> map = new HashMap<String, List<KitUnlock>>();
         for (String key : unlockMap.keySet()) {
-            final List<WeaponUnlock> unlocks = unlockMap.get(key);
+            final List<KitUnlock> unlocks = unlockMap.get(key);
             Collections.sort(unlocks);
 
             /*
@@ -94,8 +94,9 @@ public class KitUnlockFragment extends BaseLoadingListFragment {
         return new IntelLoader(
             getActivity(),
             new SimpleGetRequest(
-                UrlFactory.buildWeaponUnlocksURL(
+                UrlFactory.buildKitUnlocksURL(
                     bundle.getString(Keys.Soldier.ID),
+                    bundle.getString(Keys.Soldier.NAME),
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )
             )
@@ -113,7 +114,7 @@ public class KitUnlockFragment extends BaseLoadingListFragment {
         emptyTextView.setText(R.string.msg_no_unlocks);
     }
 
-    private void sendDataToListView(final Map<String, List<WeaponUnlock>> unlockMap) {
+    private void sendDataToListView(final Map<String, List<KitUnlock>> unlockMap) {
         final ExpandableListView listView = (ExpandableListView) getListView();
         if (listView == null) {
             return;
