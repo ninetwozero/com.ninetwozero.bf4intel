@@ -2,7 +2,7 @@ package com.ninetwozero.bf4intel.json.unlocks;
 
 import com.google.gson.annotations.SerializedName;
 
-public class VehicleUnlock implements Comparable<VehicleUnlock> {
+public class KitUnlock implements Comparable<KitUnlock> {
     @SerializedName("unlockId")
     private String name;
     @SerializedName("guid")
@@ -10,7 +10,7 @@ public class VehicleUnlock implements Comparable<VehicleUnlock> {
     @SerializedName("unlockedBy")
     private ScoreCriteria criteria;
 
-    public VehicleUnlock(final String name) {
+    public KitUnlock(final String name) {
         this.name = name;
     }
 
@@ -27,7 +27,7 @@ public class VehicleUnlock implements Comparable<VehicleUnlock> {
     }
 
     @Override
-    public int compareTo(VehicleUnlock otherUnlock) {
+    public int compareTo(KitUnlock otherUnlock) {
         final int completion1 = criteria.getCompletion();
         final int completion2 = otherUnlock.getCriteria().getCompletion();
 

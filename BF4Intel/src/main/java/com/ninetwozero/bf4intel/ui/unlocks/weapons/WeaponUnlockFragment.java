@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.unlocks;
+package com.ninetwozero.bf4intel.ui.unlocks.weapons;
 
 import android.os.Bundle;
 import android.support.v4.content.Loader;
@@ -15,7 +15,8 @@ import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
-import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlocks;
+import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlock;
+import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlocks;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
@@ -27,11 +28,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UnlockFragment extends BaseLoadingListFragment {
+public class WeaponUnlockFragment extends BaseLoadingListFragment {
     private static final int ID_LOADER = 1230192;
 
-    public static UnlockFragment newInstance(final Bundle data) {
-        final UnlockFragment fragment = new UnlockFragment();
+    public static WeaponUnlockFragment newInstance(final Bundle data) {
+        final WeaponUnlockFragment fragment = new WeaponUnlockFragment();
         fragment.setArguments(data);
         return fragment;
     }
@@ -56,16 +57,16 @@ public class UnlockFragment extends BaseLoadingListFragment {
 
     @Override
     protected void onLoadSuccess(final String resultMessage) {
-        final VehicleUnlocks unlocks = fromJson(resultMessage, VehicleUnlocks.class);
+        final WeaponUnlocks unlocks = fromJson(resultMessage, WeaponUnlocks.class);
         sendDataToListView(sortItemsInMap(unlocks.getUnlockMap()));
         showLoadingState(false);
     }
 
-    private Map<String, List<VehicleUnlock>> sortItemsInMap(final Map<String, List<VehicleUnlock>> unlockMap) {
+    private Map<String, List<VehicleUnlock>> sortItemsInMap(final Map<String, List<WeaponUnlock>> unlockMap) {
         final Map<String, List<VehicleUnlock>> map = new HashMap<String, List<VehicleUnlock>>();
         for (String key : unlockMap.keySet()) {
-            final List<VehicleUnlock> vehicleUnlocks = unlockMap.get(key);
-            Collections.sort(vehicleUnlocks);
+            final List<WeaponUnlock> unlocks = unlockMap.get(key);
+            Collections.sort(unlocks);
 
             /*
                 TODO:
@@ -73,7 +74,7 @@ public class UnlockFragment extends BaseLoadingListFragment {
                 param String would be key as seen in JSON
                 param Integer would be String resource ID
              */
-            map.put(key, vehicleUnlocks);
+            map.put(key, unlocks);
         }
         return map;
     }
