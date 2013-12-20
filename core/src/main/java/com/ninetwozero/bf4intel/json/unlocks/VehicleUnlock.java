@@ -8,7 +8,7 @@ public class VehicleUnlock implements Comparable<VehicleUnlock> {
     @SerializedName("guid")
     private String guid;
     @SerializedName("unlockedBy")
-    private VehicleUnlockCriteria criteria;
+    private ScoreCriteria criteria;
 
     public VehicleUnlock(final String name) {
         this.name = name;
@@ -22,7 +22,7 @@ public class VehicleUnlock implements Comparable<VehicleUnlock> {
         return guid;
     }
 
-    public VehicleUnlockCriteria getCriteria() {
+    public ScoreCriteria getCriteria() {
         return criteria;
     }
 

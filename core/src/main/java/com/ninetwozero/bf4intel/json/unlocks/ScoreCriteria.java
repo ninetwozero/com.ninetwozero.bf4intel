@@ -2,7 +2,7 @@ package com.ninetwozero.bf4intel.json.unlocks;
 
 import com.google.gson.annotations.SerializedName;
 
-public class VehicleUnlockCriteria {
+public class ScoreCriteria {
     @SerializedName("codeNeeded")
     private String label;
     @SerializedName("unlockType")
