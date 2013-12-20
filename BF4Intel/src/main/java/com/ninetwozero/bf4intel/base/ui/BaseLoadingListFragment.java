@@ -124,6 +124,14 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
 
+    /*
+        This should probably not be used until we get it sorted out, as it messes with styles set in
+        the AndroidManifest.xml: http://stackoverflow.com/a/15511741/860212
+
+        This is also why we're getting white text colors at many places, and when getContext() is
+        changed into getActivity(), we get the black colored text.
+     */
+    @Deprecated
     protected Context getContext() {
         return getActivity().getApplicationContext();
     }
