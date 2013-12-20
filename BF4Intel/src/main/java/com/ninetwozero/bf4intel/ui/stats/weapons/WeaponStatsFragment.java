@@ -23,7 +23,6 @@ import java.util.List;
 public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     private static final int ID_LOADER = 2100;
-    private WeaponStatsAdapter adapter;
     private ListView listView;
 
     public static WeaponStatsFragment newInstance(final Bundle data) {
@@ -52,13 +51,13 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    public Loader<Result> onCreateLoader(int i, Bundle bundle) {
+    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         showLoadingState(true);
         return new IntelLoader(getActivity().getApplicationContext(), new SimpleGetRequest(UrlFactory.buildWeaponStatsURL(200661244, 1)));
     }
 
     @Override
-    public void onLoadFinished(Loader<Result> resultLoader, Result result) {
+    public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
         if (result == Result.SUCCESS) {
             onLoadSuccess(result.getResultMessage());
         } else {
@@ -67,18 +66,20 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    protected void onLoadSuccess(String resultMessage) {
-        WeaponStatistics ws = gson.fromJson(resultMessage, WeaponStatistics.class);
-        showLoadingState(false);
-        List<Weapon> weaponList = ws.getWeaponsList();
+    protected void onLoadSuccess(final String resultMessage) {
+        final WeaponStatistics ws = fromJson(resultMessage, WeaponStatistics.class);
+        final List<Weapon> weaponList = ws.getWeaponsList();
         Collections.sort(weaponList);
-        adapter = new WeaponStatsAdapter(weaponList, getContext());
+
+        final WeaponStatsAdapter adapter = new WeaponStatsAdapter(weaponList, getContext());
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+        showLoadingState(false);
     }
 
     @Override
-    protected void onLoadFailure(String resultMessage) {
+    protected void onLoadFailure(final String resultMessage) {
         Log.e(WeaponStatsFragment.class.getSimpleName(), resultMessage);
     }
 }
