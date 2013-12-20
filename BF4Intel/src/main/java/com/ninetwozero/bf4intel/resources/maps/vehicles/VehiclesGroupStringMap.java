@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.resources.maps.vehicles;
 
-import com.ninetwozero.bf4intel.R;import java.util.HashMap;
+import com.ninetwozero.bf4intel.R;
+import java.util.HashMap;
 import java.util.Map;
 
 public class VehiclesGroupStringMap {

@@ -7,20 +7,10 @@ import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedPostingFragment;
 import com.ninetwozero.bf4intel.ui.battlereport.BattleReportFragment;
 import com.ninetwozero.bf4intel.ui.battlereport.BattleReportListingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.AccountProfileFragment;
-import com.ninetwozero.bf4intel.ui.fragments.ForumListingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.NewsArticleFragment;
-import com.ninetwozero.bf4intel.ui.fragments.NewsListingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.NotificationFragment;
-import com.ninetwozero.bf4intel.ui.fragments.PlatoonProfileFragment;
-import com.ninetwozero.bf4intel.ui.fragments.PostCreationFragment;
-import com.ninetwozero.bf4intel.ui.fragments.PostListingFragment;
+import com.ninetwozero.bf4intel.ui.fragments.*;
 import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
-import com.ninetwozero.bf4intel.ui.fragments.SoldierOverviewFragment;
-import com.ninetwozero.bf4intel.ui.fragments.SoldierStatsFragment;
-import com.ninetwozero.bf4intel.ui.fragments.ThreadCreationFragment;
-import com.ninetwozero.bf4intel.ui.fragments.ThreadListingFragment;
-import com.ninetwozero.bf4intel.ui.stats.vehicles.VehicleStatsFragment;import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponStatsFragment;
+import com.ninetwozero.bf4intel.ui.stats.vehicles.VehicleStatsFragment;
+import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponStatsFragment;
 
 public class FragmentFactory {
     public enum Type {

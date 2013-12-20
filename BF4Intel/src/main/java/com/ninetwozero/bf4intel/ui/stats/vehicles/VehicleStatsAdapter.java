@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;import android.widget.TextView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
-import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStats;import com.ninetwozero.bf4intel.json.stats.vehicles.VehicleStats;
-import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;import com.ninetwozero.bf4intel.resources.maps.vehicles.VehiclesGroupStringMap;
+import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStats;
+import com.ninetwozero.bf4intel.json.stats.vehicles.VehicleStats;
+import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;
+import com.ninetwozero.bf4intel.resources.maps.vehicles.VehiclesGroupStringMap;
 
 import java.util.Collections;
 import java.util.List;
