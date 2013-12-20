@@ -144,4 +144,5 @@
   <string name="msg_no_unlocks">No unlocks available</string>
   <string name="label_vehicle_unlocks">Vehicle unlocks</string>
   <string name="cdesc_unlock_image">Unlock image</string>
+  <string name="done">Done</string>
 </resources>
