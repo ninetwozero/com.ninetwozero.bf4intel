@@ -8,44 +8,43 @@ import java.util.Map;
 public class VehicleUnlockImageMap {
     private static final Map<String, Integer> map = new HashMap<String, Integer>() {
         {
-            /*
-            TODO: These need to point correctly
-            put("ID_P_VUNAME_AAAA", R.drawable.vuname_a);
-            put("ID_P_VUNAME_AAARADAR", R.drawable.vuname_aaaradar);
-            put("ID_P_VUNAME_AAARMOR", R.drawable.vuname_aaarmor);
-            put("ID_P_VUNAME_AABRASSGRAPHITE", R.drawable.vuname_aabrassgraphite);
-            put("ID_P_VUNAME_AAENVG", R.drawable.vuname_aaenvg);
-            put("ID_P_VUNAME_AAFIREEX", R.drawable.vuname_aafireex);
-            put("ID_P_VUNAME_AAHS", R.drawable.vuname_aahs);
-            put("ID_P_VUNAME_AAMAINCANNON", R.drawable.vuname_aamaincannon);
-            put("ID_P_VUNAME_AAPREVENT", R.drawable.vuname_aaprevent);
-            put("ID_P_VUNAME_AAPROX", R.drawable.vuname_aaprox);
-            put("ID_P_VUNAME_AASMOKE", R.drawable.vuname_aasmoke);
-            put("ID_P_VUNAME_AASTEALTH", R.drawable.vuname_aastealth);
-            put("ID_P_VUNAME_AAVAIRBURST", R.drawable.vuname_aavairburst);
-            put("ID_P_VUNAME_AAVAR", R.drawable.vuname_aavar);
-            put("ID_P_VUNAME_AAVHEATSEEKER", R.drawable.vuname_aavheatseeker);
-            put("ID_P_VUNAME_AAVIRNV", R.drawable.vuname_aavirnv);
-            put("ID_P_VUNAME_AAVIRONFIST", R.drawable.vuname_aavironfist);
-            put("ID_P_VUNAME_AAWPNEFF", R.drawable.vuname_aawpneff);
-            put("ID_P_VUNAME_AAZOOM", R.drawable.vuname_aazoom);
-            put("ID_P_VUNAME_AHAA", R.drawable.vuname_ahaa);
-            put("ID_P_VUNAME_AHARADAR", R.drawable.vuname_aharadar);
-            put("ID_P_VUNAME_AHECM", R.drawable.vuname_ahecm);
-            put("ID_P_VUNAME_AHENVG", R.drawable.vuname_ahenvg);
-            put("ID_P_VUNAME_AHFIREEX", R.drawable.vuname_ahfireex);
-            put("ID_P_VUNAME_AHFLARE", R.drawable.vuname_ahflare);
-            put("ID_P_VUNAME_AHGHELL", R.drawable.vuname_ahghell);
-            put("ID_P_VUNAME_AHGUIDE", R.drawable.vuname_ahguide);
-            put("ID_P_VUNAME_AHHYDRA", R.drawable.vuname_ahhydra);
-            put("ID_P_VUNAME_AHIRNV", R.drawable.vuname_ahirnv);
-            put("ID_P_VUNAME_AHPROXGUN", R.drawable.vuname_ahproxgun);
-            put("ID_P_VUNAME_AHSTEALTH", R.drawable.vuname_ahstealth);
-            put("ID_P_VUNAME_AHTOW", R.drawable.vuname_ahtow);
-            put("ID_P_VUNAME_AHTVG", R.drawable.vuname_ahtvg);
-            put("ID_P_VUNAME_AHWPNGUN", R.drawable.vuname_ahwpngun);
-            put("ID_P_VUNAME_AHZOOM", R.drawable.vuname_ahzoom);
-            put("ID_P_VUNAME_AHZUNI", R.drawable.vuname_ahzuni);
+            put("ID_P_VUNAME_AAAA", R.drawable.vuname_tbd);
+            put("ID_P_VUNAME_AAARADAR", R.drawable.vuname_tbd);
+            put("ID_P_VUNAME_AAARMOR", R.drawable.vuname_reactive_armor);
+            put("ID_P_VUNAME_AABRASSGRAPHITE", R.drawable.vuname_gunner_incendiary);
+            put("ID_P_VUNAME_AAENVG", R.drawable.vuname_gunner_irv);
+            put("ID_P_VUNAME_AAFIREEX", R.drawable.vuname_fire_extinguisher);
+            put("ID_P_VUNAME_AAHS", R.drawable.vuname_heatseekers);
+            put("ID_P_VUNAME_AAMAINCANNON", R.drawable.vuname_30mm_cannon);
+            put("ID_P_VUNAME_AAPREVENT", R.drawable.vuname_tbd);
+            put("ID_P_VUNAME_AAPROX", R.drawable.vuname_proximity_scan);
+            put("ID_P_VUNAME_AASMOKE", R.drawable.vuname_smokescreen_big);
+            put("ID_P_VUNAME_AASTEALTH", R.drawable.vuname_stealth_coating);
+            put("ID_P_VUNAME_AAVAIRBURST", R.drawable.vuname_burst_cannon);
+            put("ID_P_VUNAME_AAVAR", R.drawable.vuname_tbd);
+            put("ID_P_VUNAME_AAVHEATSEEKER", R.drawable.vuname_heatseekers);
+            put("ID_P_VUNAME_AAVIRNV", R.drawable.vuname_irnv_optics);
+            put("ID_P_VUNAME_AAVIRONFIST", R.drawable.vuname_tbd);
+            put("ID_P_VUNAME_AAWPNEFF", R.drawable.vuname_tbd);
+            put("ID_P_VUNAME_AAZOOM", R.drawable.vuname_gunner_zoom);
+            put("ID_P_VUNAME_AHAA", R.drawable.vuname_tbd);
+            put("ID_P_VUNAME_AHARADAR", R.drawable.vuname_active_radar);
+            put("ID_P_VUNAME_AHECM", R.drawable.vuname_ecm_jammer);
+            put("ID_P_VUNAME_AHENVG", R.drawable.vuname_irnv_optics);
+            put("ID_P_VUNAME_AHFIREEX", R.drawable.vuname_fire_extinguisher);
+            put("ID_P_VUNAME_AHFLARE", R.drawable.vuname_shflare);
+            put("ID_P_VUNAME_AHGHELL", R.drawable.vuname_tbd);
+            put("ID_P_VUNAME_AHGUIDE", R.drawable.vuname_tbd);
+            put("ID_P_VUNAME_AHHYDRA", R.drawable.vuname_hydra_rockets);
+            put("ID_P_VUNAME_AHIRNV", R.drawable.acc_irnv_scope);
+            put("ID_P_VUNAME_AHPROXGUN", R.drawable.vuname_proximity_scan);
+            put("ID_P_VUNAME_AHSTEALTH", R.drawable.vuname_stealth_coating);
+            put("ID_P_VUNAME_AHTOW", R.drawable.vuname_tow_missile);
+            put("ID_P_VUNAME_AHTVG", R.drawable.vuname_tvguided_missile);
+            put("ID_P_VUNAME_AHWPNGUN", R.drawable.vuname_tbd);
+            put("ID_P_VUNAME_AHZOOM", R.drawable.vuname_gunner_zoom);
+            put("ID_P_VUNAME_AHZUNI", R.drawable.vuname_zuni_rockets);
+            /* TODO: *sigh* We need to figure out which of these cryptic names are which images
             put("ID_P_VUNAME_ATKHELIAUTOPILOT", R.drawable.vuname_atkheliautopilot);
             put("ID_P_VUNAME_ATKJETAUTOPILOT", R.drawable.vuname_atkjetautopilot);
             put("ID_P_VUNAME_ATKJETCECM", R.drawable.vuname_atkjetcecm);
@@ -155,8 +154,7 @@ public class VehicleUnlockImageMap {
             put("ID_P_VUNAME_SHMAINWEAPON", R.drawable.vuname_shmainweapon);
             put("ID_P_VUNAME_SHPROX", R.drawable.vuname_shprox);
             put("ID_P_VUNAME_SHSTEALTH", R.drawable.vuname_shstealth);
-            put("ID_P_VUNAME_SHWPNEFF", R.drawable.vuname_shwpneff);
-            */
+            put("ID_P_VUNAME_SHWPNEFF", R.drawable.vuname_shwpneff);*/
         }
     };
 
