@@ -11,13 +11,13 @@ import android.widget.ListView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStats;
 import com.ninetwozero.bf4intel.json.stats.vehicles.VehicleStatistics;
-import com.ninetwozero.bf4intel.json.stats.vehicles.VehicleStats;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.utils.Result;
 
-import java.util.*;
+import java.util.List;
 
 public class VehicleStatsFragment extends BaseLoadingListFragment {
 
@@ -68,52 +68,12 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void onLoadSuccess(String resultMessage) {
-        vs = gson.fromJson(resultMessage, VehicleStatistics.class);
-        showLoadingState(false);
-        List<GroupedVehicleStats> vehiclesGrouped =  groupVehicles();
+        vs = fromJson(resultMessage, VehicleStatistics.class);
+        List<GroupedVehicleStats> vehiclesGrouped = vs.groupVehicles();
         adapter = new VehicleStatsAdapter(vehiclesGrouped, getContext());
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-    }
-
-    private List<GroupedVehicleStats> groupVehicles() {
-        List<VehicleStats> vehicleStatsList = vs.getVehiclesList();
-        Map<String, GroupedVehicleStats> vehicleGroupsMap = new HashMap<String, GroupedVehicleStats>();
-        for (VehicleStats stat : vehicleStatsList) {
-            GroupedVehicleStats group;
-            if (vehicleGroupsMap.containsKey(stat.getVehicleGroup())) {
-                GroupedVehicleStats temp = vehicleGroupsMap.get(stat.getVehicleGroup());
-                List<VehicleStats> vehicleStats = new ArrayList<VehicleStats>(temp.getVehicleList());
-                vehicleStatsList.add(stat);
-                group = new GroupedVehicleStats(temp.getGroupName(),
-                    temp.getServiceStarsCount(),
-                    temp.getServiceStarProgress(),
-                    temp.getKillCount() + stat.getKillsCount(),
-                    temp.getTimeInVehicle() + stat.getTimeInVehicle(),
-                    vehicleStats);
-
-            } else {
-                List<VehicleStats> vehicleStats = new ArrayList<VehicleStats>();
-                vehicleStats.add(stat);
-                group = new GroupedVehicleStats(
-                    stat.getVehicleGroup(),
-                    getServiceStarsCount(stat.getVehicleGroup()),
-                    stat.getServiceStarProgress(),
-                    stat.getKillsCount(),
-                    stat.getTimeInVehicle(),
-                    vehicleStats);
-            }
-            vehicleGroupsMap.put(stat.getVehicleGroup(), group);
-        }
-        List<GroupedVehicleStats> groupedVehicleStatsList = new ArrayList<GroupedVehicleStats>(vehicleGroupsMap.values());
-        Collections.sort(groupedVehicleStatsList);
-        return groupedVehicleStatsList;
-    }
-
-    private int getServiceStarsCount(String vehicleGroup) {
-        return vs.getUnlockProgressions().containsKey(vehicleGroup)
-            ? vs.getUnlockProgressions().get(vehicleGroup).getStarsTaken()
-            : 0;
+        showLoadingState(false);
     }
 
     @Override

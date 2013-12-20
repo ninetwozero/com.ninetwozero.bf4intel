@@ -1,6 +1,4 @@
-package com.ninetwozero.bf4intel.ui.stats.vehicles;
-
-import com.ninetwozero.bf4intel.json.stats.vehicles.VehicleStats;
+package com.ninetwozero.bf4intel.json.stats.vehicles;
 
 import java.util.List;
 

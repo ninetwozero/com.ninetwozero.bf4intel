@@ -20,7 +20,7 @@ import com.ninetwozero.bf4intel.ui.fragments.SoldierOverviewFragment;
 import com.ninetwozero.bf4intel.ui.fragments.SoldierStatsFragment;
 import com.ninetwozero.bf4intel.ui.fragments.ThreadCreationFragment;
 import com.ninetwozero.bf4intel.ui.fragments.ThreadListingFragment;
-import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponStatsFragment;
+import com.ninetwozero.bf4intel.ui.stats.vehicles.VehicleStatsFragment;import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponStatsFragment;
 
 public class FragmentFactory {
     public enum Type {
@@ -29,6 +29,7 @@ public class FragmentFactory {
         SOLDIER_OVERVIEW,
         SOLDIER_STATS,
         WEAPON_STATS,
+        VEHICLE_STATS,
 
         SOLDIER_UNLOCKS,
         SOLDIER_ASSIGNMENTS,
@@ -73,6 +74,8 @@ public class FragmentFactory {
                 return SoldierStatsFragment.newInstance(data);
             case WEAPON_STATS:
                 return WeaponStatsFragment.newInstance(data);
+            case VEHICLE_STATS:
+                return VehicleStatsFragment.newInstance(data);
             case NEWS_LISTING:
                 return NewsListingFragment.newInstance(data);
             case NEWS_ITEM:

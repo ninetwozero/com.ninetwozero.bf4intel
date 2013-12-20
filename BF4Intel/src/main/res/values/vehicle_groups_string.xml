@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="vehicle_group_attack_helicopter">Attack Helicopter</string>
+  <string name="vehicle_group_scout_helicopter">Scout Helicopter</string>
+  <string name="vehicle_group_attack_jet">Attack Jet</string>
+  <string name="vehicle_group_stealth_jet">Stealth Jet</string>
+  <string name="vehicle_group_anti_air">Anti Air</string>
+  <string name="vehicle_group_fast_attack_craft">Fast Attack Craft</string>
+  <string name="vehicle_group_infantry_fighting_vehicle">Infantry Fighting Vehicle</string>
+  <string name="vehicle_group_main_battle_tank">Main Battle Tank</string>
+  <string name="vehicle_group_transport_vehicle">Transport Vehicle</string>
+  <string name="vehicle_group_stationary_weapon">Stationary Weapon</string>
+  <string name="vehicle_group_air">Air</string>
+  <string name="vehicle_group_mobile_artillery">Mobile Artillery</string>
+  <string name="vehicle_group_soldier_equipment">Soldier Equipment</string>
+  <string name="vehicle_group_boat">Boat</string>
+  <string name="vehicle_group_stationary_aa">Stationary AA</string>
+</resources>

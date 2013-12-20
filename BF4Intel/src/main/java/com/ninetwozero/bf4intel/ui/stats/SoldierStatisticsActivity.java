@@ -57,14 +57,8 @@ public class SoldierStatisticsActivity extends BaseIntelActivity {
     private void setupFragments() {
         fragmentList = new ArrayList<Fragment>();
         fragmentList.add(FragmentFactory.get(FragmentFactory.Type.WEAPON_STATS, new Bundle()));
-        fragmentList.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForVehicles()));
+        fragmentList.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_STATS, new Bundle()));
         fragmentList.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForReports()));
-    }
-
-    private Bundle getBundleForVehicles() {
-        final Bundle bundle = new Bundle();
-        bundle.putString("TEST", "This is the vehicles tab");
-        return bundle;
     }
 
     private Bundle getBundleForReports() {

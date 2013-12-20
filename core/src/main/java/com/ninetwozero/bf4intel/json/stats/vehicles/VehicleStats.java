@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName;
 public class VehicleStats implements Comparable<VehicleStats> {
     @SerializedName("serviceStars")
     private int serviceStarsCount;
-    @SerializedName("serviceStarProgress")
+    @SerializedName("serviceStarsProgress")
     private int serviceStarProgress;
     @SerializedName("kills")
     private int killsCount;
     @SerializedName("timeIn")
     private int timeInVehicle;
-    @SerializedName("guid")
-    private String uniqueName;
+    @SerializedName("name")
+    private String name;
     @SerializedName("category")
     private String vehicleGroup;
 
@@ -32,8 +32,8 @@ public class VehicleStats implements Comparable<VehicleStats> {
         return timeInVehicle;
     }
 
-    public String getUniqueName() {
-        return uniqueName;
+    public String getName() {
+        return name;
     }
 
     public String getVehicleGroup() {
