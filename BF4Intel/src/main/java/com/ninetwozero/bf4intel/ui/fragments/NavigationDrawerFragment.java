@@ -25,7 +25,7 @@ import com.ninetwozero.bf4intel.ui.adapters.ExpandableListRowAdapter;
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
 import com.ninetwozero.bf4intel.ui.awards.AwardsActivity;
 import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsActivity;
-import com.ninetwozero.bf4intel.ui.unlocks.UnlocksActivity;
+import com.ninetwozero.bf4intel.ui.unlocks.UnlockActivity;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
 
 import java.util.ArrayList;
@@ -250,7 +250,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 intent = new Intent(getActivity(), AwardsActivity.class);
                 break;
             case INTENT_UNLOCKS:
-                intent = new Intent(getActivity(), UnlocksActivity.class);
+                intent = new Intent(getActivity(), UnlockActivity.class);
                 break;
             default:
                 intent = new Intent();

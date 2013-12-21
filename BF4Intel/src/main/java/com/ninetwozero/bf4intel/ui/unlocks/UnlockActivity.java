@@ -20,7 +20,7 @@ import com.ninetwozero.bf4intel.utils.Result;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UnlocksActivity extends BaseIntelActivity implements ActionBar.TabListener {
+public class UnlockActivity extends BaseIntelActivity implements ActionBar.TabListener {
     public static final String INTENT_PROFILE = "profile";
 
     private static final int ID_LOADER = 124343;
@@ -92,7 +92,7 @@ public class UnlocksActivity extends BaseIntelActivity implements ActionBar.TabL
     }
 
     private void processError(String resultMessage) {
-        Log.e(UnlocksActivity.class.getSimpleName(), resultMessage);
+        Log.e(UnlockActivity.class.getSimpleName(), resultMessage);
     }
 
     private void initialize() {
@@ -109,8 +109,7 @@ public class UnlocksActivity extends BaseIntelActivity implements ActionBar.TabL
         final List<Fragment> fragments = new ArrayList<Fragment>();
         final Bundle profileBundle = getIntent().getBundleExtra(INTENT_PROFILE);
 
-        //fragments.add(FragmentFactory.get(FragmentFactory.Type.WEAPON_UNLOCKS, profileBundle));
-        fragments.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_UNLOCKS, profileBundle));
+        fragments.add(FragmentFactory.get(FragmentFactory.Type.WEAPON_UNLOCKS, profileBundle));
         fragments.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_UNLOCKS, profileBundle));
         fragments.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_UNLOCKS, profileBundle));
         //fragments.add(FragmentFactory.get(FragmentFactory.Type.KIT_UNLOCKS, profileBundle));

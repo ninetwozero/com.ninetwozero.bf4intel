@@ -2,7 +2,7 @@ package com.ninetwozero.bf4intel.json.unlocks;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ScoreCriteria {
+public class UnlockCriteria implements Comparable<UnlockCriteria> {
     @SerializedName("codeNeeded")
     private String label;
     @SerializedName("unlockType")
@@ -38,5 +38,28 @@ public class ScoreCriteria {
 
     public boolean isCompleted() {
         return completed;
+    }
+
+    @Override
+    public int compareTo(final UnlockCriteria other) {
+        final int completion1 = completion;
+        final int completion2 = other.getCompletion();
+
+        if ((completion1 < 100 && completion2 < 100) ) {
+            if (completion1 > completion2) {
+                return -1;
+            } else if (completion1 < completion2) {
+                return 1;
+            }
+        } else if(completion1 == completion2) {
+            return 0;
+        } else {
+            if (completion1 == 100) {
+                return 1;
+            } else if (completion2 == 100) {
+                return -1;
+            }
+        }
+        return 0;
     }
 }
