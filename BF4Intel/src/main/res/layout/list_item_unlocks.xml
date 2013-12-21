@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-  style="@style/WhiteContainer"
   xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/WhiteContainer"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:padding="@dimen/spacing_m">
@@ -22,33 +22,12 @@
     android:layout_below="@id/title"
     />
 
-  <LinearLayout
-    android:id="@+id/wrap_completion"
+  <ProgressBar
+    style="?android:attr/progressBarStyleHorizontal"
+    android:id="@+id/progress"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:indeterminate="false"
     android:layout_below="@id/subtitle"
-    android:orientation="horizontal"
-    android:weightSum="1"
-    android:gravity="center_vertical"
-    >
-
-    <ProgressBar
-      style="?android:attr/progressBarStyleHorizontal"
-      android:id="@+id/progress"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginRight="@dimen/spacing_s"
-      android:layout_weight="0.9"
-      android:indeterminate="false"
-      />
-
-    <TextView
-      android:id="@+id/completion"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:gravity="right"
-      android:textColor="@color/black"
-      android:layout_weight="0.10"
-      />
-  </LinearLayout>
+    />
 </RelativeLayout>

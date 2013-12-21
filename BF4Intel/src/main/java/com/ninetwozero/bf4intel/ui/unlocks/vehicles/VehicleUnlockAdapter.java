@@ -46,10 +46,8 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
         setProgress(convertView, R.id.progress, completion, 100);
 
         if (unlock.getCriteria().isCompleted()) {
-            setText(convertView, R.id.completion, R.string.done);
             convertView.setAlpha(0.5f);
         } else {
-            setText(convertView, R.id.completion, completion + "%");
             convertView.setAlpha(1.0f);
         }
         return convertView;

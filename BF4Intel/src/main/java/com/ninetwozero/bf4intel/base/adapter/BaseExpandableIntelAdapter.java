@@ -96,6 +96,10 @@ public abstract class BaseExpandableIntelAdapter<T> extends BaseExpandableListAd
         ((ImageView) view.findViewById(resourceId)).setImageResource(imageResource);
     }
 
+    public void setVisibility(final View view, final int resourceId, final int value) {
+        view.findViewById(resourceId).setVisibility(value);
+    }
+
     public void setProgress(final View view, final int resourceId, final int current, final int max) {
         final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
         progressBar.setProgress(current);
