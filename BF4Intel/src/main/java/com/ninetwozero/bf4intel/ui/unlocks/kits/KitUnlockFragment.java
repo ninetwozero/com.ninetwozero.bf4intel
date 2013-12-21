@@ -88,7 +88,7 @@ public class KitUnlockFragment extends BaseLoadingListFragment {
             getActivity(),
             new SimpleGetRequest(
                 UrlFactory.buildKitUnlocksURL(
-                    bundle.getString(Keys.Soldier.ID),
+                    bundle.getInt(Keys.Soldier.ID),
                     bundle.getString(Keys.Soldier.NAME),
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )

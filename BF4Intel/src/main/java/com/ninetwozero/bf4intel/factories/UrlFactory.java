@@ -58,16 +58,16 @@ public class UrlFactory {
         return createURL("search/query/");
     }
 
-    public static URL buildWeaponUnlocksURL(final String soldierId, final int platformId) {
-        return createURL(String.format("warsawWeaponsPopulateStats/%s/%d/unlocks/", soldierId, platformId));
+    public static URL buildWeaponUnlocksURL(final int soldierId, final int platformId) {
+        return createURL(String.format("warsawWeaponsPopulateStats/%d/%d/unlocks/", soldierId, platformId));
     }
 
-    public static URL buildVehicleUnlocksURL(final String soldierId, final int platformId) {
-        return createURL(String.format("warsawvehiclesPopulateStats/%s/%d/unlocks/", soldierId, platformId));
+    public static URL buildVehicleUnlocksURL(final int soldierId, final int platformId) {
+        return createURL(String.format("warsawvehiclesPopulateStats/%d/%d/unlocks/", soldierId, platformId));
     }
 
-    public static URL buildKitUnlocksURL(final String soldierId, final String soldierName, final int platformId) {
-        return createURL(String.format("warsawkitspopulatestats/%s/%d/", soldierId, platformId));
+    public static URL buildKitUnlocksURL(final int soldierId, final String soldierName, final int platformId) {
+        return createURL(String.format("warsawkitspopulatestats/%d/%d/", soldierId, platformId));
     }
 
     public static URL buildDogtagsURL(
