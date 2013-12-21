@@ -11,9 +11,6 @@ public class WeaponUnlocks {
     private long personaId;
     @SerializedName("personaName")
     private String personaName;
-    /*@SerializedName("allMissions")
-    private Map<String, Assignment> assignments = new HashMap<String, Assignment>();
-    */
     @SerializedName("weaponsByCategory")
     private Map<String, List<WeaponUnlockContainer>> unlockMap = new HashMap<String, List<WeaponUnlockContainer>>();
 
