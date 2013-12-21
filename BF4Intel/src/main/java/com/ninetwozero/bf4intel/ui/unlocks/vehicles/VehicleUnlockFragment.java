@@ -65,13 +65,6 @@ public class VehicleUnlockFragment extends BaseLoadingListFragment {
         for (String key : unlockMap.keySet()) {
             final List<VehicleUnlock> unlocks = unlockMap.get(key);
             Collections.sort(unlocks);
-
-            /*
-                TODO:
-                Get int from a Map<String, Integer>?
-                param String would be key as seen in JSON
-                param Integer would be String resource ID
-             */
             map.put(key, unlocks);
         }
         return map;
@@ -118,9 +111,7 @@ public class VehicleUnlockFragment extends BaseLoadingListFragment {
         if (listView == null) {
             return;
         }
-
         listView.setAdapter(new VehicleUnlockAdapter(unlockMap, getActivity()));
-        //TODO: Expand or collapse at start? >>> toggleAllRows(true)
     }
 
     protected void toggleAllRows(final boolean expand) {

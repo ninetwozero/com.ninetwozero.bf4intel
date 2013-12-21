@@ -65,13 +65,6 @@ public class KitUnlockFragment extends BaseLoadingListFragment {
         for (String key : unlockMap.keySet()) {
             final List<KitItemUnlockContainer> unlocks = unlockMap.get(key);
             Collections.sort(unlocks);
-
-            /*
-                TODO:
-                Get int from a Map<String, Integer>?
-                param String would be key as seen in JSON
-                param Integer would be String resource ID
-             */
             map.put(key, unlocks);
         }
         return map;

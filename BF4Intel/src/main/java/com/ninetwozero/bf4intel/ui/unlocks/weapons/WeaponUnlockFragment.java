@@ -115,7 +115,8 @@ public class WeaponUnlockFragment extends BaseLoadingListFragment {
         }
 
         listView.setAdapter(new WeaponUnlockAdapter(unlockMap, getActivity()));
-        //TODO: Expand or collapse at start? >>> toggleAllRows(true)
+        //TODO: Expand or collapse at start? We'll need to figure this out before release
+        // toggleAllRows(true)
     }
 
     protected void toggleAllRows(final boolean expand) {
