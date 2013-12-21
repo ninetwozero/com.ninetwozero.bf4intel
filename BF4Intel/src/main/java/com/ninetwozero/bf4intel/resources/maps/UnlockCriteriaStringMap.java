@@ -25,6 +25,10 @@ public class UnlockCriteriaStringMap {
             put("sc_carbines", R.string.unlock_sc_carbines);
             put("sc_shotguns", R.string.unlock_sc_shotguns);
             put("sc_assaultrifles", R.string.unlock_sc_assaultrifles);
+            put("sc_assault", R.string.unlock_sc_assault);
+            put("sc_engineer", R.string.unlock_sc_engineer);
+            put("sc_recon", R.string.unlock_sc_recon);
+            put("sc_support", R.string.unlock_sc_support);
         }
     };
 
