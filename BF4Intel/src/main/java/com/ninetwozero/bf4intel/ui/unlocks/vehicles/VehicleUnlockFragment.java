@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 public class VehicleUnlockFragment extends BaseLoadingListFragment {
-    private static final int ID_LOADER = 1230192;
+    private static final int ID_LOADER = 3200;
 
     public static VehicleUnlockFragment newInstance(final Bundle data) {
         final VehicleUnlockFragment fragment = new VehicleUnlockFragment();
