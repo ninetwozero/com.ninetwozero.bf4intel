@@ -145,4 +145,12 @@
   <string name="label_vehicle_unlocks">Vehicle unlocks</string>
   <string name="cdesc_unlock_image">Unlock image</string>
   <string name="done">Done</string>
+  <string name="empty"/>
+  <string name="weapon_name_g18">G18</string>
+  <string name="weapon_name_44_magnum">.44 Magnum</string>
+  <string name="weapon_name_srr61">SRR 61</string>
+  <string name="weapon_name_338recon">338 Recon</string>
+  <string name="weapon_name_acwr">ACW-R</string>
+  <string name="weapon_name_uts15">UTS-15</string>
+  <string name="weapon_name_u100_mk5">U-100 MK5</string>
 </resources>

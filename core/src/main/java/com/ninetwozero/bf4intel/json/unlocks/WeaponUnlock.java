@@ -3,25 +3,31 @@ package com.ninetwozero.bf4intel.json.unlocks;
 import com.google.gson.annotations.SerializedName;
 
 public class WeaponUnlock implements Comparable<WeaponUnlock> {
-    @SerializedName("unlockId")
-    private String name;
     @SerializedName("guid")
     private String guid;
+    @SerializedName("slug")
+    private String slug;
+    @SerializedName("unlockedBy")
+    private UnlockCriteria criteria;
 
-    public WeaponUnlock(final String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
+    public WeaponUnlock(final String slug) {
+        this.slug = slug;
     }
 
     public String getGuid() {
         return guid;
     }
 
+    public String getSlug() {
+        return slug;
+    }
+
+    public UnlockCriteria getCriteria() {
+        return criteria;
+    }
+
     @Override
     public int compareTo(final WeaponUnlock otherUnlock) {
-        return name.compareToIgnoreCase(otherUnlock.getName());
+        return criteria.compareTo(otherUnlock.getCriteria());
     }
 }

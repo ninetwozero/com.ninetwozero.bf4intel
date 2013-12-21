@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
-import com.ninetwozero.bf4intel.json.unlocks.ScoreCriteria;
+import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +22,7 @@ public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T>
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.list_item_unlocks_heading, viewGroup, false);
         }
-        setText(convertView, R.id.text1, title);
+        setText(convertView, R.id.text1, getCategoryString(title));
         return convertView;
     }
 
@@ -33,5 +33,6 @@ public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T>
         );
     }
 
-    protected abstract String resolveCriteriaLabel(final ScoreCriteria criteria);
+    protected abstract String resolveCriteriaLabel(final UnlockCriteria criteria);
+    protected abstract String getCategoryString(final String key);
 }

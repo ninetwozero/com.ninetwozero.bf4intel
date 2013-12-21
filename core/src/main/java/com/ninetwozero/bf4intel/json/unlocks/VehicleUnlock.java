@@ -8,7 +8,7 @@ public class VehicleUnlock implements Comparable<VehicleUnlock> {
     @SerializedName("guid")
     private String guid;
     @SerializedName("unlockedBy")
-    private ScoreCriteria criteria;
+    private UnlockCriteria criteria;
 
     public VehicleUnlock(final String name) {
         this.name = name;
@@ -22,30 +22,16 @@ public class VehicleUnlock implements Comparable<VehicleUnlock> {
         return guid;
     }
 
-    public ScoreCriteria getCriteria() {
+    public UnlockCriteria getCriteria() {
         return criteria;
     }
 
     @Override
     public int compareTo(VehicleUnlock otherUnlock) {
-        final int completion1 = criteria.getCompletion();
-        final int completion2 = otherUnlock.getCriteria().getCompletion();
-
-        if ((completion1 < 100 && completion2 < 100) ) {
-            if (completion1 > completion2) {
-                return -1;
-            } else if (completion1 < completion2) {
-                return 1;
-            }
-        } else if(completion1 == completion2) {
+        final int compareValue = criteria.compareTo(otherUnlock.getCriteria());
+        if (compareValue == 0) {
             return name.compareToIgnoreCase(otherUnlock.getName());
-        } else {
-            if (completion1 == 100) {
-                return 1;
-            } else if (completion2 == 100) {
-                return -1;
-            }
         }
-        return name.compareToIgnoreCase(otherUnlock.getName());
+        return compareValue;
     }
 }

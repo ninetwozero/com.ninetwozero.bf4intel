@@ -15,7 +15,7 @@ public class WeaponUnlocks {
     private Map<String, Assignment> assignments = new HashMap<String, Assignment>();
     */
     @SerializedName("weaponsByCategory")
-    private Map<String, List<WeaponUnlock>> unlockMap = new HashMap<String, List<WeaponUnlock>>();
+    private Map<String, List<WeaponUnlockContainer>> unlockMap = new HashMap<String, List<WeaponUnlockContainer>>();
 
     public long getPersonaId() {
         return personaId;
@@ -25,7 +25,7 @@ public class WeaponUnlocks {
         return personaName;
     }
 
-    public Map<String, List<WeaponUnlock>> getUnlockMap() {
+    public Map<String, List<WeaponUnlockContainer>> getUnlockMap() {
         return unlockMap;
     }
 }

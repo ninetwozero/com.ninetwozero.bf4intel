@@ -146,14 +146,4 @@
   <string name="vuname_shprox">PROXIMITY SCAN</string>
   <string name="vuname_shstealth">STEALTH COATING</string>
   <string name="vuname_shwpneff">BELT FEEDER</string>
-
-  // Unlock criteria text
-  <string name="unlock_sc_vehicleah" formatted="false">%s/%s Attack Helicopter Score</string>
-  <string name="unlock_sc_vehicleaa" formatted="false">%s/%s Anti Air Score</string>
-  <string name="unlock_sc_vehicleajet" formatted="false">%s/%s Attack Jet Score</string>
-  <string name="unlock_sc_vehiclesjet" formatted="false">%s/%s Stealth Jet Score</string>
-  <string name="unlock_sc_vehicleifv" formatted="false">%s/%s Infantry Fighting Vehicle Score</string>
-  <string name="unlock_sc_vehiclesh" formatted="false">%s/%s Scout Helicopter Score</string>
-  <string name="unlock_sc_vehiclembt" formatted="false">%s/%s Battle Tanks Score</string>
-  <string name="unlock_sc_vehicleaboat" formatted="false">%s/%s Fast Attack Craft Score</string>
 </resources>

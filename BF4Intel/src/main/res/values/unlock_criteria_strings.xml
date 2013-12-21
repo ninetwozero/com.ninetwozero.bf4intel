@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  // Weapon scores
+  <string name="unlock_sc_sniperrifles" formatted="false">%s/%s Sniper Rifle Score</string>
+  <string name="unlock_sc_lmgs" formatted="false">%s/%s LMG Score</string>
+  <string name="unlock_sc_pdws" formatted="false">%s/%s PDW Score</string>
+  <string name="unlock_sc_handgrenades" formatted="false">%s/%s Grenade Score</string>
+  <string name="unlock_sc_handguns" formatted="false">%s/%s Pistol Score</string>
+  <string name="unlock_sc_dmrs" formatted="false">%s/%s DMR Score</string>
+  <string name="unlock_sc_carbines" formatted="false">%s/%s Carbine Score</string>
+  <string name="unlock_sc_shotguns" formatted="false">%s/%s Shotgun Score</string>
+  <string name="unlock_sc_assaultrifles" formatted="false">%s/%s Assault Rifle Score</string>
+
+  // Vehicle scores
+  <string name="unlock_sc_vehicleah" formatted="false">%s/%s Attack Helicopter Score</string>
+  <string name="unlock_sc_vehicleaa" formatted="false">%s/%s Anti Air Score</string>
+  <string name="unlock_sc_vehicleajet" formatted="false">%s/%s Attack Jet Score</string>
+  <string name="unlock_sc_vehiclesjet" formatted="false">%s/%s Stealth Jet Score</string>
+  <string name="unlock_sc_vehicleifv" formatted="false">%s/%s Infantry Fighting Vehicle Score</string>
+  <string name="unlock_sc_vehiclesh" formatted="false">%s/%s Scout Helicopter Score</string>
+  <string name="unlock_sc_vehiclembt" formatted="false">%s/%s Battle Tanks Score</string>
+  <string name="unlock_sc_vehicleaboat" formatted="false">%s/%s Fast Attack Craft Score</string>
+
+  // Special criterias
+  <string name="unlock_complete_as" formatted="false">Complete assignment \"%s\"</string>
+</resources>

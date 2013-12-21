@@ -16,6 +16,10 @@ public class UnlockCriteria implements Comparable<UnlockCriteria> {
     @SerializedName("completed")
     private boolean completed;
 
+    // Only present in special cases
+    @SerializedName("award")
+    private CriteriaAward award;
+
     public String getLabel() {
         return label;
     }
@@ -40,6 +44,10 @@ public class UnlockCriteria implements Comparable<UnlockCriteria> {
         return completed;
     }
 
+    public CriteriaAward getAward() {
+        return award;
+    }
+
     @Override
     public int compareTo(final UnlockCriteria other) {
         final int completion1 = completion;
@@ -61,5 +69,9 @@ public class UnlockCriteria implements Comparable<UnlockCriteria> {
             }
         }
         return 0;
+    }
+
+    public boolean isScoreCriteria() {
+        return award == null;
     }
 }

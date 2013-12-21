@@ -14,19 +14,18 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
-import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlock;
+import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlockContainer;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlocks;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.ui.unlocks.vehicles.VehicleUnlockAdapter;
 import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class WeaponUnlockFragment extends BaseLoadingListFragment {
     private static final int ID_LOADER = 1230192;
@@ -58,23 +57,16 @@ public class WeaponUnlockFragment extends BaseLoadingListFragment {
     @Override
     protected void onLoadSuccess(final String resultMessage) {
         final WeaponUnlocks unlocks = fromJson(resultMessage, WeaponUnlocks.class);
-        Log.d("YOLO", "unlocks => " + unlocks.getUnlockMap());
         sendDataToListView(sortItemsInMap(unlocks.getUnlockMap()));
         showLoadingState(false);
     }
 
-    private Map<String, List<WeaponUnlock>> sortItemsInMap(final Map<String, List<WeaponUnlock>> unlockMap) {
-        final Map<String, List<WeaponUnlock>> map = new HashMap<String, List<WeaponUnlock>>();
-        for (String key : unlockMap.keySet()) {
-            final List<WeaponUnlock> unlocks = unlockMap.get(key);
+    private Map<String, List<WeaponUnlockContainer>> sortItemsInMap(final Map<String, List<WeaponUnlockContainer>> unlockMap) {
+        final Map<String, List<WeaponUnlockContainer>> map = new HashMap<String, List<WeaponUnlockContainer>>();
+        final Set<String> keySet = unlockMap.keySet();
+        for (String key : keySet) {
+            final List<WeaponUnlockContainer> unlocks = unlockMap.get(key);
             Collections.sort(unlocks);
-
-            /*
-                TODO:
-                Get int from a Map<String, Integer>?
-                param String would be key as seen in JSON
-                param Integer would be String resource ID
-             */
             map.put(key, unlocks);
         }
         return map;
@@ -116,7 +108,7 @@ public class WeaponUnlockFragment extends BaseLoadingListFragment {
         emptyTextView.setText(R.string.msg_no_unlocks);
     }
 
-    private void sendDataToListView(final Map<String, List<WeaponUnlock>> unlockMap) {
+    private void sendDataToListView(final Map<String, List<WeaponUnlockContainer>> unlockMap) {
         final ExpandableListView listView = (ExpandableListView) getListView();
         if (listView == null) {
             return;

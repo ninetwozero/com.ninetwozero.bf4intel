@@ -8,7 +8,7 @@ public class KitUnlock implements Comparable<KitUnlock> {
     @SerializedName("guid")
     private String guid;
     @SerializedName("unlockedBy")
-    private ScoreCriteria criteria;
+    private UnlockCriteria criteria;
 
     public KitUnlock(final String name) {
         this.name = name;
@@ -22,7 +22,7 @@ public class KitUnlock implements Comparable<KitUnlock> {
         return guid;
     }
 
-    public ScoreCriteria getCriteria() {
+    public UnlockCriteria getCriteria() {
         return criteria;
     }
 
