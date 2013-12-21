@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.resources.maps.vehicles.unlocks;
+package com.ninetwozero.bf4intel.resources.maps.vehicles;
 
 import com.ninetwozero.bf4intel.R;
 

@@ -8,7 +8,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
 import com.ninetwozero.bf4intel.resources.maps.UnlockCriteriaStringMap;
-import com.ninetwozero.bf4intel.resources.maps.vehicles.unlocks.VehicleUnlockStringMap;
+import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleUnlockStringMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
 
 import java.util.HashMap;
