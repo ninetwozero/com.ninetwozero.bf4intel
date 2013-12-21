@@ -41,11 +41,7 @@ public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> 
         setText(convertView, R.id.subtitle, resolveCriteriaLabel(unlock.getCriteria()));
         setProgress(convertView, R.id.progress, completion, 100);
 
-        if (unlock.getCriteria().isCompleted()) {
-            convertView.setAlpha(0.5f);
-        } else {
-            convertView.setAlpha(1.0f);
-        }
+        convertView.setAlpha(unlock.getCriteria().isCompleted() ? OPACITY_FADED : OPACITY_NORMAL);
         return convertView;
     }
 
