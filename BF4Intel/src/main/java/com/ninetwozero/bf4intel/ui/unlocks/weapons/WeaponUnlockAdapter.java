@@ -18,17 +18,17 @@ import java.util.List;
 import java.util.Map;
 
 public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer> {
-    private static final Map<String, String> categoryStringMap = new HashMap<String, String>() {{
-        put("wL", "Light Machine Guns");
-        put("waPDW", "Personal Defence Weapons");
-        put("wG", "Hand Grenades");
-        put("wH", "Hand Guns");
-        put("wSR", "Sniper Rifles");
-        put("wD", "Designated Marksman Rifles");
-        put("wC", "Carbines");
-        put("waS", "Shotguns");
-        put("wA", "Assault Rifles");
-        put("wSPk", "Knives");
+    private static final Map<String, Integer> categoryStringMap = new HashMap<String, Integer>() {{
+        put("wL", R.string.category_lmgs);
+        put("waPDW", R.string.category_pdws);
+        put("wG", R.string.category_handgrenades);
+        put("wH", R.string.category_handguns);
+        put("wSR", R.string.category_snipers);
+        put("wD", R.string.category_dmrs);
+        put("wC", R.string.category_carbines);
+        put("waS", R.string.category_shotguns);
+        put("wA", R.string.category_assault_rifles);
+        put("wSPk", R.string.category_knives);
     }};
 
     public WeaponUnlockAdapter(final Map<String, List<WeaponUnlockContainer>> itemMap, final Context context) {
@@ -82,7 +82,7 @@ public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer
     }
 
     @Override
-    protected String getCategoryString(final String key) {
-        return categoryStringMap.containsKey(key) ? categoryStringMap.get(key) : key;
+    protected int getCategoryString(final String key) {
+        return categoryStringMap.containsKey(key) ? categoryStringMap.get(key) : R.string.na;
     }
 }

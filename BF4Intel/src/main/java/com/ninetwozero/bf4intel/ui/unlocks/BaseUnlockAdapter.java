@@ -34,5 +34,5 @@ public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T>
     }
 
     protected abstract String resolveCriteriaLabel(final UnlockCriteria criteria);
-    protected abstract String getCategoryString(final String key);
+    protected abstract int getCategoryString(final String key);
 }

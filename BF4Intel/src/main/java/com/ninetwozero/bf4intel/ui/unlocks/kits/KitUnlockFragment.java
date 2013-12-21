@@ -14,7 +14,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.json.unlocks.KitUnlock;
+import com.ninetwozero.bf4intel.json.unlocks.KitItemUnlockContainer;
 import com.ninetwozero.bf4intel.json.unlocks.KitUnlocks;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
@@ -60,10 +60,10 @@ public class KitUnlockFragment extends BaseLoadingListFragment {
         showLoadingState(false);
     }
 
-    private Map<String, List<KitUnlock>> sortItemsInMap(final Map<String, List<KitUnlock>> unlockMap) {
-        final Map<String, List<KitUnlock>> map = new HashMap<String, List<KitUnlock>>();
+    private Map<String, List<KitItemUnlockContainer>> sortItemsInMap(final Map<String, List<KitItemUnlockContainer>> unlockMap) {
+        final Map<String, List<KitItemUnlockContainer>> map = new HashMap<String, List<KitItemUnlockContainer>>();
         for (String key : unlockMap.keySet()) {
-            final List<KitUnlock> unlocks = unlockMap.get(key);
+            final List<KitItemUnlockContainer> unlocks = unlockMap.get(key);
             Collections.sort(unlocks);
 
             /*
@@ -114,7 +114,7 @@ public class KitUnlockFragment extends BaseLoadingListFragment {
         emptyTextView.setText(R.string.msg_no_unlocks);
     }
 
-    private void sendDataToListView(final Map<String, List<KitUnlock>> unlockMap) {
+    private void sendDataToListView(final Map<String, List<KitItemUnlockContainer>> unlockMap) {
         final ExpandableListView listView = (ExpandableListView) getListView();
         if (listView == null) {
             return;

@@ -17,15 +17,15 @@ import java.util.Map;
 
 public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
     // TODO: REmove this in favor for VehicleGroupStringMap when possible
-    private static final Map<String, String> categoryStringMap = new HashMap<String, String>() {{
-        put("Vehicle Air Jet Attack", "Attack Jets");
-        put("Vehicle Anti Air", "Anti Air Vehicles");
-        put("Vehicle Air Helicopter Scout", "Scout Helicopters");
-        put("Vehicle Fast Attack Craft", "Fast Attack Crafts");
-        put("Vehicle Air Jet Stealth", "Stealth Jets");
-        put("Vehicle Infantry Fighting Vehicle", "Infantry Fighting Vehicles");
-        put("Vehicle Main Battle Tanks", "Battle Tanks");
-        put("Vehicle Air Helicopter Attack", "Attack Helicopters");
+    private static final Map<String, Integer> categoryStringMap = new HashMap<String, Integer>() {{
+        put("Vehicle Air Jet Attack", R.string.category_attack_jets);
+        put("Vehicle Anti Air", R.string.category_aa_vehicles);
+        put("Vehicle Air Helicopter Scout", R.string.category_scout_helicopters);
+        put("Vehicle Fast Attack Craft", R.string.category_fast_attack_crafts);
+        put("Vehicle Air Jet Stealth", R.string.category_stealth_jets);
+        put("Vehicle Infantry Fighting Vehicle", R.string.category_ifvs);
+        put("Vehicle Main Battle Tanks", R.string.category_battle_tanks);
+        put("Vehicle Air Helicopter Attack", R.string.category_attack_helicopters);
     }};
 
     public VehicleUnlockAdapter(final Map<String, List<VehicleUnlock>> itemMap, final Context context) {
@@ -68,7 +68,7 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
     }
 
     @Override
-    protected String getCategoryString(final String key) {
-        return categoryStringMap.containsKey(key) ? categoryStringMap.get(key) : key;
+    protected int getCategoryString(final String key) {
+        return categoryStringMap.containsKey(key) ? categoryStringMap.get(key) : R.string.na;
     }
 }

@@ -111,8 +111,7 @@ public class UnlockActivity extends BaseIntelActivity implements ActionBar.TabLi
 
         fragments.add(FragmentFactory.get(FragmentFactory.Type.WEAPON_UNLOCKS, profileBundle));
         fragments.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_UNLOCKS, profileBundle));
-        fragments.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_UNLOCKS, profileBundle));
-        //fragments.add(FragmentFactory.get(FragmentFactory.Type.KIT_UNLOCKS, profileBundle));
+        fragments.add(FragmentFactory.get(FragmentFactory.Type.KIT_UNLOCKS, profileBundle));
 
         return fragments;
     }

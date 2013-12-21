@@ -170,5 +170,12 @@
   <string name="weapon_iname_xm25">XM25 AIRBURST</string>
   <string name="weapon_iname_xm25_flechette">XM25 DART</string>
   <string name="weapon_iname_xm25_smk">XM25 SMOKE</string>
-  <string name="weapon_name_compact45">Compact .45</string>
+  <string name="weapon_name_compact45">COMPACT .45</string>
+  <string name="weapon_name_g18">G18</string>
+  <string name="weapon_name_44_magnum">.44 MAGNUM</string>
+  <string name="weapon_name_srr61">SRR 61</string>
+  <string name="weapon_name_338recon">338 Recon</string>
+  <string name="weapon_name_acwr">ACW-R</string>
+  <string name="weapon_name_uts15">UTS-15</string>
+  <string name="weapon_name_u100_mk5">U-100 MK5</string>
 </resources>

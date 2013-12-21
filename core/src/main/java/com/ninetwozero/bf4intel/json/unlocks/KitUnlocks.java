@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 public class KitUnlocks {
-    @SerializedName("unlockProgression")
-    private Map<String, List<KitUnlock>> unlockMap;
+    @SerializedName("unlocks")
+    private Map<String, List<KitItemUnlockContainer>> unlockMap;
 
-    public Map<String, List<KitUnlock>> getUnlockMap() {
+    public Map<String, List<KitItemUnlockContainer>> getUnlockMap() {
         return unlockMap;
     }
 }
