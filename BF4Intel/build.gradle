@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.3'
+        classpath 'com.android.tools.build:gradle:0.7.1'
     }
 }
 apply plugin: 'android'
@@ -21,6 +21,12 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 17
+    }
+
+    lintOptions {
+        abortOnError false
+        xmlReport true
+        xmlOutput file("lint-report.xml")
     }
 }
 
