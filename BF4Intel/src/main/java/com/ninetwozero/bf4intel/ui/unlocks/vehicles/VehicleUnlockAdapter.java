@@ -5,9 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
-import com.ninetwozero.bf4intel.resources.maps.UnlockCriteriaStringMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleUnlockStringMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
 
@@ -47,18 +45,6 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
 
         convertView.setAlpha(unlock.getCriteria().isCompleted() ? OPACITY_FADED : OPACITY_NORMAL);
         return convertView;
-    }
-
-    @Override
-    protected String resolveCriteriaLabel(final UnlockCriteria criteria) {
-        final int resource = UnlockCriteriaStringMap.get(criteria.getLabel());
-        final int currentValue = criteria.getCurrentValue();
-        final int targetValue = criteria.getTargetValue();
-        return String.format(
-            context.getString(resource),
-            String.format("%,d", currentValue < targetValue ? currentValue : targetValue),
-            String.format("%,d", targetValue)
-        );
     }
 
     @Override

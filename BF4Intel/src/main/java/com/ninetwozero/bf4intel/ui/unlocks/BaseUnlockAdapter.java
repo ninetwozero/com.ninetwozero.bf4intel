@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
 import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
+import com.ninetwozero.bf4intel.resources.maps.UnlockCriteriaStringMap;
+import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentStringMap;
 
 import java.util.List;
 import java.util.Map;
@@ -33,6 +35,28 @@ public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T>
         );
     }
 
-    protected abstract String resolveCriteriaLabel(final UnlockCriteria criteria);
+    protected String resolveCriteriaLabel(final UnlockCriteria criteria) {
+        if (criteria.isScoreCriteria()) {
+            final int resource = UnlockCriteriaStringMap.get(criteria.getLabel());
+            final int currentValue = criteria.getCurrentValue();
+            final int targetValue = criteria.getTargetValue();
+            return String.format(
+                    context.getString(resource),
+                    String.format("%,d", currentValue < targetValue ? currentValue : targetValue),
+                    String.format("%,d", targetValue)
+            );
+        } else {
+            final String label = criteria.getLabel();
+            final String labelPrefix = label.substring(0, label.lastIndexOf("_"));
+            if (labelPrefix.contains("as")) {
+                return String.format(
+                        context.getString(R.string.unlock_complete_as),
+                        context.getString(AssignmentStringMap.get(criteria.getAward().getName()))
+                );
+            }
+        }
+        return criteria.getLabel();
+    }
+
     protected abstract int getCategoryString(final String key);
 }

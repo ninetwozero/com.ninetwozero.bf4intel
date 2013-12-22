@@ -5,11 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlock;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlockContainer;
-import com.ninetwozero.bf4intel.resources.maps.UnlockCriteriaStringMap;
-import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringSlugMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
 
@@ -49,30 +46,6 @@ public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer
 
         convertView.setAlpha(unlock.getCriteria().isCompleted() ? OPACITY_FADED : OPACITY_NORMAL);
         return convertView;
-    }
-
-    @Override
-    protected String resolveCriteriaLabel(final UnlockCriteria criteria) {
-        if (criteria.isScoreCriteria()) {
-            final int resource = UnlockCriteriaStringMap.get(criteria.getLabel());
-            final int currentValue = criteria.getCurrentValue();
-            final int targetValue = criteria.getTargetValue();
-            return String.format(
-                context.getString(resource),
-                String.format("%,d", currentValue < targetValue ? currentValue : targetValue),
-                String.format("%,d", targetValue)
-            );
-        } else {
-            final String label = criteria.getLabel();
-            final String labelPrefix = label.substring(0, label.lastIndexOf("_"));
-            if (labelPrefix.contains("as")) {
-                return String.format(
-                    context.getString(R.string.unlock_complete_as),
-                    context.getString(AssignmentStringMap.get(criteria.getAward().getName()))
-                );
-            }
-        }
-        return criteria.getLabel();
     }
 
     @Override
