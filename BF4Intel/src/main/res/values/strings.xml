@@ -42,6 +42,7 @@
   <!-- HEADINGS -->
   <string name="weapons">Weapons</string>
   <string name="vehicles">Vehicles</string>
+  <string name="kits">Kits</string>
   <string name="reports">Reports</string>
   <string name="assignments">Assignments</string>
   <string name="awards">Awards</string>
@@ -139,5 +140,32 @@
   <string name="feed_category_ranked_up">Ranked up</string>
   <string name="label_search">Search</string>
   <string name="hint_search">Search for users</string>
-
+  <string name="label_unlocks">Unlocks</string>
+  <string name="msg_no_unlocks">No unlocks available</string>
+  <string name="label_vehicle_unlocks">Vehicle unlocks</string>
+  <string name="cdesc_unlock_image">Unlock image</string>
+  <string name="done">Done</string>
+  <string name="empty"/>
+  <string name="class_assault">Assault</string>
+  <string name="class_engineer">Engineer</string>
+  <string name="class_recon">Recon</string>
+  <string name="class_support">Support</string>
+  <string name="category_lmgs">Light Machine Guns</string>
+  <string name="category_pdws">Personal Defence Weapons</string>
+  <string name="category_handgrenades">Hand Grenades</string>
+  <string name="category_handguns">Hand Guns</string>
+  <string name="category_snipers">Sniper Rifles</string>
+  <string name="category_dmrs">Designated Marksman Rifles</string>
+  <string name="category_carbines">Carbines</string>
+  <string name="category_shotguns">Shotguns</string>
+  <string name="category_assault_rifles">Assault Rifles</string>
+  <string name="category_knives">Knives</string>
+  <string name="category_attack_jets">Attack Jets</string>
+  <string name="category_aa_vehicles">Anti Air Vehicles</string>
+  <string name="category_scout_helicopters">Scout Helicopters</string>
+  <string name="category_fast_attack_crafts">Fast Attack Crafts</string>
+  <string name="category_stealth_jets">Stealth Jets</string>
+  <string name="category_ifvs">Infantry Fighting Vehicles</string>
+  <string name="category_battle_tanks">Battle Tanks</string>
+  <string name="category_attack_helicopters">Attack Helicopters</string>
 </resources>

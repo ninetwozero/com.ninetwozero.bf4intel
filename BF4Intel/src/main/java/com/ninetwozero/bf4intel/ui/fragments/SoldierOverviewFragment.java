@@ -86,7 +86,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             getActivity(),
             new SimpleGetRequest(
                 UrlFactory.buildSoldierOverviewURL(
-                    Integer.valueOf(bundle.getString(Keys.Soldier.ID)), //not sure why this int was bundled as string
+                    bundle.getInt(Keys.Soldier.ID),
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )
             )

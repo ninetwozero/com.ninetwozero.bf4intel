@@ -58,6 +58,37 @@ public class UrlFactory {
         return createURL("search/query/");
     }
 
+    public static URL buildWeaponUnlocksURL(final int soldierId, final int platformId) {
+        return createURL(String.format("warsawWeaponsPopulateStats/%d/%d/unlocks/", soldierId, platformId));
+    }
+
+    public static URL buildVehicleUnlocksURL(final int soldierId, final int platformId) {
+        return createURL(String.format("warsawvehiclesPopulateStats/%d/%d/unlocks/", soldierId, platformId));
+    }
+
+    public static URL buildKitUnlocksURL(final int soldierId, final String soldierName, final int platformId) {
+        return createURL(String.format("warsawkitspopulatestats/%d/%d/", soldierId, platformId));
+    }
+
+    public static URL buildDogtagsURL(
+        final String soldierId, final String soldierName, final int platformId, final int page
+    ) {
+        return createURL(
+            String.format(
+                "soldier/dogtagsPopulateStats/%s/%s/%d/%d/",
+                soldierName,
+                soldierId,
+                platformId,
+                page
+            )
+        );
+    }
+
+    public static URL buildWeaponAccessoriesURL(final String soldierId, final String guid, final int platformId) {
+        // See: http://battlelog.battlefield.com/bf4/warsawWeaponAccessoriesPopulateStats/177958806/2/386F9329-7DE7-6FB9-1366-2877C698D9B7/
+        return createURL(String.format("warsawWeaponAccessoriesPopulateStats/%s/%d/%s/", soldierId, platformId, guid));
+    }
+
     private static URL createURL(final String path) {
         return prepareURL(HOST, path, null);
     }
