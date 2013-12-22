@@ -24,7 +24,7 @@ public class VehicleStatisticsTest {
     @Test
     public void should_succeed_with_vehicle_grouping() throws IOException {
         VehicleStatistics stats = IntelJsonParser.parse("/json/vehicles-stats.json", VehicleStatistics.class);
-        List<GroupedVehicleStats> groupedVehicles = stats.groupVehicles();
+        List<GroupedVehicleStats> groupedVehicles = stats.fetchGroupVehicles();
         assertEquals(VEHICLE_GROUPS_COUNT, groupedVehicles.size());
     }
 }

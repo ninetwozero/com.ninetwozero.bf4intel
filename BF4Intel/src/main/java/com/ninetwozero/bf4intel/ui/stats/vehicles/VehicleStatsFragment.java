@@ -23,7 +23,6 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
 
     private static final int ID_LOADER = 2200;
     private ListView listView;
-    private VehicleStatistics vs;
     private VehicleStatsAdapter adapter;
 
     public static VehicleStatsFragment newInstance(final Bundle data) {
@@ -68,8 +67,8 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void onLoadSuccess(String resultMessage) {
-        vs = fromJson(resultMessage, VehicleStatistics.class);
-        List<GroupedVehicleStats> vehiclesGrouped = vs.groupVehicles();
+        VehicleStatistics vs = fromJson(resultMessage, VehicleStatistics.class);
+        List<GroupedVehicleStats> vehiclesGrouped = vs.fetchGroupVehicles();
         adapter = new VehicleStatsAdapter(vehiclesGrouped, getContext());
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();

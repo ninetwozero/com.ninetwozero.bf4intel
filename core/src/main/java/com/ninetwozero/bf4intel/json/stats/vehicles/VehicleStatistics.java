@@ -19,7 +19,7 @@ public class VehicleStatistics {
         return vehiclesList;
     }
 
-    public List<GroupedVehicleStats> groupVehicles() {
+    public List<GroupedVehicleStats> fetchGroupVehicles() {
         List<VehicleStats> loaderVehicleList = getVehiclesList();
         Map<String, GroupedVehicleStats> vehicleGroupsMap = new HashMap<String, GroupedVehicleStats>();
         GroupedVehicleStats group;
