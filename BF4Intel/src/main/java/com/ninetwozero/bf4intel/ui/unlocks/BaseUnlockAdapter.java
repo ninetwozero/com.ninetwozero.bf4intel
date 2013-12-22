@@ -24,7 +24,7 @@ public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T>
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.list_item_unlocks_heading, viewGroup, false);
         }
-        setText(convertView, R.id.text1, getCategoryString(title));
+        setText(convertView, R.id.category_title, getCategoryString(title));
         return convertView;
     }
 
