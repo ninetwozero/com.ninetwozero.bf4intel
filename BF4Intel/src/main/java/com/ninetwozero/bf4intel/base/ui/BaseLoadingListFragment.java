@@ -11,15 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.utils.Result;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class BaseLoadingListFragment extends BaseListFragment implements LoaderManager.LoaderCallbacks<Result> {
     protected Gson gson = new Gson();
@@ -82,28 +77,10 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         return gsonToUse.fromJson(jsonObject, outClass);
     }
 
-    @Deprecated
-    protected <T> List<T> fromJsonArray(final Gson gsonToUse, final String json, final Class<T> outClass, final String container) {
-        final List<T> objects = new ArrayList<T>();
-        final JsonObject jsonObject = extractFromJson(json, false);
-        if (jsonObject.has(container)) {
-            final JsonArray elements = jsonObject.getAsJsonArray(container);
-            for (JsonElement element : elements) {
-                objects.add(gsonToUse.fromJson(element, outClass));
-            }
-        }
-        return objects;
-    }
-
     private JsonObject extractFromJson(final String json, boolean returnTopLevel) {
         JsonParser parser = new JsonParser();
         JsonObject topLevel = parser.parse(json).getAsJsonObject();
         return returnTopLevel? topLevel : topLevel.getAsJsonObject("data");
-    }
-
-	@Deprecated
-    protected <T> List<T> fromJsonArray(final String json, final Class<T> outClass, final String container) {
-        return fromJsonArray(gson, json, outClass, container);
     }
 
     protected void showLoadingState(final boolean isLoading) {
