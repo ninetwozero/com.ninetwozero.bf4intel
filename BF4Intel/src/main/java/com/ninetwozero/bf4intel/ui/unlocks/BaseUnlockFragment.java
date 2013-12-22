@@ -46,17 +46,6 @@ public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
         startLoadingData();
     }
 
-    private Map<String, List<WeaponUnlockContainer>> sortItemsInMap(final Map<String, List<WeaponUnlockContainer>> unlockMap) {
-        final Map<String, List<WeaponUnlockContainer>> map = new HashMap<String, List<WeaponUnlockContainer>>();
-        final Set<String> keySet = unlockMap.keySet();
-        for (String key : keySet) {
-            final List<WeaponUnlockContainer> unlocks = unlockMap.get(key);
-            Collections.sort(unlocks);
-            map.put(key, unlocks);
-        }
-        return map;
-    }
-
     @Override
     protected void onLoadFailure(final String resultMessage) {
         Log.d(getClass().getSimpleName(), "[onLoadFailure] resultMessage => " + resultMessage);
