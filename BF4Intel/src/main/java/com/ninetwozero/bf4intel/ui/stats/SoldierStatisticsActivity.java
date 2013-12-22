@@ -1,102 +1,91 @@
 package com.ninetwozero.bf4intel.ui.stats;
 
 import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.NavUtils;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.view.ViewPager;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
+import com.ninetwozero.bf4intel.ui.adapters.ViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoldierStatisticsActivity extends BaseIntelActivity {
-    public static final String INTENT_ID = "soldierId";
-
-    private List<Fragment> fragmentList;
+public class SoldierStatisticsActivity extends BaseIntelActivity implements ActionBar.TabListener {
+    public static final String INTENT_PROFILE = "profile";
+    private static final int[] TITLES = new int[]{
+        R.string.weapons,
+        R.string.vehicles,
+        R.string.reports
+    };
+    private ViewPager viewPager;
+    private ViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_fragment);
-
+        setContentView(R.layout.generic_multi_tab_activity);
         initialize();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.soldier_statistics, menu);
-        return true;
+    public void onTabSelected(final ActionBar.Tab tab, final FragmentTransaction fragmentTransaction) {
+        viewPager.setCurrentItem(tab.getPosition(), true);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
+    public void onTabUnselected(final ActionBar.Tab tab, final FragmentTransaction fragmentTransaction) {
     }
 
-    /*
-        TODO: ViewPager + FragmentPagerAdapter = :D
-    */
+    @Override
+    public void onTabReselected(final ActionBar.Tab tab, final FragmentTransaction fragmentTransaction) {
+    }
 
     private void initialize() {
-        setupFragments();
+        setupViewPagerAdapter();
+        setupViewPager();
         setupActionBar();
     }
 
-    private void setupFragments() {
-        fragmentList = new ArrayList<Fragment>();
-        fragmentList.add(FragmentFactory.get(FragmentFactory.Type.WEAPON_STATS, new Bundle()));
-        fragmentList.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_STATS, new Bundle()));
-        fragmentList.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, getBundleForReports()));
+    private void setupViewPagerAdapter() {
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), generateFragmentList());
     }
 
-    private Bundle getBundleForReports() {
-        final Bundle bundle = new Bundle();
-        bundle.putString("TEST", "This is the reports tab");
-        return bundle;
+    private List<Fragment> generateFragmentList() {
+        final List<Fragment> fragments = new ArrayList<Fragment>();
+        final Bundle profileBundle = getIntent().getBundleExtra(INTENT_PROFILE);
+
+        fragments.add(FragmentFactory.get(FragmentFactory.Type.WEAPON_STATS, profileBundle));
+        fragments.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_STATS, profileBundle));
+        fragments.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, profileBundle));
+
+        return fragments;
+    }
+
+    private void setupViewPager() {
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setOffscreenPageLimit(viewPagerAdapter.getCount());
+        viewPager.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        getActionBar().setSelectedNavigationItem(position);
+                    }
+                }
+        );
+        viewPager.setAdapter(viewPagerAdapter);
     }
 
     private void setupActionBar() {
         final ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-        final int[] titles = new int[]{R.string.weapons, R.string.vehicles, R.string.reports};
-        for (int i = 0; i < titles.length; i++) {
-            actionBar.addTab(
-                actionBar.newTab().setText(titles[i]).setTabListener(
-                    new ActionBar.TabListener() {
-                        @Override
-                        public void onTabSelected(final ActionBar.Tab tab, final android.app.FragmentTransaction ft) {
-                            final FragmentManager manager = getSupportFragmentManager();
-                            final FragmentTransaction transaction = manager.beginTransaction();
-                            transaction.replace(R.id.activity_root, fragmentList.get(tab.getPosition()));
-                            transaction.commit();
-                        }
-
-                        @Override
-                        public void onTabUnselected(final ActionBar.Tab tab, final android.app.FragmentTransaction ft) {
-
-                        }
-
-                        @Override
-                        public void onTabReselected(final ActionBar.Tab tab, final android.app.FragmentTransaction ft) {
-
-                        }
-                    }
-                )
-            );
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        for (int i = 0, max = TITLES.length; i < max; i++) {
+            actionBar.addTab(actionBar.newTab().setText(TITLES[i]).setTabListener(this));
         }
     }
 }
