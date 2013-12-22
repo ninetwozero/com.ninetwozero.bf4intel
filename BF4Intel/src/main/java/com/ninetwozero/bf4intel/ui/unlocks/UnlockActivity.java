@@ -16,14 +16,11 @@ import java.util.List;
 
 public class UnlockActivity extends BaseIntelActivity implements ActionBar.TabListener {
     public static final String INTENT_PROFILE = "profile";
-
-    private static final int ID_LOADER = 124343;
-    private static final int[] TITLES = new int[] {
+    private static final int[] TITLES = new int[]{
         R.string.weapons,
         R.string.vehicles,
         R.string.kits
     };
-
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
 
@@ -40,10 +37,12 @@ public class UnlockActivity extends BaseIntelActivity implements ActionBar.TabLi
     }
 
     @Override
-    public void onTabUnselected(final ActionBar.Tab tab, final FragmentTransaction fragmentTransaction) {}
+    public void onTabUnselected(final ActionBar.Tab tab, final FragmentTransaction fragmentTransaction) {
+    }
 
     @Override
-    public void onTabReselected(final ActionBar.Tab tab, final FragmentTransaction fragmentTransaction) {}
+    public void onTabReselected(final ActionBar.Tab tab, final FragmentTransaction fragmentTransaction) {
+    }
 
     private void initialize() {
         setupViewPagerAdapter();
@@ -70,12 +69,12 @@ public class UnlockActivity extends BaseIntelActivity implements ActionBar.TabLi
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setOffscreenPageLimit(viewPagerAdapter.getCount());
         viewPager.setOnPageChangeListener(
-            new ViewPager.SimpleOnPageChangeListener() {
-                @Override
-                public void onPageSelected(int position) {
-                    getActionBar().setSelectedNavigationItem(position);
+                new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        getActionBar().setSelectedNavigationItem(position);
+                    }
                 }
-            }
         );
         viewPager.setAdapter(viewPagerAdapter);
     }

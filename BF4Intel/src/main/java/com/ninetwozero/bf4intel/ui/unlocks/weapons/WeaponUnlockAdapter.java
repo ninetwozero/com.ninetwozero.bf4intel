@@ -36,6 +36,7 @@ public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer
     public View getChildView(final int group, final int child, final boolean isLastChild, View convertView, final ViewGroup viewGroup) {
         final WeaponUnlock unlock = getChild(group, child).getUnlock();
         final int completion = unlock.getCriteria().getCompletion();
+
         while (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.list_item_unlocks, viewGroup, false);
         }

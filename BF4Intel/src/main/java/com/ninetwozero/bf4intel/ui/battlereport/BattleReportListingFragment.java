@@ -69,7 +69,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
             getActivity(),
             new SimpleGetRequest(
                 UrlFactory.buildBattleReportsURL(
-                    Integer.valueOf(bundle.getString(Keys.Soldier.ID)), //not sure why int was stored as string in bundle
+                    bundle.getInt(Keys.Soldier.ID),
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )
             )

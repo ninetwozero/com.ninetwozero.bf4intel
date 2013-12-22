@@ -190,7 +190,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
         // TODO: Get these from session storage somewhere -also, extract to constants somewhere
         data.putString(Keys.Soldier.NAME, "NINETWOZERO");
-        data.putString(Keys.Soldier.ID, "177958806");
+        data.putInt(Keys.Soldier.ID, 177958806);
         data.putInt(Keys.Soldier.PLATFORM, 2);
 
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_selected_soldier)));
@@ -265,8 +265,8 @@ public class NavigationDrawerFragment extends BaseListFragment {
         bundle.putString(Keys.Profile.NAME, "Karl Lindmark");
         bundle.putString(Keys.Profile.USERNAME, "NINETWOZERO");
         bundle.putString(Keys.Profile.GRAVATAR_HASH, "1241459af7d1ba348ec8b258240ea145");
+        bundle.putInt(Keys.Soldier.ID, 177958806);
         bundle.putString(Keys.Soldier.NAME, "NINETWOZERO");
-        bundle.putString(Keys.Soldier.ID, "177958806");
         bundle.putInt(Keys.Soldier.PLATFORM, 2);
         return bundle;
     }
