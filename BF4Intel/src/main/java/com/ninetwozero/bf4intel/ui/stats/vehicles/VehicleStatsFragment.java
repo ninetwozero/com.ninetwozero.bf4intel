@@ -47,7 +47,7 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getActivity().getSupportLoaderManager().initLoader(ID_LOADER, null, this);
+        getActivity().getSupportLoaderManager().restartLoader(ID_LOADER, null, this);
     }
 
     @Override
