@@ -10,12 +10,10 @@ import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 
 public class BattleReportFragment extends BaseFragment {
     public static final String ID = "reportId";
-
     private long mId;
 
     public BattleReportFragment() {
     }
-
 
     public static BattleReportFragment newInstance(final Bundle data) {
         final BattleReportFragment fragment = new BattleReportFragment();

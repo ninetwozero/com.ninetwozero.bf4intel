@@ -4,6 +4,9 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -32,4 +35,22 @@ public abstract class BaseIntelAdapter<T> extends BaseAdapter {
 
     @Override
     public abstract View getView(int position, View convertView, ViewGroup parent);
+
+    public void setText(final View view, final int resourceId, final int stringResource) {
+        ((TextView) view.findViewById(resourceId)).setText(stringResource);
+    }
+
+    public void setText(final View view, final int resourceId, final String string) {
+        ((TextView) view.findViewById(resourceId)).setText(string);
+    }
+
+    public void setImage(final View view, final int resourceId, final int imageResource) {
+        ((ImageView) view.findViewById(resourceId)).setImageResource(imageResource);
+    }
+
+    public void setProgress(final View view, final int resourceId, final int current, final int max) {
+        final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
+        progressBar.setProgress(current);
+        progressBar.setMax(max);
+    }
 }

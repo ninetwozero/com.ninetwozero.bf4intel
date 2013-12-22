@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.activities;
+package com.ninetwozero.bf4intel.ui.search;
 
 import android.app.ActionBar;
 import android.app.SearchManager;

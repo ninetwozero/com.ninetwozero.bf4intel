@@ -21,11 +21,11 @@ import com.ninetwozero.bf4intel.datatypes.ListRowType;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.ui.adapters.ExpandableListRowAdapter;
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
 import com.ninetwozero.bf4intel.ui.awards.AwardsActivity;
 import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsActivity;
+import com.ninetwozero.bf4intel.ui.unlocks.UnlockActivity;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
 
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private static final int INTENT_SOLDIER_STATISTICS = 1;
     private static final int INTENT_ASSIGNMENTS = 2;
     private static final int INTENT_AWARDS = 3;
-    private static final int INTENT_PROFILE_SEARCH = 4;
+    private static final int INTENT_UNLOCKS = 4;
 
     private ExpandableListView listView;
     private NavigationDrawerCallbacks callbacks;
@@ -190,7 +190,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
         // TODO: Get these from session storage somewhere -also, extract to constants somewhere
         data.putString(Keys.Soldier.NAME, "NINETWOZERO");
-        data.putString(Keys.Soldier.ID, "177958806");
+        data.putInt(Keys.Soldier.ID, 177958806);
         data.putInt(Keys.Soldier.PLATFORM, 2);
 
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_selected_soldier)));
@@ -198,7 +198,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_overview), data, FragmentFactory.Type.SOLDIER_OVERVIEW));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_statistics), data, intentToStart(INTENT_SOLDIER_STATISTICS)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_unlocks), data, FragmentFactory.Type.SOLDIER_UNLOCKS));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_unlocks), data, intentToStart(INTENT_UNLOCKS)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.assignments), data, intentToStart(INTENT_ASSIGNMENTS)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.awards), data, intentToStart(INTENT_AWARDS)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.battlereports), data, FragmentFactory.Type.BATTLE_REPORT_LISTING));
@@ -218,7 +218,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_home), data, FragmentFactory.Type.BATTLE_FEED));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_news), data, FragmentFactory.Type.NEWS_LISTING));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, BATTLE_CHAT, data, ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.label_search), data, intentToStart(INTENT_PROFILE_SEARCH)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_notifications), data, FragmentFactory.Type.NOTIFICATION));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_servers)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_forums), data, getRowsForForum()));
@@ -233,13 +232,16 @@ public class NavigationDrawerFragment extends BaseListFragment {
         return items;
     }
 
+    /*
+        TODO:
+        We should pass a Bundle to the desired activity
+     */
     private Intent intentToStart(final int intentID) {
-        int soldierID = 0; //TODO will replace with real soldier id once it become available
+        final Bundle profileBundle = fetchProfileBundle();
         Intent intent = null;
         switch(intentID){
             case INTENT_SOLDIER_STATISTICS:
                 intent = new Intent(getActivity(), SoldierStatisticsActivity.class);
-                intent = intent.putExtra(SoldierStatisticsActivity.INTENT_ID, soldierID);
                 break;
             case INTENT_ASSIGNMENTS:
                 intent = new Intent(getActivity(), AssignmentsActivity.class);
@@ -247,16 +249,26 @@ public class NavigationDrawerFragment extends BaseListFragment {
             case INTENT_AWARDS:
                 intent = new Intent(getActivity(), AwardsActivity.class);
                 break;
-            case INTENT_PROFILE_SEARCH:
-                intent = new Intent(getActivity(), SingleFragmentActivity.class);
-                intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, new Bundle());
-                intent = intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.PROFILE_SEARCH.ordinal());
+            case INTENT_UNLOCKS:
+                intent = new Intent(getActivity(), UnlockActivity.class);
                 break;
             default:
+                intent = new Intent();
                 Log.i(NavigationDrawerFragment.class.getSimpleName(), "Did not found any matching activity for intent " + intentID);
         }
+        return intent.putExtra("profile", profileBundle);
+    }
 
-        return intent;
+    private Bundle fetchProfileBundle() {
+        final Bundle bundle = new Bundle();
+        bundle.putString(Keys.Profile.ID, "2832658801548551060");
+        bundle.putString(Keys.Profile.NAME, "Karl Lindmark");
+        bundle.putString(Keys.Profile.USERNAME, "NINETWOZERO");
+        bundle.putString(Keys.Profile.GRAVATAR_HASH, "1241459af7d1ba348ec8b258240ea145");
+        bundle.putInt(Keys.Soldier.ID, 177958806);
+        bundle.putString(Keys.Soldier.NAME, "NINETWOZERO");
+        bundle.putInt(Keys.Soldier.PLATFORM, 2);
+        return bundle;
     }
 
     private void selectItemFromState(final int group, final int child, final boolean isGroup) {
