@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.json.weaponstats;
+package com.ninetwozero.bf4intel.json.stats.weapons;
 
 import com.ninetwozero.bf4intel.util.IntelJsonParser;
 

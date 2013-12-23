@@ -9,7 +9,7 @@ public class VehicleImageMap {
     private static final Map<String, Integer> map = new HashMap<String, Integer>() {
         {
             put("WARSAW_ID_P_VNAME_50CAL", R.drawable.vehicle_gunshield);
-            put("WARSAW_ID_P_VNAME_9K22", R.drawable.vehicle_q5);
+            put("WARSAW_ID_P_VNAME_9K22", R.drawable.vehicle_tunguska);
             put("WARSAW_ID_P_VNAME_A10", R.drawable.vehicle_a10);
             put("WARSAW_ID_P_VNAME_AAV", R.drawable.vehicle_aav);
             put("WARSAW_ID_P_VNAME_AC130", R.drawable.vehicle_ac130);
@@ -50,14 +50,16 @@ public class VehicleImageMap {
             put("WARSAW_ID_P_VNAME_Z9", R.drawable.vehicle_z9_haitun);
             put("WARSAW_ID_P_VNAME_ZBD09", R.drawable.vehicle_zbd09);
             put("WARSAW_ID_P_VNAME_ZFB05", R.drawable.vehicle_zfb05);
-// Not available yet            put("WARSAW_ID_P_XP0_VNAME_DPV", R.drawable.vehicle_xp0_dpv);
-// Not available yet           put("WARSAW_ID_P_XP0_VNAME_SKIDLOADER", R.drawable.vehicle_xp0_skidloader);
             put("WARSAW_ID_P_XP1_VNAME_BOMBER", R.drawable.vehicle_a10);
             put("WARSAW_ID_P_XP1_VNAME_BTR90", R.drawable.vehicle_btr90);
             put("WARSAW_ID_P_XP1_VNAME_DIRTBIKE", R.drawable.vehicle_dirtbike);
             put("WARSAW_ID_P_XP1_VNAME_F35", R.drawable.vehicle_f35);
             put("WARSAW_ID_P_XP1_VNAME_SUAV", R.drawable.vehicle_suav);
             put("WARSAW_ID_P_XP1_VNAME_UCAV", R.drawable.vehicle_ucav);
+            put("WARSAW_ID_P_INAME_EOD", R.drawable.vehicle_eodbot);
+            put("WARSAW_ID_P_INAME_MORTAR", R.drawable.vehicle_m224_mortar);
+// Not available yet            put("WARSAW_ID_P_XP0_VNAME_DPV", R.drawable.vehicle_xp0_dpv);
+// Not available yet           put("WARSAW_ID_P_XP0_VNAME_SKIDLOADER", R.drawable.vehicle_xp0_skidloader);
         }
     };
 

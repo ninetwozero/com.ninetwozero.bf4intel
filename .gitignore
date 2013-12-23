@@ -29,3 +29,4 @@ local.properties
 *Thumbs.db
 *.swp
 .DS_STORE
+lint-report.xml

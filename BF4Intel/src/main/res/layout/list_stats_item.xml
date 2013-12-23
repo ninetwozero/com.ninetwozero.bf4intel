@@ -20,7 +20,7 @@
       android:layout_gravity="center_vertical" />
 
     <ImageView
-      android:id="@+id/weapon_image"
+      android:id="@+id/item_image"
       android:layout_width="100dp"
       android:layout_height="100dp"
       android:layout_weight="1"
@@ -36,18 +36,18 @@
     android:orientation="horizontal">
 
     <TextView
-      android:id="@+id/weapon_name"
+      android:id="@+id/item_name"
       style="@style/TextViewLightGrey"
       android:layout_weight="1" />
 
     <TextView
-      android:id="@+id/weapon_kills"
+      android:id="@+id/item_kills"
       style="@style/TextViewLightGrey"
       android:paddingRight="@dimen/spacing_l" />
   </LinearLayout>
 
   <ProgressBar
-    android:id="@+id/weapon_progress"
+    android:id="@+id/item_progress"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     style="@android:style/Widget.Holo.ProgressBar.Horizontal"

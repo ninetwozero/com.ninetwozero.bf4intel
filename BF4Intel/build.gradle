@@ -22,6 +22,12 @@ android {
         minSdkVersion 14
         targetSdkVersion 17
     }
+
+    lintOptions {
+        abortOnError false
+        xmlReport true
+        xmlOutput file("lint-report.xml")
+    }
 }
 
 dependencies {

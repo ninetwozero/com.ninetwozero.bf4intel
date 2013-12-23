@@ -11,8 +11,8 @@ import android.widget.ListView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.json.weaponstats.Weapon;
-import com.ninetwozero.bf4intel.json.weaponstats.WeaponStatistics;
+import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
+import com.ninetwozero.bf4intel.json.stats.weapons.WeaponStatistics;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.utils.Result;
@@ -47,13 +47,18 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getActivity().getSupportLoaderManager().initLoader(ID_LOADER, null, this);
+        getActivity().getSupportLoaderManager().restartLoader(ID_LOADER, null, this);
     }
 
     @Override
     public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         showLoadingState(true);
         return new IntelLoader(getActivity().getApplicationContext(), new SimpleGetRequest(UrlFactory.buildWeaponStatsURL(200661244, 1)));
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Result> resultLoader) {
+        super.onLoaderReset(resultLoader);
     }
 
     @Override

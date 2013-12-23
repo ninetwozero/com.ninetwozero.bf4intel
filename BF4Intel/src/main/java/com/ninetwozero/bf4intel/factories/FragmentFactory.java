@@ -19,45 +19,13 @@ import com.ninetwozero.bf4intel.ui.fragments.SoldierStatsFragment;
 import com.ninetwozero.bf4intel.ui.fragments.ThreadCreationFragment;
 import com.ninetwozero.bf4intel.ui.fragments.ThreadListingFragment;
 import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
+import com.ninetwozero.bf4intel.ui.stats.vehicles.VehicleStatsFragment;
 import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponStatsFragment;
 import com.ninetwozero.bf4intel.ui.unlocks.kits.KitUnlockFragment;
 import com.ninetwozero.bf4intel.ui.unlocks.vehicles.VehicleUnlockFragment;
 import com.ninetwozero.bf4intel.ui.unlocks.weapons.WeaponUnlockFragment;
 
 public class FragmentFactory {
-    public enum Type {
-        ACCOUNT_PROFILE,
-
-        SOLDIER_OVERVIEW,
-        SOLDIER_STATS,
-        WEAPON_STATS,
-
-        WEAPON_UNLOCKS,
-        VEHICLE_UNLOCKS,
-        KIT_UNLOCKS,
-
-        SOLDIER_ASSIGNMENTS,
-
-        BATTLE_FEED,
-        BATTLE_FEED_POSTING,
-
-        NEWS_LISTING,
-        NEWS_ITEM,
-
-        BATTLE_REPORT_LISTING,
-        BATTLE_REPORT,
-
-        FORUM_LISTING,
-        FORUM_SEARCH,
-        THREAD_LISTING,
-        THREAD_CREATING,
-        POST_LISTING,
-        POST_CREATING,
-
-        NOTIFICATION,
-        PROFILE_SEARCH,
-    }
-
     public static Fragment get(final Type type) {
         return get(type, null);
     }
@@ -74,6 +42,8 @@ public class FragmentFactory {
                 return SoldierStatsFragment.newInstance(data);
             case WEAPON_STATS:
                 return WeaponStatsFragment.newInstance(data);
+            case VEHICLE_STATS:
+                return VehicleStatsFragment.newInstance(data);
             case NEWS_LISTING:
                 return NewsListingFragment.newInstance(data);
             case NEWS_ITEM:
@@ -121,5 +91,39 @@ public class FragmentFactory {
         }
         throw new IllegalArgumentException("Invalid ordinal: " + ordinal);
 
+    }
+
+    public enum Type {
+        ACCOUNT_PROFILE,
+
+        SOLDIER_OVERVIEW,
+        SOLDIER_STATS,
+        WEAPON_STATS,
+        VEHICLE_STATS,
+
+        WEAPON_UNLOCKS,
+        VEHICLE_UNLOCKS,
+        KIT_UNLOCKS,
+
+        SOLDIER_ASSIGNMENTS,
+
+        BATTLE_FEED,
+        BATTLE_FEED_POSTING,
+
+        NEWS_LISTING,
+        NEWS_ITEM,
+
+        BATTLE_REPORT_LISTING,
+        BATTLE_REPORT,
+
+        FORUM_LISTING,
+        FORUM_SEARCH,
+        THREAD_LISTING,
+        THREAD_CREATING,
+        POST_LISTING,
+        POST_CREATING,
+
+        NOTIFICATION,
+        PROFILE_SEARCH,
     }
 }

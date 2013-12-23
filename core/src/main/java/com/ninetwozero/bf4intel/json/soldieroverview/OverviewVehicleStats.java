@@ -2,7 +2,7 @@ package com.ninetwozero.bf4intel.json.soldieroverview;
 
 import com.google.gson.annotations.SerializedName;
 
-public class VehicleStats extends BaseStatsModel {
+public class OverviewVehicleStats extends BaseStatsModel {
     @SerializedName("timeIn")
     private int timeIn;
 

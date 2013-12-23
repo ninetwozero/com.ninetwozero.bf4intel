@@ -1,10 +1,10 @@
 package com.ninetwozero.bf4intel.factories;
 
-import org.apache.http.client.utils.URIUtils;
-
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+
+import org.apache.http.client.utils.URIUtils;
 
 public class UrlFactory {
     private static final String SCHEME = "http";
@@ -24,6 +24,10 @@ public class UrlFactory {
 
     public static URL buildWeaponStatsURL(final int soldierId, final int platformId) {
         return createURL(String.format("warsawWeaponsPopulateStats/%d/%d/stats/", soldierId, platformId));
+    }
+
+    public static URL buildVehicleStatsURL(final int soldierId, final int platformId) {
+        return createURL(String.format("warsawvehiclesPopulateStats/%d/%d/stats/", soldierId, platformId));
     }
 
     public static URL buildAssignmentsURL(final String soldierName, final int soldierId, final long userId, final int platformId) {
