@@ -17,24 +17,26 @@ import static junit.framework.Assert.assertEquals;
 
 public class BattleFeedTest {
     private static BattleFeed battleFeed;
-    private static final List<EventType> validTypes = new ArrayList<EventType>() {{
-        add(EventType.LEVEL_COMPLETE);
-        add(EventType.ADDED_FAV_SERVER);
-        add(EventType.SHARED_GAME_EVENT);
-        add(EventType.SHARED_GAME_EVENT);
-        add(EventType.GAME_REPORT);
-        add(EventType.BECAME_FRIENDS);
-        add(EventType.GAME_ACCESS);
-        add(EventType.RECEIVED_WALL_POST);
-        add(EventType.COMMENTED_GAME_REPORT);
-        add(EventType.RANKED_UP);
-        add(EventType.STATUS_MESSAGE);
-        add(EventType.BATTLE_PACK);
-        add(EventType.SHARED_GAME_EVENT);
-        add(EventType.WROTE_FORUM_POST);
-        add(EventType.CREATED_FORUM_THREAD);
-        add(EventType.COMMENTED_BLOG);
-    }};
+    private static final List<EventType> validTypes = new ArrayList<EventType>() {
+        {
+            add(EventType.LEVEL_COMPLETE);
+            add(EventType.ADDED_FAV_SERVER);
+            add(EventType.SHARED_GAME_EVENT);
+            add(EventType.SHARED_GAME_EVENT);
+            add(EventType.GAME_REPORT);
+            add(EventType.BECAME_FRIENDS);
+            add(EventType.GAME_ACCESS);
+            add(EventType.RECEIVED_WALL_POST);
+            add(EventType.COMMENTED_GAME_REPORT);
+            add(EventType.RANKED_UP);
+            add(EventType.STATUS_MESSAGE);
+            add(EventType.BATTLE_PACK);
+            add(EventType.SHARED_GAME_EVENT);
+            add(EventType.WROTE_FORUM_POST);
+            add(EventType.CREATED_FORUM_THREAD);
+            add(EventType.COMMENTED_BLOG);
+        }
+    };
 
     @BeforeClass
     public static void setup() throws IOException {

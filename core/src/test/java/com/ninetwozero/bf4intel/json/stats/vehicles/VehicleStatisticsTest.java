@@ -2,7 +2,8 @@ package com.ninetwozero.bf4intel.json.stats.vehicles;
 
 import com.ninetwozero.bf4intel.util.IntelJsonParser;
 
-import java.io.IOException;import java.util.List;
+import java.io.IOException;
+import java.util.List;
 
 import org.junit.Test;
 

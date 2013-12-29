@@ -53,13 +53,13 @@ public class UnlockCriteria implements Comparable<UnlockCriteria> {
         final int completion1 = completion;
         final int completion2 = other.getCompletion();
 
-        if ((completion1 < 100 && completion2 < 100) ) {
+        if ((completion1 < 100 && completion2 < 100)) {
             if (completion1 > completion2) {
                 return -1;
             } else if (completion1 < completion2) {
                 return 1;
             }
-        } else if(completion1 == completion2) {
+        } else if (completion1 == completion2) {
             return 0;
         } else {
             if (completion1 == 100) {

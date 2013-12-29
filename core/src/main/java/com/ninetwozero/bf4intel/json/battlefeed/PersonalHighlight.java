@@ -15,4 +15,5 @@ public class PersonalHighlight {
 
     public int getScore() {
         return score;
-    }}
+    }
+}
