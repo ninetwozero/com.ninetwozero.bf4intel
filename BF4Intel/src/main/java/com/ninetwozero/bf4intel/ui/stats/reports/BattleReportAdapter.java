@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.battlereport;
+package com.ninetwozero.bf4intel.ui.stats.reports;
 
 import android.content.Context;
 import android.graphics.Typeface;

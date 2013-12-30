@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.battlereport;
+package com.ninetwozero.bf4intel.ui.stats.reports;
 
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
@@ -67,12 +67,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         showLoadingState(true);
         return new IntelLoader(
             getActivity(),
-            new SimpleGetRequest(
-                UrlFactory.buildBattleReportsURL(
-                    bundle.getInt(Keys.Soldier.ID),
-                    bundle.getInt(Keys.Soldier.PLATFORM)
-                )
-            )
+            new SimpleGetRequest(UrlFactory.buildBattleReportsURL(200661244, 1))
         );
     }
 
@@ -89,7 +84,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     }
 
     @Override
-     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
+    public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
         // TODO: Not sure what to display in the next view, website is crammed!
 
         /*

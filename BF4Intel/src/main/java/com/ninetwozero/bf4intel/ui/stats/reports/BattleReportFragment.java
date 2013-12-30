@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.battlereport;
+package com.ninetwozero.bf4intel.ui.stats.reports;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

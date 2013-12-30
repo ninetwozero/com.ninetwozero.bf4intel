@@ -201,7 +201,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_unlocks), data, intentToStart(INTENT_UNLOCKS)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.assignments), data, intentToStart(INTENT_ASSIGNMENTS)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.awards), data, intentToStart(INTENT_AWARDS)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.battlereports), data, FragmentFactory.Type.BATTLE_REPORT_LISTING));
         return items;
     }
 
