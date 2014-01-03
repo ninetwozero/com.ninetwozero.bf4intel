@@ -125,11 +125,6 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
         return populateViewFromItem(convertView, item);
     }
 
-    /*
-        TODO:
-        Inherit AbstractExpandableListAdapter from com.ninetwozero.common (release pending)
-        These two methods need to be removed when this dependency is in place
-    */
     private void setText(final View parent, final int resourceId, final String text) {
         ((TextView) parent.findViewById(resourceId)).setText(text);
     }
@@ -137,7 +132,6 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
     private void setText(final View parent, final int resourceId, final int textResourceId) {
         ((TextView) parent.findViewById(resourceId)).setText(textResourceId);
     }
-    /* END OF TODO */
 
     private View populateViewFromItem(final View view, final ListRow item) {
         final Bundle stringMappings = item.getStringMappings();

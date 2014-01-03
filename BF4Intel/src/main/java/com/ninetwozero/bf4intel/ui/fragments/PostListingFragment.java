@@ -50,7 +50,7 @@ public class PostListingFragment extends BaseListFragment {
 
     @Override
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
-        /* TODO: Quote or something? */
+        /* TODO: Determine what options we need to display (i.e: Quote) on click */
         showToast("Clicked on POST ID: " + id);
     }
 

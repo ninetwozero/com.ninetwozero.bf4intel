@@ -13,7 +13,10 @@ public class StatusMessageLayout implements EventLayout<StatusMessageEvent> {
     public void populateView(final Context context, final View view, final StatusMessageEvent event) {
         ((TextView) view.findViewById(R.id.content)).setText(event.getMessage());
         if (event.hasPreview()) {
-            // TODO: Preview title should be resolved from the Internet in some fancy way - use asynctask for thaT?
+            /*
+            TODO:
+            We need to figure out a way to resolve the title for the preview in some fancy way
+            */
             ((TextView) view.findViewById(R.id.preview_title)).setText(event.getPreview());
             view.findViewById(R.id.wrap_preview).setVisibility(View.VISIBLE);
         } else {

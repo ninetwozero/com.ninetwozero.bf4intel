@@ -51,7 +51,6 @@ public class ForumListingFragment extends BaseListFragment {
 
     @Override
     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
-        /* FIXME: Get actual id's */
         final Bundle data = new Bundle();
         data.putLong(ThreadListingFragment.FORUM_ID, id);
 
