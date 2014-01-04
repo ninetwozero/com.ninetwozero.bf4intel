@@ -21,8 +21,8 @@
 
     <ImageView
       android:id="@+id/item_image"
-      android:layout_width="100dp"
-      android:layout_height="100dp"
+      android:layout_width="142dp"
+      android:layout_height="142dp"
       android:layout_weight="1"
       android:contentDescription="@string/cdesc_weapon_stats_image" />
 

@@ -36,7 +36,7 @@ public class SoldierStatsFragment extends BaseListFragment {
     }
 
     private void initialize(final View view) {
-        final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getActivity(), getItemsForMenu());
+        final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getItemsForMenu(), getActivity());
         // TODO: setListAdapter(slidingMenuAdapter);
 
         final Bundle arguments = getArguments();
