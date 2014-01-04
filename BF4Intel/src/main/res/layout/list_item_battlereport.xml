@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   style="@style/WhiteContainer"
+  android:orientation="vertical"
   android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  >
+  android:layout_height="wrap_content">
 
   <TextView
     android:id="@+id/map_name"
@@ -17,23 +16,12 @@
     />
 
   <TextView
-    style="@style/meta"
-    android:id="@+id/date"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="4 hours ago"
-    android:layout_alignParentRight="true"
-    android:layout_alignBaseline="@id/map_name"
-    />
-
-  <TextView
     android:id="@+id/game_mode"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Conquest Large"
     android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
-    android:layout_below="@id/map_name"
-    />
+    android:layout_below="@id/map_name" />
 
   <TextView
     android:id="@+id/server_name"
@@ -45,113 +33,56 @@
 
     />
 
-  <TextView
-    style="@style/heading"
-    android:id="@+id/heading_results"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Results"
-    android:layout_below="@id/server_name"
-    />
-
-  <RelativeLayout
-    android:id="@+id/wrap_team1"
+  <LinearLayout
+    android:id="@+id/match_result"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_below="@id/heading_results">
+    android:layout_below="@id/server_name">
+
+    <RelativeLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:layout_gravity="center_vertical"
+      >
+
+      <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4 hours ago"
+        />
+      <TextView
+        android:id="@+id/label_round_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/battlereport_time"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
+        android:layout_below="@id/date"
+        />
+
+      <TextView
+        android:id="@+id/round_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="29m"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
+        android:layout_below="@id/date"
+        android:layout_toRightOf="@id/label_round_time"
+        android:layout_marginLeft="@dimen/spacing_s" />
+      </RelativeLayout>
 
     <TextView
-      android:id="@+id/team"
+      android:id="@+id/user_match_result"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:textAppearance="@android:style/TextAppearance.Holo"
-      android:text="US"
-      android:layout_marginRight="@dimen/spacing_m"
+      android:textSize="@dimen/text_xxl"
+      android:textStyle="bold"
+      android:text="LOST"
+      android:layout_marginLeft="@dimen/spacing_l"
+      android:layout_marginRight="@dimen/spacing_l"
       />
+  </LinearLayout>
 
-    <TextView
-      android:id="@+id/score"
-      android:layout_width="28dp"
-      android:layout_height="wrap_content"
-      android:textAppearance="@android:style/TextAppearance.Holo"
-      android:text="380"
-      android:layout_alignParentRight="true"
-      android:layout_marginLeft="@dimen/spacing_m"
-      android:gravity="right"
-      />
-
-    <ProgressBar
-      style="?android:progressBarStyleHorizontal"
-      android:id="@+id/progress"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:indeterminate="false"
-      android:layout_toRightOf="@id/team"
-      android:layout_toLeftOf="@id/score"
-      android:layout_alignBottom="@id/team"
-      android:progress="380"
-      android:max="400"
-      />
-  </RelativeLayout>
-
-  <RelativeLayout
-    android:id="@+id/wrap_team2"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/wrap_team1"
-    >
-
-    <TextView
-      android:id="@+id/team"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textAppearance="@android:style/TextAppearance.Holo"
-      android:text="US"
-      android:layout_marginRight="@dimen/spacing_m"
-      />
-
-    <TextView
-      android:id="@+id/score"
-      android:layout_width="28dp"
-      android:layout_height="wrap_content"
-      android:textAppearance="@android:style/TextAppearance.Holo"
-      android:text="380"
-      android:layout_alignParentRight="true"
-      android:layout_marginLeft="@dimen/spacing_m"
-      android:gravity="right"
-      />
-
-    <ProgressBar
-      style="?android:progressBarStyleHorizontal"
-      android:id="@+id/progress"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:indeterminate="false"
-      android:layout_toRightOf="@id/team"
-      android:layout_toLeftOf="@id/score"
-      android:layout_alignBottom="@id/team"
-      android:progress="380"
-      android:max="400"
-      />
-  </RelativeLayout>
-
-  <TextView
-    android:id="@+id/string_round_time"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/battlereport_time"
-    android:textAppearance="@android:style/TextAppearance.Holo.Small"
-    android:layout_below="@id/wrap_team2"
-    />
-
-  <TextView
-    android:id="@+id/round_time"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="29m"
-    android:textAppearance="@android:style/TextAppearance.Holo.Small"
-    android:layout_toRightOf="@id/string_round_time"
-    android:layout_below="@id/wrap_team2"
-    android:layout_marginLeft="@dimen/spacing_s"
-    />
-</RelativeLayout>
+</LinearLayout>
