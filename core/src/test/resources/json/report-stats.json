@@ -4,788 +4,7 @@
   "data": {
     "gameReports": [
       {
-        "persistedId": "bdab6929-d7a4-47a0-b76a-b292426469db",
-        "map": "XP1_004",
-        "winner": 2,
-        "maxPlayerCount": 0,
-        "teamToFaction": {
-          "1": "US",
-          "2": "CN"
-        },
-        "mapVariant": 0,
-        "gameMode": 1024,
-        "teams": {
-          "1": {
-            "players": [
-
-            ],
-            "score": 0,
-            "scoreMax": 300,
-            "name": "US",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 1,
-            "isWinner": false
-          },
-          "2": {
-            "players": [
-
-            ],
-            "score": 34,
-            "scoreMax": 300,
-            "name": "CN",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 2,
-            "isWinner": true
-          }
-        },
-        "initialMapValues": {
-          "1": {
-            "initialTickets": 300
-          },
-          "2": {
-            "initialTickets": 300
-          }
-        },
-        "players": {
-
-        },
-        "player": {
-          "isCommander": null,
-          "personaId": "200661244",
-          "persona": null,
-          "gunMasterLevel": null,
-          "kills": null,
-          "deaths": null,
-          "killStreak": null,
-          "isSoldier": null,
-          "userId": null,
-          "squadId": null,
-          "rank": null,
-          "killAssists": null,
-          "dnf": null,
-          "user": null,
-          "commanderScore": null,
-          "team": null,
-          "revives": null,
-          "skill": null,
-          "heals": null,
-          "combatScore": null,
-          "accuracy": null
-        },
-        "ranked": true,
-        "playerTeams": {
-          "1": [
-            "348321339",
-            "834726786",
-            "170959422",
-            "373389741",
-            "232592367",
-            "233153319",
-            "181724560",
-            "200661244"
-          ],
-          "2": [
-            "247328460",
-            "383684909",
-            "930445278",
-            "352205410",
-            "355501404",
-            "839229267",
-            "235046051",
-            "850505789"
-          ]
-        },
-        "mapModeResult": {
-          "ticket": {
-            "1": 0,
-            "2": 34
-          }
-        },
-        "duration": 1115,
-        "reportType": "mp",
-        "gameReportId": "410170201408225536",
-        "createdAt": 1386628287,
-        "name": "[9thD] HARDCORE ONLY | No M320\/RPG on INF | by G-Portal.de"
-      },
-      {
-        "persistedId": "bdab6929-d7a4-47a0-b76a-b292426469db",
-        "map": "XP1_003",
-        "winner": 1,
-        "maxPlayerCount": 0,
-        "teamToFaction": {
-          "1": "US",
-          "2": "CN"
-        },
-        "mapVariant": 0,
-        "gameMode": 1024,
-        "teams": {
-          "1": {
-            "players": [
-
-            ],
-            "score": 202,
-            "scoreMax": 300,
-            "name": "US",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 1,
-            "isWinner": true
-          },
-          "2": {
-            "players": [
-
-            ],
-            "score": 0,
-            "scoreMax": 300,
-            "name": "CN",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 2,
-            "isWinner": false
-          }
-        },
-        "initialMapValues": {
-          "1": {
-            "initialTickets": 300
-          },
-          "2": {
-            "initialTickets": 300
-          }
-        },
-        "players": {
-
-        },
-        "player": {
-          "isCommander": null,
-          "personaId": "200661244",
-          "persona": null,
-          "gunMasterLevel": null,
-          "kills": null,
-          "deaths": null,
-          "killStreak": null,
-          "isSoldier": null,
-          "userId": null,
-          "squadId": null,
-          "rank": null,
-          "killAssists": null,
-          "dnf": null,
-          "user": null,
-          "commanderScore": null,
-          "team": null,
-          "revives": null,
-          "skill": null,
-          "heals": null,
-          "combatScore": null,
-          "accuracy": null
-        },
-        "ranked": true,
-        "playerTeams": {
-          "1": [
-            "247328460",
-            "850505789",
-            "383684909",
-            "930445278",
-            "352205410",
-            "355501404",
-            "928792071",
-            "839229267",
-            "362676957"
-          ],
-          "2": [
-            "348321339",
-            "834726786",
-            "901754543",
-            "473888260",
-            "373389741",
-            "233153319",
-            "181724560",
-            "200661244",
-            "359476070"
-          ]
-        },
-        "mapModeResult": {
-          "ticket": {
-            "1": 202,
-            "2": 0
-          }
-        },
-        "duration": 733,
-        "reportType": "mp",
-        "gameReportId": "410166780915564800",
-        "createdAt": 1386627089,
-        "name": "[9thD] HARDCORE ONLY | No M320\/RPG on INF | by G-Portal.de"
-      },
-      {
-        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
-        "map": "MP_Naval",
-        "winner": 1,
-        "maxPlayerCount": 0,
-        "teamToFaction": {
-          "1": "US",
-          "2": "CN"
-        },
-        "mapVariant": 0,
-        "gameMode": 64,
-        "teams": {
-          "1": {
-            "players": [
-
-            ],
-            "score": 791,
-            "scoreMax": 800,
-            "name": "US",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 1,
-            "isWinner": true
-          },
-          "2": {
-            "players": [
-
-            ],
-            "score": 0,
-            "scoreMax": 800,
-            "name": "CN",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 2,
-            "isWinner": false
-          }
-        },
-        "initialMapValues": {
-          "1": {
-            "initialTickets": 800
-          },
-          "2": {
-            "initialTickets": 800
-          }
-        },
-        "players": {
-
-        },
-        "player": {
-          "isCommander": null,
-          "personaId": "200661244",
-          "persona": null,
-          "gunMasterLevel": null,
-          "kills": null,
-          "deaths": null,
-          "killStreak": null,
-          "isSoldier": null,
-          "userId": null,
-          "squadId": null,
-          "rank": null,
-          "killAssists": null,
-          "dnf": null,
-          "user": null,
-          "commanderScore": null,
-          "team": null,
-          "revives": null,
-          "skill": null,
-          "heals": null,
-          "combatScore": null,
-          "accuracy": null
-        },
-        "ranked": true,
-        "playerTeams": {
-          "1": [
-            "348321339",
-            "354041637"
-          ],
-          "2": [
-            "234684264",
-            "200661244",
-            "247713252"
-          ]
-        },
-        "mapModeResult": {
-          "ticket": {
-            "1": 791,
-            "2": 0
-          }
-        },
-        "duration": 1226,
-        "reportType": "mp",
-        "gameReportId": "410161065534097664",
-        "createdAt": 1386626219,
-        "name": "::DFC:: DutchFightClub HARDCORE BF4"
-      },
-      {
-        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
-        "map": "MP_Flooded",
-        "winner": 2,
-        "maxPlayerCount": 0,
-        "teamToFaction": {
-          "1": "US",
-          "2": "CN"
-        },
-        "mapVariant": 0,
-        "gameMode": 64,
-        "teams": {
-          "1": {
-            "players": [
-
-            ],
-            "score": 0,
-            "scoreMax": 800,
-            "name": "US",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 1,
-            "isWinner": false
-          },
-          "2": {
-            "players": [
-
-            ],
-            "score": 683,
-            "scoreMax": 800,
-            "name": "CN",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 2,
-            "isWinner": true
-          }
-        },
-        "initialMapValues": {
-          "1": {
-            "initialTickets": 800
-          },
-          "2": {
-            "initialTickets": 800
-          }
-        },
-        "players": {
-
-        },
-        "player": {
-          "isCommander": null,
-          "personaId": "200661244",
-          "persona": null,
-          "gunMasterLevel": null,
-          "kills": null,
-          "deaths": null,
-          "killStreak": null,
-          "isSoldier": null,
-          "userId": null,
-          "squadId": null,
-          "rank": null,
-          "killAssists": null,
-          "dnf": null,
-          "user": null,
-          "commanderScore": null,
-          "team": null,
-          "revives": null,
-          "skill": null,
-          "heals": null,
-          "combatScore": null,
-          "accuracy": null
-        },
-        "ranked": true,
-        "playerTeams": {
-          "1": [
-            "234684264",
-            "247713252",
-            "931437133",
-            "937145751",
-            "352119683"
-          ],
-          "2": [
-            "348321339",
-            "354041637",
-            "200661244",
-            "314482321"
-          ]
-        },
-        "mapModeResult": {
-          "ticket": {
-            "1": 0,
-            "2": 683
-          }
-        },
-        "duration": 1738,
-        "reportType": "mp",
-        "gameReportId": "410153472061278464",
-        "createdAt": 1386624921,
-        "name": "::DFC:: DutchFightClub HARDCORE BF4"
-      },
-      {
-        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
-        "map": "MP_Journey",
-        "winner": 1,
-        "maxPlayerCount": 0,
-        "teamToFaction": {
-          "1": "RU",
-          "2": "CN"
-        },
-        "mapVariant": 0,
-        "gameMode": 64,
-        "teams": {
-          "1": {
-            "players": [
-
-            ],
-            "score": 781,
-            "scoreMax": 800,
-            "name": "RU",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 1,
-            "isWinner": true
-          },
-          "2": {
-            "players": [
-
-            ],
-            "score": 0,
-            "scoreMax": 800,
-            "name": "CN",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 2,
-            "isWinner": false
-          }
-        },
-        "initialMapValues": {
-          "1": {
-            "initialTickets": 800
-          },
-          "2": {
-            "initialTickets": 800
-          }
-        },
-        "players": {
-
-        },
-        "player": {
-          "isCommander": null,
-          "personaId": "200661244",
-          "persona": null,
-          "gunMasterLevel": null,
-          "kills": null,
-          "deaths": null,
-          "killStreak": null,
-          "isSoldier": null,
-          "userId": null,
-          "squadId": null,
-          "rank": null,
-          "killAssists": null,
-          "dnf": null,
-          "user": null,
-          "commanderScore": null,
-          "team": null,
-          "revives": null,
-          "skill": null,
-          "heals": null,
-          "combatScore": null,
-          "accuracy": null
-        },
-        "ranked": true,
-        "playerTeams": {
-          "1": [
-            "397212994",
-            "354041637",
-            "234684264"
-          ],
-          "2": [
-            "939187508",
-            "200661244"
-          ]
-        },
-        "mapModeResult": {
-          "ticket": {
-            "1": 781,
-            "2": 0
-          }
-        },
-        "duration": 1168,
-        "reportType": "mp",
-        "gameReportId": "409804606712407744",
-        "createdAt": 1386541176,
-        "name": "::DFC:: DutchFightClub HARDCORE BF4"
-      },
-      {
-        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
-        "map": "MP_Naval",
-        "winner": 1,
-        "maxPlayerCount": 0,
-        "teamToFaction": {
-          "1": "US",
-          "2": "CN"
-        },
-        "mapVariant": 0,
-        "gameMode": 64,
-        "teams": {
-          "1": {
-            "players": [
-
-            ],
-            "score": 526,
-            "scoreMax": 800,
-            "name": "US",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 1,
-            "isWinner": true
-          },
-          "2": {
-            "players": [
-
-            ],
-            "score": 0,
-            "scoreMax": 800,
-            "name": "CN",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 2,
-            "isWinner": false
-          }
-        },
-        "initialMapValues": {
-          "1": {
-            "initialTickets": 800
-          },
-          "2": {
-            "initialTickets": 800
-          }
-        },
-        "players": {
-
-        },
-        "player": {
-          "isCommander": null,
-          "personaId": "200661244",
-          "persona": null,
-          "gunMasterLevel": null,
-          "kills": null,
-          "deaths": null,
-          "killStreak": null,
-          "isSoldier": null,
-          "userId": null,
-          "squadId": null,
-          "rank": null,
-          "killAssists": null,
-          "dnf": null,
-          "user": null,
-          "commanderScore": null,
-          "team": null,
-          "revives": null,
-          "skill": null,
-          "heals": null,
-          "combatScore": null,
-          "accuracy": null
-        },
-        "ranked": true,
-        "playerTeams": {
-          "1": [
-            "348321339",
-            "314482321",
-            "278500043",
-            "175805553",
-            "200661244",
-            "234773245",
-            "188387194"
-          ],
-          "2": [
-            "397212994",
-            "179171344",
-            "939187508",
-            "354041637",
-            "234684264",
-            "804529462",
-            "363631017",
-            "225190048"
-          ]
-        },
-        "mapModeResult": {
-          "ticket": {
-            "1": 526,
-            "2": 0
-          }
-        },
-        "duration": 2442,
-        "reportType": "mp",
-        "gameReportId": "409794047388509888",
-        "createdAt": 1386539932,
-        "name": "::DFC:: DutchFightClub HARDCORE BF4"
-      },
-      {
-        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
-        "map": "MP_Flooded",
-        "winner": 2,
-        "maxPlayerCount": 0,
-        "teamToFaction": {
-          "1": "US",
-          "2": "CN"
-        },
-        "mapVariant": 0,
-        "gameMode": 64,
-        "teams": {
-          "1": {
-            "players": [
-
-            ],
-            "score": 0,
-            "scoreMax": 800,
-            "name": "US",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 1,
-            "isWinner": false
-          },
-          "2": {
-            "players": [
-
-            ],
-            "score": 757,
-            "scoreMax": 800,
-            "name": "CN",
-            "squads": {
-
-            },
-            "isAttacker": null,
-            "commanders": [
-
-            ],
-            "id": 2,
-            "isWinner": true
-          }
-        },
-        "initialMapValues": {
-          "1": {
-            "initialTickets": 800
-          },
-          "2": {
-            "initialTickets": 800
-          }
-        },
-        "players": {
-
-        },
-        "player": {
-          "isCommander": null,
-          "personaId": "200661244",
-          "persona": null,
-          "gunMasterLevel": null,
-          "kills": null,
-          "deaths": null,
-          "killStreak": null,
-          "isSoldier": null,
-          "userId": null,
-          "squadId": null,
-          "rank": null,
-          "killAssists": null,
-          "dnf": null,
-          "user": null,
-          "commanderScore": null,
-          "team": null,
-          "revives": null,
-          "skill": null,
-          "heals": null,
-          "combatScore": null,
-          "accuracy": null
-        },
-        "ranked": true,
-        "playerTeams": {
-          "1": [
-            "179171344",
-            "939187508",
-            "354041637",
-            "234684264",
-            "238045802",
-            "190508766"
-          ],
-          "2": [
-            "348321339",
-            "314482321",
-            "365258920",
-            "175805553",
-            "200661244",
-            "234440539",
-            "363712525"
-          ]
-        },
-        "mapModeResult": {
-          "ticket": {
-            "1": 0,
-            "2": 757
-          }
-        },
-        "duration": 1583,
-        "reportType": "mp",
-        "gameReportId": "409787101994378944",
-        "createdAt": 1386537418,
-        "name": "::DFC:: DutchFightClub HARDCORE BF4"
-      },
-      {
-        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
+        "persistedId": "3d000c0f-5175-4e14-aa57-c9966f67e090",
         "map": "MP_Damage",
         "winner": 1,
         "maxPlayerCount": 0,
@@ -798,34 +17,34 @@
         "teams": {
           "1": {
             "players": [
-
+              
             ],
-            "score": 604,
+            "score": 716,
             "scoreMax": 800,
             "name": "RU",
             "squads": {
-
+              
             },
             "isAttacker": null,
             "commanders": [
-
+              
             ],
             "id": 1,
             "isWinner": true
           },
           "2": {
             "players": [
-
+              
             ],
             "score": 0,
             "scoreMax": 800,
             "name": "CN",
             "squads": {
-
+              
             },
             "isAttacker": null,
             "commanders": [
-
+              
             ],
             "id": 2,
             "isWinner": false
@@ -840,7 +59,7 @@
           }
         },
         "players": {
-
+          
         },
         "player": {
           "isCommander": null,
@@ -868,84 +87,84 @@
         "ranked": true,
         "playerTeams": {
           "1": [
-            "363712525",
-            "348321339",
-            "360430152",
-            "314482321",
-            "353261937",
-            "365258920",
-            "175805553",
-            "234440539",
-            "774841868",
+            "278986196",
+            "329300785",
             "200661244",
-            "340703834"
+            "782398874",
+            "371197642",
+            "362627807",
+            "920730961",
+            "368665912",
+            "262325223",
+            "174840651",
+            "318513780"
           ],
           "2": [
-            "312059566",
-            "179171344",
-            "238045802",
-            "354041637",
-            "242962400",
-            "234684264",
-            "183920460",
-            "190508766",
-            "172817528"
+            "364627468",
+            "363587773",
+            "897765449",
+            "880159474",
+            "395847177",
+            "218396845",
+            "930043874",
+            "309840571",
+            "580657536"
           ]
         },
         "mapModeResult": {
           "ticket": {
-            "1": 604,
+            "1": 716,
             "2": 0
           }
         },
-        "duration": 1911,
+        "duration": 1438,
         "reportType": "mp",
-        "gameReportId": "409778786132387520",
-        "createdAt": 1386535763,
-        "name": "::DFC:: DutchFightClub HARDCORE BF4"
+        "gameReportId": "419260439579127168",
+        "createdAt": 1388795892,
+        "name": "[Z4LC] Koks und Nutten | HC MIX | Fast Vehicle Spawn | No Rules"
       },
       {
-        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
-        "map": "MP_Journey",
-        "winner": 1,
+        "persistedId": "3d000c0f-5175-4e14-aa57-c9966f67e090",
+        "map": "MP_Abandoned",
+        "winner": 0,
         "maxPlayerCount": 0,
         "teamToFaction": {
           "1": "RU",
-          "2": "CN"
+          "2": "US"
         },
         "mapVariant": 0,
-        "gameMode": 64,
+        "gameMode": 2097152,
         "teams": {
           "1": {
             "players": [
-
+              
             ],
-            "score": 144,
-            "scoreMax": 800,
+            "score": 0,
+            "scoreMax": 3,
             "name": "RU",
             "squads": {
-
+              
             },
             "isAttacker": null,
             "commanders": [
-
+              
             ],
             "id": 1,
-            "isWinner": true
+            "isWinner": false
           },
           "2": {
             "players": [
-
+              
             ],
             "score": 0,
-            "scoreMax": 800,
-            "name": "CN",
+            "scoreMax": 3,
+            "name": "US",
             "squads": {
-
+              
             },
             "isAttacker": null,
             "commanders": [
-
+              
             ],
             "id": 2,
             "isWinner": false
@@ -953,14 +172,14 @@
         },
         "initialMapValues": {
           "1": {
-            "initialTickets": 800
+            "initialTickets": 3
           },
           "2": {
-            "initialTickets": 800
+            "initialTickets": 3
           }
         },
         "players": {
-
+          
         },
         "player": {
           "isCommander": null,
@@ -988,82 +207,52 @@
         "ranked": true,
         "playerTeams": {
           "1": [
-            "301913085",
-            "930599577",
-            "942407192",
-            "313041321",
-            "250464294",
-            "249983273",
-            "351629184",
-            "368034412",
-            "517250778",
-            "365055167",
-            "354778213",
-            "266419363",
-            "803524863",
-            "320831433",
-            "357404127",
-            "200661244",
-            "271346214",
-            "354034645",
-            "354742361",
-            "637476020",
-            "365724800",
-            "845911761",
-            "362599761",
-            "395098548",
-            "290496706",
-            "931771526",
-            "934370255",
-            "793013205",
-            "248871990",
-            "344443910"
+            "880159474",
+            "364627468",
+            "580657536",
+            "278986196",
+            "177032510",
+            "227071029",
+            "363587773",
+            "309840571",
+            "198439467",
+            "395847177",
+            "196670096",
+            "218396845",
+            "897765449",
+            "362627807"
           ],
           "2": [
-            "784251500",
-            "227414078",
-            "903338306",
-            "934142501",
-            "363244732",
-            "939996847",
-            "355591440",
-            "173590053",
-            "284391214",
-            "192892766",
-            "283668474",
-            "244126910",
-            "233645192",
-            "354229482",
-            "312993233",
-            "179927184",
-            "255960559",
-            "377790723",
-            "364094714",
-            "210805813",
-            "248206491",
-            "342585458",
-            "243776512",
-            "362845473",
-            "923733020",
-            "241826481",
-            "942073446",
-            "783199254"
+            "363618293",
+            "318513780",
+            "356768060",
+            "352910758",
+            "910739625",
+            "200661244",
+            "262325223",
+            "371197642",
+            "174840651",
+            "966927616",
+            "786375212",
+            "180666028",
+            "387427947",
+            "365855980"
           ]
         },
         "mapModeResult": {
           "ticket": {
-            "1": 144,
-            "2": 0
+            "1": 3,
+            "2": 3
           }
         },
-        "duration": 2056,
+        "duration": 610,
         "reportType": "mp",
-        "gameReportId": "409458766072936768",
-        "createdAt": 1386459608,
-        "name": "::DFC:: DutchFightClub HARDCORE BF4"
+        "gameReportId": "419257561921678720",
+        "createdAt": 1388794377,
+        "name": "[Z4LC] Koks und Nutten | HC MIX | Fast Vehicle Spawn | No Rules"
       },
       {
-        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
+        "persistedId": "3d000c0f-5175-4e14-aa57-c9966f67e090",
         "map": "MP_Abandoned",
         "winner": 2,
         "maxPlayerCount": 0,
@@ -1076,34 +265,34 @@
         "teams": {
           "1": {
             "players": [
-
+              
             ],
             "score": 0,
             "scoreMax": 800,
             "name": "RU",
             "squads": {
-
+              
             },
             "isAttacker": null,
             "commanders": [
-
+              
             ],
             "id": 1,
             "isWinner": false
           },
           "2": {
             "players": [
-
+              
             ],
-            "score": 487,
+            "score": 548,
             "scoreMax": 800,
             "name": "US",
             "squads": {
-
+              
             },
             "isAttacker": null,
             "commanders": [
-
+              
             ],
             "id": 2,
             "isWinner": true
@@ -1118,7 +307,7 @@
           }
         },
         "players": {
-
+          
         },
         "player": {
           "isCommander": null,
@@ -1146,81 +335,903 @@
         "ranked": true,
         "playerTeams": {
           "1": [
-            "382204445",
-            "845118418",
-            "227414078",
-            "363244732",
-            "942407192",
-            "313041321",
-            "783199254",
-            "939996847",
-            "355591440",
-            "193276686",
-            "228843388",
-            "283668474",
-            "244126910",
-            "357303699",
-            "409606781",
-            "241826481",
-            "271346214",
-            "302353530",
-            "377790723",
-            "364094714",
-            "210805813",
-            "248206491",
-            "923733020",
-            "267785183",
-            "942264229",
-            "368758296",
-            "233650182",
-            "930803394",
-            "430986645",
-            "919709520",
-            "374342015",
-            "857695421"
+            "281035872",
+            "844742161",
+            "386051668",
+            "365855980",
+            "213962421",
+            "363618293",
+            "318513780",
+            "356768060",
+            "352910758",
+            "910739625",
+            "387427947",
+            "706747392",
+            "262325223",
+            "920730961",
+            "371197642",
+            "174201321",
+            "234999368",
+            "233490728",
+            "174840651",
+            "966927616",
+            "786375212",
+            "362365255",
+            "631124565",
+            "906672380"
           ],
           "2": [
-            "301913085",
-            "934370255",
-            "930599577",
-            "344443910",
-            "192892766",
-            "365055167",
-            "312993233",
-            "266419363",
-            "290496706",
-            "803524863",
+            "880159474",
+            "300499993",
+            "364627468",
+            "580657536",
+            "241051427",
+            "278986196",
+            "180666028",
+            "177032510",
+            "227071029",
             "320831433",
-            "271683087",
-            "813945876",
-            "357404127",
+            "363587773",
             "200661244",
-            "354034645",
-            "229398475",
-            "226876090",
-            "365724800",
-            "845911761",
-            "793013205",
-            "395098548",
-            "366716353",
-            "234735125",
-            "368763994",
-            "363770961",
-            "273088454",
-            "858073584",
-            "817556063"
+            "309840571",
+            "198439467",
+            "395847177",
+            "196670096",
+            "218396845",
+            "897765449",
+            "933348444",
+            "362627807",
+            "891375588",
+            "174585974",
+            "386441489",
+            "811363285",
+            "363773264",
+            "239994818"
           ]
         },
         "mapModeResult": {
           "ticket": {
             "1": 0,
-            "2": 487
+            "2": 548
           }
         },
-        "duration": 1823,
+        "duration": 1656,
         "reportType": "mp",
-        "gameReportId": "409450801488099648",
-        "createdAt": 1386457476,
+        "gameReportId": "419250315011616128",
+        "createdAt": 1388793695,
+        "name": "[Z4LC] Koks und Nutten | HC MIX | Fast Vehicle Spawn | No Rules"
+      },
+      {
+        "persistedId": "95088cb9-e933-4d17-ad4c-ccf9edd8fa90",
+        "map": "XP1_003",
+        "winner": 2,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 2,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": null,
+            "scoreMax": null,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": 1,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 75,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": 0,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialLife": 75,
+            "isAttacker": 1
+          },
+          "2": {
+            "initialLife": 65535,
+            "isAttacker": 0
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "334286601",
+            "197446998",
+            "356030114",
+            "238712108",
+            "271198462",
+            "320831433",
+            "375123625",
+            "322266729",
+            "185340185",
+            "200661244"
+          ],
+          "2": [
+            "363142841",
+            "333190516",
+            "235478858",
+            "288360299",
+            "322712302",
+            "352393277",
+            "856596724",
+            "172163025"
+          ]
+        },
+        "mapModeResult": {
+          "life": {
+            "1": 0,
+            "2": 65463
+          }
+        },
+        "duration": 705,
+        "reportType": "mp",
+        "gameReportId": "419246932204811968",
+        "createdAt": 1388791939,
+        "name": "[MM] - Muffin Mavericks - HC"
+      },
+      {
+        "persistedId": "95088cb9-e933-4d17-ad4c-ccf9edd8fa90",
+        "map": "XP1_003",
+        "winner": 1,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 2097152,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 2,
+            "scoreMax": 3,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": true
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 1,
+            "scoreMax": 3,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": false
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 3
+          },
+          "2": {
+            "initialTickets": 3
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "363142841",
+            "333190516",
+            "288360299",
+            "322712302",
+            "320831433",
+            "352393277",
+            "856596724",
+            "172163025",
+            "200661244",
+            "235478858",
+            "350736380",
+            "352151412"
+          ],
+          "2": [
+            "334286601",
+            "197446998",
+            "356030114",
+            "238712108",
+            "172941816",
+            "271198462",
+            "395642843",
+            "185340185"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 2,
+            "2": 1
+          }
+        },
+        "duration": 1210,
+        "reportType": "mp",
+        "gameReportId": "419241613399520960",
+        "createdAt": 1388791175,
+        "name": "[MM] - Muffin Mavericks - HC"
+      },
+      {
+        "persistedId": "3d000c0f-5175-4e14-aa57-c9966f67e090",
+        "map": "XP1_003",
+        "winner": 2,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 2097152,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 3,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 1,
+            "scoreMax": 3,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 3
+          },
+          "2": {
+            "initialTickets": 3
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "880159474",
+            "364627468",
+            "183733430",
+            "307186407",
+            "324024734",
+            "351337713",
+            "363728202",
+            "297230729",
+            "447952442",
+            "706747392",
+            "363709417",
+            "812861421",
+            "366077869",
+            "395847177",
+            "271680193",
+            "198376422",
+            "341183899",
+            "631124565",
+            "363773264",
+            "218396845",
+            "933348444",
+            "352949430",
+            "932153214",
+            "271187454",
+            "187638542",
+            "172779404",
+            "394172272",
+            "233324016"
+          ],
+          "2": [
+            "386051668",
+            "363618293",
+            "366639842",
+            "363519256",
+            "318513780",
+            "273656518",
+            "362365255",
+            "763599549",
+            "194792908",
+            "354799648",
+            "840879068",
+            "354847477",
+            "227071029",
+            "320831433",
+            "236323579",
+            "856270178",
+            "200661244",
+            "380853686",
+            "194863759",
+            "447954316",
+            "920730961",
+            "218225343",
+            "371197642",
+            "174201321",
+            "234999368",
+            "233490728",
+            "952021528",
+            "906672380",
+            "837207944",
+            "351358594"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 2,
+            "2": 3
+          }
+        },
+        "duration": 610,
+        "reportType": "mp",
+        "gameReportId": "419238693085965696",
+        "createdAt": 1388789878,
+        "name": "[Z4LC] Koks und Nutten | HC MIX | Fast Vehicle Spawn | No Rules"
+      },
+      {
+        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
+        "map": "XP1_001",
+        "winner": 2,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 64,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 800,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 374,
+            "scoreMax": 800,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 800
+          },
+          "2": {
+            "initialTickets": 800
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "234684264",
+            "314482321",
+            "315665709"
+          ],
+          "2": [
+            "348321339",
+            "200661244",
+            "320831433"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 0,
+            "2": 374
+          }
+        },
+        "duration": 2846,
+        "reportType": "mp",
+        "gameReportId": "419227138183210432",
+        "createdAt": 1388789436,
+        "name": "::DFC:: DutchFightClub HARDCORE BF4"
+      },
+      {
+        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
+        "map": "MP_TheDish",
+        "winner": 2,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "RU",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 64,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 800,
+            "name": "RU",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 517,
+            "scoreMax": 800,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 800
+          },
+          "2": {
+            "initialTickets": 800
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "175289379",
+            "348321339",
+            "297138756",
+            "358880081",
+            "848897369"
+          ],
+          "2": [
+            "179171344",
+            "234684264",
+            "200661244",
+            "315665709",
+            "314482321"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 0,
+            "2": 517
+          }
+        },
+        "duration": 2547,
+        "reportType": "mp",
+        "gameReportId": "419216085789517248",
+        "createdAt": 1388786502,
+        "name": "::DFC:: DutchFightClub HARDCORE BF4"
+      },
+      {
+        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
+        "map": "XP1_004",
+        "winner": 1,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 64,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 747,
+            "scoreMax": 800,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": true
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 800,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": false
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 800
+          },
+          "2": {
+            "initialTickets": 800
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "179171344",
+            "234684264",
+            "351617821",
+            "173278330",
+            "314482321"
+          ],
+          "2": [
+            "348321339",
+            "354041637",
+            "200661244",
+            "358880081"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 747,
+            "2": 0
+          }
+        },
+        "duration": 1363,
+        "reportType": "mp",
+        "gameReportId": "419210055466689984",
+        "createdAt": 1388783879,
+        "name": "::DFC:: DutchFightClub HARDCORE BF4"
+      },
+      {
+        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
+        "map": "MP_Siege",
+        "winner": 2,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 64,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 800,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 329,
+            "scoreMax": 800,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 800
+          },
+          "2": {
+            "initialTickets": 800
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "348321339",
+            "354041637",
+            "200661244",
+            "422797158",
+            "358880081"
+          ],
+          "2": [
+            "179171344",
+            "234684264",
+            "351617821",
+            "173278330",
+            "314482321"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 0,
+            "2": 329
+          }
+        },
+        "duration": 3022,
+        "reportType": "mp",
+        "gameReportId": "419197031058056640",
+        "createdAt": 1388782434,
         "name": "::DFC:: DutchFightClub HARDCORE BF4"
       }
     ],
@@ -1289,7 +1300,7 @@
             },
             "isAttacker": null,
             "commanders": [
-
+              
             ],
             "id": 1,
             "isWinner": false
@@ -1331,7 +1342,7 @@
             },
             "isAttacker": null,
             "commanders": [
-
+              
             ],
             "id": 2,
             "isWinner": true
