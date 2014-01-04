@@ -11,10 +11,12 @@ import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
-import com.ninetwozero.bf4intel.ui.adapters.NewsItemAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
+/*
+TODO:
+This fragment should only be displaying the article itself, and there should be another fragment
+to display the comments for the given article (and let the user comment)
+*/
 
 public class NewsArticleFragment extends BaseListFragment {
     public static final String ID = "articleId";
@@ -56,20 +58,10 @@ public class NewsArticleFragment extends BaseListFragment {
 
     private void initialize(final View view) {
         updateActionBar(getActivity(), "Loading...", R.drawable.ic_actionbar_news);
-        setupListView(view);
-        setupForm(view);
+        // TODO: setupLayout()
     }
 
-    private void setupListView(final View view) {
-        final ListView listView = (ListView) view.findViewById(android.R.id.list);
-        final NewsItemAdapter adapter = new NewsItemAdapter(getActivity(), getDummyItems());
-
-        // TODO: Pass Bundle instead of new Object() in the future when things are in place
-        listView.addHeaderView(layoutInflater.inflate(R.layout.list_header_news_item, null, false), new Object(), false);
-        listView.setHeaderDividersEnabled(true);
-        listView.setAdapter(adapter);
-    }
-
+    /* TODO: Extract to comment fragment */
     private void setupForm(final View view) {
         view.findViewById(R.id.button_send).setOnClickListener(
             new View.OnClickListener() {
@@ -99,7 +91,7 @@ public class NewsArticleFragment extends BaseListFragment {
         button.setEnabled(false);
         button.setText(R.string.msg_sending);
 
-        // TODO: Do actual network transmission
+        // TODO: Trigger loader for POST submit in Comment fragment
 
         button.setEnabled(true);
         button.setText(R.string.ab_action_send);
@@ -109,18 +101,7 @@ public class NewsArticleFragment extends BaseListFragment {
     public void loadArticle(final long id) {
         mId = id;
         if (mId > 0) {
-            /* TODO: Do actual loading */
+            /* TODO: Trigger loader call for data retrieval */
         }
-    }
-
-    public List<Object> getDummyItems() {
-        final List<Object> list = new ArrayList<Object>();
-        list.add(this);
-        list.add(this);
-        list.add(this);
-        list.add(this);
-        list.add(this);
-        list.add(this);
-        return list;
     }
 }

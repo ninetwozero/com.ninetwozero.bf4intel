@@ -54,10 +54,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
-
-        final View view = layoutInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
-        initialize(view);
-        return view;
+        return layoutInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
     }
 
     @Override
@@ -112,10 +109,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     @Override
     protected void onLoadFailure(final String resultMessage) {
         showToast(resultMessage);
-    }
-
-    private void initialize(final View view) {
-        /* TODO: NEED TO INIT? */
     }
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {

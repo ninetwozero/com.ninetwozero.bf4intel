@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.base.adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -12,12 +13,14 @@ import java.util.List;
 
 public abstract class BaseIntelAdapter<T> extends BaseAdapter {
 
+    protected final LayoutInflater layoutInflater;
     protected final List<T> itemsList;
     protected final Context context;
 
     public BaseIntelAdapter(List<T> itemsList, Context context) {
         this.itemsList = itemsList;
         this.context = context;
+        this.layoutInflater = LayoutInflater.from(context);
     }
 
     @Override

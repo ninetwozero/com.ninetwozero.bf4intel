@@ -6,11 +6,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.datatypes.ListRow;
 import com.ninetwozero.bf4intel.datatypes.ListRowType;
 
@@ -22,22 +21,9 @@ import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_HEADING;
 import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_REGULAR;
 import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_REGULAR_CHILD;
 
-/* TODO:
-    Implement the different view types so that the adapter can recycle accordingly
- */
-
-public class ListRowAdapter extends BaseAdapter {
-    private Context context;
-    private List<ListRow> items;
-
-    public ListRowAdapter(final Context context, final List<ListRow> items) {
-        this.context = context;
-        this.items = items;
-    }
-
-    @Override
-    public int getCount() {
-        return items == null ? 0 : items.size();
+public class ListRowAdapter extends BaseIntelAdapter<ListRow> {
+    public ListRowAdapter(final List<ListRow> items, final Context context) {
+        super(items, context);
     }
 
     @Override
@@ -48,11 +34,6 @@ public class ListRowAdapter extends BaseAdapter {
     @Override
     public int getItemViewType(final int position) {
         return getItem(position).getType().ordinal();
-    }
-
-    @Override
-    public ListRow getItem(int i) {
-        return items.get(i);
     }
 
     @Override
@@ -72,26 +53,12 @@ public class ListRowAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        final ListRow item = items.get(position);
+        final ListRow item = getItem(position);
         if (view == null) {
             view = LayoutInflater.from(context).inflate(item.getLayout(), viewGroup, false);
         }
         return populateViewFromItem(view, item);
     }
-
-    /*
-        TODO:
-        Inherit AbstractListAdapter from com.ninetwozero.common (release pending)
-        These two methods need to be removed when this dependency is in place
-    */
-    private void setText(final View parent, final int resourceId, final String text) {
-        ((TextView) parent.findViewById(resourceId)).setText(text);
-    }
-
-    private void setText(final View parent, final int resourceId, final int textResourceId) {
-        ((TextView) parent.findViewById(resourceId)).setText(textResourceId);
-    }
-    /* END OF TODO */
 
     private View populateViewFromItem(final View view, final ListRow item) {
         final Bundle stringMappings = item.getStringMappings();

@@ -6,10 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MiscBattlePackImageMap {
-    /*
-    TODO: Need to download images for emblems, camoflague and a few others
-     */
-
     private static final Map<String, Integer> images = new HashMap<String, Integer>() {
         {
             put("BRONZE", R.drawable.battlepack_bronze);

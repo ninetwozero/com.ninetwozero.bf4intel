@@ -43,7 +43,7 @@ public class BattleReportFragment extends BaseFragment {
     public void loadReport(final long id) {
         mId = id;
         if (mId > 0) {
-            /* TODO: Do actual loading */
+            /* TODO: Do actual loading for the "detailed view" */
         }
     }
 }
