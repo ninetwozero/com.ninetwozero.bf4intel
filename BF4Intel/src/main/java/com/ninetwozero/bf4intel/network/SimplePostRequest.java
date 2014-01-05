@@ -21,12 +21,16 @@ public class SimplePostRequest extends BaseSimpleRequest {
         this.postData = postData;
     }
 
+    public SimplePostRequest(final URL requestUrl, final RequestType requestType, final Bundle postData) {
+        super(requestUrl, requestType);
+        this.postData = postData;
+    }
+
     protected HttpRequest getHttpRequest() {
         HttpRequest request = HttpRequest.post(requestUrl)
             .readTimeout(READ_TIMEOUT)
             .connectTimeout(CONNECT_TIMEOUT)
-            .header("X-Requested-With", "XMLHttpRequest")
-            .header("Cookie", "beaker.session.id=<YOUR COOKIE HERE>")
+            .headers(getHeaders())
             .form(fetchBundleAsMap(postData));
         return request;
     }
