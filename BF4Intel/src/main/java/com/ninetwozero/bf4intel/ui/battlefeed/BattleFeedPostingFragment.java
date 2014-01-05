@@ -78,7 +78,7 @@ public class BattleFeedPostingFragment extends BaseFragment {
             return;
         }
 
-        // TODO: Loader or AsyncTask?
+        // TODO: Run Loader that posts to website (via SimplePostRequest)
         showToast("TODO: Trigger API call (POST)");
         closeScreen();
     }

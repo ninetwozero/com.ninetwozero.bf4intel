@@ -26,7 +26,6 @@ public class SharedGameEventGenerator implements EventGenerator {
         }
     };
 
-    // TODO: Can we get rid of manual JSON mess?
     @Override
     public BaseEvent generate(final Gson gson, final JsonObject jsonObject) {
         final String category = jsonObject.get("eventName").getAsString();

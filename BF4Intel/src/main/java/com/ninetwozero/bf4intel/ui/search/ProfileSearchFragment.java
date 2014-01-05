@@ -71,21 +71,6 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
                 new SearchView.OnQueryTextListener() {
                     @Override
                     public boolean onQueryTextChange(final String s) {
-                        /*
-                        TODO: Do we really want it to automatically fetch data when you're typing?
-                        If yes => this might be a good strategy
-                        If no => remove this commented block
-
-                        if (s.length() > 2) {
-                            final int oldLength = queryString.length();
-                            final int newLength = s.length();
-
-                            queryString = s;
-                            if (newLength > oldLength) {
-                                startLoadingData();
-                            }
-                        }
-                        */
                         queryString = s;
                         return true;
                     }

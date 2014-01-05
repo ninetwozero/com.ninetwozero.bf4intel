@@ -36,7 +36,7 @@ public class PlatoonProfileFragment extends BaseListFragment {
     }
 
     private void initialize(final View view) {
-        final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getActivity(), getItemsForMenu());
+        final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getItemsForMenu(), getActivity());
         setListAdapter(slidingMenuAdapter);
 
         updateActionBar(getActivity(), "Chili-powered Zebras", R.drawable.test_platoon);

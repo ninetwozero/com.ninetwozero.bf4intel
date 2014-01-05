@@ -118,7 +118,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void setupRegularViews(final View view) {
-        // TODO: Needs to build username from session storage
+        // TODO: Needs to build username from session storage when implemented (see BattleChat)
         final View wrapper = view.findViewById(R.id.wrap_login_name);
         ((TextView) wrapper.findViewById(R.id.login_name)).setText("NINETWOZERO");
     }
@@ -188,7 +188,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         final Bundle data = new Bundle();
         final List<ListRow> items = new ArrayList<ListRow>();
 
-        // TODO: Get these from session storage somewhere -also, extract to constants somewhere
+        // TODO: Get these from session storage somewhere when implemented (see BattleChat)
         data.putString(Keys.Soldier.NAME, "NINETWOZERO");
         data.putInt(Keys.Soldier.ID, 177958806);
         data.putInt(Keys.Soldier.PLATFORM, 2);
@@ -205,7 +205,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private List<ListRow> getRowsForSocial() {
-        // FIXME: Separate bundles per fragment type?
+        // TODO: We need to populate the bundle from Session storage (when available)
         final Bundle data = new Bundle();
         //data.putString(Keys.Profile.ID, "2832658801548551060");
         //data.putString(Keys.Profile.NAME, "Karl Lindmark");
@@ -231,10 +231,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
         return items;
     }
 
-    /*
-        TODO:
-        We should pass a Bundle to the desired activity
-     */
     private Intent intentToStart(final int intentID) {
         final Bundle profileBundle = fetchProfileBundle();
         Intent intent = null;

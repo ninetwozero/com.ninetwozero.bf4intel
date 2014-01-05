@@ -94,8 +94,9 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
 
     @Override
     public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
+        // TODO: userId below should be handled as String in the future
         final int count = 0;
-        final long userId = Long.valueOf(bundle.getString(Keys.Profile.ID, "0")); // TODO: Do we need to get it as long?
+        final long userId = Long.valueOf(bundle.getString(Keys.Profile.ID, "0"));
         final boolean fetchGlobalFeed = "0".equals(userId);
 
         return new IntelLoader(

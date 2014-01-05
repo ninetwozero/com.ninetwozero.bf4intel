@@ -9,6 +9,5 @@ import com.ninetwozero.bf4intel.json.battlefeed.events.UnknownEvent;
 public class UnknownEventLayout implements EventLayout<UnknownEvent> {
     @Override
     public void populateView(final Context context, final View view, final UnknownEvent event) {
-        // TODO
     }
 }
