@@ -84,10 +84,10 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Loader
      */
 
     @Deprecated
-    protected abstract void onLoadSuccess(final String resultMessage);
+    protected void onLoadSuccess(final String resultMessage) {}
 
     @Deprecated
-    protected abstract void onLoadFailure(final String resultMessage);
+    protected void onLoadFailure(final String resultMessage) {}
 
     protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         onLoadSuccess(resultMessage);
