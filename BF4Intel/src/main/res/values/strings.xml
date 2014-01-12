@@ -168,4 +168,11 @@
   <string name="category_ifvs">Infantry Fighting Vehicles</string>
   <string name="category_battle_tanks">Battle Tanks</string>
   <string name="category_attack_helicopters">Attack Helicopters</string>
+
+  <!--Battlereport match results-->
+  <string name="match_won">Won</string>
+  <string name="match_lost">Lost</string>
+  <string name="match_draw">Draw</string>
+  <string name="header_favorite_battlereport">Favorite Reports</string>
+  <string name="header_latest_battlereport">Latest Reports</string>
 </resources>

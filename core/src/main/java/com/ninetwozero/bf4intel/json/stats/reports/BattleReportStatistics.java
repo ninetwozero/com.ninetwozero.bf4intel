@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportStatistics {
+public class BattleReportStatistics {
 
     @SerializedName("gameReports")
     private List<StatsGameReport> statsGameReports = new ArrayList<StatsGameReport>();

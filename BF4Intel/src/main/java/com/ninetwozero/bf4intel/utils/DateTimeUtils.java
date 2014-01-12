@@ -1,6 +1,5 @@
 package com.ninetwozero.bf4intel.utils;
 
-import android.content.Context;
 import android.text.format.DateUtils;
 
 import java.util.LinkedHashMap;
@@ -39,8 +38,7 @@ public class DateTimeUtils {
         return stringBuilder.toString().trim();
     }
 
-    public static String toRelative(final Context context, final long timeInSeconds) {
+    public static String toRelative(final long timeInSeconds) {
         return DateUtils.getRelativeTimeSpanString(timeInSeconds*1000, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
-            //timeInSeconds * 1000, SystemClock.currentThreadTimeMillis(), DateUtils.SECOND_IN_MILLIS);
     }
 }

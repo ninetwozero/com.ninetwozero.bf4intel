@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FavouriteGameReport extends GameReports {
+public class FavouriteGameReport extends GameReport {
 
     @SerializedName("teams")
     private Map<Integer, Players> teams = new HashMap<Integer, Players>();
@@ -19,8 +19,13 @@ public class FavouriteGameReport extends GameReports {
     }
 
     @Override
-    public boolean isWinner() {
-        return false;
+    public MatchResult matchResult(int soldierId) {
+        if (getWinner() == RESULT_DRAW) {
+            return MatchResult.DRAW;
+        } else {
+            List<Integer> winningTeam = teams.get(getWinner()).getPlayersList();
+            return winningTeam.contains(soldierId) ? MatchResult.WON : MatchResult.LOST;
+        }
     }
 
     public class Players {
