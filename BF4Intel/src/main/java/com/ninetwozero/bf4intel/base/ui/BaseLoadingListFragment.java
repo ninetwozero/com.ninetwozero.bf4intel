@@ -29,9 +29,9 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     @Override
     public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
         if (result == Result.SUCCESS) {
-            onLoadSuccess(result.getResultMessage());
+            onLoadSuccess(resultLoader, result.getResultMessage());
         } else {
-            onLoadFailure(result.getResultMessage());
+            onLoadFailure(resultLoader, result.getResultMessage());
         }
     }
 
@@ -113,7 +113,29 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         return getActivity().getApplicationContext();
     }
 
-    protected abstract void onLoadSuccess(final String resultMessage);
-    protected abstract void onLoadFailure(final String resultMessage);
+    /*
+        TODO:
+        Deprecating current methods as they're used at many places
+        However, when no more onLoadSuccess(String) nor onLoadFailure(String)
+        implementations are left, we remove them below and make the
+
+            onLoadX(Loader, String)
+
+        methods abstract
+     */
+
+    @Deprecated
+    protected void onLoadSuccess(final String resultMessage) {}
+    @Deprecated
+    protected void onLoadFailure(final String resultMessage) {}
+
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
+        onLoadSuccess(resultMessage);
+    }
+
+    protected void onLoadFailure(final Loader loader, final String resultMessage) {
+        onLoadFailure(resultMessage);
+    }
+
     protected abstract void startLoadingData();
 }
