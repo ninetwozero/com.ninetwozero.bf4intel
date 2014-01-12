@@ -14,12 +14,15 @@ public class SimpleGetRequest extends BaseSimpleRequest {
         super(requestUrl);
     }
 
+    public SimpleGetRequest(final URL requestUrl, final RequestType requestType) {
+        super(requestUrl, requestType);
+    }
+
     protected HttpRequest getHttpRequest() {
         HttpRequest request = HttpRequest.get(requestUrl)
             .readTimeout(READ_TIMEOUT)
             .connectTimeout(CONNECT_TIMEOUT)
-            .header("X-Requested-With", "XMLHttpRequest")
-            .header("Cookie", "beaker.session.id=<YOUR COOKIE HERE>");
+            .headers(getHeaders());
         return request;
     }
 }
