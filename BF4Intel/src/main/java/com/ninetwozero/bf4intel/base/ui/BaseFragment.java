@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public abstract class BaseFragment extends Fragment {
@@ -72,5 +73,13 @@ public abstract class BaseFragment extends Fragment {
 
         toast = Toast.makeText(activity, text, Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    protected void setText(final View view, final int resourceId, final int textResource) {
+        ((TextView) view.findViewById(resourceId)).setText(textResource);
+    }
+
+    protected void setText(final View view, final int resourceId, final String text) {
+        ((TextView) view.findViewById(resourceId)).setText(text);
     }
 }
