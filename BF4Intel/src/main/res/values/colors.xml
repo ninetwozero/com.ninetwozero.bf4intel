@@ -39,4 +39,5 @@
 
   <!-- Card colors -->
   <color name="card_action_selected_bg">#CCCCCC</color>
+  <color name="card_selected_overlay">#33FFFFFF</color>
 </resources>
