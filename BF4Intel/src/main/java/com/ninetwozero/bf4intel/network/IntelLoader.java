@@ -30,7 +30,13 @@ public class IntelLoader extends AsyncTaskLoader<Result> {
             if (failure.getCause() instanceof HttpRequest.HttpRequestException) {
                 return Result.NETWORK_FAILURE;
             } else {
-                return Result.FAILURE;
+                if (failure.getMessage().equals("")) {
+                    return Result.FAILURE;
+                } else {
+                    Result result = Result.ERROR;
+                    result.setResultMessage(failure.getMessage());
+                    return result;
+                }
             }
         }
     }
