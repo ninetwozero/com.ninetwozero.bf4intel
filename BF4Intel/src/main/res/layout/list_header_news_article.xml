@@ -82,15 +82,16 @@
         android:orientation="horizontal"
         >
         <ImageView
+          style="@style/card_action_button"
           android:id="@+id/button_hooah"
-          android:layout_width="@dimen/send_button_size"
-          android:layout_height="@dimen/send_button_size"
           android:contentDescription="@string/cdesc_hooah"
           android:src="@drawable/ic_menu_hooah"
-          android:alpha="0.6"
-          android:padding="8dp"
-          android:clickable="true"
-          android:background="@drawable/card_action_selector"
+          />
+        <ImageView
+          style="@style/card_action_button"
+          android:id="@+id/button_overflow"
+          android:contentDescription="@string/cdesc_overflow_menu"
+          android:src="@drawable/ic_menu_overflow"
           />
       </LinearLayout>
 
