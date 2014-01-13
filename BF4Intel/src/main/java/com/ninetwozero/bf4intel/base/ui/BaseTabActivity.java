@@ -12,7 +12,7 @@ import com.ninetwozero.bf4intel.ui.adapters.ViewPagerAdapter;
 import java.util.List;
 
 public abstract class BaseTabActivity extends BaseIntelActivity implements ActionBar.TabListener {
-    public static final String INTENT_PROFILE = "profile";
+    public static final String INTENT_EXTRA = "profile";
 
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
@@ -48,7 +48,7 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
     }
 
     private List<Fragment> generateFragmentList() {
-        final Bundle profileBundle = getIntent().getBundleExtra(INTENT_PROFILE);
+        final Bundle profileBundle = getIntent().getBundleExtra(INTENT_EXTRA);
         return fetchFragmentsForActivity(profileBundle);
     }
 

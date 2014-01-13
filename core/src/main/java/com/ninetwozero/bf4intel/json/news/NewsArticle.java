@@ -21,8 +21,8 @@ public class NewsArticle {
     @SerializedName("thumbnail")
     private String thumbnailUrl;
     @SerializedName("votes")
-    private int voteCount;
-    @SerializedName("devBlogCommentCount")
+    private int hooahCount;
+    @SerializedName("devblogCommentCount")
     private int commentCount;
     @SerializedName("topstory")
     private int topPost;
@@ -30,6 +30,8 @@ public class NewsArticle {
     private int hightlightedPost;
     @SerializedName("tags")
     private List<String> tags;
+    @SerializedName("userVoted")
+    private boolean userSaidHooah;
     @SerializedName("comments")
     private List<NewsArticleComment> comments;
 
@@ -65,8 +67,8 @@ public class NewsArticle {
         return thumbnailUrl;
     }
 
-    public int getVoteCount() {
-        return voteCount;
+    public int getHooahCount() {
+        return hooahCount;
     }
 
     public int getCommentCount() {
@@ -85,7 +87,45 @@ public class NewsArticle {
         return tags;
     }
 
+    public boolean hasUserSaidHooah() {
+        return userSaidHooah;
+    }
+
+    public boolean hasComments() {
+        return comments != null && comments.size() > 0;
+    }
+
     public List<NewsArticleComment> getComments() {
         return comments;
+    }
+
+    /*
+        Method to remove the last <p> tag, as well as any images as they show up weird
+        when processed through Html.fromHtml(String)
+     */
+    public String fetchTrimmedContent() {
+        final StringBuilder builder = new StringBuilder(content.replaceAll("<p>&nbsp;</p>", ""));
+        final int positionOfImage = builder.lastIndexOf("<img");
+        if (positionOfImage != -1) {
+            int endTagOffset = builder.substring(positionOfImage).indexOf("/>");
+            int endTagPosition = endTagOffset + positionOfImage + 2;
+            if (endTagPosition != -1) {
+                builder.replace(
+                    positionOfImage,
+                    endTagPosition,
+                    ""
+                );
+            }
+        }
+
+        final int positionOfLastParagraph = builder.lastIndexOf("<p>");
+        if (positionOfLastParagraph != -1) {
+            builder.replace(
+                positionOfLastParagraph,
+                positionOfLastParagraph + 3,
+                ""
+            );
+        }
+        return builder.toString();
     }
 }

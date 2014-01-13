@@ -41,6 +41,10 @@ public class NewsArticleComment {
         return timestamp;
     }
 
+    public boolean hasReplies() {
+        return replies != null && replies.size() > 0;
+    }
+
     public List<NewsArticleCommentReply> getReplies() {
         return replies;
     }
