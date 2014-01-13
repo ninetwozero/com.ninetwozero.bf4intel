@@ -1,7 +1,6 @@
 package com.ninetwozero.bf4intel.ui.stats.reports;
 
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BattleReportListingFragment extends BaseLoadingListFragment {
-    private int ID_LOADER = BattleReportListingFragment.class.hashCode();
+    private int ID_LOADER = 2300;
 
     public BattleReportListingFragment() {
     }
@@ -54,12 +53,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         */
     @Override
     protected void startLoadingData() {
-        final LoaderManager manager = getActivity().getSupportLoaderManager();
-        if (manager.getLoader(ID_LOADER) == null) {
-            manager.initLoader(ID_LOADER, getArguments(), this);
-        } else {
-            manager.restartLoader(ID_LOADER, getArguments(), this);
-        }
+        getLoaderManager().restartLoader(ID_LOADER, null, this);
     }
 
     @Override

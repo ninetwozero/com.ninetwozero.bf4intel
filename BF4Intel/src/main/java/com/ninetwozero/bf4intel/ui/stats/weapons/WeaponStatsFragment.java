@@ -47,7 +47,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getActivity().getSupportLoaderManager().restartLoader(ID_LOADER, null, this);
+        getLoaderManager().restartLoader(ID_LOADER, null, this);
     }
 
     @Override
