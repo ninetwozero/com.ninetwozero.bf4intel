@@ -31,4 +31,12 @@
   <color name="item_locked_overlay">#77575757</color>
   <color name="black">#000000</color>
   <color name="translucent_black">#CC000000</color>
+
+  <!-- List item colors -->
+  <color name="navigation_drawer_selected_bg">#1AFFFFFF</color>
+  <color name="navigation_drawer_bg">#333333</color>
+  <color name="navigation_listview_divider">#444444</color>
+
+  <!-- Card colors -->
+  <color name="card_action_selected_bg">#CCCCCC</color>
 </resources>

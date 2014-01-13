@@ -168,4 +168,13 @@
   <string name="category_ifvs">Infantry Fighting Vehicles</string>
   <string name="category_battle_tanks">Battle Tanks</string>
   <string name="category_attack_helicopters">Attack Helicopters</string>
+  <string name="label_read">Read</string>
+  <string name="label_discuss">Discuss</string>
+  <string name="label_comment">Comment</string>
+  <string name="hint_comment">Your comment here&#8230;</string>
+  <string name="forum_latest_activity">Last activity</string>
+  <string name="cdesc_hooah">Hooah</string>
+  <string name="num_hooahs" formatted="false">%s hooahs</string>
+  <string name="num_comments" formatted="false">%s comments</string>
+  <string name="msg_error_gate_redirect">Please login to continue.</string>
 </resources>

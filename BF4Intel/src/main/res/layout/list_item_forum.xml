@@ -26,7 +26,7 @@
       android:layout_marginRight="@dimen/spacing_s"/>
 
     <include
-      android:id="@+id/wrap_meta"
+      android:id="@+id/wrap_meta_top"
       layout="@layout/small_meta_layout"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

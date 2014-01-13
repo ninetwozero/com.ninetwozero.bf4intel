@@ -42,11 +42,14 @@
 
 
   <style name="meta">
-    <item name="android:id">@+id/timestamp</item>
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
+    <item name="android:textAppearance">@style/TextAppearance.Holo.Smallest</item>
     <item name="android:textColor">@color/grey</item>
+  </style>
+
+  <style name="TextAppearance.Holo.Smallest" parent="@android:style/TextAppearance.Holo.Small">
+    <item name="android:textSize">@dimen/text_xs</item>
   </style>
 
   <style name="TextAppearance.Holo.MediumLarge" parent="@android:style/TextAppearance.Holo.Medium">
@@ -74,8 +77,7 @@
   <style name="BaseWhiteContainer">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:background">@drawable/whitebox_background</item>
-    <item name="android:layout_marginBottom">@dimen/spacing_s</item>
+    <item name="android:background">@drawable/card_bg</item>
   </style>
 
   <style name="WhiteContainer" parent="BaseWhiteContainer">
