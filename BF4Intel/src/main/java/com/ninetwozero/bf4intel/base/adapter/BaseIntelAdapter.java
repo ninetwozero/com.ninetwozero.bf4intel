@@ -78,6 +78,10 @@ public abstract class BaseIntelAdapter<T> extends BaseAdapter {
         view.findViewById(resourceId).setVisibility(state);
     }
 
+    public void setAlpha(final View view, final int resourceId, final float alpha) {
+        view.findViewById(resourceId).setAlpha(alpha);
+    }
+
     public void setItems(final List<T> items) {
         this.itemsList = items;
         notifyDataSetChanged();
