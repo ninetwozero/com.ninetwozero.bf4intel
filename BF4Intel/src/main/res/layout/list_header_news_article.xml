@@ -6,15 +6,18 @@
   android:padding="@dimen/spacing_m"
   android:background="#DDD"
   >
+
   <LinearLayout
     style="@style/BaseWhiteContainer"
     android:orientation="vertical"
     >
+
     <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="@dimen/spacing_m"
       >
+
       <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
@@ -31,14 +34,28 @@
         android:layout_below="@id/title"
         />
 
-      <TextView
-        android:id="@+id/content"
+      <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/wrap_meta_top"
-        android:textAppearance="@android:style/TextAppearance.Holo"
-        />
+        android:orientation="vertical"
+        android:layout_below="@id/wrap_meta_top">
+
+        <ImageView
+          android:id="@+id/preview"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:contentDescription="@string/cdesc_article_preview"
+          />
+
+        <TextView
+          android:id="@+id/content"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textAppearance="@android:style/TextAppearance.Holo"
+          />
+      </LinearLayout>
     </RelativeLayout>
+
     <RelativeLayout
       android:id="@+id/wrap_meta_bottom"
       android:layout_width="match_parent"
@@ -55,6 +72,7 @@
         android:gravity="center_vertical"
         android:layout_alignParentLeft="true"
         >
+
         <TextView
           android:id="@+id/num_hooahs"
           android:layout_width="wrap_content"
@@ -63,6 +81,7 @@
           android:textColor="@color/darkgrey"
           android:textAppearance="@style/TextAppearance.Holo.Smallest"
           />
+
         <TextView
           android:id="@+id/num_comments"
           android:layout_width="wrap_content"
@@ -81,12 +100,14 @@
         android:layout_alignParentRight="true"
         android:orientation="horizontal"
         >
+
         <ImageView
           style="@style/card_action_button"
           android:id="@+id/button_hooah"
           android:contentDescription="@string/cdesc_hooah"
           android:src="@drawable/ic_menu_hooah"
           />
+
         <ImageView
           style="@style/card_action_button"
           android:id="@+id/button_overflow"

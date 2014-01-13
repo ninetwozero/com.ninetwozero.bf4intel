@@ -98,34 +98,4 @@ public class NewsArticle {
     public List<NewsArticleComment> getComments() {
         return comments;
     }
-
-    /*
-        Method to remove the last <p> tag, as well as any images as they show up weird
-        when processed through Html.fromHtml(String)
-     */
-    public String fetchTrimmedContent() {
-        final StringBuilder builder = new StringBuilder(content.replaceAll("<p>&nbsp;</p>", ""));
-        final int positionOfImage = builder.lastIndexOf("<img");
-        if (positionOfImage != -1) {
-            int endTagOffset = builder.substring(positionOfImage).indexOf("/>");
-            int endTagPosition = endTagOffset + positionOfImage + 2;
-            if (endTagPosition != -1) {
-                builder.replace(
-                    positionOfImage,
-                    endTagPosition,
-                    ""
-                );
-            }
-        }
-
-        final int positionOfLastParagraph = builder.lastIndexOf("<p>");
-        if (positionOfLastParagraph != -1) {
-            builder.replace(
-                positionOfLastParagraph,
-                positionOfLastParagraph + 3,
-                ""
-            );
-        }
-        return builder.toString();
-    }
 }

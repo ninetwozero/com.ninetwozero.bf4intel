@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.news;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
+import com.ninetwozero.bf4intel.datatypes.HooahToggleRequest;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
 import com.ninetwozero.bf4intel.json.news.NewsArticleComment;
@@ -22,8 +24,11 @@ import com.ninetwozero.bf4intel.json.news.NewsArticleRequest;
 import com.ninetwozero.bf4intel.network.BaseSimpleRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
+import com.ninetwozero.bf4intel.network.SimplePostRequest;
+import com.ninetwozero.bf4intel.resources.maps.WebsiteErrorMessageMap;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
+import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
@@ -73,30 +78,56 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    public Loader<Result> onCreateLoader(int i, Bundle bundle) {
-        return new IntelLoader(
-            getActivity(),
-            new SimpleGetRequest(
-                UrlFactory.buildNewsArticleURL(bundle.getString(ID)),
-                BaseSimpleRequest.RequestType.FROM_NAVIGATION
-            )
-        );
+    public Loader<Result> onCreateLoader(int loaderId, Bundle bundle) {
+        if (loaderId == ID_LOADER_REFRESH_ARTICLE) {
+            return new IntelLoader(
+                getActivity(),
+                new SimpleGetRequest(
+                    UrlFactory.buildNewsArticleURL(bundle.getString(ID)),
+                    BaseSimpleRequest.RequestType.FROM_NAVIGATION
+                )
+            );
+        } else if (loaderId == ID_LOADER_HOOAH) {
+            return new IntelLoader(
+                getActivity(),
+                new SimplePostRequest(
+                    UrlFactory.buildNewsArticleHooahURL(bundle.getString("articleId")),
+                    bundle
+                )
+            );
+        }
+        throw new IllegalArgumentException("No loader matching " + loaderId);
     }
 
     @Override
     protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        final Gson gson = new Gson();
-        final JsonParser parser = new JsonParser();
-        final JsonElement rootObject = parser.parse(resultMessage).getAsJsonObject().get("context");
-        final NewsArticleRequest container = gson.fromJson(rootObject, NewsArticleRequest.class);
-        final NewsArticle article = container.getArticle();
+        if (loader.getId() == ID_LOADER_REFRESH_ARTICLE) {
+            final Gson gson = new Gson();
+            final JsonParser parser = new JsonParser();
+            final JsonElement rootObject = parser.parse(resultMessage).getAsJsonObject().get("context");
+            final NewsArticleRequest container = gson.fromJson(rootObject, NewsArticleRequest.class);
+            final NewsArticle article = container.getArticle();
 
-        displayArticle(article);
+            displayArticle(article);
+        } else if (loader.getId() == ID_LOADER_HOOAH) {
+            // TODO: Refresh?
+            Log.d(getClass().getSimpleName(), "[onLoadSuccess] resultMessage => " + resultMessage);
+        }
     }
 
     @Override
     protected void onLoadFailure(final Loader loader, final String resultMessage) {
+        // TODO: Display error message in bar below ActionBar
+        showToast(WebsiteErrorMessageMap.get(resultMessage));
+    }
 
+    @Subscribe
+    public void onUserPressedHooah(final HooahToggleRequest request) {
+        final Bundle data = new Bundle();
+        data.putString("post-check-sum", "0xCAFEBABE");
+        data.putString("articleId", request.getId());
+
+        getLoaderManager().restartLoader(ID_LOADER_HOOAH, data, this);
     }
 
     private void initialize(final View view) {

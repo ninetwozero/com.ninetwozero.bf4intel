@@ -178,4 +178,5 @@
   <string name="num_comments" formatted="false">%s comments</string>
   <string name="msg_error_gate_redirect">Please login to continue.</string>
   <string name="cdesc_overflow_menu">Overflow menu</string>
+  <string name="cdesc_article_preview">Article preview</string>
 </resources>

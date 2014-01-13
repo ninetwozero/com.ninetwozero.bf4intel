@@ -118,6 +118,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
 
             sendItemsToListView(container.getArticles());
         } else if (loader.getId() == ID_LOADER_HOOAH) {
+            // TODO: Refresh?
             Log.d(getClass().getSimpleName(), "[onLoadSuccess] resultMessage => " + resultMessage);
         }
     }
@@ -126,6 +127,15 @@ public class NewsListingFragment extends BaseLoadingListFragment {
     protected void onLoadFailure(final Loader loader, final String resultMessage) {
         // TODO: Display error message in bar below ActionBar
         showToast(WebsiteErrorMessageMap.get(resultMessage));
+    }
+
+    @Subscribe
+    public void onUserPressedHooah(final HooahToggleRequest request) {
+        final Bundle data = new Bundle();
+        data.putString("post-check-sum", "0xCAFEBABE");
+        data.putString("articleId", request.getId());
+
+        getLoaderManager().restartLoader(ID_LOADER_HOOAH, data, this);
     }
 
     private void initialize(final View view) {
@@ -150,14 +160,5 @@ public class NewsListingFragment extends BaseLoadingListFragment {
 
         // When we have some sort of "load more pages", this is how we append them: adapter.appendItems(items);
         adapter.setItems(items);
-    }
-
-    @Subscribe
-    public void onUserPressedHooah(final HooahToggleRequest request) {
-        final Bundle data = new Bundle();
-        data.putString("post-check-sum", "0xCAFEBABE");
-        data.putString("articleId", request.getId());
-
-        getLoaderManager().restartLoader(ID_LOADER_HOOAH, data, this);
     }
 }
