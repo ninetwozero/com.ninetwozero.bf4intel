@@ -1,6 +1,8 @@
 package com.ninetwozero.bf4intel.network;
 
 import com.github.kevinsawicki.http.HttpRequest;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.utils.exception.Failure;
 
 import java.io.BufferedReader;
@@ -36,8 +38,13 @@ public abstract class BaseSimpleRequest {
     public String execute() throws Failure {
         if (requestUrl != null) {
             try {
-                HttpRequest httpRequest = getHttpRequest();
-                return fromStream(httpRequest.buffer());
+                final HttpRequest httpRequest = getHttpRequest();
+                final String httpContent = fromStream(httpRequest.buffer());
+                if (httpContent.contains("\"type\":\"error\"")) {
+                    final JsonObject json = new JsonParser().parse(httpContent).getAsJsonObject();
+                    throw new Failure(json.get("message").getAsString());
+                }
+                return httpContent;
             } catch (IOException e) {
                 throw new Failure(e);
             } catch (HttpRequest.HttpRequestException e) {
