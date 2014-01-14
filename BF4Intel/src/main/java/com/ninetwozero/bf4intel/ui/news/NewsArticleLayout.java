@@ -1,12 +1,11 @@
 package com.ninetwozero.bf4intel.ui.news;
 
 import android.content.Context;
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLayoutPopulator;
@@ -14,18 +13,19 @@ import com.ninetwozero.bf4intel.datatypes.HooahToggleRequest;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
-import com.ninetwozero.bf4intel.utils.HtmlUtils;
+import com.squareup.picasso.Picasso;
 
 public class NewsArticleLayout extends BaseLayoutPopulator {
-    private final static int COUNT_DEFAULT = 3;
-    private final static int COUNT_ALL = -1;
+    private final static String IFRAME_START = "<p><iframe";
+    private final static String IFRAME_END = "</iframe></p>";
+    private final static String EMPTY_P = "<p>&nbsp;</p>";
 
     public static void populate(
         final Context context, final View view,
         final NewsArticle article, final boolean isInDetailedView
     ) {
         populateTop(context, view, article);
-        populateContent(view, article.getContent(), isInDetailedView);
+        populateContent(context, view, article, isInDetailedView);
         populateBottomMeta(context, view, article);
         populateActionItems(view, article);
     }
@@ -44,24 +44,36 @@ public class NewsArticleLayout extends BaseLayoutPopulator {
     }
 
     private static void populateContent(
+        final Context context,
         final View parent,
-        final String content,
+        final NewsArticle article,
         final boolean isInDetailedView
     ) {
-        final int paragraphCount = isInDetailedView ? COUNT_ALL : COUNT_DEFAULT;
-        final String theContent = HtmlUtils.trimContentForNews(content, paragraphCount);
+        final ImageView previewImageView = (ImageView) parent.findViewById(R.id.preview);
+        final WebView articleContentView = (WebView) parent.findViewById(R.id.content);
+        StringBuilder content = new StringBuilder(article.getContent().replaceAll(EMPTY_P, ""));
 
-        final TextView contentTextView = (TextView) parent.findViewById(R.id.content);
-        if (isInDetailedView) {
-            contentTextView.setMovementMethod(LinkMovementMethod.getInstance());
-            contentTextView.setAutoLinkMask(Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES);
-        } else {
-            contentTextView.setMovementMethod(null);
-            contentTextView.setAutoLinkMask(0);
+        if (!isInDetailedView) {
+            if (removeIframesFromContent(content)) {
+                Picasso.with(context).load(article.getThumbnailUrl()).into(previewImageView);
+            }
+
+            // TODO: Make WebView non-focusable/clickable
         }
-        contentTextView.setText(theContent);
 
-        Log.d("YOLO", "content => " + theContent);
+        previewImageView.setVisibility(isInDetailedView ? View.GONE : View.VISIBLE);
+        articleContentView.loadDataWithBaseURL(null, content.toString(), "text/html", "UTF-8", null);
+    }
+
+    private static boolean removeIframesFromContent(final StringBuilder content) {
+        final int positionOfFirst = content.indexOf(IFRAME_START);
+        if (positionOfFirst > -1) {
+            for (int i = positionOfFirst; i != -1; i=content.indexOf(IFRAME_START)) {
+                content.replace(i, content.indexOf(IFRAME_END, i), "");
+            }
+            return true;
+        }
+        return false;
     }
 
     private static void populateBottomMeta(

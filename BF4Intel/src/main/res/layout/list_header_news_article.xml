@@ -47,11 +47,11 @@
           android:contentDescription="@string/cdesc_article_preview"
           />
 
-        <TextView
+        <WebView
           android:id="@+id/content"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:textAppearance="@android:style/TextAppearance.Holo"
+          android:layout_below="@id/wrap_meta_top"
           />
       </LinearLayout>
     </RelativeLayout>
