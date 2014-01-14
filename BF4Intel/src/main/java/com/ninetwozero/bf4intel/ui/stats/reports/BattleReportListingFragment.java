@@ -66,6 +66,15 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     }
 
     @Override
+    public void onLoadFinished(Loader<Result> resultLoader, Result result) {
+        if (result == Result.SUCCESS) {
+            onLoadSuccess(result.getResultMessage());
+        } else {
+            onLoadFailure(result.getResultMessage());
+        }
+    }
+
+    @Override
     protected void onLoadSuccess(final String resultMessage) {
         BattleReportStatistics statistics = fromJson(resultMessage, BattleReportStatistics.class);
         sendDataToListView(statistics);
