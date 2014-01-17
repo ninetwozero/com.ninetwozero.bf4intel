@@ -102,6 +102,9 @@ public class UrlFactory {
             String.format("news/view/%s/1/", articleId)
         );
     }
+    public static URL buildNewsArticleWebURL(final String slug) {
+        return createURL(String.format("news/view/%s/", slug));
+    }
 
     public static URL buildNewsArticleCommentsURL(final String articleId, final int pageId) {
         return createURL(

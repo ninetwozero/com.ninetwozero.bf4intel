@@ -210,7 +210,7 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
     }
 
     private void populateHeaderView(final View header, final NewsArticle article) {
-        NewsArticleLayout.populate(getActivity(), header, article, true);
+        new NewsArticleLayout(getActivity(), header).populate(article, true);
     }
 
     private void sendCommentsToListView(final List<NewsArticleComment> comments) {
