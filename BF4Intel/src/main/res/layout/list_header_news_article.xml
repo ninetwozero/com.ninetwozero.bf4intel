@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/card_root"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:padding="@dimen/spacing_m"
@@ -34,26 +35,22 @@
         android:layout_below="@id/title"
         />
 
+      <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wrap_meta_top"
+        />
+
       <LinearLayout
+        android:id="@+id/link_wrap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/wrap_meta_top">
-
-        <ImageView
-          android:id="@+id/preview"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:contentDescription="@string/cdesc_article_preview"
-          />
-
-        <WebView
-          android:id="@+id/content"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/wrap_meta_top"
-          />
-      </LinearLayout>
+        android:layout_below="@id/content"
+        android:layout_marginTop="@dimen/spacing_m"
+        android:visibility="gone"
+        />
     </RelativeLayout>
 
     <RelativeLayout
