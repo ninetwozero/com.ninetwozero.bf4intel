@@ -2,27 +2,30 @@ package com.ninetwozero.bf4intel.ui.news;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.net.Uri;
+import android.text.Html;
+import android.text.util.Linkify;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebView;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLayoutPopulator;
 import com.ninetwozero.bf4intel.datatypes.HooahToggleRequest;
+import com.ninetwozero.bf4intel.datatypes.Link;
+import com.ninetwozero.bf4intel.datatypes.ParsedArticleContent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
-import com.squareup.picasso.Picasso;
+import com.ninetwozero.bf4intel.utils.NewsUtils;
 
-public class NewsArticleLayout extends BaseLayoutPopulator {
-    private final String IFRAME_START = "<p><iframe";
-    private final String IFRAME_END = "</iframe></p>";
-    private final String EMPTY_P = "<p>&nbsp;</p>";
-
+public class NewsArticleLayout extends BaseLayoutPopulator implements View.OnClickListener {
     private final Context context;
     private final View container;
 
@@ -50,31 +53,37 @@ public class NewsArticleLayout extends BaseLayoutPopulator {
     }
 
     private void populateContent(final NewsArticle article, final boolean isInDetailedView) {
-        final ImageView previewImageView = (ImageView) container.findViewById(R.id.preview);
-        final WebView articleContentView = (WebView) container.findViewById(R.id.content);
-        StringBuilder content = new StringBuilder(article.getContent().replaceAll(EMPTY_P, ""));
+        final TextView contentView = (TextView) container.findViewById(R.id.content);
+        final LinearLayout linkContainer = (LinearLayout) container.findViewById(R.id.link_wrap);
 
-        if (!isInDetailedView) {
-            if (removeIframesFromContent(content)) {
-                Picasso.with(context).load(article.getThumbnailUrl()).into(previewImageView);
+        final ParsedArticleContent parsedContent = NewsUtils.parseContent(article.getContent(), isInDetailedView);
+        contentView.setText(Html.fromHtml(parsedContent.getText()));
+
+        linkContainer.removeAllViews();
+        if (isInDetailedView) {
+            final LayoutInflater inflater = LayoutInflater.from(context);
+            for (int i = 0, max = parsedContent.getLinks().size(); i < max; i++) {
+                final Link link = parsedContent.getLinks().get(i);
+                final View linkView = inflater.inflate(R.layout.news_link_item, null);
+                final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                );
+
+                ((TextView) linkView.findViewById(R.id.link_url)).setText(link.getUrl());
+                ((TextView) linkView.findViewById(R.id.link_title)).setText(
+                    "[" + (i+1) +"] " + link.getTitle()
+                );
+
+                layoutParams.setMargins(0, 24, 0, 0);
+                linkView.setLayoutParams(layoutParams);
+                linkView.setOnClickListener(this);
+                linkView.setTag(link.getUrl());
+                linkContainer.addView(linkView);
             }
-
-            // TODO: Make WebView non-focusable/clickable
         }
-
-        previewImageView.setVisibility(isInDetailedView ? View.GONE : View.VISIBLE);
-        articleContentView.loadDataWithBaseURL(null, content.toString(), "text/html", "UTF-8", null);
-    }
-
-    private boolean removeIframesFromContent(final StringBuilder content) {
-        final int positionOfFirst = content.indexOf(IFRAME_START);
-        if (positionOfFirst > -1) {
-            for (int i = positionOfFirst; i != -1; i=content.indexOf(IFRAME_START)) {
-                content.replace(i, content.indexOf(IFRAME_END, i), "");
-            }
-            return true;
-        }
-        return false;
+        contentView.setAutoLinkMask(isInDetailedView ? Linkify.WEB_URLS : 0);
+        linkContainer.setVisibility(isInDetailedView ? View.VISIBLE : View.GONE);
     }
 
     private void populateBottomMeta(final NewsArticle article) {
@@ -91,8 +100,8 @@ public class NewsArticleLayout extends BaseLayoutPopulator {
     }
 
     private void populateActionItems(final NewsArticle article) {
-        // TODO: How do we want to display the the user has already hooah'd a post? Other color?
         final ImageView buttonHooah = (ImageView) container.findViewById(R.id.button_hooah);
+        buttonHooah.setImageResource(fetchImageForHooah(article.hasUserSaidHooah()));
         buttonHooah.setOnClickListener(
             new View.OnClickListener() {
                 @Override
@@ -101,6 +110,7 @@ public class NewsArticleLayout extends BaseLayoutPopulator {
                 }
             }
         );
+
         container.findViewById(R.id.button_overflow).setOnClickListener(
             new View.OnClickListener() {
                 @Override
@@ -109,6 +119,10 @@ public class NewsArticleLayout extends BaseLayoutPopulator {
                 }
             }
         );
+    }
+
+    private int fetchImageForHooah(final boolean hasSaidHooah) {
+        return hasSaidHooah ? R.drawable.ic_menu_hooah_ok : R.drawable.ic_menu_hooah;
     }
 
     private void setupPopupMenuForActionItems(final View view, final NewsArticle article) {
@@ -138,5 +152,16 @@ public class NewsArticleLayout extends BaseLayoutPopulator {
             }
         );
         menu.show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        final String url = (String) v.getTag().toString();
+        final Context context = v.getContext();
+        if (context == null) {
+            return;
+        }
+
+        context.startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)));
     }
 }

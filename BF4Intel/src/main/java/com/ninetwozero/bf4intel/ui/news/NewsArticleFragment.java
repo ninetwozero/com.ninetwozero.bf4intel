@@ -3,13 +3,13 @@ package com.ninetwozero.bf4intel.ui.news;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -18,6 +18,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.datatypes.HooahToggleRequest;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.json.news.HooahInformation;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
 import com.ninetwozero.bf4intel.json.news.NewsArticleComment;
 import com.ninetwozero.bf4intel.json.news.NewsArticleRequest;
@@ -40,6 +41,8 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
     private final int ID_LOADER_REFRESH_COMMENTS = 4300;
     private final int ID_LOADER_POST_COMMENT = 4400;
     private final int ID_LOADER_HOOAH = 4500;
+
+    private String articleId;
 
     public NewsArticleFragment() {
     }
@@ -74,12 +77,19 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getLoaderManager().restartLoader(ID_LOADER_REFRESH_ARTICLE, getArguments(), this);
+        final Bundle arguments = getArguments();
+        if (arguments == null) {
+            throw new IllegalStateException("NULL bundle passed to " + getClass().getSimpleName());
+        }
+
+        articleId = arguments.getString("articleId", "");
+        getLoaderManager().restartLoader(ID_LOADER_REFRESH_ARTICLE, arguments, this);
     }
 
     @Override
     public Loader<Result> onCreateLoader(int loaderId, Bundle bundle) {
         if (loaderId == ID_LOADER_REFRESH_ARTICLE) {
+            showLoadingState(true);
             return new IntelLoader(
                 getActivity(),
                 new SimpleGetRequest(
@@ -91,7 +101,15 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
             return new IntelLoader(
                 getActivity(),
                 new SimplePostRequest(
-                    UrlFactory.buildNewsArticleHooahURL(bundle.getString("articleId")),
+                    UrlFactory.buildNewsArticleHooahURL(articleId),
+                    bundle
+                )
+            );
+        } else if (loaderId == ID_LOADER_POST_COMMENT) {
+            return new IntelLoader(
+                getActivity(),
+                new SimplePostRequest(
+                    UrlFactory.buildNewsArticlePostCommentURL(articleId),
                     bundle
                 )
             );
@@ -110,9 +128,36 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
 
             displayArticle(article);
         } else if (loader.getId() == ID_LOADER_HOOAH) {
-            // TODO: Refresh?
-            Log.d(getClass().getSimpleName(), "[onLoadSuccess] resultMessage => " + resultMessage);
+            final Gson gson = new Gson();
+            final JsonParser parser = new JsonParser();
+            final JsonElement infoObject = parser.parse(resultMessage).getAsJsonObject().get("info");
+            final HooahInformation information = gson.fromJson(infoObject, HooahInformation.class);
+
+            View cardParent = getListView().findViewById(R.id.card_root);
+            if (cardParent == null) {
+                cardParent = getActivity().findViewById(R.id.card_root);
+            }
+
+            ((ImageView) cardParent.findViewById(R.id.button_hooah)).setImageResource(
+                information.isVoted() ? R.drawable.ic_menu_hooah_ok : R.drawable.ic_menu_hooah
+            );
+            ((TextView) cardParent.findViewById(R.id.num_hooahs)).setText(
+                String.valueOf(information.getVoteCount())
+            );
+        } else if (loader.getId() == ID_LOADER_POST_COMMENT) {
+            final View parent = getView();
+            if (parent == null) {
+                return;
+            }
+
+            final EditText input = (EditText) parent.findViewById(R.id.input_content);
+            input.setText("");
+            input.clearFocus();
+
+            toggleButton(parent, true);
+            showToast(R.string.msg_comment_ok);
         }
+        showLoadingState(false);
     }
 
     @Override
@@ -166,7 +211,6 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
             return;
         }
 
-        final ImageView button = (ImageView) container.findViewById(R.id.button_send);
         final EditText input = (EditText) container.findViewById(R.id.input_content);
         final String comment = input.getText().toString();
 
@@ -175,12 +219,12 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
             return;
         }
 
-        button.setEnabled(false);
+        toggleButton(container, false);
+        input.setError(null);
 
-        // TODO: Trigger loader for POST submit in Comment fragment
-
-        button.setEnabled(true);
-        showToast(R.string.msg_comment_ok);
+        final Bundle data = new Bundle();
+        data.putString("articleId", articleId);
+        getLoaderManager().restartLoader(ID_LOADER_POST_COMMENT, data, this);
     }
 
     private void displayArticle(final NewsArticle article) {
@@ -196,13 +240,13 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
 
     /* I hate this shit - header views re the worst implemented thing ever */
     private View getHeaderView(final View view, final NewsArticle article) {
+        final ListView listView = getListView();
         if (article.hasComments()) {
-            final ListView listView = getListView();
-            final View header = layoutInflater.inflate(R.layout.list_header_news_article, null);
-            if (listView.getHeaderViewsCount() > 0) {
-                listView.removeHeaderView(header);
+            View header = listView.findViewById(R.id.card_root);
+            if (header == null) {
+                header = layoutInflater.inflate(R.layout.list_header_news_article, null);
+                listView.addHeaderView(header, null, false);
             }
-            listView.addHeaderView(header, null, false);
             return header;
         } else {
             return view.findViewById(R.id.header_when_empty);
@@ -220,5 +264,11 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
             setListAdapter(adapter);
         }
         adapter.setItems(comments);
+    }
+
+    private void toggleButton(final View parent, final boolean enable) {
+        final View button = parent.findViewById(R.id.button_send);
+        button.setAlpha(enable ? 0.8f : 0.3f);
+        button.setEnabled(enable);
     }
 }

@@ -122,6 +122,14 @@ public class UrlFactory {
         );
     }
 
+    public static URL buildNewsArticlePostCommentURL(final String articleId) {
+        return createURL(String.format("comment/postcomment/%s/devblog-comment/", articleId));
+    }
+
+    public static URL buildNewsArticlePostCommentReplyURL(final String articleId, final String commentId) {
+        return createURL(String.format("comment/postreply/%s/%s/", commentId, articleId));
+    }
+
     public static URL buildNewsArticleHooahURL(final String articleId) {
         return createURL(String.format("news/togglevote/%s/", articleId));
     }
