@@ -60,7 +60,7 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
             return;
         }
 
-        listView.setAdapter(new WeaponUnlockAdapter(unlockMap, getActivity()));
+        listView.setAdapter(new WeaponUnlockAdapter(getActivity(), unlockMap));
         //TODO: Expand or collapse at start? We'll need to figure this out before release
         // toggleAllRows(true)
     }

@@ -3,10 +3,16 @@ package com.ninetwozero.bf4intel.ui.news;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
+import android.view.ActionMode;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,7 +21,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
+import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.datatypes.HooahToggleRequest;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.news.HooahInformation;
@@ -32,8 +38,10 @@ import com.ninetwozero.bf4intel.utils.Result;
 import com.squareup.otto.Subscribe;
 
 import java.util.List;
+import java.util.Map;
 
-public class NewsArticleFragment extends BaseLoadingListFragment {
+public class NewsArticleFragment extends BaseLoadingFragment implements ActionMode.Callback
+{
     public static final String TAG = "NewsArticleFragment";
     public static final String ID = "articleId";
 
@@ -42,6 +50,7 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
     private final int ID_LOADER_POST_COMMENT = 4400;
     private final int ID_LOADER_HOOAH = 4500;
 
+    private ActionMode actionMode;
     private String articleId;
 
     public NewsArticleFragment() {
@@ -123,17 +132,17 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
             final Gson gson = new Gson();
             final JsonParser parser = new JsonParser();
             final JsonElement rootObject = parser.parse(resultMessage).getAsJsonObject().get("context");
-            final NewsArticleRequest container = gson.fromJson(rootObject, NewsArticleRequest.class);
-            final NewsArticle article = container.getArticle();
+            final NewsArticleRequest articleRequest = gson.fromJson(rootObject, NewsArticleRequest.class);
 
-            displayArticle(article);
+            displayArticle(articleRequest);
         } else if (loader.getId() == ID_LOADER_HOOAH) {
             final Gson gson = new Gson();
             final JsonParser parser = new JsonParser();
             final JsonElement infoObject = parser.parse(resultMessage).getAsJsonObject().get("info");
             final HooahInformation information = gson.fromJson(infoObject, HooahInformation.class);
 
-            View cardParent = getListView().findViewById(R.id.card_root);
+            final ExpandableListView listView = (ExpandableListView) getView().findViewById(android.R.id.list);
+            View cardParent = listView.findViewById(R.id.card_root);
             if (cardParent == null) {
                 cardParent = getActivity().findViewById(R.id.card_root);
             }
@@ -166,6 +175,19 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
         showToast(WebsiteErrorMessageMap.get(resultMessage));
     }
 
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case 0:
+                showToast("Selected A");
+                return true;
+            case 1:
+                showToast("Selected B");
+                return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
     @Subscribe
     public void onUserPressedHooah(final HooahToggleRequest request) {
         final Bundle data = new Bundle();
@@ -190,8 +212,48 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
     }
 
     private void setupListView(final View view) {
-        final ListView listView = (ListView) view.findViewById(android.R.id.list);
+        final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listView.setOnGroupClickListener(
+            new ExpandableListView.OnGroupClickListener() {
+                @Override
+                public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                    getActivity().startActionMode(NewsArticleFragment.this);
+                    v.setSelected(true);
+                    return true;
+                }
+            }
+        );
+        listView.setOnChildClickListener(
+            new ExpandableListView.OnChildClickListener() {
+                @Override
+                public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                    getActivity().startActionMode(NewsArticleFragment.this);
+                    v.setSelected(true);
+                    return true;
+                }
+            }
+        );
+        listView.setOnItemLongClickListener(
+            new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    final int itemType = ExpandableListView.getPackedPositionType(id);
+                    if (itemType == ExpandableListView.PACKED_POSITION_TYPE_GROUP) {
+                        final int groupPosition = ExpandableListView.getPackedPositionGroup(id);
+                        if (listView.isGroupExpanded(groupPosition)) {
+                            listView.collapseGroup(groupPosition);
+                        } else {
+                            listView.expandGroup(groupPosition, true);
+                        }
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        );
+        registerForContextMenu(listView);
     }
 
     private void setupForm(final View view) {
@@ -227,20 +289,21 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
         getLoaderManager().restartLoader(ID_LOADER_POST_COMMENT, data, this);
     }
 
-    private void displayArticle(final NewsArticle article) {
+    private void displayArticle(final NewsArticleRequest newsRequest) {
         final View view = getView();
         if (view == null) {
             return;
         }
 
+        final NewsArticle article = newsRequest.getArticle();
         final View header = getHeaderView(view, article);
         populateHeaderView(header, article);
-        sendCommentsToListView(article.getComments());
+        sendCommentsToListView(article.getComments(), newsRequest.getHooahStatus());
     }
 
     /* I hate this shit - header views re the worst implemented thing ever */
     private View getHeaderView(final View view, final NewsArticle article) {
-        final ListView listView = getListView();
+        final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
         if (article.hasComments()) {
             View header = listView.findViewById(R.id.card_root);
             if (header == null) {
@@ -257,18 +320,59 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
         new NewsArticleLayout(getActivity(), header).populate(article, true);
     }
 
-    private void sendCommentsToListView(final List<NewsArticleComment> comments) {
-        ArticleCommentListAdapter adapter = (ArticleCommentListAdapter) getListAdapter();
+    private void sendCommentsToListView(final List<NewsArticleComment> comments, final Map<String, Boolean> hooahMap) {
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
+        final View emptyView = view.findViewById(android.R.id.empty);
+
+        ArticleCommentListAdapter adapter = (ArticleCommentListAdapter) listView.getExpandableListAdapter();
         if (adapter == null) {
             adapter = new ArticleCommentListAdapter(getActivity());
-            setListAdapter(adapter);
+            listView.setAdapter(adapter);
         }
-        adapter.setItems(comments);
-    }
 
+        adapter.setItems(comments, hooahMap);
+        emptyView.setVisibility(comments.size() > 0 ? View.GONE : View.VISIBLE);
+    }
+    
     private void toggleButton(final View parent, final boolean enable) {
         final View button = parent.findViewById(R.id.button_send);
         button.setAlpha(enable ? 0.8f : 0.3f);
         button.setEnabled(enable);
+    }
+
+    @Override
+    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+        mode.getMenuInflater().inflate(R.menu.news_article_comment_cab, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+        return false;
+    }
+
+    @Override
+    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.ab_action_hooah:
+                showToast("TODO: Hooah a comment");
+                mode.finish();
+                return true;
+            case R.id.ab_action_report:
+                showToast("TODO: Report a bad commment");
+               return true;
+            default:
+                return false;
+        }
+    }
+
+    @Override
+    public void onDestroyActionMode(ActionMode mode) {
+        actionMode = null;
     }
 }

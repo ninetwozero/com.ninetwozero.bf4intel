@@ -22,8 +22,8 @@ public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> 
         put("32", R.string.class_support);
     }};
 
-    public KitUnlockAdapter(final Map<String, List<KitItemUnlockContainer>> itemMap, final Context context) {
-        super(itemMap, context);
+    public KitUnlockAdapter(final Context context, final Map<String, List<KitItemUnlockContainer>> itemMap) {
+        super(context, itemMap);
     }
 
     @Override

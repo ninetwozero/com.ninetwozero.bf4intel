@@ -30,12 +30,13 @@
       android:layout_alignBottom="@id/button_send"
       />
   </RelativeLayout>
-  <ListView
+  <ExpandableListView
     android:id="@android:id/list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_above="@id/wrap_form"
     android:headerDividersEnabled="false"
+    android:groupIndicator="@null"
     />
   <ScrollView
     android:id="@android:id/empty"

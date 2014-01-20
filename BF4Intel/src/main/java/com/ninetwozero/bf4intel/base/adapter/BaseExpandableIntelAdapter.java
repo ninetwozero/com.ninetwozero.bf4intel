@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,39 +21,15 @@ public abstract class BaseExpandableIntelAdapter<T> extends BaseExpandableListAd
 
     protected final Context context;
     protected final LayoutInflater layoutInflater;
-    protected final List<String> keys = new ArrayList<String>();
-    protected final Map<String, List<T>> map;
 
-    public BaseExpandableIntelAdapter(final Map<String, List<T>> map, final Context context) {
+    public BaseExpandableIntelAdapter(final Context context) {
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
-        this.map = map;
-        keys.addAll(map.keySet());
-    }
-
-    @Override
-    public String getGroup(final int groupPosition) {
-        return keys.get(groupPosition);
-    }
-
-    @Override
-    public T getChild(final int groupPosition, final int childPosition) {
-        return map.get(keys.get(groupPosition)).get(childPosition);
     }
 
     @Override
     public long getChildId(final int groupPosition, final int childPosition) {
         return childPosition;
-    }
-
-    @Override
-    public final int getChildrenCount(final int groupPosition) {
-        return map.get(keys.get(groupPosition)).size();
-    }
-
-    @Override
-    public final int getGroupCount() {
-        return keys.size();
     }
 
     @Override
@@ -101,10 +79,24 @@ public abstract class BaseExpandableIntelAdapter<T> extends BaseExpandableListAd
     public void setVisibility(final View view, final int resourceId, final int value) {
         view.findViewById(resourceId).setVisibility(value);
     }
+    public void loadImage(final View view, final int resourceId, final String url) {
+        Picasso.with(context).load(url).into((ImageView) view.findViewById(resourceId));
+    }
 
     public void setProgress(final View view, final int resourceId, final int current, final int max) {
         final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
         progressBar.setProgress(current);
         progressBar.setMax(max);
     }
+
+    public void setVisibilty(final View view, final int resourceId, final int state) {
+        view.findViewById(resourceId).setVisibility(state);
+    }
+
+    public void setAlpha(final View view, final int resourceId, final float alpha) {
+        view.findViewById(resourceId).setAlpha(alpha);
+    }
+
+    public abstract int getChildrenCount(final int groupPosition);
+    public abstract int getGroupCount();
 }

@@ -180,4 +180,8 @@
   <string name="cdesc_overflow_menu">Overflow menu</string>
   <string name="cdesc_article_preview">Article preview</string>
   <string name="label_share">Share</string>
+  <string name="title_report">Report...</string>
+  <string name="title_revoke_hooah">Revoke hooah</string>
+  <string name="title_hooah">Hooah</string>
+  <string name="msg_user_said_hooah">You said hooah</string>
 </resources>

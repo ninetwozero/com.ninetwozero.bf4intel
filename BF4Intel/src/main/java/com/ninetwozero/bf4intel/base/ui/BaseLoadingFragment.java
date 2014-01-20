@@ -61,6 +61,7 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Loader
         return gson.fromJson(jsonObject, outClass);
     }
 
+    @Deprecated
     protected void displayAsLoading(final boolean isLoading) {
         final Activity activity = getActivity();
         if (activity == null) {
@@ -69,6 +70,24 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Loader
 
         activity.findViewById(R.id.wrap_loading_progress).setVisibility(isLoading ? View.VISIBLE : View.GONE);
         ((BaseIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+    }
+
+    protected void showLoadingState(final boolean isLoading) {
+        final Activity activity = getActivity();
+        if (activity == null) {
+            return;
+        }
+
+        toggleFullScreenProgressBar(activity, isLoading);
+        ((BaseIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+    }
+
+    private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
+        final View loadingView = activity.findViewById(R.id.wrap_loading_progress);
+        if (loadingView == null) {
+            return;
+        }
+        loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
 
 

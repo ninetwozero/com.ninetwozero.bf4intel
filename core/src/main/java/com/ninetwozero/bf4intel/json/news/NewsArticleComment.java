@@ -37,6 +37,10 @@ public class NewsArticleComment {
         return likeCount;
     }
 
+    public int getReplyCount() {
+        return replies != null ? replies.size() : 0;
+    }
+
     public long getTimestamp() {
         return timestamp;
     }

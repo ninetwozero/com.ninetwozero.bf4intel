@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
-    public VehicleUnlockAdapter(final Map<String, List<VehicleUnlock>> itemMap, final Context context) {
-        super(itemMap, context);
+    public VehicleUnlockAdapter(final Context context, final Map<String, List<VehicleUnlock>> itemMap) {
+        super(context, itemMap);
     }
 
     @Override

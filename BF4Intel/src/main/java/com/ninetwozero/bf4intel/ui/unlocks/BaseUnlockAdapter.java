@@ -10,12 +10,18 @@ import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
 import com.ninetwozero.bf4intel.resources.maps.UnlockCriteriaStringMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentStringMap;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T> {
-    public BaseUnlockAdapter(final Map<String, List<T>> itemMap, final Context context) {
-        super(itemMap, context);
+    protected List<String> keys = new ArrayList<String>();
+    protected Map<String, List<T>> map;
+
+    public BaseUnlockAdapter(final Context context, final Map<String, List<T>> map) {
+        super(context);
+        this.map = map;
+        keys.addAll(map.keySet());
     }
 
     @Override
@@ -33,6 +39,25 @@ public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T>
         throw new UnsupportedOperationException(
             "You need to implement getChildView(...) in " + getClass().getSimpleName()
         );
+    }
+
+    @Override
+    public int getChildrenCount(final int groupPosition) {
+        return map.get(keys.get(groupPosition)).size();
+    }
+
+    @Override
+    public final int getGroupCount() {
+        return keys.size();
+    }
+    @Override
+    public String getGroup(final int groupPosition) {
+        return keys.get(groupPosition);
+    }
+
+    @Override
+    public T getChild(final int groupPosition, final int childPosition) {
+        return map.get(keys.get(groupPosition)).get(childPosition);
     }
 
     protected String resolveCriteriaLabel(final UnlockCriteria criteria) {

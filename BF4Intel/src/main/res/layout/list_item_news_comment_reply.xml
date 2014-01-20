@@ -4,25 +4,13 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:background="#EEE">
-
-
-  <View
-    android:id="@+id/separator"
-    android:layout_width="match_parent"
-    android:layout_height="1px"
-    android:background="@color/grey"
-    />
+  android:padding="@dimen/spacing_m">
 
   <LinearLayout
     android:id="@+id/wrap_user"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="left|center"
-    android:layout_marginTop="@dimen/spacing_m"
-    android:layout_below="@id/separator"
-    android:paddingLeft="@dimen/spacing_l"
-    android:paddingRight="@dimen/spacing_l">
+    android:gravity="left|center">
 
     <ImageView
       android:id="@+id/gravatar"
@@ -48,15 +36,11 @@
     android:layout_below="@id/wrap_user"
     android:layout_marginTop="@dimen/spacing_s"
     android:textAppearance="@android:style/TextAppearance.Holo.Small"
-    android:paddingLeft="@dimen/spacing_l"
-    android:paddingRight="@dimen/spacing_l"/>
+    />
 
   <TextView
     style="@style/meta"
     android:id="@+id/timestamp"
     android:layout_below="@id/content"
-    android:layout_marginBottom="@dimen/spacing_m"
-    android:paddingLeft="@dimen/spacing_l"
-    android:paddingRight="@dimen/spacing_l"
     />
 </RelativeLayout>

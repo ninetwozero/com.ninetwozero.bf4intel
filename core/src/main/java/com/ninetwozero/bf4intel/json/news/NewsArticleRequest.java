@@ -2,6 +2,8 @@ package com.ninetwozero.bf4intel.json.news;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Map;
+
 public class NewsArticleRequest {
     @SerializedName("blogPost")
     private NewsArticle article;
@@ -11,6 +13,8 @@ public class NewsArticleRequest {
     private boolean allowDeleting;
     @SerializedName("canBan")
     private boolean allowBanning;
+    @SerializedName("hasVotedOnComments")
+    private Map<String, Boolean> hooahStatus;
 
     public NewsArticle getArticle() {
         return article;
@@ -26,5 +30,9 @@ public class NewsArticleRequest {
 
     public boolean isAllowBanning() {
         return allowBanning;
+    }
+
+    public Map<String, Boolean> getHooahStatus() {
+        return hooahStatus;
     }
 }
