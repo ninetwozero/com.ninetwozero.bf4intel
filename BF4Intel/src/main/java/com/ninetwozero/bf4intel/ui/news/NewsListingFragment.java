@@ -32,6 +32,8 @@ import com.squareup.otto.Subscribe;
 import java.util.List;
 
 public class NewsListingFragment extends BaseLoadingListFragment {
+    public static final String TAG = "NewsListingFragment";
+
     private static final int ID_LOADER_REFRESH_LIST = 4000;
     private static final int ID_LOADER_HOOAH = 4100;
     private static final int pageId = 1;
@@ -75,7 +77,8 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         startActivity(
             new Intent(getActivity(), SingleFragmentActivity.class)
                 .putExtra(
-                    SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.NEWS_ITEM.ordinal()
+                    SingleFragmentActivity.INTENT_FRAGMENT_TYPE,
+                    FragmentFactory.Type.NEWS_ITEM.ordinal()
                 )
                 .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, data)
         );
@@ -119,7 +122,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
             sendItemsToListView(container.getArticles());
         } else if (loader.getId() == ID_LOADER_HOOAH) {
             // TODO: Refresh?
-            Log.d(getClass().getSimpleName(), "[onLoadSuccess] resultMessage => " + resultMessage);
+            Log.d(TAG, "[onLoadSuccess] resultMessage => " + resultMessage);
         }
     }
 
@@ -139,26 +142,20 @@ public class NewsListingFragment extends BaseLoadingListFragment {
     }
 
     private void initialize(final View view) {
-        setupListView(view);
         updateActionBar(getActivity(), "NEWS");
     }
 
-    private void setupListView(final View view) {
-        if (view == null) {
+    private void sendItemsToListView(final List<NewsArticle> items) {
+        final View parent = getView();
+        if (parent == null) {
             return;
         }
 
-        // Do we need to setup?
-    }
-
-    private void sendItemsToListView(final List<NewsArticle> items) {
         NewsListAdapter adapter = (NewsListAdapter) getListAdapter();
         if (adapter == null) {
             adapter = new NewsListAdapter(getActivity());
             setListAdapter(adapter);
         }
-
-        // When we have some sort of "load more pages", this is how we append them: adapter.appendItems(items);
         adapter.setItems(items);
     }
 }

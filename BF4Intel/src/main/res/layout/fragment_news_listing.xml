@@ -9,9 +9,8 @@
     android:id="@android:id/list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_above="@id/wrap_form"
-    android:dividerHeight="0dp"
     android:divider="@android:color/transparent"
+    android:dividerHeight="0dp"
     />
 
   <TextView

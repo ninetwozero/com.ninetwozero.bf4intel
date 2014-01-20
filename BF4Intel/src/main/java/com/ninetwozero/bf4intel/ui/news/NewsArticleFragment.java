@@ -79,7 +79,7 @@ public class NewsArticleFragment extends BaseLoadingListFragment {
     protected void startLoadingData() {
         final Bundle arguments = getArguments();
         if (arguments == null) {
-            throw new IllegalStateException("NULL bundle passed to " + getClass().getSimpleName());
+            throw new IllegalStateException("NULL bundle passed to " + TAG);
         }
 
         articleId = arguments.getString("articleId", "");

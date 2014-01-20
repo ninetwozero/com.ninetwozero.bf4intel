@@ -28,9 +28,9 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Loader
     @Override
     public void onLoadFinished(Loader<Result> resultLoader, Result result) {
         if (result == Result.SUCCESS) {
-            onLoadSuccess(result.getResultMessage());
+            onLoadSuccess(resultLoader, result.getResultMessage());
         } else {
-            onLoadFailure(result.getResultMessage());
+            onLoadFailure(resultLoader, result.getResultMessage());
         }
     }
 

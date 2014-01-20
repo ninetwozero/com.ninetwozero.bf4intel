@@ -4,17 +4,25 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:paddingTop="@dimen/spacing_m"
-  android:background="@color/white"
-  >
+  android:background="#EEE">
+
+
+  <View
+    android:id="@+id/separator"
+    android:layout_width="match_parent"
+    android:layout_height="1px"
+    android:background="@color/grey"
+    />
 
   <LinearLayout
     android:id="@+id/wrap_user"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="left|center"
-    android:paddingLeft="@dimen/spacing_m"
-    android:paddingRight="@dimen/spacing_m">
+    android:layout_marginTop="@dimen/spacing_m"
+    android:layout_below="@id/separator"
+    android:paddingLeft="@dimen/spacing_l"
+    android:paddingRight="@dimen/spacing_l">
 
     <ImageView
       android:id="@+id/gravatar"
@@ -40,40 +48,15 @@
     android:layout_below="@id/wrap_user"
     android:layout_marginTop="@dimen/spacing_s"
     android:textAppearance="@android:style/TextAppearance.Holo.Small"
-    android:paddingLeft="@dimen/spacing_m"
-    android:paddingRight="@dimen/spacing_m"/>
+    android:paddingLeft="@dimen/spacing_l"
+    android:paddingRight="@dimen/spacing_l"/>
 
-  <LinearLayout
-    android:id="@+id/wrap_meta"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+  <TextView
+    style="@style/meta"
+    android:id="@+id/timestamp"
     android:layout_below="@id/content"
-    android:paddingLeft="@dimen/spacing_m"
-    android:paddingRight="@dimen/spacing_m">
-    <TextView
-      style="@style/meta"
-      android:id="@+id/timestamp"
-      />
-    <TextView
-      style="@style/meta"
-      android:id="@+id/separator"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="|"
-      android:layout_marginLeft="@dimen/spacing_s"
-      android:layout_marginRight="@dimen/spacing_s"
-      />
-    <TextView
-      style="@style/meta"
-      android:id="@+id/num_hooahs"
-      />
-  </LinearLayout>
-  <LinearLayout
-    android:id="@+id/wrap_replies"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_below="@id/wrap_meta"
-    android:layout_marginTop="@dimen/spacing_m">
-  </LinearLayout>
+    android:layout_marginBottom="@dimen/spacing_m"
+    android:paddingLeft="@dimen/spacing_l"
+    android:paddingRight="@dimen/spacing_l"
+    />
 </RelativeLayout>
