@@ -64,6 +64,7 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
                 }
         );
         viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setOffscreenPageLimit(3);
     }
 
     private void setupActionBar() {
