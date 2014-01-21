@@ -131,14 +131,14 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         }
         itemList.add(new BattleReportHeader(R.string.header_latest_battlereport));
         itemList.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getStatsGameReports()), statistics.getSoldierId()));
-        BattleReportAdapter adapter = new BattleReportAdapter(getActivity().getApplicationContext(), itemList);
+        BattleReportAdapter adapter = new BattleReportAdapter(getActivity(), itemList);
         setListAdapter(adapter);
     }
 
     private List<BaseItem> buildBaseItemList(final List<GameReport> reports, final int soldierId) {
         List<BaseItem> itemsList = new ArrayList<BaseItem>();
         for (GameReport report : reports) {
-            itemsList.add(new BattleReportItem(report, soldierId, getActivity().getApplicationContext()));
+            itemsList.add(new BattleReportItem(report, soldierId, getActivity()));
         }
         return itemsList;
     }

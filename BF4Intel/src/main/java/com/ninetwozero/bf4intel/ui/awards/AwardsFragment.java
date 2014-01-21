@@ -54,7 +54,7 @@ public class AwardsFragment extends BaseFragment {
     }
 
     private void setupGrid() {
-        AwardsAdapter adapter = new AwardsAdapter(getAwards(), getActivity().getApplicationContext());
+        AwardsAdapter adapter = new AwardsAdapter(getAwards(), getActivity());
         gridView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
