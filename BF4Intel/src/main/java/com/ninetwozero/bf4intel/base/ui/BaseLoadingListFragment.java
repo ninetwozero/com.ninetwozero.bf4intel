@@ -25,9 +25,14 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         setHasOptionsMenu(true);
     }
 
-
     @Override
-    public void onLoadFinished(final Loader<Result> resultLoader, final Result result) { }
+    public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
+        if (result == Result.SUCCESS) {
+            onLoadSuccess(resultLoader, result.getResultMessage());
+        } else {
+            onLoadFailure(resultLoader, result.getResultMessage());
+        }
+    }
 
     @Override
     public void onLoaderReset(final Loader<Result> resultLoader) {}
@@ -104,10 +109,21 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
      */
     @Deprecated
     protected Context getContext() {
-        return getActivity().getApplicationContext();
+        return getActivity();
     }
 
-    protected abstract void onLoadSuccess(final String resultMessage);
-    protected abstract void onLoadFailure(final String resultMessage);
+    @Deprecated
+    protected void onLoadSuccess(final String resultMessage) {}
+    @Deprecated
+    protected void onLoadFailure(final String resultMessage) {}
+
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
+        onLoadSuccess(resultMessage);
+    }
+
+    protected void onLoadFailure(final Loader loader, final String resultMessage) {
+        onLoadFailure(resultMessage);
+    }
+
     protected abstract void startLoadingData();
 }

@@ -13,6 +13,7 @@ import java.util.List;
 
 public abstract class BaseTabActivity extends BaseIntelActivity implements ActionBar.TabListener {
     public static final String INTENT_PROFILE = "profile";
+    private static final int PAGE_LIMIT = 3;
 
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
@@ -54,17 +55,16 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
 
     private void setupViewPager() {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setOffscreenPageLimit(viewPagerAdapter.getCount());
+        viewPager.setOffscreenPageLimit(PAGE_LIMIT);
         viewPager.setOnPageChangeListener(
-                new ViewPager.SimpleOnPageChangeListener() {
-                    @Override
-                    public void onPageSelected(int position) {
-                        getActionBar().setSelectedNavigationItem(position);
-                    }
+            new ViewPager.SimpleOnPageChangeListener() {
+                @Override
+                public void onPageSelected(int position) {
+                    getActionBar().setSelectedNavigationItem(position);
                 }
+            }
         );
         viewPager.setAdapter(viewPagerAdapter);
-        viewPager.setOffscreenPageLimit(3);
     }
 
     private void setupActionBar() {
