@@ -4,7 +4,6 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
 import android.view.ActionMode;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,16 +39,13 @@ import com.squareup.otto.Subscribe;
 import java.util.List;
 import java.util.Map;
 
-public class NewsArticleFragment extends BaseLoadingFragment implements ActionMode.Callback
-{
+public class NewsArticleFragment extends BaseLoadingFragment implements ActionMode.Callback {
     public static final String TAG = "NewsArticleFragment";
     public static final String ID = "articleId";
-
     private static final int ID_LOADER_REFRESH_ARTICLE = 4200;
     private final int ID_LOADER_REFRESH_COMMENTS = 4300;
     private final int ID_LOADER_POST_COMMENT = 4400;
     private final int ID_LOADER_HOOAH = 4500;
-
     private ActionMode actionMode;
     private String articleId;
 
@@ -218,8 +214,15 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
             new ExpandableListView.OnGroupClickListener() {
                 @Override
                 public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                    getActivity().startActionMode(NewsArticleFragment.this);
-                    v.setSelected(true);
+                    if (actionMode == null) {
+                        getActivity().startActionMode(NewsArticleFragment.this);
+                    }
+                    listView.setItemChecked(
+                        listView.getFlatListPosition(
+                            ExpandableListView.getPackedPositionGroup(groupPosition)
+                        ),
+                        true
+                    );
                     return true;
                 }
             }
@@ -228,8 +231,19 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
             new ExpandableListView.OnChildClickListener() {
                 @Override
                 public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                    getActivity().startActionMode(NewsArticleFragment.this);
-                    v.setSelected(true);
+                    if (actionMode == null) {
+                        getActivity().startActionMode(NewsArticleFragment.this);
+                    }
+
+                    listView.setItemChecked(
+                        listView.getFlatListPosition(
+                            ExpandableListView.getPackedPositionForChild(
+                                groupPosition,
+                                childPosition
+                            )
+                        ),
+                        true
+                    );
                     return true;
                 }
             }
@@ -269,14 +283,14 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     private void doSendComment() {
         final View container = getView();
-        if( container == null ) {
+        if (container == null) {
             return;
         }
 
         final EditText input = (EditText) container.findViewById(R.id.input_content);
         final String comment = input.getText().toString();
 
-        if( "".equals(comment) ) {
+        if ("".equals(comment)) {
             input.setError(getString(R.string.msg_enter_comment));
             return;
         }
@@ -338,7 +352,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         adapter.setItems(comments, hooahMap);
         emptyView.setVisibility(comments.size() > 0 ? View.GONE : View.VISIBLE);
     }
-    
+
     private void toggleButton(final View parent, final boolean enable) {
         final View button = parent.findViewById(R.id.button_send);
         button.setAlpha(enable ? 0.8f : 0.3f);
@@ -347,6 +361,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+        actionMode = mode;
         mode.getMenuInflater().inflate(R.menu.news_article_comment_cab, menu);
         return true;
     }
@@ -363,9 +378,13 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
                 showToast("TODO: Hooah a comment");
                 mode.finish();
                 return true;
+            case R.id.ab_action_unhooah:
+                showToast("TODO: Un-hooah a comment");
+                mode.finish();
+                return true;
             case R.id.ab_action_report:
                 showToast("TODO: Report a bad commment");
-               return true;
+                return true;
             default:
                 return false;
         }

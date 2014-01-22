@@ -5,8 +5,12 @@
     android:icon="@drawable/ic_menu_hooah_light"
     />
   <item
+    android:id="@+id/ab_action_unhooah"
+    android:title="@string/title_unhooah"
+    />
+  <item
     android:id="@+id/ab_action_report"
     android:title="@string/title_report"
     android:icon="@drawable/ic_menu_report_light"
-    />
+  />
 </menu>

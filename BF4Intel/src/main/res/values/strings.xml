@@ -183,5 +183,6 @@
   <string name="title_report">Report...</string>
   <string name="title_revoke_hooah">Revoke hooah</string>
   <string name="title_hooah">Hooah</string>
+  <string name="title_unhooah">Un-hooah</string>
   <string name="msg_user_said_hooah">You said hooah</string>
 </resources>
