@@ -171,19 +171,6 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         showToast(WebsiteErrorMessageMap.get(resultMessage));
     }
 
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case 0:
-                showToast("Selected A");
-                return true;
-            case 1:
-                showToast("Selected B");
-                return true;
-        }
-        return super.onContextItemSelected(item);
-    }
-
     @Subscribe
     public void onUserPressedHooah(final HooahToggleRequest request) {
         final Bundle data = new Bundle();
@@ -210,64 +197,37 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     private void setupListView(final View view) {
         final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listView.setOnItemLongClickListener(
+            new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    if (actionMode == null) {
+                        getActivity().startActionMode(NewsArticleFragment.this);
+                    }
+                    listView.setItemChecked(position, true);
+                    return true;
+                }
+            }
+        );
         listView.setOnGroupClickListener(
             new ExpandableListView.OnGroupClickListener() {
                 @Override
                 public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                     if (actionMode == null) {
-                        getActivity().startActionMode(NewsArticleFragment.this);
+                        return false;
                     }
-                    listView.setItemChecked(
+
+                    parent.setItemChecked(parent.getCheckedItemPosition(), false);
+                    parent.setItemChecked(
                         listView.getFlatListPosition(
                             ExpandableListView.getPackedPositionGroup(groupPosition)
                         ),
-                        true
+                        false
                     );
                     return true;
                 }
             }
         );
-        listView.setOnChildClickListener(
-            new ExpandableListView.OnChildClickListener() {
-                @Override
-                public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                    if (actionMode == null) {
-                        getActivity().startActionMode(NewsArticleFragment.this);
-                    }
-
-                    listView.setItemChecked(
-                        listView.getFlatListPosition(
-                            ExpandableListView.getPackedPositionForChild(
-                                groupPosition,
-                                childPosition
-                            )
-                        ),
-                        true
-                    );
-                    return true;
-                }
-            }
-        );
-        listView.setOnItemLongClickListener(
-            new AdapterView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    final int itemType = ExpandableListView.getPackedPositionType(id);
-                    if (itemType == ExpandableListView.PACKED_POSITION_TYPE_GROUP) {
-                        final int groupPosition = ExpandableListView.getPackedPositionGroup(id);
-                        if (listView.isGroupExpanded(groupPosition)) {
-                            listView.collapseGroup(groupPosition);
-                        } else {
-                            listView.expandGroup(groupPosition, true);
-                        }
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-            }
-        );
-        registerForContextMenu(listView);
     }
 
     private void setupForm(final View view) {
@@ -360,26 +320,22 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     }
 
     @Override
-    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+    public boolean onCreateActionMode(final ActionMode mode, final Menu menu) {
         actionMode = mode;
         mode.getMenuInflater().inflate(R.menu.news_article_comment_cab, menu);
         return true;
     }
 
     @Override
-    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+    public boolean onPrepareActionMode(final ActionMode mode, final Menu menu) {
         return false;
     }
 
     @Override
-    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+    public boolean onActionItemClicked(final ActionMode mode, final MenuItem item) {
         switch (item.getItemId()) {
             case R.id.ab_action_hooah:
-                showToast("TODO: Hooah a comment");
-                mode.finish();
-                return true;
-            case R.id.ab_action_unhooah:
-                showToast("TODO: Un-hooah a comment");
+                showToast("TODO: Toggle hooah status for a comment");
                 mode.finish();
                 return true;
             case R.id.ab_action_report:
@@ -391,7 +347,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     }
 
     @Override
-    public void onDestroyActionMode(ActionMode mode) {
+    public void onDestroyActionMode(final ActionMode mode) {
         actionMode = null;
     }
 }

@@ -4,17 +4,27 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:padding="@dimen/spacing_m"
-  android:background="@color/white"
+  android:paddingTop="@dimen/spacing_m"
+  android:paddingBottom="@dimen/spacing_m"
+  android:paddingLeft="@dimen/spacing_m"
+  android:background="@drawable/article_comment_selector_bg"
   >
+
+  <ImageView
+    android:id="@+id/group_indicator"
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:src="@drawable/ic_menu_arrow_down_dark"
+    android:layout_alignParentRight="true"
+    android:adjustViewBounds="true"
+    />
 
   <LinearLayout
     android:id="@+id/wrap_user"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="left|center"
-    android:paddingLeft="@dimen/spacing_m"
-    android:paddingRight="@dimen/spacing_m">
+    >
 
     <ImageView
       android:id="@+id/gravatar"
@@ -40,8 +50,8 @@
     android:layout_below="@id/wrap_user"
     android:layout_marginTop="@dimen/spacing_s"
     android:textAppearance="@android:style/TextAppearance.Holo.Small"
-    android:paddingLeft="@dimen/spacing_m"
-    android:paddingRight="@dimen/spacing_m"/>
+    android:layout_toLeftOf="@id/group_indicator"
+    />
 
   <LinearLayout
     android:id="@+id/wrap_meta"

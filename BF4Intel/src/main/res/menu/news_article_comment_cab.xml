@@ -2,11 +2,7 @@
   <item
     android:id="@+id/ab_action_hooah"
     android:title="@string/title_hooah"
-    android:icon="@drawable/ic_menu_hooah_light"
-    />
-  <item
-    android:id="@+id/ab_action_unhooah"
-    android:title="@string/title_unhooah"
+    android:icon="@drawable/ic_menu_star_light"
     />
   <item
     android:id="@+id/ab_action_report"

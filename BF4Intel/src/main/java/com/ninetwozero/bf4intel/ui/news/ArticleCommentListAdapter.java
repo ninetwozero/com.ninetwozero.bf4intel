@@ -39,6 +39,8 @@ public class ArticleCommentListAdapter extends BaseExpandableIntelAdapter<NewsAr
             convertView = layoutInflater.inflate(R.layout.list_item_news_comment, parent, false);
         }
 
+        setImage(convertView, R.id.group_indicator, fetchImageResourceForGroup(isExpanded));
+
         populateBasicInformation(convertView, author, comment.getContent(), comment.getTimestamp());
         setText(
             convertView,
@@ -109,5 +111,9 @@ public class ArticleCommentListAdapter extends BaseExpandableIntelAdapter<NewsAr
 
     private boolean hasHooahedThisComment(final String commentId) {
         return hooahs != null && (hooahs.containsKey(commentId) ? hooahs.get(commentId) : false);
+    }
+
+    private int fetchImageResourceForGroup(final boolean isExpanded) {
+        return isExpanded ? R.drawable.ic_menu_arrow_down_dark : R.drawable.ic_menu_arrow_up_dark;
     }
 }
