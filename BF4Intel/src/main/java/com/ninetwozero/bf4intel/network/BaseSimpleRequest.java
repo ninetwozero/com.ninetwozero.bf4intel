@@ -70,7 +70,7 @@ public abstract class BaseSimpleRequest {
     protected Map<String, String> getHeaders() {
         final Map<String, String> map = new HashMap<String, String>();
         map.put("X-Requested-With", "XMLHttpRequest");
-        map.put("Cookie", "beaker.session.id=<YOUR COOKIE HERE>");
+        map.put("Cookie", "beaker.session.id=<YOUR COOKIE VALUE HERE>");
 
         if (requestType == RequestType.FROM_NAVIGATION) {
             map.put("X-AjaxNavigation", "1");

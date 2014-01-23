@@ -12,9 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -134,7 +132,8 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         } else if (loader.getId() == ID_LOADER_HOOAH) {
             final Gson gson = new Gson();
             final JsonParser parser = new JsonParser();
-            final JsonElement infoObject = parser.parse(resultMessage).getAsJsonObject().get("info");
+            final JsonElement dataObject = parser.parse(resultMessage).getAsJsonObject().get("data");
+            final JsonElement infoObject = dataObject.getAsJsonObject().get("info").getAsJsonObject();
             final HooahInformation information = gson.fromJson(infoObject, HooahInformation.class);
 
             final ExpandableListView listView = (ExpandableListView) getView().findViewById(android.R.id.list);
@@ -143,11 +142,9 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
                 cardParent = getActivity().findViewById(R.id.card_root);
             }
 
-            ((ImageView) cardParent.findViewById(R.id.button_hooah)).setImageResource(
-                information.isVoted() ? R.drawable.ic_menu_hooah_ok : R.drawable.ic_menu_hooah
-            );
-            ((TextView) cardParent.findViewById(R.id.num_hooahs)).setText(
-                String.valueOf(information.getVoteCount())
+            new NewsArticleLayout(getActivity(), cardParent).updateHooahForArticle(
+                information.getVoteCount(),
+                information.isVoted()
             );
         } else if (loader.getId() == ID_LOADER_POST_COMMENT) {
             final View parent = getView();
@@ -174,7 +171,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     @Subscribe
     public void onUserPressedHooah(final HooahToggleRequest request) {
         final Bundle data = new Bundle();
-        data.putString("post-check-sum", "0xCAFEBABE");
+        data.putString("post-check-sum", "<USER CHECKSUM HERE>");
         data.putString("articleId", request.getId());
 
         getLoaderManager().restartLoader(ID_LOADER_HOOAH, data, this);

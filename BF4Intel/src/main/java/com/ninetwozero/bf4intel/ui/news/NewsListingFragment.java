@@ -3,7 +3,6 @@ package com.ninetwozero.bf4intel.ui.news;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,8 +120,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
 
             sendItemsToListView(container.getArticles());
         } else if (loader.getId() == ID_LOADER_HOOAH) {
-            // TODO: Refresh?
-            Log.d(TAG, "[onLoadSuccess] resultMessage => " + resultMessage);
+            startLoadingData();
         }
     }
 
@@ -135,7 +133,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
     @Subscribe
     public void onUserPressedHooah(final HooahToggleRequest request) {
         final Bundle data = new Bundle();
-        data.putString("post-check-sum", "0xCAFEBABE");
+        data.putString("post-check-sum", "<USER CHECKSUM HERE>");
         data.putString("articleId", request.getId());
 
         getLoaderManager().restartLoader(ID_LOADER_HOOAH, data, this);

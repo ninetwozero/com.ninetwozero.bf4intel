@@ -9,7 +9,6 @@ import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
 
 public class NewsListAdapter extends BaseIntelAdapter<NewsArticle> {
-
     public NewsListAdapter(final Context context) {
         super(context);
     }
