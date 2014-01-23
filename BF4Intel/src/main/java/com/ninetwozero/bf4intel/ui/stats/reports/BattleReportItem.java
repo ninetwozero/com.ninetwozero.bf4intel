@@ -74,7 +74,8 @@ public class BattleReportItem implements BaseItem {
                 colour = R.color.battlereport_draw;
                 break;
             default:
-                return R.color.black;
+                colour = R.color.black;
+                break;
         }
         return context.getResources().getColor(colour);
     }
