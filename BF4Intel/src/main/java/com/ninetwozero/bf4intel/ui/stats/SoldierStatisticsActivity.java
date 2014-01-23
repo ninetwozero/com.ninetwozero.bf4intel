@@ -27,7 +27,7 @@ public class SoldierStatisticsActivity extends BaseTabActivity {
         final List<Fragment> fragments = new ArrayList<Fragment>();
         fragments.add(FragmentFactory.get(FragmentFactory.Type.WEAPON_STATS, profileBundle));
         fragments.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_STATS, profileBundle));
-        fragments.add(FragmentFactory.get(FragmentFactory.Type.SOLDIER_STATS, profileBundle));
+        fragments.add(FragmentFactory.get(FragmentFactory.Type.BATTLE_REPORT_LISTING, profileBundle));
         return fragments;
     }
 }

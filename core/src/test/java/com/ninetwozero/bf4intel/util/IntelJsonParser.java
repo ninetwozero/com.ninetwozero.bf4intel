@@ -10,6 +10,9 @@ import java.io.Reader;
 
 public class IntelJsonParser {
 
+    private IntelJsonParser() {
+    }
+
     public static final <T extends Object> T parse(String fileName, Class<T> clazz) throws IOException {
         Reader reader = new InputStreamReader(clazz.getResourceAsStream(fileName));
         Gson gson = new Gson();

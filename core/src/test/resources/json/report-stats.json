@@ -1,0 +1,2009 @@
+{
+  "type": "success",
+  "message": "OK",
+  "data": {
+    "gameReports": [
+      {
+        "persistedId": "3d000c0f-5175-4e14-aa57-c9966f67e090",
+        "map": "MP_Damage",
+        "winner": 1,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "RU",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 64,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 716,
+            "scoreMax": 800,
+            "name": "RU",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": true
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 800,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": false
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 800
+          },
+          "2": {
+            "initialTickets": 800
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "278986196",
+            "329300785",
+            "200661244",
+            "782398874",
+            "371197642",
+            "362627807",
+            "920730961",
+            "368665912",
+            "262325223",
+            "174840651",
+            "318513780"
+          ],
+          "2": [
+            "364627468",
+            "363587773",
+            "897765449",
+            "880159474",
+            "395847177",
+            "218396845",
+            "930043874",
+            "309840571",
+            "580657536"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 716,
+            "2": 0
+          }
+        },
+        "duration": 1438,
+        "reportType": "mp",
+        "gameReportId": "419260439579127168",
+        "createdAt": 1388795892,
+        "name": "[Z4LC] Koks und Nutten | HC MIX | Fast Vehicle Spawn | No Rules"
+      },
+      {
+        "persistedId": "3d000c0f-5175-4e14-aa57-c9966f67e090",
+        "map": "MP_Abandoned",
+        "winner": 0,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "RU",
+          "2": "US"
+        },
+        "mapVariant": 0,
+        "gameMode": 2097152,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 3,
+            "name": "RU",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 3,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": false
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 3
+          },
+          "2": {
+            "initialTickets": 3
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "880159474",
+            "364627468",
+            "580657536",
+            "278986196",
+            "177032510",
+            "227071029",
+            "363587773",
+            "309840571",
+            "198439467",
+            "395847177",
+            "196670096",
+            "218396845",
+            "897765449",
+            "362627807"
+          ],
+          "2": [
+            "363618293",
+            "318513780",
+            "356768060",
+            "352910758",
+            "910739625",
+            "200661244",
+            "262325223",
+            "371197642",
+            "174840651",
+            "966927616",
+            "786375212",
+            "180666028",
+            "387427947",
+            "365855980"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 3,
+            "2": 3
+          }
+        },
+        "duration": 610,
+        "reportType": "mp",
+        "gameReportId": "419257561921678720",
+        "createdAt": 1388794377,
+        "name": "[Z4LC] Koks und Nutten | HC MIX | Fast Vehicle Spawn | No Rules"
+      },
+      {
+        "persistedId": "3d000c0f-5175-4e14-aa57-c9966f67e090",
+        "map": "MP_Abandoned",
+        "winner": 2,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "RU",
+          "2": "US"
+        },
+        "mapVariant": 0,
+        "gameMode": 64,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 800,
+            "name": "RU",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 548,
+            "scoreMax": 800,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 800
+          },
+          "2": {
+            "initialTickets": 800
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "281035872",
+            "844742161",
+            "386051668",
+            "365855980",
+            "213962421",
+            "363618293",
+            "318513780",
+            "356768060",
+            "352910758",
+            "910739625",
+            "387427947",
+            "706747392",
+            "262325223",
+            "920730961",
+            "371197642",
+            "174201321",
+            "234999368",
+            "233490728",
+            "174840651",
+            "966927616",
+            "786375212",
+            "362365255",
+            "631124565",
+            "906672380"
+          ],
+          "2": [
+            "880159474",
+            "300499993",
+            "364627468",
+            "580657536",
+            "241051427",
+            "278986196",
+            "180666028",
+            "177032510",
+            "227071029",
+            "320831433",
+            "363587773",
+            "200661244",
+            "309840571",
+            "198439467",
+            "395847177",
+            "196670096",
+            "218396845",
+            "897765449",
+            "933348444",
+            "362627807",
+            "891375588",
+            "174585974",
+            "386441489",
+            "811363285",
+            "363773264",
+            "239994818"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 0,
+            "2": 548
+          }
+        },
+        "duration": 1656,
+        "reportType": "mp",
+        "gameReportId": "419250315011616128",
+        "createdAt": 1388793695,
+        "name": "[Z4LC] Koks und Nutten | HC MIX | Fast Vehicle Spawn | No Rules"
+      },
+      {
+        "persistedId": "95088cb9-e933-4d17-ad4c-ccf9edd8fa90",
+        "map": "XP1_003",
+        "winner": 2,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 2,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": null,
+            "scoreMax": null,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": 1,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 75,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": 0,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialLife": 75,
+            "isAttacker": 1
+          },
+          "2": {
+            "initialLife": 65535,
+            "isAttacker": 0
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "334286601",
+            "197446998",
+            "356030114",
+            "238712108",
+            "271198462",
+            "320831433",
+            "375123625",
+            "322266729",
+            "185340185",
+            "200661244"
+          ],
+          "2": [
+            "363142841",
+            "333190516",
+            "235478858",
+            "288360299",
+            "322712302",
+            "352393277",
+            "856596724",
+            "172163025"
+          ]
+        },
+        "mapModeResult": {
+          "life": {
+            "1": 0,
+            "2": 65463
+          }
+        },
+        "duration": 705,
+        "reportType": "mp",
+        "gameReportId": "419246932204811968",
+        "createdAt": 1388791939,
+        "name": "[MM] - Muffin Mavericks - HC"
+      },
+      {
+        "persistedId": "95088cb9-e933-4d17-ad4c-ccf9edd8fa90",
+        "map": "XP1_003",
+        "winner": 1,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 2097152,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 2,
+            "scoreMax": 3,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": true
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 1,
+            "scoreMax": 3,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": false
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 3
+          },
+          "2": {
+            "initialTickets": 3
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "363142841",
+            "333190516",
+            "288360299",
+            "322712302",
+            "320831433",
+            "352393277",
+            "856596724",
+            "172163025",
+            "200661244",
+            "235478858",
+            "350736380",
+            "352151412"
+          ],
+          "2": [
+            "334286601",
+            "197446998",
+            "356030114",
+            "238712108",
+            "172941816",
+            "271198462",
+            "395642843",
+            "185340185"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 2,
+            "2": 1
+          }
+        },
+        "duration": 1210,
+        "reportType": "mp",
+        "gameReportId": "419241613399520960",
+        "createdAt": 1388791175,
+        "name": "[MM] - Muffin Mavericks - HC"
+      },
+      {
+        "persistedId": "3d000c0f-5175-4e14-aa57-c9966f67e090",
+        "map": "XP1_003",
+        "winner": 2,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 2097152,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 3,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 1,
+            "scoreMax": 3,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 3
+          },
+          "2": {
+            "initialTickets": 3
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "880159474",
+            "364627468",
+            "183733430",
+            "307186407",
+            "324024734",
+            "351337713",
+            "363728202",
+            "297230729",
+            "447952442",
+            "706747392",
+            "363709417",
+            "812861421",
+            "366077869",
+            "395847177",
+            "271680193",
+            "198376422",
+            "341183899",
+            "631124565",
+            "363773264",
+            "218396845",
+            "933348444",
+            "352949430",
+            "932153214",
+            "271187454",
+            "187638542",
+            "172779404",
+            "394172272",
+            "233324016"
+          ],
+          "2": [
+            "386051668",
+            "363618293",
+            "366639842",
+            "363519256",
+            "318513780",
+            "273656518",
+            "362365255",
+            "763599549",
+            "194792908",
+            "354799648",
+            "840879068",
+            "354847477",
+            "227071029",
+            "320831433",
+            "236323579",
+            "856270178",
+            "200661244",
+            "380853686",
+            "194863759",
+            "447954316",
+            "920730961",
+            "218225343",
+            "371197642",
+            "174201321",
+            "234999368",
+            "233490728",
+            "952021528",
+            "906672380",
+            "837207944",
+            "351358594"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 2,
+            "2": 3
+          }
+        },
+        "duration": 610,
+        "reportType": "mp",
+        "gameReportId": "419238693085965696",
+        "createdAt": 1388789878,
+        "name": "[Z4LC] Koks und Nutten | HC MIX | Fast Vehicle Spawn | No Rules"
+      },
+      {
+        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
+        "map": "XP1_001",
+        "winner": 2,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 64,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 800,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 374,
+            "scoreMax": 800,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 800
+          },
+          "2": {
+            "initialTickets": 800
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "234684264",
+            "314482321",
+            "315665709"
+          ],
+          "2": [
+            "348321339",
+            "200661244",
+            "320831433"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 0,
+            "2": 374
+          }
+        },
+        "duration": 2846,
+        "reportType": "mp",
+        "gameReportId": "419227138183210432",
+        "createdAt": 1388789436,
+        "name": "::DFC:: DutchFightClub HARDCORE BF4"
+      },
+      {
+        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
+        "map": "MP_TheDish",
+        "winner": 2,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "RU",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 64,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 800,
+            "name": "RU",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 517,
+            "scoreMax": 800,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 800
+          },
+          "2": {
+            "initialTickets": 800
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "175289379",
+            "348321339",
+            "297138756",
+            "358880081",
+            "848897369"
+          ],
+          "2": [
+            "179171344",
+            "234684264",
+            "200661244",
+            "315665709",
+            "314482321"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 0,
+            "2": 517
+          }
+        },
+        "duration": 2547,
+        "reportType": "mp",
+        "gameReportId": "419216085789517248",
+        "createdAt": 1388786502,
+        "name": "::DFC:: DutchFightClub HARDCORE BF4"
+      },
+      {
+        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
+        "map": "XP1_004",
+        "winner": 1,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 64,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 747,
+            "scoreMax": 800,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": true
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 800,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": false
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 800
+          },
+          "2": {
+            "initialTickets": 800
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "179171344",
+            "234684264",
+            "351617821",
+            "173278330",
+            "314482321"
+          ],
+          "2": [
+            "348321339",
+            "354041637",
+            "200661244",
+            "358880081"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 747,
+            "2": 0
+          }
+        },
+        "duration": 1363,
+        "reportType": "mp",
+        "gameReportId": "419210055466689984",
+        "createdAt": 1388783879,
+        "name": "::DFC:: DutchFightClub HARDCORE BF4"
+      },
+      {
+        "persistedId": "4f32f879-f901-43af-92db-5d423cf2caea",
+        "map": "MP_Siege",
+        "winner": 2,
+        "maxPlayerCount": 0,
+        "teamToFaction": {
+          "1": "US",
+          "2": "CN"
+        },
+        "mapVariant": 0,
+        "gameMode": 64,
+        "teams": {
+          "1": {
+            "players": [
+              
+            ],
+            "score": 0,
+            "scoreMax": 800,
+            "name": "US",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              
+            ],
+            "score": 329,
+            "scoreMax": 800,
+            "name": "CN",
+            "squads": {
+              
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "initialMapValues": {
+          "1": {
+            "initialTickets": 800
+          },
+          "2": {
+            "initialTickets": 800
+          }
+        },
+        "players": {
+          
+        },
+        "player": {
+          "isCommander": null,
+          "personaId": "200661244",
+          "persona": null,
+          "gunMasterLevel": null,
+          "kills": null,
+          "deaths": null,
+          "killStreak": null,
+          "isSoldier": null,
+          "userId": null,
+          "squadId": null,
+          "rank": null,
+          "killAssists": null,
+          "dnf": null,
+          "user": null,
+          "commanderScore": null,
+          "team": null,
+          "revives": null,
+          "skill": null,
+          "heals": null,
+          "combatScore": null,
+          "accuracy": null
+        },
+        "ranked": true,
+        "playerTeams": {
+          "1": [
+            "348321339",
+            "354041637",
+            "200661244",
+            "422797158",
+            "358880081"
+          ],
+          "2": [
+            "179171344",
+            "234684264",
+            "351617821",
+            "173278330",
+            "314482321"
+          ]
+        },
+        "mapModeResult": {
+          "ticket": {
+            "1": 0,
+            "2": 329
+          }
+        },
+        "duration": 3022,
+        "reportType": "mp",
+        "gameReportId": "419197031058056640",
+        "createdAt": 1388782434,
+        "name": "::DFC:: DutchFightClub HARDCORE BF4"
+      }
+    ],
+    "personaId": 200661244,
+    "statsTemplate": "profile.warsawbattlereportspopulate",
+    "isActiveUser": false,
+    "userId": "2832665149443593606",
+    "platform": 1,
+    "game": 2048,
+    "favGameReportIds": [
+      "396383231072132608"
+    ],
+    "showFeedAndGameActivity": true,
+    "favGameReports": [
+      {
+        "map": "MP_Abandoned",
+        "gameMode": 64,
+        "name": "::DFC:: DutchFightClub HC MIXED BF4",
+        "mapVariant": 0,
+        "serverName": "::DFC:: DutchFightClub HC MIXED BF4",
+        "winner": 2,
+        "game": 2048,
+        "teams": {
+          "1": {
+            "players": [
+              "175805553",
+              "182669884",
+              "202271065",
+              "889938524",
+              "824755764",
+              "559787381",
+              "850199988",
+              "919851286",
+              "351357670",
+              "282607387",
+              "355320390",
+              "352426495",
+              "349900748",
+              "297138756",
+              "365749078",
+              "794874659",
+              "239170272"
+            ],
+            "score": 0,
+            "scoreMax": 800,
+            "name": "RU",
+            "squads": {
+              "1": [
+                "175805553",
+                "182669884",
+                "202271065",
+                "919851286",
+                "351357670"
+              ],
+              "2": [
+                "889938524",
+                "559787381",
+                "282607387",
+                "355320390",
+                "352426495"
+              ],
+              "3": [
+                "824755764",
+                "850199988"
+              ]
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 1,
+            "isWinner": false
+          },
+          "2": {
+            "players": [
+              "178822043",
+              "200661244",
+              "341538718",
+              "247713252",
+              "234684264",
+              "348321339",
+              "309028094",
+              "226759464",
+              "225159746",
+              "366062764",
+              "377200230"
+            ],
+            "score": 759,
+            "scoreMax": 800,
+            "name": "US",
+            "squads": {
+              "1": [
+                "200661244",
+                "348321339",
+                "309028094"
+              ],
+              "2": [
+                "247713252",
+                "234684264"
+              ],
+              "3": [
+                "226759464"
+              ],
+              "4": [
+                "178822043",
+                "341538718"
+              ]
+            },
+            "isAttacker": null,
+            "commanders": [
+              
+            ],
+            "id": 2,
+            "isWinner": true
+          }
+        },
+        "players": {
+          "175805553": {
+            "isCommander": false,
+            "personaId": "175805553",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 13,
+            "deaths": 10,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832660699886669183",
+            "squadId": 1,
+            "rank": 25,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": 2,
+            "heals": 0,
+            "combatScore": 10118,
+            "accuracy": 0.0248015873
+          },
+          "202271065": {
+            "isCommander": false,
+            "personaId": "202271065",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 5,
+            "deaths": 3,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832658801551211664",
+            "squadId": 1,
+            "rank": 4,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": 6,
+            "heals": 0,
+            "combatScore": 2250,
+            "accuracy": 0.1125827815
+          },
+          "351357670": {
+            "isCommander": false,
+            "personaId": "351357670",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 2,
+            "deaths": 1,
+            "killStreak": 1,
+            "isSoldier": true,
+            "userId": "2832658994814660513",
+            "squadId": 1,
+            "rank": 0,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": -8,
+            "heals": 0,
+            "combatScore": 900,
+            "accuracy": 0.6666666667
+          },
+          "247713252": {
+            "isCommander": false,
+            "personaId": "247713252",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 4,
+            "deaths": 9,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832659789384191306",
+            "squadId": 2,
+            "rank": 8,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 2,
+            "revives": 0,
+            "skill": 6,
+            "heals": 0,
+            "combatScore": 9075,
+            "accuracy": 0.0147783251
+          },
+          "377200230": {
+            "isCommander": false,
+            "personaId": "377200230",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 0,
+            "deaths": 1,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832663455839771592",
+            "squadId": 0,
+            "rank": 1,
+            "killAssists": 0,
+            "dnf": true,
+            "user": null,
+            "commanderScore": 0,
+            "team": 2,
+            "revives": 0,
+            "skill": 0,
+            "heals": 0,
+            "combatScore": 160,
+            "accuracy": 0.0
+          },
+          "226759464": {
+            "isCommander": false,
+            "personaId": "226759464",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 0,
+            "deaths": 0,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832658994836391961",
+            "squadId": 3,
+            "rank": 7,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 2,
+            "revives": 0,
+            "skill": 0,
+            "heals": 0,
+            "combatScore": 1610,
+            "accuracy": 0.0048309179
+          },
+          "355320390": {
+            "isCommander": false,
+            "personaId": "355320390",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 0,
+            "deaths": 1,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832664001100590941",
+            "squadId": 2,
+            "rank": 0,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": 0,
+            "heals": 0,
+            "combatScore": 408,
+            "accuracy": 0.0
+          },
+          "352426495": {
+            "isCommander": false,
+            "personaId": "352426495",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 0,
+            "deaths": 0,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832660339252327271",
+            "squadId": 2,
+            "rank": 2,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": 0,
+            "heals": 0,
+            "combatScore": 0,
+            "accuracy": 0.0
+          },
+          "282607387": {
+            "isCommander": false,
+            "personaId": "282607387",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 0,
+            "deaths": 2,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832658994823770391",
+            "squadId": 2,
+            "rank": 4,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": 0,
+            "heals": 0,
+            "combatScore": 473,
+            "accuracy": 0.0
+          },
+          "348321339": {
+            "isCommander": false,
+            "personaId": "348321339",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 6,
+            "deaths": 6,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832660143725998945",
+            "squadId": 1,
+            "rank": 7,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 2,
+            "revives": 0,
+            "skill": 9,
+            "heals": 0,
+            "combatScore": 5416,
+            "accuracy": 0.0394736842
+          },
+          "889938524": {
+            "isCommander": false,
+            "personaId": "889938524",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 2,
+            "deaths": 2,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2955056040885447574",
+            "squadId": 2,
+            "rank": 3,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": 6,
+            "heals": 0,
+            "combatScore": 1575,
+            "accuracy": 0.3333333333
+          },
+          "365749078": {
+            "isCommander": false,
+            "personaId": "365749078",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 1,
+            "deaths": 2,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832659177393767203",
+            "squadId": 0,
+            "rank": 1,
+            "killAssists": 0,
+            "dnf": true,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": 0,
+            "heals": 0,
+            "combatScore": 769,
+            "accuracy": 0.0
+          },
+          "366062764": {
+            "isCommander": false,
+            "personaId": "366062764",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 0,
+            "deaths": 0,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832660339185942373",
+            "squadId": 0,
+            "rank": 2,
+            "killAssists": 0,
+            "dnf": true,
+            "user": null,
+            "commanderScore": 0,
+            "team": 2,
+            "revives": 0,
+            "skill": -13,
+            "heals": 0,
+            "combatScore": 465,
+            "accuracy": 0.0
+          },
+          "239170272": {
+            "isCommander": false,
+            "personaId": "239170272",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 0,
+            "deaths": 0,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832663161668550592",
+            "squadId": 0,
+            "rank": 7,
+            "killAssists": 0,
+            "dnf": true,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": 0,
+            "heals": 0,
+            "combatScore": 30,
+            "accuracy": 0.0
+          },
+          "559787381": {
+            "isCommander": false,
+            "personaId": "559787381",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 4,
+            "deaths": 5,
+            "killStreak": 4,
+            "isSoldier": true,
+            "userId": "2832664078607285170",
+            "squadId": 2,
+            "rank": 0,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": -16,
+            "heals": 0,
+            "combatScore": 1217,
+            "accuracy": 0.0166151468
+          },
+          "824755764": {
+            "isCommander": false,
+            "personaId": "824755764",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 0,
+            "deaths": 10,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832657342646951282",
+            "squadId": 3,
+            "rank": 7,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": -15,
+            "heals": 0,
+            "combatScore": 1294,
+            "accuracy": 0.0004016064
+          },
+          "178822043": {
+            "isCommander": false,
+            "personaId": "178822043",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 13,
+            "deaths": 3,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832659598271117245",
+            "squadId": 4,
+            "rank": 12,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 2,
+            "revives": 0,
+            "skill": 16,
+            "heals": 0,
+            "combatScore": 14200,
+            "accuracy": 0.0291762014
+          },
+          "349900748": {
+            "isCommander": false,
+            "personaId": "349900748",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 4,
+            "deaths": 8,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832660339167163110",
+            "squadId": 0,
+            "rank": 3,
+            "killAssists": 0,
+            "dnf": true,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": 2,
+            "heals": 0,
+            "combatScore": 4311,
+            "accuracy": 0.0146082337
+          },
+          "794874659": {
+            "isCommander": false,
+            "personaId": "794874659",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 1,
+            "deaths": 3,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832664083041494068",
+            "squadId": 0,
+            "rank": 2,
+            "killAssists": 0,
+            "dnf": true,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": -17,
+            "heals": 0,
+            "combatScore": 381,
+            "accuracy": 0.0137931034
+          },
+          "919851286": {
+            "isCommander": false,
+            "personaId": "919851286",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 4,
+            "deaths": 3,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2955050137357768069",
+            "squadId": 1,
+            "rank": 1,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": -5,
+            "heals": 0,
+            "combatScore": 1070,
+            "accuracy": 0.3
+          },
+          "297138756": {
+            "isCommander": false,
+            "personaId": "297138756",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 0,
+            "deaths": 4,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832659789383066185",
+            "squadId": 0,
+            "rank": 3,
+            "killAssists": 0,
+            "dnf": true,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": -12,
+            "heals": 0,
+            "combatScore": 782,
+            "accuracy": 0.0005494505
+          },
+          "200661244": {
+            "isCommander": false,
+            "personaId": "200661244",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 15,
+            "deaths": 5,
+            "killStreak": 5,
+            "isSoldier": true,
+            "userId": "2832665149443593606",
+            "squadId": 1,
+            "rank": 2,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 2,
+            "revives": 0,
+            "skill": 6,
+            "heals": 0,
+            "combatScore": 10559,
+            "accuracy": 0.0163720661
+          },
+          "225159746": {
+            "isCommander": false,
+            "personaId": "225159746",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 3,
+            "deaths": 5,
+            "killStreak": 2,
+            "isSoldier": true,
+            "userId": "2955059549819178188",
+            "squadId": 0,
+            "rank": 1,
+            "killAssists": 0,
+            "dnf": true,
+            "user": null,
+            "commanderScore": 0,
+            "team": 2,
+            "revives": 0,
+            "skill": -12,
+            "heals": 0,
+            "combatScore": 3290,
+            "accuracy": 0.1333333333
+          },
+          "182669884": {
+            "isCommander": false,
+            "personaId": "182669884",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 1,
+            "deaths": 5,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832660534558297840",
+            "squadId": 1,
+            "rank": 7,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": -1,
+            "heals": 0,
+            "combatScore": 2450,
+            "accuracy": 0.0163934426
+          },
+          "234684264": {
+            "isCommander": false,
+            "personaId": "234684264",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 6,
+            "deaths": 7,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832659789391828557",
+            "squadId": 2,
+            "rank": 6,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 2,
+            "revives": 0,
+            "skill": 2,
+            "heals": 0,
+            "combatScore": 8337,
+            "accuracy": 0.1465968586
+          },
+          "850199988": {
+            "isCommander": false,
+            "personaId": "850199988",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 0,
+            "deaths": 11,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832659851149184918",
+            "squadId": 3,
+            "rank": 8,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 1,
+            "revives": 0,
+            "skill": -16,
+            "heals": 0,
+            "combatScore": 1143,
+            "accuracy": 0.0041088855
+          },
+          "309028094": {
+            "isCommander": false,
+            "personaId": "309028094",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 0,
+            "deaths": 1,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832660339246014571",
+            "squadId": 1,
+            "rank": 2,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 2,
+            "revives": 0,
+            "skill": 2,
+            "heals": 0,
+            "combatScore": 2200,
+            "accuracy": 0.1428571429
+          },
+          "341538718": {
+            "isCommander": false,
+            "personaId": "341538718",
+            "persona": null,
+            "gunMasterLevel": 0,
+            "kills": 4,
+            "deaths": 4,
+            "killStreak": 0,
+            "isSoldier": true,
+            "userId": "2832659789381756235",
+            "squadId": 4,
+            "rank": 7,
+            "killAssists": 0,
+            "dnf": false,
+            "user": null,
+            "commanderScore": 0,
+            "team": 2,
+            "revives": 0,
+            "skill": 3,
+            "heals": 0,
+            "combatScore": 10043,
+            "accuracy": 0.0139230139
+          }
+        },
+        "gameReportCommentCount": 0,
+        "platform": 1,
+        "gameReportCommentLastId": null,
+        "duration": 1810.0,
+        "winTeam": 2,
+        "gameReportId": "396383231072132608",
+        "id": "0",
+        "createdAt": 1383341939,
+        "reportId": "396383231072132608"
+      }
+    ]
+  }
+}

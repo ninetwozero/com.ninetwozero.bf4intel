@@ -87,7 +87,7 @@ public class BattleFeedAdapter extends BaseAdapter {
         ((TextView) convertView.findViewById(R.id.username)).setText(item.getOwner().getUsername());
         //((ImageView) convertView.findViewById(R.id.avatar)).setImageURI(UrlFactory.buildGravatarUrl(item.getOwner().getGravatarHash()));
         ((TextView) convertView.findViewById(R.id.category)).setText(fetchCategoryForType(item.getEvent().getEventType()));
-        ((TextView) convertView.findViewById(R.id.timestamp)).setText(DateTimeUtils.toRelative(context, item.getDate()));
+        ((TextView) convertView.findViewById(R.id.timestamp)).setText(DateTimeUtils.toRelative(item.getDate()));
     }
 
     private int fetchCategoryForType(final EventType eventType) {
