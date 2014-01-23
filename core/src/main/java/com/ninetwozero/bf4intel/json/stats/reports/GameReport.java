@@ -49,5 +49,5 @@ public abstract class GameReport {
         return serverName;
     }
 
-    public abstract MatchResult matchResult(int soldierId);
+    public abstract MatchResult findMatchResultFor(int soldierId);
 }

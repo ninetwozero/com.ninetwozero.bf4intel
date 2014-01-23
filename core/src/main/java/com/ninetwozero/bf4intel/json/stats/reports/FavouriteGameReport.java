@@ -17,7 +17,7 @@ public class FavouriteGameReport extends GameReport {
     }
 
     @Override
-    public MatchResult matchResult(int soldierId) {
+    public MatchResult findMatchResultFor(int soldierId) {
         if (getWinner() == RESULT_DRAW) {
             return MatchResult.DRAW;
         } else {

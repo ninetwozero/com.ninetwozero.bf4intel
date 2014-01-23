@@ -43,8 +43,8 @@ public class BattleReportItem implements BaseItem {
         ((TextView) view.findViewById(R.id.round_time)).setText(DateTimeUtils.toLiteral(report.getDuration()));
         ((TextView) view.findViewById(R.id.date)).setText(DateTimeUtils.toRelative(report.getCreatedAt()));
         TextView matchResult = (TextView) view.findViewById(R.id.user_match_result);
-        matchResult.setText(matchResult(report.matchResult(soldierId)));
-        matchResult.setTextColor(matchResultColour(report.matchResult(soldierId)));
+        matchResult.setText(matchResult(report.findMatchResultFor(soldierId)));
+        matchResult.setTextColor(matchResultColour(report.findMatchResultFor(soldierId)));
         return view;
     }
 
