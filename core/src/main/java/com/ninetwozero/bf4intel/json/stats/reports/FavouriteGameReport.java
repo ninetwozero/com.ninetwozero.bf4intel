@@ -12,8 +12,6 @@ public class FavouriteGameReport extends GameReport {
     @SerializedName("teams")
     private Map<Integer, Players> teams = new HashMap<Integer, Players>();
 
-
-
     public Map<Integer, Players> getTeams() {
         return teams;
     }
