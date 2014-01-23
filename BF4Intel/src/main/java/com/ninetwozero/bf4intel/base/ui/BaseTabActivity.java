@@ -13,7 +13,7 @@ import java.util.List;
 
 public abstract class BaseTabActivity extends BaseIntelActivity implements ActionBar.TabListener {
     public static final String INTENT_PROFILE = "profile";
-    private static final int PAGE_LIMIT = 3;
+    private static final int PAGE_LIMIT = 1;
 
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
