@@ -114,6 +114,6 @@ public class ArticleCommentListAdapter extends BaseExpandableIntelAdapter<NewsAr
     }
 
     private int fetchImageResourceForGroup(final boolean isExpanded) {
-        return isExpanded ? R.drawable.ic_menu_arrow_down_dark : R.drawable.ic_menu_arrow_up_dark;
+        return isExpanded ? R.drawable.ic_menu_arrow_up_dark : R.drawable.ic_menu_arrow_down_dark;
     }
 }
