@@ -23,7 +23,7 @@ public class StatsGameReport extends GameReport {
 
     @Override
     public MatchResult findMatchResultFor(int soldierId) {
-        if(getWinner() == RESULT_DRAW){
+        if (getWinner() == RESULT_DRAW) {
             return MatchResult.DRAW;
         } else {
             List<Integer> winningTeam = teamPlayers.get(getWinner());

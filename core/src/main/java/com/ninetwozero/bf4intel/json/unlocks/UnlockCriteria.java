@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.json.unlocks;
 import com.google.gson.annotations.SerializedName;
 
 public class UnlockCriteria implements Comparable<UnlockCriteria> {
+    public static final int HUNDRED_PERCENTS = 100;
     @SerializedName("codeNeeded")
     private String label;
     @SerializedName("unlockType")
@@ -53,7 +54,7 @@ public class UnlockCriteria implements Comparable<UnlockCriteria> {
         final int completion1 = completion;
         final int completion2 = other.getCompletion();
 
-        if ((completion1 < 100 && completion2 < 100)) {
+        if ((completion1 < HUNDRED_PERCENTS && completion2 < HUNDRED_PERCENTS)) {
             if (completion1 > completion2) {
                 return -1;
             } else if (completion1 < completion2) {
@@ -62,9 +63,9 @@ public class UnlockCriteria implements Comparable<UnlockCriteria> {
         } else if (completion1 == completion2) {
             return 0;
         } else {
-            if (completion1 == 100) {
+            if (completion1 == HUNDRED_PERCENTS) {
                 return 1;
-            } else if (completion2 == 100) {
+            } else if (completion2 == HUNDRED_PERCENTS) {
                 return -1;
             }
         }

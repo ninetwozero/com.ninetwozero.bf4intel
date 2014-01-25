@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 
 public class FeedItemDeserializer implements JsonDeserializer<FeedItem> {
     @Override
-    public FeedItem deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) throws JsonParseException {
+    public FeedItem deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) {
         final Gson gson = new Gson();
         final JsonObject jsonObject = json.getAsJsonObject();
         final String eventString = jsonObject.get("event").getAsString();

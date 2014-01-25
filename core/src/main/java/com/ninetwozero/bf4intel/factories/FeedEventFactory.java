@@ -9,7 +9,7 @@ import com.ninetwozero.bf4intel.json.battlefeed.generators.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FeedEventFactory {
+public final class FeedEventFactory {
 
     private FeedEventFactory() {
     }

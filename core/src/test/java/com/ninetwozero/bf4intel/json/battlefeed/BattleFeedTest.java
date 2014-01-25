@@ -17,7 +17,7 @@ import static junit.framework.Assert.assertEquals;
 
 public class BattleFeedTest {
     private static BattleFeed battleFeed;
-    private static final List<EventType> validTypes = new ArrayList<EventType>() {
+    private static final List<EventType> VALID_TYPES = new ArrayList<EventType>() {
         {
             add(EventType.LEVEL_COMPLETE);
             add(EventType.ADDED_FAV_SERVER);
@@ -54,7 +54,7 @@ public class BattleFeedTest {
     public void shouldFindTheCorrectFeedItemTypesinList() {
         for (int i = 0, max = battleFeed.getFeedItems().size(); i < max; i++) {
             assertEquals(
-                validTypes.get(i),
+                VALID_TYPES.get(i),
                 battleFeed.getFeedItems().get(i).getEvent().getEventType()
             );
         }
