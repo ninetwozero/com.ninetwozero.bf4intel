@@ -26,7 +26,8 @@ android {
     lintOptions {
         abortOnError false
         xmlReport true
-        xmlOutput file("lint-report.xml")
+        xmlOutput file("build/lint/lint-report.xml")
+        htmlReport false
     }
 }
 
