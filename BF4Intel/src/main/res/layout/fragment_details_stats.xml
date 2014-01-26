@@ -4,40 +4,8 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
     <TableLayout
-      android:id="@+id/multiplayer_score_table"
+      android:id="@+id/details_table"
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
-
-    <TableLayout
-      android:id="@+id/general_table"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
-
-    <TableLayout
-      android:id="@+id/game_modes_table"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
-
-    <TableLayout
-      android:id="@+id/team_table"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
-
-    <TableLayout
-      android:id="@+id/extra_table"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
-
-    <TableLayout
-      android:id="@+id/game_mode_extra_table"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
-
-  </LinearLayout>
 </ScrollView>

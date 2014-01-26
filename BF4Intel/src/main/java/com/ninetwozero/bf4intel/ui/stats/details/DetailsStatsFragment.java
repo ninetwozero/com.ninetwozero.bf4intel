@@ -24,12 +24,7 @@ import java.util.List;
 public class DetailsStatsFragment extends BaseLoadingFragment {
 
     private static final int ID_LOADER = 2400;
-    private TableLayout multiplayerScoreTable;
-    private TableLayout generalTable;
-    private TableLayout gameModesTable;
-    private TableLayout teamTable;
-    private TableLayout extraTable;
-    private TableLayout gameModeExtraTable;
+    private TableLayout detailsTable;
 
     public static DetailsStatsFragment newInstance(Bundle bundle) {
         DetailsStatsFragment fragment = new DetailsStatsFragment();
@@ -41,12 +36,7 @@ public class DetailsStatsFragment extends BaseLoadingFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle state) {
         super.onCreateView(inflater, parent, state);
         View view = inflater.inflate(R.layout.fragment_details_stats, parent, false);
-        multiplayerScoreTable = (TableLayout) view.findViewById(R.id.multiplayer_score_table);
-        generalTable = (TableLayout) view.findViewById(R.id.general_table);
-        gameModesTable = (TableLayout) view.findViewById(R.id.game_modes_table);
-        teamTable = (TableLayout) view.findViewById(R.id.team_table);
-        extraTable = (TableLayout) view.findViewById(R.id.extra_table);
-        gameModeExtraTable = (TableLayout) view.findViewById(R.id.game_mode_extra_table);
+        detailsTable = (TableLayout) view.findViewById(R.id.details_table);
         return view;
     }
 
@@ -81,22 +71,19 @@ public class DetailsStatsFragment extends BaseLoadingFragment {
         StatsDetails.GeneralStats details = fromJson(resultMessage, StatsDetails.class).getGeneralStats();
         StatsDetailsGrouped stats = new StatsDetailsGrouped(details);
 
-        populateTable(multiplayerScoreTable, R.string.multiplayer_score, stats.getMultiplayerScore());
-        populateTable(generalTable, R.string.general_score, stats.getGeneralScores());
-        populateTable(gameModesTable, R.string.game_modes, stats.getGameModes());
-        populateTable(teamTable, R.string.team_score, stats.getTeamScores());
-        populateTable(extraTable, R.string.extra_score, stats.getExtraScores());
-        populateTable(gameModeExtraTable, R.string.game_mode_extra, stats.getGameModeExtra());
+        populateTable(detailsTable, R.string.multiplayer_score, stats.getMultiplayerScore());
+        populateTable(detailsTable, R.string.general_score, stats.getGeneralScores());
+        populateTable(detailsTable, R.string.game_modes, stats.getGameModes());
+        populateTable(detailsTable, R.string.team_score, stats.getTeamScores());
+        populateTable(detailsTable, R.string.extra_score, stats.getExtraScores());
+        populateTable(detailsTable, R.string.game_mode_extra, stats.getGameModeExtra());
     }
 
     private void populateTable(TableLayout table, int tableHeader, List<Pair<Integer, String>> pairList) {
-        if (table.getChildCount() > 0) {
-            table.removeAllViews();
-        }
-
         TableRow header = (TableRow) layoutInflater.inflate(R.layout.table_row_header_stats_details, null);
-        ((TextView) header.findViewById(R.id.header_label)).setText(tableHeader);
+        ((TextView) header.findViewById(R.id.header_label)).setText(getResources().getString(tableHeader));
         table.addView(header);
+
         for (Pair<Integer, String> pair : pairList) {
             TableRow row = (TableRow) layoutInflater.inflate(R.layout.table_row_stats_details, null);
             ((TextView) row.findViewById(R.id.score_label)).setText(pair.first);
