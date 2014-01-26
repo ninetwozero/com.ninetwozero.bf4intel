@@ -42,12 +42,13 @@
   <!-- HEADINGS -->
   <string name="weapons">Weapons</string>
   <string name="vehicles">Vehicles</string>
-  <string name="kits">Kits</string>
   <string name="reports">Reports</string>
+  <string name="details">Details</string>
   <string name="assignments">Assignments</string>
   <string name="awards">Awards</string>
   <string name="battlereports">Battle Reports</string>
   <string name="service_stars">Service Stars</string>
+  <string name="kits">Kits</string>
   <string name="comments">Comments</string>
   <string name="soldier_quick_stats">Quick Statistics</string>
   <string name="soldier_detailed_stats">In-depth Statistics</string>

@@ -5,20 +5,11 @@ import android.support.v4.app.Fragment;
 
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedPostingFragment;
+import com.ninetwozero.bf4intel.ui.fragments.*;
+import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
+import com.ninetwozero.bf4intel.ui.stats.details.DetailsStatsFragment;
 import com.ninetwozero.bf4intel.ui.stats.reports.BattleReportFragment;
 import com.ninetwozero.bf4intel.ui.stats.reports.BattleReportListingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.AccountProfileFragment;
-import com.ninetwozero.bf4intel.ui.fragments.ForumListingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.NewsArticleFragment;
-import com.ninetwozero.bf4intel.ui.fragments.NewsListingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.NotificationFragment;
-import com.ninetwozero.bf4intel.ui.fragments.PostCreationFragment;
-import com.ninetwozero.bf4intel.ui.fragments.PostListingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.SoldierOverviewFragment;
-import com.ninetwozero.bf4intel.ui.fragments.SoldierStatsFragment;
-import com.ninetwozero.bf4intel.ui.fragments.ThreadCreationFragment;
-import com.ninetwozero.bf4intel.ui.fragments.ThreadListingFragment;
-import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
 import com.ninetwozero.bf4intel.ui.stats.vehicles.VehicleStatsFragment;
 import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponStatsFragment;
 import com.ninetwozero.bf4intel.ui.unlocks.kits.KitUnlockFragment;
@@ -44,6 +35,8 @@ public class FragmentFactory {
                 return WeaponStatsFragment.newInstance(data);
             case VEHICLE_STATS:
                 return VehicleStatsFragment.newInstance(data);
+            case DETAILS_STATS:
+                return DetailsStatsFragment.newInstance(data);
             case NEWS_LISTING:
                 return NewsListingFragment.newInstance(data);
             case NEWS_ITEM:
@@ -100,6 +93,7 @@ public class FragmentFactory {
         SOLDIER_STATS,
         WEAPON_STATS,
         VEHICLE_STATS,
+        DETAILS_STATS,
 
         WEAPON_UNLOCKS,
         VEHICLE_UNLOCKS,

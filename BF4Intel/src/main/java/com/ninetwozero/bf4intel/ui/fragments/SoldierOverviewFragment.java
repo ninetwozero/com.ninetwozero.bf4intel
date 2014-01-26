@@ -39,9 +39,10 @@ import java.util.List;
 import java.util.Map;
 
 public class SoldierOverviewFragment extends BaseLoadingFragment {
+
     private static final int ID_LOADER = SoldierOverview.class.hashCode();
 
-    public SoldierOverviewFragment() {
+    private SoldierOverviewFragment() {
     }
 
 

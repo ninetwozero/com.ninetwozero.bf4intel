@@ -38,6 +38,10 @@ public class UrlFactory {
         return createURL(String.format("warsawbattlereportspopulate/%d/2048/%d/%d", soldierId, platformId, reportId));
     }
 
+    public static URL buildDetailsURL(final int soldierId, final int platformId) {
+        return createURL(String.format("warsawdetailedstatspopulate/%d/%d/", soldierId, platformId));
+    }
+
     public static URL buildAssignmentsURL(final String soldierName, final int soldierId, final long userId, final int platformId) {
         return createURL(
             String.format(
