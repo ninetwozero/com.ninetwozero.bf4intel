@@ -9,8 +9,10 @@
 
   <!--Manifest labels-->
   <string name="label_activity_single_fragment">@string/app_name</string>
-  <string name="label_activity_soldier_statistics">Statistics</string>
-  <string name="label_activity_assignments">Assignments</string>
+  <string name="label_activity_soldier_statistics">STATISTICS</string>
+  <string name="label_activity_assignments">ASSIGNMENTS</string>
+  <string name="label_activity_awards">AWARDS</string>
+  <string name="label_activity_unlocks">UNLOCKS</string>
 
   <string name="update_status_header">Update your status</string>
   <string name="update_status_hint">Update message here…</string>
@@ -86,6 +88,7 @@
   <string name="overview_kits">Kits</string>
   <string name="overview_dogtags">Dog Tags</string>
   <string name="na">N/A</string>
+  <string name="msg_no_stats_details">No Details from Stats found.</string>
 
   <!-- Battle reports -->
   <string name="battlereport_time">Duration:</string>

@@ -39,7 +39,7 @@ public class StatsDetails {
         private int kills;
         @SerializedName("deaths")
         private int deaths;
-        @SerializedName("killAssits")
+        @SerializedName("killAssists")
         private int killAssits;
         @SerializedName("kdRatio")
         private double kdRatio;
@@ -59,7 +59,7 @@ public class StatsDetails {
         private int conquest;
         @SerializedName("rush")
         private int rush;
-        @SerializedName("teamdeatmatch")
+        @SerializedName("teamdeathmatch")
         private int deathMatch;
         @SerializedName("domination")
         private int domination;

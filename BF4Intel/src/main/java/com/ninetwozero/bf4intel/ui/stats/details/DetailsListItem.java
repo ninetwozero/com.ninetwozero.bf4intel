@@ -2,8 +2,11 @@ package com.ninetwozero.bf4intel.ui.stats.details;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
+import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseItem;
+import com.ninetwozero.bf4intel.base.adapter.BaseListAdapter;
 
 public class DetailsListItem implements BaseItem {
 
@@ -17,11 +20,16 @@ public class DetailsListItem implements BaseItem {
 
     @Override
     public int getViewType() {
-        return 0;
+        return BaseListAdapter.BaseItemType.ITEM.ordinal();
     }
 
     @Override
-    public View getView(LayoutInflater inflater, View convertView) {
-        return null;
+    public View getView(LayoutInflater inflater, View view) {
+        if (view == null) {
+            view = inflater.inflate(R.layout.list_item_stats_details, null);
+        }
+        ((TextView) view.findViewById(R.id.score_label)).setText(resourceId);
+        ((TextView) view.findViewById(R.id.score_value)).setText(value);
+        return view;
     }
 }

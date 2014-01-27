@@ -16,7 +16,7 @@ public class BaseListHeader implements BaseItem {
 
     @Override
     public int getViewType() {
-        return BaseListAdapter.BattleReportType.HEADER.ordinal();
+        return BaseListAdapter.BaseItemType.HEADER.ordinal();
     }
 
     @Override

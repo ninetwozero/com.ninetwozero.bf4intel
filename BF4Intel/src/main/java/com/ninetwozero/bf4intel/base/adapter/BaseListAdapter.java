@@ -11,7 +11,7 @@ import java.util.List;
 public class BaseListAdapter extends ArrayAdapter<BaseItem> {
     final LayoutInflater layoutInflater;
 
-    public enum BattleReportType {
+    public enum BaseItemType {
         ITEM, HEADER;
     }
 
@@ -22,7 +22,7 @@ public class BaseListAdapter extends ArrayAdapter<BaseItem> {
 
     @Override
     public int getViewTypeCount() {
-        return BattleReportType.values().length;
+        return BaseItemType.values().length;
     }
 
     @Override

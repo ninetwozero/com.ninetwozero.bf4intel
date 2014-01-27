@@ -111,7 +111,6 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     private void initialize(final View view) {
         setupListView(view);
-        updateActionBar(getActivity(), "BATTLE REPORTS", R.drawable.ic_actionbar_feed);
     }
 
     private void setupListView(final View view) {

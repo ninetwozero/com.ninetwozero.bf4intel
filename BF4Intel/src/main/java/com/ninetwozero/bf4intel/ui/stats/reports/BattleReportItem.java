@@ -28,7 +28,7 @@ public class BattleReportItem implements BaseItem {
 
     @Override
     public int getViewType() {
-        return BaseListAdapter.BattleReportType.ITEM.ordinal();
+        return BaseListAdapter.BaseItemType.ITEM.ordinal();
     }
 
     @Override
