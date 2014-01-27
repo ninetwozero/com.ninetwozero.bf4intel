@@ -49,7 +49,7 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
 
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
-        //showLoadingState(true);
+        showLoadingState(true);
         return new IntelLoader(getActivity(), new SimpleGetRequest(UrlFactory.buildDetailsURL(200661244, 1)));
     }
 
@@ -67,6 +67,7 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
         StatsDetails.GeneralStats details = fromJson(resultMessage, StatsDetails.class).getGeneralStats();
         StatsDetailsGrouped stats = new StatsDetailsGrouped(details);
         sendDataToListView(stats);
+        showLoadingState(false);
     }
 
     private void initialize(final View view) {
