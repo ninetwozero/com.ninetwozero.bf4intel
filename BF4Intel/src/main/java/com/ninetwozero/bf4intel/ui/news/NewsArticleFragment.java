@@ -44,6 +44,8 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     private final int ID_LOADER_REFRESH_COMMENTS = 4300;
     private final int ID_LOADER_POST_COMMENT = 4400;
     private final int ID_LOADER_HOOAH = 4500;
+    private final int ID_LOADER_HOOAH_COMMENT = 4600;
+
     private ActionMode actionMode;
     private String articleId;
 
@@ -113,6 +115,14 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
                 getActivity(),
                 new SimplePostRequest(
                     UrlFactory.buildNewsArticlePostCommentURL(articleId),
+                    bundle
+                )
+            );
+        } else if (loaderId == ID_LOADER_HOOAH_COMMENT) {
+            return  new IntelLoader(
+                getActivity(),
+                new SimplePostRequest(
+                    UrlFactory.buildNewsArticleCommentHooahURL(bundle.getString("commentId")),
                     bundle
                 )
             );
@@ -216,10 +226,10 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
                     parent.setItemChecked(parent.getCheckedItemPosition(), false);
                     parent.setItemChecked(
-                        listView.getFlatListPosition(
-                            ExpandableListView.getPackedPositionGroup(groupPosition)
+                        parent.getFlatListPosition(
+                            ExpandableListView.getPackedPositionForGroup(groupPosition)
                         ),
-                        false
+                        true
                     );
                     return true;
                 }
@@ -332,7 +342,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     public boolean onActionItemClicked(final ActionMode mode, final MenuItem item) {
         switch (item.getItemId()) {
             case R.id.ab_action_hooah:
-                showToast("TODO: Toggle hooah status for a comment");
+                doToggleHooahForComment();
                 mode.finish();
                 return true;
             case R.id.ab_action_report:
@@ -343,8 +353,35 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         }
     }
 
+    private void doToggleHooahForComment() {
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
+        final int checkedItemPosition = listView.getCheckedItemPosition();
+        final ArticleCommentListAdapter adapter = (ArticleCommentListAdapter) listView.getExpandableListAdapter();
+        final NewsArticleComment comment = adapter.getGroup(checkedItemPosition);
+
+        final Bundle data = new Bundle();
+        data.putString("articleId", articleId);
+        data.putString("commentId", comment.getId());
+        data.putString("post-check-sum", "<USER CHECKSUM HERE>");
+
+        getLoaderManager().restartLoader(ID_LOADER_HOOAH_COMMENT, data, this);
+    }
+
     @Override
     public void onDestroyActionMode(final ActionMode mode) {
         actionMode = null;
+
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
+        listView.setItemChecked(listView.getCheckedItemPosition(), false);
     }
 }

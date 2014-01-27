@@ -4,9 +4,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:paddingTop="@dimen/spacing_m"
-  android:paddingBottom="@dimen/spacing_m"
-  android:paddingLeft="@dimen/spacing_m"
+  android:padding="@dimen/spacing_m"
   android:background="@drawable/article_comment_selector_bg"
   >
 
@@ -31,7 +29,8 @@
       android:layout_width="@dimen/spacing_l"
       android:layout_height="@dimen/spacing_l"
       android:src="@drawable/test_gravatar"
-      android:contentDescription="@string/cdesc_gravatar"/>
+      android:contentDescription="@string/cdesc_gravatar"
+      />
 
     <TextView
       android:id="@+id/username"
@@ -40,7 +39,8 @@
       android:text="NINETWOZERO"
       android:layout_marginLeft="@dimen/spacing_s"
       android:textColor="@color/blue"
-      android:textAppearance="@android:style/TextAppearance.Holo.Small"/>
+      android:textAppearance="@android:style/TextAppearance.Holo.Small"
+      />
   </LinearLayout>
 
   <TextView
@@ -58,8 +58,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/content"
-    android:paddingLeft="@dimen/spacing_m"
-    android:paddingRight="@dimen/spacing_m"
     android:gravity="center_vertical">
 
     <TextView
@@ -87,7 +85,8 @@
       android:layout_height="wrap_content"
       android:layout_marginLeft="@dimen/spacing_s"
       android:orientation="horizontal"
-      android:visibility="gone">
+      android:visibility="gone"
+      >
 
       <TextView
         style="@style/meta"

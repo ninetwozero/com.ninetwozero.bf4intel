@@ -107,13 +107,12 @@ public class UrlFactory {
     }
 
     public static URL buildNewsArticleCommentsURL(final String articleId, final int pageId) {
-        return createURL(
-            String.format(
-                "http://battlelog.battlefield.com/bf4/news/view/%s/%d/",
-                articleId,
-                pageId
-            )
-        );
+        return createURL(String.format("news/view/%s/%d/", articleId, pageId));
+    }
+
+    public static URL buildNewsArticleCommentHooahURL(final String commentId) {
+        return createURL(String.format("news/comment/upvote/%s/", commentId));
+
     }
 
     public static URL buildNewsArticleCommentRepliesURL(final String articleId, final int offset, final int pageId) {

@@ -41,6 +41,7 @@
   <color name="card_action_selected_bg">#CCCCCC</color>
   <color name="card_selected_overlay">#33FFFFFF</color>
 
-  <!-- News links -->
+  <!-- News colors -->
+  <color name="news_background_color_selected">#CCCCCC</color>
   <color name="news_link_item_selected_bg">#EEE</color>
 </resources>
