@@ -1,9 +1,10 @@
 package com.ninetwozero.bf4intel.model.stats.details;
 
-import android.util.Pair;
-
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.adapter.BaseItem;
+import com.ninetwozero.bf4intel.base.adapter.BaseListHeader;
 import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;
+import com.ninetwozero.bf4intel.ui.stats.details.DetailsListItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,118 +13,84 @@ public class StatsDetailsGrouped {
 
     private static final String EMPTY_VALUE = "-";
     private static final String PERCENT_SIGN = "%";
-    private List<Pair<Integer, String>> multiplayerScore = new ArrayList<Pair<Integer, String>>();
-    private List<Pair<Integer, String>> generalScores = new ArrayList<Pair<Integer, String>>();
-    private List<Pair<Integer, String>> gameModes = new ArrayList<Pair<Integer, String>>();
-    private List<Pair<Integer, String>> teamScores = new ArrayList<Pair<Integer, String>>();
-    private List<Pair<Integer, String>> extraScores = new ArrayList<Pair<Integer, String>>();
-    private List<Pair<Integer, String>> gameModeExtra = new ArrayList<Pair<Integer, String>>();
+    private List<BaseItem> detailsList = new ArrayList<BaseItem>();
 
     public StatsDetailsGrouped(StatsDetails.GeneralStats details) {
-        buildMultiplayerScore(details);
-        buildGeneralScores(details);
-        buildGameModes(details);
-        buildTeamScores(details);
-        buildExtraScores(details);
-        buildGameModeExtra(details);
+        buildDetailsList(details);
     }
 
-    public List<Pair<Integer, String>> getMultiplayerScore() {
-        return multiplayerScore;
+    public List<BaseItem> getDetailsList() {
+        return detailsList;
     }
 
-    public List<Pair<Integer, String>> getGeneralScores() {
-        return generalScores;
+    private void buildDetailsList(StatsDetails.GeneralStats details) {
+        detailsList.add(new BaseListHeader(R.string.multiplayer_score));
+        detailsList.add(new DetailsListItem(R.string.assault_score, stringValueOf(details.getAssaultScore())));
+        detailsList.add(new DetailsListItem(R.string.engineer_score, stringValueOf(details.getEngineerScore())));
+        detailsList.add(new DetailsListItem(R.string.support_score, stringValueOf(details.getSupportScore())));
+        detailsList.add(new DetailsListItem(R.string.recon_score,  stringValueOf(details.getReconScore())));
+        detailsList.add(new DetailsListItem(R.string.commander_score,  stringValueOf(details.getCommanderScore())));
+        detailsList.add(new DetailsListItem(R.string.squad_score,  stringValueOf(details.getSquadScore())));
+        detailsList.add(new DetailsListItem(R.string.vehicle_score,  stringValueOf(details.getVehicleScore())));
+        detailsList.add(new DetailsListItem(R.string.award_score,  stringValueOf(details.getAwardScore())));
+        detailsList.add(new DetailsListItem(R.string.unlock_score,  stringValueOf(details.getUnlockScore())));
+        detailsList.add(new DetailsListItem(R.string.total_score,  stringValueOf(details.getTotalScore())));
+
+        detailsList.add(new BaseListHeader(R.string.general_score));
+        detailsList.add(new DetailsListItem(R.string.kills,  stringValueOf(details.getKills())));
+        detailsList.add(new DetailsListItem(R.string.deaths,  stringValueOf(details.getDeaths())));
+        detailsList.add(new DetailsListItem(R.string.kill_assists,  stringValueOf(details.getKillAssits())));
+        detailsList.add(new DetailsListItem(R.string.kd_ratio,  stringValueOf(details.getKdRatio())));
+        detailsList.add(new DetailsListItem(R.string.wins,  stringValueOf(details.getWins())));
+        detailsList.add(new DetailsListItem(R.string.losses,  stringValueOf(details.getLosses())));
+        detailsList.add(new DetailsListItem(R.string.shots_fired,  stringValueOf(details.getShotsFired())));
+        detailsList.add(new DetailsListItem(R.string.shots_hits,  stringValueOf(details.getShotsHit())));
+        detailsList.add(new DetailsListItem(R.string.accuracy,  stringValueOf(details.getAccuracy(), PERCENT_SIGN)));
+
+        detailsList.add(new BaseListHeader(R.string.game_modes));
+        detailsList.add(new DetailsListItem(R.string.conquest,  stringValueOf(details.getConquest())));
+        detailsList.add(new DetailsListItem(R.string.rush,  stringValueOf(details.getRush())));
+        detailsList.add(new DetailsListItem(R.string.death_match,  stringValueOf(details.getDeathMatch())));
+        detailsList.add(new DetailsListItem(R.string.domination,  stringValueOf(details.getDomination())));
+        detailsList.add(new DetailsListItem(R.string.capture_the_flag,  stringValueOf(details.getCaptureTheFlag())));
+        detailsList.add(new DetailsListItem(R.string.obliteration,  stringValueOf(details.getObliteration())));
+        detailsList.add(new DetailsListItem(R.string.air_superiority, stringValueOf(0 /*details.getAirSuperiority()*/)));
+        detailsList.add(new DetailsListItem(R.string.defuse, stringValueOf(0 /*details.getDefuse()*/)));
+
+        detailsList.add(new BaseListHeader(R.string.team_score));
+        detailsList.add(new DetailsListItem(R.string.repairs,  stringValueOf(details.getRepairs())));
+        detailsList.add(new DetailsListItem(R.string.revives,  stringValueOf(details.getRevives())));
+        detailsList.add(new DetailsListItem(R.string.heals,  stringValueOf(details.getHeals())));
+        detailsList.add(new DetailsListItem(R.string.resupplies,  stringValueOf(details.getResupplies())));
+        detailsList.add(new DetailsListItem(R.string.avenger_kills,  stringValueOf(details.getAvengerKills())));
+        detailsList.add(new DetailsListItem(R.string.savior_kills,  stringValueOf(details.getSaviorKills())));
+        detailsList.add(new DetailsListItem(R.string.suppression_assists,  stringValueOf(details.getSuppresionAssists())));
+        detailsList.add(new DetailsListItem(R.string.quits,  stringValueOf(details.getQuits(), PERCENT_SIGN)));
+
+        detailsList.add(new BaseListHeader(R.string.extra_score));
+        detailsList.add(new DetailsListItem(R.string.dogtag_taken,  stringValueOf(details.getDogtagTaken())));
+        detailsList.add(new DetailsListItem(R.string.vehicles_destroyed,  stringValueOf(details.getVehiclesDestroyed())));
+        detailsList.add(new DetailsListItem(R.string.vehicle_damage,  stringValueOf(details.getVehicleDamage())));
+        detailsList.add(new DetailsListItem(R.string.headshots,  stringValueOf(details.getHeadshots())));
+        detailsList.add(new DetailsListItem(R.string.longest_headshot,  stringValueOf(details.getLongestHeadshot())));
+        detailsList.add(new DetailsListItem(R.string.highest_kill_streak,  stringValueOf(details.getHighestKillStreak())));
+        detailsList.add(new DetailsListItem(R.string.nemesis_kills,  stringValueOf(details.getNemesisKills())));
+        detailsList.add(new DetailsListItem(R.string.highest_nemesis_streak,  stringValueOf(details.getHighestNemesisStreak())));
+
+        detailsList.add(new BaseListHeader(R.string.game_mode_extra));
+        detailsList.add(new DetailsListItem(R.string.flags_captured,  stringValueOf(details.getFlagsCaptured())));
+        detailsList.add(new DetailsListItem(R.string.flags_defended,  stringValueOf(details.getFlagsDefended())));
     }
 
-    public List<Pair<Integer, String>> getGameModes() {
-        return gameModes;
+    private String stringValueOf(int value) {
+        return value != 0 ? String.valueOf(value) : EMPTY_VALUE;
     }
 
-    public List<Pair<Integer, String>> getTeamScores() {
-        return teamScores;
+    private String stringValueOf(double value) {
+        return value != 0.0 ? String.format("%.2f",value) : EMPTY_VALUE;
     }
 
-    public List<Pair<Integer, String>> getExtraScores() {
-        return extraScores;
-    }
-
-    public List<Pair<Integer, String>> getGameModeExtra() {
-        return gameModeExtra;
-    }
-
-    private void buildMultiplayerScore(StatsDetails.GeneralStats details) {
-        multiplayerScore.add(pairFrom(R.string.assault_score, details.getAssaultScore()));
-        multiplayerScore.add(pairFrom(R.string.engineer_score, details.getEngineerScore()));
-        multiplayerScore.add(pairFrom(R.string.support_score, details.getSupportScore()));
-        multiplayerScore.add(pairFrom(R.string.recon_score, details.getReconScore()));
-        multiplayerScore.add(pairFrom(R.string.commander_score, details.getCommanderScore()));
-        multiplayerScore.add(pairFrom(R.string.squad_score, details.getSquadScore()));
-        multiplayerScore.add(pairFrom(R.string.vehicle_score, details.getVehicleScore()));
-        multiplayerScore.add(pairFrom(R.string.award_score, details.getAwardScore()));
-        multiplayerScore.add(pairFrom(R.string.unlock_score, details.getUnlockScore()));
-        multiplayerScore.add(pairFrom(R.string.total_score, details.getTotalScore()));
-    }
-
-    private void buildGeneralScores(StatsDetails.GeneralStats details) {
-        generalScores.add(pairFrom(R.string.kills , details.getKills()));
-        generalScores.add(pairFrom(R.string.deaths , details.getDeaths()));
-        generalScores.add(pairFrom(R.string.kill_assists , details.getKillAssits()));
-        generalScores.add(pairFrom(R.string.kd_ratio , details.getKdRatio()));
-        generalScores.add(pairFrom(R.string.wins , details.getWins()));
-        generalScores.add(pairFrom(R.string.losses , details.getLosses()));
-        generalScores.add(pairFrom(R.string.shots_fired , details.getShotsFired()));
-        generalScores.add(pairFrom(R.string.shots_hits , details.getShotsHit()));
-        generalScores.add(pairFrom(R.string.accuracy , details.getAccuracy(), PERCENT_SIGN));
-    }
-
-    private void buildGameModes(StatsDetails.GeneralStats details) {
-        gameModes.add(pairFrom(R.string.conquest , details.getConquest()));
-        gameModes.add(pairFrom(R.string.rush , details.getRush()));
-        gameModes.add(pairFrom(R.string.death_match , details.getDeathMatch()));
-        gameModes.add(pairFrom(R.string.domination , details.getDomination()));
-        gameModes.add(pairFrom(R.string.capture_the_flag , details.getCaptureTheFlag()));
-        gameModes.add(pairFrom(R.string.obliteration , details.getObliteration()));
-        gameModes.add(pairFrom(R.string.air_superiority , 0 /*details.getAirSuperiority()*/));
-        gameModes.add(pairFrom(R.string.defuse , 0 /*details.getDefuse()*/));
-    }
-
-    private void buildTeamScores(StatsDetails.GeneralStats details) {
-        teamScores.add(pairFrom(R.string.repairs, details.getRepairs()));
-        teamScores.add(pairFrom(R.string.revives, details.getRevives()));
-        teamScores.add(pairFrom(R.string.heals, details.getHeals()));
-        teamScores.add(pairFrom(R.string.resupplies, details.getResupplies()));
-        teamScores.add(pairFrom(R.string.avenger_kills, details.getAvengerKills()));
-        teamScores.add(pairFrom(R.string.savior_kills, details.getSaviorKills()));
-        teamScores.add(pairFrom(R.string.suppression_assists, details.getSuppresionAssists()));
-        teamScores.add(pairFrom(R.string.quits, details.getQuits(), PERCENT_SIGN));
-    }
-
-    private void buildExtraScores(StatsDetails.GeneralStats details) {
-        extraScores.add(pairFrom(R.string.dogtag_taken , details.getDogtagTaken()));
-        extraScores.add(pairFrom(R.string.vehicles_destroyed , details.getVehiclesDestroyed()));
-        extraScores.add(pairFrom(R.string.vehicle_damage , details.getVehicleDamage()));
-        extraScores.add(pairFrom(R.string.headshots , details.getHeadshots()));
-        extraScores.add(pairFrom(R.string.longest_headshot , details.getLongestHeadshot()));
-        extraScores.add(pairFrom(R.string.highest_kill_streak , details.getHighestKillStreak()));
-        extraScores.add(pairFrom(R.string.nemesis_kills , details.getNemesisKills()));
-        extraScores.add(pairFrom(R.string.highest_nemesis_streak , details.getHighestNemesisStreak()));
-    }
-
-    private void buildGameModeExtra(StatsDetails.GeneralStats details) {
-        gameModeExtra.add(pairFrom(R.string.flags_captured , details.getFlagsCaptured()));
-        gameModeExtra.add(pairFrom(R.string.flags_defended , details.getFlagsDefended()));
-    }
-
-    private Pair<Integer, String> pairFrom(int resourceId, int value) {
-        return new Pair<Integer, String>(resourceId, value != 0 ? String.valueOf(value) : EMPTY_VALUE);
-    }
-
-    private Pair<Integer, String> pairFrom(int resourceId, double value) {
-        return new Pair<Integer, String>(resourceId, value != 0.0 ? String.format("%.2f",value) : EMPTY_VALUE);
-    }
-
-    private Pair<Integer, String> pairFrom(int resourceId, double value, String postfix) {
-        return new Pair<Integer, String>(resourceId, value != 0.0 ? String.format("%.2f%s", value, postfix) : EMPTY_VALUE);
+    private String stringValueOf(double value, String postfix) {
+        return value != 0.0 ? String.format("%.2f%s", value, postfix) : EMPTY_VALUE;
     }
 }

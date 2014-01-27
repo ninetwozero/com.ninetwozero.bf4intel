@@ -71,7 +71,7 @@ public class DetailsStatsFragment extends BaseLoadingFragment {
         StatsDetails.GeneralStats details = fromJson(resultMessage, StatsDetails.class).getGeneralStats();
         StatsDetailsGrouped stats = new StatsDetailsGrouped(details);
 
-        populateTable(detailsTable, R.string.multiplayer_score, stats.getMultiplayerScore());
+        populateTable(detailsTable, R.string.multiplayer_score, stats.getDetailsList());
         populateTable(detailsTable, R.string.general_score, stats.getGeneralScores());
         populateTable(detailsTable, R.string.game_modes, stats.getGameModes());
         populateTable(detailsTable, R.string.team_score, stats.getTeamScores());

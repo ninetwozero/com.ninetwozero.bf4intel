@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseItem;
+import com.ninetwozero.bf4intel.base.adapter.BaseListAdapter;
+import com.ninetwozero.bf4intel.base.adapter.BaseListHeader;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.stats.reports.BattleReportStatistics;
@@ -126,12 +128,12 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     private void sendDataToListView(final BattleReportStatistics statistics) {
         List<BaseItem> itemList = new ArrayList<BaseItem>();
         if(statistics.getFavoriteReports().size() > 0) {
-            itemList.add(new BattleReportHeader(R.string.header_favorite_battlereport));
+            itemList.add(new BaseListHeader(R.string.header_favorite_battlereport));
             itemList.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getFavoriteReports()), statistics.getSoldierId()));
         }
-        itemList.add(new BattleReportHeader(R.string.header_latest_battlereport));
+        itemList.add(new BaseListHeader(R.string.header_latest_battlereport));
         itemList.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getStatsGameReports()), statistics.getSoldierId()));
-        BattleReportAdapter adapter = new BattleReportAdapter(getActivity(), itemList);
+        BaseListAdapter adapter = new BaseListAdapter(getActivity(), itemList);
         setListAdapter(adapter);
     }
 
