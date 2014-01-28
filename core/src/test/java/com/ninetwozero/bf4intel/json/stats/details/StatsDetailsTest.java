@@ -13,6 +13,8 @@ public class StatsDetailsTest {
     @Test
     public void should_successfully_parse_json() throws IOException {
         StatsDetails details = IntelJsonParser.parse("/json/details-stats.json", StatsDetails.class);
-        assertNotNull(details);
+        assertNotNull(details.getGeneralStats().getAccuracy());
+        assertNotNull(details.getGeneralStats().getAssaultScore());
+        assertNotNull(details.getGeneralStats().getAvengerKills());
     }
 }
