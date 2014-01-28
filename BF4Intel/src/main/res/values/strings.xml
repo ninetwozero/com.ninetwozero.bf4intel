@@ -177,6 +177,7 @@
   <string name="num_hooahs" formatted="false">%s hooahs</string>
   <string name="num_comments" formatted="false">%s comments</string>
   <string name="msg_error_gate_redirect">Please login to continue.</string>
+  <string name="msg_error_not_found">Resource not found.</string>
   <string name="cdesc_overflow_menu">Overflow menu</string>
   <string name="cdesc_article_preview">Article preview</string>
   <string name="label_share">Share</string>

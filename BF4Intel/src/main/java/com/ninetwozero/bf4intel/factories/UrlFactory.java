@@ -110,9 +110,12 @@ public class UrlFactory {
         return createURL(String.format("news/view/%s/%d/", articleId, pageId));
     }
 
-    public static URL buildNewsArticleCommentHooahURL(final String commentId) {
-        return createURL(String.format("news/comment/upvote/%s/", commentId));
+    public static URL buildNewsArticleCommentUpvoteURL(final String commentId) {
+        return createURL(String.format("comment/upvote/%s/", commentId));
+    }
 
+    public static URL buildNewsArticleCommentDownvoteURL(final String commentId) {
+        return createURL(String.format("comment/downvote/%s/", commentId));
     }
 
     public static URL buildNewsArticleCommentRepliesURL(final String articleId, final int offset, final int pageId) {

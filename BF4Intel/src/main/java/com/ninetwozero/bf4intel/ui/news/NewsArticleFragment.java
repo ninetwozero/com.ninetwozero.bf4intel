@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.news;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -122,7 +123,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
             return  new IntelLoader(
                 getActivity(),
                 new SimplePostRequest(
-                    UrlFactory.buildNewsArticleCommentHooahURL(bundle.getString("commentId")),
+                    UrlFactory.buildNewsArticleCommentUpvoteURL(bundle.getString("commentId")),
                     bundle
                 )
             );
@@ -168,6 +169,10 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
             toggleButton(parent, true);
             showToast(R.string.msg_comment_ok);
+        } else if (loader.getId() == ID_LOADER_HOOAH_COMMENT) {
+            // {"type":"success","message":"Comment upvote created","data":{"id":"2955063418463155072"}}
+            // ^ or v instead of star in actionbar?
+            Log.d("YOLO", "output => " + resultMessage);
         }
         showLoadingState(false);
     }
