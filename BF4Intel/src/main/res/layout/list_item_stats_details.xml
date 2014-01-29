@@ -3,13 +3,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:weightSum="1">
+  android:weightSum="1"
+  android:paddingTop="@dimen/spacing_m"
+  android:paddingBottom="@dimen/spacing_m"
+  >
 
   <TextView
     android:id="@+id/score_label"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_weight="0.65"
+    android:paddingLeft="@dimen/spacing_s"
     />
 
   <TextView
