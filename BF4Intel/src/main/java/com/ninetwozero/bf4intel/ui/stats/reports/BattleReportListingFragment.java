@@ -1,7 +1,6 @@
-package com.ninetwozero.bf4intel.ui.battlereport;
+package com.ninetwozero.bf4intel.ui.stats.reports;
 
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,23 +9,23 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.adapter.BaseItem;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.json.battlereports.BattleReportOverview;
-import com.ninetwozero.bf4intel.json.battlereports.SummaryBattleReport;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
+import com.ninetwozero.bf4intel.json.stats.reports.BattleReportStatistics;
+import com.ninetwozero.bf4intel.json.stats.reports.GameReport;
 import com.ninetwozero.bf4intel.network.IntelLoader;
-import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.utils.Result;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BattleReportListingFragment extends BaseLoadingListFragment {
-    private int ID_LOADER = BattleReportListingFragment.class.hashCode();
+    private int ID_LOADER = 2300;
 
     public BattleReportListingFragment() {
     }
-
 
     public static BattleReportListingFragment newInstance(final Bundle data) {
         final BattleReportListingFragment fragment = new BattleReportListingFragment();
@@ -54,12 +53,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         */
     @Override
     protected void startLoadingData() {
-        final LoaderManager manager = getActivity().getSupportLoaderManager();
-        if (manager.getLoader(ID_LOADER) == null) {
-            manager.initLoader(ID_LOADER, getArguments(), this);
-        } else {
-            manager.restartLoader(ID_LOADER, getArguments(), this);
-        }
+        getLoaderManager().restartLoader(ID_LOADER, null, this);
     }
 
     @Override
@@ -67,19 +61,23 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         showLoadingState(true);
         return new IntelLoader(
             getActivity(),
-            new SimpleGetRequest(
-                UrlFactory.buildBattleReportsURL(
-                    bundle.getInt(Keys.Soldier.ID),
-                    bundle.getInt(Keys.Soldier.PLATFORM)
-                )
-            )
+            new SimpleGetRequest(UrlFactory.buildBattleReportsURL(200661244, 1))
         );
     }
 
     @Override
+    public void onLoadFinished(Loader<Result> resultLoader, Result result) {
+        if (result == Result.SUCCESS) {
+            onLoadSuccess(result.getResultMessage());
+        } else {
+            onLoadFailure(result.getResultMessage());
+        }
+    }
+
+    @Override
     protected void onLoadSuccess(final String resultMessage) {
-        BattleReportOverview overview = fromJson(resultMessage, BattleReportOverview.class);
-        sendDataToListView(overview.getReports());
+        BattleReportStatistics statistics = fromJson(resultMessage, BattleReportStatistics.class);
+        sendDataToListView(statistics);
         showLoadingState(false);
     }
 
@@ -89,7 +87,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     }
 
     @Override
-     public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
+    public void onListItemClick(final ListView listView, final View view, final int position, final long id) {
         // TODO: Not sure what to display in the next view, website is crammed!
 
         /*
@@ -109,7 +107,6 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         showToast("Unimplemented functionality.");
     }
 
-
     private void initialize(final View view) {
         setupListView(view);
         updateActionBar(getActivity(), "BATTLE REPORTS", R.drawable.ic_actionbar_feed);
@@ -126,14 +123,23 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         emptyView.setText(R.string.msg_no_battlereports);
     }
 
-    private void sendDataToListView(final List<SummaryBattleReport> reports) {
-        final String personaId = getArguments().getString(Keys.Soldier.ID);
-        BattleReportAdapter reportAdapter = (BattleReportAdapter) getListAdapter();
-        if (reportAdapter == null) {
-            reportAdapter = new BattleReportAdapter(getActivity(), personaId);
+    private void sendDataToListView(final BattleReportStatistics statistics) {
+        List<BaseItem> itemList = new ArrayList<BaseItem>();
+        if(statistics.getFavoriteReports().size() > 0) {
+            itemList.add(new BattleReportHeader(R.string.header_favorite_battlereport));
+            itemList.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getFavoriteReports()), statistics.getSoldierId()));
         }
-        reportAdapter.setItems(reports);
-        setListAdapter(reportAdapter);
+        itemList.add(new BattleReportHeader(R.string.header_latest_battlereport));
+        itemList.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getStatsGameReports()), statistics.getSoldierId()));
+        BattleReportAdapter adapter = new BattleReportAdapter(getActivity(), itemList);
+        setListAdapter(adapter);
     }
 
+    private List<BaseItem> buildBaseItemList(final List<GameReport> reports, final int soldierId) {
+        List<BaseItem> itemsList = new ArrayList<BaseItem>();
+        for (GameReport report : reports) {
+            itemsList.add(new BattleReportItem(report, soldierId, getActivity()));
+        }
+        return itemsList;
+    }
 }

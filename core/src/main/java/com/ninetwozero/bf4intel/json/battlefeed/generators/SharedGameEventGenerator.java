@@ -40,7 +40,7 @@ public class SharedGameEventGenerator implements EventGenerator {
     }
 
     private SharedGameEventCategory getTypeForCategory(final String category) {
-        return gameEventTypeMap.containsKey(category)? gameEventTypeMap.get(category) : SharedGameEventCategory.UNKNOWN;
+        return gameEventTypeMap.containsKey(category) ? gameEventTypeMap.get(category) : SharedGameEventCategory.UNKNOWN;
     }
 
     private JsonArray getSpecializedJson(final JsonObject jsonObject, final String category, final SharedGameEventCategory type) {

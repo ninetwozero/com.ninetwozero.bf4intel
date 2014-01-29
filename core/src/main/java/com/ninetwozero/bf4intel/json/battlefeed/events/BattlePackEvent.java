@@ -30,7 +30,7 @@ public class BattlePackEvent extends BaseEvent {
         if (name.contains("WEAPON")) {
             return "WEAPON";
         } else {
-            return name.substring(name.lastIndexOf('_')+1);
+            return name.substring(name.lastIndexOf('_') + 1);
         }
     }
 }

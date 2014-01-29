@@ -54,7 +54,7 @@ public class Weapon implements Comparable<Weapon> {
     }
 
     public int compareTo(Weapon w) {
-        if(kills == w.kills) {
+        if (kills == w.kills) {
             return timeEquipped > w.timeEquipped ? -1 : timeEquipped < w.timeEquipped ? +1 : 0;
         } else {
             return kills > w.kills ? -1 : +1;

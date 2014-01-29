@@ -29,6 +29,14 @@ public class UrlFactory {
         return createURL(String.format("warsawvehiclesPopulateStats/%d/%d/stats/", soldierId, platformId));
     }
 
+    public static URL buildBattleReportsURL(final int soldierId, final int platformId) {
+        return createURL(String.format("warsawbattlereportspopulate/%d/2048/%d/", soldierId, platformId));
+    }
+
+    public static URL buildReportMoreStatsURL(final int soldierId, final int platformId, final long reportId) {
+        return createURL(String.format("warsawbattlereportspopulate/%d/2048/%d/%d", soldierId, platformId, reportId));
+    }
+
     public static URL buildAssignmentsURL(final String soldierName, final int soldierId, final long userId, final int platformId) {
         return createURL(
             String.format(
@@ -43,10 +51,6 @@ public class UrlFactory {
 
     public static URL buildAwardsURL(final int soldierId, final int platformId) {
         return createURL(String.format("warsawawardspopulate/%d/%d/", soldierId, platformId));
-    }
-
-    public static URL buildBattleReportsURL(final int soldierId, final int platformId) {
-        return createURL(String.format("warsawbattlereportspopulate/%d/2048/%d/", soldierId, platformId));
     }
 
     public static URL buildGlobalFeedURL(final int offset) {

@@ -25,7 +25,6 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         setHasOptionsMenu(true);
     }
 
-
     @Override
     public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
         if (result == Result.SUCCESS) {
@@ -110,19 +109,8 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
      */
     @Deprecated
     protected Context getContext() {
-        return getActivity().getApplicationContext();
+        return getActivity();
     }
-
-    /*
-        TODO:
-        Deprecating current methods as they're used at many places
-        However, when no more onLoadSuccess(String) nor onLoadFailure(String)
-        implementations are left, we remove them below and make the
-
-            onLoadX(Loader, String)
-
-        methods abstract
-     */
 
     @Deprecated
     protected void onLoadSuccess(final String resultMessage) {}

@@ -47,13 +47,13 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getActivity().getSupportLoaderManager().restartLoader(ID_LOADER, null, this);
+        getLoaderManager().restartLoader(ID_LOADER, null, this);
     }
 
     @Override
     public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         showLoadingState(true);
-        return new IntelLoader(getActivity().getApplicationContext(), new SimpleGetRequest(UrlFactory.buildWeaponStatsURL(200661244, 1)));
+        return new IntelLoader(getActivity(), new SimpleGetRequest(UrlFactory.buildWeaponStatsURL(200661244, 1)));
     }
 
     @Override

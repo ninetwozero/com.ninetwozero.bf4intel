@@ -4,10 +4,6 @@
           android:versionCode="1423100"
           android:versionName="1.0">
 
-  <uses-sdk
-    android:minSdkVersion="14"
-    android:targetSdkVersion="18"/>
-
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
   <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -43,6 +39,7 @@
     <activity
       android:name=".ui.stats.SoldierStatisticsActivity"
       android:label="@string/label_activity_soldier_statistics"
+      android:screenOrientation="portrait"
       android:parentActivityName=".ui.activities.MainActivity"
       android:theme="@style/AppTheme">
       <meta-data
