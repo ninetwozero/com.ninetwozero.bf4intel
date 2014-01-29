@@ -45,7 +45,8 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     private final int ID_LOADER_REFRESH_COMMENTS = 4300;
     private final int ID_LOADER_POST_COMMENT = 4400;
     private final int ID_LOADER_HOOAH = 4500;
-    private final int ID_LOADER_HOOAH_COMMENT = 4600;
+    private final int ID_LOADER_COMMENT_UPVOTE = 4600;
+    private final int ID_LOADER_COMMENT_DOWNVOTE = 4700;
 
     private ActionMode actionMode;
     private String articleId;
@@ -93,42 +94,44 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     }
 
     @Override
-    public Loader<Result> onCreateLoader(int loaderId, Bundle bundle) {
-        if (loaderId == ID_LOADER_REFRESH_ARTICLE) {
-            showLoadingState(true);
-            return new IntelLoader(
-                getActivity(),
-                new SimpleGetRequest(
+    public Loader<Result> onCreateLoader(final int loaderId, final Bundle bundle) {
+        BaseSimpleRequest request = null;
+        switch (loaderId) {
+            case ID_LOADER_REFRESH_ARTICLE:
+                showLoadingState(true);
+                request = new SimpleGetRequest(
                     UrlFactory.buildNewsArticleURL(bundle.getString(ID)),
                     BaseSimpleRequest.RequestType.FROM_NAVIGATION
-                )
-            );
-        } else if (loaderId == ID_LOADER_HOOAH) {
-            return new IntelLoader(
-                getActivity(),
-                new SimplePostRequest(
+                );
+                break;
+            case ID_LOADER_HOOAH:
+                request = new SimplePostRequest(
                     UrlFactory.buildNewsArticleHooahURL(articleId),
                     bundle
-                )
-            );
-        } else if (loaderId == ID_LOADER_POST_COMMENT) {
-            return new IntelLoader(
-                getActivity(),
-                new SimplePostRequest(
+                );
+                break;
+            case ID_LOADER_POST_COMMENT:
+                request = new SimplePostRequest(
                     UrlFactory.buildNewsArticlePostCommentURL(articleId),
                     bundle
-                )
-            );
-        } else if (loaderId == ID_LOADER_HOOAH_COMMENT) {
-            return  new IntelLoader(
-                getActivity(),
-                new SimplePostRequest(
+                );
+                break;
+            case ID_LOADER_COMMENT_UPVOTE:
+                request = new SimplePostRequest(
                     UrlFactory.buildNewsArticleCommentUpvoteURL(bundle.getString("commentId")),
                     bundle
-                )
-            );
+                );
+                break;
+            case ID_LOADER_COMMENT_DOWNVOTE:
+                request = new SimplePostRequest(
+                    UrlFactory.buildNewsArticleCommentDownvoteURL(bundle.getString("commentId")),
+                    bundle
+                );
+                break;
+            default:
+                throw new IllegalArgumentException("No loader matching " + loaderId);
         }
-        throw new IllegalArgumentException("No loader matching " + loaderId);
+        return new IntelLoader(getActivity(), request);
     }
 
     @Override
@@ -169,7 +172,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
             toggleButton(parent, true);
             showToast(R.string.msg_comment_ok);
-        } else if (loader.getId() == ID_LOADER_HOOAH_COMMENT) {
+        } else if (loader.getId() == ID_LOADER_COMMENT_UPVOTE || loader.getId() == ID_LOADER_COMMENT_DOWNVOTE) {
             // {"type":"success","message":"Comment upvote created","data":{"id":"2955063418463155072"}}
             // ^ or v instead of star in actionbar?
             Log.d("YOLO", "output => " + resultMessage);
@@ -216,7 +219,9 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
                     if (actionMode == null) {
                         getActivity().startActionMode(NewsArticleFragment.this);
                     }
+                    Log.d("YOLO", "Position #" + position + " should be checked...");
                     listView.setItemChecked(position, true);
+                    Log.d("YOLO", "Checked position: " + listView.getCheckedItemPosition());
                     return true;
                 }
             }
@@ -346,8 +351,12 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     @Override
     public boolean onActionItemClicked(final ActionMode mode, final MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.ab_action_hooah:
-                doToggleHooahForComment();
+            case R.id.ab_action_upvote:
+                doToggleHooahForComment(true);
+                mode.finish();
+                return true;
+            case R.id.ab_action_downvote:
+                doToggleHooahForComment(false);
                 mode.finish();
                 return true;
             case R.id.ab_action_report:
@@ -358,7 +367,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         }
     }
 
-    private void doToggleHooahForComment() {
+    private void doToggleHooahForComment(final boolean isUpvote) {
         final View view = getView();
         if (view == null) {
             return;
@@ -374,7 +383,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         data.putString("commentId", comment.getId());
         data.putString("post-check-sum", "<USER CHECKSUM HERE>");
 
-        getLoaderManager().restartLoader(ID_LOADER_HOOAH_COMMENT, data, this);
+        getLoaderManager().restartLoader(
+            isUpvote ? ID_LOADER_COMMENT_UPVOTE : ID_LOADER_COMMENT_DOWNVOTE,
+            data,
+            this
+        );
     }
 
     @Override
