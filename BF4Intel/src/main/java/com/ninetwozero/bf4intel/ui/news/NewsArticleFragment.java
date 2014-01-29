@@ -41,6 +41,8 @@ import java.util.Map;
 public class NewsArticleFragment extends BaseLoadingFragment implements ActionMode.Callback {
     public static final String TAG = "NewsArticleFragment";
     public static final String ID = "articleId";
+    public static final String COMMENT_ID = "commentId";
+
     private static final int ID_LOADER_REFRESH_ARTICLE = 4200;
     private final int ID_LOADER_REFRESH_COMMENTS = 4300;
     private final int ID_LOADER_POST_COMMENT = 4400;
@@ -89,7 +91,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
             throw new IllegalStateException("NULL bundle passed to " + TAG);
         }
 
-        articleId = arguments.getString("articleId", "");
+        articleId = arguments.getString(ID, "");
         getLoaderManager().restartLoader(ID_LOADER_REFRESH_ARTICLE, arguments, this);
     }
 
@@ -118,13 +120,13 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
                 break;
             case ID_LOADER_COMMENT_UPVOTE:
                 request = new SimplePostRequest(
-                    UrlFactory.buildNewsArticleCommentUpvoteURL(bundle.getString("commentId")),
+                    UrlFactory.buildNewsArticleCommentUpvoteURL(bundle.getString(COMMENT_ID)),
                     bundle
                 );
                 break;
             case ID_LOADER_COMMENT_DOWNVOTE:
                 request = new SimplePostRequest(
-                    UrlFactory.buildNewsArticleCommentDownvoteURL(bundle.getString("commentId")),
+                    UrlFactory.buildNewsArticleCommentDownvoteURL(bundle.getString(COMMENT_ID)),
                     bundle
                 );
                 break;
@@ -190,7 +192,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     public void onUserPressedHooah(final HooahToggleRequest request) {
         final Bundle data = new Bundle();
         data.putString("post-check-sum", "<USER CHECKSUM HERE>");
-        data.putString("articleId", request.getId());
+        data.putString(ID, request.getId());
 
         getLoaderManager().restartLoader(ID_LOADER_HOOAH, data, this);
     }
@@ -216,12 +218,14 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
             new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    if (actionMode == null) {
-                        getActivity().startActionMode(NewsArticleFragment.this);
+                    final long packedPosition = listView.getExpandableListPosition(position);
+                    final int positionType = ExpandableListView.getPackedPositionType(packedPosition);
+                    if (positionType == ExpandableListView.PACKED_POSITION_TYPE_GROUP) {
+                        if (actionMode == null) {
+                            getActivity().startActionMode(NewsArticleFragment.this);
+                        }
+                        listView.setItemChecked(position, true);
                     }
-                    Log.d("YOLO", "Position #" + position + " should be checked...");
-                    listView.setItemChecked(position, true);
-                    Log.d("YOLO", "Checked position: " + listView.getCheckedItemPosition());
                     return true;
                 }
             }
@@ -276,7 +280,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         input.setError(null);
 
         final Bundle data = new Bundle();
-        data.putString("articleId", articleId);
+        data.putString(ID, articleId);
         getLoaderManager().restartLoader(ID_LOADER_POST_COMMENT, data, this);
     }
 
@@ -379,8 +383,8 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         final NewsArticleComment comment = adapter.getGroup(checkedItemPosition);
 
         final Bundle data = new Bundle();
-        data.putString("articleId", articleId);
-        data.putString("commentId", comment.getId());
+        data.putString(ID, articleId);
+        data.putString(COMMENT_ID, comment.getId());
         data.putString("post-check-sum", "<USER CHECKSUM HERE>");
 
         getLoaderManager().restartLoader(

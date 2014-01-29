@@ -91,6 +91,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
     @Override
     public Loader<Result> onCreateLoader(int loaderId, Bundle bundle) {
         if (loaderId == ID_LOADER_REFRESH_LIST) {
+            showLoadingState(true);
             return new IntelLoader(
                 getActivity(),
                 new SimpleGetRequest(
@@ -119,6 +120,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
             final NewsListRequest container = gson.fromJson(rootObject, NewsListRequest.class);
 
             sendItemsToListView(container.getArticles());
+            showLoadingState(false);
         } else if (loader.getId() == ID_LOADER_HOOAH) {
             startLoadingData();
         }

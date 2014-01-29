@@ -37,11 +37,13 @@
   <color name="navigation_drawer_bg">#333333</color>
   <color name="navigation_listview_divider">#444444</color>
 
-  <!-- Card colors -->
+  <!-- Card related colors -->
+  <color name="card_activity_bg">#DDDDDD</color>
   <color name="card_action_selected_bg">#CCCCCC</color>
   <color name="card_selected_overlay">#33FFFFFF</color>
 
   <!-- News colors -->
-  <color name="news_background_color_selected">#CCCCCC</color>
-  <color name="news_link_item_selected_bg">#EEE</color>
+  <color name="news_comment_bg_selected">#EEEEEE</color>
+  <color name="news_link_item_bg_selected">#EEEEEE</color>
+
 </resources>
