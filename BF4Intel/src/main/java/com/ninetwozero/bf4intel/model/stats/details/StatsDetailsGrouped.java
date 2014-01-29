@@ -6,13 +6,16 @@ import com.ninetwozero.bf4intel.base.adapter.BaseListHeader;
 import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;
 import com.ninetwozero.bf4intel.ui.stats.details.DetailsListItem;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class StatsDetailsGrouped {
 
     private static final String EMPTY_VALUE = "-";
     private static final String PERCENT_SIGN = "%";
+    private static final String METERS = "m";
     private List<BaseItem> detailsList = new ArrayList<BaseItem>();
 
     public StatsDetailsGrouped(StatsDetails.GeneralStats details) {
@@ -72,7 +75,7 @@ public class StatsDetailsGrouped {
         detailsList.add(new DetailsListItem(R.string.vehicles_destroyed,  stringValueOf(details.getVehiclesDestroyed())));
         detailsList.add(new DetailsListItem(R.string.vehicle_damage,  stringValueOf(details.getVehicleDamage())));
         detailsList.add(new DetailsListItem(R.string.headshots,  stringValueOf(details.getHeadshots())));
-        detailsList.add(new DetailsListItem(R.string.longest_headshot,  stringValueOf(details.getLongestHeadshot())));
+        detailsList.add(new DetailsListItem(R.string.longest_headshot,  stringValueOf(details.getLongestHeadshot(), METERS)));
         detailsList.add(new DetailsListItem(R.string.highest_kill_streak,  stringValueOf(details.getHighestKillStreak())));
         detailsList.add(new DetailsListItem(R.string.nemesis_kills,  stringValueOf(details.getNemesisKills())));
         detailsList.add(new DetailsListItem(R.string.highest_nemesis_streak,  stringValueOf(details.getHighestNemesisStreak())));
@@ -83,7 +86,7 @@ public class StatsDetailsGrouped {
     }
 
     private String stringValueOf(int value) {
-        return value != 0 ? String.valueOf(value) : EMPTY_VALUE;
+        return value != 0 ? String.valueOf(NumberFormat.getInstance(Locale.getDefault()).format(value)) : EMPTY_VALUE;
     }
 
     private String stringValueOf(double value) {
