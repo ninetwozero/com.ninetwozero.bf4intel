@@ -92,23 +92,25 @@ public class NewsListingFragment extends BaseLoadingListFragment {
 
     @Override
     public Loader<Result> onCreateLoader(int loaderId, Bundle bundle) {
-        BaseSimpleRequest request = null;
+        BaseSimpleRequest request;
+        switch(loaderId) {
+            case ID_LOADER_REFRESH_LIST:
+                showLoadingState(true);
+                request = new SimpleGetRequest(
+                    UrlFactory.buildNewsListingURL(pageId),
+                    BaseSimpleRequest.RequestType.FROM_NAVIGATION
+                );
+                break;
 
-        if (loaderId == ID_LOADER_REFRESH_LIST) {
-            showLoadingState(true);
-            request = new SimpleGetRequest(
-                UrlFactory.buildNewsListingURL(pageId),
-                BaseSimpleRequest.RequestType.FROM_NAVIGATION
-            );
-        } else if (loaderId == ID_LOADER_HOOAH) {
-            request = new SimplePostRequest(
-                UrlFactory.buildNewsArticleHooahURL(bundle.getString(ID)),
-                bundle
-            );
-        }
+            case ID_LOADER_HOOAH:
+                request = new SimplePostRequest(
+                    UrlFactory.buildNewsArticleHooahURL(bundle.getString(ID)),
+                    bundle
+                );
+                break;
 
-        if (request == null) {
-            throw new IllegalArgumentException("No loader matching " + loaderId);
+            default:
+                throw new IllegalArgumentException("No loader matching " + loaderId);
         }
         return new IntelLoader(getActivity(), request);
     }
@@ -116,13 +118,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
     @Override
     protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         if (loader.getId() == ID_LOADER_REFRESH_LIST) {
-            final Gson gson = new Gson();
-            final JsonParser parser = new JsonParser();
-            final JsonElement rootObject = parser.parse(resultMessage).getAsJsonObject().get("context");
-            final NewsListRequest container = gson.fromJson(rootObject, NewsListRequest.class);
-
-            sendItemsToListView(container.getArticles());
-            showLoadingState(false);
+            onListRefreshed(resultMessage);
         } else if (loader.getId() == ID_LOADER_HOOAH) {
             startLoadingData();
         }
@@ -159,5 +155,15 @@ public class NewsListingFragment extends BaseLoadingListFragment {
             setListAdapter(adapter);
         }
         adapter.setItems(items);
+    }
+
+    private void onListRefreshed(final String resultMessage) {
+        final Gson gson = new Gson();
+        final JsonParser parser = new JsonParser();
+        final JsonElement rootObject = parser.parse(resultMessage).getAsJsonObject().get("context");
+        final NewsListRequest container = gson.fromJson(rootObject, NewsListRequest.class);
+
+        sendItemsToListView(container.getArticles());
+        showLoadingState(false);
     }
 }

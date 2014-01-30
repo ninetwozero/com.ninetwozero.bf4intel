@@ -99,7 +99,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     @Override
     public Loader<Result> onCreateLoader(final int loaderId, final Bundle bundle) {
-        BaseSimpleRequest request = null;
+        BaseSimpleRequest request;
         switch (loaderId) {
             case ID_LOADER_REFRESH_ARTICLE:
                 showLoadingState(true);
@@ -108,30 +108,35 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
                     BaseSimpleRequest.RequestType.FROM_NAVIGATION
                 );
                 break;
+
             case ID_LOADER_HOOAH:
                 request = new SimplePostRequest(
                     UrlFactory.buildNewsArticleHooahURL(articleId),
                     bundle
                 );
                 break;
+
             case ID_LOADER_POST_COMMENT:
                 request = new SimplePostRequest(
                     UrlFactory.buildNewsArticlePostCommentURL(articleId),
                     bundle
                 );
                 break;
+
             case ID_LOADER_COMMENT_UPVOTE:
                 request = new SimplePostRequest(
                     UrlFactory.buildNewsArticleCommentUpvoteURL(bundle.getString(COMMENT_ID)),
                     bundle
                 );
                 break;
+
             case ID_LOADER_COMMENT_DOWNVOTE:
                 request = new SimplePostRequest(
                     UrlFactory.buildNewsArticleCommentDownvoteURL(bundle.getString(COMMENT_ID)),
                     bundle
                 );
                 break;
+
             default:
                 throw new IllegalArgumentException("No loader matching " + loaderId);
         }
@@ -140,14 +145,20 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     @Override
     protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        if (loader.getId() == ID_LOADER_REFRESH_ARTICLE) {
-            onArticleRefreshed(resultMessage);
-        } else if (loader.getId() == ID_LOADER_HOOAH) {
-            onArticleHooah(resultMessage);
-        } else if (loader.getId() == ID_LOADER_POST_COMMENT) {
-            onCommentPosted();
-        } else if (loader.getId() == ID_LOADER_COMMENT_UPVOTE || loader.getId() == ID_LOADER_COMMENT_DOWNVOTE) {
-            onCommentVote(resultMessage);
+        switch (loader.getId()) {
+            case ID_LOADER_REFRESH_ARTICLE:
+                onArticleRefreshed(resultMessage);
+                break;
+            case ID_LOADER_HOOAH:
+                onArticleHooah(resultMessage);
+                break;
+            case ID_LOADER_POST_COMMENT:
+                onCommentPosted();
+                break;
+            case ID_LOADER_COMMENT_UPVOTE:
+            case ID_LOADER_COMMENT_DOWNVOTE:
+                onCommentVote(resultMessage);
+                break;
         }
         showLoadingState(false);
     }
@@ -180,9 +191,6 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
             case R.id.ab_action_downvote:
                 doToggleHooahForComment(false);
                 mode.finish();
-                return true;
-            case R.id.ab_action_report:
-                showToast("TODO: Report a bad commment");
                 return true;
             default:
                 return false;
