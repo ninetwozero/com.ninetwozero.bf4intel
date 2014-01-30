@@ -67,7 +67,7 @@ public class ArticleCommentListAdapter extends BaseExpandableIntelAdapter<NewsAr
             convertView = layoutInflater.inflate(R.layout.list_item_news_comment_reply, parent, false);
 
         }
-        
+
         populateBasicInformation(convertView, author, reply.getContent(), reply.getTimestamp());
         return convertView;
     }

@@ -344,7 +344,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     private void toggleButton(final View parent, final boolean enable) {
         final View button = parent.findViewById(R.id.button_send);
-        button.setAlpha(enable ? 0.8f : 0.3f);
+        button.setAlpha(enable ? ALPHA_ENABLED : ALPHA_DISABLED);
         button.setEnabled(enable);
     }
 

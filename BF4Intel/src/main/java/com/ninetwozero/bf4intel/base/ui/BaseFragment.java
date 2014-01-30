@@ -12,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public abstract class BaseFragment extends Fragment {
+    protected static final float ALPHA_ENABLED = 0.8f;
+    protected static final float ALPHA_DISABLED = 0.3f;
+
     private static Toast toast;
 
     protected FragmentManager fragmentManager;
