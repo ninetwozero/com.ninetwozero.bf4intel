@@ -56,17 +56,4 @@ public class NewsArticleComment {
     public boolean isHidden() {
         return hidden;
     }
-
-    @Override
-    public String toString() {
-        return "NewsArticleComment{" +
-            "id='" + id + '\'' +
-            ", author=" + author +
-            ", content='" + content + '\'' +
-            ", likeCount=" + likeCount +
-            ", timestamp=" + timestamp +
-            ", replies=" + replies +
-            ", hidden=" + hidden +
-            '}';
-    }
 }

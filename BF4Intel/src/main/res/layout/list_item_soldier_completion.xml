@@ -11,7 +11,6 @@
     android:id="@+id/title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="VEHICLE UNLOCKS"
     android:textAllCaps="true"
     android:textAppearance="@android:style/TextAppearance.Holo"/>
 
@@ -19,7 +18,6 @@
     android:id="@+id/progress_text"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="249/249"
     android:layout_alignParentRight="true"
     android:textAppearance="@android:style/TextAppearance.Holo"
     />
@@ -31,6 +29,4 @@
     android:layout_height="wrap_content"
     android:indeterminate="false"
     android:layout_below="@id/title"/>
-
-
 </RelativeLayout>

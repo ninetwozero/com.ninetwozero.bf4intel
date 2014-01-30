@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  style="@style/WhiteContainerFeed">
+  style="@style/WhiteContainerFeed"
+  >
   <include layout="@layout/list_item_feed_tpl_top"/>
   <RelativeLayout
     style="@style/WhiteContainerContentAreaWrapper"
@@ -13,7 +14,6 @@
       android:id="@+id/server_name"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="[UN] FLAGS 4 NOOBS!! ~ {UN}UNITEDNOOBS!!"
       android:layout_marginTop="@dimen/spacing_xs"
       android:textAppearance="@android:style/TextAppearance.Holo"
       android:textColor="@color/blue"
@@ -22,7 +22,7 @@
     <TextView
       style="@style/meta"
       android:id="@+id/timestamp"
-
-      android:layout_below="@id/server_name"/>
+      android:layout_below="@id/server_name"
+      />
   </RelativeLayout>
 </LinearLayout>

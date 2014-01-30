@@ -21,6 +21,6 @@
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Downloading information..."
+    android:text="@string/msg_downloading"
     android:gravity="center"/>
 </LinearLayout>

@@ -5,7 +5,7 @@
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:padding="@dimen/spacing_m"
-  android:background="#DDD"
+  android:background="@color/card_activity_bg"
   >
 
   <LinearLayout
@@ -57,8 +57,9 @@
       android:id="@+id/wrap_meta_bottom"
       android:layout_width="match_parent"
       android:layout_height="?android:listPreferredItemHeightSmall"
-      android:background="#f0f0f0"
-      android:layout_margin="1dp">
+      android:background="@color/card_meta_bg_color"
+      android:layout_margin="1dp"
+      >
 
       <LinearLayout
         android:id="@+id/wrap_meta_bottom_left"

@@ -3,14 +3,14 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="#DDD"
+  android:background="@color/card_activity_bg"
   >
   <RelativeLayout
     android:id="@+id/wrap_form"
     android:layout_width="match_parent"
     android:layout_height="@dimen/send_button_size"
     android:layout_alignParentBottom="true"
-    android:background="#FFF"
+    android:background="@color/white"
     >
     <ImageView
       android:id="@+id/button_send"
@@ -59,7 +59,7 @@
     android:orientation="vertical"
     android:visibility="gone"
     android:gravity="center"
-    android:background="#FFF"
+    android:background="@color/white"
     >
       <ProgressBar
         style="?android:progressBarStyleLarge"

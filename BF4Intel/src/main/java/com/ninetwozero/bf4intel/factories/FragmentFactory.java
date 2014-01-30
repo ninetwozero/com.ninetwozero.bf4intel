@@ -31,8 +31,6 @@ public class FragmentFactory {
                 return BattleFeedFragment.newInstance(data);
             case SOLDIER_OVERVIEW:
                 return SoldierOverviewFragment.newInstance(data);
-            case SOLDIER_STATS:
-                return SoldierStatsFragment.newInstance(data);
             case WEAPON_STATS:
                 return WeaponStatsFragment.newInstance(data);
             case VEHICLE_STATS:
@@ -92,7 +90,6 @@ public class FragmentFactory {
         ACCOUNT_PROFILE,
 
         SOLDIER_OVERVIEW,
-        SOLDIER_STATS,
         WEAPON_STATS,
         VEHICLE_STATS,
         DETAILS_STATS,

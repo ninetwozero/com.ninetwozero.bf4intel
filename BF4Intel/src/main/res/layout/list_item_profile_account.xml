@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:padding="@dimen/spacing_m"
@@ -9,7 +10,8 @@
     style="@style/heading"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/profile_information_header" />
+    android:text="@string/profile_information_header"
+    />
 
   <RelativeLayout
     android:layout_width="match_parent"
@@ -19,8 +21,10 @@
       android:id="@+id/label_user_name"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="NAME: "
-      android:textAppearance="@android:style/TextAppearance.Holo" />
+      android:text="@string/label_name"
+      android:layout_marginRight="@dimen/spacing_s"
+      android:textAppearance="@android:style/TextAppearance.Holo"
+      />
 
     <TextView
       android:id="@+id/user_name"
@@ -28,15 +32,18 @@
       android:layout_height="wrap_content"
       android:layout_toRightOf="@id/label_user_name"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:textColor="@android:color/holo_blue_light" />
+      android:textColor="@android:color/holo_blue_light"
+      />
 
     <TextView
       android:id="@+id/label_user_age"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="AGE: "
+      android:text="@string/label_age"
+      android:layout_marginRight="@dimen/spacing_s"
       android:layout_below="@id/user_name"
-      android:textAppearance="@android:style/TextAppearance.Holo" />
+      android:textAppearance="@android:style/TextAppearance.Holo"
+      />
 
     <TextView
       android:id="@+id/user_age"
@@ -45,15 +52,18 @@
       android:layout_toRightOf="@id/label_user_age"
       android:layout_below="@id/user_name"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:textColor="@android:color/holo_blue_light" />
+      android:textColor="@android:color/holo_blue_light"
+      />
 
     <TextView
       android:id="@+id/label_user_enlistdate"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="ENLISTED: "
+      android:text="@string/label_enlisted"
+      android:layout_marginRight="@dimen/spacing_s"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:layout_below="@id/user_age" />
+      android:layout_below="@id/user_age"
+      />
 
     <TextView
       android:id="@+id/user_enlistdate"
@@ -62,15 +72,18 @@
       android:layout_toRightOf="@id/label_user_enlistdate"
       android:textAppearance="@android:style/TextAppearance.Holo"
       android:textColor="@android:color/holo_blue_light"
-      android:layout_below="@id/user_age" />
+      android:layout_below="@id/user_age"
+      />
 
     <TextView
       android:id="@+id/label_user_country"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="COUNTRY: "
+      android:text="@string/label_country"
+      android:layout_marginRight="@dimen/spacing_s"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:layout_below="@id/user_enlistdate" />
+      android:layout_below="@id/user_enlistdate"
+      />
 
     <TextView
       android:id="@+id/user_country"
@@ -79,7 +92,8 @@
       android:textAppearance="@android:style/TextAppearance.Holo"
       android:textColor="@android:color/holo_blue_light"
       android:layout_below="@id/user_enlistdate"
-      android:layout_toRightOf="@id/label_user_country" />
+      android:layout_toRightOf="@id/label_user_country"
+      />
   </RelativeLayout>
 
   <TextView
@@ -87,11 +101,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="@string/profile_presentation_header"
-    android:layout_marginTop="@dimen/spacing_s" />
+    android:layout_marginTop="@dimen/spacing_s"
+    />
 
   <TextView
     android:id="@+id/user_presentation"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textAppearance="@android:style/TextAppearance.Holo" />
+    android:textAppearance="@android:style/TextAppearance.Holo"
+    />
 </LinearLayout>

@@ -16,22 +16,22 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-      android:text="500,000 free BF4 copies to BF4 Intel devs!!!"
       android:textColor="@color/blue"
-      android:maxLines="1"/>
+      android:maxLines="1"
+      />
     <TextView
       android:id="@+id/comment"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:text="Hooah!"
       android:textAllCaps="true"
       android:layout_below="@id/blog_title"
-      android:layout_marginTop="@dimen/spacing_s"/>
+      android:layout_marginTop="@dimen/spacing_s"
+      />
 
     <TextView
       style="@style/meta"
-
-      android:layout_below="@id/comment"/>
+      android:layout_below="@id/comment"
+      />
   </RelativeLayout>
 </LinearLayout>

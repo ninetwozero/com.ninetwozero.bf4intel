@@ -15,7 +15,6 @@
       android:id="@+id/map_name"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="SIEGE OF SHANGHAI"
       android:textAppearance="@android:style/TextAppearance.Holo.Large"
       android:textColor="@color/blue"
       />
@@ -24,7 +23,6 @@
       android:id="@+id/game_mode"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Conquest Large"
       android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
       android:layout_below="@id/map_name"
       />
@@ -33,7 +31,6 @@
       android:id="@+id/server_name"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="BF4 Beta - CNQ - London - Multiplayer #52"
       android:layout_below="@id/game_mode"
       android:textAppearance="@android:style/TextAppearance.Holo"
 
@@ -59,7 +56,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo"
-        android:text="US"
         android:layout_marginRight="@dimen/spacing_m"
         />
 
@@ -68,7 +64,6 @@
         android:layout_width="28dp"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo"
-        android:text="380"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="@dimen/spacing_m"
         android:gravity="right"
@@ -100,7 +95,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo"
-        android:text="US"
         android:layout_marginRight="@dimen/spacing_m"
         />
 
@@ -109,7 +103,6 @@
         android:layout_width="28dp"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo"
-        android:text="380"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="@dimen/spacing_m"
         android:gravity="right"
@@ -149,7 +142,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Highlight"
+        android:text="@string/feed_gamereport_highlight"
         android:textAllCaps="true"
         android:textColor="@color/darkgrey"
         android:textAppearance="@android:style/TextAppearance.Holo"
@@ -335,7 +328,7 @@
 
     <TextView
       style="@style/meta"
-
-      android:layout_below="@id/wrap_player_info"/>
+      android:layout_below="@id/wrap_player_info"
+      />
   </RelativeLayout>
 </LinearLayout>

@@ -10,8 +10,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
-    android:text="Dummy Forum (Uncategorized)"
-    android:textColor="@color/blue"/>
+    android:textColor="@color/blue"
+    />
 
   <LinearLayout
     android:id="@+id/wrap_activity"
@@ -22,8 +22,9 @@
 
     <TextView
       style="@style/meta"
-      android:text="Last activity"
-      android:layout_marginRight="@dimen/spacing_s"/>
+      android:text="@string/forum_last_activity"
+      android:layout_marginRight="@dimen/spacing_s"
+      />
 
     <include
       android:id="@+id/wrap_meta_top"
@@ -35,28 +36,8 @@
 
   <TextView
     style="@style/meta"
-    android:id="@+id/num_posts"
+    android:id="@+id/posts_and_threads_count"
     android:layout_below="@id/wrap_activity"
-    android:text="403"/>
-
-  <TextView
-    style="@style/meta"
-    android:id="@+id/string_postcount"
-    android:layout_below="@id/wrap_activity"
-    android:layout_toRightOf="@id/num_posts"
-    android:text=" posts in "/>
-
-  <TextView
-    style="@style/meta"
-    android:id="@+id/num_threads"
-    android:layout_below="@id/wrap_activity"
-    android:layout_toRightOf="@id/string_postcount"
-    android:text="201"/>
-
-  <TextView
-    style="@style/meta"
-    android:id="@+id/string_threadcount"
-    android:layout_below="@id/wrap_activity"
-    android:layout_toRightOf="@id/num_threads"
-    android:text=" threads"/>
+    android:text="@string/forum_posts_in_threads"
+    />
 </RelativeLayout>

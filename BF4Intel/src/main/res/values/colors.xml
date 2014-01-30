@@ -46,6 +46,7 @@
   <color name="card_activity_bg">#DDDDDD</color>
   <color name="card_action_selected_bg">#CCCCCC</color>
   <color name="card_selected_overlay">#33FFFFFF</color>
+  <color name="card_meta_bg_color">#f0f0f0</color>
 
   <!-- News colors -->
   <color name="news_comment_bg_selected">#EEEEEE</color>

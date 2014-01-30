@@ -147,7 +147,6 @@
   <string name="label_unlocks">Unlocks</string>
   <string name="msg_no_unlocks">No unlocks available</string>
   <string name="label_vehicle_unlocks">Vehicle unlocks</string>
-  <string name="cdesc_unlock_image">Unlock image</string>
   <string name="done">Done</string>
   <string name="empty"/>
   <string name="class_assault">Assault</string>
@@ -178,13 +177,10 @@
   <string name="label_comment">Comment</string>
   <string name="hint_comment">Your comment here&#8230;</string>
   <string name="forum_latest_activity">Last activity</string>
-  <string name="cdesc_hooah">Hooah</string>
   <string name="num_hooahs" formatted="false">%s hooahs</string>
   <string name="num_comments" formatted="false">%s comments</string>
   <string name="msg_error_gate_redirect">Please login to continue.</string>
   <string name="msg_error_not_found">Resource not found.</string>
-  <string name="cdesc_overflow_menu">Overflow menu</string>
-  <string name="cdesc_article_preview">Article preview</string>
   <string name="label_share">Share</string>
   <string name="title_report">Report&#8230;</string>
   <string name="title_revoke_hooah">Revoke hooah</string>
@@ -198,6 +194,11 @@
   <string name="match_draw">Draw</string>
   <string name="header_favorite_battlereport">Favorite Reports</string>
   <string name="header_latest_battlereport">Latest Reports</string>
-  <string name="cdesc_list_group_indicator">Group indicator</string>
-  <string name="cdesc_button">Button</string>
+  <string name="forum_posts_in_threads" formatted="false">%s posts in %s threads</string>
+  <string name="msg_downloading">Downloading information...</string>
+  <string name="feed_gamereport_highlight">Highlight</string>
+  <string name="label_name">NAME:</string>
+  <string name="label_age">AGE:</string>
+  <string name="label_enlisted">ENLISTED:</string>
+  <string name="label_country">COUNTRY:</string>
 </resources>

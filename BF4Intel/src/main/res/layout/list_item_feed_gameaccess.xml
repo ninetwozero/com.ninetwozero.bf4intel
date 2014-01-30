@@ -13,7 +13,6 @@
       android:id="@+id/game_name"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Battlefield 3: Back To Karkand"
       android:layout_below="@id/content"
       android:layout_marginTop="@dimen/spacing_l"
       android:layout_marginBottom="@dimen/spacing_l"
@@ -23,7 +22,7 @@
 
     <TextView
       style="@style/meta"
-
-      android:layout_below="@id/game_name"/>
+      android:layout_below="@id/game_name"
+      />
   </RelativeLayout>
 </LinearLayout>
