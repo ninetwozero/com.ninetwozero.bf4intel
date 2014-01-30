@@ -21,7 +21,7 @@
     android:gravity="left|center_vertical">
 
     <TextView
-      style="@style/meta"
+      style="@style/SmallMetaText"
       android:text="@string/forum_last_activity"
       android:layout_marginRight="@dimen/spacing_s"
       />
@@ -35,7 +35,7 @@
   </LinearLayout>
 
   <TextView
-    style="@style/meta"
+    style="@style/SmallMetaText"
     android:id="@+id/posts_and_threads_count"
     android:layout_below="@id/wrap_activity"
     android:text="@string/forum_posts_in_threads"

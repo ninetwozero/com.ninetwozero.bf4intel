@@ -40,7 +40,7 @@
         android:contentDescription="@string/cdesc_status_link_image"/>
     </LinearLayout>
     <TextView
-      style="@style/meta"
+      style="@style/SmallMetaText"
       android:layout_below="@id/wrap_preview"
       />
   </RelativeLayout>

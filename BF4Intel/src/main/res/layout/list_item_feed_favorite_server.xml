@@ -20,7 +20,7 @@
       android:layout_below="@id/content"/>
 
     <TextView
-      style="@style/meta"
+      style="@style/SmallMetaText"
       android:id="@+id/timestamp"
       android:layout_below="@id/server_name"
       />

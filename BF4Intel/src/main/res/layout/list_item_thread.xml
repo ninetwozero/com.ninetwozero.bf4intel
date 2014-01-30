@@ -21,7 +21,7 @@
     >
 
     <TextView
-      style="@style/meta"
+      style="@style/SmallMetaText"
       android:id="@+id/string_creator"
       android:text="@string/forum_created_by"
       android:layout_marginRight="@dimen/spacing_s"
@@ -35,14 +35,14 @@
       />
 
     <TextView
-      style="@style/meta"
+      style="@style/SmallMetaText"
       android:id="@+id/creation_timestamp"
       android:layout_marginLeft="@dimen/spacing_s"
       />
   </LinearLayout>
 
   <TextView
-    style="@style/meta"
+    style="@style/SmallMetaText"
     android:id="@+id/string_latest_activity"
     android:text="@string/forum_latest_activity"
     android:layout_marginRight="@dimen/spacing_s"

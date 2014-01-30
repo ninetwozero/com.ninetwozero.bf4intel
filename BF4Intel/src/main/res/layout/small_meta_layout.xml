@@ -8,7 +8,7 @@
   >
 
   <TextView
-    style="@style/meta"
+    style="@style/SmallMetaText"
     android:id="@+id/timestamp"
     />
 
@@ -20,7 +20,7 @@
     >
 
     <TextView
-      style="@style/meta"
+      style="@style/SmallMetaText"
       android:id="@+id/string_by"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
       />
 
     <TextView
-      style="@style/meta"
+      style="@style/SmallMetaText"
       android:id="@+id/username"
       android:textColor="@color/blue"
       />

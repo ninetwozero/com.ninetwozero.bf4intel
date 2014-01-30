@@ -65,7 +65,7 @@
       />
 
     <TextView
-      style="@style/meta"
+      style="@style/SmallMetaText"
       android:layout_below="@id/comment"
       />
   </RelativeLayout>
