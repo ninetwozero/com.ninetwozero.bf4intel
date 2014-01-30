@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.datatypes.HooahToggleRequest;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
@@ -30,6 +31,7 @@ import com.ninetwozero.bf4intel.network.BaseSimpleRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.SimplePostRequest;
+import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.WebsiteErrorMessageMap;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
@@ -139,45 +141,13 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     @Override
     protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         if (loader.getId() == ID_LOADER_REFRESH_ARTICLE) {
-            final Gson gson = new Gson();
-            final JsonParser parser = new JsonParser();
-            final JsonElement rootObject = parser.parse(resultMessage).getAsJsonObject().get("context");
-            final NewsArticleRequest articleRequest = gson.fromJson(rootObject, NewsArticleRequest.class);
-
-            displayArticle(articleRequest);
+            onArticleRefreshed(resultMessage);
         } else if (loader.getId() == ID_LOADER_HOOAH) {
-            final Gson gson = new Gson();
-            final JsonParser parser = new JsonParser();
-            final JsonElement dataObject = parser.parse(resultMessage).getAsJsonObject().get("data");
-            final JsonElement infoObject = dataObject.getAsJsonObject().get("info").getAsJsonObject();
-            final HooahInformation information = gson.fromJson(infoObject, HooahInformation.class);
-
-            final ExpandableListView listView = (ExpandableListView) getView().findViewById(android.R.id.list);
-            View cardParent = listView.findViewById(R.id.card_root);
-            if (cardParent == null) {
-                cardParent = getActivity().findViewById(R.id.card_root);
-            }
-
-            new NewsArticleLayout(getActivity(), cardParent).updateHooahForArticle(
-                information.getVoteCount(),
-                information.isVoted()
-            );
+            onArticleHooah(resultMessage);
         } else if (loader.getId() == ID_LOADER_POST_COMMENT) {
-            final View parent = getView();
-            if (parent == null) {
-                return;
-            }
-
-            final EditText input = (EditText) parent.findViewById(R.id.input_content);
-            input.setText("");
-            input.clearFocus();
-
-            toggleButton(parent, true);
-            showToast(R.string.msg_comment_ok);
+            onCommentPosted();
         } else if (loader.getId() == ID_LOADER_COMMENT_UPVOTE || loader.getId() == ID_LOADER_COMMENT_DOWNVOTE) {
-            // {"type":"success","message":"Comment upvote created","data":{"id":"2955063418463155072"}}
-            // ^ or v instead of star in actionbar?
-            Log.d("YOLO", "output => " + resultMessage);
+            onCommentVote(resultMessage);
         }
         showLoadingState(false);
     }
@@ -188,10 +158,41 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         showToast(WebsiteErrorMessageMap.get(resultMessage));
     }
 
+    @Override
+    public boolean onCreateActionMode(final ActionMode mode, final Menu menu) {
+        actionMode = mode;
+        mode.getMenuInflater().inflate(R.menu.news_article_comment_cab, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareActionMode(final ActionMode mode, final Menu menu) {
+        return false;
+    }
+
+    @Override
+    public boolean onActionItemClicked(final ActionMode mode, final MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.ab_action_upvote:
+                doToggleHooahForComment(true);
+                mode.finish();
+                return true;
+            case R.id.ab_action_downvote:
+                doToggleHooahForComment(false);
+                mode.finish();
+                return true;
+            case R.id.ab_action_report:
+                showToast("TODO: Report a bad commment");
+                return true;
+            default:
+                return false;
+        }
+    }
+
     @Subscribe
     public void onUserPressedHooah(final HooahToggleRequest request) {
         final Bundle data = new Bundle();
-        data.putString("post-check-sum", "<USER CHECKSUM HERE>");
+        data.putString(Keys.CHECKSUM, SessionStore.getChecksum());
         data.putString(ID, request.getId());
 
         getLoaderManager().restartLoader(ID_LOADER_HOOAH, data, this);
@@ -296,7 +297,6 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         sendCommentsToListView(article.getComments(), newsRequest.getHooahStatus());
     }
 
-    /* I hate this shit - header views re the worst implemented thing ever */
     private View getHeaderView(final View view, final NewsArticle article) {
         final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
         if (article.hasComments()) {
@@ -340,37 +340,6 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         button.setEnabled(enable);
     }
 
-    @Override
-    public boolean onCreateActionMode(final ActionMode mode, final Menu menu) {
-        actionMode = mode;
-        mode.getMenuInflater().inflate(R.menu.news_article_comment_cab, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareActionMode(final ActionMode mode, final Menu menu) {
-        return false;
-    }
-
-    @Override
-    public boolean onActionItemClicked(final ActionMode mode, final MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.ab_action_upvote:
-                doToggleHooahForComment(true);
-                mode.finish();
-                return true;
-            case R.id.ab_action_downvote:
-                doToggleHooahForComment(false);
-                mode.finish();
-                return true;
-            case R.id.ab_action_report:
-                showToast("TODO: Report a bad commment");
-                return true;
-            default:
-                return false;
-        }
-    }
-
     private void doToggleHooahForComment(final boolean isUpvote) {
         final View view = getView();
         if (view == null) {
@@ -385,7 +354,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         final Bundle data = new Bundle();
         data.putString(ID, articleId);
         data.putString(COMMENT_ID, comment.getId());
-        data.putString("post-check-sum", "<USER CHECKSUM HERE>");
+        data.putString(Keys.CHECKSUM, SessionStore.getChecksum());
 
         getLoaderManager().restartLoader(
             isUpvote ? ID_LOADER_COMMENT_UPVOTE : ID_LOADER_COMMENT_DOWNVOTE,
@@ -393,6 +362,56 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
             this
         );
     }
+
+    private void onArticleRefreshed(final String resultMessage) {
+        final Gson gson = new Gson();
+        final JsonParser parser = new JsonParser();
+        final JsonElement rootObject = parser.parse(resultMessage).getAsJsonObject().get("context");
+        final NewsArticleRequest articleRequest = gson.fromJson(rootObject, NewsArticleRequest.class);
+
+        displayArticle(articleRequest);
+    }
+
+    private void onArticleHooah(final String resultMessage) {
+        final Gson gson = new Gson();
+        final JsonParser parser = new JsonParser();
+        final JsonElement dataObject = parser.parse(resultMessage).getAsJsonObject().get("data");
+        final JsonElement infoObject = dataObject.getAsJsonObject().get("info").getAsJsonObject();
+        final HooahInformation information = gson.fromJson(infoObject, HooahInformation.class);
+
+        final ExpandableListView listView = (ExpandableListView) getView().findViewById(android.R.id.list);
+        View cardParent = listView.findViewById(R.id.card_root);
+        if (cardParent == null) {
+            cardParent = getActivity().findViewById(R.id.card_root);
+        }
+
+        new NewsArticleLayout(getActivity(), cardParent).updateHooahForArticle(
+            information.getVoteCount(),
+            information.isVoted()
+        );
+    }
+
+    private void onCommentPosted() {
+        final View parent = getView();
+        if (parent == null) {
+            return;
+        }
+
+        final EditText input = (EditText) parent.findViewById(R.id.input_content);
+        input.setText("");
+        input.clearFocus();
+
+        toggleButton(parent, true);
+        showToast(R.string.msg_comment_ok);
+    }
+
+
+    private void onCommentVote(final String resultMessage) {
+        // {"type":"success","message":"Comment upvote created","data":{"id":"2955063418463155072"}}
+        // ^ or v instead of star in actionbar?
+        Log.d(TAG, "output => " + resultMessage);
+    }
+
 
     @Override
     public void onDestroyActionMode(final ActionMode mode) {

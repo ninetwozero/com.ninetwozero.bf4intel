@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.datatypes.HooahToggleRequest;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -32,7 +33,8 @@ import java.util.List;
 
 public class NewsListingFragment extends BaseLoadingListFragment {
     public static final String TAG = "NewsListingFragment";
-
+    public static final String ID = "articleId";
+    
     private static final int ID_LOADER_REFRESH_LIST = 4000;
     private static final int ID_LOADER_HOOAH = 4100;
     private static final int pageId = 1;
@@ -74,12 +76,11 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         data.putString(NewsArticleFragment.ID, String.valueOf(id));
 
         startActivity(
-            new Intent(getActivity(), SingleFragmentActivity.class)
-                .putExtra(
-                    SingleFragmentActivity.INTENT_FRAGMENT_TYPE,
-                    FragmentFactory.Type.NEWS_ITEM.ordinal()
-                )
-                .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, data)
+            new Intent(getActivity(), SingleFragmentActivity.class).putExtra(
+                SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.NEWS_ITEM.ordinal()
+            ).putExtra(
+                SingleFragmentActivity.INTENT_FRAGMENT_DATA, data
+            )
         );
     }
 
@@ -90,25 +91,25 @@ public class NewsListingFragment extends BaseLoadingListFragment {
 
     @Override
     public Loader<Result> onCreateLoader(int loaderId, Bundle bundle) {
+        BaseSimpleRequest request = null;
+
         if (loaderId == ID_LOADER_REFRESH_LIST) {
             showLoadingState(true);
-            return new IntelLoader(
-                getActivity(),
-                new SimpleGetRequest(
-                    UrlFactory.buildNewsListingURL(pageId),
-                    BaseSimpleRequest.RequestType.FROM_NAVIGATION
-                )
+            request = new SimpleGetRequest(
+                UrlFactory.buildNewsListingURL(pageId),
+                BaseSimpleRequest.RequestType.FROM_NAVIGATION
             );
         } else if (loaderId == ID_LOADER_HOOAH) {
-            return new IntelLoader(
-                getActivity(),
-                new SimplePostRequest(
-                    UrlFactory.buildNewsArticleHooahURL(bundle.getString("articleId")),
-                    bundle
-                )
+            request = new SimplePostRequest(
+                UrlFactory.buildNewsArticleHooahURL(bundle.getString(ID)),
+                bundle
             );
         }
-        throw new IllegalArgumentException("No loader matching " + loaderId);
+
+        if (request == null) {
+            throw new IllegalArgumentException("No loader matching " + loaderId);
+        }
+        return new IntelLoader(getActivity(), request);
     }
 
     @Override
@@ -135,14 +136,14 @@ public class NewsListingFragment extends BaseLoadingListFragment {
     @Subscribe
     public void onUserPressedHooah(final HooahToggleRequest request) {
         final Bundle data = new Bundle();
-        data.putString("post-check-sum", "<USER CHECKSUM HERE>");
-        data.putString("articleId", request.getId());
+        data.putString(Keys.CHECKSUM, SessionStore.getChecksum());
+        data.putString(ID, request.getId());
 
         getLoaderManager().restartLoader(ID_LOADER_HOOAH, data, this);
     }
 
     private void initialize(final View view) {
-        updateActionBar(getActivity(), "NEWS");
+        updateActionBar(getActivity(), R.string.navigationdrawer_news);
     }
 
     private void sendItemsToListView(final List<NewsArticle> items) {
