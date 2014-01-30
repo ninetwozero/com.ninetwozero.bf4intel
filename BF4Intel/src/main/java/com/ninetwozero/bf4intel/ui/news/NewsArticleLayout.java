@@ -55,7 +55,7 @@ public class NewsArticleLayout extends BaseLayoutPopulator implements View.OnCli
 
     private void populateTop(final NewsArticle article) {
         setText(container, R.id.title, article.getTitle());
-        setText(container, R.id.timestamp, DateTimeUtils.toRelative(context, article.getTimestamp()));
+        setText(container, R.id.timestamp, DateTimeUtils.toRelative(article.getTimestamp()));
         if (article.hasAuthor()) {
             setText(container, R.id.username, article.getAuthor().getUsername());
             setVisibilty(container, R.id.wrap_user, View.VISIBLE);

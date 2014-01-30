@@ -26,7 +26,7 @@ public class ArticleCommentListAdapter extends BaseExpandableIntelAdapter<NewsAr
     private void populateBasicInformation(View view, Profile author, String content, long timestamp) {
         setText(view, R.id.username, author.getUsername());
         setText(view, R.id.content, content);
-        setText(view, R.id.timestamp, DateTimeUtils.toRelative(context, timestamp));
+        setText(view, R.id.timestamp, DateTimeUtils.toRelative(timestamp));
         loadImage(view, R.id.gravatar, UrlFactory.buildGravatarUrl(author.getGravatarHash()));
     }
 
