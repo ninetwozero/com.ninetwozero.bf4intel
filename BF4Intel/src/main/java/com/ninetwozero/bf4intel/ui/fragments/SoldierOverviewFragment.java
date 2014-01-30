@@ -45,7 +45,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     private SoldierOverviewFragment() {
     }
 
-
     public static SoldierOverviewFragment newInstance(final Bundle data) {
         final SoldierOverviewFragment fragment = new SoldierOverviewFragment();
         fragment.setArguments(data);

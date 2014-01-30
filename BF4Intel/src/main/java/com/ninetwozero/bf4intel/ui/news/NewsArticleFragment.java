@@ -55,7 +55,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     private ActionMode actionMode;
     private String articleId;
 
-    public NewsArticleFragment() {
+    private NewsArticleFragment() {
     }
 
     public static NewsArticleFragment newInstance(final Bundle data) {
