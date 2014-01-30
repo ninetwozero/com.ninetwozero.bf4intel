@@ -182,7 +182,7 @@
   <string name="cdesc_overflow_menu">Overflow menu</string>
   <string name="cdesc_article_preview">Article preview</string>
   <string name="label_share">Share</string>
-  <string name="title_report">Report...</string>
+  <string name="title_report">Report&#8230;</string>
   <string name="title_revoke_hooah">Revoke hooah</string>
   <string name="title_hooah">Hooah</string>
   <string name="title_unhooah">Un-hooah</string>
@@ -194,4 +194,6 @@
   <string name="match_draw">Draw</string>
   <string name="header_favorite_battlereport">Favorite Reports</string>
   <string name="header_latest_battlereport">Latest Reports</string>
+  <string name="cdesc_list_group_indicator">Group indicator</string>
+  <string name="cdesc_button">Button</string>
 </resources>

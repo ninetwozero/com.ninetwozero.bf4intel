@@ -19,6 +19,7 @@
       android:text="@string/label_comment"
       android:layout_alignParentRight="true"
       android:src="@drawable/ic_menu_send"
+      android:contentDescription="@string/cdesc_button"
       />
     <EditText
       android:id="@+id/input_content"

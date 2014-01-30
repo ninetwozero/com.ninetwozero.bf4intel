@@ -168,7 +168,7 @@ public class NewsArticleLayout extends BaseLayoutPopulator implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        final String url = (String) v.getTag().toString();
+        final String url = v.getTag().toString();
         final Context context = v.getContext();
         if (context == null) {
             return;

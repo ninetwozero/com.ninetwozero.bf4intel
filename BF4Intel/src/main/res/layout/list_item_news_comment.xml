@@ -16,6 +16,7 @@
     android:layout_alignParentLeft="true"
     android:adjustViewBounds="true"
     android:layout_marginRight="@dimen/spacing_m"
+    android:contentDescription="@string/cdesc_list_group_indicator"
     />
 
   <LinearLayout
