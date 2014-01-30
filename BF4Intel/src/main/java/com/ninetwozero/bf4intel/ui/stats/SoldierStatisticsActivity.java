@@ -14,7 +14,8 @@ public class SoldierStatisticsActivity extends BaseTabActivity {
     private static final int[] TITLES = new int[]{
         R.string.weapons,
         R.string.vehicles,
-        R.string.reports
+        R.string.reports,
+        R.string.details
     };
 
     @Override
@@ -28,6 +29,7 @@ public class SoldierStatisticsActivity extends BaseTabActivity {
         fragments.add(FragmentFactory.get(FragmentFactory.Type.WEAPON_STATS, profileBundle));
         fragments.add(FragmentFactory.get(FragmentFactory.Type.VEHICLE_STATS, profileBundle));
         fragments.add(FragmentFactory.get(FragmentFactory.Type.BATTLE_REPORT_LISTING, profileBundle));
+        fragments.add(FragmentFactory.get(FragmentFactory.Type.DETAILS_STATS, profileBundle));
         return fragments;
     }
 }

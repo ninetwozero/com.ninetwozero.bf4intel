@@ -71,7 +71,7 @@
 
     <activity
       android:name=".ui.awards.AwardsActivity"
-      android:label="@string/label_activity_assignments"
+      android:label="@string/label_activity_awards"
       android:screenOrientation="portrait"
       android:parentActivityName=".ui.activities.MainActivity"
       android:theme="@style/AppTheme">
