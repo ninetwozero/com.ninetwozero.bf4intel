@@ -50,5 +50,6 @@
 
   <!-- News colors -->
   <color name="news_comment_bg_selected">#EEEEEE</color>
-  <color name="news_link_item_bg_selected">#EEEEEE</color>
+  <color name="news_link_item_bg">#CCC</color>
+  <color name="news_link_item_bg_selected">@color/news_comment_bg_selected</color>
 </resources>

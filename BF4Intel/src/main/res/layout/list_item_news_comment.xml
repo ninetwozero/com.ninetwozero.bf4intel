@@ -10,8 +10,8 @@
 
   <ImageView
     android:id="@+id/group_indicator"
-    android:layout_width="24dp"
-    android:layout_height="24dp"
+    android:layout_width="@dimen/expandable_listview_indicator_size"
+    android:layout_height="@dimen/expandable_listview_indicator_size"
     android:src="@drawable/ic_menu_arrow_down_dark"
     android:layout_alignParentLeft="true"
     android:adjustViewBounds="true"

@@ -74,4 +74,6 @@
   <dimen name="ab_refresh_icon_width">48dp</dimen>
   <dimen name="ab_refresh_icon_height">32dp</dimen>
   <dimen name="send_button_size">48dp</dimen>
+  <dimen name="expandable_listview_indicator_size">24dp</dimen>
+  <dimen name="news_link_item_padding">2px</dimen>
 </resources>

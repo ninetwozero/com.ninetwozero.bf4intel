@@ -4,8 +4,8 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:background="#CCC"
-  android:padding="2px"
+  android:background="@color/news_link_item_bg"
+  android:padding="@dimen/news_link_item_padding"
   android:orientation="vertical"
   android:clickable="true"
   >

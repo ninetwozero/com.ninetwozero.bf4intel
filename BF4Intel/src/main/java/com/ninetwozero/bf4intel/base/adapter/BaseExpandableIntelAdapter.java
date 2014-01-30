@@ -85,14 +85,6 @@ public abstract class BaseExpandableIntelAdapter<T> extends BaseExpandableListAd
         progressBar.setMax(max);
     }
 
-    public void setVisibilty(final View view, final int resourceId, final int state) {
-        view.findViewById(resourceId).setVisibility(state);
-    }
-
-    public void setAlpha(final View view, final int resourceId, final float alpha) {
-        view.findViewById(resourceId).setAlpha(alpha);
-    }
-
     public abstract int getChildrenCount(final int groupPosition);
     public abstract int getGroupCount();
 }
