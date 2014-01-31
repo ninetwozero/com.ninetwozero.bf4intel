@@ -12,7 +12,7 @@ public class BattleReportFragment extends BaseFragment {
     public static final String ID = "reportId";
     private long mId;
 
-    private BattleReportFragment() {
+    public BattleReportFragment() {
     }
 
     public static BattleReportFragment newInstance(final Bundle data) {

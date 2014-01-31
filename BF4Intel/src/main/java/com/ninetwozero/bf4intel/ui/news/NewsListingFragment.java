@@ -40,7 +40,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
     private static final int ID_LOADER_HOOAH = 4100;
     private static final int pageId = 1;
 
-    private NewsListingFragment() {
+    public NewsListingFragment() {
     }
 
     public static NewsListingFragment newInstance(final Bundle data) {

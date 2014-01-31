@@ -42,7 +42,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     private static final int ID_LOADER = SoldierOverview.class.hashCode();
 
-    private SoldierOverviewFragment() {
+    public SoldierOverviewFragment() {
     }
 
     public static SoldierOverviewFragment newInstance(final Bundle data) {
