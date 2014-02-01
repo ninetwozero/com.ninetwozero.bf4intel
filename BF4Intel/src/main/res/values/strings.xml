@@ -35,11 +35,11 @@
   <string name="msg_sending">Sending…</string>
   <string name="msg_enter_comment">Enter a comment!</string>
   <string name="msg_comment_ok">Comment posted!</string>
-  <string name="soldier_left_until_rankup" formatted="false">%s until rank up</string>
+  <string name="soldier_left_until_rankup">%1$s until rank up</string>
   <string name="activated_new_game">Activated new game/expansion:</string>
   <string name="logged_in_as">Logged in as</string>
-  <string name="assignment_goals_completed" formatted="false">%s/%s goals completed</string>
-  <string name="generic_x_of_y" formatted="false">%s/%s</string>
+  <string name="assignment_goals_completed">%1$s/%2$s goals completed</string>
+  <string name="generic_x_of_y">%1$s/%2$s</string>
 
   <!-- HEADINGS -->
   <string name="weapons">Weapons</string>
@@ -59,7 +59,7 @@
   <string name="soldier_completion">Completion level</string>
   <string name="soldier_top_weapons">Top Weapons</string>
   <string name="soldier_top_vehicles">Top Vehicles</string>
-  <string name="soldier_num_kills" formatted="false">%s kills</string>
+  <string name="soldier_num_kills">%1$s kills</string>
   <string name="profile_information_header">Basic Information</string>
   <string name="profile_presentation_header">Presentation</string>
   <string name="progress">Progress</string>
@@ -104,7 +104,7 @@
 
   <!-- Menu -->
   <string name="menu_refresh">Refresh</string>
-  <string name="msg_unknown_event" formatted="false">Unknown event: %s</string>
+  <string name="msg_unknown_event">Unknown event: %1$s</string>
   <string name="feed_levelcomplete_heading">Completed a mission:</string>
   <string name="feed_createdforumthread_heading">Created a forum thread:</string>
   <string name="msg_feed_levelcomplete_partner">Partner:</string>
@@ -136,11 +136,11 @@
   <string name="msg_empty_content">You need to enter some content!</string>
   <string name="string_by">by</string>
   <string name="forum_last_activity">Last activity</string>
-  <string name="forum_x_posts_in_y_threads" formatted="false">%s posts in %s threads</string>
+  <string name="forum_x_posts_in_y_threads">%1$s posts in %2$s threads</string>
   <string name="forum_created_by">Created by</string>
   <string name="dummy_status">status</string>
   <string name="msg_no_users_found">No users found.</string>
-  <string name="x_on_y" formatted="false">%s on %s</string>
+  <string name="x_on_y">%1$s on %2$s</string>
   <string name="feed_category_ranked_up">Ranked up</string>
   <string name="label_search">Search</string>
   <string name="hint_search">Search for users</string>
@@ -177,8 +177,8 @@
   <string name="label_comment">Comment</string>
   <string name="hint_comment">Your comment here&#8230;</string>
   <string name="forum_latest_activity">Last activity</string>
-  <string name="num_hooahs" formatted="false">%s hooahs</string>
-  <string name="num_comments" formatted="false">%s comments</string>
+  <string name="num_hooahs">%1$s hooahs</string>
+  <string name="num_comments">%1$s comments</string>
   <string name="msg_error_gate_redirect">Please login to continue.</string>
   <string name="msg_error_not_found">Resource not found.</string>
   <string name="label_share">Share</string>
@@ -194,7 +194,7 @@
   <string name="match_draw">Draw</string>
   <string name="header_favorite_battlereport">Favorite Reports</string>
   <string name="header_latest_battlereport">Latest Reports</string>
-  <string name="forum_posts_in_threads" formatted="false">%s posts in %s threads</string>
+  <string name="forum_posts_in_threads">%1$s posts in %2$s threads</string>
   <string name="msg_downloading">Downloading information...</string>
   <string name="feed_gamereport_highlight">Highlight</string>
   <string name="label_name">NAME:</string>
