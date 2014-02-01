@@ -27,17 +27,28 @@ public class IntelLoader extends AsyncTaskLoader<Result> {
         try {
             return actOn(request.execute());
         } catch (Failure failure) {
-            if (failure.getCause() instanceof HttpRequest.HttpRequestException) {
-                return Result.NETWORK_FAILURE;
-            } else {
-                return Result.FAILURE;
-            }
+            return actOnFailure(failure);
         }
     }
 
     private Result actOn(final String theResult) {
         Result result = Result.SUCCESS;
         result.setResultMessage(theResult);
+        return result;
+    }
+
+    private Result actOnFailure(final Failure failure) {
+        if (failure.getCause() instanceof HttpRequest.HttpRequestException) {
+            return Result.NETWORK_FAILURE;
+        } else if (failure.getMessage().equals("")) {
+            return Result.FAILURE;
+        }
+        return generateErrorResult(failure.getMessage());
+    }
+
+    private Result generateErrorResult(final String message) {
+        final Result result = Result.ERROR;
+        result.setResultMessage(message);
         return result;
     }
 }

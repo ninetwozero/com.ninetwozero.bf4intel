@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.ui.BaseLayoutPopulator;
 import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.events.GameReportEvent;
 import com.ninetwozero.bf4intel.json.battlereports.Team;
@@ -15,7 +16,7 @@ import com.ninetwozero.bf4intel.resources.maps.GameModeStringMap;
 import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
 import com.ninetwozero.bf4intel.resources.maps.PersonalHighlightStringMap;
 
-public class GameReportLayout implements EventLayout<GameReportEvent> {
+public class GameReportLayout extends BaseLayoutPopulator implements EventLayout<GameReportEvent> {
     @Override
     public void populateView(final Context context, final View view, final GameReportEvent event) {
         final Resources resources = view.getResources();
@@ -24,9 +25,9 @@ public class GameReportLayout implements EventLayout<GameReportEvent> {
         final int colorRed = resources.getColor(R.color.red);
         final int[] teamWraps = new int[]{R.id.wrap_team1, R.id.wrap_team2};
 
-        ((TextView) view.findViewById(R.id.server_name)).setText(event.getServerName());
-        ((TextView) view.findViewById(R.id.map_name)).setText(LevelStringMap.get(event.getMap()));
-        ((TextView) view.findViewById(R.id.game_mode)).setText(GameModeStringMap.get(event.getGameMode()));
+        setText(view, R.id.server_name, event.getServerName());
+        setText(view, R.id.map_name, LevelStringMap.get(event.getMap()));
+        setText(view, R.id.game_mode, GameModeStringMap.get(event.getGameMode()));
 
         for (String key : event.getTeams().keySet()) {
             final Team team = event.getTeams().get(key);
@@ -66,11 +67,11 @@ public class GameReportLayout implements EventLayout<GameReportEvent> {
         titleTextView.setVisibility(hasPersonalHighlight? View.VISIBLE : View.GONE);
         valueTextView.setVisibility(hasPersonalHighlight? View.VISIBLE : View.GONE);
 
-        ((TextView) view.findViewById(R.id.player_ranking)).setText("#" + event.getPlayerRanking());
-        ((TextView) view.findViewById(R.id.player_spm)).setText(String.format("%,d", event.getSpm()));
-        ((TextView) view.findViewById(R.id.player_score)).setText(String.format("%,d", event.getScore()));
-        ((TextView) view.findViewById(R.id.player_kills)).setText(String.format("%,d", event.getKillCount()));
-        ((TextView) view.findViewById(R.id.player_kdr)).setText(String.valueOf(event.getKdRatio()));
-        ((TextView) view.findViewById(R.id.player_skill)).setText(String.valueOf(event.getSkill()));
+        setText(view, R.id.player_ranking, "#" + event.getPlayerRanking());
+        setText(view, R.id.player_spm, String.format("%,d", event.getSpm()));
+        setText(view, R.id.player_score, String.format("%,d", event.getScore()));
+        setText(view, R.id.player_kills, String.format("%,d", event.getKillCount()));
+        setText(view, R.id.player_kdr, String.valueOf(event.getKdRatio()));
+        setText(view, R.id.player_skill, String.valueOf(event.getSkill()));
     }
 }

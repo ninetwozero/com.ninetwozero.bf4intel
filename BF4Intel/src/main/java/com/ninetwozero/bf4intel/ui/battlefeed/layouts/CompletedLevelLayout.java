@@ -2,23 +2,23 @@ package com.ninetwozero.bf4intel.ui.battlefeed.layouts;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.ui.BaseLayoutPopulator;
 import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.events.CompletedLevelEvent;
 import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
 
-public class CompletedLevelLayout implements EventLayout<CompletedLevelEvent> {
+public class CompletedLevelLayout extends BaseLayoutPopulator implements EventLayout<CompletedLevelEvent> {
     @Override
     public void populateView(final Context context, final View view, final CompletedLevelEvent event) {
-        ((TextView) view.findViewById(R.id.level)).setText(LevelStringMap.get(event.getLevelName()));
-        ((TextView) view.findViewById(R.id.difficulty)).setText(event.getDifficulty());
+        setText(view, R.id.level, LevelStringMap.get(event.getLevelName()));
+        setText(view, R.id.difficulty, event.getDifficulty());
         if (event.hasPartner()) {
-            ((TextView) view.findViewById(R.id.partner)).setText(event.getPartner().getUsername());
-            view.findViewById(R.id.wrap_partner).setVisibility(View.VISIBLE);
+            setText(view, R.id.partner, event.getPartner().getUsername());
+            setVisibilty(view, R.id.wrap_partner, View.VISIBLE);
         } else {
-            view.findViewById(R.id.wrap_partner).setVisibility(View.GONE);
+            setVisibilty(view, R.id.wrap_partner, View.GONE);
         }
     }
 }

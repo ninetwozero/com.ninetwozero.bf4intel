@@ -60,7 +60,7 @@ public class KitUnlockFragment extends BaseUnlockFragment {
             return;
         }
 
-        listView.setAdapter(new KitUnlockAdapter(unlockMap, getActivity()));
+        listView.setAdapter(new KitUnlockAdapter(getActivity(), unlockMap));
         //TODO: Expand or collapse at start? >>> toggleAllRows(true)
     }
 

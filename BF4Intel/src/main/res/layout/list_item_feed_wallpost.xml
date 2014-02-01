@@ -63,7 +63,7 @@
     android:paddingRight="@dimen/spacing_s"/>
 
   <TextView
-    style="@style/meta"
+    style="@style/SmallMetaText"
     android:id="@+id/timestamp"
     android:layout_below="@id/content"
     android:paddingLeft="@dimen/spacing_s"

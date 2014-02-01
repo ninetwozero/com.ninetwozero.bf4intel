@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:padding="@dimen/spacing_m">
@@ -10,50 +11,50 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
-    android:text="Dummy thread #0001"
-    android:textColor="@color/blue" />
+    android:textColor="@color/blue"/>
 
   <LinearLayout
     android:id="@+id/wrap_creator"
     android:layout_below="@id/title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="left|center">
+    >
 
     <TextView
-      style="@style/meta"
+      style="@style/SmallMetaText"
       android:id="@+id/string_creator"
-      android:text="Created by " />
-
-    <include layout="@layout/list_item_feed_tpl_user_small" />
+      android:text="@string/forum_created_by"
+      android:layout_marginRight="@dimen/spacing_s"
+      />
 
     <TextView
-      style="@style/meta"
+      android:id="@+id/username"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/blue"
+      />
+
+    <TextView
+      style="@style/SmallMetaText"
       android:id="@+id/creation_timestamp"
-      android:text=" 4 hours ago" />
+      android:layout_marginLeft="@dimen/spacing_s"
+      />
   </LinearLayout>
 
-  <LinearLayout
-    android:id="@+id/wrap_activity"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+  <TextView
+    style="@style/SmallMetaText"
+    android:id="@+id/string_latest_activity"
+    android:text="@string/forum_latest_activity"
+    android:layout_marginRight="@dimen/spacing_s"
     android:layout_below="@id/wrap_creator"
-    android:gravity="left|center">
+    />
 
-    <TextView
-      style="@style/meta"
-      android:id="@+id/string_lastuser"
-      android:text="Latest activity " />
+  <include
+    android:id="@+id/wrap_meta_top"
+    layout="@layout/small_meta_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/string_latest_activity"
+    />
 
-    <TextView
-      style="@style/meta"
-      android:id="@+id/last_timestamp"
-      android:text="4 hours ago" />
-
-    <TextView
-      style="@style/meta"
-      android:text=" by " />
-
-    <include layout="@layout/list_item_feed_tpl_user_small" />
-  </LinearLayout>
 </RelativeLayout>

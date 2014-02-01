@@ -22,7 +22,6 @@
         android:id="@+id/level"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Battlefield 3: Back To Karkand"
         android:textAppearance="@android:style/TextAppearance.Holo"
         android:textColor="@color/blue"/>
 
@@ -73,8 +72,8 @@
     </RelativeLayout>
 
     <TextView
-      style="@style/meta"
-
-      android:layout_below="@id/wrap_level_info"/>
+      style="@style/SmallMetaText"
+      android:layout_below="@id/wrap_level_info"
+      />
   </RelativeLayout>
 </LinearLayout>

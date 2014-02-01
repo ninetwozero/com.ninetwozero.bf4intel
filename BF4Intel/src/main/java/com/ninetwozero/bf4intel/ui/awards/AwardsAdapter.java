@@ -1,78 +1,58 @@
 package com.ninetwozero.bf4intel.ui.awards;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.awards.Award;
 
 import java.util.List;
 
-public class AwardsAdapter extends BaseAdapter {
-
-    private final List<Award> awards;
-    private final Context context;
-
-    public AwardsAdapter(List<Award> awards, Context context) {
-        this.awards = awards;
-        this.context = context;
-    }
-
-    @Override
-    public int getCount() {
-        return awards.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return awards.get(position);
+public class AwardsAdapter extends BaseIntelAdapter<Award> {
+    public AwardsAdapter(final Context context, final List<Award> awards) {
+        super(context, awards);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        if(view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.item_award, parent, false);
+        Award award = getItem(position);
+
+        if (view == null) {
+            view = layoutInflater.inflate(R.layout.item_award, parent, false);
         }
-        Award award = awards.get(position);
 
-        ImageView medal = (ImageView) view.findViewById(R.id.award_medal);
-        medal.setImageResource(MedalImagesMap.medalsMap.get(award.getMedalCode().toLowerCase()));
+        populateMedalViews(view, award);
+        populateRibbonViews(view, award);
 
-        ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.award_completion);
-        progressBar.setMax(50);
-        progressBar.setProgress(award.getMedal().getPresentProgress());
-        TextView medalsCount = (TextView) view.findViewById(R.id.medals_count);
-        if(award.getMedal().getTimesTaken() > 0) {
+        return view;
+    }
+
+    private void populateMedalViews(final View view, final Award award) {
+        setImage(view, R.id.award_medal, MedalImagesMap.get(award.getMedalCode()));
+        setProgress(view, R.id.award_completion, award.getMedal().getPresentProgress(), 50);
+
+        if (award.getMedal().isTaken()) {
+            final TextView medalsCount = (TextView) view.findViewById(R.id.medals_count);
             medalsCount.setText(String.format("x%d", award.getMedal().getTimesTaken()));
             medalsCount.setVisibility(View.VISIBLE);
-            view.findViewById(R.id.award_medal_container).setAlpha(1f);
+            setAlpha(view, R.id.award_medal_container, 1f);
         } else {
-            medalsCount.setVisibility(View.INVISIBLE);
-            view.findViewById(R.id.award_medal_container).setAlpha(0.5f);
+            setVisibility(view, R.id.medals_count, View.INVISIBLE);
+            setAlpha(view, R.id.award_medal_container, 0.5f);
         }
+    }
 
-        if(award.getRibbon().getTimesTaken() > 0) {
-            view.findViewById(R.id.award_ribbon_container).setAlpha(1f);
-        } else {
-            view.findViewById(R.id.award_ribbon_container).setAlpha(0.5f);
-        }
-
-        ImageView ribbon = (ImageView) view.findViewById(R.id.award_ribbon);
-        ribbon.setImageResource(RibbonImagesMap.ribbonsMap.get(award.getRibbonCode().toLowerCase()));
-
-        TextView ribbonsCount = (TextView) view.findViewById(R.id.ribbons_count);
-        ribbonsCount.setText(String.format("x%d", award.getRibbon().getTimesTaken()));
-        return view;
+    private void populateRibbonViews(final View view, final Award award) {
+        setAlpha(view, R.id.award_ribbon_container, award.getRibbon().isTaken() ? 1f : 0.5f);
+        setImage(view, R.id.award_ribbon, RibbonImagesMap.get(award.getRibbonCode()));
+        setText(view, R.id.ribbons_count, String.format("x%d", award.getRibbon().getTimesTaken()));
     }
 }

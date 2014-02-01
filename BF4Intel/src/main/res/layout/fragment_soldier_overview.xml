@@ -64,7 +64,7 @@
           android:indeterminate="false"/>
 
         <TextView
-          style="@style/meta"
+          style="@style/SmallMetaText"
           android:id="@+id/value_rank_progress"
           android:layout_alignParentRight="true"
           android:layout_below="@id/progress_rank"/>

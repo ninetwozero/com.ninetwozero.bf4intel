@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/card_root"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:padding="@dimen/spacing_m"
+  android:background="@color/card_activity_bg"
+  >
+
+  <LinearLayout
+    style="@style/BaseWhiteContainer"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/spacing_m"
+      >
+
+      <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
+        android:textColor="@color/blue"
+        />
+
+      <include
+        android:id="@+id/wrap_meta_top"
+        layout="@layout/small_meta_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        />
+
+      <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wrap_meta_top"
+        />
+
+      <LinearLayout
+        android:id="@+id/link_wrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/content"
+        android:layout_marginTop="@dimen/spacing_m"
+        android:visibility="gone"
+        />
+    </RelativeLayout>
+
+    <RelativeLayout
+      android:id="@+id/wrap_meta_bottom"
+      android:layout_width="match_parent"
+      android:layout_height="?android:listPreferredItemHeightSmall"
+      android:background="@color/card_meta_bg_color"
+      android:layout_margin="1dp"
+      >
+
+      <LinearLayout
+        android:id="@+id/wrap_meta_bottom_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/spacing_m"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_alignParentLeft="true"
+        >
+
+        <TextView
+          android:id="@+id/num_hooahs"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/num_hooahs"
+          android:textColor="@color/darkgrey"
+          android:textAppearance="@style/TextAppearance.Holo.Smallest"
+          />
+
+        <TextView
+          android:id="@+id/num_comments"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/num_comments"
+          android:textColor="@color/darkgrey"
+          android:textAppearance="@style/TextAppearance.Holo.Smallest"
+          />
+      </LinearLayout>
+
+      <LinearLayout
+        android:id="@+id/wrap_meta_bottom_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+          style="@style/card_action_button"
+          android:id="@+id/button_hooah"
+          android:contentDescription="@string/cdesc_hooah"
+          android:src="@drawable/ic_menu_hooah"
+          />
+
+        <ImageView
+          style="@style/card_action_button"
+          android:id="@+id/button_overflow"
+          android:contentDescription="@string/cdesc_overflow_menu"
+          android:src="@drawable/ic_menu_overflow"
+          />
+      </LinearLayout>
+
+    </RelativeLayout>
+  </LinearLayout>
+</FrameLayout>

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RibbonImagesMap {
-    public static final Map<String, Integer> ribbonsMap = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> ribbonsMap = new HashMap<String, Integer>() {
         {
             put("r01", R.drawable.awards_ribbon01);
             put("r02", R.drawable.awards_ribbon02);
@@ -57,4 +57,8 @@ public class RibbonImagesMap {
             put("xp1rbd", R.drawable.awards_ribbon_xp1bd);
         }
     };
+
+    public static int get(final String key) {
+        return ribbonsMap.containsKey(key.toLowerCase()) ? ribbonsMap.get(key.toLowerCase()) : R.drawable.acc_none;
+    }
 }

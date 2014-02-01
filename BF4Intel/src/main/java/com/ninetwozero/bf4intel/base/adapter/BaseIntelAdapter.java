@@ -70,12 +70,16 @@ public abstract class BaseIntelAdapter<T> extends BaseAdapter {
 
     public void setProgress(final View view, final int resourceId, final int current, final int max) {
         final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
-        progressBar.setProgress(current);
         progressBar.setMax(max);
+        progressBar.setProgress(current);
     }
 
-    public void setVisibilty(final View view, final int resourceId, final int state) {
+    public void setVisibility(final View view, final int resourceId, final int state) {
         view.findViewById(resourceId).setVisibility(state);
+    }
+
+    public void setAlpha(final View view, final int resourceId, final float alpha) {
+        view.findViewById(resourceId).setAlpha(alpha);
     }
 
     public void setItems(final List<T> items) {

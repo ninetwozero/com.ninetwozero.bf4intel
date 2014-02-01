@@ -28,8 +28,8 @@ public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer
         put("wSPk", R.string.category_knives);
     }};
 
-    public WeaponUnlockAdapter(final Map<String, List<WeaponUnlockContainer>> itemMap, final Context context) {
-        super(itemMap, context);
+    public WeaponUnlockAdapter(final Context context, final Map<String, List<WeaponUnlockContainer>> itemMap) {
+        super(context, itemMap);
     }
 
     @Override

@@ -112,7 +112,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         }
 
         postData.putString("query", queryString);
-        postData.putString("post-check-sum", "0xCAFEBABE");
+        postData.putString(Keys.CHECKSUM, "0xCAFEBABE");
         getLoaderManager().restartLoader(ID_LOADER, postData, this);
     }
 

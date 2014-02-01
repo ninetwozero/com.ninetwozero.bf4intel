@@ -1,45 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:padding="@dimen/spacing_m"
+  android:background="@drawable/article_comment_selector_bg"
+  >
+
+  <ImageView
+    android:id="@+id/group_indicator"
+    android:layout_width="@dimen/expandable_listview_indicator_size"
+    android:layout_height="@dimen/expandable_listview_indicator_size"
+    android:src="@drawable/ic_menu_arrow_down_dark"
+    android:layout_alignParentLeft="true"
+    android:adjustViewBounds="true"
+    android:layout_marginRight="@dimen/spacing_m"
+    android:contentDescription="@string/cdesc_list_group_indicator"
+    />
+
+  <LinearLayout
+    android:id="@+id/wrap_user"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/spacing_m">
+    android:gravity="left|center"
+    android:layout_toRightOf="@id/group_indicator"
+    >
+
+    <ImageView
+      android:id="@+id/gravatar"
+      android:layout_width="@dimen/spacing_l"
+      android:layout_height="@dimen/spacing_l"
+      android:src="@drawable/test_gravatar"
+      android:contentDescription="@string/cdesc_gravatar"
+      />
+
+    <TextView
+      android:id="@+id/username"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="@dimen/spacing_s"
+      android:textColor="@color/blue"
+      android:textAppearance="@android:style/TextAppearance.Holo.Small"
+      />
+  </LinearLayout>
+
+  <TextView
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/wrap_user"
+    android:layout_marginTop="@dimen/spacing_s"
+    android:textAppearance="@android:style/TextAppearance.Holo.Small"
+    android:layout_toRightOf="@id/group_indicator"
+    />
+
+  <LinearLayout
+    android:id="@+id/wrap_meta"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/content"
+    android:gravity="center_vertical"
+    android:layout_toRightOf="@id/group_indicator"
+    >
+
+    <TextView
+      style="@style/SmallMetaText"
+      android:id="@+id/timestamp"
+      />
+
+    <TextView
+      style="@style/SmallMetaText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="|"
+      android:layout_marginLeft="@dimen/spacing_s"
+      android:layout_marginRight="@dimen/spacing_s"
+      />
+
+    <TextView
+      style="@style/SmallMetaText"
+      android:id="@+id/num_hooahs"
+      />
 
     <LinearLayout
-            android:id="@+id/wrap_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left|center">
+      android:id="@+id/wrap_hooah_status"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="@dimen/spacing_s"
+      android:orientation="horizontal"
+      android:visibility="gone"
+      >
 
-        <ImageView
-                android:id="@+id/gravatar"
-                android:layout_width="@dimen/spacing_l"
-                android:layout_height="@dimen/spacing_l"
-                android:src="@drawable/test_gravatar"
-                android:contentDescription="@string/cdesc_gravatar" />
+      <TextView
+        style="@style/SmallMetaText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="|"
+        android:layout_marginRight="@dimen/spacing_s"
+        />
 
-        <TextView
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="NINETWOZERO"
-                android:layout_marginLeft="@dimen/spacing_s"
-                android:textColor="@color/blue"
-                android:textAppearance="@android:style/TextAppearance.Holo.Small" />
+      <TextView
+        style="@style/SmallMetaText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/msg_user_said_hooah"
+        />
     </LinearLayout>
-
-    <TextView
-            android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/wrap_user"
-            android:layout_marginTop="@dimen/spacing_s"
-            android:textAppearance="@android:style/TextAppearance.Holo.Small"
-            android:text="Bladabalablabadadadaldadalada\nldladldal" />
-
-    <TextView
-            style="@style/meta"
-            android:id="@+id/timestamp"
-            android:text="4 hours ago"
-            android:layout_below="@id/content" />
+  </LinearLayout>
 </RelativeLayout>

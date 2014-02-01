@@ -8,6 +8,7 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public abstract class BaseListFragment extends ListFragment {
@@ -87,6 +88,15 @@ public abstract class BaseListFragment extends ListFragment {
             return;
         }
         doShowToast(activity, text);
+    }
+
+
+    protected void setText(final View view, final int resourceId, final int textResource) {
+        ((TextView) view.findViewById(resourceId)).setText(textResource);
+    }
+
+    protected void setText(final View view, final int resourceId, final String text) {
+        ((TextView) view.findViewById(resourceId)).setText(text);
     }
 
     private void doShowToast(final Activity activity, final String text) {

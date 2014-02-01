@@ -36,7 +36,7 @@
     </LinearLayout>
 
     <TextView
-      style="@style/meta"
+      style="@style/SmallMetaText"
 
       android:layout_below="@id/wrap_friend"/>
   </RelativeLayout>

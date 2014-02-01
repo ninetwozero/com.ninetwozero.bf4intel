@@ -13,20 +13,7 @@ import android.widget.TextView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlockContainer;
-import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlocks;
-import com.ninetwozero.bf4intel.network.IntelLoader;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
-import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.ui.unlocks.weapons.WeaponUnlockAdapter;
 import com.ninetwozero.bf4intel.utils.Result;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
 

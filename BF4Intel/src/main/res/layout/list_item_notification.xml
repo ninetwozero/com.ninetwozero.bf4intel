@@ -11,7 +11,7 @@
     android:text="*NINETWOZERO* commented on your *wallpost*."
     android:textAppearance="@android:style/TextAppearance.Holo.Small" />
   <TextView
-    style="@style/meta"
+    style="@style/SmallMetaText"
     android:id="@+id/timestamp"
     android:text="4 hours ago"
     android:layout_below="@id/content" />

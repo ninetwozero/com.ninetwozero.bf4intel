@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:padding="@dimen/spacing_m">
@@ -10,8 +10,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
-    android:text="Dummy Forum (Uncategorized)"
-    android:textColor="@color/blue" />
+    android:textColor="@color/blue"
+    />
 
   <LinearLayout
     android:id="@+id/wrap_activity"
@@ -21,50 +21,23 @@
     android:gravity="left|center_vertical">
 
     <TextView
-      style="@style/meta"
-      android:text="Last activity " />
-
-    <TextView
-      style="@style/meta"
-      android:id="@+id/timestamp"
-      android:text="4 hours ago" />
-
-    <TextView
-      style="@style/meta"
-      android:id="@+id/string_by"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text=" by " />
+      style="@style/SmallMetaText"
+      android:text="@string/forum_last_activity"
+      android:layout_marginRight="@dimen/spacing_s"
+      />
 
     <include
-      android:id="@+id/wrap_user"
-      layout="@layout/list_item_feed_tpl_user_small" />
+      android:id="@+id/wrap_meta_top"
+      layout="@layout/small_meta_layout"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
   </LinearLayout>
 
   <TextView
-    style="@style/meta"
-    android:id="@+id/num_posts"
+    style="@style/SmallMetaText"
+    android:id="@+id/posts_and_threads_count"
     android:layout_below="@id/wrap_activity"
-    android:text="403" />
-
-  <TextView
-    style="@style/meta"
-    android:id="@+id/string_postcount"
-    android:layout_below="@id/wrap_activity"
-    android:layout_toRightOf="@id/num_posts"
-    android:text=" posts in " />
-
-  <TextView
-    style="@style/meta"
-    android:id="@+id/num_threads"
-    android:layout_below="@id/wrap_activity"
-    android:layout_toRightOf="@id/string_postcount"
-    android:text="201" />
-
-  <TextView
-    style="@style/meta"
-    android:id="@+id/string_threadcount"
-    android:layout_below="@id/wrap_activity"
-    android:layout_toRightOf="@id/num_threads"
-    android:text=" threads" />
+    android:text="@string/forum_posts_in_threads"
+    />
 </RelativeLayout>

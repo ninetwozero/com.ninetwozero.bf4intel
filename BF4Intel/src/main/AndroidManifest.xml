@@ -29,7 +29,8 @@
       android:name=".ui.activities.SingleFragmentActivity"
       android:label="@string/label_activity_soldier_statistics"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
+      android:theme="@style/AppTheme"
+      android:windowSoftInputMode="stateUnchanged">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity"/>
@@ -78,6 +79,7 @@
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity"/>
     </activity>
+
     <activity
       android:name=".ui.search.SearchActivity"
       android:label="@string/label_search"

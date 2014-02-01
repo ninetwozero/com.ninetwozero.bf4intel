@@ -1,16 +1,15 @@
 package com.ninetwozero.bf4intel.factories;
 
+import org.apache.http.client.utils.URIUtils;
+
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-
-import org.apache.http.client.utils.URIUtils;
 
 public class UrlFactory {
     private static final String SCHEME = "http";
     private static final String HOST = "battlelog.battlefield.com/bf4";
     private static final int DEFAULT_PORT = -1;
-
     private static final String GRAVATAR_URL = "http://www.gravatar.com/avatar/%s/?s=320&d=%s";
     private static final String DEFAULT_GRAVATAR = "http://battlelog-cdn.battlefield.com/cdnprefix/avatar1/public/base/shared/default-avatar-320.png";
 
@@ -99,6 +98,50 @@ public class UrlFactory {
     public static URL buildWeaponAccessoriesURL(final String soldierId, final String guid, final int platformId) {
         // See: http://battlelog.battlefield.com/bf4/warsawWeaponAccessoriesPopulateStats/177958806/2/386F9329-7DE7-6FB9-1366-2877C698D9B7/
         return createURL(String.format("warsawWeaponAccessoriesPopulateStats/%s/%d/%s/", soldierId, platformId, guid));
+    }
+
+    public static URL buildNewsListingURL(final int pageId) {
+        return createURL(String.format("news/%d/", pageId));
+    }
+
+    public static URL buildNewsArticleURL(final String articleId) {
+        // The 1 in the URL indicates which comment page to start on
+        return createURL(
+            String.format("news/view/%s/1/", articleId)
+        );
+    }
+    public static URL buildNewsArticleWebURL(final String slug) {
+        return createURL(String.format("news/view/%s/", slug));
+    }
+
+    public static URL buildNewsArticleCommentsURL(final String articleId, final int pageId) {
+        return createURL(String.format("news/view/%s/%d/", articleId, pageId));
+    }
+
+    public static URL buildNewsArticleCommentUpvoteURL(final String commentId) {
+        return createURL(String.format("comment/upvote/%s/", commentId));
+    }
+
+    public static URL buildNewsArticleCommentDownvoteURL(final String commentId) {
+        return createURL(String.format("comment/removevote/%s/", commentId));
+    }
+
+    public static URL buildNewsArticleCommentRepliesURL(final String articleId, final int offset, final int pageId) {
+        return createURL(
+            String.format("comment/getreplies/%s/%d/%d/", articleId, offset, pageId)
+        );
+    }
+
+    public static URL buildNewsArticlePostCommentURL(final String articleId) {
+        return createURL(String.format("comment/postcomment/%s/devblog-comment/", articleId));
+    }
+
+    public static URL buildNewsArticlePostCommentReplyURL(final String articleId, final String commentId) {
+        return createURL(String.format("comment/postreply/%s/%s/", commentId, articleId));
+    }
+
+    public static URL buildNewsArticleHooahURL(final String articleId) {
+        return createURL(String.format("news/togglevote/%s/", articleId));
     }
 
     private static URL createURL(final String path) {

@@ -1,7 +1,8 @@
 apply plugin: 'java'
 
 dependencies{
-    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.google.code.gson:gson:2.2.4',
+            'org.jsoup:jsoup:1.7.3'
 
     testCompile 'junit:junit:4.11'
 }

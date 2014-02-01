@@ -15,4 +15,6 @@ public class Ribbon {
     public int getTimesTaken() {
         return timesTaken;
     }
+
+    public boolean isTaken() { return timesTaken > 0; }
 }

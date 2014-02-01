@@ -58,7 +58,7 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
         if (listView == null) {
             return;
         }
-        listView.setAdapter(new VehicleUnlockAdapter(unlockMap, getActivity()));
+        listView.setAdapter(new VehicleUnlockAdapter(getActivity(), unlockMap));
     }
 
     private Map<String, List<VehicleUnlock>> sortItemsInMap(final Map<String, List<VehicleUnlock>> unlockMap) {

@@ -16,9 +16,9 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-      android:text="-[DICE]- BF4 DOMINATION - Hardcore 41144"
       android:textColor="@color/blue"
-      android:maxLines="1"/>
+      android:maxLines="1"
+      />
 
     <TextView
       android:id="@+id/game_mode"
@@ -26,10 +26,9 @@
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo.Small"
       android:textColor="@color/blue"
-      android:text="Team DM"
       android:textAllCaps="true"
       android:layout_below="@id/server_name"
-    />
+      />
 
     <TextView
       android:id="@+id/string_map_game_separator"
@@ -41,7 +40,8 @@
       android:layout_marginLeft="@dimen/spacing_s"
       android:layout_marginRight="@dimen/spacing_s"
       android:layout_toRightOf="@id/game_mode"
-      android:layout_below="@id/server_name"/>
+      android:layout_below="@id/server_name"
+      />
 
     <TextView
       android:id="@+id/map_name"
@@ -49,24 +49,24 @@
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo.Small"
       android:textColor="@color/blue"
-      android:text="Noshahr Canals"
       android:textAllCaps="true"
       android:layout_below="@id/server_name"
-      android:layout_toRightOf="@id/string_map_game_separator"/>
+      android:layout_toRightOf="@id/string_map_game_separator"
+      />
 
     <TextView
       android:id="@+id/comment"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:text="The best game I've ever played y'all"
       android:textAllCaps="true"
       android:layout_below="@id/map_name"
-      android:layout_marginTop="@dimen/spacing_s"/>
+      android:layout_marginTop="@dimen/spacing_s"
+      />
 
     <TextView
-      style="@style/meta"
-
-      android:layout_below="@id/comment"/>
+      style="@style/SmallMetaText"
+      android:layout_below="@id/comment"
+      />
   </RelativeLayout>
 </LinearLayout>

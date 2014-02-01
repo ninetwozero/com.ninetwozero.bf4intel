@@ -42,9 +42,8 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     private static final int ID_LOADER = SoldierOverview.class.hashCode();
 
-    private SoldierOverviewFragment() {
+    public SoldierOverviewFragment() {
     }
-
 
     public static SoldierOverviewFragment newInstance(final Bundle data) {
         final SoldierOverviewFragment fragment = new SoldierOverviewFragment();
@@ -113,16 +112,12 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     }
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {
-        final Bundle args = getArguments();
-
         displayGeneralInformation(baseView, soldierOverview);
         displaySkills(baseView, soldierOverview.getBasicSoldierStats());
         displayServiceStars(baseView, soldierOverview.getBasicSoldierStats());
         displayToplist(baseView, R.id.wrap_soldier_top3_weapons, soldierOverview.getTopWeapons(), true);
         displayToplist(baseView, R.id.wrap_soldier_top3_vehicles, soldierOverview.getTopVehicles(), false);
         displayCompletions(baseView, soldierOverview.getCompletions());
-
-        updateActionBar(getActivity(), args.getString(Keys.Soldier.NAME), R.drawable.test_soldier);
     }
 
     private void displayGeneralInformation(final View baseView, final SoldierOverview soldierOverview) {

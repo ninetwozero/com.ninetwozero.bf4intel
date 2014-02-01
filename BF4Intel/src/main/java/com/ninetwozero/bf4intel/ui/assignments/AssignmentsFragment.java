@@ -53,7 +53,7 @@ public class AssignmentsFragment extends BaseFragment {
     }
 
     private void setupGrid() {
-        AssignmentsAdapter adapter = new AssignmentsAdapter(getAssignments(), getActivity());
+        AssignmentsAdapter adapter = new AssignmentsAdapter(getActivity(), getAssignments());
         gridView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

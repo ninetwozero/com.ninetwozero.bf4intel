@@ -1,30 +1,23 @@
 package com.ninetwozero.bf4intel.ui.battlefeed;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.factories.FeedEventLayoutFactory;
-import com.ninetwozero.bf4intel.json.battlefeed.EventType;
+import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.battlefeed.BaseEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.EventType;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
 import com.ninetwozero.bf4intel.resources.maps.FeedEventLayoutMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 
-import java.util.List;
-
-public class BattleFeedAdapter extends BaseAdapter {
-    private Context context;
-    final LayoutInflater layoutInflater;
-    private List<FeedItem> items;
+public class BattleFeedAdapter extends BaseIntelAdapter<FeedItem> {
 
     public BattleFeedAdapter(final Context context) {
-        this.context = context;
-        this.layoutInflater = LayoutInflater.from(this.context);
+        super(context);
     }
 
     @Override
@@ -38,18 +31,8 @@ public class BattleFeedAdapter extends BaseAdapter {
     }
 
     @Override
-    public FeedItem getItem(final int position) {
-        return items.get(position);
-    }
-
-    @Override
     public long getItemId(final int position) {
-        return position;
-    }
-
-    @Override
-    public int getCount() {
-        return items == null ? 0 : items.size();
+        return Long.parseLong(getItem(position).getId());
     }
 
     @Override
@@ -75,19 +58,14 @@ public class BattleFeedAdapter extends BaseAdapter {
     }
 
     private void populateUnknownEventView(final View convertView, final String eventAsString) {
-        ((TextView) convertView.findViewById(R.id.content)).setText(
-            String.format(
-                context.getString(R.string.msg_unknown_event),
-                eventAsString
-            )
-        );
+        setText(convertView, R.id.content, String.format(context.getString(R.string.msg_unknown_event), eventAsString));
     }
 
     private void populateGeneralViews(final View convertView, final FeedItem item) {
-        ((TextView) convertView.findViewById(R.id.username)).setText(item.getOwner().getUsername());
-        //((ImageView) convertView.findViewById(R.id.avatar)).setImageURI(UrlFactory.buildGravatarUrl(item.getOwner().getGravatarHash()));
-        ((TextView) convertView.findViewById(R.id.category)).setText(fetchCategoryForType(item.getEvent().getEventType()));
-        ((TextView) convertView.findViewById(R.id.timestamp)).setText(DateTimeUtils.toRelative(item.getDate()));
+        loadImage(convertView, R.id.avatar, UrlFactory.buildGravatarUrl(item.getOwner().getGravatarHash()));
+        setText(convertView, R.id.username, item.getOwner().getUsername());
+        setText(convertView, R.id.category, fetchCategoryForType(item.getEvent().getEventType()));
+        setText(convertView, R.id.timestamp, DateTimeUtils.toRelative(item.getDate()));
     }
 
     private int fetchCategoryForType(final EventType eventType) {
@@ -124,10 +102,4 @@ public class BattleFeedAdapter extends BaseAdapter {
                 return R.string.na;
         }
     }
-
-    public void setItems(final List<FeedItem> items) {
-        this.items = items;
-        notifyDataSetChanged();
-    }
-
 }
