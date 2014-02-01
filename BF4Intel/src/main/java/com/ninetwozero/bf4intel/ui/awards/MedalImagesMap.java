@@ -6,8 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MedalImagesMap {
-
-    public static final Map<String, Integer> medalsMap = new HashMap<String, Integer>() {
+    private static final Map<String, Integer> medalsMap = new HashMap<String, Integer>() {
         {
             put("m01", R.drawable.awards_m01);
             put("m02", R.drawable.awards_m02);
@@ -58,4 +57,8 @@ public class MedalImagesMap {
             put("xp1mbd", R.drawable.xp1mbd);
         }
     };
+
+    public static int get(final String key) {
+        return medalsMap.containsKey(key.toLowerCase()) ? medalsMap.get(key.toLowerCase()) : R.drawable.acc_none;
+    }
 }

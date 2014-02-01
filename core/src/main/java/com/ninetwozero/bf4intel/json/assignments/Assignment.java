@@ -19,6 +19,10 @@ public class Assignment {
         return completion;
     }
 
+    public boolean isCompleted() {
+        return completion == 100;
+    }
+
     public boolean isTracking() {
         return isTracking;
     }

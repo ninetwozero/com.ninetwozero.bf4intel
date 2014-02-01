@@ -22,6 +22,8 @@ public class Medal {
         return timesTaken;
     }
 
+    public boolean isTaken() { return timesTaken > 0; }
+
     public int getPresentProgress() {
         return presentProgress;
     }

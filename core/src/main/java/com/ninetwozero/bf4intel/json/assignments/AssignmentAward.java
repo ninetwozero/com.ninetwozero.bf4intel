@@ -20,6 +20,10 @@ public class AssignmentAward {
     }
 
     public String getExpansionPack() {
-        return expansionPack != null ? expansionPack : "";
+        return expansionPack;
+    }
+
+    public boolean hasExpansionPack() {
+        return expansionPack != null;
     }
 }
