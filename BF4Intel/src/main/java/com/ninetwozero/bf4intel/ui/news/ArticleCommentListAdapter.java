@@ -97,17 +97,6 @@ public class ArticleCommentListAdapter extends BaseExpandableIntelAdapter<NewsAr
         this.notifyDataSetChanged();
     }
 
-    public void appendItems(final List<NewsArticleComment> comments, final Map<String, Boolean> hooahStatus) {
-        if (comments == null) {
-            this.comments = comments;
-            this.hooahs = hooahStatus;
-        } else {
-            this.comments.addAll(comments);
-            this.hooahs.putAll(hooahStatus);
-        }
-        this.notifyDataSetChanged();
-    }
-
     private boolean hasHooahedThisComment(final String commentId) {
         return hooahs != null && (hooahs.containsKey(commentId) ? hooahs.get(commentId) : false);
     }
