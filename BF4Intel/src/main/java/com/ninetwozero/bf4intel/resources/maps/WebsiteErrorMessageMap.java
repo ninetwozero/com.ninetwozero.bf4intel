@@ -6,10 +6,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WebsiteErrorMessageMap {
+    public static final String GATE_REDIRECT = "gate_redirect";
+    public static final String NOT_FOUND = "not_found";
+    public static final String ALREADY_UPVOTED = "already_upvoted";
+
     private static final Map<String, Integer> map = new HashMap<String, Integer>() {
         {
-            put("gate_redirect", R.string.msg_error_gate_redirect);
-            put("not_found", R.string.msg_error_not_found);
+            put(GATE_REDIRECT, R.string.msg_error_gate_redirect);
+            put(NOT_FOUND, R.string.msg_error_not_found);
+            put(ALREADY_UPVOTED, R.string.msg_error_already_upvoted);
         }
     };
 

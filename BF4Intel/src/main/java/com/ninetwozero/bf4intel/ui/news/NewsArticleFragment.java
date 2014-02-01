@@ -3,7 +3,6 @@ package com.ninetwozero.bf4intel.ui.news;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -51,6 +50,8 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     private final int ID_LOADER_HOOAH = 4500;
     private final int ID_LOADER_COMMENT_UPVOTE = 4600;
     private final int ID_LOADER_COMMENT_DOWNVOTE = 4700;
+
+    private final String FLAG_SHOW_LOADING = "showLoading";
 
     private ActionMode actionMode;
     private String articleId;
@@ -102,7 +103,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         BaseSimpleRequest request;
         switch (loaderId) {
             case ID_LOADER_REFRESH_ARTICLE:
-                showLoadingState(true);
+                showLoadingState(bundle.getBoolean(FLAG_SHOW_LOADING, true));
                 request = new SimpleGetRequest(
                     UrlFactory.buildNewsArticleURL(bundle.getString(ID)),
                     BaseSimpleRequest.RequestType.FROM_NAVIGATION
@@ -166,7 +167,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     @Override
     protected void onLoadFailure(final Loader loader, final String resultMessage) {
         // TODO: Display error message in bar below ActionBar
-        showToast(WebsiteErrorMessageMap.get(resultMessage));
+        String errorKey = resultMessage;
+        if (resultMessage.contains("upvote")) {
+            errorKey = WebsiteErrorMessageMap.ALREADY_UPVOTED;
+        }
+        showToast(WebsiteErrorMessageMap.get(errorKey));
     }
 
     @Override
@@ -247,13 +252,18 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
                         return false;
                     }
 
-                    parent.setItemChecked(parent.getCheckedItemPosition(), false);
-                    parent.setItemChecked(
-                        parent.getFlatListPosition(
-                            ExpandableListView.getPackedPositionForGroup(groupPosition)
-                        ),
-                        true
+                    final int oldPosition = parent.getCheckedItemPosition();
+                    final int newPosition = parent.getFlatListPosition(
+                        ExpandableListView.getPackedPositionForGroup(groupPosition)
                     );
+
+                    if (oldPosition == newPosition) {
+                        actionMode.finish();
+                        return true;
+                    }
+
+                    parent.setItemChecked(oldPosition, false);
+                    parent.setItemChecked(newPosition, true);
                     return true;
                 }
             }
@@ -355,7 +365,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         }
 
         final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
-        final int checkedItemPosition = listView.getCheckedItemPosition();
+        final int checkedItemPosition = listView.getCheckedItemPosition()-listView.getHeaderViewsCount();
         final ArticleCommentListAdapter adapter = (ArticleCommentListAdapter) listView.getExpandableListAdapter();
         final NewsArticleComment comment = adapter.getGroup(checkedItemPosition);
 
@@ -415,9 +425,10 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
 
     private void onCommentVote(final String resultMessage) {
-        // {"type":"success","message":"Comment upvote created","data":{"id":"2955063418463155072"}}
-        // ^ or v instead of star in actionbar?
-        Log.d(TAG, "output => " + resultMessage);
+        final Bundle data = getArguments();
+        data.putBoolean(FLAG_SHOW_LOADING, false);
+
+        getLoaderManager().restartLoader(ID_LOADER_REFRESH_ARTICLE, data, this);
     }
 
 

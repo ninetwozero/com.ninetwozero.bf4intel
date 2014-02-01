@@ -181,6 +181,7 @@
   <string name="num_comments">%1$s comments</string>
   <string name="msg_error_gate_redirect">Please login to continue.</string>
   <string name="msg_error_not_found">Resource not found.</string>
+  <string name="msg_error_already_upvoted">You\'ve already hooah\'d this post!</string>
   <string name="label_share">Share</string>
   <string name="title_report">Report&#8230;</string>
   <string name="title_revoke_hooah">Revoke hooah</string>

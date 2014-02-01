@@ -104,6 +104,7 @@
         style="@style/SmallMetaText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/msg_user_said_hooah"
         />
     </LinearLayout>
   </LinearLayout>

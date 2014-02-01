@@ -123,7 +123,7 @@ public class UrlFactory {
     }
 
     public static URL buildNewsArticleCommentDownvoteURL(final String commentId) {
-        return createURL(String.format("comment/downvote/%s/", commentId));
+        return createURL(String.format("comment/removevote/%s/", commentId));
     }
 
     public static URL buildNewsArticleCommentRepliesURL(final String articleId, final int offset, final int pageId) {
