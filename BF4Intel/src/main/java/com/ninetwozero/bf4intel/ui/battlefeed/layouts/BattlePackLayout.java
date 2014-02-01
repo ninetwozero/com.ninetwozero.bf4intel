@@ -4,12 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.ui.BaseLayoutPopulator;
 import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.BattlePackItem;
 import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
@@ -26,15 +25,15 @@ import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 
 import java.util.List;
 
-public class BattlePackLayout implements EventLayout<BattlePackEvent> {
+public class BattlePackLayout extends BaseLayoutPopulator implements EventLayout<BattlePackEvent> {
     private static final int NO_SUBTITLE = -1;
     private static final String BATTLEPACK_SOLDIERS = "WARSAW_ID_M_BATTLEPACK_ITEM_ICON";
 
     @Override
     public void populateView(final Context context, final View view, final BattlePackEvent event) {
         populateDataTable(context, view, event.getItems());
-        ((TextView) view.findViewById(R.id.battlepack_type)).setText(MiscBattlePackStringMap.get(event.getName()));
-        ((ImageView) view.findViewById(R.id.battlepack_icon)).setImageResource(MiscBattlePackImageMap.get(BattlePackEvent.fetchPackType(event.getName())));
+        setText(view, R.id.battlepack_type, MiscBattlePackStringMap.get(event.getName()));
+        setImage(view, R.id.battlepack_icon, MiscBattlePackImageMap.get(BattlePackEvent.fetchPackType(event.getName())));
     }
 
     private void populateDataTable(final Context context, final View view, final List<BattlePackItem> items) {
@@ -102,12 +101,8 @@ public class BattlePackLayout implements EventLayout<BattlePackEvent> {
     }
 
     private void populateCell(final View cell, final int icon, final int name, final int parent) {
-        ((ImageView) cell.findViewById(R.id.content_icon)).setImageResource(icon);
-        ((TextView) cell.findViewById(R.id.content_name)).setText(name);
-        if (parent != NO_SUBTITLE) {
-            ((TextView) cell.findViewById(R.id.content_parent_name)).setText(parent);
-        } else {
-            ((TextView) cell.findViewById(R.id.content_parent_name)).setText("");
-        }
+        setImage(cell, R.id.content_icon, icon);
+        setText(cell, R.id.content_name, name);
+        setText(cell, R.id.content_parent_name, parent != NO_SUBTITLE ? parent : R.string.empty);
     }
 }

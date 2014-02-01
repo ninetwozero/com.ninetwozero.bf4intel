@@ -5,12 +5,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.ui.BaseLayoutPopulator;
 import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.SharedGameEventCategory;
 import com.ninetwozero.bf4intel.json.battlefeed.SharedGameEventItem;
@@ -33,7 +32,7 @@ import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 
-public class SharedGameEventLayout implements EventLayout<SharedGameEvent> {
+public class SharedGameEventLayout extends BaseLayoutPopulator implements EventLayout<SharedGameEvent> {
     @Override
     public void populateView(final Context context, final View view, final SharedGameEvent event) {
         final LayoutInflater layoutInflater = LayoutInflater.from(context);
@@ -88,8 +87,8 @@ public class SharedGameEventLayout implements EventLayout<SharedGameEvent> {
     }
 
     private void populateCell(final View cell, final int icon, final int name) {
-        ((ImageView) cell.findViewById(R.id.content_icon)).setImageResource(icon);
-        ((TextView) cell.findViewById(R.id.content_name)).setText(name);
+        setImage(cell, R.id.content_icon, icon);
+        setText(cell, R.id.content_name, name);
     }
 
     private void populateAwardCell(final View cell, final String itemKey) {

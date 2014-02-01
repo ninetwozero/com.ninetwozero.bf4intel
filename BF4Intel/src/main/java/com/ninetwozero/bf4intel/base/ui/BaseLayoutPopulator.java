@@ -34,8 +34,4 @@ public abstract class BaseLayoutPopulator {
     public static void setVisibilty(final View view, final int resourceId, final int state) {
         view.findViewById(resourceId).setVisibility(state);
     }
-
-    public static void setAlpha(final View view, final int resourceId, final float alpha) {
-        view.findViewById(resourceId).setAlpha(alpha);
-    }
 }
