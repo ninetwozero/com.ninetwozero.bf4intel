@@ -3,10 +3,6 @@ package com.ninetwozero.bf4intel.json.news;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.ninetwozero.bf4intel.json.battlereports.BattleReportOverview;
-import com.ninetwozero.bf4intel.util.IntelJsonParser;
-
-import junit.framework.Assert;
 
 import org.junit.Test;
 
@@ -14,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 

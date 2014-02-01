@@ -33,7 +33,6 @@ import com.squareup.otto.Subscribe;
 import java.util.List;
 
 public class NewsListingFragment extends BaseLoadingListFragment {
-    public static final String TAG = "NewsListingFragment";
     public static final String ID = "articleId";
     
     private static final int ID_LOADER_REFRESH_LIST = 4000;
@@ -54,7 +53,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         super.onCreateView(inflater, parent, state);
 
         final View view = layoutInflater.inflate(R.layout.fragment_news_listing, parent, false);
-        initialize(view);
+        initialize();
         return view;
     }
 
@@ -139,7 +138,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         getLoaderManager().restartLoader(ID_LOADER_HOOAH, data, this);
     }
 
-    private void initialize(final View view) {
+    private void initialize() {
         updateActionBar(getActivity(), R.string.navigationdrawer_news);
     }
 

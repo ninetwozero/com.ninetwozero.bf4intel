@@ -17,6 +17,8 @@ public class NewsUtils {
     public static final char NBSP = '\u00A0';
     public static final String BR = "<br />";
 
+    private NewsUtils() {}
+
     public static ParsedArticleContent parseContent(final String content, final boolean includeLinksInText) {
         final StringBuilder stringBuilder = new StringBuilder();
         final List<Link> links = new ArrayList<Link>();
@@ -43,7 +45,7 @@ public class NewsUtils {
 
             if (!includeLinksInText && currentBuilderSize == 0 && !text.contains("iframe")) {
                 stringBuilder.append(text);
-                if (elementCounter < (elements.size()-elementSkipCount)) {
+                if (elementCounter < (elements.size() - elementSkipCount)) {
                     stringBuilder.append(BR).append(BR).append("...");
                 }
                 break;
@@ -69,7 +71,7 @@ public class NewsUtils {
             } else {
                 url = element.attr("href");
                 linkText = element.text();
-                lastPosition = stringBuilder.indexOf(linkText)+linkText.length();
+                lastPosition = stringBuilder.indexOf(linkText) + linkText.length();
 
                 if (includeLinksInText && lastPosition < stringBuilder.length()) {
                     stringBuilder.insert(lastPosition, " [" + counter + "]");
