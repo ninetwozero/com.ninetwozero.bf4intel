@@ -38,6 +38,7 @@
   <string name="soldier_left_until_rankup">%1$s until rank up</string>
   <string name="activated_new_game">Activated new game/expansion:</string>
   <string name="logged_in_as">Logged in as</string>
+  <string name="not_logged_in">Not logged in</string>
   <string name="assignment_goals_completed">%1$s/%2$s goals completed</string>
   <string name="generic_x_of_y">%1$s/%2$s</string>
 

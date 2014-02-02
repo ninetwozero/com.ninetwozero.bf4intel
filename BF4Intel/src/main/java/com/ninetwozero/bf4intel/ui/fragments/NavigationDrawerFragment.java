@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.datatypes.ListRow;
 import com.ninetwozero.bf4intel.datatypes.ListRowType;
@@ -39,7 +40,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private static final String STATE_SELECTED_CHILD = "selected_navigation_drawer_child_position";
     private static final String STATE_SELECTION_IS_GROUP = "selected_navigation_drawer_is_group";
 
-    private static final int DEFAULT_GROUP_POSITION = 10;
+    private static final int DEFAULT_GROUP_POSITION = 1;
 
     private static final int INTENT_SOLDIER_STATISTICS = 1;
     private static final int INTENT_ASSIGNMENTS = 2;
@@ -118,9 +119,17 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void setupRegularViews(final View view) {
-        // TODO: Needs to build username from session storage when implemented (see BattleChat)
         final View wrapper = view.findViewById(R.id.wrap_login_name);
-        ((TextView) wrapper.findViewById(R.id.login_name)).setText("NINETWOZERO");
+        final TextView loginStatusView = (TextView) wrapper.findViewById(R.id.string_login_status);
+        final TextView loginUsernameView = (TextView) wrapper.findViewById(R.id.login_name);
+
+        if (SessionStore.isLoggedIn()) {
+            loginStatusView.setText(R.string.logged_in_as);
+            loginUsernameView.setText(SessionStore.getUsername());
+        } else {
+            loginStatusView.setText(R.string.not_logged_in);
+            loginUsernameView.setText(R.string.empty);
+        }
     }
 
 
@@ -179,7 +188,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private List<ListRow> getItemsForMenu() {
         final List<ListRow> items = new ArrayList<ListRow>();
 
-        items.addAll(getRowsForSoldier());
+        if (SessionStore.isLoggedIn()) {
+            items.addAll(getRowsForSoldier());
+        }
         items.addAll(getRowsForSocial());
         return items;
     }
@@ -214,21 +225,14 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
         final List<ListRow> items = new ArrayList<ListRow>();
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_social)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_home), data, FragmentFactory.Type.BATTLE_FEED));
+        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_home), data, fetchTypeForHome()));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_news), data, FragmentFactory.Type.NEWS_LISTING));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, BATTLE_CHAT, data, ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_notifications), data, FragmentFactory.Type.NOTIFICATION));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_servers)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_forums), data, getRowsForForum()));
         return items;
     }
 
-    private List<ListRow> getRowsForForum() {
-        final Bundle data = new Bundle();
-        final List<ListRow> items = new ArrayList<ListRow>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, getString(R.string.navigationdrawer_view_forums), data, FragmentFactory.Type.FORUM_LISTING));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR_CHILD, getString(R.string.navigationdrawer_saved_threads)));
-        return items;
+    private FragmentFactory.Type fetchTypeForHome() {
+        return SessionStore.isLoggedIn() ? FragmentFactory.Type.BATTLE_FEED : FragmentFactory.Type.HOME;
     }
 
     private Intent intentToStart(final int intentID) {

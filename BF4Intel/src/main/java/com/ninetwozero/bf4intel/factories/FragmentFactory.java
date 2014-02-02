@@ -25,6 +25,8 @@ public class FragmentFactory {
 
     public static Fragment get(final Type type, final Bundle data) {
         switch (type) {
+            case HOME:
+                return HomeFragment.newInstance(data);
             case ACCOUNT_PROFILE:
                 return AccountProfileFragment.newInstance(data);
             case BATTLE_FEED:
@@ -87,6 +89,8 @@ public class FragmentFactory {
     }
 
     public enum Type {
+        HOME,
+
         ACCOUNT_PROFILE,
 
         SOLDIER_OVERVIEW,
