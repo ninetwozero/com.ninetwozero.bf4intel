@@ -16,7 +16,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-      android:textColor="@color/blue"
+      android:textColor="@color/darker_blue"
       android:maxLines="1"
       />
 
@@ -25,7 +25,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo.Small"
-      android:textColor="@color/blue"
+      android:textColor="@color/darker_blue"
       android:textAllCaps="true"
       android:layout_below="@id/server_name"
       />
@@ -48,7 +48,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo.Small"
-      android:textColor="@color/blue"
+      android:textColor="@color/darker_blue"
       android:textAllCaps="true"
       android:layout_below="@id/server_name"
       android:layout_toRightOf="@id/string_map_game_separator"

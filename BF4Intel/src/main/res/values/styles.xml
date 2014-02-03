@@ -109,7 +109,7 @@
     <item name="android:layout_alignParentRight">true</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
     <item name="android:textAllCaps">true</item>
-    <item name="android:textColor">@color/blue</item>
+    <item name="android:textColor">@color/darker_blue</item>
     <item name="android:background">@color/paleblue</item>
     <item name="android:paddingTop">@dimen/spacing_xs</item>
     <item name="android:paddingRight">@dimen/spacing_s</item>
@@ -139,7 +139,7 @@
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
 
-    <item name="android:textColor">@color/blue</item>
+    <item name="android:textColor">@color/darker_blue</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Medium</item>
     <item name="android:layout_marginLeft">@dimen/spacing_m</item>
   </style>
@@ -158,6 +158,28 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:paddingRight">@dimen/spacing_s</item>
     <item name="android:textColor">@color/black</item>
+  </style>
+
+  <style name="LoginFormContainer">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_centerInParent">true</item>
+  </style>
+
+  <!-- Buttons -->
+  <style name="BaseButton">
+    <item name="android:layout_width">@dimen/standard_button_width</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">18sp</item>
+    <item name="android:textColor">@android:color/white</item>
+  </style>
+
+  <style name="BlueButton" parent="BaseButton">
+    <item name="android:background">@drawable/blue_button_background</item>
+  </style>
+
+  <style name="RedButton" parent="BaseButton">
+    <item name="android:background">@drawable/red_button_background</item>
   </style>
 
   <!--LIST ITEM TEXT-->

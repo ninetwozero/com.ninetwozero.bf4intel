@@ -22,11 +22,13 @@
   <integer name="num_cols">1</integer>
 
   <!-- Spacing -->
+  <dimen name="spacing_xxs">1dp</dimen>
   <dimen name="spacing_xs">2dp</dimen>
   <dimen name="spacing_s">4dp</dimen>
   <dimen name="spacing_m">8dp</dimen>
   <dimen name="spacing_l">16dp</dimen>
   <dimen name="spacing_xl">32dp</dimen>
+  <dimen name="spacing_xxl">64dp</dimen>
 
 
   <dimen name="activity_horizontal_margin">@dimen/spacing_l</dimen>
@@ -76,4 +78,14 @@
   <dimen name="send_button_size">48dp</dimen>
   <dimen name="expandable_listview_indicator_size">24dp</dimen>
   <dimen name="news_link_item_padding">2px</dimen>
+  <dimen name="standard_button_width">240dp</dimen>
+
+  <!-- Home -->
+  <dimen name="home_logo_size">128dp</dimen>
+  <dimen name="home_logo_margin_top">@dimen/spacing_xl</dimen>
+
+  <!-- Login related -->
+  <dimen name="error_message_size">320dp</dimen>
+  <dimen name="login_form_element_width">240dp</dimen>
+  <dimen name="action_item_size">32dp</dimen>
 </resources>

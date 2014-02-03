@@ -17,7 +17,7 @@
       android:layout_marginTop="@dimen/spacing_l"
       android:layout_marginBottom="@dimen/spacing_l"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:textColor="@color/blue"
+      android:textColor="@color/darker_blue"
       android:layout_centerHorizontal="true"/>
 
     <TextView

@@ -25,7 +25,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo"
-      android:textColor="@color/blue"
+      android:textColor="@color/darker_blue"
       android:layout_below="@id/rank_image"
       android:layout_centerHorizontal="true"/>
 

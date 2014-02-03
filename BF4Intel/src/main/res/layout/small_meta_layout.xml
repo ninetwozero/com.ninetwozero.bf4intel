@@ -32,7 +32,7 @@
     <TextView
       style="@style/SmallMetaText"
       android:id="@+id/username"
-      android:textColor="@color/blue"
+      android:textColor="@color/darker_blue"
       />
   </LinearLayout>
 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.ninetwozero.bf4intel.ui.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
+import com.ninetwozero.bf4intel.ui.login.LoginActivity;
 
 public class HomeFragment extends BaseFragment {
     public static HomeFragment newInstance(final Bundle data) {
@@ -32,6 +35,14 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initialize(final View view, final Bundle state) {
-
+        view.findViewById(R.id.button_select_account).setOnClickListener(
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Activity activity = getActivity();
+                    activity.startActivityForResult(new Intent(activity, LoginActivity.class), 0);
+                }
+            }
+        );
     }
 }

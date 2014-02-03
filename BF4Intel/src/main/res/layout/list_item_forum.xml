@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
-    android:textColor="@color/blue"
+    android:textColor="@color/darker_blue"
     />
 
   <LinearLayout

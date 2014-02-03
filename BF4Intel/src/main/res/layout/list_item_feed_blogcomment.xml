@@ -16,7 +16,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-      android:textColor="@color/blue"
+      android:textColor="@color/darker_blue"
       android:maxLines="1"
       />
     <TextView
