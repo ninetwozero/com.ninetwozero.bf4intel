@@ -1,8 +1,10 @@
 package com.ninetwozero.bf4intel.ui.activities;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -17,11 +19,14 @@ import android.widget.SearchView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
+import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
+import com.ninetwozero.bf4intel.ui.login.LoginActivity;
 
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     private static final String STATE_DRAWER_OPENED = "isDrawerOpened";
+    private static final int CODE_LOGIN_ACTIVITY = 0;
 
     private boolean isRecreated = false;
     private boolean userLearnedDrawer;
@@ -44,7 +49,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main, menu);
 
         final MenuItem searchMenuItem = menu.findItem(R.id.ab_action_search);
         final MenuItem refreshMenuItem = menu.findItem(R.id.ab_action_refresh);
@@ -127,6 +132,23 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
             toggleNavigationDrawer(false);
         }
         isRecreated = false;
+    }
+
+    @Override
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == LoginActivity.REQUEST_LOGIN && resultCode == Activity.RESULT_OK) {
+            final Bundle bundle = data.getExtras();
+            if (bundle == null) {
+                showToast("An error occurred. Please try again.");
+                finish();
+                return;
+            }
+
+            /* TODO: Do stuff with bundle */
+            showToast("Yay, we now have " + bundle.getStringArrayList(Keys.Soldier.ID).size() + " soldiers");
+        }
     }
 
     private void setupNavigationDrawer() {

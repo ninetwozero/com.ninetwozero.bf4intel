@@ -40,7 +40,10 @@ public class HomeFragment extends BaseFragment {
                 @Override
                 public void onClick(View v) {
                     final Activity activity = getActivity();
-                    activity.startActivityForResult(new Intent(activity, LoginActivity.class), 0);
+                    activity.startActivityForResult(
+                        new Intent(activity, LoginActivity.class),
+                        LoginActivity.REQUEST_LOGIN
+                    );
                 }
             }
         );

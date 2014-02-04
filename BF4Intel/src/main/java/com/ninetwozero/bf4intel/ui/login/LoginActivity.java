@@ -1,32 +1,45 @@
 package com.ninetwozero.bf4intel.ui.login;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.content.Loader;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
-import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
+import com.ninetwozero.bf4intel.base.ui.BaseLoadingIntelActivity;
+import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.json.Profile;
+import com.ninetwozero.bf4intel.json.login.SoldierListingRequest;
+import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
+import com.ninetwozero.bf4intel.json.soldieroverview.PersonaInfo;
+import com.ninetwozero.bf4intel.network.IntelLoader;
+import com.ninetwozero.bf4intel.network.SimpleGetRequest;
+import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.activities.MainActivity;
+import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
+import com.ninetwozero.bf4intel.utils.Result;
 
-/*
-TODO:
-Revamp login look&feel
-Provide error messages inline (not toast)
-*/
+import java.util.ArrayList;
 
-public class LoginActivity extends BaseIntelActivity {
+public class LoginActivity extends BaseLoadingIntelActivity {
+    public static final int REQUEST_LOGIN = 0;
+
     private static final String RESET_PASSWORD_LINK = "https://signin.ea.com/p/web/resetPassword";
+    private static final int ID_LOADER_GET_SOLDIERS = 0;
 
     private View loginFormView;
     private View loginStatusView;
@@ -54,6 +67,68 @@ public class LoginActivity extends BaseIntelActivity {
         BusProvider.getInstance().unregister(this);
     }
 
+    @Override
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == SearchActivity.REQUEST_SEARCH && resultCode == Activity.RESULT_OK) {
+            final Profile profile = (Profile) data.getSerializableExtra(SearchActivity.RESULT_SEARCH_RESULT);
+            getSupportLoaderManager().restartLoader(ID_LOADER_GET_SOLDIERS, buildBundleForProfile(profile), this);
+        }
+    }
+
+    @Override
+    public Loader<Result> onCreateLoader(final int loaderId, final Bundle bundle) {
+        if (loaderId == ID_LOADER_GET_SOLDIERS) {
+            showLoadingOverlay(true);
+            return new IntelLoader(
+                this,
+                new SimpleGetRequest(
+                    UrlFactory.buildSoldierListURL(bundle.getString(Keys.Profile.ID))
+                )
+            );
+        }
+        throw new IllegalStateException("Unknown loader ID: " + loaderId);
+    }
+
+    @Override
+    protected void onLoadSuccess(final Loader<Result> resultLoader, final String resultMessage) {
+        if (resultLoader.getId() == ID_LOADER_GET_SOLDIERS) {
+            final JsonObject baseObject = extractFromJson(resultMessage);
+            final SoldierListingRequest request = gson.fromJson(baseObject, SoldierListingRequest.class);
+
+            final Bundle data = new Bundle();
+            data.putStringArrayList(Keys.Soldier.ID, new ArrayList<String>());
+            data.putStringArrayList(Keys.Soldier.NAME, new ArrayList<String>());
+            data.putStringArrayList(Keys.Soldier.PLATFORM, new ArrayList<String>());
+            data.putStringArrayList(Keys.Soldier.AVATAR, new ArrayList<String>());
+
+            for (SummarizedSoldierStats stats : request.getSoldiers()) {
+                final PersonaInfo persona = stats.getPersona();
+
+                data.getStringArrayList(Keys.Soldier.ID).add(persona.getPersonaId());
+                data.getStringArrayList(Keys.Soldier.NAME).add(persona.getPersonaName());
+                data.getIntegerArrayList(Keys.Soldier.PLATFORM).add(persona.getPlatform());
+                data.getStringArrayList(Keys.Soldier.AVATAR).add(persona.getPicture());
+            }
+
+            /* TODO: Store data somewhere? */
+
+            setResult(Activity.RESULT_OK, new Intent().putExtras(data));
+            finish();
+        }
+        showLoadingOverlay(false);
+    }
+
+
+    private Bundle buildBundleForProfile(final Profile profile) {
+        final Bundle bundle = new Bundle();
+        bundle.putString(Keys.Profile.ID, profile.getId());
+        bundle.putString(Keys.Profile.USERNAME, profile.getUsername());
+        bundle.putString(Keys.Profile.GRAVATAR_HASH, profile.getGravatarHash());
+        return bundle;
+    }
+
     private void initialize() {
         setupFromPreExistingData();
         setupLayout();
@@ -71,10 +146,13 @@ public class LoginActivity extends BaseIntelActivity {
     private void setupLayout() {
         setupForm();
         setupMenu();
+        setupButton();
     }
 
     private void setupForm() {
         alertText = (TextView) findViewById(R.id.login_alert);
+        loginStatusView = findViewById(R.id.login_status);
+        loginStatusMessageView = (TextView) findViewById(R.id.login_status_message);
     }
 
     private void setupMenu() {
@@ -111,9 +189,34 @@ public class LoginActivity extends BaseIntelActivity {
         );
     }
 
+    private void setupButton() {
+        findViewById(R.id.button_search_account).setOnClickListener(
+            new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final EditText searchField = (EditText) findViewById(R.id.search_term);
+                    final String searchTerm = searchField.getText().toString();
+                    if ("".equals(searchTerm) || searchTerm.length() < 3) {
+                        searchField.setError(getString(R.string.msg_search_error_length));
+                        return;
+                    }
+
+                    startActivityForResult(
+                        new Intent(LoginActivity.this, SearchActivity.class).putExtra(
+                            SearchActivity.QUERY,
+                            searchTerm
+                        ),
+                        SearchActivity.REQUEST_SEARCH
+                    );
+                }
+            }
+        );
+    }
+
     private void displayNetworkNotice(final boolean isConnected) {
         alertText.setVisibility(isConnected ? View.GONE : View.VISIBLE);
-        findViewById(R.id.sign_in_button).setEnabled(isConnected);
+        //findViewById(R.id.sign_in_button).setEnabled(isConnected);
+        findViewById(R.id.button_search_account).setEnabled(isConnected);
     }
 
     private void displayErrorMessage(final String error) {
@@ -131,8 +234,7 @@ public class LoginActivity extends BaseIntelActivity {
         alertText.setText("");
     }
 
-    private void showProgress(final boolean show) {
+    private void showLoadingOverlay(final boolean show) {
         loginStatusView.setVisibility(show ? View.VISIBLE : View.GONE);
-        loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
     }
 }

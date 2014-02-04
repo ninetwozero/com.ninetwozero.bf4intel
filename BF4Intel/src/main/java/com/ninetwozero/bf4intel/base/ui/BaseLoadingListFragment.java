@@ -89,7 +89,9 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         }
 
         toggleFullScreenProgressBar(activity, isLoading);
-        ((BaseIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+        if (activity instanceof BaseLoadingIntelActivity) {
+            ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+        }
     }
 
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {

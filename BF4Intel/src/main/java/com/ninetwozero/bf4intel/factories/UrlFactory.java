@@ -17,6 +17,10 @@ public class UrlFactory {
         return String.format(GRAVATAR_URL, hash, DEFAULT_GRAVATAR);
     }
 
+    public static URL buildSoldierListURL(final String soldierId) {
+        return createURL(String.format("user/overviewBoxStats/%s/", soldierId));
+    }
+
     public static URL buildSoldierOverviewURL(final int soldierId, final int platformId) {
         return createURL(String.format("warsawoverviewpopulate/%d/%d/", soldierId, platformId));
     }

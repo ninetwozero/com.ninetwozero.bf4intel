@@ -18,8 +18,8 @@ import java.util.List;
 
 public class ProfileSearchAdapter extends BaseIntelAdapter<ProfileSearchResult> {
 
-    public ProfileSearchAdapter(List<ProfileSearchResult> itemsList, Context context) {
-        super(itemsList, context);
+    public ProfileSearchAdapter(final Context context, final List<ProfileSearchResult> itemsList) {
+        super(context, itemsList);
     }
 
     @Override
