@@ -9,7 +9,10 @@ public class PersonaInfo {
     @SerializedName("personaId")
     private String personaId;
 
-    @SerializedName("tag")
+    @SerializedName("personaName")
+    private String personaName;
+
+    @SerializedName("clanTag")
     private String tag;
 
     @SerializedName("picture")
@@ -27,6 +30,10 @@ public class PersonaInfo {
 
     public String getPersonaId() {
         return personaId;
+    }
+
+    public String getPersonaName() {
+        return personaName;
     }
 
     public String getTag() {

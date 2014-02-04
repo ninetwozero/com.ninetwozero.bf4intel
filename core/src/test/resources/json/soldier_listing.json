@@ -1,0 +1,241 @@
+{
+  "type": "success",
+  "message": "OK",
+  "data": {
+    "soldiersBox": [
+      {
+        "activeEmblem": null,
+        "timePlayed": 110375,
+        "persona": {
+          "picture": "ru-recon-berezka",
+          "userId": "2832658801548551060",
+          "user": null,
+          "updatedAt": 1383241186,
+          "firstPartyId": "",
+          "personaId": "177958806",
+          "personaName": "NINETWOZERO",
+          "gamesLegacy": "0",
+          "namespace": "xbox",
+          "gamesJson": "{\"2\":\"2050\",\"64\":\"0\"}",
+          "games": {
+            "64": "0",
+            "2": "2050"
+          },
+          "clanTag": "N20"
+        },
+        "kills": 627,
+        "deaths": 847,
+        "npStatus": null,
+        "rsNumWins": 0,
+        "rsNumLosses": 0,
+        "rank": 20,
+        "platform": 2,
+        "game": 2048,
+        "score": 579588,
+        "numLosses": 50,
+        "isPersonaBanned": false,
+        "skill": 174,
+        "dogtagsForPersona": {
+          "advancedDogTag": {
+            "statValue": null,
+            "index": 0,
+            "isAdvanced": true,
+            "backgroundInverted": false,
+            "nameSID": "WARSAW_ID_DRBLANK_NAME",
+            "image": "advanced0",
+            "statSID": null,
+            "imageConfig": {
+              "category": "dogtags",
+              "slug": "advanced0",
+              "texture": "UI\/Art\/Persistence\/DogTag\/drBlank",
+              "versions": {
+                "mobile": {
+                  "path": "warsaw\/gamedata\/dogtags\/mobile\/advanced0.png",
+                  "isSprite": false,
+                  "height": 64,
+                  "name": "mobile",
+                  "width": 128
+                },
+                "xlarge": {
+                  "path": "warsaw\/gamedata\/dogtags\/xlarge\/advanced0.png",
+                  "isSprite": false,
+                  "height": 128,
+                  "name": "xlarge",
+                  "width": 256
+                },
+                "large": {
+                  "path": "warsaw\/gamedata\/dogtags\/large\/advanced0.png",
+                  "isSprite": false,
+                  "height": 92,
+                  "name": "large",
+                  "width": 184
+                },
+                "mediumns": {
+                  "path": "warsaw\/gamedata\/dogtags\/mediumns\/advanced0.png",
+                  "isSprite": false,
+                  "height": 64,
+                  "name": "mediumns",
+                  "width": 128
+                },
+                "small": {
+                  "path": "warsaw\/gamedata\/dogtags\/small.png",
+                  "isSprite": true,
+                  "height": 28,
+                  "name": "small",
+                  "width": 56
+                },
+                "smallns": {
+                  "path": "warsaw\/gamedata\/dogtags\/smallns\/advanced0.png",
+                  "isSprite": false,
+                  "height": 28,
+                  "name": "smallns",
+                  "width": 56
+                }
+              }
+            }
+          },
+          "basicDogTag": {
+            "statValue": null,
+            "index": 123,
+            "isAdvanced": false,
+            "backgroundInverted": false,
+            "nameSID": "WARSAW_ID_DLC123_NAME",
+            "image": "basic123",
+            "statSID": null,
+            "imageConfig": {
+              "category": "dogtags",
+              "slug": "basic123",
+              "texture": "UI\/Art\/Persistence\/DogTag\/dlC123",
+              "versions": {
+                "mobile": {
+                  "path": "warsaw\/gamedata\/dogtags\/mobile\/basic123.png",
+                  "isSprite": false,
+                  "height": 64,
+                  "name": "mobile",
+                  "width": 128
+                },
+                "xlarge": {
+                  "path": "warsaw\/gamedata\/dogtags\/xlarge\/basic123.png",
+                  "isSprite": false,
+                  "height": 128,
+                  "name": "xlarge",
+                  "width": 256
+                },
+                "large": {
+                  "path": "warsaw\/gamedata\/dogtags\/large\/basic123.png",
+                  "isSprite": false,
+                  "height": 92,
+                  "name": "large",
+                  "width": 184
+                },
+                "mediumns": {
+                  "path": "warsaw\/gamedata\/dogtags\/mediumns\/basic123.png",
+                  "isSprite": false,
+                  "height": 64,
+                  "name": "mediumns",
+                  "width": 128
+                },
+                "small": {
+                  "path": "warsaw\/gamedata\/dogtags\/small.png",
+                  "isSprite": true,
+                  "height": 28,
+                  "name": "small",
+                  "width": 56
+                },
+                "smallns": {
+                  "path": "warsaw\/gamedata\/dogtags\/smallns\/basic123.png",
+                  "isSprite": false,
+                  "height": 28,
+                  "name": "smallns",
+                  "width": 56
+                }
+              }
+            }
+          }
+        },
+        "numWins": 42
+      },
+      {
+        "activeEmblem": null,
+        "timePlayed": 245320,
+        "persona": {
+          "picture": "bf3-us-recon",
+          "userId": "2832658801548551060",
+          "user": null,
+          "updatedAt": 1383241186,
+          "firstPartyId": "",
+          "personaId": "177958806",
+          "personaName": "NINETWOZERO",
+          "gamesLegacy": "0",
+          "namespace": "xbox",
+          "gamesJson": "{\"2\":\"2050\",\"64\":\"0\"}",
+          "games": {
+            "64": "0",
+            "2": "2050"
+          },
+          "clanTag": "N20"
+        },
+        "kills": 1768,
+        "deaths": 2435,
+        "npStatus": null,
+        "rsNumWins": 0,
+        "rsNumLosses": 0,
+        "rank": 31,
+        "platform": 2,
+        "game": 2,
+        "score": 839613,
+        "numLosses": 172,
+        "isPersonaBanned": false,
+        "skill": 0,
+        "dogtagsForPersona": {
+          "advancedDogTag": {
+            "statValue": null,
+            "index": 231,
+            "isAdvanced": true,
+            "backgroundInverted": false,
+            "nameSID": "BF3_ID_XP1_DT_N_013",
+            "image": "xp1_dtb013",
+            "statSID": "",
+            "imageConfig": null
+          },
+          "basicDogTag": {
+            "statValue": null,
+            "index": 102,
+            "isAdvanced": false,
+            "backgroundInverted": false,
+            "nameSID": "BF3_ID_DT_N_DTB107_SCAR-HCQB",
+            "image": "dtb107",
+            "statSID": null,
+            "imageConfig": null
+          }
+        },
+        "numWins": 123
+      }
+    ],
+    "userGames": {
+      "2048": [
+        2
+      ],
+      "2": [
+        2
+      ],
+      "4": [
+        1
+      ]
+    },
+    "userGameExpansions": {
+      "512": [
+        2
+      ],
+      "65536": [
+        0
+      ],
+      "262144": [
+        2
+      ],
+      "1048576": [
+        2
+      ]
+    }
+  }
+}
