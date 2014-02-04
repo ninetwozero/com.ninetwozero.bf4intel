@@ -31,7 +31,7 @@
       android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
       android:name=".ui.login.LoginActivity"
       android:label="@string/label_login"
-      android:launchMode="singleTask"
+      android:launchMode="singleTop"
       android:windowSoftInputMode="adjustPan|stateUnchanged"
       android:parentActivityName=".ui.activities.MainActivity"
       >

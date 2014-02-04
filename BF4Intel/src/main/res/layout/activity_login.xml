@@ -48,6 +48,7 @@
       android:layout_marginBottom="@dimen/spacing_l"
       />
 
+    <!--
     <EditText
       android:id="@+id/email"
       android:layout_width="@dimen/login_form_element_width"
@@ -79,7 +80,28 @@
       android:paddingLeft="@dimen/spacing_xl"
       android:paddingRight="@dimen/spacing_xl"
       android:layout_marginTop="@dimen/spacing_l"
-      android:text="@string/action_sign_in_short"/>
+      android:text="@string/action_sign_in_short"
+      />
+   -->
+    <EditText
+      android:id="@+id/search_term"
+      android:layout_width="@dimen/login_form_element_width"
+      android:layout_height="wrap_content"
+      android:hint="@string/hint_search"
+      android:maxLines="1"
+      android:singleLine="true"
+      />
+
+    <Button
+      style="@style/RedButton"
+      android:id="@+id/button_search_account"
+      android:layout_width="@dimen/login_form_element_width"
+      android:layout_gravity="center_horizontal"
+      android:paddingLeft="@dimen/spacing_xl"
+      android:paddingRight="@dimen/spacing_xl"
+      android:layout_marginTop="@dimen/spacing_l"
+      android:text="@string/action_search_short"
+      />
   </LinearLayout>
 
   <!-- Login progress -->
@@ -92,7 +114,9 @@
     android:layout_marginTop="50dp"
     android:gravity="center"
     android:orientation="vertical"
-    android:visibility="gone">
+    android:visibility="gone"
+    android:background="#FFF"
+    >
 
     <ProgressBar
       style="?android:attr/progressBarStyleLarge"

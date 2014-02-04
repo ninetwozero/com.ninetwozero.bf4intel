@@ -219,4 +219,6 @@
   <string name="menu_about">About</string>
   <string name="menu_reset_password">Reset password&#8230;</string>
   <string name="cdesc_action_item">Action item</string>
+  <string name="action_search_short">Search</string>
+  <string name="msg_search_error_length">Min length: 3 characters</string>
 </resources>
