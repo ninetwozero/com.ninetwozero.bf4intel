@@ -16,7 +16,7 @@
     android:alpha="0.3"
     android:layout_marginTop="@dimen/home_logo_margin_top"
     android:layout_marginBottom="@dimen/spacing_l"
-  />
+    />
 
   <TextView
     android:id="@+id/home_title"
@@ -31,30 +31,83 @@
     android:layout_marginBottom="@dimen/spacing_l"
     />
 
-  <TextView
-    android:id="@+id/home_maintext"
-    android:layout_width="wrap_content"
+  <LinearLayout
+    android:id="@+id/wrap_guest"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="@string/home_main_information"
-    android:textAppearance="@android:style/TextAppearance.Holo"
-    android:gravity="center"
-    android:textColor="@color/darkgrey"
     android:layout_below="@id/home_title"
     android:layout_centerHorizontal="true"
     android:layout_alignLeft="@id/home_title"
     android:layout_alignRight="@id/home_title"
-    android:layout_marginBottom="@dimen/spacing_l"
-    android:paddingLeft="@dimen/spacing_xxs"
-    android:paddingRight="@dimen/spacing_xxs"
-    />
+    android:orientation="vertical"
+    android:gravity="center"
+    >
 
-  <Button
-    style="@style/BlueButton"
-    android:id="@+id/button_select_account"
-    android:text="@string/home_select_account"
-    android:layout_below="@id/home_maintext"
+    <TextView
+      android:id="@+id/home_maintext"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/home_main_information_guest"
+      android:textAppearance="@android:style/TextAppearance.Holo"
+      android:gravity="center"
+      android:textColor="@color/darkgrey"
+      android:layout_marginBottom="@dimen/spacing_l"
+      android:paddingLeft="@dimen/spacing_xxs"
+      android:paddingRight="@dimen/spacing_xxs"
+      />
+
+    <Button
+      style="@style/BlueButton"
+      android:id="@+id/button_select_account"
+      android:text="@string/home_select_account"
+      />
+  </LinearLayout>
+
+  <!-- WIP: Add view that shows who we are tracking when we're doing it -->
+
+  <LinearLayout
+    android:id="@+id/wrap_tracker"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/home_title"
     android:layout_centerHorizontal="true"
     android:layout_alignLeft="@id/home_title"
     android:layout_alignRight="@id/home_title"
-    />
+    android:orientation="vertical"
+    android:gravity="center"
+    android:visibility="gone"
+    >
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/home_main_information_tracker"
+      android:textAppearance="@android:style/TextAppearance.Holo"
+      android:gravity="center"
+      android:textColor="@color/darkgrey"
+      android:layout_marginBottom="@dimen/spacing_l"
+      android:paddingLeft="@dimen/spacing_xxs"
+      android:paddingRight="@dimen/spacing_xxs"
+      />
+    <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      >
+
+      <ImageView
+        android:id="@+id/selected_user_gravatar"
+        android:layout_width="@dimen/avatar_size_m"
+        android:layout_height="@dimen/avatar_size_m"
+        />
+
+      <TextView
+        android:id="@+id/selected_user_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ninetwozero"
+        android:layout_toRightOf="@id/selected_user_gravatar"
+        />
+    </RelativeLayout>
+
+  </LinearLayout>
+
 </RelativeLayout>

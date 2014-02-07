@@ -5,10 +5,8 @@ import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,6 +16,7 @@ import android.view.View;
 import android.widget.SearchView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
@@ -26,7 +25,6 @@ import com.ninetwozero.bf4intel.ui.login.LoginActivity;
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     private static final String STATE_DRAWER_OPENED = "isDrawerOpened";
-    private static final int CODE_LOGIN_ACTIVITY = 0;
 
     private boolean isRecreated = false;
     private boolean userLearnedDrawer;
@@ -124,7 +122,6 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         return drawerLayout != null && drawerLayout.isDrawerOpen(fragmentContainerView);
     }
 
-
     @Override
     public void onNavigationDrawerItemSelected(final int position, final String title) {
         this.title = title == null? this.title : title.toUpperCase();
@@ -138,16 +135,25 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == LoginActivity.REQUEST_LOGIN && resultCode == Activity.RESULT_OK) {
+        if (requestCode == LoginActivity.REQUEST_PROFILE && resultCode == Activity.RESULT_OK) {
             final Bundle bundle = data.getExtras();
             if (bundle == null) {
-                showToast("An error occurred. Please try again.");
-                finish();
                 return;
             }
 
-            /* TODO: Do stuff with bundle */
-            showToast("Yay, we now have " + bundle.getStringArrayList(Keys.Soldier.ID).size() + " soldiers");
+            final String userId = bundle.getString(Keys.Profile.ID);
+            final String username = bundle.getString(Keys.Profile.USERNAME);
+            final String gravatarHash = bundle.getString(Keys.Profile.GRAVATAR_HASH);
+
+            sharedPreferences
+                .edit()
+                .putString(Keys.Profile.ID, userId)
+                .putString(Keys.Profile.USERNAME, username)
+                .putString(Keys.Profile.GRAVATAR_HASH, gravatarHash)
+                .commit();
+
+            SessionStore.load(null, userId, username);
+            navigationDrawer.reload();
         }
     }
 
@@ -156,8 +162,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     private void setupActionBarToggle() {
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        userLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
+        userLearnedDrawer = sharedPreferences.getBoolean(PREF_USER_LEARNED_DRAWER, false);
 
         fragmentContainerView = findViewById(R.id.navigation_drawer);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -186,9 +191,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
                 if (!userLearnedDrawer) {
                     userLearnedDrawer = true;
-                    PreferenceManager.getDefaultSharedPreferences(
-                        getApplicationContext()
-                    ).edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
+                    sharedPreferences.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
                 }
             }
         };

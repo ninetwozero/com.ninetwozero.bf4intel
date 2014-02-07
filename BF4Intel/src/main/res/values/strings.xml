@@ -38,6 +38,7 @@
   <string name="soldier_left_until_rankup">%1$s until rank up</string>
   <string name="activated_new_game">Activated new game/expansion:</string>
   <string name="logged_in_as">Logged in as</string>
+  <string name="tracking_user">Tracking user</string>
   <string name="not_logged_in">Not logged in</string>
   <string name="assignment_goals_completed">%1$s/%2$s goals completed</string>
   <string name="generic_x_of_y">%1$s/%2$s</string>
@@ -205,7 +206,8 @@
   <string name="label_country">COUNTRY:</string>
   <string name="cdesc_logo">Logo</string>
   <string name="title_home">Welcome to BF4 Intel!</string>
-  <string name="home_main_information">Looks like you haven\'t set the app up yet. Let\'s fix that!</string>
+  <string name="home_main_information_guest">Looks like you haven\'t set the app up yet. Let\'s fix that!</string>
+  <string name="home_main_information_tracker">Currently tracking</string>
   <string name="home_select_account">Select account</string>
 
   <!-- Login related stuff -->

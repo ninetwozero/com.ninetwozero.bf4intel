@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.resources;
 
 public class Keys {
     public static final String CHECKSUM = "post-check-sum";
+    public static final String SESSION_ID = "sessionId";
 
     public static class Soldier {
         public static final String ID = "soldierId";

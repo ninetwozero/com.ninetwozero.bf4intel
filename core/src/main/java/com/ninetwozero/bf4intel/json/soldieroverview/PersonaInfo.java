@@ -3,11 +3,8 @@ package com.ninetwozero.bf4intel.json.soldieroverview;
 import com.google.gson.annotations.SerializedName;
 
 public class PersonaInfo {
-    @SerializedName("userId")
-    private String userId;
-
     @SerializedName("personaId")
-    private String personaId;
+    private String _id;
 
     @SerializedName("personaName")
     private String personaName;
@@ -24,12 +21,16 @@ public class PersonaInfo {
     @SerializedName("game")
     private int game;
 
+    @SerializedName("userId")
+    private String userId;
+
+
     public String getUserId() {
         return userId;
     }
 
     public String getPersonaId() {
-        return personaId;
+        return _id;
     }
 
     public String getPersonaName() {

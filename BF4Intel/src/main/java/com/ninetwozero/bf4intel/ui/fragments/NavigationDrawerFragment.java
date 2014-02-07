@@ -40,7 +40,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private static final String STATE_SELECTED_CHILD = "selected_navigation_drawer_child_position";
     private static final String STATE_SELECTION_IS_GROUP = "selected_navigation_drawer_is_group";
 
-    private static final int DEFAULT_GROUP_POSITION = 1;
+    private static final int DEFAULT_GROUP_POSITION_GUEST = 1;
+    private static final int DEFAULT_GROUP_POSITION_TRACKING = 9;
+    private static final int DEFAULT_GROUP_POSITION = 3;
 
     private static final int INTENT_SOLDIER_STATISTICS = 1;
     private static final int INTENT_ASSIGNMENTS = 2;
@@ -112,9 +114,19 @@ public class NavigationDrawerFragment extends BaseListFragment {
             currentSelectedChildPosition = state.getInt(STATE_SELECTED_CHILD);
             currentSelectionIsGroup = state.getBoolean(STATE_SELECTION_IS_GROUP, true);
         } else {
-            currentSelectedGroupPosition = DEFAULT_GROUP_POSITION;
+            currentSelectedGroupPosition = fetchStartingGroupForSessionState();
             currentSelectedChildPosition = -1;
             currentSelectionIsGroup = true;
+        }
+    }
+
+    private int fetchStartingGroupForSessionState() {
+        if (SessionStore.isLoggedIn()) {
+            return DEFAULT_GROUP_POSITION;
+        } else if (SessionStore.hasUserId()) {
+            return DEFAULT_GROUP_POSITION_TRACKING;
+        } else {
+            return DEFAULT_GROUP_POSITION_GUEST;
         }
     }
 
@@ -126,12 +138,14 @@ public class NavigationDrawerFragment extends BaseListFragment {
         if (SessionStore.isLoggedIn()) {
             loginStatusView.setText(R.string.logged_in_as);
             loginUsernameView.setText(SessionStore.getUsername());
+        } else if (SessionStore.hasUserId()) {
+            loginStatusView.setText(R.string.tracking_user);
+            loginUsernameView.setText(SessionStore.getUsername());
         } else {
             loginStatusView.setText(R.string.not_logged_in);
             loginUsernameView.setText(R.string.empty);
         }
     }
-
 
     private void setupListView(final View view) {
         listView = (ExpandableListView) view.findViewById(android.R.id.list);
@@ -188,7 +202,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private List<ListRow> getItemsForMenu() {
         final List<ListRow> items = new ArrayList<ListRow>();
 
-        if (SessionStore.isLoggedIn()) {
+        if (SessionStore.hasUserId()) {
             items.addAll(getRowsForSoldier());
         }
         items.addAll(getRowsForSocial());
@@ -310,6 +324,17 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 showToast(ex.getMessage());
             }
         }
+    }
+
+    public void reload() {
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
+        final ExpandableListRowAdapter adapter = ((ExpandableListRowAdapter) listView.getExpandableListAdapter());
+        adapter.setItems(getItemsForMenu());
     }
 
     public static interface NavigationDrawerCallbacks {

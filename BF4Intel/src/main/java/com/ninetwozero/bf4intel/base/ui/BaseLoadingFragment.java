@@ -69,7 +69,9 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Loader
         }
 
         activity.findViewById(R.id.wrap_loading_progress).setVisibility(isLoading ? View.VISIBLE : View.GONE);
-        ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+        if (activity instanceof BaseLoadingIntelActivity) {
+            ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+        }
     }
 
     protected void showLoadingState(final boolean isLoading) {
@@ -79,7 +81,9 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Loader
         }
 
         toggleFullScreenProgressBar(activity, isLoading);
-        ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+        if (activity instanceof BaseLoadingIntelActivity) {
+            ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+        }
     }
 
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {

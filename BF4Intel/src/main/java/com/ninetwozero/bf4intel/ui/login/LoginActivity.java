@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.login;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,11 +21,11 @@ import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingIntelActivity;
+import com.ninetwozero.bf4intel.database.CupboardSQLiteOpenHelper;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.login.SoldierListingRequest;
 import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
-import com.ninetwozero.bf4intel.json.soldieroverview.PersonaInfo;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
@@ -33,14 +34,18 @@ import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
 
-import java.util.ArrayList;
+import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 public class LoginActivity extends BaseLoadingIntelActivity {
-    public static final int REQUEST_LOGIN = 0;
+    public static final int REQUEST_PROFILE = 0;
 
     private static final String RESET_PASSWORD_LINK = "https://signin.ea.com/p/web/resetPassword";
+    private static final int GAME_ID_BF4 = 2048;
     private static final int ID_LOADER_GET_SOLDIERS = 0;
+    public static final String INTENT_PROFILE = "profile";
 
+    private Bundle profileBundle;
+    private CupboardSQLiteOpenHelper cupboardHelper;
     private View loginFormView;
     private View loginStatusView;
     private TextView alertText;
@@ -73,7 +78,10 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
         if (requestCode == SearchActivity.REQUEST_SEARCH && resultCode == Activity.RESULT_OK) {
             final Profile profile = (Profile) data.getSerializableExtra(SearchActivity.RESULT_SEARCH_RESULT);
-            getSupportLoaderManager().restartLoader(ID_LOADER_GET_SOLDIERS, buildBundleForProfile(profile), this);
+            cupboard().withDatabase(fetchWriteableDatabase()).put(profile);
+
+            profileBundle = buildBundleForProfile(profile);
+            getSupportLoaderManager().restartLoader(ID_LOADER_GET_SOLDIERS, profileBundle, this);
         }
     }
 
@@ -97,27 +105,27 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             final JsonObject baseObject = extractFromJson(resultMessage);
             final SoldierListingRequest request = gson.fromJson(baseObject, SoldierListingRequest.class);
 
-            final Bundle data = new Bundle();
-            data.putStringArrayList(Keys.Soldier.ID, new ArrayList<String>());
-            data.putStringArrayList(Keys.Soldier.NAME, new ArrayList<String>());
-            data.putStringArrayList(Keys.Soldier.PLATFORM, new ArrayList<String>());
-            data.putStringArrayList(Keys.Soldier.AVATAR, new ArrayList<String>());
-
+            int bf4SoldierCount = 0;
+            final SQLiteDatabase database = fetchWriteableDatabase();
             for (SummarizedSoldierStats stats : request.getSoldiers()) {
-                final PersonaInfo persona = stats.getPersona();
-
-                data.getStringArrayList(Keys.Soldier.ID).add(persona.getPersonaId());
-                data.getStringArrayList(Keys.Soldier.NAME).add(persona.getPersonaName());
-                data.getIntegerArrayList(Keys.Soldier.PLATFORM).add(persona.getPlatform());
-                data.getStringArrayList(Keys.Soldier.AVATAR).add(persona.getPicture());
+                if (stats.getGameId() == GAME_ID_BF4) {
+                    cupboard().withDatabase(database).put(stats.getPersona());
+                    bf4SoldierCount++;
+                }
             }
 
-            /* TODO: Store data somewhere? */
-
-            setResult(Activity.RESULT_OK, new Intent().putExtras(data));
+            final int resultFlag = bf4SoldierCount > 0 ? Activity.RESULT_OK : Activity.RESULT_CANCELED;
+            setResult(resultFlag, new Intent().putExtras(profileBundle));
             finish();
         }
         showLoadingOverlay(false);
+    }
+
+    private SQLiteDatabase fetchWriteableDatabase() {
+        if (cupboardHelper == null) {
+            cupboardHelper = new CupboardSQLiteOpenHelper(this);
+        }
+        return cupboardHelper.getWritableDatabase();
     }
 
 

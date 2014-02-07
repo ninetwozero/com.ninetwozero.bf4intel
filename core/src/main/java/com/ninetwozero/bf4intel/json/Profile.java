@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class Profile implements Serializable {
     @SerializedName("userId")
-    private String id;
+    private String _id;
 
     @SerializedName("username")
     private String username;
@@ -15,7 +15,7 @@ public class Profile implements Serializable {
     private String gravatarHash;
 
     public String getId() {
-        return this.id;
+        return this._id;
     }
 
     public String getUsername() {

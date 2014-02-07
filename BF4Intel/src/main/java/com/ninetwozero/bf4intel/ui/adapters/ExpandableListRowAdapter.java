@@ -188,4 +188,9 @@ public class ExpandableListRowAdapter extends BaseExpandableListAdapter {
             imageView.setImageResource(R.drawable.ic_launcher);
         }
     }
+
+    public void setItems(final List<ListRow> itemsForMenu) {
+        this.items = itemsForMenu;
+        notifyDataSetChanged();
+    }
 }

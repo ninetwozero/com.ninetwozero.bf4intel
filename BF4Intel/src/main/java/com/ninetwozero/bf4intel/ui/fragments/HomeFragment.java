@@ -42,7 +42,7 @@ public class HomeFragment extends BaseFragment {
                     final Activity activity = getActivity();
                     activity.startActivityForResult(
                         new Intent(activity, LoginActivity.class),
-                        LoginActivity.REQUEST_LOGIN
+                        LoginActivity.REQUEST_PROFILE
                     );
                 }
             }
