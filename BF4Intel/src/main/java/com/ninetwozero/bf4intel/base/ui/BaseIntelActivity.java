@@ -36,9 +36,9 @@ public abstract class BaseIntelActivity extends FragmentActivity {
 
     private void reloadSession() {
         SessionStore.load(
-            sharedPreferences.getString(Keys.SESSION_ID, ""),
-            sharedPreferences.getString(Keys.Profile.ID, ""),
-            sharedPreferences.getString(Keys.Profile.USERNAME, "")
+            sharedPreferences.getString(Keys.SESSION_ID, null),
+            sharedPreferences.getString(Keys.Profile.ID, null),
+            sharedPreferences.getString(Keys.Profile.USERNAME, null)
         );
     }
 }
