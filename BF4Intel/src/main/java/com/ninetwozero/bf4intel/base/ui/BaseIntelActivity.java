@@ -38,7 +38,8 @@ public abstract class BaseIntelActivity extends FragmentActivity {
         SessionStore.load(
             sharedPreferences.getString(Keys.SESSION_ID, null),
             sharedPreferences.getString(Keys.Profile.ID, null),
-            sharedPreferences.getString(Keys.Profile.USERNAME, null)
+            sharedPreferences.getString(Keys.Profile.USERNAME, null),
+            sharedPreferences.getString(Keys.Profile.GRAVATAR_HASH, null)
         );
     }
 }

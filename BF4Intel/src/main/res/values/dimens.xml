@@ -39,6 +39,7 @@
   <dimen name="text_s">14sp</dimen>
   <dimen name="text_m">18sp</dimen>
   <dimen name="text_ml">20sp</dimen>
+  <dimen name="text_l">24sp</dimen>
   <dimen name="text_xl">32sp</dimen>
   <dimen name="text_xxl">40sp</dimen>
 

@@ -152,7 +152,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
                 .putString(Keys.Profile.GRAVATAR_HASH, gravatarHash)
                 .commit();
 
-            SessionStore.load(null, userId, username);
+            SessionStore.load(null, userId, username, gravatarHash);
             navigationDrawer.reload();
         }
     }

@@ -61,9 +61,7 @@
       android:id="@+id/button_select_account"
       android:text="@string/home_select_account"
       />
-  </LinearLayout>
-
-  <!-- WIP: Add view that shows who we are tracking when we're doing it -->
+  </LinearLayout>>
 
   <LinearLayout
     android:id="@+id/wrap_tracker"
@@ -95,16 +93,18 @@
 
       <ImageView
         android:id="@+id/selected_user_gravatar"
-        android:layout_width="@dimen/avatar_size_m"
-        android:layout_height="@dimen/avatar_size_m"
+        android:layout_width="@dimen/avatar_size_l"
+        android:layout_height="@dimen/avatar_size_l"
+        android:contentDescription="@string/cdesc_gravatar"
+        android:layout_centerVertical="true"
         />
 
       <TextView
         android:id="@+id/selected_user_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ninetwozero"
         android:layout_toRightOf="@id/selected_user_gravatar"
+        android:textSize="@dimen/text_l"
         />
     </RelativeLayout>
 

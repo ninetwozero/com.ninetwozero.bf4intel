@@ -6,10 +6,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
+import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
+import com.squareup.picasso.Picasso;
 
 public class HomeFragment extends BaseFragment {
     public static HomeFragment newInstance(final Bundle data) {
@@ -35,6 +40,32 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initialize(final View view, final Bundle state) {
+        if (SessionStore.hasUserId()) {
+            setupTracker(view);
+        } else {
+            setupGuestMode(view);
+        }
+    }
+
+    private void setupTracker(final View view) {
+        view.findViewById(R.id.wrap_guest).setVisibility(View.GONE);
+
+        final View wrap = view.findViewById(R.id.wrap_tracker);
+        final TextView usernameTextView = (TextView) wrap.findViewById(R.id.selected_user_username);
+        usernameTextView.setText(SessionStore.getUsername());
+
+        final ImageView gravatarImageView = (ImageView) wrap.findViewById(R.id.selected_user_gravatar);
+        Picasso.with(getActivity()).load(
+            UrlFactory.buildGravatarUrl(SessionStore.getGravatarHash())
+        ).into(gravatarImageView);
+
+        wrap.setVisibility(View.VISIBLE);
+    }
+
+    private void setupGuestMode(final View view) {
+        view.findViewById(R.id.wrap_guest).setVisibility(View.VISIBLE);
+        view.findViewById(R.id.wrap_tracker).setVisibility(View.GONE);
+
         view.findViewById(R.id.button_select_account).setOnClickListener(
             new View.OnClickListener() {
                 @Override
