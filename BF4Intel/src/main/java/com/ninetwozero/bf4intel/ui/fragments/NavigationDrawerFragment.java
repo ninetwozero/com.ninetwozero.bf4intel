@@ -9,8 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,7 +20,7 @@ import com.ninetwozero.bf4intel.datatypes.ListRowType;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.ui.adapters.ExpandableListRowAdapter;
+import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
 import com.ninetwozero.bf4intel.ui.awards.AwardsActivity;
 import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsActivity;
@@ -36,25 +34,21 @@ public class NavigationDrawerFragment extends BaseListFragment {
     public static final String BATTLE_CHAT = "BATTLE CHAT";
     public static final String BATTLE_CHAT_PACKAGE = "com.ninetwozero.battlechat";
 
-    private static final String STATE_SELECTED_GROUP = "selected_navigation_drawer_group_position";
-    private static final String STATE_SELECTED_CHILD = "selected_navigation_drawer_child_position";
-    private static final String STATE_SELECTION_IS_GROUP = "selected_navigation_drawer_is_group";
+    private static final String STATE_SELECTED_POSITIION = "selected_navigation_drawer_group_position";
 
-    private static final int DEFAULT_GROUP_POSITION_GUEST = 1;
-    private static final int DEFAULT_GROUP_POSITION_TRACKING = 9;
-    private static final int DEFAULT_GROUP_POSITION = 3;
+    private static final int DEFAULT_POSITION_GUEST = 1;
+    private static final int DEFAULT_POSITION_TRACKING = 9;
+    private static final int DEFAULT_POSITION = 3;
 
     private static final int INTENT_SOLDIER_STATISTICS = 1;
     private static final int INTENT_ASSIGNMENTS = 2;
     private static final int INTENT_AWARDS = 3;
     private static final int INTENT_UNLOCKS = 4;
 
-    private ExpandableListView listView;
+    private ListView listView;
     private NavigationDrawerCallbacks callbacks;
 
-    private int currentSelectedGroupPosition = 0;
-    private int currentSelectedChildPosition = 0;
-    private boolean currentSelectionIsGroup = true;
+    private int currentSelectedPosition = 0;
 
     public NavigationDrawerFragment() {
     }
@@ -91,15 +85,13 @@ public class NavigationDrawerFragment extends BaseListFragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(STATE_SELECTED_GROUP, currentSelectedGroupPosition);
-        outState.putInt(STATE_SELECTED_CHILD, currentSelectedChildPosition);
-        outState.putBoolean(STATE_SELECTION_IS_GROUP, currentSelectionIsGroup);
+        outState.putInt(STATE_SELECTED_POSITIION, currentSelectedPosition);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        selectItemFromState(currentSelectedGroupPosition, currentSelectedChildPosition, currentSelectionIsGroup);
+        selectItemFromState(currentSelectedPosition);
     }
 
     private void initialize(final View view, final Bundle state) {
@@ -110,23 +102,19 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private void setupDataFromState(final Bundle state) {
         if (state != null) {
-            currentSelectedGroupPosition = state.getInt(STATE_SELECTED_GROUP);
-            currentSelectedChildPosition = state.getInt(STATE_SELECTED_CHILD);
-            currentSelectionIsGroup = state.getBoolean(STATE_SELECTION_IS_GROUP, true);
+            currentSelectedPosition = state.getInt(STATE_SELECTED_POSITIION);
         } else {
-            currentSelectedGroupPosition = fetchStartingGroupForSessionState();
-            currentSelectedChildPosition = -1;
-            currentSelectionIsGroup = true;
+            currentSelectedPosition = fetchStartingPositionForSessionState();
         }
     }
 
-    private int fetchStartingGroupForSessionState() {
+    private int fetchStartingPositionForSessionState() {
         if (SessionStore.isLoggedIn()) {
-            return DEFAULT_GROUP_POSITION;
+            return DEFAULT_POSITION;
         } else if (SessionStore.hasUserId()) {
-            return DEFAULT_GROUP_POSITION_TRACKING;
+            return DEFAULT_POSITION_TRACKING;
         } else {
-            return DEFAULT_GROUP_POSITION_GUEST;
+            return DEFAULT_POSITION_GUEST;
         }
     }
 
@@ -148,55 +136,24 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void setupListView(final View view) {
-        listView = (ExpandableListView) view.findViewById(android.R.id.list);
+        listView = (ListView) view.findViewById(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-
-        final ExpandableListAdapter slidingMenuAdapter = new ExpandableListRowAdapter(getActivity(), getItemsForMenu());
-        listView.setAdapter(slidingMenuAdapter);
-        listView.setOnGroupClickListener(
-                new ExpandableListView.OnGroupClickListener() {
-                    @Override
-                    public boolean onGroupClick(final ExpandableListView expandableListView, final View view, final int group, final long id) {
-                        return onGroupItemClick(expandableListView, group);
-                    }
-                }
-        );
-
-        listView.setOnChildClickListener(
-                new ExpandableListView.OnChildClickListener() {
-                    @Override
-                    public boolean onChildClick(ExpandableListView expandableListView, View view, int group, int child, long id) {
-                        return onChildItemClick(expandableListView, group, child);
-                    }
-                }
-        );
+        setListAdapter(new ListRowAdapter(getActivity(), getItemsForMenu()));
     }
 
-    private boolean onGroupItemClick(final ExpandableListView listView, final int position) {
-        final int positionOfGroup = listView.getFlatListPosition(ExpandableListView.getPackedPositionForGroup(position));
-        final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getGroup(position);
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        final ListRow item = ((ListRowAdapter) getListAdapter()).getItem(position);
         if (item.getType() == ListRowType.SIDE_HEADING) {
-            return true;
+            return;
         }
 
-        selectItem(item, positionOfGroup, !item.hasChildren(), false);
-        storePositionState(positionOfGroup, -1, true);
-        return false;
+        selectItem(item, position, false, false);
+        storePositionState(position, true);
     }
 
-    private boolean onChildItemClick(final ExpandableListView listView, final int group, final int child) {
-        final int positionOfChild = listView.getFlatListPosition(ExpandableListView.getPackedPositionForChild(group, child));
-        final ListRow item = ((ExpandableListRowAdapter) listView.getExpandableListAdapter()).getChild(group, child);
-
-        selectItem(item, positionOfChild, true, false);
-        storePositionState(group, child, false);
-        return false;
-    }
-
-    private void storePositionState(final int group, final int child, final boolean isGroup) {
-        currentSelectedGroupPosition = group;
-        currentSelectedChildPosition = child;
-        currentSelectionIsGroup = isGroup;
+    private void storePositionState(final int position, final boolean isGroup) {
+        currentSelectedPosition = position;
     }
 
     private List<ListRow> getItemsForMenu() {
@@ -284,12 +241,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
         return bundle;
     }
 
-    private void selectItemFromState(final int group, final int child, final boolean isGroup) {
-        final ExpandableListRowAdapter adapter = (ExpandableListRowAdapter) listView.getExpandableListAdapter();
-        final ListRow row = isGroup? adapter.getGroup(group) : adapter.getChild(group, child);
-        final int position = listView.getFlatListPosition(
-            isGroup? listView.getPackedPositionForGroup(group) : listView.getPackedPositionForChild(group, child)
-        );
+    private void selectItemFromState(final int position) {
+        final ListRowAdapter adapter = (ListRowAdapter) getListAdapter();
+        final ListRow row = adapter.getItem(position);
         selectItem(row, position, true, true);
     }
 
@@ -331,10 +285,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         if (view == null) {
             return;
         }
-
-        final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
-        final ExpandableListRowAdapter adapter = ((ExpandableListRowAdapter) listView.getExpandableListAdapter());
-        adapter.setItems(getItemsForMenu());
+        ((ListRowAdapter) getListAdapter()).setItems(getItemsForMenu());
     }
 
     public static interface NavigationDrawerCallbacks {

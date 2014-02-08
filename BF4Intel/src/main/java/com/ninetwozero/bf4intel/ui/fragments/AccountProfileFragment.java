@@ -35,9 +35,7 @@ public class AccountProfileFragment extends BaseListFragment {
     }
 
     private void initialize(final View view) {
-        final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getItems(), getActivity());
-        setListAdapter(slidingMenuAdapter);
-
+        setListAdapter(new ListRowAdapter(getActivity(), getItems()));
         updateActionBar(getActivity(), "NINETWOZERO", R.drawable.test_gravatar);
     }
 

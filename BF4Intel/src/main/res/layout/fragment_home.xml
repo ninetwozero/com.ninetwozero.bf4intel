@@ -60,9 +60,9 @@
       style="@style/BlueButton"
       android:id="@+id/button_select_account"
       android:text="@string/home_select_account"
+      android:layout_marginTop="@dimen/spacing_m"
       />
-  </LinearLayout>>
-
+  </LinearLayout>
   <LinearLayout
     android:id="@+id/wrap_tracker"
     android:layout_width="match_parent"
@@ -75,17 +75,6 @@
     android:gravity="center"
     android:visibility="gone"
     >
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/home_main_information_tracker"
-      android:textAppearance="@android:style/TextAppearance.Holo"
-      android:gravity="center"
-      android:textColor="@color/darkgrey"
-      android:layout_marginBottom="@dimen/spacing_l"
-      android:paddingLeft="@dimen/spacing_xxs"
-      android:paddingRight="@dimen/spacing_xxs"
-      />
     <RelativeLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -107,7 +96,11 @@
         android:textSize="@dimen/text_l"
         />
     </RelativeLayout>
-
+    <Button
+      style="@style/BlueButton"
+      android:id="@+id/button_select_another_account"
+      android:text="@string/home_select_another_account"
+      android:layout_marginTop="@dimen/spacing_l"
+      />
   </LinearLayout>
-
 </RelativeLayout>

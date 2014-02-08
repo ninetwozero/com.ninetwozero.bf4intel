@@ -16,7 +16,7 @@ import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
 import com.squareup.picasso.Picasso;
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
     public static HomeFragment newInstance(final Bundle data) {
         final HomeFragment fragment = new HomeFragment();
         fragment.setArguments(data);
@@ -35,11 +35,11 @@ public class HomeFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
         final View baseView = inflater.inflate(R.layout.fragment_home, container, false);
-        initialize(baseView, savedState);
+        initialize(baseView);
         return baseView;
     }
 
-    private void initialize(final View view, final Bundle state) {
+    private void initialize(final View view) {
         if (SessionStore.hasUserId()) {
             setupTracker(view);
         } else {
@@ -52,31 +52,29 @@ public class HomeFragment extends BaseFragment {
 
         final View wrap = view.findViewById(R.id.wrap_tracker);
         final TextView usernameTextView = (TextView) wrap.findViewById(R.id.selected_user_username);
-        usernameTextView.setText(SessionStore.getUsername());
-
         final ImageView gravatarImageView = (ImageView) wrap.findViewById(R.id.selected_user_gravatar);
-        Picasso.with(getActivity()).load(
-            UrlFactory.buildGravatarUrl(SessionStore.getGravatarHash())
-        ).into(gravatarImageView);
 
+        usernameTextView.setText(SessionStore.getUsername());
+        Picasso.with(getActivity()).load(UrlFactory.buildGravatarUrl(SessionStore.getGravatarHash())).into(gravatarImageView);
+
+        wrap.findViewById(R.id.button_select_another_account).setOnClickListener(this);
         wrap.setVisibility(View.VISIBLE);
     }
 
     private void setupGuestMode(final View view) {
-        view.findViewById(R.id.wrap_guest).setVisibility(View.VISIBLE);
         view.findViewById(R.id.wrap_tracker).setVisibility(View.GONE);
 
-        view.findViewById(R.id.button_select_account).setOnClickListener(
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final Activity activity = getActivity();
-                    activity.startActivityForResult(
-                        new Intent(activity, LoginActivity.class),
-                        LoginActivity.REQUEST_PROFILE
-                    );
-                }
-            }
+        final View wrap = view.findViewById(R.id.wrap_guest);
+        wrap.findViewById(R.id.button_select_account).setOnClickListener(this);
+        wrap.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onClick(final View v) {
+        final Activity activity = getActivity();
+        activity.startActivityForResult(
+            new Intent(activity, LoginActivity.class),
+            LoginActivity.REQUEST_PROFILE
         );
     }
 }

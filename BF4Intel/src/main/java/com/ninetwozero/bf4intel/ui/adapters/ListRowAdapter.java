@@ -22,8 +22,8 @@ import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_REGULAR;
 import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_REGULAR_CHILD;
 
 public class ListRowAdapter extends BaseIntelAdapter<ListRow> {
-    public ListRowAdapter(final List<ListRow> items, final Context context) {
-        super(items, context);
+    public ListRowAdapter(final Context context, final List<ListRow> items) {
+        super(context, items);
     }
 
     @Override
