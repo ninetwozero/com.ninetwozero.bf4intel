@@ -18,9 +18,11 @@ import android.widget.SearchView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
+import com.ninetwozero.bf4intel.datatypes.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
+import com.ninetwozero.bf4intel.utils.BusProvider;
 
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
@@ -144,7 +146,9 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
             final String userId = bundle.getString(Keys.Profile.ID);
             final String username = bundle.getString(Keys.Profile.USERNAME);
             final String gravatarHash = bundle.getString(Keys.Profile.GRAVATAR_HASH);
+            final TrackingNewProfileEvent event = new TrackingNewProfileEvent(userId, username, gravatarHash);
 
+            SessionStore.load(null, userId, username, gravatarHash);
             sharedPreferences
                 .edit()
                 .putString(Keys.Profile.ID, userId)
@@ -152,8 +156,8 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
                 .putString(Keys.Profile.GRAVATAR_HASH, gravatarHash)
                 .commit();
 
-            SessionStore.load(null, userId, username, gravatarHash);
-            navigationDrawer.reload();
+            navigationDrawer.onStartedTrackingNewProfile(event);
+            BusProvider.getInstance().post(event);
         }
     }
 

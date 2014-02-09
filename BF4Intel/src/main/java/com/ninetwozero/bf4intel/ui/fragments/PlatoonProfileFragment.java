@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
-import com.ninetwozero.bf4intel.datatypes.ListRow;
-import com.ninetwozero.bf4intel.datatypes.ListRowType;
+import com.ninetwozero.bf4intel.interfaces.ListRowElement;
+import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
 import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
 
@@ -40,8 +40,8 @@ public class PlatoonProfileFragment extends BaseListFragment {
         updateActionBar(getActivity(), "Chili-powered Zebras", R.drawable.test_platoon);
     }
 
-    private List<ListRow> getItemsForMenu() {
-        final List<ListRow> items = new ArrayList<ListRow>();
+    private List<ListRowElement> getItemsForMenu() {
+        final List<ListRowElement> items = new ArrayList<ListRowElement>();
         items.add(ListRowFactory.create(ListRowType.HEADING, "BASIC INFORMATION"));
         items.add(ListRowFactory.create(ListRowType.PROFILE_SOLDIER, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.HEADING, "PRESENTATION"));

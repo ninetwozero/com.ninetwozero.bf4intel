@@ -5,7 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.ninetwozero.bf4intel.json.Profile;
-import com.ninetwozero.bf4intel.json.soldieroverview.PersonaInfo;
+import com.ninetwozero.bf4intel.json.login.Persona;
+import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 
 import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
@@ -15,7 +16,8 @@ public class CupboardSQLiteOpenHelper extends SQLiteOpenHelper {
 
     static {
         cupboard().register(Profile.class);
-        cupboard().register(PersonaInfo.class);
+        cupboard().register(SummarizedSoldierStats.class);
+        cupboard().register(Persona.class);
     }
 
     public CupboardSQLiteOpenHelper(final Context context) {

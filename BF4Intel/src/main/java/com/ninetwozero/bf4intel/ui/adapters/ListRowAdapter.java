@@ -6,23 +6,30 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
-import com.ninetwozero.bf4intel.datatypes.ListRow;
-import com.ninetwozero.bf4intel.datatypes.ListRowType;
+import com.ninetwozero.bf4intel.interfaces.ListRowElement;
+import com.ninetwozero.bf4intel.menu.ListRowType;
+import com.ninetwozero.bf4intel.menu.NormalRow;
+import com.ninetwozero.bf4intel.menu.SoldierSpinnerRow;
+import com.ninetwozero.bf4intel.ui.datatypes.ActiveSoldierChangedEvent;
+import com.ninetwozero.bf4intel.utils.BusProvider;
 
 import java.io.File;
 import java.util.List;
 
-import static com.ninetwozero.bf4intel.datatypes.ListRowType.HEADING;
-import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_HEADING;
-import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_REGULAR;
-import static com.ninetwozero.bf4intel.datatypes.ListRowType.SIDE_REGULAR_CHILD;
+import static com.ninetwozero.bf4intel.menu.ListRowType.HEADING;
+import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_HEADING;
+import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_REGULAR;
+import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_REGULAR_CHILD;
+import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_SOLDIER;
 
-public class ListRowAdapter extends BaseIntelAdapter<ListRow> {
-    public ListRowAdapter(final Context context, final List<ListRow> items) {
+public class ListRowAdapter extends BaseIntelAdapter<ListRowElement> {
+    public ListRowAdapter(final Context context, final List<ListRowElement> items) {
         super(context, items);
     }
 
@@ -53,27 +60,62 @@ public class ListRowAdapter extends BaseIntelAdapter<ListRow> {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        final ListRow item = getItem(position);
+        final ListRowElement item = getItem(position);
         if (view == null) {
             view = LayoutInflater.from(context).inflate(item.getLayout(), viewGroup, false);
         }
         return populateViewFromItem(view, item);
     }
 
-    private View populateViewFromItem(final View view, final ListRow item) {
-        final Bundle stringMappings = item.getStringMappings();
-        final Bundle drawableMappings = item.getDrawableMappings();
+    private View populateViewFromItem(final View view, final ListRowElement item) {
         final ListRowType type = item.getType();
         final boolean isRegular = type == SIDE_REGULAR || type == SIDE_REGULAR_CHILD;
         final boolean isHeading = type == HEADING || type == SIDE_HEADING;
 
         if (isRegular || isHeading) {
             setText(view, R.id.text1, item.getTitle());
+        } else if (type == SIDE_SOLDIER) {
+            populateSoldierBox(view, item);
         } else {
-            populateTextViews(view, stringMappings);
-            populateImageViews(view, drawableMappings);
+            populateSpecialLayouts(view, item);
         }
         return view;
+    }
+
+    private void populateSoldierBox(final View view, final ListRowElement item) {
+        if (item instanceof SoldierSpinnerRow) {
+            final SoldierSpinnerRow row = (SoldierSpinnerRow) item;
+            final SoldierSpinnerAdapter adapter = new SoldierSpinnerAdapter(context, row.getSoldiers());
+            final Spinner spinner = (Spinner) view.findViewById(R.id.spinner_soldier);
+
+            spinner.setAdapter(adapter);
+            spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        BusProvider.getInstance().post(new ActiveSoldierChangedEvent(id));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                }
+            );
+        }
+    }
+
+    private void populateSpecialLayouts(final View view, final ListRowElement item) {
+        if (!(item instanceof NormalRow)) {
+            return;
+        }
+
+        final NormalRow row = (NormalRow) item;
+        final Bundle stringMappings = row.getStringMappings();
+        final Bundle drawableMappings = row.getDrawableMappings();
+
+        populateTextViews(view, stringMappings);
+        populateImageViews(view, drawableMappings);
     }
 
     private void populateTextViews(final View view, final Bundle mappings) {

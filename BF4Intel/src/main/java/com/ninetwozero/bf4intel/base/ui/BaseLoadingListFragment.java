@@ -14,10 +14,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.factories.GsonFactory;
 import com.ninetwozero.bf4intel.utils.Result;
 
 public abstract class BaseLoadingListFragment extends BaseListFragment implements LoaderManager.LoaderCallbacks<Result> {
-    protected Gson gson = new Gson();
+    protected Gson gson = GsonFactory.getInstance();
 
     @Override
     public void onCreate(final Bundle icicle) {

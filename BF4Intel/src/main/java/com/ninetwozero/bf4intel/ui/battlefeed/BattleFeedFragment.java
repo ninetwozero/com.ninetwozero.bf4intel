@@ -14,19 +14,16 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.battlefeed.BattleFeed;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
+import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
-import com.ninetwozero.bf4intel.utils.FeedItemDeserializer;
 import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.List;
@@ -109,7 +106,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
 
     @Override
     protected void onLoadSuccess(final String resultMessage) {
-        final BattleFeed battleFeed = fromJson(generateCustomGson(), resultMessage, BattleFeed.class);
+        final BattleFeed battleFeed = fromJson(resultMessage, BattleFeed.class);
         sendDataToListView(battleFeed.getFeedItems());
         showLoadingState(false);
     }
@@ -133,12 +130,6 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
         final TextView emptyView = (TextView) view.findViewById(android.R.id.empty);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         emptyView.setText(R.string.msg_empty_feed);
-    }
-
-    private Gson generateCustomGson() {
-        final GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(FeedItem.class, new FeedItemDeserializer());
-        return builder.create();
     }
 
     private void sendDataToListView(final List<FeedItem> feedItems) {

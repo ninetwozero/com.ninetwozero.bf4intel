@@ -5,7 +5,8 @@
   android:layout_height="wrap_content"
   android:orientation="horizontal"
   android:paddingTop="@dimen/spacing_s"
-  android:paddingBottom="@dimen/spacing_s">
+  android:paddingBottom="@dimen/spacing_s"
+  >
 
   <TextView
     android:id="@+id/title"

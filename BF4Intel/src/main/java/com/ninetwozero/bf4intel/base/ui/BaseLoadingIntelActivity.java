@@ -13,16 +13,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.factories.GsonFactory;
 import com.ninetwozero.bf4intel.utils.Result;
 
 public abstract class BaseLoadingIntelActivity extends BaseIntelActivity implements LoaderManager.LoaderCallbacks<Result> {
-    protected Gson gson;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        gson = new Gson();
-    }
+    protected final Gson gson = GsonFactory.getInstance();
 
     @Override
     public abstract Loader<Result> onCreateLoader(int i, Bundle bundle);

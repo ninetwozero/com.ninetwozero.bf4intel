@@ -12,8 +12,11 @@ import android.widget.TextView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
+import com.ninetwozero.bf4intel.datatypes.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
+import com.ninetwozero.bf4intel.utils.BusProvider;
+import com.squareup.otto.Subscribe;
 import com.squareup.picasso.Picasso;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
@@ -33,10 +36,40 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        BusProvider.getInstance().register(this);
+    }
+
+    @Override
+    public void onPause() {
+        BusProvider.getInstance().register(this);
+        super.onPause();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
         final View baseView = inflater.inflate(R.layout.fragment_home, container, false);
         initialize(baseView);
         return baseView;
+    }
+
+    @Override
+    public void onClick(final View v) {
+        final Activity activity = getActivity();
+        activity.startActivityForResult(
+            new Intent(activity, LoginActivity.class),
+            LoginActivity.REQUEST_PROFILE
+        );
+    }
+
+    @Subscribe
+    public void onStartedTrackingNewProfile(final TrackingNewProfileEvent event) {
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+        initialize(view);
     }
 
     private void initialize(final View view) {
@@ -67,14 +100,5 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         final View wrap = view.findViewById(R.id.wrap_guest);
         wrap.findViewById(R.id.button_select_account).setOnClickListener(this);
         wrap.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onClick(final View v) {
-        final Activity activity = getActivity();
-        activity.startActivityForResult(
-            new Intent(activity, LoginActivity.class),
-            LoginActivity.REQUEST_PROFILE
-        );
     }
 }

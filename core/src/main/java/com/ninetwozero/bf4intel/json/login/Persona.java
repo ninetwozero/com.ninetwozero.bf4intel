@@ -1,25 +1,22 @@
-package com.ninetwozero.bf4intel.json.soldieroverview;
+package com.ninetwozero.bf4intel.json.login;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PersonaInfo {
+public class Persona {
     @SerializedName("personaId")
-    private String personaId;
+    private long _id;
 
     @SerializedName("personaName")
     private String personaName;
 
-    @SerializedName("tag")
+    @SerializedName("clanTag")
     private String tag;
 
     @SerializedName("picture")
     private String picture;
 
-    @SerializedName("platform")
-    private int platform;
-
-    @SerializedName("game")
-    private int game;
+    @SerializedName("namespace")
+    private String namespace;
 
     @SerializedName("userId")
     private String userId;
@@ -29,8 +26,8 @@ public class PersonaInfo {
         return userId;
     }
 
-    public String getPersonaId() {
-        return personaId;
+    public long getPersonaId() {
+        return _id;
     }
 
     public String getPersonaName() {
@@ -43,13 +40,5 @@ public class PersonaInfo {
 
     public String getPicture() {
         return picture;
-    }
-
-    public int getPlatform() {
-        return platform;
-    }
-
-    public int getGame() {
-        return game;
     }
 }

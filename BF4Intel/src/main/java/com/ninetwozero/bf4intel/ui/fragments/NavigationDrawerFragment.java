@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -14,21 +15,31 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
+import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
-import com.ninetwozero.bf4intel.datatypes.ListRow;
-import com.ninetwozero.bf4intel.datatypes.ListRowType;
+import com.ninetwozero.bf4intel.datatypes.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
+import com.ninetwozero.bf4intel.interfaces.ListRowElement;
+import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
+import com.ninetwozero.bf4intel.menu.ListRowType;
+import com.ninetwozero.bf4intel.menu.NormalRow;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
 import com.ninetwozero.bf4intel.ui.awards.AwardsActivity;
 import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsActivity;
 import com.ninetwozero.bf4intel.ui.unlocks.UnlockActivity;
+import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import nl.qbusict.cupboard.DatabaseCompartment;
+
+import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 public class NavigationDrawerFragment extends BaseListFragment {
     public static final String BATTLE_CHAT = "BATTLE CHAT";
@@ -91,7 +102,35 @@ public class NavigationDrawerFragment extends BaseListFragment {
     @Override
     public void onResume() {
         super.onResume();
+        Log.d("YOLO", "[onResume]");
+        BusProvider.getInstance().register(this);
         selectItemFromState(currentSelectedPosition);
+    }
+
+    @Override
+    public void onPause() {
+        Log.d("YOLO", "[onPause]");
+        BusProvider.getInstance().unregister(this);
+        super.onPause();
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        final ListRowElement item = ((ListRowAdapter) getListAdapter()).getItem(position);
+        if (item instanceof NormalRow) {
+            selectItem((NormalRow) item, position, true, false);
+            storePositionState(position, true);
+        }
+    }
+
+    @Subscribe
+    public void onStartedTrackingNewProfile(final TrackingNewProfileEvent event) {
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+        setupRegularViews(view);
+        ((ListRowAdapter) getListAdapter()).setItems(getItemsForMenu());
     }
 
     private void initialize(final View view, final Bundle state) {
@@ -141,23 +180,12 @@ public class NavigationDrawerFragment extends BaseListFragment {
         setListAdapter(new ListRowAdapter(getActivity(), getItemsForMenu()));
     }
 
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        final ListRow item = ((ListRowAdapter) getListAdapter()).getItem(position);
-        if (item.getType() == ListRowType.SIDE_HEADING) {
-            return;
-        }
-
-        selectItem(item, position, false, false);
-        storePositionState(position, true);
-    }
-
     private void storePositionState(final int position, final boolean isGroup) {
         currentSelectedPosition = position;
     }
 
-    private List<ListRow> getItemsForMenu() {
-        final List<ListRow> items = new ArrayList<ListRow>();
+    private List<ListRowElement> getItemsForMenu() {
+        final List<ListRowElement> items = new ArrayList<ListRowElement>();
 
         if (SessionStore.hasUserId()) {
             items.addAll(getRowsForSoldier());
@@ -166,9 +194,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
         return items;
     }
 
-    private List<ListRow> getRowsForSoldier() {
+    private List<ListRowElement> getRowsForSoldier() {
         final Bundle data = new Bundle();
-        final List<ListRow> items = new ArrayList<ListRow>();
+        final List<ListRowElement> items = new ArrayList<ListRowElement>();
 
         // TODO: Get these from session storage somewhere when implemented (see BattleChat)
         data.putString(Keys.Soldier.NAME, "NINETWOZERO");
@@ -176,7 +204,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         data.putInt(Keys.Soldier.PLATFORM, 2);
 
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_selected_soldier)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_SOLDIER, new Bundle()));
+        items.add(ListRowFactory.createSoldierRow(fetchSoldiersForMenu()));
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_overview), data, FragmentFactory.Type.SOLDIER_OVERVIEW));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_statistics), data, intentToStart(INTENT_SOLDIER_STATISTICS)));
@@ -186,7 +214,22 @@ public class NavigationDrawerFragment extends BaseListFragment {
         return items;
     }
 
-    private List<ListRow> getRowsForSocial() {
+    private List<SummarizedSoldierStats> fetchSoldiersForMenu() {
+        final BaseIntelActivity activity = (BaseIntelActivity) getActivity();
+        final List<SummarizedSoldierStats> soldiers = new ArrayList<SummarizedSoldierStats>();
+        final DatabaseCompartment database = cupboard().withDatabase(activity.getReadableDatabase());
+        final Cursor results = database.query(SummarizedSoldierStats.class).withSelection(
+            "userId = ?", SessionStore.getUserId()
+        ).getCursor();
+
+        for (SummarizedSoldierStats result : cupboard().withCursor(results).iterate(SummarizedSoldierStats.class)) {
+            soldiers.add(result);
+        }
+
+        return soldiers;
+    }
+
+    private List<ListRowElement> getRowsForSocial() {
         // TODO: We need to populate the bundle from Session storage (when available)
         final Bundle data = new Bundle();
         //data.putString(Keys.Profile.ID, "2832658801548551060");
@@ -194,7 +237,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         //data.putString(Keys.Profile.USERNAME, "NINETWOZERO");
         //data.putString(Keys.Profile.GRAVATAR_HASH, "1241459af7d1ba348ec8b258240ea145");
 
-        final List<ListRow> items = new ArrayList<ListRow>();
+        final List<ListRowElement> items = new ArrayList<ListRowElement>();
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_social)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_home), data, fetchTypeForHome()));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_news), data, FragmentFactory.Type.NEWS_LISTING));
@@ -243,11 +286,14 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private void selectItemFromState(final int position) {
         final ListRowAdapter adapter = (ListRowAdapter) getListAdapter();
-        final ListRow row = adapter.getItem(position);
-        selectItem(row, position, true, true);
+        final ListRowElement row = adapter.getItem(position);
+
+        if (row instanceof NormalRow) {
+            selectItem((NormalRow) row, position, true, true);
+        }
     }
 
-    private void selectItem(final ListRow item, final int position, final boolean closeDrawer, final boolean isOnResume) {
+    private void selectItem(final NormalRow item, final int position, final boolean closeDrawer, final boolean isOnResume) {
         final boolean isFragment = !item.hasIntent();
         if (listView != null && isFragment) {
             listView.setItemChecked(position, true);
@@ -260,7 +306,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         startItem(item, isOnResume);
     }
 
-    private void startItem(final ListRow item, final boolean isOnResume) {
+    private void startItem(final NormalRow item, final boolean isOnResume) {
         if (item.hasIntent() && !isOnResume) {
             startActivityForResult(item.getIntent(), 12345);
         } else if (item.hasFragmentType()) {
@@ -278,14 +324,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 showToast(ex.getMessage());
             }
         }
-    }
-
-    public void reload() {
-        final View view = getView();
-        if (view == null) {
-            return;
-        }
-        ((ListRowAdapter) getListAdapter()).setItems(getItemsForMenu());
     }
 
     public static interface NavigationDrawerCallbacks {

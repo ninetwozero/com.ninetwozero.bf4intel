@@ -1,7 +1,6 @@
 package com.ninetwozero.bf4intel.json.login;
 
 import com.google.gson.annotations.SerializedName;
-import com.ninetwozero.bf4intel.json.soldieroverview.PersonaInfo;
 
 public class SummarizedSoldierStats {
     @SerializedName("rank")
@@ -24,8 +23,13 @@ public class SummarizedSoldierStats {
     private int platformId;
     @SerializedName("game")
     private int gameId;
-    @SerializedName("persona")
-    private PersonaInfo persona;
+
+    // Persona related stuff:
+    private long _id;
+    private String personaName;
+    private String tag;
+    private String picture;
+    private String userId;
 
     public int getRank() {
         return rank;
@@ -67,7 +71,45 @@ public class SummarizedSoldierStats {
         return gameId;
     }
 
-    public PersonaInfo getPersona() {
-        return persona;
+    /* Persona related stuff */
+
+    public long getId() {
+        return _id;
+    }
+
+    public String getPersonaName() {
+        return personaName;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public String getPersonaPicture() {
+        return picture;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setId(long id) {
+        this._id = id;
+    }
+
+    public void setPersonaName(String personaName) {
+        this.personaName = personaName;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

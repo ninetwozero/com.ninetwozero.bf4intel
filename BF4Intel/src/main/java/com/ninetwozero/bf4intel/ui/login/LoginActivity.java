@@ -78,7 +78,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
         if (requestCode == SearchActivity.REQUEST_SEARCH && resultCode == Activity.RESULT_OK) {
             final Profile profile = (Profile) data.getSerializableExtra(SearchActivity.RESULT_SEARCH_RESULT);
-            cupboard().withDatabase(fetchWriteableDatabase()).put(profile);
+            cupboard().withDatabase(getWriteableDatabase()).put(profile);
 
             profileBundle = buildBundleForProfile(profile);
             getSupportLoaderManager().restartLoader(ID_LOADER_GET_SOLDIERS, profileBundle, this);
@@ -106,10 +106,10 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             final SoldierListingRequest request = gson.fromJson(baseObject, SoldierListingRequest.class);
 
             int bf4SoldierCount = 0;
-            final SQLiteDatabase database = fetchWriteableDatabase();
+            final SQLiteDatabase database = getWriteableDatabase();
             for (SummarizedSoldierStats stats : request.getSoldiers()) {
                 if (stats.getGameId() == GAME_ID_BF4) {
-                    cupboard().withDatabase(database).put(stats.getPersona());
+                    cupboard().withDatabase(database).put(stats);
                     bf4SoldierCount++;
                 }
             }
@@ -120,14 +120,6 @@ public class LoginActivity extends BaseLoadingIntelActivity {
         }
         showLoadingOverlay(false);
     }
-
-    private SQLiteDatabase fetchWriteableDatabase() {
-        if (cupboardHelper == null) {
-            cupboardHelper = new CupboardSQLiteOpenHelper(this);
-        }
-        return cupboardHelper.getWritableDatabase();
-    }
-
 
     private Bundle buildBundleForProfile(final Profile profile) {
         final Bundle bundle = new Bundle();
