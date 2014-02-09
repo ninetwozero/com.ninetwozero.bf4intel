@@ -112,4 +112,25 @@ public class SummarizedSoldierStats {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "SummarizedSoldierStats{" +
+            "rank=" + rank +
+            ", skill=" + skill +
+            ", killCount=" + killCount +
+            ", deathCount=" + deathCount +
+            ", winCount=" + winCount +
+            ", lossCount=" + lossCount +
+            ", score=" + score +
+            ", duration=" + duration +
+            ", platformId=" + platformId +
+            ", gameId=" + gameId +
+            ", _id=" + _id +
+            ", personaName='" + personaName + '\'' +
+            ", tag='" + tag + '\'' +
+            ", picture='" + picture + '\'' +
+            ", userId='" + userId + '\'' +
+            '}';
+    }
 }

@@ -18,6 +18,7 @@ import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.datatypes.TrackingNewProfileEvent;
+import com.ninetwozero.bf4intel.factories.BundleFactory;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
@@ -45,16 +46,19 @@ public class NavigationDrawerFragment extends BaseListFragment {
     public static final String BATTLE_CHAT = "BATTLE CHAT";
     public static final String BATTLE_CHAT_PACKAGE = "com.ninetwozero.battlechat";
 
-    private static final String STATE_SELECTED_POSITIION = "selected_navigation_drawer_group_position";
+    private final String STATE_SELECTED_POSITIION = "selected_navigation_drawer_group_position";
 
-    private static final int DEFAULT_POSITION_GUEST = 1;
-    private static final int DEFAULT_POSITION_TRACKING = 9;
-    private static final int DEFAULT_POSITION = 3;
+    private final int POSITION_SOLDIER_HEADING = 0;
+    private final int POSITION_SOLDIER_SPINNER = 1;
 
-    private static final int INTENT_SOLDIER_STATISTICS = 1;
-    private static final int INTENT_ASSIGNMENTS = 2;
-    private static final int INTENT_AWARDS = 3;
-    private static final int INTENT_UNLOCKS = 4;
+    private final int DEFAULT_POSITION_GUEST = 1;
+    private final int DEFAULT_POSITION_TRACKING = 9;
+    private final int DEFAULT_POSITION = 3;
+
+    private final int INTENT_SOLDIER_STATISTICS = 1;
+    private final int INTENT_ASSIGNMENTS = 2;
+    private final int INTENT_AWARDS = 3;
+    private final int INTENT_UNLOCKS = 4;
 
     private ListView listView;
     private NavigationDrawerCallbacks callbacks;
@@ -102,14 +106,12 @@ public class NavigationDrawerFragment extends BaseListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("YOLO", "[onResume]");
         BusProvider.getInstance().register(this);
         selectItemFromState(currentSelectedPosition);
     }
 
     @Override
     public void onPause() {
-        Log.d("YOLO", "[onPause]");
         BusProvider.getInstance().unregister(this);
         super.onPause();
     }
@@ -119,7 +121,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         final ListRowElement item = ((ListRowAdapter) getListAdapter()).getItem(position);
         if (item instanceof NormalRow) {
             selectItem((NormalRow) item, position, true, false);
-            storePositionState(position, true);
+            storePositionState(position);
         }
     }
 
@@ -180,7 +182,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         setListAdapter(new ListRowAdapter(getActivity(), getItemsForMenu()));
     }
 
-    private void storePositionState(final int position, final boolean isGroup) {
+    private void storePositionState(final int position) {
         currentSelectedPosition = position;
     }
 
@@ -195,16 +197,12 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private List<ListRowElement> getRowsForSoldier() {
-        final Bundle data = new Bundle();
+        final List<SummarizedSoldierStats> stats = fetchSoldiersForMenu();
+        final Bundle data = buildBundleForSoldier(stats);
         final List<ListRowElement> items = new ArrayList<ListRowElement>();
 
-        // TODO: Get these from session storage somewhere when implemented (see BattleChat)
-        data.putString(Keys.Soldier.NAME, "NINETWOZERO");
-        data.putInt(Keys.Soldier.ID, 177958806);
-        data.putInt(Keys.Soldier.PLATFORM, 2);
-
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_selected_soldier)));
-        items.add(ListRowFactory.createSoldierRow(fetchSoldiersForMenu()));
+        items.add(POSITION_SOLDIER_HEADING, ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_selected_soldier)));
+        items.add(POSITION_SOLDIER_SPINNER, ListRowFactory.createSoldierRow(stats));
         items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_overview), data, FragmentFactory.Type.SOLDIER_OVERVIEW));
         items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_statistics), data, intentToStart(INTENT_SOLDIER_STATISTICS)));
@@ -229,6 +227,15 @@ public class NavigationDrawerFragment extends BaseListFragment {
         return soldiers;
     }
 
+    private Bundle buildBundleForSoldier(final List<SummarizedSoldierStats> listOfStats) {
+        for (SummarizedSoldierStats soldierStats : listOfStats) {
+            if (soldierStats.getId() == sharedPreferences.getLong(Keys.Menu.LATEST_PERSONA, -1)) {
+                return BundleFactory.createForStats(soldierStats);
+            }
+        }
+        return new Bundle();
+    }
+
     private List<ListRowElement> getRowsForSocial() {
         // TODO: We need to populate the bundle from Session storage (when available)
         final Bundle data = new Bundle();
@@ -251,7 +258,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private Intent intentToStart(final int intentID) {
         final Bundle profileBundle = fetchProfileBundle();
-        Intent intent = null;
+        Intent intent;
         switch(intentID){
             case INTENT_SOLDIER_STATISTICS:
                 intent = new Intent(getActivity(), SoldierStatisticsActivity.class);

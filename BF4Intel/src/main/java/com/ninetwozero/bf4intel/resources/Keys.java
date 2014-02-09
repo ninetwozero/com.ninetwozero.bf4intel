@@ -17,4 +17,8 @@ public class Keys {
         public static final String NAME = "name";
         public static final String GRAVATAR_HASH = "gravatarHash";
     }
+
+    public static class Menu {
+        public static final String LATEST_PERSONA = "selected_soldier_in_menu";
+    }
 }

@@ -21,7 +21,7 @@ public class UrlFactory {
         return createURL(String.format("user/overviewBoxStats/%s/", soldierId));
     }
 
-    public static URL buildSoldierOverviewURL(final int soldierId, final int platformId) {
+    public static URL buildSoldierOverviewURL(final long soldierId, final int platformId) {
         return createURL(String.format("warsawoverviewpopulate/%d/%d/", soldierId, platformId));
     }
 

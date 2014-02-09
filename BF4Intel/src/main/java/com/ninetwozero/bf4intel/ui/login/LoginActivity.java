@@ -22,6 +22,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingIntelActivity;
 import com.ninetwozero.bf4intel.database.CupboardSQLiteOpenHelper;
+import com.ninetwozero.bf4intel.factories.BundleFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.login.SoldierListingRequest;
@@ -80,7 +81,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             final Profile profile = (Profile) data.getSerializableExtra(SearchActivity.RESULT_SEARCH_RESULT);
             cupboard().withDatabase(getWriteableDatabase()).put(profile);
 
-            profileBundle = buildBundleForProfile(profile);
+            profileBundle = BundleFactory.createForProfile(profile);
             getSupportLoaderManager().restartLoader(ID_LOADER_GET_SOLDIERS, profileBundle, this);
         }
     }
@@ -114,19 +115,18 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                 }
             }
 
-            final int resultFlag = bf4SoldierCount > 0 ? Activity.RESULT_OK : Activity.RESULT_CANCELED;
-            setResult(resultFlag, new Intent().putExtras(profileBundle));
+            if (bf4SoldierCount > 0) {
+                sharedPreferences.edit().putLong(
+                    Keys.Menu.LATEST_PERSONA,
+                    request.getSoldiers().get(0).getId()
+                ).commit();
+                setResult(Activity.RESULT_OK, new Intent().putExtras(profileBundle));
+            } else {
+                setResult(Activity.RESULT_CANCELED);
+            }
             finish();
         }
         showLoadingOverlay(false);
-    }
-
-    private Bundle buildBundleForProfile(final Profile profile) {
-        final Bundle bundle = new Bundle();
-        bundle.putString(Keys.Profile.ID, profile.getId());
-        bundle.putString(Keys.Profile.USERNAME, profile.getUsername());
-        bundle.putString(Keys.Profile.GRAVATAR_HASH, profile.getGravatarHash());
-        return bundle;
     }
 
     private void initialize() {

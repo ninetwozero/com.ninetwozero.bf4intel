@@ -44,7 +44,7 @@ public class SoldierSpinnerRow implements ListRowElement {
         return false;
     }
 
-    public List<SummarizedSoldierStats> getSoldiers() {
+    public List<SummarizedSoldierStats> getSoldierStats() {
         return soldiers;
     }
 }

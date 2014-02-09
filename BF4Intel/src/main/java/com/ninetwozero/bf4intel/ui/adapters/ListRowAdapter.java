@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.adapters;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.ninetwozero.bf4intel.interfaces.ListRowElement;
 import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.NormalRow;
 import com.ninetwozero.bf4intel.menu.SoldierSpinnerRow;
+import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.datatypes.ActiveSoldierChangedEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
@@ -85,7 +87,7 @@ public class ListRowAdapter extends BaseIntelAdapter<ListRowElement> {
     private void populateSoldierBox(final View view, final ListRowElement item) {
         if (item instanceof SoldierSpinnerRow) {
             final SoldierSpinnerRow row = (SoldierSpinnerRow) item;
-            final SoldierSpinnerAdapter adapter = new SoldierSpinnerAdapter(context, row.getSoldiers());
+            final SoldierSpinnerAdapter adapter = new SoldierSpinnerAdapter(context, row.getSoldierStats());
             final Spinner spinner = (Spinner) view.findViewById(R.id.spinner_soldier);
 
             spinner.setAdapter(adapter);
@@ -93,6 +95,10 @@ public class ListRowAdapter extends BaseIntelAdapter<ListRowElement> {
                 new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        PreferenceManager.getDefaultSharedPreferences(context).edit().putLong(
+                            Keys.Menu.LATEST_PERSONA,
+                            id
+                        ).commit();
                         BusProvider.getInstance().post(new ActiveSoldierChangedEvent(id));
                     }
 
