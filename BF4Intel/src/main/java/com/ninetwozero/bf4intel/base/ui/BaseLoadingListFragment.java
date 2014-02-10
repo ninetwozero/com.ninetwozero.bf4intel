@@ -77,7 +77,7 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         return gsonToUse.fromJson(jsonObject, outClass);
     }
 
-    private JsonObject extractFromJson(final String json, boolean returnTopLevel) {
+    protected JsonObject extractFromJson(final String json, boolean returnTopLevel) {
         JsonParser parser = new JsonParser();
         JsonObject topLevel = parser.parse(json).getAsJsonObject();
         return returnTopLevel? topLevel : topLevel.getAsJsonObject("data");

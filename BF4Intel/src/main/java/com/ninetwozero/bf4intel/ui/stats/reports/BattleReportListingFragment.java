@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseItem;
 import com.ninetwozero.bf4intel.base.adapter.BaseListAdapter;
@@ -51,12 +52,9 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         startLoadingData();
     }
 
-    /*
-            TODO: We need to figure out a way to not download new data upon rotating the screen!
-        */
     @Override
     protected void startLoadingData() {
-        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
+        getLoaderManager().initLoader(ID_LOADER, getArguments(), this);
     }
 
     @Override
@@ -74,24 +72,17 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    public void onLoadFinished(Loader<Result> resultLoader, Result result) {
-        if (result == Result.SUCCESS) {
-            onLoadSuccess(result.getResultMessage());
-        } else {
-            onLoadFailure(result.getResultMessage());
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
+        if (loader.getId() == ID_LOADER) {
+            JsonObject baseObject = extractFromJson(resultMessage, false);
+            if ((baseObject.get("statsTemplate").getAsString().equals("common.warsawerror"))) {
+                ((TextView) getView().findViewById(android.R.id.empty)).setText(R.string.msg_error_private_user);
+            } else {
+                final BattleReportStatistics statistics = gson.fromJson(baseObject, BattleReportStatistics.class);
+                sendDataToListView(statistics);
+            }
         }
-    }
-
-    @Override
-    protected void onLoadSuccess(final String resultMessage) {
-        BattleReportStatistics statistics = fromJson(resultMessage, BattleReportStatistics.class);
-        sendDataToListView(statistics);
         showLoadingState(false);
-    }
-
-    @Override
-    protected void onLoadFailure(final String resultMessage) {
-        showToast(resultMessage);
     }
 
     @Override

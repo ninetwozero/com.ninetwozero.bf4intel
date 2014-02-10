@@ -198,7 +198,7 @@
   <string name="header_favorite_battlereport">Favorite Reports</string>
   <string name="header_latest_battlereport">Latest Reports</string>
   <string name="forum_posts_in_threads">%1$s posts in %2$s threads</string>
-  <string name="msg_downloading">Downloading information&#8320;</string>
+  <string name="msg_downloading">Downloading information&#8230;</string>
   <string name="feed_gamereport_highlight">Highlight</string>
   <string name="label_name">NAME:</string>
   <string name="label_age">AGE:</string>
@@ -225,4 +225,5 @@
   <string name="action_search_short">Search</string>
   <string name="msg_search_error_length">Min length: 3 characters</string>
   <string name="menu_logout">Logout</string>
+  <string name="msg_error_private_user">This user is private.</string>
 </resources>
