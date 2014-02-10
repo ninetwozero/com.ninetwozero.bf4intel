@@ -24,7 +24,7 @@ import com.ninetwozero.bf4intel.factories.ListRowFactory;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
 import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 import com.ninetwozero.bf4intel.menu.ListRowType;
-import com.ninetwozero.bf4intel.menu.NormalRow;
+import com.ninetwozero.bf4intel.menu.NormalListRow;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
 import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsActivity;
@@ -113,8 +113,8 @@ public class NavigationDrawerFragment extends BaseListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         final ListRowElement item = ((ListRowAdapter) getListAdapter()).getItem(position);
-        if (item instanceof NormalRow) {
-            selectItem((NormalRow) item, position, true, false);
+        if (item instanceof NormalListRow) {
+            selectItem((NormalListRow) item, position, true, false);
             storePositionState(position);
         }
     }
@@ -346,12 +346,12 @@ public class NavigationDrawerFragment extends BaseListFragment {
         final ListRowAdapter adapter = (ListRowAdapter) getListAdapter();
         final ListRowElement row = adapter.getItem(position);
 
-        if (row instanceof NormalRow) {
-            selectItem((NormalRow) row, position, true, true);
+        if (row instanceof NormalListRow) {
+            selectItem((NormalListRow) row, position, true, true);
         }
     }
 
-    private void selectItem(final NormalRow item, final int position, final boolean closeDrawer, final boolean isOnResume) {
+    private void selectItem(final NormalListRow item, final int position, final boolean closeDrawer, final boolean isOnResume) {
         final boolean isFragment = !item.hasIntent();
         if (listView != null && isFragment) {
             listView.setItemChecked(position, true);
@@ -364,7 +364,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         startItem(item, isOnResume);
     }
 
-    private void startItem(final NormalRow item, final boolean isOnResume) {
+    private void startItem(final NormalListRow item, final boolean isOnResume) {
         if (item.hasIntent() && !isOnResume) {
             startActivityForResult(item.getIntent(), 12345);
         } else if (item.hasFragmentType()) {
