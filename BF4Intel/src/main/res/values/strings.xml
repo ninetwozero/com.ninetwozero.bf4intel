@@ -198,7 +198,7 @@
   <string name="header_favorite_battlereport">Favorite Reports</string>
   <string name="header_latest_battlereport">Latest Reports</string>
   <string name="forum_posts_in_threads">%1$s posts in %2$s threads</string>
-  <string name="msg_downloading">Downloading information...</string>
+  <string name="msg_downloading">Downloading information&#8320;</string>
   <string name="feed_gamereport_highlight">Highlight</string>
   <string name="label_name">NAME:</string>
   <string name="label_age">AGE:</string>
@@ -209,7 +209,7 @@
   <string name="home_main_information_guest">Looks like you haven\'t set the app up yet. Let\'s fix that!</string>
   <string name="home_main_information_tracker">Currently tracking</string>
   <string name="home_select_account">Select account</string>
-  <string name="home_select_another_account">Change selected account</string>
+  <string name="home_select_another_account">Change account</string>
 
   <!-- Login related stuff -->
   <string name="title_login">Login</string>
@@ -224,4 +224,5 @@
   <string name="cdesc_action_item">Action item</string>
   <string name="action_search_short">Search</string>
   <string name="msg_search_error_length">Min length: 3 characters</string>
+  <string name="menu_logout">Logout</string>
 </resources>

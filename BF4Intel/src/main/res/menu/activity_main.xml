@@ -16,7 +16,19 @@
     android:showAsAction="never"
     />
   <item
+    android:id="@+id/ab_action_select_user"
+    android:title="@string/home_select_account"
+    android:showAsAction="never"
+    />
+  <item
     android:id="@+id/ab_action_settings"
     android:title="@string/action_settings"
-    android:showAsAction="never"/>
+    android:showAsAction="never"
+    />
+  <item
+    android:id="@+id/ab_action_logout"
+    android:title="@string/menu_logout"
+    android:showAsAction="never"
+    android:visible="false"
+    />
 </menu>

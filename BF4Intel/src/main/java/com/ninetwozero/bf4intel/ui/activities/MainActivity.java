@@ -49,7 +49,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.activity_main, menu);
 
         final MenuItem searchMenuItem = menu.findItem(R.id.ab_action_search);
         final MenuItem refreshMenuItem = menu.findItem(R.id.ab_action_refresh);
@@ -89,13 +89,47 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        final MenuItem userSelectionItem = menu.findItem(R.id.ab_action_select_user);
+        final MenuItem logoutItem = menu.findItem(R.id.ab_action_logout);
+        if (userSelectionItem != null && logoutItem != null) {
+            if (SessionStore.isLoggedIn()) {
+                userSelectionItem.setVisible(false);
+                logoutItem.setVisible(true);
+            } else if (SessionStore.hasUserId()) {
+                userSelectionItem.setVisible(true);
+                userSelectionItem.setTitle(R.string.home_select_another_account);
+                logoutItem.setVisible(false);
+            } else {
+                userSelectionItem.setVisible(true);
+                userSelectionItem.setTitle(R.string.home_select_account);
+                logoutItem.setVisible(false);
+            }
+        }
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 toggleNavigationDrawer(!isDrawerOpen());
                 return true;
+
+            case R.id.ab_action_select_user:
+                startActivityForResult(
+                    new Intent(this, LoginActivity.class), LoginActivity.REQUEST_PROFILE
+                );
+                return true;
+
+            case R.id.ab_action_logout:
+                showToast("TODO: Logout functionality");
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
