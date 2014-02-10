@@ -27,8 +27,6 @@ import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.NormalRow;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
-import com.ninetwozero.bf4intel.ui.assignments.AssignmentsActivity;
-import com.ninetwozero.bf4intel.ui.awards.AwardsActivity;
 import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsActivity;
 import com.ninetwozero.bf4intel.ui.unlocks.UnlockActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
@@ -48,22 +46,18 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private final String STATE_SELECTED_POSITIION = "selected_navigation_drawer_group_position";
 
-    private final int POSITION_SOLDIER_HEADING = 0;
-    private final int POSITION_SOLDIER_SPINNER = 1;
+    private static final int DEFAULT_POSITION_GUEST = 1;
+    private static final int DEFAULT_POSITION_TRACKING = 9;
+    private static final int DEFAULT_POSITION = 3;
 
-    private final int DEFAULT_POSITION_GUEST = 1;
-    private final int DEFAULT_POSITION_TRACKING = 9;
-    private final int DEFAULT_POSITION = 3;
-
-    private final int INTENT_SOLDIER_STATISTICS = 1;
-    private final int INTENT_ASSIGNMENTS = 2;
-    private final int INTENT_AWARDS = 3;
-    private final int INTENT_UNLOCKS = 4;
+    private static final int INTENT_SOLDIER_STATISTICS = 1;
+    private static final int INTENT_UNLOCKS = 2;
 
     private ListView listView;
     private NavigationDrawerCallbacks callbacks;
 
     private int currentSelectedPosition = 0;
+    private Bundle soldierBundleForMenu;
 
     public NavigationDrawerFragment() {
     }
@@ -198,17 +192,61 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private List<ListRowElement> getRowsForSoldier() {
         final List<SummarizedSoldierStats> stats = fetchSoldiersForMenu();
-        final Bundle data = buildBundleForSoldier(stats);
         final List<ListRowElement> items = new ArrayList<ListRowElement>();
+        soldierBundleForMenu = buildBundleForSoldier(stats);
 
-        items.add(POSITION_SOLDIER_HEADING, ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_selected_soldier)));
-        items.add(POSITION_SOLDIER_SPINNER, ListRowFactory.createSoldierRow(stats));
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_overview), data, FragmentFactory.Type.SOLDIER_OVERVIEW));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_statistics), data, intentToStart(INTENT_SOLDIER_STATISTICS)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_unlocks), data, intentToStart(INTENT_UNLOCKS)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.assignments), data, intentToStart(INTENT_ASSIGNMENTS)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.awards), data, intentToStart(INTENT_AWARDS)));
+        items.add(
+            ListRowFactory.create(
+                ListRowType.SIDE_HEADING,
+                getString(R.string.navigationdrawer_selected_soldier)
+            )
+        );
+        items.add(ListRowFactory.createSoldierRow(stats));
+        items.add(
+            ListRowFactory.create(
+                ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)
+            )
+        );
+        items.add(
+            ListRowFactory.create(
+                ListRowType.SIDE_REGULAR,
+                getString(R.string.navigationdrawer_overview),
+                soldierBundleForMenu,
+                FragmentFactory.Type.SOLDIER_OVERVIEW
+            )
+        );
+        items.add(
+            ListRowFactory.create(
+                ListRowType.SIDE_REGULAR,
+                getString(R.string.navigationdrawer_statistics),
+                soldierBundleForMenu,
+                fetchMultiFragmentActivityIntent(INTENT_SOLDIER_STATISTICS)
+            )
+        );
+        items.add(
+            ListRowFactory.create(
+                ListRowType.SIDE_REGULAR,
+                getString(R.string.navigationdrawer_unlocks),
+                soldierBundleForMenu,
+                fetchMultiFragmentActivityIntent(INTENT_UNLOCKS)
+            )
+        );
+        items.add(
+            ListRowFactory.create(
+                ListRowType.SIDE_REGULAR,
+                getString(R.string.assignments),
+                soldierBundleForMenu,
+                FragmentFactory.Type.SOLDIER_ASSIGNMENTS
+            )
+        );
+        items.add(
+            ListRowFactory.create(
+                ListRowType.SIDE_REGULAR,
+                getString(R.string.awards),
+                soldierBundleForMenu,
+                FragmentFactory.Type.SOLDIER_AWARDS
+            )
+        );
         return items;
     }
 
@@ -230,7 +268,11 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private Bundle buildBundleForSoldier(final List<SummarizedSoldierStats> listOfStats) {
         for (SummarizedSoldierStats soldierStats : listOfStats) {
             if (soldierStats.getId() == sharedPreferences.getLong(Keys.Menu.LATEST_PERSONA, -1)) {
-                return BundleFactory.createForStats(soldierStats);
+                final Bundle bundle = BundleFactory.createForStats(soldierStats);
+                bundle.putString(Keys.Profile.ID, SessionStore.getUserId());
+                bundle.putString(Keys.Profile.USERNAME, SessionStore.getUsername());
+                bundle.putString(Keys.Profile.GRAVATAR_HASH, SessionStore.getGravatarHash());
+                return bundle;
             }
         }
         return new Bundle();
@@ -245,10 +287,35 @@ public class NavigationDrawerFragment extends BaseListFragment {
         //data.putString(Keys.Profile.GRAVATAR_HASH, "1241459af7d1ba348ec8b258240ea145");
 
         final List<ListRowElement> items = new ArrayList<ListRowElement>();
-        items.add(ListRowFactory.create(ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_social)));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_home), data, fetchTypeForHome()));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, getString(R.string.navigationdrawer_news), data, FragmentFactory.Type.NEWS_LISTING));
-        items.add(ListRowFactory.create(ListRowType.SIDE_REGULAR, BATTLE_CHAT, data, ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE)));
+        items.add(
+            ListRowFactory.create(
+                ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_social)
+            )
+        );
+        items.add(
+            ListRowFactory.create(
+                ListRowType.SIDE_REGULAR,
+                getString(R.string.navigationdrawer_home),
+                data,
+                fetchTypeForHome()
+            )
+        );
+        items.add(
+            ListRowFactory.create(
+                ListRowType.SIDE_REGULAR,
+                getString(R.string.navigationdrawer_news),
+                data,
+                FragmentFactory.Type.NEWS_LISTING
+            )
+        );
+        items.add(
+            ListRowFactory.create(
+                ListRowType.SIDE_REGULAR,
+                BATTLE_CHAT,
+                data,
+                ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE)
+            )
+        );
         return items;
     }
 
@@ -256,39 +323,23 @@ public class NavigationDrawerFragment extends BaseListFragment {
         return SessionStore.isLoggedIn() ? FragmentFactory.Type.BATTLE_FEED : FragmentFactory.Type.HOME;
     }
 
-    private Intent intentToStart(final int intentID) {
-        final Bundle profileBundle = fetchProfileBundle();
+    private Intent fetchMultiFragmentActivityIntent(final int intentID) {
         Intent intent;
         switch(intentID){
             case INTENT_SOLDIER_STATISTICS:
                 intent = new Intent(getActivity(), SoldierStatisticsActivity.class);
-                break;
-            case INTENT_ASSIGNMENTS:
-                intent = new Intent(getActivity(), AssignmentsActivity.class);
-                break;
-            case INTENT_AWARDS:
-                intent = new Intent(getActivity(), AwardsActivity.class);
                 break;
             case INTENT_UNLOCKS:
                 intent = new Intent(getActivity(), UnlockActivity.class);
                 break;
             default:
                 intent = new Intent();
-                Log.i(NavigationDrawerFragment.class.getSimpleName(), "Did not found any matching activity for intent " + intentID);
+                Log.i(
+                    NavigationDrawerFragment.class.getSimpleName(),
+                    "Did not found any matching activity for intent " + intentID
+                );
         }
-        return intent.putExtra("profile", profileBundle);
-    }
-
-    private Bundle fetchProfileBundle() {
-        final Bundle bundle = new Bundle();
-        bundle.putString(Keys.Profile.ID, "2832658801548551060");
-        bundle.putString(Keys.Profile.NAME, "Karl Lindmark");
-        bundle.putString(Keys.Profile.USERNAME, "NINETWOZERO");
-        bundle.putString(Keys.Profile.GRAVATAR_HASH, "1241459af7d1ba348ec8b258240ea145");
-        bundle.putInt(Keys.Soldier.ID, 177958806);
-        bundle.putString(Keys.Soldier.NAME, "NINETWOZERO");
-        bundle.putInt(Keys.Soldier.PLATFORM, 2);
-        return bundle;
+        return intent.putExtra("profile", soldierBundleForMenu);
     }
 
     private void selectItemFromState(final int position) {

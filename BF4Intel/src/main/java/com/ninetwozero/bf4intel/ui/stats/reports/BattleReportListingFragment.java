@@ -18,6 +18,7 @@ import com.ninetwozero.bf4intel.json.stats.reports.BattleReportStatistics;
 import com.ninetwozero.bf4intel.json.stats.reports.GameReport;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
+import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         */
     @Override
     protected void startLoadingData() {
-        getLoaderManager().restartLoader(ID_LOADER, null, this);
+        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
     }
 
     @Override
@@ -63,7 +64,12 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         showLoadingState(true);
         return new IntelLoader(
             getActivity(),
-            new SimpleGetRequest(UrlFactory.buildBattleReportsURL(200661244, 1))
+            new SimpleGetRequest(
+                UrlFactory.buildBattleReportsURL(
+                    bundle.getLong(Keys.Soldier.ID),
+                    bundle.getInt(Keys.Soldier.PLATFORM)
+                )
+            )
         );
     }
 

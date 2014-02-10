@@ -47,7 +47,7 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
             getActivity(),
             new SimpleGetRequest(
                 UrlFactory.buildWeaponUnlocksURL(
-                    bundle.getInt(Keys.Soldier.ID),
+                    bundle.getLong(Keys.Soldier.ID),
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )
             )

@@ -24,7 +24,7 @@
     android:layout_height="wrap_content"
     android:text="@string/title_home"
     android:textAppearance="@android:style/TextAppearance.Holo"
-    android:textSize="24sp"
+    android:textSize="@dimen/text_l"
     android:textStyle="bold"
     android:layout_centerHorizontal="true"
     android:layout_below="@id/home_logo"
@@ -94,6 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/selected_user_gravatar"
         android:textSize="@dimen/text_l"
+        android:layout_marginLeft="@dimen/spacing_m"
         />
     </RelativeLayout>
     <Button

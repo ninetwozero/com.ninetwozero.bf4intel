@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.awards;
+package com.ninetwozero.bf4intel.ui.assignments;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -8,7 +8,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 
-public class AwardsActivity extends BaseIntelActivity {
+public class AssignmentActivity extends BaseIntelActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,7 @@ public class AwardsActivity extends BaseIntelActivity {
         transaction.add(
             R.id.container_assignments,
             FragmentFactory.get(
-                FragmentFactory.Type.SOLDIER_AWARDS,
+                FragmentFactory.Type.SOLDIER_ASSIGNMENTS,
                 getIntent().getBundleExtra("profile")
             )
         ).commit();

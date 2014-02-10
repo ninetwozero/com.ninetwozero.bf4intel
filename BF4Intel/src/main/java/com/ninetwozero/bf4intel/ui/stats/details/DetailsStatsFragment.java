@@ -16,6 +16,7 @@ import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;
 import com.ninetwozero.bf4intel.model.stats.details.StatsDetailsGrouped;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
+import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.utils.Result;
 
 public class DetailsStatsFragment extends BaseLoadingListFragment {
@@ -44,13 +45,21 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getLoaderManager().restartLoader(ID_LOADER, null, this);
+        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
     }
 
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
         showLoadingState(true);
-        return new IntelLoader(getActivity(), new SimpleGetRequest(UrlFactory.buildDetailsURL(200661244, 1)));
+        return new IntelLoader(
+            getActivity(),
+            new SimpleGetRequest(
+                UrlFactory.buildDetailsURL(
+                    bundle.getLong(Keys.Soldier.ID),
+                    bundle.getInt(Keys.Soldier.PLATFORM)
+                )
+            )
+        );
     }
 
     @Override

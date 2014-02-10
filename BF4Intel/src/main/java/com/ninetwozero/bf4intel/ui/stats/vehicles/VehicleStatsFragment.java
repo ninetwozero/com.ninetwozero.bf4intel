@@ -15,6 +15,7 @@ import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStats;
 import com.ninetwozero.bf4intel.json.stats.vehicles.VehicleStatistics;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
+import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.List;
@@ -47,13 +48,21 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getLoaderManager().restartLoader(ID_LOADER, null, this);
+        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
     }
 
     @Override
     public Loader<Result> onCreateLoader(int i, Bundle bundle) {
         showLoadingState(true);
-        return new IntelLoader(getActivity(), new SimpleGetRequest(UrlFactory.buildVehicleStatsURL(200661244, 1)));
+        return new IntelLoader(
+            getActivity(),
+            new SimpleGetRequest(
+                UrlFactory.buildVehicleStatsURL(
+                    bundle.getLong(Keys.Soldier.ID),
+                    bundle.getInt(Keys.Soldier.PLATFORM)
+                )
+            )
+        );
     }
 
     @Override
