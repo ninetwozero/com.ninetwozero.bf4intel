@@ -79,7 +79,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
         if (requestCode == SearchActivity.REQUEST_SEARCH && resultCode == Activity.RESULT_OK) {
             final Profile profile = (Profile) data.getSerializableExtra(SearchActivity.RESULT_SEARCH_RESULT);
-            cupboard().withDatabase(getWriteableDatabase()).put(profile);
+            cupboard().withDatabase(getWritableDatabase()).put(profile);
 
             profileBundle = BundleFactory.createForProfile(profile);
             getSupportLoaderManager().restartLoader(ID_LOADER_GET_SOLDIERS, profileBundle, this);
@@ -107,7 +107,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             final SoldierListingRequest request = gson.fromJson(baseObject, SoldierListingRequest.class);
 
             int bf4SoldierCount = 0;
-            final SQLiteDatabase database = getWriteableDatabase();
+            final SQLiteDatabase database = getWritableDatabase();
             for (SummarizedSoldierStats stats : request.getSoldiers()) {
                 if (stats.getGameId() == GAME_ID_BF4) {
                     cupboard().withDatabase(database).put(stats);

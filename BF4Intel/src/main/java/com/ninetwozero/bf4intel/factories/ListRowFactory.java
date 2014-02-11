@@ -31,10 +31,6 @@ public class ListRowFactory {
         }
     }
 
-    public static SimpleListRow create(final ListRowType type, final String text, final Bundle data) {
-        return new SimpleListRow.Builder(type).title(text).data(data).build();
-    }
-
     public static SimpleListRow create(final ListRowType type, final String text, final Bundle data, final Intent intent) {
         return new SimpleListRow.Builder(type).title(text).data(data).intent(intent).build();
     }

@@ -30,8 +30,8 @@ import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_REGULAR;
 import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_REGULAR_CHILD;
 import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_SOLDIER;
 
-public class ListRowAdapter extends BaseIntelAdapter<ListRowElement> {
-    public ListRowAdapter(final Context context, final List<ListRowElement> items) {
+public class NavigationDrawerListAdapter extends BaseIntelAdapter<ListRowElement> {
+    public NavigationDrawerListAdapter(final Context context, final List<ListRowElement> items) {
         super(context, items);
     }
 

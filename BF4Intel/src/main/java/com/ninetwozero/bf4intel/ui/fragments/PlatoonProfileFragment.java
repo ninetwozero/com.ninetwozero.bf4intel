@@ -10,7 +10,7 @@ import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
 import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
-import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
+import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class PlatoonProfileFragment extends BaseListFragment {
     }
 
     private void initialize(final View view) {
-        setListAdapter(new ListRowAdapter(getActivity(), getItemsForMenu()));
+        setListAdapter(new NavigationDrawerListAdapter(getActivity(), getItemsForMenu()));
         updateActionBar(getActivity(), "Chili-powered Zebras", R.drawable.test_platoon);
     }
 

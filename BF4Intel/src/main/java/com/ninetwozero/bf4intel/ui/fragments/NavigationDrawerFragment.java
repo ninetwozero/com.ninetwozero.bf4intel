@@ -26,7 +26,7 @@ import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.SimpleListRow;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
+import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
 import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsActivity;
 import com.ninetwozero.bf4intel.ui.unlocks.UnlockActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
@@ -112,7 +112,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        final ListRowElement item = ((ListRowAdapter) getListAdapter()).getItem(position);
+        final ListRowElement item = ((NavigationDrawerListAdapter) getListAdapter()).getItem(position);
         if (item instanceof SimpleListRow) {
             selectItem((SimpleListRow) item, position, true, false);
             storePositionState(position);
@@ -126,7 +126,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
             return;
         }
         setupRegularViews(view);
-        ((ListRowAdapter) getListAdapter()).setItems(getItemsForMenu());
+        ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
     }
 
     private void initialize(final View view, final Bundle state) {
@@ -173,7 +173,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private void setupListView(final View view) {
         listView = (ListView) view.findViewById(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        setListAdapter(new ListRowAdapter(getActivity(), getItemsForMenu()));
+        setListAdapter(new NavigationDrawerListAdapter(getActivity(), getItemsForMenu()));
     }
 
     private void storePositionState(final int position) {
@@ -343,7 +343,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void selectItemFromState(final int position) {
-        final ListRowAdapter adapter = (ListRowAdapter) getListAdapter();
+        final NavigationDrawerListAdapter adapter = (NavigationDrawerListAdapter) getListAdapter();
         final ListRowElement row = adapter.getItem(position);
 
         if (row instanceof SimpleListRow) {

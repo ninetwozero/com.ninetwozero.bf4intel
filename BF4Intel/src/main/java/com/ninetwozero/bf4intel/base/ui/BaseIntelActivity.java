@@ -46,7 +46,7 @@ public abstract class BaseIntelActivity extends FragmentActivity {
         );
     }
 
-    public SQLiteDatabase getWriteableDatabase() {
+    public SQLiteDatabase getWritableDatabase() {
         if (cupboardHelper == null) {
             cupboardHelper = new CupboardSQLiteOpenHelper(this);
         }
