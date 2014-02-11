@@ -90,4 +90,5 @@
   <dimen name="login_form_element_width">240dp</dimen>
   <dimen name="action_item_size">32dp</dimen>
   <dimen name="soldier_image_menu_size">48dp</dimen>
+  <dimen name="login_progress_margin_top">48dp</dimen>
 </resources>

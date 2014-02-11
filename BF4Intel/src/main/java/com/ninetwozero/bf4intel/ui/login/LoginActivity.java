@@ -21,7 +21,6 @@ import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingIntelActivity;
-import com.ninetwozero.bf4intel.database.CupboardSQLiteOpenHelper;
 import com.ninetwozero.bf4intel.factories.BundleFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.Profile;
@@ -43,14 +42,10 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     private static final String RESET_PASSWORD_LINK = "https://signin.ea.com/p/web/resetPassword";
     private static final int GAME_ID_BF4 = 2048;
     private static final int ID_LOADER_GET_SOLDIERS = 0;
-    public static final String INTENT_PROFILE = "profile";
 
     private Bundle profileBundle;
-    private CupboardSQLiteOpenHelper cupboardHelper;
-    private View loginFormView;
     private View loginStatusView;
     private TextView alertText;
-    private TextView loginStatusMessageView;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -152,7 +147,6 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     private void setupForm() {
         alertText = (TextView) findViewById(R.id.login_alert);
         loginStatusView = findViewById(R.id.login_status);
-        loginStatusMessageView = (TextView) findViewById(R.id.login_status_message);
     }
 
     private void setupMenu() {
@@ -215,23 +209,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private void displayNetworkNotice(final boolean isConnected) {
         alertText.setVisibility(isConnected ? View.GONE : View.VISIBLE);
-        //findViewById(R.id.sign_in_button).setEnabled(isConnected);
         findViewById(R.id.button_search_account).setEnabled(isConnected);
-    }
-
-    private void displayErrorMessage(final String error) {
-        alertText.setVisibility(View.VISIBLE);
-        alertText.setText(error);
-    }
-
-    private void displayErrorMessage(final int errorResource) {
-        alertText.setVisibility(View.VISIBLE);
-        alertText.setText(errorResource);
-    }
-
-    private void clearErrorMessage() {
-        alertText.setVisibility(View.GONE);
-        alertText.setText("");
     }
 
     private void showLoadingOverlay(final boolean show) {

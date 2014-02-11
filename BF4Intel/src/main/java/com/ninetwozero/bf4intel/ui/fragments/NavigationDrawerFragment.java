@@ -279,13 +279,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private List<ListRowElement> getRowsForSocial() {
-        // TODO: We need to populate the bundle from Session storage (when available)
         final Bundle data = new Bundle();
-        //data.putString(Keys.Profile.ID, "2832658801548551060");
-        //data.putString(Keys.Profile.NAME, "Karl Lindmark");
-        //data.putString(Keys.Profile.USERNAME, "NINETWOZERO");
-        //data.putString(Keys.Profile.GRAVATAR_HASH, "1241459af7d1ba348ec8b258240ea145");
-
         final List<ListRowElement> items = new ArrayList<ListRowElement>();
         items.add(
             ListRowFactory.create(
