@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
 
-public class NormalListRow implements ListRowElement {
+public class SimpleListRow implements ListRowElement {
     private ListRowType type;
     private String title;
 
@@ -18,7 +18,7 @@ public class NormalListRow implements ListRowElement {
 
     private Bundle data;
 
-    protected NormalListRow(final Builder builder) {
+    protected SimpleListRow(final Builder builder) {
         type = builder.type;
         title = builder.title;
 
@@ -117,8 +117,8 @@ public class NormalListRow implements ListRowElement {
             return this;
         }
 
-        public NormalListRow build() {
-            return new NormalListRow(this);
+        public SimpleListRow build() {
+            return new SimpleListRow(this);
         }
     }
 }

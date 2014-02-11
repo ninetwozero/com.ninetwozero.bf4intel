@@ -15,7 +15,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
 import com.ninetwozero.bf4intel.menu.ListRowType;
-import com.ninetwozero.bf4intel.menu.NormalListRow;
+import com.ninetwozero.bf4intel.menu.SimpleListRow;
 import com.ninetwozero.bf4intel.menu.SoldierSpinnerRow;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.datatypes.ActiveSoldierChangedEvent;
@@ -112,11 +112,11 @@ public class ListRowAdapter extends BaseIntelAdapter<ListRowElement> {
     }
 
     private void populateSpecialLayouts(final View view, final ListRowElement item) {
-        if (!(item instanceof NormalListRow)) {
+        if (!(item instanceof SimpleListRow)) {
             return;
         }
 
-        final NormalListRow row = (NormalListRow) item;
+        final SimpleListRow row = (SimpleListRow) item;
         final Bundle stringMappings = row.getStringMappings();
         final Bundle drawableMappings = row.getDrawableMappings();
 
