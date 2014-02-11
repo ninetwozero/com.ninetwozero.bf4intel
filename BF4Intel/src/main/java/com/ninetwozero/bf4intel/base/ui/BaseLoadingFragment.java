@@ -62,19 +62,6 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Loader
         return gson.fromJson(jsonObject, outClass);
     }
 
-    @Deprecated
-    protected void displayAsLoading(final boolean isLoading) {
-        final Activity activity = getActivity();
-        if (activity == null) {
-            return;
-        }
-
-        activity.findViewById(R.id.wrap_loading_progress).setVisibility(isLoading ? View.VISIBLE : View.GONE);
-        if (activity instanceof BaseLoadingIntelActivity) {
-            ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
-        }
-    }
-
     protected void showLoadingState(final boolean isLoading) {
         final Activity activity = getActivity();
         if (activity == null) {
