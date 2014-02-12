@@ -7,7 +7,7 @@ import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 import com.ninetwozero.bf4intel.utils.FeedItemDeserializer;
 import com.ninetwozero.bf4intel.utils.SummarizedSoldierStatsDeserializer;
 
-public class GsonFactory {
+public class GsonProvider {
     private static Gson instance;
 
     public static Gson getInstance() {

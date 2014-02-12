@@ -1,7 +1,7 @@
 package com.ninetwozero.bf4intel.json.battlefeed;
 
 import com.google.gson.Gson;
-import com.ninetwozero.bf4intel.factories.GsonFactory;
+import com.ninetwozero.bf4intel.factories.GsonProvider;
 import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.events.CommentedBlogEvent;
 import com.ninetwozero.bf4intel.json.battlefeed.events.CompletedLevelEvent;
@@ -51,7 +51,7 @@ public class BattleFeedTest {
 
     @BeforeClass
     public static void setup() throws IOException {
-        final Gson gson = GsonFactory.getInstance();
+        final Gson gson = GsonProvider.getInstance();
         battleFeed = IntelJsonParser.parse(
             "/json/battlefeed.json",
             BattleFeed.class,

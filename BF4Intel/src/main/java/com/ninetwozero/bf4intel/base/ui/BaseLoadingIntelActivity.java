@@ -11,11 +11,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.factories.GsonFactory;
+import com.ninetwozero.bf4intel.factories.GsonProvider;
 import com.ninetwozero.bf4intel.utils.Result;
 
 public abstract class BaseLoadingIntelActivity extends BaseIntelActivity implements LoaderManager.LoaderCallbacks<Result> {
-    protected final Gson gson = GsonFactory.getInstance();
+    protected final Gson gson = GsonProvider.getInstance();
 
     @Override
     public abstract Loader<Result> onCreateLoader(int i, Bundle bundle);
