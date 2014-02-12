@@ -7,10 +7,10 @@ import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
-import com.ninetwozero.bf4intel.datatypes.ListRow;
-import com.ninetwozero.bf4intel.datatypes.ListRowType;
+import com.ninetwozero.bf4intel.interfaces.ListRowElement;
+import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
-import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
+import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,14 +35,12 @@ public class AccountProfileFragment extends BaseListFragment {
     }
 
     private void initialize(final View view) {
-        final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getItems(), getActivity());
-        setListAdapter(slidingMenuAdapter);
-
+        setListAdapter(new NavigationDrawerListAdapter(getActivity(), getItems()));
         updateActionBar(getActivity(), "NINETWOZERO", R.drawable.test_gravatar);
     }
 
-    private List<ListRow> getItems() {
-        final List<ListRow> items = new ArrayList<ListRow>();
+    private List<ListRowElement> getItems() {
+        final List<ListRowElement> items = new ArrayList<ListRowElement>();
 
         items.add(ListRowFactory.create(ListRowType.PROFILE_ACCOUNT, new Bundle()));
 

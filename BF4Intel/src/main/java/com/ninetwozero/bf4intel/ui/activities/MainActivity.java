@@ -1,12 +1,12 @@
 package com.ninetwozero.bf4intel.ui.activities;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,8 +16,13 @@ import android.view.View;
 import android.widget.SearchView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
+import com.ninetwozero.bf4intel.datatypes.TrackingNewProfileEvent;
+import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
+import com.ninetwozero.bf4intel.ui.login.LoginActivity;
+import com.ninetwozero.bf4intel.utils.BusProvider;
 
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
@@ -44,7 +49,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.activity_main, menu);
 
         final MenuItem searchMenuItem = menu.findItem(R.id.ab_action_search);
         final MenuItem refreshMenuItem = menu.findItem(R.id.ab_action_refresh);
@@ -84,13 +89,47 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        final MenuItem userSelectionItem = menu.findItem(R.id.ab_action_select_user);
+        final MenuItem logoutItem = menu.findItem(R.id.ab_action_logout);
+        if (userSelectionItem != null && logoutItem != null) {
+            if (SessionStore.isLoggedIn()) {
+                userSelectionItem.setVisible(false);
+                logoutItem.setVisible(true);
+            } else if (SessionStore.hasUserId()) {
+                userSelectionItem.setVisible(true);
+                userSelectionItem.setTitle(R.string.home_select_another_account);
+                logoutItem.setVisible(false);
+            } else {
+                userSelectionItem.setVisible(true);
+                userSelectionItem.setTitle(R.string.home_select_account);
+                logoutItem.setVisible(false);
+            }
+        }
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 toggleNavigationDrawer(!isDrawerOpen());
                 return true;
+
+            case R.id.ab_action_select_user:
+                startActivityForResult(
+                    new Intent(this, LoginActivity.class), LoginActivity.REQUEST_PROFILE
+                );
+                return true;
+
+            case R.id.ab_action_logout:
+                showToast("TODO: Logout functionality");
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -119,7 +158,6 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         return drawerLayout != null && drawerLayout.isDrawerOpen(fragmentContainerView);
     }
 
-
     @Override
     public void onNavigationDrawerItemSelected(final int position, final String title) {
         this.title = title == null? this.title : title.toUpperCase();
@@ -129,13 +167,40 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         isRecreated = false;
     }
 
+    @Override
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == LoginActivity.REQUEST_PROFILE && resultCode == Activity.RESULT_OK) {
+            final Bundle bundle = data.getExtras();
+            if (bundle == null) {
+                return;
+            }
+
+            final String userId = bundle.getString(Keys.Profile.ID);
+            final String username = bundle.getString(Keys.Profile.USERNAME);
+            final String gravatarHash = bundle.getString(Keys.Profile.GRAVATAR_HASH);
+            final TrackingNewProfileEvent event = new TrackingNewProfileEvent(userId, username, gravatarHash);
+
+            SessionStore.load(null, userId, username, gravatarHash);
+            sharedPreferences
+                .edit()
+                .putString(Keys.Profile.ID, userId)
+                .putString(Keys.Profile.USERNAME, username)
+                .putString(Keys.Profile.GRAVATAR_HASH, gravatarHash)
+                .commit();
+
+            navigationDrawer.onStartedTrackingNewProfile(event);
+            BusProvider.getInstance().post(event);
+        }
+    }
+
     private void setupNavigationDrawer() {
         navigationDrawer = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
     }
 
     private void setupActionBarToggle() {
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        userLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
+        userLearnedDrawer = sharedPreferences.getBoolean(PREF_USER_LEARNED_DRAWER, false);
 
         fragmentContainerView = findViewById(R.id.navigation_drawer);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -164,9 +229,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
                 if (!userLearnedDrawer) {
                     userLearnedDrawer = true;
-                    PreferenceManager.getDefaultSharedPreferences(
-                        getApplicationContext()
-                    ).edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
+                    sharedPreferences.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
                 }
             }
         };

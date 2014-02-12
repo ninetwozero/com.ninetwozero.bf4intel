@@ -36,7 +36,7 @@
           android:layout_height="wrap_content"
           android:layout_below="@id/heading_progress"
           android:textAppearance="@android:style/TextAppearance.Holo.Large"
-          android:textColor="@color/blue"/>
+          android:textColor="@color/darker_blue"/>
 
         <ImageView
           android:id="@+id/image_rank"

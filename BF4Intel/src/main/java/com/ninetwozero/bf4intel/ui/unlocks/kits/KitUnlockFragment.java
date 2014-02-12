@@ -46,7 +46,7 @@ public class KitUnlockFragment extends BaseUnlockFragment {
             getActivity(),
             new SimpleGetRequest(
                 UrlFactory.buildKitUnlocksURL(
-                    bundle.getInt(Keys.Soldier.ID),
+                    bundle.getLong(Keys.Soldier.ID),
                     bundle.getString(Keys.Soldier.NAME),
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )

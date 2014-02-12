@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo"
-        android:textColor="@color/blue"/>
+        android:textColor="@color/darker_blue"/>
 
       <TextView
         android:id="@+id/string_difficulty"
@@ -41,7 +41,7 @@
         android:layout_toRightOf="@id/string_difficulty"
         android:layout_below="@id/level"
         android:layout_marginLeft="@dimen/spacing_s"
-        android:textColor="@color/blue"
+        android:textColor="@color/darker_blue"
         />
 
       <LinearLayout
@@ -64,7 +64,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:textAppearance="@android:style/TextAppearance.Holo.Small"
-          android:textColor="@color/blue"
+          android:textColor="@color/darker_blue"
           android:layout_marginLeft="@dimen/spacing_s"
           android:text="@string/na"
           />

@@ -90,14 +90,14 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    protected void onLoadSuccess(final String resultMessage) {
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         ProfileSearchResults results = fromJson(resultMessage, ProfileSearchResults.class, true);
         sendDataToListView(results.getResults());
         showLoadingState(false);
     }
 
     @Override
-    protected void onLoadFailure(final String resultMessage) {
+    protected void onLoadFailure(final Loader loader, final String resultMessage) {
         Log.d(getClass().getSimpleName(), "[onLoadFailure] resultMessage => " + resultMessage);
     }
 
@@ -106,8 +106,8 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     protected void startLoadingData() {
         final Bundle postData = new Bundle();
 
-        if (queryString == null && queryString.length() < 3) {
-            showToast("Min length: 3 characters");
+        if (queryString == null || queryString.length() < 3) {
+            showToast(R.string.msg_search_error_length);
             return;
         }
 
@@ -145,7 +145,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         } else {
             activity.setResult(
                 Activity.RESULT_OK,
-                new Intent().putExtra(INTENT_SEARCH_RESULT, result.getProfile())
+                new Intent().putExtra(SearchActivity.RESULT_SEARCH_RESULT, result.getProfile())
             );
             activity.finish();
         }
@@ -188,6 +188,6 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         if (listView == null) {
             return;
         }
-        setListAdapter(new ProfileSearchAdapter(results, getContext()));
+        setListAdapter(new ProfileSearchAdapter(getActivity(), results));
     }
 }

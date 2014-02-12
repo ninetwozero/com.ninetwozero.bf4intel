@@ -20,4 +20,13 @@
 
   <integer name="num_cols">2</integer>
 
+  <!-- Home -->
+  <dimen name="home_logo_size">64dp</dimen>
+  <dimen name="home_logo_margin_top">0dp</dimen>
+
+  <!-- Login -->
+  <dimen name="error_message_size">400dp</dimen>
+  <dimen name="login_form_element_width">320dp</dimen>
+  <dimen name="action_item_size">32dp</dimen>
+
 </resources>

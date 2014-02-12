@@ -14,10 +14,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.factories.GsonProvider;
 import com.ninetwozero.bf4intel.utils.Result;
 
 public abstract class BaseLoadingListFragment extends BaseListFragment implements LoaderManager.LoaderCallbacks<Result> {
-    protected Gson gson = new Gson();
+    protected Gson gson = GsonProvider.getInstance();
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -76,7 +77,7 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         return gsonToUse.fromJson(jsonObject, outClass);
     }
 
-    private JsonObject extractFromJson(final String json, boolean returnTopLevel) {
+    protected JsonObject extractFromJson(final String json, boolean returnTopLevel) {
         JsonParser parser = new JsonParser();
         JsonObject topLevel = parser.parse(json).getAsJsonObject();
         return returnTopLevel? topLevel : topLevel.getAsJsonObject("data");
@@ -89,7 +90,9 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         }
 
         toggleFullScreenProgressBar(activity, isLoading);
-        ((BaseIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+        if (activity instanceof BaseLoadingIntelActivity) {
+            ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+        }
     }
 
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {

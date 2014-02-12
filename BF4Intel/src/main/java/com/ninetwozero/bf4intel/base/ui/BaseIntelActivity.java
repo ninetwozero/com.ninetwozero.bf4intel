@@ -1,69 +1,62 @@
 package com.ninetwozero.bf4intel.base.ui;
 
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.utils.Result;
+import com.ninetwozero.bf4intel.SessionStore;
+import com.ninetwozero.bf4intel.database.CupboardSQLiteOpenHelper;
+import com.ninetwozero.bf4intel.resources.Keys;
 
-public abstract class BaseIntelActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<Result> {
-
-    protected Gson gson;
-    private Menu optionsMenu;
+public abstract class BaseIntelActivity extends FragmentActivity {
+    protected Menu optionsMenu;
+    protected SharedPreferences sharedPreferences;
+    private Toast toast;
+    protected CupboardSQLiteOpenHelper cupboardHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        gson = new Gson();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        reloadSession();
     }
 
-    @Override
-    public Loader<Result> onCreateLoader(int i, Bundle bundle) {
-        return null;
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Result> resultLoader, Result result) {
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Result> resultLoader) {
-
-    }
-
-    public JsonObject extractFromJson(String json) {
-        JsonParser parser = new JsonParser();
-        return parser.parse(json).getAsJsonObject().getAsJsonObject("data");
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.intel_activity, menu);
-        optionsMenu = menu;
-        return true;
-    }
-
-    protected void showLoadingStateInActionBar(boolean isLoading) {
-        if (optionsMenu == null) {
-            return;
+    public void showToast(final String message) {
+        if (toast != null) {
+            toast.cancel();
         }
+        toast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+        toast.show();
+    }
 
-        final MenuItem refreshItem = optionsMenu.findItem(R.id.ab_action_refresh);
-        if (refreshItem != null) {
-            refreshItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-            if (isLoading) {
-                refreshItem.setActionView(R.layout.actionbar_indeterminate_progress);
-            } else {
-                refreshItem.setActionView(null);
-            }
+    public void showToast(final int stringResource) {
+        showToast(getString(stringResource));
+    }
+
+    private void reloadSession() {
+        SessionStore.load(
+            sharedPreferences.getString(Keys.SESSION_ID, null),
+            sharedPreferences.getString(Keys.Profile.ID, null),
+            sharedPreferences.getString(Keys.Profile.USERNAME, null),
+            sharedPreferences.getString(Keys.Profile.GRAVATAR_HASH, null)
+        );
+    }
+
+    public SQLiteDatabase getWritableDatabase() {
+        if (cupboardHelper == null) {
+            cupboardHelper = new CupboardSQLiteOpenHelper(this);
         }
+        return cupboardHelper.getWritableDatabase();
+    }
+
+    public SQLiteDatabase getReadableDatabase() {
+        if (cupboardHelper == null) {
+            cupboardHelper = new CupboardSQLiteOpenHelper(this);
+        }
+        return cupboardHelper.getReadableDatabase();
     }
 }

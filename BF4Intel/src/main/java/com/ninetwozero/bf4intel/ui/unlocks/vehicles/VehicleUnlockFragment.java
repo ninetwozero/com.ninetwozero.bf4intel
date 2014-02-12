@@ -46,7 +46,7 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
             getActivity(),
             new SimpleGetRequest(
                 UrlFactory.buildVehicleUnlocksURL(
-                    bundle.getInt(Keys.Soldier.ID),
+                    bundle.getLong(Keys.Soldier.ID),
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )
             )

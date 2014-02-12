@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="@dimen/spacing_xl"
+  >
+
+  <ImageView
+    android:id="@+id/home_logo"
+    android:layout_width="@dimen/home_logo_size"
+    android:layout_height="@dimen/home_logo_size"
+    android:contentDescription="@string/cdesc_logo"
+    android:src="@drawable/ic_launcher_big_dark"
+    android:layout_centerHorizontal="true"
+    android:alpha="0.3"
+    android:layout_marginTop="@dimen/home_logo_margin_top"
+    android:layout_marginBottom="@dimen/spacing_l"
+    />
+
+  <TextView
+    android:id="@+id/home_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/title_home"
+    android:textAppearance="@android:style/TextAppearance.Holo"
+    android:textSize="@dimen/text_l"
+    android:textStyle="bold"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@id/home_logo"
+    android:layout_marginBottom="@dimen/spacing_l"
+    />
+
+  <LinearLayout
+    android:id="@+id/wrap_guest"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/home_title"
+    android:layout_centerHorizontal="true"
+    android:layout_alignLeft="@id/home_title"
+    android:layout_alignRight="@id/home_title"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+    <TextView
+      android:id="@+id/home_maintext"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/home_main_information_guest"
+      android:textAppearance="@android:style/TextAppearance.Holo"
+      android:gravity="center"
+      android:textColor="@color/darkgrey"
+      android:layout_marginBottom="@dimen/spacing_l"
+      android:paddingLeft="@dimen/spacing_xxs"
+      android:paddingRight="@dimen/spacing_xxs"
+      />
+
+    <Button
+      style="@style/BlueButton"
+      android:id="@+id/button_select_account"
+      android:text="@string/home_select_account"
+      android:layout_marginTop="@dimen/spacing_m"
+      />
+  </LinearLayout>
+  <LinearLayout
+    android:id="@+id/wrap_tracker"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/home_title"
+    android:layout_centerHorizontal="true"
+    android:layout_alignLeft="@id/home_title"
+    android:layout_alignRight="@id/home_title"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:visibility="gone"
+    >
+    <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      >
+
+      <ImageView
+        android:id="@+id/selected_user_gravatar"
+        android:layout_width="@dimen/avatar_size_l"
+        android:layout_height="@dimen/avatar_size_l"
+        android:contentDescription="@string/cdesc_gravatar"
+        android:layout_centerVertical="true"
+        />
+
+      <TextView
+        android:id="@+id/selected_user_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/selected_user_gravatar"
+        android:textSize="@dimen/text_l"
+        android:layout_marginLeft="@dimen/spacing_m"
+        />
+    </RelativeLayout>
+    <Button
+      style="@style/BlueButton"
+      android:id="@+id/button_select_another_account"
+      android:text="@string/home_select_another_account"
+      android:layout_marginTop="@dimen/spacing_l"
+      />
+  </LinearLayout>
+</RelativeLayout>

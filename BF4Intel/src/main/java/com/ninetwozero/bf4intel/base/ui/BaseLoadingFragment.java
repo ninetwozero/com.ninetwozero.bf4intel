@@ -13,11 +13,12 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.factories.GsonProvider;
 import com.ninetwozero.bf4intel.utils.Result;
 
 public abstract class BaseLoadingFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Result> {
-    private Gson gson = new Gson();
-    private JsonParser parser = new JsonParser();
+    protected final Gson gson = GsonProvider.getInstance();
+    protected final JsonParser parser = new JsonParser();
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -61,17 +62,6 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Loader
         return gson.fromJson(jsonObject, outClass);
     }
 
-    @Deprecated
-    protected void displayAsLoading(final boolean isLoading) {
-        final Activity activity = getActivity();
-        if (activity == null) {
-            return;
-        }
-
-        activity.findViewById(R.id.wrap_loading_progress).setVisibility(isLoading ? View.VISIBLE : View.GONE);
-        ((BaseIntelActivity) activity).showLoadingStateInActionBar(isLoading);
-    }
-
     protected void showLoadingState(final boolean isLoading) {
         final Activity activity = getActivity();
         if (activity == null) {
@@ -79,7 +69,9 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Loader
         }
 
         toggleFullScreenProgressBar(activity, isLoading);
-        ((BaseIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+        if (activity instanceof BaseLoadingIntelActivity) {
+            ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
+        }
     }
 
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {

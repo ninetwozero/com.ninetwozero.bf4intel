@@ -1,17 +1,28 @@
 package com.ninetwozero.bf4intel.json.battlefeed;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.ninetwozero.bf4intel.json.battlefeed.events.*;
+import com.ninetwozero.bf4intel.factories.GsonProvider;
+import com.ninetwozero.bf4intel.json.battlefeed.events.BattlePackEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.CommentedBlogEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.CompletedLevelEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.CreatedForumThreadEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.FavoriteServerEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.ForumPostEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.FriendshipEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.GameAccessEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.GameReportEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.RankedUpEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.SharedGameEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.StatusMessageEvent;
+import com.ninetwozero.bf4intel.json.battlefeed.events.WallpostEvent;
 import com.ninetwozero.bf4intel.util.IntelJsonParser;
-import com.ninetwozero.bf4intel.utils.FeedItemDeserializer;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -40,9 +51,7 @@ public class BattleFeedTest {
 
     @BeforeClass
     public static void setup() throws IOException {
-        final GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(FeedItem.class, new FeedItemDeserializer());
-        final Gson gson = gsonBuilder.create();
+        final Gson gson = GsonProvider.getInstance();
         battleFeed = IntelJsonParser.parse(
             "/json/battlefeed.json",
             BattleFeed.class,

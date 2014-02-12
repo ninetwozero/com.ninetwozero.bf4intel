@@ -125,4 +125,8 @@ public class RankImageMap {
     public static int get(final String rank) {
         return images.containsKey(rank)? images.get(rank) : R.drawable.r0;
     }
+
+    public static int get(final int rank) {
+        return get("WARSAW_ID_P_RANK" + rank + "_NAME");
+    }
 }

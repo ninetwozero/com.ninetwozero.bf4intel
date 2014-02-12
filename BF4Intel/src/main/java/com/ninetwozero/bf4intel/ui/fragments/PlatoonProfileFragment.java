@@ -7,10 +7,10 @@ import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
-import com.ninetwozero.bf4intel.datatypes.ListRow;
-import com.ninetwozero.bf4intel.datatypes.ListRowType;
+import com.ninetwozero.bf4intel.interfaces.ListRowElement;
+import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
-import com.ninetwozero.bf4intel.ui.adapters.ListRowAdapter;
+import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,14 +36,12 @@ public class PlatoonProfileFragment extends BaseListFragment {
     }
 
     private void initialize(final View view) {
-        final ListRowAdapter slidingMenuAdapter = new ListRowAdapter(getItemsForMenu(), getActivity());
-        setListAdapter(slidingMenuAdapter);
-
+        setListAdapter(new NavigationDrawerListAdapter(getActivity(), getItemsForMenu()));
         updateActionBar(getActivity(), "Chili-powered Zebras", R.drawable.test_platoon);
     }
 
-    private List<ListRow> getItemsForMenu() {
-        final List<ListRow> items = new ArrayList<ListRow>();
+    private List<ListRowElement> getItemsForMenu() {
+        final List<ListRowElement> items = new ArrayList<ListRowElement>();
         items.add(ListRowFactory.create(ListRowType.HEADING, "BASIC INFORMATION"));
         items.add(ListRowFactory.create(ListRowType.PROFILE_SOLDIER, new Bundle()));
         items.add(ListRowFactory.create(ListRowType.HEADING, "PRESENTATION"));

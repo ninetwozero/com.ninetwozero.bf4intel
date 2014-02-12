@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.datatypes;
+package com.ninetwozero.bf4intel.menu;
 
 import com.ninetwozero.bf4intel.R;
 
@@ -9,7 +9,6 @@ public enum ListRowType {
     SIDE_REGULAR,
     SIDE_REGULAR_CHILD,
     SIDE_HEADING,
-    SIDE_FEED,
 
     PROFILE_ACCOUNT,
     PROFILE_SOLDIER,
@@ -42,7 +41,6 @@ public enum ListRowType {
                 return R.layout.side_regular_child;
             case SIDE_HEADING:
                 return R.layout.side_heading;
-            case SIDE_FEED:
             case SIDE_REGULAR:
                 return R.layout.side_regular;
             case PROFILE_ACCOUNT:

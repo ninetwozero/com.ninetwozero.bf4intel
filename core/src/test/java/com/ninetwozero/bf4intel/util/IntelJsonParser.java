@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.util;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.factories.GsonProvider;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,7 +16,7 @@ public class IntelJsonParser {
 
     public static final <T extends Object> T parse(String fileName, Class<T> clazz) throws IOException {
         Reader reader = new InputStreamReader(clazz.getResourceAsStream(fileName));
-        Gson gson = new Gson();
+        Gson gson = GsonProvider.getInstance();
         JsonParser parser = new JsonParser();
         JsonObject dataJson = parser.parse(reader).getAsJsonObject().getAsJsonObject("data");
         reader.close();

@@ -3,6 +3,8 @@ package com.ninetwozero.bf4intel.factories;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.ninetwozero.bf4intel.ui.assignments.AssignmentGridFragment;
+import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedPostingFragment;
 import com.ninetwozero.bf4intel.ui.fragments.*;
@@ -25,12 +27,18 @@ public class FragmentFactory {
 
     public static Fragment get(final Type type, final Bundle data) {
         switch (type) {
+            case HOME:
+                return HomeFragment.newInstance(data);
             case ACCOUNT_PROFILE:
                 return AccountProfileFragment.newInstance(data);
             case BATTLE_FEED:
                 return BattleFeedFragment.newInstance(data);
             case SOLDIER_OVERVIEW:
                 return SoldierOverviewFragment.newInstance(data);
+            case SOLDIER_ASSIGNMENTS:
+                return AssignmentGridFragment.newInstance(data);
+            case SOLDIER_AWARDS:
+                return AwardGridFragment.newInstance(data);
             case WEAPON_STATS:
                 return WeaponStatsFragment.newInstance(data);
             case VEHICLE_STATS:
@@ -87,6 +95,8 @@ public class FragmentFactory {
     }
 
     public enum Type {
+        HOME,
+
         ACCOUNT_PROFILE,
 
         SOLDIER_OVERVIEW,
@@ -99,6 +109,7 @@ public class FragmentFactory {
         KIT_UNLOCKS,
 
         SOLDIER_ASSIGNMENTS,
+        SOLDIER_AWARDS,
 
         BATTLE_FEED,
         BATTLE_FEED_POSTING,

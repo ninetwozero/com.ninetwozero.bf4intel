@@ -21,8 +21,8 @@ import com.ninetwozero.bf4intel.json.soldieroverview.BaseStatsModel;
 import com.ninetwozero.bf4intel.json.soldieroverview.CompletionProgress;
 import com.ninetwozero.bf4intel.json.soldieroverview.SkillOverview;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.IntelLoader;
+import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.CompletionStringMap;
 import com.ninetwozero.bf4intel.resources.maps.ranks.RankImageMap;
@@ -78,12 +78,12 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     @Override
     public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
-        displayAsLoading(true);
+        showLoadingState(true);
         return new IntelLoader(
             getActivity(),
             new SimpleGetRequest(
                 UrlFactory.buildSoldierOverviewURL(
-                    bundle.getInt(Keys.Soldier.ID),
+                    bundle.getLong(Keys.Soldier.ID),
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 )
             )
@@ -103,7 +103,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     protected void onLoadSuccess(final String resultMessage) {
         final SoldierOverview soldierOverview = fromJson(resultMessage, SoldierOverview.class);
         displayInformation(getView(), soldierOverview);
-        displayAsLoading(false);
+        showLoadingState(false);
     }
 
     @Override

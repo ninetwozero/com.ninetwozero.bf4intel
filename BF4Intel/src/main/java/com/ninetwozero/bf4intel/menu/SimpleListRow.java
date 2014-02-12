@@ -1,13 +1,12 @@
-package com.ninetwozero.bf4intel.datatypes;
+package com.ninetwozero.bf4intel.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
+import com.ninetwozero.bf4intel.interfaces.ListRowElement;
 
-import java.util.List;
-
-public class ListRow {
+public class SimpleListRow implements ListRowElement {
     private ListRowType type;
     private String title;
 
@@ -17,11 +16,9 @@ public class ListRow {
     private Bundle stringMappings;
     private Bundle drawableMappings;
 
-    private List<ListRow> children;
-
     private Bundle data;
 
-    protected ListRow(final Builder builder) {
+    protected SimpleListRow(final Builder builder) {
         type = builder.type;
         title = builder.title;
 
@@ -30,8 +27,6 @@ public class ListRow {
 
         stringMappings = builder.stringMappings;
         drawableMappings = builder.drawableMappings;
-
-        children = builder.children;
 
         data = builder.data;
     }
@@ -75,22 +70,6 @@ public class ListRow {
     public Bundle getData() {
         return data;
     }
-
-    public int getChildCount() {
-        return children == null ? 0 : children.size();
-    }
-
-    public ListRow getChild(final int position) {
-        return children.get(position);
-    }
-
-    public List<ListRow> getChildren() {
-        return children;
-    }
-
-    public boolean hasChildren() {
-        return children == null? false : children.size() > 0;
-    }
     
     public static class Builder {
         // Required
@@ -103,7 +82,6 @@ public class ListRow {
         private Bundle stringMappings;
         private Bundle drawableMappings;
         private Bundle data;
-        private List<ListRow> children;
 
         public Builder(final ListRowType t) {
             type = t;
@@ -139,13 +117,8 @@ public class ListRow {
             return this;
         }
 
-        public Builder children(final List<ListRow> c) {
-            children = c;
-            return this;
-        }
-
-        public ListRow build() {
-            return new ListRow(this);
+        public SimpleListRow build() {
+            return new SimpleListRow(this);
         }
     }
 }

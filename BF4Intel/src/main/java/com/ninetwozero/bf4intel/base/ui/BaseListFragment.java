@@ -2,7 +2,9 @@ package com.ninetwozero.bf4intel.base.ui;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ public abstract class BaseListFragment extends ListFragment {
 
     protected FragmentManager fragmentManager;
     protected LayoutInflater layoutInflater;
+    protected SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -25,9 +28,16 @@ public abstract class BaseListFragment extends ListFragment {
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         fragmentManager = getFragmentManager();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
     }
 
     @Override
