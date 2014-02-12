@@ -11,7 +11,7 @@ import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 public class CupboardSQLiteOpenHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "myapp.db";
+    private static final String DATABASE_NAME = "bf4intel.db";
     private static final int DATABASE_VERSION = 1;
 
     static {
