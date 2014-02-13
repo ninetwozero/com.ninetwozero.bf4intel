@@ -9,6 +9,8 @@ import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedPostingFragment;
 import com.ninetwozero.bf4intel.ui.fragments.*;
 import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
+import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsTabFragment;
+import com.ninetwozero.bf4intel.ui.unlocks.UnlockTabFragment;
 import com.ninetwozero.bf4intel.ui.stats.details.DetailsStatsFragment;
 import com.ninetwozero.bf4intel.ui.stats.reports.BattleReportFragment;
 import com.ninetwozero.bf4intel.ui.stats.reports.BattleReportListingFragment;
@@ -35,6 +37,8 @@ public class FragmentFactory {
                 return BattleFeedFragment.newInstance(data);
             case SOLDIER_OVERVIEW:
                 return SoldierOverviewFragment.newInstance(data);
+            case SOLDIER_STATS:
+                return SoldierStatisticsTabFragment.newInstance(data);
             case SOLDIER_ASSIGNMENTS:
                 return AssignmentGridFragment.newInstance(data);
             case SOLDIER_AWARDS:
@@ -69,6 +73,8 @@ public class FragmentFactory {
                 return BattleReportListingFragment.newInstance(data);
             case PROFILE_SEARCH:
                 return ProfileSearchFragment.newInstance(data);
+            case SOLDIER_UNLOCKS:
+                return UnlockTabFragment.newInstance(data);
             case WEAPON_UNLOCKS:
                 return WeaponUnlockFragment.newInstance(data);
             case VEHICLE_UNLOCKS:
@@ -100,10 +106,12 @@ public class FragmentFactory {
         ACCOUNT_PROFILE,
 
         SOLDIER_OVERVIEW,
+        SOLDIER_STATS,
         WEAPON_STATS,
         VEHICLE_STATS,
         DETAILS_STATS,
 
+        SOLDIER_UNLOCKS,
         WEAPON_UNLOCKS,
         VEHICLE_UNLOCKS,
         KIT_UNLOCKS,

@@ -53,30 +53,8 @@
     </activity>
 
     <activity
-      android:name=".ui.stats.SoldierStatisticsActivity"
-      android:label="@string/label_activity_soldier_statistics"
-      android:screenOrientation="portrait"
-      android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ui.activities.MainActivity"/>
-    </activity>
-
-    <activity
       android:name=".ui.assignments.AssignmentActivity"
       android:label="@string/label_activity_assignments"
-      android:screenOrientation="portrait"
-      android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ui.activities.MainActivity"/>
-    </activity>
-
-    <activity
-      android:name=".ui.unlocks.UnlockActivity"
-      android:label="@string/label_unlocks"
       android:screenOrientation="portrait"
       android:parentActivityName=".ui.activities.MainActivity"
       android:theme="@style/AppTheme">
