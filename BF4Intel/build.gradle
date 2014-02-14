@@ -42,5 +42,5 @@ dependencies {
         'com.google.code.gson:gson:2.2.4',
         'com.squareup.picasso:picasso:2.1.1',
         'nl.qbusict:cupboard:1.0.4',
-        'com.bugsense.trace:bugsense:3.5'
+        'com.bugsense.trace:bugsense:3.6'
 }
