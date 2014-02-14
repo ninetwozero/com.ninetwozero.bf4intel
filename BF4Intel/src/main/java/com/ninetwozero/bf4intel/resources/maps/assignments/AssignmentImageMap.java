@@ -62,6 +62,18 @@ public class AssignmentImageMap {
             put("WARSAW_ID_SP_ASGN_NAME_05", R.drawable.sp_as05);
             put("WARSAW_ID_SP_ASGN_NAME_06", R.drawable.sp_as06);
 
+            /* Second Assault assignments */
+            put("WARSAW_ID_P_XP0_AS_01", R.drawable.xp0as01);
+            put("WARSAW_ID_P_XP0_AS_02", R.drawable.xp0as02);
+            put("WARSAW_ID_P_XP0_AS_03", R.drawable.xp0as03);
+            put("WARSAW_ID_P_XP0_AS_04", R.drawable.xp0as04);
+            put("WARSAW_ID_P_XP0_AS_05", R.drawable.xp0as05);
+            put("WARSAW_ID_P_XP0_AS_06", R.drawable.xp0as06);
+            put("WARSAW_ID_P_XP0_AS_07", R.drawable.xp0as07);
+            put("WARSAW_ID_P_XP0_AS_08", R.drawable.xp0as08);
+            put("WARSAW_ID_P_XP0_AS_09", R.drawable.xp0as09);
+            put("WARSAW_ID_P_XP0_AS_10", R.drawable.xp0as10);
+
             /*Expansion pack 1 assignments*/
             put("WARSAW_ID_P_XP1_AWARD_AS_01", R.drawable.xp1as01);
             put("WARSAW_ID_P_XP1_AWARD_AS_02", R.drawable.xp1as02);
