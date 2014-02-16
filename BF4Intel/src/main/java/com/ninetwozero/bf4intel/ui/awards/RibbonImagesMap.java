@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.awards;
 import com.ninetwozero.bf4intel.R;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class RibbonImagesMap {
@@ -59,6 +60,6 @@ public class RibbonImagesMap {
     };
 
     public static int get(final String key) {
-        return ribbonsMap.containsKey(key.toLowerCase()) ? ribbonsMap.get(key.toLowerCase()) : R.drawable.acc_none;
+        return ribbonsMap.containsKey(key.toLowerCase(Locale.getDefault())) ? ribbonsMap.get(key.toLowerCase()) : R.drawable.acc_none;
     }
 }

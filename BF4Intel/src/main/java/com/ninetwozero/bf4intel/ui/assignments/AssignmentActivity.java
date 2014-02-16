@@ -20,7 +20,7 @@ public class AssignmentActivity extends BaseIntelActivity {
         final FragmentManager manager = getSupportFragmentManager();
         final FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(
-            R.id.container_assignments,
+            R.id.activity_container,
             FragmentFactory.get(
                 FragmentFactory.Type.SOLDIER_ASSIGNMENTS,
                 getIntent().getBundleExtra("profile")

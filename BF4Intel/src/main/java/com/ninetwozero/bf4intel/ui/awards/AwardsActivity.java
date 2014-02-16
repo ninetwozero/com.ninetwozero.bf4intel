@@ -20,7 +20,7 @@ public class AwardsActivity extends BaseIntelActivity {
         final FragmentManager manager = getSupportFragmentManager();
         final FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(
-            R.id.container_assignments,
+            R.id.activity_container,
             FragmentFactory.get(
                 FragmentFactory.Type.SOLDIER_AWARDS,
                 getIntent().getBundleExtra("profile")

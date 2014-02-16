@@ -24,6 +24,8 @@ import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
+import java.util.Locale;
+
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     private static final String STATE_DRAWER_OPENED = "isDrawerOpened";
@@ -160,7 +162,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
     @Override
     public void onNavigationDrawerItemSelected(final int position, final String title) {
-        this.title = title == null? this.title : title.toUpperCase();
+        this.title = title == null? this.title : title.toUpperCase(Locale.getDefault());
         if (drawerLayout != null && !isRecreated) {
             toggleNavigationDrawer(false);
         }
