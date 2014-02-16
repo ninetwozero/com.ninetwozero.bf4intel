@@ -26,7 +26,7 @@ public class FavouriteGameReport extends GameReport {
         }
     }
 
-    public class Players {
+    public static class Players {
 
         @SerializedName("players")
         private List<Integer> playersList = new ArrayList<Integer>();

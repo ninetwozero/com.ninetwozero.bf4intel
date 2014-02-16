@@ -37,7 +37,7 @@ public class Assignment {
         return unlockDependencieses.isEmpty() ? AssignmentPrerequirement.NONE.toString() : unlockDependencieses.get(0).getGroup();
     }
 
-    public class UnlockDependencies {
+    public static class UnlockDependencies {
         @SerializedName("group")
         private String group;
 
