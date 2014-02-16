@@ -9,7 +9,9 @@ public class ExpansionIconsImageMap {
 
     private static final Map<String, Integer> expansionResources = new HashMap<String, Integer>() {
         {
+            put("xp0", R.drawable.icon_xp0);
             put("xp1", R.drawable.icon_xp1);
+            put("ghost1", R.drawable.icon_xp1);
         }
     };
 

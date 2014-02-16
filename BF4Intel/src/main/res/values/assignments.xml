@@ -76,7 +76,7 @@
   <string name="assignments_mp_name_44">American Classics</string>
   <string name="assignments_mp_name_45">Melee Expert</string>
 
-  <!-- expansion 0 -->
+  <!-- SECOND ASSAULT -->
   <string name="assignments_xp0_name_01">Fire Starter</string>
   <string name="assignments_xp0_name_02">Dead Stop</string>
   <string name="assignments_xp0_name_03">Express Train</string>
@@ -88,7 +88,7 @@
   <string name="assignments_xp0_name_09">Re-Mastered</string>
   <string name="assignments_xp0_name_10">Perfect Landing</string>
 
-  <!-- expansion 1 -->
+  <!-- CHINA RISING -->
   <string name="assignments_xp1_name_01">Safe Raiding</string>
   <string name="assignments_xp1_name_02">Eyes in the Sky</string>
   <string name="assignments_xp1_name_03">Open Fire</string>
