@@ -3,21 +3,22 @@ package com.ninetwozero.bf4intel.utils;
 import com.ninetwozero.bf4intel.datatypes.Link;
 import com.ninetwozero.bf4intel.datatypes.ParsedArticleContent;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 public class NewsUtils {
     public static final char NBSP = '\u00A0';
     public static final String BR = "<br />";
 
-    private NewsUtils() {}
+    private NewsUtils() {
+    }
 
     public static ParsedArticleContent parseContent(final String content, final boolean includeLinksInText) {
         final StringBuilder stringBuilder = new StringBuilder();
@@ -51,12 +52,12 @@ public class NewsUtils {
                 break;
             }
 
-            if (element.nodeName().equals("p") && !text.contains("iframe")) {
+            if ("p".equals(element.nodeName()) && !text.contains("iframe")) {
                 if (stringBuilder.length() > 0) {
                     stringBuilder.append(BR).append(BR);
                 }
                 stringBuilder.append(text);
-            } else if (element.nodeName().equals("ul")) {
+            } else if ("ul".equals(element.nodeName())) {
                 for (Element li : element.children()) {
                     stringBuilder.append(BR).append(BR).append("* ").append(li.text());
                 }
@@ -65,7 +66,7 @@ public class NewsUtils {
 
         for (Element element : document.select("iframe,a")) {
             counter++;
-            if (element.nodeName().equals("iframe")) {
+            if ("iframe".equals(element.nodeName())) {
                 url = element.attr("src");
                 linkText = fetchDomainNameFromLink(url);
             } else {
