@@ -8,11 +8,14 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.bugsense.trace.BugSenseHandler;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.database.CupboardSQLiteOpenHelper;
 import com.ninetwozero.bf4intel.resources.Keys;
 
 public abstract class BaseIntelActivity extends FragmentActivity {
+    private static final String BUGSENSE_TOKEN = "f42265ac";
+
     protected Menu optionsMenu;
     protected SharedPreferences sharedPreferences;
     private Toast toast;
@@ -21,8 +24,15 @@ public abstract class BaseIntelActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        BugSenseHandler.initAndStartSession(this, BUGSENSE_TOKEN);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         reloadSession();
+    }
+
+    @Override
+    protected void onDestroy() {
+        BugSenseHandler.closeSession(this);
+        super.onDestroy();
     }
 
     public void showToast(final String message) {
