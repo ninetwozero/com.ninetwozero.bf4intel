@@ -1,12 +1,10 @@
 package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +25,6 @@ import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.SimpleListRow;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
-import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsActivity;
-import com.ninetwozero.bf4intel.ui.unlocks.UnlockActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
 import com.squareup.otto.Subscribe;
@@ -49,9 +45,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private static final int DEFAULT_POSITION_GUEST = 1;
     private static final int DEFAULT_POSITION_TRACKING = 9;
     private static final int DEFAULT_POSITION = 3;
-
-    private static final int INTENT_SOLDIER_STATISTICS = 1;
-    private static final int INTENT_UNLOCKS = 2;
 
     private ListView listView;
     private NavigationDrawerCallbacks callbacks;
@@ -220,7 +213,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 ListRowType.SIDE_REGULAR,
                 getString(R.string.navigationdrawer_statistics),
                 soldierBundleForMenu,
-                fetchMultiFragmentActivityIntent(INTENT_SOLDIER_STATISTICS)
+                FragmentFactory.Type.SOLDIER_STATS
             )
         );
         items.add(
@@ -228,7 +221,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 ListRowType.SIDE_REGULAR,
                 getString(R.string.navigationdrawer_unlocks),
                 soldierBundleForMenu,
-                fetchMultiFragmentActivityIntent(INTENT_UNLOCKS)
+                FragmentFactory.Type.SOLDIER_UNLOCKS
             )
         );
         items.add(
@@ -315,25 +308,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private FragmentFactory.Type fetchTypeForHome() {
         return SessionStore.isLoggedIn() ? FragmentFactory.Type.BATTLE_FEED : FragmentFactory.Type.HOME;
-    }
-
-    private Intent fetchMultiFragmentActivityIntent(final int intentID) {
-        Intent intent;
-        switch(intentID){
-            case INTENT_SOLDIER_STATISTICS:
-                intent = new Intent(getActivity(), SoldierStatisticsActivity.class);
-                break;
-            case INTENT_UNLOCKS:
-                intent = new Intent(getActivity(), UnlockActivity.class);
-                break;
-            default:
-                intent = new Intent();
-                Log.i(
-                    NavigationDrawerFragment.class.getSimpleName(),
-                    "Did not found any matching activity for intent " + intentID
-                );
-        }
-        return intent.putExtra("profile", soldierBundleForMenu);
     }
 
     private void selectItemFromState(final int position) {
