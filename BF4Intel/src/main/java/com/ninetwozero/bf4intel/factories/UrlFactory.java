@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.factories;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Locale;
 
 import org.apache.http.client.utils.URIUtils;
 
@@ -22,33 +23,33 @@ public class UrlFactory {
     }
 
     public static URL buildSoldierOverviewURL(final long soldierId, final int platformId) {
-        return createURL(String.format("UTF-8", "warsawoverviewpopulate/%d/%d/", soldierId, platformId));
+        return createURL(String.format(Locale.getDefault(), "warsawoverviewpopulate/%d/%d/", soldierId, platformId));
     }
 
     public static URL buildWeaponStatsURL(final long soldierId, final int platformId) {
-        return createURL(String.format("UTF-8", "warsawWeaponsPopulateStats/%d/%d/stats/", soldierId, platformId));
+        return createURL(String.format(Locale.getDefault(), "warsawWeaponsPopulateStats/%d/%d/stats/", soldierId, platformId));
     }
 
     public static URL buildVehicleStatsURL(final long soldierId, final int platformId) {
-        return createURL(String.format("UTF-8", "warsawvehiclesPopulateStats/%d/%d/stats/", soldierId, platformId));
+        return createURL(String.format(Locale.getDefault(), "warsawvehiclesPopulateStats/%d/%d/stats/", soldierId, platformId));
     }
 
     public static URL buildBattleReportsURL(final long soldierId, final int platformId) {
-        return createURL(String.format("UTF-8", "warsawbattlereportspopulate/%d/2048/%d/", soldierId, platformId));
+        return createURL(String.format(Locale.getDefault(), "warsawbattlereportspopulate/%d/2048/%d/", soldierId, platformId));
     }
 
     public static URL buildReportMoreStatsURL(final long soldierId, final int platformId, final long reportId) {
-        return createURL(String.format("UTF-8", "warsawbattlereportspopulate/%d/2048/%d/%d", soldierId, platformId, reportId));
+        return createURL(String.format(Locale.getDefault(), "warsawbattlereportspopulate/%d/2048/%d/%d", soldierId, platformId, reportId));
     }
 
     public static URL buildDetailsURL(final long soldierId, final int platformId) {
-        return createURL(String.format("UTF-8", "warsawdetailedstatspopulate/%d/%d/", soldierId, platformId));
+        return createURL(String.format(Locale.getDefault(), "warsawdetailedstatspopulate/%d/%d/", soldierId, platformId));
     }
 
     public static URL buildAssignmentsURL(final String soldierName, final long soldierId, final long userId, final int platformId) {
         return createURL(
             String.format(
-                "UTF-8",
+                Locale.getDefault(),
                 "soldier/missionsPopulateStats/%s/%d/%d/%d/",
                 soldierName,
                 soldierId,
@@ -59,15 +60,15 @@ public class UrlFactory {
     }
 
     public static URL buildAwardsURL(final long soldierId, final int platformId) {
-        return createURL(String.format("UTF-8", "warsawawardspopulate/%d/%d/", soldierId, platformId));
+        return createURL(String.format(Locale.getDefault(), "warsawawardspopulate/%d/%d/", soldierId, platformId));
     }
 
     public static URL buildGlobalFeedURL(final int offset) {
-        return createURL(String.format("UTF-8", "feed/homeevents/?start=%d", offset));
+        return createURL(String.format(Locale.getDefault(), "feed/homeevents/?start=%d", offset));
     }
 
     public static URL buildUserFeedURL(final long userId, final int offset) {
-        return createURL(String.format("UTF-8", "feed/profileevents/%d/?start=%d", userId, offset));
+        return createURL(String.format(Locale.getDefault(), "feed/profileevents/%d/?start=%d", userId, offset));
     }
 
     public static URL buildUserSearchURL() {
@@ -75,15 +76,15 @@ public class UrlFactory {
     }
 
     public static URL buildWeaponUnlocksURL(final long soldierId, final int platformId) {
-        return createURL(String.format("UTF-8", "warsawWeaponsPopulateStats/%d/%d/unlocks/", soldierId, platformId));
+        return createURL(String.format(Locale.getDefault(), "warsawWeaponsPopulateStats/%d/%d/unlocks/", soldierId, platformId));
     }
 
     public static URL buildVehicleUnlocksURL(final long soldierId, final int platformId) {
-        return createURL(String.format("UTF-8", "warsawvehiclesPopulateStats/%d/%d/unlocks/", soldierId, platformId));
+        return createURL(String.format(Locale.getDefault(), "warsawvehiclesPopulateStats/%d/%d/unlocks/", soldierId, platformId));
     }
 
     public static URL buildKitUnlocksURL(final long soldierId, final String soldierName, final int platformId) {
-        return createURL(String.format("UTF-8", "warsawkitspopulatestats/%d/%d/", soldierId, platformId));
+        return createURL(String.format(Locale.getDefault(), "warsawkitspopulatestats/%d/%d/", soldierId, platformId));
     }
 
     public static URL buildDogtagsURL(
@@ -91,7 +92,7 @@ public class UrlFactory {
     ) {
         return createURL(
             String.format(
-                "UTF-8",
+                Locale.getDefault(),
                 "soldier/dogtagsPopulateStats/%s/%s/%d/%d/",
                 soldierName,
                 soldierId,
@@ -103,51 +104,51 @@ public class UrlFactory {
 
     public static URL buildWeaponAccessoriesURL(final String soldierId, final String guid, final int platformId) {
         // See: http://battlelog.battlefield.com/bf4/warsawWeaponAccessoriesPopulateStats/177958806/2/386F9329-7DE7-6FB9-1366-2877C698D9B7/
-        return createURL(String.format("UTF-8", "warsawWeaponAccessoriesPopulateStats/%s/%d/%s/", soldierId, platformId, guid));
+        return createURL(String.format(Locale.getDefault(), "warsawWeaponAccessoriesPopulateStats/%s/%d/%s/", soldierId, platformId, guid));
     }
 
     public static URL buildNewsListingURL(final int pageId) {
-        return createURL(String.format("UTF-8", "news/%d/", pageId));
+        return createURL(String.format(Locale.getDefault(), "news/%d/", pageId));
     }
 
     public static URL buildNewsArticleURL(final String articleId) {
         // The 1 in the URL indicates which comment page to start on
         return createURL(
-            String.format("UTF-8", "news/view/%s/1/", articleId)
+            String.format(Locale.getDefault(), "news/view/%s/1/", articleId)
         );
     }
     public static URL buildNewsArticleWebURL(final String slug) {
-        return createURL(String.format("UTF-8", "news/view/%s/", slug));
+        return createURL(String.format(Locale.getDefault(), "news/view/%s/", slug));
     }
 
     public static URL buildNewsArticleCommentsURL(final String articleId, final int pageId) {
-        return createURL(String.format("UTF-8", "news/view/%s/%d/", articleId, pageId));
+        return createURL(String.format(Locale.getDefault(), "news/view/%s/%d/", articleId, pageId));
     }
 
     public static URL buildNewsArticleCommentUpvoteURL(final String commentId) {
-        return createURL(String.format("UTF-8", "comment/upvote/%s/", commentId));
+        return createURL(String.format(Locale.getDefault(), "comment/upvote/%s/", commentId));
     }
 
     public static URL buildNewsArticleCommentDownvoteURL(final String commentId) {
-        return createURL(String.format("UTF-8", "comment/removevote/%s/", commentId));
+        return createURL(String.format(Locale.getDefault(), "comment/removevote/%s/", commentId));
     }
 
     public static URL buildNewsArticleCommentRepliesURL(final String articleId, final int offset, final int pageId) {
         return createURL(
-            String.format("UTF-8", "comment/getreplies/%s/%d/%d/", articleId, offset, pageId)
+            String.format(Locale.getDefault(), "comment/getreplies/%s/%d/%d/", articleId, offset, pageId)
         );
     }
 
     public static URL buildNewsArticlePostCommentURL(final String articleId) {
-        return createURL(String.format("UTF-8", "comment/postcomment/%s/devblog-comment/", articleId));
+        return createURL(String.format(Locale.getDefault(), "comment/postcomment/%s/devblog-comment/", articleId));
     }
 
     public static URL buildNewsArticlePostCommentReplyURL(final String articleId, final String commentId) {
-        return createURL(String.format("UTF-8", "comment/postreply/%s/%s/", commentId, articleId));
+        return createURL(String.format(Locale.getDefault(), "comment/postreply/%s/%s/", commentId, articleId));
     }
 
     public static URL buildNewsArticleHooahURL(final String articleId) {
-        return createURL(String.format("UTF-8", "news/togglevote/%s/", articleId));
+        return createURL(String.format(Locale.getDefault(), "news/togglevote/%s/", articleId));
     }
 
     private static URL createURL(final String path) {
