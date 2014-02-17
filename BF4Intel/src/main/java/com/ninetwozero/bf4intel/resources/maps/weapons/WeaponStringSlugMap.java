@@ -1,7 +1,5 @@
 package com.ninetwozero.bf4intel.resources.maps.weapons;
 
-import android.util.Log;
-
 import com.ninetwozero.bf4intel.R;
 
 import java.util.HashMap;
@@ -105,11 +103,11 @@ public class WeaponStringSlugMap {
             put("UMP-9", R.string.weapon_name_ump9);
             put("USAS-12", R.string.weapon_name_usas12);
             put("UTAS", R.string.weapon_name_utas);
-            put("ASVAL", R.string.weapon_xp0_name_asval);
-            put("DAO12", R.string.weapon_xp0_name_dao12);
+            put("AS-VAL", R.string.weapon_xp0_name_asval);
+            put("DAO-12", R.string.weapon_xp0_name_dao12);
             put("F2000", R.string.weapon_xp0_name_f2000);
-            put("GOL", R.string.weapon_xp0_name_gol);
-            put("M60E4", R.string.weapon_xp0_name_m60e4);
+            put("GOL-MAGNUM", R.string.weapon_xp0_name_gol);
+            put("M60-E4", R.string.weapon_xp0_name_m60e4);
             put("L85A2", R.string.weapon_xp1_name_l85a2);
             put("L96A1", R.string.weapon_xp1_name_l96a1);
             put("MP7", R.string.weapon_xp1_name_mp7);
@@ -193,6 +191,7 @@ public class WeaponStringSlugMap {
             put("SHANK", R.string.weapon_iname_shank);
             put("BOOT", R.string.weapon_iname_bpknife7);
             put("SEAL", R.string.weapon_iname_bpknife8);
+            put("IMPROVISED", R.string.weapon_knife_improvised_fancy);
             put("FGM-148-JAVELIN", R.string.weapon_iname_fgm148);
             put("FIM-92-SRAW", R.string.weapon_iname_fim92);
             put("HAND-FLARE", R.string.weapon_iname_flare);
@@ -226,12 +225,6 @@ public class WeaponStringSlugMap {
 
     public static int get(final String key) {
         final String uppercaseKey = key.toUpperCase(Locale.getDefault());
-        if (map.containsKey(uppercaseKey)) {
-            return map.get(uppercaseKey);
-        } else {
-            Log.d(WeaponStringSlugMap.class.getSimpleName(), "key => " + key);
-            return R.string.na;
-        }
-//        return map.containsKey(key)? map.get(key) : R.string.na;
+        return map.containsKey(uppercaseKey)? map.get(uppercaseKey) : R.string.na;
     }
 }

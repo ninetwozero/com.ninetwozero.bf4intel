@@ -40,7 +40,10 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
         Collections.sort(vehiclesList);
 
         ((TextView) view.findViewById(R.id.index)).setText(String.valueOf(position + 1));
-        ((ImageView) view.findViewById(R.id.item_image)).setImageResource(VehicleImageMap.get(vehiclesList.get(0).getName()));
+        ImageView vehicleImg = (ImageView) view.findViewById(R.id.vehicle_image);
+        vehicleImg.setImageResource(VehicleImageMap.get(vehiclesList.get(0).getName()));
+        vehicleImg.setVisibility(View.VISIBLE);
+
         ((TextView)view.findViewById(R.id.service_star_count)).setText(String.valueOf(stats.getServiceStarsCount()));
         ((TextView) view.findViewById(R.id.item_name)).setText(VehiclesGroupStringMap.get(stats.getGroupName()));
         ((TextView) view.findViewById(R.id.item_kills)).setText(String.valueOf(stats.getKillCount()));

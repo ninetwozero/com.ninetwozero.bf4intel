@@ -19,6 +19,7 @@
 
   <string name="cdesc_service_star">Service star image</string>
   <string name="cdesc_weapon_stats_image">Weapon image</string>
+  <string name="cdesc_vehicle_stats_image">Vehicle image</string>
 
   <string name="cdesc_unlock_image">Unlock image</string>
   <string name="cdesc_list_group_indicator">Group indicator</string>

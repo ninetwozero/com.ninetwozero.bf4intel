@@ -145,6 +145,15 @@ public class WeaponsImageMap {
             put("WARSAW_ID_P_WNAME_FN57", R.drawable.w_fn57_fancy);
             put("WARSAW_ID_P_WNAME_JS2", R.drawable.w_js2_fancy);
             put("WARSAW_ID_P_INAME_FLARE", R.drawable.w_handflare_fancy);
+            /*SECOND ASSAULT*/
+            put("WARSAW_ID_P_XP0_WNAME_DAO12", R.drawable.w_dao12_fancy);
+            put("WARSAW_ID_P_INAME_BPKNIFE1", R.drawable.w_knife_improvised_fancy);
+            put("WARSAW_ID_P_INAME_BPKNIFE8", R.drawable.w_knife_sealknife_fancy);
+            put("WARSAW_ID_P_XP0_WNAME_GOL", R.drawable.w_gol_fancy);
+            put("WARSAW_ID_P_XP0_WNAME_F2000", R.drawable.w_f2000_fancy);
+            put("WARSAW_ID_P_XP0_WNAME_M60E4", R.drawable.w_m60e4_fancy);
+            put("WARSAW_ID_P_XP0_WNAME_ASVAL", R.drawable.w_asval_fancy);
+            put("WARSAW_ID_P_INAME_BPKNIFE7", R.drawable.w_knife_bootknife_fancy);
         }
     };
 

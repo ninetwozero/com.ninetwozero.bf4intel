@@ -16,15 +16,15 @@ import java.util.Map;
 
 public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer> {
     private static final Map<String, Integer> categoryStringMap = new HashMap<String, Integer>() {{
-        put("wL", R.string.category_lmgs);
-        put("waPDW", R.string.category_pdws);
-        put("wG", R.string.category_handgrenades);
-        put("wH", R.string.category_handguns);
-        put("wSR", R.string.category_snipers);
-        put("wD", R.string.category_dmrs);
+        put("wA", R.string.category_assault_rifles);
         put("wC", R.string.category_carbines);
         put("waS", R.string.category_shotguns);
-        put("wA", R.string.category_assault_rifles);
+        put("wL", R.string.category_lmgs);
+        put("waPDW", R.string.category_pdws);
+        put("wD", R.string.category_dmrs);
+        put("wSR", R.string.category_snipers);
+        put("wH", R.string.category_handguns);
+        put("wG", R.string.category_handgrenades);
         put("wSPk", R.string.category_knives);
     }};
 
