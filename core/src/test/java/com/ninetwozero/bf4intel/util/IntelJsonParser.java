@@ -15,7 +15,7 @@ public class IntelJsonParser {
     }
 
     public static final <T extends Object> T parse(String fileName, Class<T> clazz) throws IOException {
-        Reader reader = new InputStreamReader(clazz.getResourceAsStream(fileName));
+        Reader reader = new InputStreamReader(clazz.getResourceAsStream(fileName), "UTF-8");
         Gson gson = GsonProvider.getInstance();
         JsonParser parser = new JsonParser();
         JsonObject dataJson = parser.parse(reader).getAsJsonObject().getAsJsonObject("data");
@@ -24,7 +24,7 @@ public class IntelJsonParser {
     }
 
     public static final <T extends Object> T parse(String fileName, Class<T> clazz, Gson gson) throws IOException {
-        Reader reader = new InputStreamReader(clazz.getResourceAsStream(fileName));
+        Reader reader = new InputStreamReader(clazz.getResourceAsStream(fileName), "UTF-8");
         JsonParser parser = new JsonParser();
         JsonObject dataJson = parser.parse(reader).getAsJsonObject().getAsJsonObject("data");
         reader.close();

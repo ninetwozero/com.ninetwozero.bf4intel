@@ -10,6 +10,9 @@ import com.ninetwozero.bf4intel.utils.SummarizedSoldierStatsDeserializer;
 public class GsonProvider {
     private static Gson instance;
 
+    private GsonProvider() {
+    }
+
     public static Gson getInstance() {
         if (instance == null) {
             instance = createNewInstance();

@@ -5,4 +5,11 @@
   <!--MAGIC NUMBER CHECK-->
   <suppress checks="MagicNumberCheck"
     files=".*[/\\]core[/\\]src[/\\]test[/\\]java[/\\]com[/\\]ninetwozero[/\\]bf4intel[/\\][^/\\]+" />
+  <!--FINAL CLASS CHECK-->
+  <suppress checks="FinalClassCheck"
+    files=".*[/\\]core[/\\]src[/\\]main[/\\]java[/\\]com[/\\]ninetwozero[/\\]bf4intel[/\\]utils[/\\]NewsUtils.java" />
+  <suppress checks="FinalClassCheck"
+    files=".*[/\\]core[/\\]src[/\\]main[/\\]java[/\\]com[/\\]ninetwozero[/\\]bf4intel[/\\]factories[/\\]GsonProvider.java" />
+  <suppress checks="FinalClassCheck"
+    files=".*[/\\]core[/\\]src[/\\]test[/\\]java[/\\]com[/\\]ninetwozero[/\\]bf4intel[/\\]util[/\\]IntelJsonParser.java" />
 </suppressions>

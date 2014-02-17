@@ -5,6 +5,7 @@ import android.util.Log;
 import com.ninetwozero.bf4intel.R;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /* Contains both WNAME and INAME */
@@ -224,7 +225,7 @@ public class WeaponStringSlugMap {
     };
 
     public static int get(final String key) {
-        final String uppercaseKey = key.toUpperCase();
+        final String uppercaseKey = key.toUpperCase(Locale.getDefault());
         if (map.containsKey(uppercaseKey)) {
             return map.get(uppercaseKey);
         } else {

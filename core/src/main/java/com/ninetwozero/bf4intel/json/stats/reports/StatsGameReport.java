@@ -31,7 +31,7 @@ public class StatsGameReport extends GameReport {
         }
     }
 
-    public class MapModeResult {
+    public static class MapModeResult {
         @SerializedName("ticket")
         private Map<Integer, Integer> teamTickets = new HashMap<Integer, Integer>();
     }

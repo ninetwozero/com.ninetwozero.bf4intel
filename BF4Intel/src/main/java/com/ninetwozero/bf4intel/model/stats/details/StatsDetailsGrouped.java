@@ -90,10 +90,10 @@ public class StatsDetailsGrouped {
     }
 
     private String stringValueOf(double value) {
-        return value != 0.0 ? String.format("%.2f",value) : EMPTY_VALUE;
+        return value != 0.0 ? String.format(Locale.getDefault(), "%.2f",value) : EMPTY_VALUE;
     }
 
     private String stringValueOf(double value, String postfix) {
-        return value != 0.0 ? String.format("%.2f%s", value, postfix) : EMPTY_VALUE;
+        return value != 0.0 ? String.format(Locale.getDefault(), "%.2f%s", value, postfix) : EMPTY_VALUE;
     }
 }

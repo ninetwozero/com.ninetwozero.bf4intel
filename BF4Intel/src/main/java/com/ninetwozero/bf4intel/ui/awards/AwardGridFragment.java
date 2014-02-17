@@ -19,11 +19,7 @@ import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.utils.Result;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AwardGridFragment extends BaseLoadingFragment {
     private static final int ID_LOADER = 1100;
@@ -108,10 +104,10 @@ public class AwardGridFragment extends BaseLoadingFragment {
     private List<Award> fetchGroupedAwards(final Awards awards, final List<String> awardsInGroup) {
         List<Award> orderedGroup = new ArrayList<Award>();
         for (String key : awardsInGroup) {
-            if(awards.getMedals().containsKey(key.toLowerCase())) {
+            if(awards.getMedals().containsKey(key.toLowerCase(Locale.getDefault()))) {
                 Medal medal = awards.getMedals().get(key);
                 String ribbonCode = medal.getMedalAward().getMedalDepencies().get(0).getRibbonDependency();
-                Ribbon ribbon = awards.getRibbons().get(ribbonCode.toLowerCase());
+                Ribbon ribbon = awards.getRibbons().get(ribbonCode.toLowerCase(Locale.getDefault()));
                 orderedGroup.add(new Award(key, medal, ribbonCode, ribbon ));
             }
         }

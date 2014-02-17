@@ -90,6 +90,7 @@ public class AssignmentStringMap {
             put("WARSAW_ID_P_XP0_AS_03", R.string.assignments_xp0_name_03);
             put("WARSAW_ID_P_XP0_AS_04", R.string.assignments_xp0_name_04);
             put("WARSAW_ID_P_XP0_AS_05", R.string.assignments_xp0_name_05);
+            put("WARSAW_ID_P_XP0_AS_06", R.string.assignments_xp0_name_06);
             put("WARSAW_ID_P_XP0_AS_07", R.string.assignments_xp0_name_07);
             put("WARSAW_ID_P_XP0_AS_08", R.string.assignments_xp0_name_08);
             put("WARSAW_ID_P_XP0_AS_09", R.string.assignments_xp0_name_09);

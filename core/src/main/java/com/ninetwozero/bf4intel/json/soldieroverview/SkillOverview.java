@@ -54,7 +54,7 @@ public class SkillOverview {
     }
 
     public double getKillsPerMinute() {
-        return ((double) killCount) / (timePlayed / 60);
+        return ((double) killCount) / ((double)timePlayed / 60);
     }
 
     public Map<Integer, Integer> getServiceStars() {

@@ -4,11 +4,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import org.junit.Test;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+
+import org.junit.Test;
 
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
@@ -34,7 +34,7 @@ public class NewsTest {
     }
 
     private NewsListRequest fetchJsonForListing(final String filename) throws IOException {
-        Reader reader = new InputStreamReader(NewsListRequest.class.getResourceAsStream(filename));
+        Reader reader = new InputStreamReader(NewsListRequest.class.getResourceAsStream(filename), "UTF-8");
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
         JsonObject dataJson = parser.parse(reader).getAsJsonObject().getAsJsonObject("context");
@@ -44,7 +44,7 @@ public class NewsTest {
     }
 
     private NewsArticleRequest fetchJsonForSingleArticle(final String filename) throws IOException {
-        Reader reader = new InputStreamReader(NewsArticleRequest.class.getResourceAsStream(filename));
+        Reader reader = new InputStreamReader(NewsArticleRequest.class.getResourceAsStream(filename), "UTF-8");
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
         JsonObject dataJson = parser.parse(reader).getAsJsonObject().getAsJsonObject("context");

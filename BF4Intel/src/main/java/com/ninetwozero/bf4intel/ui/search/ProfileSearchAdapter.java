@@ -15,6 +15,7 @@ import com.ninetwozero.bf4intel.json.search.ProfileSearchResult;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Locale;
 
 public class ProfileSearchAdapter extends BaseIntelAdapter<ProfileSearchResult> {
 
@@ -56,7 +57,7 @@ public class ProfileSearchAdapter extends BaseIntelAdapter<ProfileSearchResult> 
         if (crypticPlatformName.equals("cem_ea_id")) {
             return "PC";
         } else {
-            return crypticPlatformName.toUpperCase();
+            return crypticPlatformName.toUpperCase(Locale.getDefault());
         }
     }
 }

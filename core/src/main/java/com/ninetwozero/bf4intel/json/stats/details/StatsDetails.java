@@ -11,7 +11,7 @@ public class StatsDetails {
         return generalStats;
     }
 
-    public class GeneralStats {
+    public static class GeneralStats {
         /*Multiplayer score*/
         @SerializedName("assault")
         private int assaultScore;

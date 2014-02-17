@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Assignment {
+    private static final int COMPLETED = 100;
+
     @SerializedName("completion")
     private int completion;
     @SerializedName("isTracking")
@@ -20,7 +22,7 @@ public class Assignment {
     }
 
     public boolean isCompleted() {
-        return completion == 100;
+        return completion == COMPLETED;
     }
 
     public boolean isTracking() {
@@ -35,7 +37,7 @@ public class Assignment {
         return unlockDependencieses.isEmpty() ? AssignmentPrerequirement.NONE.toString() : unlockDependencieses.get(0).getGroup();
     }
 
-    public class UnlockDependencies {
+    public static class UnlockDependencies {
         @SerializedName("group")
         private String group;
 

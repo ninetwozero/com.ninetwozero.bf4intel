@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.resources.maps;
 import com.ninetwozero.bf4intel.R;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class WebsiteErrorMessageMap {
@@ -19,6 +20,6 @@ public class WebsiteErrorMessageMap {
     };
 
     public static int get(final String key) {
-        return map.containsKey(key.toLowerCase()) ? map.get(key.toLowerCase()) : R.string.na;
+        return map.containsKey(key.toLowerCase(Locale.getDefault())) ? map.get(key.toLowerCase()) : R.string.na;
     }
 }

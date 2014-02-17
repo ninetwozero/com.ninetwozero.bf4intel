@@ -12,7 +12,7 @@ public class SharedGameEvent extends BaseEvent {
     public SharedGameEvent(final String gameId, final SharedGameEventCategory category, final SharedGameEventItem[] items) {
         this.gameId = gameId;
         this.category = category;
-        this.items = items;
+        this.items = items.clone();
     }
 
     public String getGameId() {
@@ -24,6 +24,6 @@ public class SharedGameEvent extends BaseEvent {
     }
 
     public SharedGameEventItem[] getItems() {
-        return items;
+        return items.clone();
     }
 }

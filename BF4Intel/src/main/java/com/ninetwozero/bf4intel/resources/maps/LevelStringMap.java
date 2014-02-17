@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.resources.maps;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class LevelStringMap {
@@ -45,6 +46,6 @@ public class LevelStringMap {
         if (key == null) {
             return "N/A";
         }
-        return map.containsKey(key.toUpperCase())? map.get(key.toUpperCase()) : key;
+        return map.containsKey(key.toUpperCase(Locale.getDefault()))? map.get(key.toUpperCase()) : key;
     }
 }

@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public abstract class BaseListFragment extends ListFragment {
     private static Toast toast;
 
@@ -52,7 +54,7 @@ public abstract class BaseListFragment extends ListFragment {
         }
 
         final ActionBar actionBar = activity.getActionBar();
-        actionBar.setTitle(text.toUpperCase());
+        actionBar.setTitle(text.toUpperCase(Locale.getDefault()));
     }
 
     protected void updateActionBar(final Activity activity, final int resource) {
@@ -61,7 +63,7 @@ public abstract class BaseListFragment extends ListFragment {
         }
 
         final ActionBar actionBar = activity.getActionBar();
-        actionBar.setTitle(getString(resource).toUpperCase());
+        actionBar.setTitle(getString(resource).toUpperCase(Locale.getDefault()));
     }
 
     protected void updateActionBar(final Activity activity, final String text, final int icon) {
@@ -70,7 +72,7 @@ public abstract class BaseListFragment extends ListFragment {
         }
 
         final ActionBar actionBar = activity.getActionBar();
-        actionBar.setTitle(text.toUpperCase());
+        actionBar.setTitle(text.toUpperCase(Locale.getDefault()));
         actionBar.setIcon(icon);
     }
 
@@ -80,7 +82,7 @@ public abstract class BaseListFragment extends ListFragment {
         }
 
         final ActionBar actionBar = activity.getActionBar();
-        actionBar.setTitle(getString(text).toUpperCase());
+        actionBar.setTitle(getString(text).toUpperCase(Locale.getDefault()));
         actionBar.setIcon(icon);
     }
 
