@@ -180,6 +180,15 @@ public class WeaponStringMap {
             put("WARSAW_ID_P_INAME_XM25", R.string.weapon_iname_xm25);
             put("WARSAW_ID_P_INAME_XM25_FLECHETTE", R.string.weapon_iname_xm25_flechette);
             put("WARSAW_ID_P_INAME_XM25_SMK", R.string.weapon_iname_xm25_smk);
+            /*SECOND ASSAULT*/
+            put("WARSAW_ID_P_XP0_WNAME_DAO12", R.string.weapon_dao12_fancy);
+            put("WARSAW_ID_P_INAME_BPKNIFE1", R.string.weapon_knife_improvised_fancy);
+            put("WARSAW_ID_P_INAME_BPKNIFE8", R.string.weapon_knife_sealknife_fancy);
+            put("WARSAW_ID_P_XP0_WNAME_GOL", R.string.weapon_gol_fancy);
+            put("WARSAW_ID_P_XP0_WNAME_F2000", R.string.weapon_f2000_fancy);
+            put("WARSAW_ID_P_XP0_WNAME_M60E4", R.string.weapon_m60e4_fancy);
+            put("WARSAW_ID_P_XP0_WNAME_ASVAL", R.string.weapon_asval_fancy);
+            put("WARSAW_ID_P_INAME_BPKNIFE7", R.string.weapon_knife_bootknife_fancy);
         }
     };
 

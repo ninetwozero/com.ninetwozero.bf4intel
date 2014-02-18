@@ -35,7 +35,10 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
         Weapon weapon = itemsList.get(position);
 
         ((TextView) view.findViewById(R.id.index)).setText(String.valueOf(position + 1));
-        ((ImageView) view.findViewById(R.id.item_image)).setImageResource(WeaponsImageMap.get(weapon.getUniqueName()));
+        ImageView weaponImg = (ImageView) view.findViewById(R.id.weapon_image);
+        weaponImg.setImageResource(WeaponsImageMap.get(weapon.getUniqueName()));
+        weaponImg.setVisibility(View.VISIBLE);
+
         ((TextView) view.findViewById(R.id.service_star_count)).setText(String.valueOf(weapon.getServiceStarsCount()));
         ((TextView) view.findViewById(R.id.item_name)).setText(weapon.getName().toUpperCase(Locale.getDefault()));
         ((TextView) view.findViewById(R.id.item_kills)).setText(String.valueOf(weapon.getKills()));
@@ -43,7 +46,7 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
         ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.item_progress);
         progressBar.setVisibility(View.VISIBLE);
         progressBar.setProgress(weapon.getServiceStarsProgress());
-        
+
         return view;
     }
 }

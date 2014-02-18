@@ -20,11 +20,20 @@
       android:layout_gravity="center_vertical" />
 
     <ImageView
-      android:id="@+id/item_image"
+      android:id="@+id/weapon_image"
+      android:layout_width="142dp"
+      android:layout_height="77dp"
+      android:layout_weight="1"
+      android:visibility="gone"
+      android:contentDescription="@string/cdesc_weapon_stats_image" />
+
+    <ImageView
+      android:id="@+id/vehicle_image"
       android:layout_width="142dp"
       android:layout_height="142dp"
       android:layout_weight="1"
-      android:contentDescription="@string/cdesc_weapon_stats_image" />
+      android:visibility="gone"
+      android:contentDescription="@string/cdesc_vehicle_stats_image" />
 
     <include layout="@layout/service_stars_count" />
 

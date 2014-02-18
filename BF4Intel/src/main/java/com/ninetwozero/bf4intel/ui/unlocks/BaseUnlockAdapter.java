@@ -12,6 +12,7 @@ import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentStringMap;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T> {
@@ -71,7 +72,7 @@ public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T>
                     String.format("%,d", targetValue)
             );
         } else {
-            final String label = criteria.getLabel();
+            final String label = criteria.getLabel().toLowerCase(Locale.getDefault());
             final String labelPrefix = label.substring(0, label.lastIndexOf("_"));
             if (labelPrefix.contains("as")) {
                 return String.format(

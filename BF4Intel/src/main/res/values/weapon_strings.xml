@@ -178,4 +178,14 @@
   <string name="weapon_name_acwr">ACW-R</string>
   <string name="weapon_name_uts15">UTS-15</string>
   <string name="weapon_name_u100_mk5">U-100 MK5</string>
+
+  <!--SECOND ASSAULT-->
+  <string name="weapon_dao12_fancy">DAO-12</string>
+  <string name="weapon_knife_improvised_fancy">IMPROVISED</string>
+  <string name="weapon_knife_sealknife_fancy">SEAL</string>
+  <string name="weapon_gol_fancy">GOL MAGNUM</string>
+  <string name="weapon_f2000_fancy">F2000</string>
+  <string name="weapon_m60e4_fancy">M60-E4</string>
+  <string name="weapon_asval_fancy">AS VAL</string>
+  <string name="weapon_knife_bootknife_fancy">BOOT</string>
 </resources>
