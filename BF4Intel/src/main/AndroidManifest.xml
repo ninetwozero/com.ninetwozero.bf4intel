@@ -57,7 +57,8 @@
       android:label="@string/label_activity_assignments"
       android:screenOrientation="portrait"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
+      android:theme="@style/AppTheme"
+      >
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity"/>
@@ -68,7 +69,20 @@
       android:label="@string/label_activity_awards"
       android:screenOrientation="portrait"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
+      android:theme="@style/AppTheme"
+      >
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".ui.activities.MainActivity"/>
+    </activity>
+
+    <activity
+      android:name=".ui.about.AboutActivity"
+      android:label="@string/label_about"
+      android:parentActivityName=".ui.activities.MainActivity"
+      android:theme="@style/AppTheme"
+      android:screenOrientation="portrait"
+      >
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity"/>
@@ -96,7 +110,8 @@
 
     <meta-data
       android:name="android.app.default_searchable"
-      android:value=".ui.activities.SearchActivity"/>
+      android:value=".ui.activities.SearchActivity"
+      />
 
   </application>
 

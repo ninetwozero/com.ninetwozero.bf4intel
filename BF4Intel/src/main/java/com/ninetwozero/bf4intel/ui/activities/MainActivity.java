@@ -20,6 +20,7 @@ import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.datatypes.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.ui.about.AboutActivity;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
@@ -123,6 +124,10 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
                 startActivityForResult(
                     new Intent(this, LoginActivity.class), LoginActivity.REQUEST_PROFILE
                 );
+                return true;
+
+            case R.id.ab_action_about:
+                startActivity(new Intent(this, AboutActivity.class));
                 return true;
 
             case R.id.ab_action_logout:

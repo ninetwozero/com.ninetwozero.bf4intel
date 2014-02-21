@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:paddingLeft="@dimen/spacing_m"
+  android:paddingRight="@dimen/spacing_m"
+  android:paddingBottom="@dimen/spacing_m"
+  android:background="@color/card_activity_bg"
+  >
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/card_bg"
+    android:padding="@dimen/spacing_xl"
+    android:layout_gravity="center"
+    >
+    <LinearLayout
+      android:id="@+id/wrap_version"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:orientation="vertical"
+      >
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large"
+        android:fontFamily="sans-serif-light"
+        android:textSize="@dimen/about_title_text"
+        />
+
+      <TextView
+        android:id="@+id/version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/about_subtitle_text"
+        android:fontFamily="sans-serif-light"
+        android:textAppearance="@android:style/TextAppearance.Holo"
+        android:text="@string/app_email"
+        />
+    </LinearLayout>
+  </LinearLayout>
+</ScrollView>

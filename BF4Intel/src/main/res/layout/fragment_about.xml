@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/card_activity_bg"
+  >
+
+  <com.tonicartos.widget.stickygridheaders.StickyGridHeadersGridView
+    android:id="@android:id/list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:numColumns="@integer/about_column_count"
+    android:listSelector="@android:color/transparent"
+    android:padding="@dimen/spacing_s"
+    />
+
+  <TextView
+    android:id="@android:id/empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    />
+</RelativeLayout>

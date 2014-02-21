@@ -49,8 +49,8 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
     }
 
     private List<Fragment> generateFragmentList() {
-        final Bundle profileBundle = getIntent().getBundleExtra(INTENT_EXTRA);
-        return fetchFragmentsForActivity(profileBundle);
+        final Bundle dataBundle = getIntent().getBundleExtra(INTENT_EXTRA);
+        return fetchFragmentsForActivity(dataBundle);
     }
 
     private void setupViewPager() {

@@ -226,4 +226,53 @@
   <string name="msg_search_error_length">Min length: 3 characters</string>
   <string name="menu_logout">Logout</string>
   <string name="msg_error_private_user">This user is private.</string>
+  <string name="label_about">About</string>
+  <string name="label_updates">Updates</string>
+  <string name="label_credits">Credits</string>
+  <string name="label_opensource">Open Source</string>
+  <string name="label_support">Support</string>
+  <string name="app_email">help@bf4intel.com</string>
+
+  <!-- Changelog -->
+  <string name="changelog_title_1_0">Version 1.0</string>
+  <string name="changelog_content_1_0">Released a BETA to the public</string>
+
+  <!-- Credits -->
+  <string name="credits_label_authors">Authors</string>
+  <string name="credits_name_karl">Karl Lindmark</string>
+  <string name="credits_desc_karl">\????</string>
+  <string name="credits_name_peter">Peter Miklosko</string>
+  <string name="credits_desc_peter">\????</string>
+  <string name="credits_label_design">Design</string>
+  <string name="credits_name_taylorling">Taylor Ling</string>
+  <string name="credits_desc_taylorling">The man behind the logo, and then some.</string>
+
+  <!-- Open source -->
+  <string name="opensource_label_self">This app</string>
+  <string name="opensource_label_libraries">Libraries</string>
+  <string name="opensource_title_self">BF4 Intel</string>
+  <string name="opensource_subtitle_self">Licensed as GPL3, source code available on Github.</string>
+  <string name="opensource_title_gson">Gson</string>
+  <string name="opensource_subtitle_gson">JSON parsing made easier</string>
+  <string name="opensource_title_httprequest">Http Request</string>
+  <string name="opensource_subtitle_httprequest">Convenience library for HttpURLConnection</string>
+  <string name="opensource_title_jsoup">Jsoup</string>
+  <string name="opensource_subtitle_jsoup">Html Parsing Library</string>
+  <string name="opensource_title_otto">Otto</string>
+  <string name="opensource_subtitle_otto">Android MessageBus implementation</string>
+  <string name="opensource_title_picasso">Picasso</string>
+  <string name="opensource_subtitle_picasso">Awesome Image Loading Library</string>
+  <string name="opensource_title_cupboard">Cupboard</string>
+  <string name="opensource_subtitle_cupboard">Persisting data has never been easier</string>
+  <string name="opensource_title_bugsense">Bugsense</string>
+  <string name="opensource_subtitle_bugsense">Making sure we don\'t leave any bugs unturned</string>
+  <string name="opensource_title_stickygridheaders">StickyGridHeaders</string>
+  <string name="opensource_subtitle_stickygridheaders">Enables adding headers to GridViews in an
+    intuitive fashion
+  </string>
+  <string name="opensource_title_pagerslidingtabstrip">PagerSlidingTabStrip</string>
+  <string name="opensource_subtitle_pagerslidingtabstrip">Custom library to enable styling of
+    PagerTabStrip
+  </string>
+  <string name="changelog_label_recent_changes">Recent changes</string>
 </resources>
