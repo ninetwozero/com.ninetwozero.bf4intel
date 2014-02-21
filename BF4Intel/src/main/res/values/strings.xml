@@ -275,4 +275,7 @@
     PagerTabStrip
   </string>
   <string name="changelog_label_recent_changes">Recent changes</string>
+  <string name="msg_info_join_gplus">Join our community on G+</string>
+  <string name="msg_info_join_tweet">Tweet with us</string>
+  <string name="msg_info_email">Send an e-mail</string>
 </resources>

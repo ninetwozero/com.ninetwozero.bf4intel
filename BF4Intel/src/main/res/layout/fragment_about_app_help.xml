@@ -35,7 +35,7 @@
       android:id="@+id/button_email"
       android:layout_width="@dimen/card_big_button_width"
       android:layout_gravity="center_horizontal"
-      android:text="Send an e-mail"
+      android:text="@string/msg_info_email"
       android:layout_marginTop="@dimen/spacing_l"
       />
     <Button
@@ -43,7 +43,7 @@
       android:id="@+id/button_gplus"
       android:layout_width="@dimen/card_big_button_width"
       android:layout_gravity="center_horizontal"
-      android:text="Visit the group on G+"
+      android:text="@string/msg_info_join_gplus"
       android:layout_marginTop="@dimen/spacing_m"
       />
     <Button
@@ -51,7 +51,7 @@
       android:id="@+id/button_tweet"
       android:layout_width="@dimen/card_big_button_width"
       android:layout_gravity="center_horizontal"
-      android:text="Tweet with us"
+      android:text="@string/msg_info_join_tweet"
       android:layout_marginTop="@dimen/spacing_m"
       />
   </LinearLayout>

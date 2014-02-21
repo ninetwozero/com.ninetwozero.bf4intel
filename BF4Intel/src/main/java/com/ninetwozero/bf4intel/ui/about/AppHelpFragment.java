@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import com.ninetwozero.bf4intel.R;
 
 public class AppHelpFragment extends Fragment implements View.OnClickListener {
-    private static final String URL_GPLUS = "https://plus.google.com/+BF4Intel";
-    private static final String URL_TWITTER = "https://twitter.com/bf4intel";
+    private static final String URL_GPLUS = "https://plus.google.com/communities/116943801107614500778";
+    private static final String URL_TWITTER = "https://twitter.com/intent/tweet?text=%40karllindmark+%40peter_budo";
 
     public static AppHelpFragment newInstance() {
         final AppHelpFragment fragment = new AppHelpFragment();
