@@ -1,15 +1,15 @@
 package com.ninetwozero.bf4intel.ui.about;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.about.datatypes.HeaderAboutRow;
-import com.ninetwozero.bf4intel.ui.about.datatypes.SimpleAboutRow;
+import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ChangelogFragment extends BaseAboutFragment {
+public class ChangelogFragment extends BaseFragment {
 
     public static ChangelogFragment newInstance() {
         final ChangelogFragment fragment = new ChangelogFragment();
@@ -22,16 +22,16 @@ public class ChangelogFragment extends BaseAboutFragment {
     }
 
     @Override
-    protected List<HeaderAboutRow> getHeadersForList() {
-        final List<HeaderAboutRow> headers = new ArrayList<HeaderAboutRow>();
-        headers.add(new HeaderAboutRow(R.string.changelog_label_recent_changes, 1));
-        return headers;
+    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle state) {
+        super.onCreateView(inflater, parent, state);
+
+        final View view = inflater.inflate(R.layout.fragment_changelog, parent, false);
+        initialize(view);
+        return view;
     }
 
-    @Override
-    protected List<SimpleAboutRow> getItemsForList() {
-        final List<SimpleAboutRow> items = new ArrayList<SimpleAboutRow>();
-        items.add(new SimpleAboutRow(R.string.changelog_title_1_0, R.string.changelog_content_1_0));
-        return items;
+    private void initialize(View view) {
+        final WebView webView = (WebView) view.findViewById(R.id.webview);
+        webView.loadUrl("file:///android_asset/changelog.htm");
     }
 }
