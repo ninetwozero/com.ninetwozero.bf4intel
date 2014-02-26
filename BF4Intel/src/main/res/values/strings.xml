@@ -251,29 +251,25 @@
   <string name="opensource_label_self">This app</string>
   <string name="opensource_label_libraries">Libraries</string>
   <string name="opensource_title_self">BF4 Intel</string>
-  <string name="opensource_subtitle_self">Licensed as GPL3, source code available on Github.</string>
+  <string name="opensource_subtitle_self">[GPL3] https://www.github.com/karllindmark/com.ninetwozero.bf4intel/</string>
   <string name="opensource_title_gson">Gson</string>
-  <string name="opensource_subtitle_gson">JSON parsing made easier</string>
+  <string name="opensource_subtitle_gson">[APACHE 2.0] http://code.google.com/p/google-gson/</string>
   <string name="opensource_title_httprequest">Http Request</string>
-  <string name="opensource_subtitle_httprequest">Convenience library for HttpURLConnection</string>
+  <string name="opensource_subtitle_httprequest">[MIT] https://github.com/kevinsawicki/http-request</string>
   <string name="opensource_title_jsoup">Jsoup</string>
-  <string name="opensource_subtitle_jsoup">Html Parsing Library</string>
+  <string name="opensource_subtitle_jsoup">[MIT] http://www.jsoup.org</string>
   <string name="opensource_title_otto">Otto</string>
-  <string name="opensource_subtitle_otto">Android MessageBus implementation</string>
+  <string name="opensource_subtitle_otto">[APACHE 2.0] http://square.github.io/otto/</string>
   <string name="opensource_title_picasso">Picasso</string>
-  <string name="opensource_subtitle_picasso">Awesome Image Loading Library</string>
+  <string name="opensource_subtitle_picasso">[APACHE 2.0] http://square.github.io/picasso/</string>
   <string name="opensource_title_cupboard">Cupboard</string>
-  <string name="opensource_subtitle_cupboard">Persisting data has never been easier</string>
+  <string name="opensource_subtitle_cupboard">[APACHE 2.0] https://bitbucket.org/qbusict/cupboard</string>
   <string name="opensource_title_bugsense">Bugsense</string>
-  <string name="opensource_subtitle_bugsense">Making sure we don\'t leave any bugs unturned</string>
+  <string name="opensource_subtitle_bugsense">[???] http://bugsense.com</string>
   <string name="opensource_title_stickygridheaders">StickyGridHeaders</string>
-  <string name="opensource_subtitle_stickygridheaders">Enables adding headers to GridViews in an
-    intuitive fashion
-  </string>
+  <string name="opensource_subtitle_stickygridheaders">[APACHE 2.0] https://github.com/TonicArtos/StickyGridHeaders/</string>
   <string name="opensource_title_pagerslidingtabstrip">PagerSlidingTabStrip</string>
-  <string name="opensource_subtitle_pagerslidingtabstrip">Custom library to enable styling of
-    PagerTabStrip
-  </string>
+  <string name="opensource_subtitle_pagerslidingtabstrip">[APACHE 2.0] https://github.com/astuetz/PagerSlidingTabStrip</string>
   <string name="changelog_label_recent_changes">Recent changes</string>
   <string name="msg_info_join_gplus">Join our community on G+</string>
   <string name="msg_info_join_tweet">Tweet with us</string>
