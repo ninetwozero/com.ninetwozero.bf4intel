@@ -2,7 +2,9 @@
 package com.ninetwozero.bf4intel.ui.about;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,7 +14,9 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 
-public class AppInfoFragment extends Fragment {
+public class AppInfoFragment extends Fragment implements View.OnClickListener {
+    private static final String URL_GPLUS = "https://plus.google.com/communities/116943801107614500778";
+    private static final String URL_TWITTER = "https://twitter.com/intent/tweet?text=%40karllindmark+%40peter_budo";
 
     public static AppInfoFragment newInstance() {
         final AppInfoFragment fragment = new AppInfoFragment();
@@ -29,8 +33,19 @@ public class AppInfoFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         final View view = inflater.inflate(R.layout.fragment_about_app, container, false);
-        setupVersion(view);
+        initialize(view);
         return view;
+    }
+
+    private void initialize(final View view) {
+        setupButtons(view);
+        setupVersion(view);
+    }
+
+    private void setupButtons(final View view) {
+        view.findViewById(R.id.button_email).setOnClickListener(this);
+        view.findViewById(R.id.button_gplus).setOnClickListener(this);
+        view.findViewById(R.id.button_tweet).setOnClickListener(this);
     }
 
     private void setupVersion(final View view) {
@@ -48,5 +63,27 @@ public class AppInfoFragment extends Fragment {
             }
         }
         ((TextView) view.findViewById(R.id.version)).setText(versionNumber);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = null;
+        switch (v.getId()) {
+            case R.id.button_email:
+                intent = new Intent(Intent.ACTION_SENDTO).setData(
+                    Uri.parse("mailto:" + getString(R.string.app_email))
+                );
+                break;
+            case R.id.button_gplus:
+                intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(URL_GPLUS));
+                break;
+            case R.id.button_tweet:
+                intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(URL_TWITTER));
+                break;
+        }
+        if (null != intent) {
+            getActivity().startActivity(intent);
+        }
     }
 }

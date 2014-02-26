@@ -278,4 +278,8 @@
   <string name="msg_info_join_gplus">Join our community on G+</string>
   <string name="msg_info_join_tweet">Tweet with us</string>
   <string name="msg_info_email">Send an e-mail</string>
+  <string name="msg_about_help_text">If you ever encounter any issues with BF4 Intel, you can count on us
+    to help. Just tap one of the buttons below to get started!
+  </string>
+  <string name="msg_about_help_heading">Need help?</string>
 </resources>

@@ -15,7 +15,6 @@ public class AboutActivity extends BaseTabActivity {
         R.string.label_updates,
         R.string.label_credits,
         R.string.label_opensource,
-        R.string.label_support
     };
 
     @Override
@@ -30,7 +29,6 @@ public class AboutActivity extends BaseTabActivity {
         fragments.add(ChangelogFragment.newInstance());
         fragments.add(CreditListFragment.newInstance());
         fragments.add(OpenSourceInfoFragment.newInstance());
-        fragments.add(AppHelpFragment.newInstance());
         return fragments;
     }
 }
