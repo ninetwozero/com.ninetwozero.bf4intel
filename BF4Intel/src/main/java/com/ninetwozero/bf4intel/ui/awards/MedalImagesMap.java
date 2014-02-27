@@ -3,7 +3,6 @@ package com.ninetwozero.bf4intel.ui.awards;
 import com.ninetwozero.bf4intel.R;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class MedalImagesMap {
@@ -54,12 +53,14 @@ public class MedalImagesMap {
             put("m43", R.drawable.awards_m43);
             put("m44", R.drawable.awards_m44);
             put("m45", R.drawable.awards_m45);
-            put("xp1mas", R.drawable.xp1mas);
-            put("xp1mbd", R.drawable.xp1mbd);
+            put("xp1mAS", R.drawable.awards_mxp1mas);
+            put("xp1mBD", R.drawable.awards_mxp1mbd);
+            put("xp0mCTF", R.drawable.awards_mxp0mctf);
+            put("xp0mCTFS", R.drawable.awards_mxp0mctfs);
         }
     };
 
     public static int get(final String key) {
-        return medalsMap.containsKey(key.toLowerCase(Locale.getDefault())) ? medalsMap.get(key.toLowerCase()) : R.drawable.acc_none;
+        return medalsMap.containsKey(key) ? medalsMap.get(key) : R.drawable.acc_none;
     }
 }

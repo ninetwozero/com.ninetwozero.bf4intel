@@ -23,9 +23,6 @@ import java.util.*;
 
 public class AwardGridFragment extends BaseLoadingFragment {
     private static final int ID_LOADER = 1100;
-    private static final List<String> AWARD_TYPE = new ArrayList<String>(
-        Arrays.asList("vehicles", "weapon", "gamemode", "general", "kits", "team")
-    );
 
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
@@ -93,7 +90,8 @@ public class AwardGridFragment extends BaseLoadingFragment {
     private List<Award> fetchSortedAwards(final Awards awards) {
         List<Award> orderedAwards = new ArrayList<Award>();
         Map<String, List<String>> awardsGroups = awards.getAwardsGroups();
-        for(String group : AWARD_TYPE) {
+        Set<String> awardTypes = awardsGroups.keySet();
+        for(String group : awardTypes) {
             List<String> awardsInGroup = awardsGroups.get(group);
             Collections.sort(awardsInGroup);
             orderedAwards.addAll(fetchGroupedAwards(awards, awardsInGroup));
@@ -104,10 +102,10 @@ public class AwardGridFragment extends BaseLoadingFragment {
     private List<Award> fetchGroupedAwards(final Awards awards, final List<String> awardsInGroup) {
         List<Award> orderedGroup = new ArrayList<Award>();
         for (String key : awardsInGroup) {
-            if(awards.getMedals().containsKey(key.toLowerCase(Locale.getDefault()))) {
+            if(awards.getMedals().containsKey(key)) {
                 Medal medal = awards.getMedals().get(key);
                 String ribbonCode = medal.getMedalAward().getMedalDepencies().get(0).getRibbonDependency();
-                Ribbon ribbon = awards.getRibbons().get(ribbonCode.toLowerCase(Locale.getDefault()));
+                Ribbon ribbon = awards.getRibbons().get(ribbonCode);
                 orderedGroup.add(new Award(key, medal, ribbonCode, ribbon ));
             }
         }
