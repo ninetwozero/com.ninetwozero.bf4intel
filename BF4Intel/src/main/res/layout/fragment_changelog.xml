@@ -15,8 +15,8 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_m"
     android:layout_marginBottom="@dimen/spacing_m"
+    android:padding="0dp"
     >
-
     <WebView
       android:id="@+id/webview"
       android:layout_width="match_parent"
