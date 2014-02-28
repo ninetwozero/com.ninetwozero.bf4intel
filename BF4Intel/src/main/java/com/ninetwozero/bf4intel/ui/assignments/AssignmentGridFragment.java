@@ -97,7 +97,6 @@ public class AssignmentGridFragment extends BaseLoadingFragment {
         Map<String, List<String>> missions = assignments.getAssignmentCategory();
         for(String assignmentType : ASSIGNMENT_TYPE) {
             List<String> groupedAssignments = missions.get(assignmentType);
-            //Collections.sort(groupedAssignments);
             orderedAssignments.addAll(fetchGroupedAssignments(assignments, groupedAssignments));
         }
         return orderedAssignments;

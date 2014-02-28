@@ -3,7 +3,6 @@ package com.ninetwozero.bf4intel.ui.awards;
 import com.ninetwozero.bf4intel.R;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class RibbonImagesMap {
@@ -54,12 +53,14 @@ public class RibbonImagesMap {
             put("r43", R.drawable.awards_ribbon43);
             put("r44", R.drawable.awards_ribbon44);
             put("r45", R.drawable.awards_ribbon45);
-            put("xp1ras", R.drawable.awards_ribbon_xp1as);
-            put("xp1rbd", R.drawable.awards_ribbon_xp1bd);
+            put("xp1rAS", R.drawable.awards_ribbon_xp1as);
+            put("xp1rBD", R.drawable.awards_ribbon_xp1bd);
+            put("xp0rCS", R.drawable.awards_ribbon_xp0rcs);
+            put("xp0rFD", R.drawable.awards_ribbon_xp0rfd);
         }
     };
 
     public static int get(final String key) {
-        return ribbonsMap.containsKey(key.toLowerCase(Locale.getDefault())) ? ribbonsMap.get(key.toLowerCase()) : R.drawable.acc_none;
+        return ribbonsMap.containsKey(key) ? ribbonsMap.get(key) : R.drawable.acc_none;
     }
 }
