@@ -1,15 +1,15 @@
 package com.ninetwozero.bf4intel.ui.about;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.about.datatypes.HeaderAboutRow;
-import com.ninetwozero.bf4intel.ui.about.datatypes.SimpleAboutRow;
+import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class CreditListFragment extends BaseAboutFragment {
+public class CreditListFragment extends BaseFragment {
 
     public static CreditListFragment newInstance() {
         final CreditListFragment fragment = new CreditListFragment();
@@ -22,37 +22,16 @@ public class CreditListFragment extends BaseAboutFragment {
     }
 
     @Override
-    protected List<HeaderAboutRow> getHeadersForList() {
-        final List<HeaderAboutRow> items = new ArrayList<HeaderAboutRow>();
-        items.add(new HeaderAboutRow(R.string.credits_label_authors, 2));
-        items.add(new HeaderAboutRow(R.string.credits_label_design, 1));
-        return items;
+    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle state) {
+        super.onCreateView(inflater, parent, state);
+
+        final View view = inflater.inflate(R.layout.generic_webivew_fragment_for_cards, parent, false);
+        initialize(view);
+        return view;
     }
 
-    @Override
-    protected List<SimpleAboutRow> getItemsForList() {
-        final List<SimpleAboutRow> items = new ArrayList<SimpleAboutRow>();
-        items.add(
-            new SimpleAboutRow(
-                R.string.credits_name_karl,
-                R.string.credits_desc_karl,
-                "http://ninetwozero.com"
-            )
-        );
-        items.add(
-            new SimpleAboutRow(
-                R.string.credits_name_peter,
-                R.string.credits_desc_peter,
-                "http://peterscorner.co.uk"
-            )
-        );
-        items.add(
-            new SimpleAboutRow(
-                R.string.credits_name_taylorling,
-                R.string.credits_desc_taylorling,
-                "http://www.androiduiux.com"
-            )
-        );
-        return items;
+    private void initialize(View view) {
+        final WebView webView = (WebView) view.findViewById(R.id.webview);
+        webView.loadUrl("file:///android_asset/credits.htm");
     }
 }
