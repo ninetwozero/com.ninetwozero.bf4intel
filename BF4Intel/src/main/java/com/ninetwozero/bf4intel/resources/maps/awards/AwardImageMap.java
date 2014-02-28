@@ -53,8 +53,10 @@ public class AwardImageMap {
             put("WARSAW_ID_P_AWARD_M43_NAME", R.drawable.awards_m43);
             put("WARSAW_ID_P_AWARD_M44_NAME", R.drawable.awards_m44);
             put("WARSAW_ID_P_AWARD_M45_NAME", R.drawable.awards_m45);
-            put("WARSAW_ID_P_XP1_AWARD_M_AIRSUPERIORITY_NAME", R.drawable.xp1mas);
-            put("WARSAW_ID_P_XP1_AWARD_M_BOMBDELIVERY_NAME", R.drawable.xp1mbd);
+            put("WARSAW_ID_P_XP1_AWARD_M_AIRSUPERIORITY_NAME", R.drawable.awards_mxp1mas);
+            put("WARSAW_ID_P_XP1_AWARD_M_BOMBDELIVERY_NAME", R.drawable.awards_mxp1mbd);
+            put("WARSAW_ID_P_XP0_AWARD_M_CTFS_NAME", R.drawable.awards_mxp0mctfs);
+            put("WARSAW_ID_P_XP0_AWARD_M_CTF_NAME", R.drawable.awards_mxp0mctf);
             put("WARSAW_ID_P_AWARD_R01_NAME", R.drawable.awards_ribbon01);
             put("WARSAW_ID_P_AWARD_R02_NAME", R.drawable.awards_ribbon02);
             put("WARSAW_ID_P_AWARD_R03_NAME", R.drawable.awards_ribbon03);
@@ -102,6 +104,8 @@ public class AwardImageMap {
             put("WARSAW_ID_P_AWARD_R45_NAME", R.drawable.awards_ribbon45);
             put("WARSAW_ID_P_XP1_AWARD_M_AIRSUPERIORITY_NAME", R.drawable.awards_ribbon_xp1as);
             put("WARSAW_ID_P_XP1_AWARD_M_BOMBDELIVERY_NAME", R.drawable.awards_ribbon_xp1bd);
+            put("WARSAW_ID_P_XP0_AWARD_R_CAPTURESPEC_NAME", R.drawable.awards_ribbon_xp0rcs);
+            put("WARSAW_ID_P_XP0_AWARD_R_CTFWINNER_NAME", R.drawable.awards_ribbon_xp0rfd);
         }
     };
 
