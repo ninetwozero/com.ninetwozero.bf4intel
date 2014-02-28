@@ -229,21 +229,10 @@
 
   <!-- ABOUT -->
   <string name="label_about">About</string>
-  <string name="label_updates">Updates</string>
+  <string name="label_updates">Changelog</string>
   <string name="label_credits">Credits</string>
   <string name="label_opensource">Licenses</string>
-  <string name="label_support">Support</string>
   <string name="app_email">help@bf4intel.com</string>
-
-  <!-- Credits -->
-  <string name="credits_label_authors">Authors</string>
-  <string name="credits_name_karl">Karl Lindmark</string>
-  <string name="credits_desc_karl">\????</string>
-  <string name="credits_name_peter">Peter Miklosko</string>
-  <string name="credits_desc_peter">\????</string>
-  <string name="credits_label_design">Design</string>
-  <string name="credits_name_taylorling">Taylor Ling</string>
-  <string name="credits_desc_taylorling">The man behind the logo, and then some.</string>
 
   <string name="msg_info_join_gplus">Join our community on G+</string>
   <string name="msg_info_join_tweet">Tweet with us</string>

@@ -25,7 +25,7 @@ public class CreditListFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = inflater.inflate(R.layout.generic_webivew_fragment_for_cards, parent, false);
+        final View view = inflater.inflate(R.layout.generic_webview_card_fragment, parent, false);
         initialize(view);
         return view;
     }
