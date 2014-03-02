@@ -6,25 +6,25 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 
-public class AppInfoFragment extends Fragment implements View.OnClickListener {
+public class AboutFragment extends BaseFragment implements View.OnClickListener {
     private static final String URL_GPLUS = "https://plus.google.com/communities/116943801107614500778";
     private static final String URL_TWITTER = "https://twitter.com/intent/tweet?text=%40karllindmark+%40peter_budo";
 
-    public static AppInfoFragment newInstance() {
-        final AppInfoFragment fragment = new AppInfoFragment();
+    public static AboutFragment newInstance() {
+        final AboutFragment fragment = new AboutFragment();
         fragment.setArguments(new Bundle());
         return fragment;
     }
 
-    public AppInfoFragment() {
+    public AboutFragment() {
 
     }
 
