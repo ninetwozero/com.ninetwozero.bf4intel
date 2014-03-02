@@ -161,11 +161,16 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             progressBar.setProgress((int) Math.round(serviceStarProgress.get(key)));
             progressBar.setMax(100);
 
+
+            ((TextView) parent.findViewById(R.id.service_star_count)).setText(
+                String.valueOf(serviceStars.get(key))
+            );
             ((ImageView) parent.findViewById(R.id.image)).setImageResource(
                 PersonaUtils.getIconForKit(key)
             );
             contentArea.addView(parent);
         }
+
     }
 
     private void displaySkills(final View baseView, final SkillOverview basicSoldierStats) {

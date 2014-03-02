@@ -171,11 +171,12 @@
         android:layout_below="@id/wrap_soldier_skills">
 
         <TextView
-          android:id="@+id/heading_service_stars"
           style="@style/heading"
+          android:id="@+id/heading_service_stars"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="@string/service_stars"/>
+          android:text="@string/service_stars"
+          />
 
         <LinearLayout
           android:id="@+id/content_area"
