@@ -46,7 +46,7 @@ public abstract class BaseLoadingIntelActivity extends BaseIntelActivity impleme
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.intel_activity, menu);
+        getMenuInflater().inflate(R.menu.base_intel_activity, menu);
         optionsMenu = menu;
         return true;
     }
