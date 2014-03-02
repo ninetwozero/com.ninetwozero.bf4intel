@@ -62,14 +62,14 @@
 
   <!-- MENU -->
 
-  <style name="SlidingMenuRow">
+  <style name="NavigationDrawerRow">
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:paddingTop">@dimen/spacing_m</item>
     <item name="android:paddingRight">@dimen/spacing_m</item>
     <item name="android:paddingBottom">@dimen/spacing_m</item>
     <item name="android:paddingLeft">@dimen/spacing_m</item>
-    <item name="android:background">?android:attr/activatedBackgroundIndicator</item>
+    <item name="android:background">@drawable/navigation_drawer_selected_item_bg</item>
     <item name="android:textAllCaps">true</item>
   </style>
 
