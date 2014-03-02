@@ -33,10 +33,10 @@
   </LinearLayout>
 
   <ProgressBar
+    style="?android:attr/progressBarStyleHorizontal"
     android:id="@+id/assignment_completion"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_below="@id/img_assignment"
-    style="@android:style/Widget.Holo.ProgressBar.Horizontal" />
+    android:layout_below="@id/img_assignment" />
 
 </RelativeLayout>
