@@ -226,4 +226,19 @@
   <string name="msg_search_error_length">Min length: 3 characters</string>
   <string name="menu_logout">Logout</string>
   <string name="msg_error_private_user">This user is private.</string>
+
+  <!-- ABOUT -->
+  <string name="label_about">About</string>
+  <string name="label_updates">Changelog</string>
+  <string name="label_credits">Credits</string>
+  <string name="label_opensource">Licenses</string>
+  <string name="app_email">help@bf4intel.com</string>
+
+  <string name="msg_info_join_gplus">Join our community on G+</string>
+  <string name="msg_info_join_tweet">Tweet with us</string>
+  <string name="msg_info_email">Send us an e-mail</string>
+  <string name="msg_about_help_text">If you ever encounter any issues with BF4 Intel, you can count on us
+    to help. Just tap one of the buttons below to get started!
+  </string>
+  <string name="msg_about_help_heading">Need help?</string>
 </resources>
