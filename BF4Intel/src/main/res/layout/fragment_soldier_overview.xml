@@ -19,7 +19,7 @@
 
       <RelativeLayout
         android:id="@+id/wrap_soldier_general"
-        style="@style/RegularCard"
+        style="@style/NonListViewCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -72,7 +72,7 @@
 
       <LinearLayout
         android:id="@+id/wrap_soldier_skills"
-        style="@style/RegularCard"
+        style="@style/NonListViewCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -164,7 +164,7 @@
 
       <LinearLayout
         android:id="@+id/wrap_soldier_service_stars"
-        style="@style/RegularCard"
+        style="@style/NonListViewCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -181,7 +181,8 @@
           android:id="@+id/content_area"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:orientation="vertical">
+          android:orientation="vertical"
+          >
 
           <include
             layout="@layout/list_item_soldier_service_stars"
@@ -217,7 +218,7 @@
 
       <LinearLayout
         android:id="@+id/wrap_soldier_top3_weapons"
-        style="@style/RegularCard"
+        style="@style/NonListViewCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -241,7 +242,7 @@
 
       <LinearLayout
         android:id="@+id/wrap_soldier_top3_vehicles"
-        style="@style/RegularCard"
+        style="@style/NonListViewCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -265,7 +266,7 @@
 
       <LinearLayout
         android:id="@+id/wrap_soldier_completions"
-        style="@style/RegularCard"
+        style="@style/NonListViewCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -289,5 +290,5 @@
     </RelativeLayout>
   </ScrollView>
 
-  <include layout="@layout/loading_progress" />
+  <include layout="@layout/loading_progress"/>
 </RelativeLayout>
