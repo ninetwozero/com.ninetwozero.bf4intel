@@ -3,7 +3,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
   <stroke
     android:width="@dimen/round_corners_stroke"
-    android:color="@color/very_dark_grey" />
-  <solid android:color="@color/bg_grid_item" />
+    android:color="@color/lightgrey" />
+  <solid android:color="@color/darkgrey" />
   <corners android:radius="@dimen/round_corners" />
 </shape>

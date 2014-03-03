@@ -11,7 +11,10 @@
     android:layout_height="match_parent"
     android:padding="@dimen/spacing_m"
     android:dividerHeight="@dimen/spacing_m"
-    android:divider="@color/lightgrey"/>
+    android:divider="@color/lightgrey"
+    android:clipToPadding="true"
+    android:scrollbarStyle="outsideOverlay"
+    />
 
   <TextView
     android:id="@android:id/empty"
@@ -19,5 +22,5 @@
     android:layout_height="wrap_content"
     android:layout_centerInParent="true"/>
 
-  <include layout="@layout/loading_progress" />
+  <include layout="@layout/loading_progress"/>
 </RelativeLayout>

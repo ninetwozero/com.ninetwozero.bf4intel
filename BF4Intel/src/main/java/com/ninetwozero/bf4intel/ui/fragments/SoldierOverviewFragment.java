@@ -219,7 +219,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
                 isWeapon ? WeaponStringMap.get(stats.get(i).getName()) : VehicleStringMap.get(stats.get(i).getName())
             );
             ((TextView) parent.findViewById(R.id.value)).setText(
-                String.format(getString(R.string.soldier_num_kills), stats.get(i).getKillCount())
+                String.format(getString(R.string.num_kills), stats.get(i).getKillCount())
             );
             contentArea.addView(parent);
         }

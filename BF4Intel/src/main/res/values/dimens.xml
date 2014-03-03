@@ -100,4 +100,11 @@
   <dimen name="changelog_text_size">18sp</dimen>
   <dimen name="card_big_button_width">-1px</dimen>
   <dimen name="service_star_size">32dp</dimen>
+
+  <!-- Stats item dimens -->
+  <dimen name="stats_weapon_width">142dp</dimen>
+  <dimen name="stats_weapon_height">77dp</dimen>
+  <dimen name="stats_vehicle_width">142dp</dimen>
+  <dimen name="stats_vehicle_height">@dimen/stats_vehicle_width</dimen>
+  <dimen name="small_service_star_size">24dp</dimen>
 </resources>

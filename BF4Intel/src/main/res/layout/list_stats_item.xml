@@ -1,64 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:orientation="vertical"
   style="@style/RegularCard"
   >
 
-  <LinearLayout
+  <RelativeLayout
+    android:id="@+id/wrap_top"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    >
 
     <TextView
       android:id="@+id/index"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textSize="@dimen/text_xl"
-      android:layout_gravity="center_vertical" />
+      android:layout_gravity="center_vertical"
+      android:layout_alignParentLeft="true"
+      android:layout_centerVertical="true"
+      />
 
-    <ImageView
-      android:id="@+id/weapon_image"
-      android:layout_width="142dp"
-      android:layout_height="77dp"
-      android:layout_weight="1"
-      android:visibility="gone"
-      android:contentDescription="@string/cdesc_weapon_stats_image" />
+    <include
+      layout="@layout/service_stars_count"
+      android:id="@+id/wrap_servicestar"
+      android:layout_width="@dimen/service_star_count_width"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_centerVertical="true"
+      />
 
-    <ImageView
-      android:id="@+id/vehicle_image"
-      android:layout_width="142dp"
-      android:layout_height="142dp"
-      android:layout_weight="1"
-      android:visibility="gone"
-      android:contentDescription="@string/cdesc_vehicle_stats_image" />
+    <LinearLayout
+      android:id="@+id/wrap_image"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_toLeftOf="@id/wrap_servicestar"
+      android:layout_toRightOf="@id/index"
+      android:gravity="center"
+      >
 
-    <include layout="@layout/service_stars_count" />
+      <ImageView
+        android:id="@+id/weapon_image"
+        android:layout_width="@dimen/stats_weapon_width"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cdesc_item_image"
+        android:adjustViewBounds="true"
+        android:visibility="gone"
+        />
 
-  </LinearLayout>
+      <ImageView
+        android:id="@+id/vehicle_image"
+        android:layout_width="@dimen/stats_vehicle_width"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cdesc_item_image"
+        android:adjustViewBounds="true"
+        android:src="@drawable/vehicle_m224_mortar"
+        android:cropToPadding="false"
+        android:visibility="gone"
+        />
+    </LinearLayout>
+  </RelativeLayout>
 
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+  <TextView
+    android:id="@+id/item_name"
+    style="@style/TextViewLightGrey"
+    android:layout_below="@id/wrap_top"
+    />
 
-    <TextView
-      android:id="@+id/item_name"
-      style="@style/TextViewLightGrey"
-      android:layout_weight="1" />
-
-    <TextView
-      android:id="@+id/item_kills"
-      style="@style/TextViewLightGrey"
-      android:paddingRight="@dimen/spacing_l" />
-  </LinearLayout>
+  <TextView
+    android:id="@+id/kill_count"
+    style="@style/TextViewLightGrey"
+    android:layout_alignParentRight="true"
+    android:layout_below="@id/wrap_top"
+    />
 
   <ProgressBar
     style="?android:attr/progressBarStyleHorizontal"
     android:id="@+id/item_progress"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:max="100" />
-</LinearLayout>
+    android:max="100"
+    android:layout_below="@id/item_name"
+    />
+</RelativeLayout>

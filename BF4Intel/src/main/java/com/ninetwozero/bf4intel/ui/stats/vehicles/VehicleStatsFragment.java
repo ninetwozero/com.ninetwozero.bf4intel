@@ -23,8 +23,6 @@ import java.util.List;
 public class VehicleStatsFragment extends BaseLoadingListFragment {
 
     private static final int ID_LOADER = 2200;
-    private ListView listView;
-    private VehicleStatsAdapter adapter;
 
     public static VehicleStatsFragment newInstance(final Bundle data) {
         final VehicleStatsFragment fragment = new VehicleStatsFragment();
@@ -35,9 +33,7 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle state) {
         super.onCreateView(inflater, parent, state);
-        final View view = layoutInflater.inflate(R.layout.fragment_list_stats, parent, false);
-        listView = (ListView) view.findViewById(android.R.id.list);
-        return view;
+        return layoutInflater.inflate(R.layout.fragment_list_stats, parent, false);
     }
 
     @Override
@@ -66,26 +62,16 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    public void onLoadFinished(Loader<Result> resultLoader, Result result) {
-        if (result == Result.SUCCESS) {
-            onLoadSuccess(result.getResultMessage());
-        } else {
-            onLoadFailure(result.getResultMessage());
-        }
-    }
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
+        final VehicleStatistics vs = fromJson(resultMessage, VehicleStatistics.class);
+        final List<GroupedVehicleStats> vehiclesGrouped = vs.fetchGroupVehicles();
 
-    @Override
-    protected void onLoadSuccess(String resultMessage) {
-        VehicleStatistics vs = fromJson(resultMessage, VehicleStatistics.class);
-        List<GroupedVehicleStats> vehiclesGrouped = vs.fetchGroupVehicles();
-        adapter = new VehicleStatsAdapter(vehiclesGrouped, getContext());
-        listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        getListView().setAdapter(new VehicleStatsAdapter(getActivity(), vehiclesGrouped));
         showLoadingState(false);
     }
 
     @Override
-    protected void onLoadFailure(String resultMessage) {
+    protected void onLoadFailure(final Loader loader, String resultMessage) {
         Log.e(VehicleStatsFragment.class.getSimpleName(), resultMessage);
     }
 }
