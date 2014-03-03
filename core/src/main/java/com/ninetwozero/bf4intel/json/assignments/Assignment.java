@@ -34,7 +34,7 @@ public class Assignment {
     }
 
     public String getDependencyGroup() {
-        return unlockDependencieses.isEmpty() ? AssignmentPrerequirement.NONE.toString() : unlockDependencieses.get(0).getGroup();
+        return unlockDependencieses.isEmpty() ? AssignmentPrerequisite.NONE.toString() : unlockDependencieses.get(0).getGroup();
     }
 
     public static class UnlockDependencies {
