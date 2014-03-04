@@ -8,12 +8,11 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseItem;
 import com.ninetwozero.bf4intel.base.adapter.DetailedStatsListAdapter;
 
-public class DetailsListItem implements BaseItem {
-
+public class DetailedStatsListItem implements BaseItem {
     private int resourceId;
     private String value;
 
-    public DetailsListItem(int resourceId, String value) {
+    public DetailedStatsListItem(int resourceId, String value) {
         this.resourceId = resourceId;
         this.value = value;
     }
