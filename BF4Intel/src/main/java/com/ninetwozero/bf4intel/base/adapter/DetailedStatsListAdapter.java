@@ -8,14 +8,14 @@ import android.widget.ArrayAdapter;
 
 import java.util.List;
 
-public class BaseListAdapter extends ArrayAdapter<BaseItem> {
+public class DetailedStatsListAdapter extends ArrayAdapter<BaseItem> {
     final LayoutInflater layoutInflater;
 
     public enum BaseItemType {
         ITEM, HEADER;
     }
 
-    public BaseListAdapter(final Context context, List<BaseItem> items) {
+    public DetailedStatsListAdapter(final Context context, List<BaseItem> items) {
         super(context, 0, items);
         layoutInflater = LayoutInflater.from(context);
     }

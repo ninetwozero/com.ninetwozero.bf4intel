@@ -20,12 +20,6 @@ public abstract class BaseSimpleRequest {
     protected final String requestUrl;
     protected final RequestType requestType;
 
-    @Deprecated
-    public BaseSimpleRequest(final String requestUrl) {
-        this.requestUrl = requestUrl;
-        requestType = RequestType.NORMAL;
-    }
-
     public BaseSimpleRequest(final URL requestUrl) {
         this.requestUrl = requestUrl.toString();
         this.requestType = RequestType.NORMAL;

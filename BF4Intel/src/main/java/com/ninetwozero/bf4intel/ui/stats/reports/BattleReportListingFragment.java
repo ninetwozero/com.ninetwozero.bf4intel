@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseItem;
-import com.ninetwozero.bf4intel.base.adapter.BaseListAdapter;
+import com.ninetwozero.bf4intel.base.adapter.DetailedStatsListAdapter;
 import com.ninetwozero.bf4intel.base.adapter.BaseListHeader;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
@@ -129,7 +129,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         }
         itemList.add(new BaseListHeader(R.string.header_latest_battlereport));
         itemList.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getStatsGameReports()), statistics.getSoldierId()));
-        BaseListAdapter adapter = new BaseListAdapter(getActivity(), itemList);
+        DetailedStatsListAdapter adapter = new DetailedStatsListAdapter(getActivity(), itemList);
         setListAdapter(adapter);
     }
 

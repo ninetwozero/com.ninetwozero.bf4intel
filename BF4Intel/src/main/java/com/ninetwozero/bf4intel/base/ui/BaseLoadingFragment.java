@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -82,30 +83,9 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Loader
         loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
 
-
-    /*
-        TODO:
-        Deprecating current methods as they're used at many places
-        However, when no more onLoadSuccess(String) nor onLoadFailure(String)
-        implementations are left, we remove them below and make the
-
-            onLoadX(Loader, String)
-
-        methods abstract
-     */
-
-    @Deprecated
-    protected void onLoadSuccess(final String resultMessage) {}
-
-    @Deprecated
-    protected void onLoadFailure(final String resultMessage) {}
-
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        onLoadSuccess(resultMessage);
-    }
-
+    protected abstract void onLoadSuccess(final Loader loader, final String resultMessage);
     protected void onLoadFailure(final Loader loader, final String resultMessage) {
-        onLoadFailure(resultMessage);
+        Log.w(getClass().getSimpleName(), "[onLoadFailure] " + resultMessage);
     }
 
     protected abstract void startLoadingData();

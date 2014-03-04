@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseItem;
-import com.ninetwozero.bf4intel.base.adapter.BaseListAdapter;
+import com.ninetwozero.bf4intel.base.adapter.DetailedStatsListAdapter;
 
 public class DetailsListItem implements BaseItem {
 
@@ -20,7 +20,7 @@ public class DetailsListItem implements BaseItem {
 
     @Override
     public int getViewType() {
-        return BaseListAdapter.BaseItemType.ITEM.ordinal();
+        return DetailedStatsListAdapter.BaseItemType.ITEM.ordinal();
     }
 
     @Override

@@ -91,23 +91,15 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     }
 
     @Override
-    public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
-        if (result == Result.SUCCESS) {
-            onLoadSuccess(result.getResultMessage());
-        } else {
-            onLoadFailure(result.getResultMessage());
-        }
-    }
-
-    @Override
-    protected void onLoadSuccess(final String resultMessage) {
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         final SoldierOverview soldierOverview = fromJson(resultMessage, SoldierOverview.class);
         displayInformation(getView(), soldierOverview);
         showLoadingState(false);
     }
 
     @Override
-    protected void onLoadFailure(final String resultMessage) {
+    protected void onLoadFailure(final Loader loader, final String resultMessage) {
+        super.onLoadFailure(loader, resultMessage);
         showToast(resultMessage);
     }
 

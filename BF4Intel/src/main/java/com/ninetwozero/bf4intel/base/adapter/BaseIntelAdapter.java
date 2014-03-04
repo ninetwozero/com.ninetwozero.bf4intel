@@ -29,13 +29,6 @@ public abstract class BaseIntelAdapter<T> extends BaseAdapter {
         this.layoutInflater = LayoutInflater.from(context);
     }
 
-    @Deprecated
-    public BaseIntelAdapter(List<T> itemsList, Context context) {
-        this.itemsList = itemsList;
-        this.context = context;
-        this.layoutInflater = LayoutInflater.from(context);
-    }
-
     @Override
     public int getCount() {
         return itemsList == null ? 0 : itemsList.size();

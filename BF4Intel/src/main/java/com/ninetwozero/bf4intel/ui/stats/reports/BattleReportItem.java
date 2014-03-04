@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseItem;
-import com.ninetwozero.bf4intel.base.adapter.BaseListAdapter;
+import com.ninetwozero.bf4intel.base.adapter.DetailedStatsListAdapter;
 import com.ninetwozero.bf4intel.json.stats.reports.GameReport;
 import com.ninetwozero.bf4intel.json.stats.reports.MatchResult;
 import com.ninetwozero.bf4intel.resources.maps.GameModeStringMap;
@@ -28,7 +28,7 @@ public class BattleReportItem implements BaseItem {
 
     @Override
     public int getViewType() {
-        return BaseListAdapter.BaseItemType.ITEM.ordinal();
+        return DetailedStatsListAdapter.BaseItemType.ITEM.ordinal();
     }
 
     @Override

@@ -9,7 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.adapter.BaseListAdapter;
+import com.ninetwozero.bf4intel.base.adapter.DetailedStatsListAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;
@@ -23,16 +23,16 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
 
     private static final int ID_LOADER = 2400;
 
-    public static DetailsStatsFragment newInstance(Bundle bundle) {
-        DetailsStatsFragment fragment = new DetailsStatsFragment();
+    public static DetailsStatsFragment newInstance(final Bundle bundle) {
+        final DetailsStatsFragment fragment = new DetailsStatsFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle state) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
-        View view = inflater.inflate(R.layout.generic_list, parent, false);
+        final View view = inflater.inflate(R.layout.generic_list, parent, false);
         initialize(view);
         return view;
     }
@@ -49,7 +49,7 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    public Loader<Result> onCreateLoader(int i, Bundle bundle) {
+    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         showLoadingState(true);
         return new IntelLoader(
             getActivity(),
@@ -63,20 +63,18 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    public void onLoadFinished(Loader<Result> resultLoader, Result result) {
-        if (result == Result.SUCCESS) {
-            onLoadSuccess(result.getResultMessage());
-        } else {
-            onLoadFailure(result.getResultMessage());
-        }
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
+        final StatsDetails.GeneralStats details = fromJson(resultMessage, StatsDetails.class).getGeneralStats();
+        final StatsDetailsGrouped stats = new StatsDetailsGrouped(details);
+
+        sendDataToListView(stats);
+        showLoadingState(false);
     }
 
     @Override
-    protected void onLoadSuccess(String resultMessage) {
-        StatsDetails.GeneralStats details = fromJson(resultMessage, StatsDetails.class).getGeneralStats();
-        StatsDetailsGrouped stats = new StatsDetailsGrouped(details);
-        sendDataToListView(stats);
-        showLoadingState(false);
+    protected void onLoadFailure(final Loader loader, final String resultMessage) {
+        super.onLoadFailure(loader, resultMessage);
+        showToast(resultMessage);
     }
 
     private void initialize(final View view) {
@@ -94,13 +92,7 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
         emptyView.setText(R.string.msg_no_stats_details);
     }
 
-    private void sendDataToListView(StatsDetailsGrouped stats) {
-        BaseListAdapter adapter = new BaseListAdapter(getActivity(), stats.getDetailsList());
-        setListAdapter(adapter);
-    }
-
-    @Override
-    protected void onLoadFailure(String resultMessage) {
-        showToast(resultMessage);
+    private void sendDataToListView(final StatsDetailsGrouped stats) {
+        setListAdapter(new DetailedStatsListAdapter(getActivity(), stats.getDetailsList()));
     }
 }
