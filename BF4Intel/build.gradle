@@ -45,4 +45,5 @@ dependencies {
             'com.astuetz:pagerslidingtabstrip:1.0.1',
             'com.bugsense.trace:bugsense:3.6',
             'com.tonicartos:stickygridheaders:1.0.1'
+    compile files('libs/libGoogleAnalyticsServices.jar')
 }

@@ -7,11 +7,16 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
 
 import java.util.Locale;
 
@@ -33,6 +38,14 @@ public abstract class BaseListFragment extends ListFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EasyTracker tracker = EasyTracker.getInstance(getActivity());
+        tracker.set(Fields.SCREEN_NAME, this.getClass().getSimpleName());
+        tracker.send(MapBuilder.createAppView().build());
     }
 
     @Override
