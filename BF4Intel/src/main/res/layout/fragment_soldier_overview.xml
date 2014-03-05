@@ -55,7 +55,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:textAppearance="@android:style/TextAppearance.Holo"
-          android:text="@string/soldier_playing_on"
+          android:text="@string/soldier_enlisted_on"
           android:layout_below="@id/soldier_name"
           android:textColor="@color/grey"
           />

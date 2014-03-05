@@ -243,5 +243,5 @@
   <string name="msg_about_help_heading">Need help?</string>
   <string name="cdesc_item_image">Item image</string>
   <string name="class_commander">Commander</string>
-  <string name="soldier_playing_on">Playing on</string>
+  <string name="soldier_enlisted_on">Enlisted on</string>
 </resources>
