@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.stats;
+package com.ninetwozero.bf4intel.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,17 +6,17 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 
-public class SimpleStatsHeader implements BaseStatsItem {
+public class SimpleListHeader implements BaseListItem {
 
     private final int headerResource;
 
-    public SimpleStatsHeader(int headerResource) {
+    public SimpleListHeader(int headerResource) {
         this.headerResource = headerResource;
     }
 
     @Override
     public int getViewType() {
-        return SimpleStatsListAdapter.StatsRowType.HEADER.ordinal();
+        return SimpleListAdapter.RowType.HEADER.ordinal();
     }
 
     @Override

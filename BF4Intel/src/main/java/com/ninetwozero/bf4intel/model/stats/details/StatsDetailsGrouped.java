@@ -1,8 +1,8 @@
 package com.ninetwozero.bf4intel.model.stats.details;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.stats.BaseStatsItem;
-import com.ninetwozero.bf4intel.ui.stats.SimpleStatsHeader;
+import com.ninetwozero.bf4intel.ui.BaseListItem;
+import com.ninetwozero.bf4intel.ui.SimpleListHeader;
 import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;
 import com.ninetwozero.bf4intel.ui.stats.details.DetailedStatsListItem;
 
@@ -16,18 +16,18 @@ public class StatsDetailsGrouped {
     private static final String EMPTY_VALUE = "-";
     private static final String PERCENT_SIGN = "%";
     private static final String METERS = "m";
-    private List<BaseStatsItem> detailsList = new ArrayList<BaseStatsItem>();
+    private List<BaseListItem> detailsList = new ArrayList<BaseListItem>();
 
     public StatsDetailsGrouped(StatsDetails.GeneralStats details) {
         buildDetailsList(details);
     }
 
-    public List<BaseStatsItem> getDetailsList() {
+    public List<BaseListItem> getDetailsList() {
         return detailsList;
     }
 
     private void buildDetailsList(StatsDetails.GeneralStats details) {
-        detailsList.add(new SimpleStatsHeader(R.string.multiplayer_score));
+        detailsList.add(new SimpleListHeader(R.string.multiplayer_score));
         detailsList.add(new DetailedStatsListItem(R.string.assault_score, stringValueOf(details.getAssaultScore())));
         detailsList.add(new DetailedStatsListItem(R.string.engineer_score, stringValueOf(details.getEngineerScore())));
         detailsList.add(new DetailedStatsListItem(R.string.support_score, stringValueOf(details.getSupportScore())));
@@ -39,7 +39,7 @@ public class StatsDetailsGrouped {
         detailsList.add(new DetailedStatsListItem(R.string.unlock_score,  stringValueOf(details.getUnlockScore())));
         detailsList.add(new DetailedStatsListItem(R.string.total_score,  stringValueOf(details.getTotalScore())));
 
-        detailsList.add(new SimpleStatsHeader(R.string.general_score));
+        detailsList.add(new SimpleListHeader(R.string.general_score));
         detailsList.add(new DetailedStatsListItem(R.string.kills,  stringValueOf(details.getKills())));
         detailsList.add(new DetailedStatsListItem(R.string.deaths,  stringValueOf(details.getDeaths())));
         detailsList.add(new DetailedStatsListItem(R.string.kill_assists,  stringValueOf(details.getKillAssits())));
@@ -50,7 +50,7 @@ public class StatsDetailsGrouped {
         detailsList.add(new DetailedStatsListItem(R.string.shots_hits,  stringValueOf(details.getShotsHit())));
         detailsList.add(new DetailedStatsListItem(R.string.accuracy,  stringValueOf(details.getAccuracy(), PERCENT_SIGN)));
 
-        detailsList.add(new SimpleStatsHeader(R.string.game_modes));
+        detailsList.add(new SimpleListHeader(R.string.game_modes));
         detailsList.add(new DetailedStatsListItem(R.string.conquest,  stringValueOf(details.getConquest())));
         detailsList.add(new DetailedStatsListItem(R.string.rush,  stringValueOf(details.getRush())));
         detailsList.add(new DetailedStatsListItem(R.string.death_match,  stringValueOf(details.getDeathMatch())));
@@ -60,7 +60,7 @@ public class StatsDetailsGrouped {
         detailsList.add(new DetailedStatsListItem(R.string.air_superiority, stringValueOf(0 /*details.getAirSuperiority()*/)));
         detailsList.add(new DetailedStatsListItem(R.string.defuse, stringValueOf(0 /*details.getDefuse()*/)));
 
-        detailsList.add(new SimpleStatsHeader(R.string.team_score));
+        detailsList.add(new SimpleListHeader(R.string.team_score));
         detailsList.add(new DetailedStatsListItem(R.string.repairs,  stringValueOf(details.getRepairs())));
         detailsList.add(new DetailedStatsListItem(R.string.revives,  stringValueOf(details.getRevives())));
         detailsList.add(new DetailedStatsListItem(R.string.heals,  stringValueOf(details.getHeals())));
@@ -70,7 +70,7 @@ public class StatsDetailsGrouped {
         detailsList.add(new DetailedStatsListItem(R.string.suppression_assists,  stringValueOf(details.getSuppresionAssists())));
         detailsList.add(new DetailedStatsListItem(R.string.quits,  stringValueOf(details.getQuits(), PERCENT_SIGN)));
 
-        detailsList.add(new SimpleStatsHeader(R.string.extra_score));
+        detailsList.add(new SimpleListHeader(R.string.extra_score));
         detailsList.add(new DetailedStatsListItem(R.string.dogtag_taken,  stringValueOf(details.getDogtagTaken())));
         detailsList.add(new DetailedStatsListItem(R.string.vehicles_destroyed,  stringValueOf(details.getVehiclesDestroyed())));
         detailsList.add(new DetailedStatsListItem(R.string.vehicle_damage,  stringValueOf(details.getVehicleDamage())));
@@ -80,7 +80,7 @@ public class StatsDetailsGrouped {
         detailsList.add(new DetailedStatsListItem(R.string.nemesis_kills,  stringValueOf(details.getNemesisKills())));
         detailsList.add(new DetailedStatsListItem(R.string.highest_nemesis_streak,  stringValueOf(details.getHighestNemesisStreak())));
 
-        detailsList.add(new SimpleStatsHeader(R.string.game_mode_extra));
+        detailsList.add(new SimpleListHeader(R.string.game_mode_extra));
         detailsList.add(new DetailedStatsListItem(R.string.flags_captured,  stringValueOf(details.getFlagsCaptured())));
         detailsList.add(new DetailedStatsListItem(R.string.flags_defended,  stringValueOf(details.getFlagsDefended())));
     }

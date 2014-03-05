@@ -9,7 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.stats.SimpleStatsListAdapter;
+import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;
@@ -93,6 +93,6 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
     }
 
     private void sendDataToListView(final StatsDetailsGrouped stats) {
-        setListAdapter(new SimpleStatsListAdapter(getActivity(), stats.getDetailsList()));
+        setListAdapter(new SimpleListAdapter(getActivity(), stats.getDetailsList()));
     }
 }
