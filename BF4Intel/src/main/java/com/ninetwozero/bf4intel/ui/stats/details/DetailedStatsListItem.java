@@ -25,10 +25,11 @@ public class DetailedStatsListItem implements BaseListItem {
     @Override
     public View getView(LayoutInflater inflater, View view) {
         if (view == null) {
-            view = inflater.inflate(R.layout.list_item_stats_details, null);
+            view = inflater.inflate(R.layout.list_item_stats_details_row, null);
         }
         ((TextView) view.findViewById(R.id.score_label)).setText(resourceId);
         ((TextView) view.findViewById(R.id.score_value)).setText(value);
         return view;
     }
+
 }

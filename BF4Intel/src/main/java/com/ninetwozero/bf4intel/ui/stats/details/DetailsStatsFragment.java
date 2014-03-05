@@ -93,6 +93,6 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
     }
 
     private void sendDataToListView(final StatsDetailsGrouped stats) {
-        setListAdapter(new SimpleListAdapter(getActivity(), stats.getDetailsList()));
+        setListAdapter(new SimpleListAdapter(getActivity(), stats.getDetails()));
     }
 }
