@@ -7,7 +7,6 @@
   android:paddingTop="@dimen/spacing_s"
   android:paddingBottom="@dimen/spacing_s"
   >
-
   <TextView
     android:id="@+id/title"
     android:layout_width="wrap_content"
@@ -23,7 +22,7 @@
     android:src="@drawable/ic_menu_star_dark"
     android:contentDescription="@string/cdesc_service_star"
     android:layout_toRightOf="@id/title"
-    android:layout_marginLeft="@dimen/spacing_m"
+    android:layout_marginLeft="@dimen/spacing_s"
     android:layout_alignTop="@id/title"
     android:layout_alignBottom="@id/title"
     />

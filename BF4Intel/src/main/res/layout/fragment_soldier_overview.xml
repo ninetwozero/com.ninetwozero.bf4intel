@@ -15,8 +15,10 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:background="@color/lightgrey"
-      android:padding="@dimen/spacing_m">
-
+      android:paddingTop="@dimen/spacing_m"
+      android:paddingRight="@dimen/spacing_m"
+      android:paddingLeft="@dimen/spacing_m"
+      >
       <TextView
         style="@style/RegularHeadingOverCard"
         android:id="@+id/heading_progress"
@@ -31,21 +33,43 @@
         android:layout_below="@id/heading_progress"
         >
 
-        <TextView
-          android:id="@+id/soldier_name"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textAppearance="@android:style/TextAppearance.Holo.Large"
-          android:textColor="@color/darker_blue"/>
-
         <ImageView
           android:id="@+id/image_rank"
           android:layout_width="@dimen/avatar_size_xl"
           android:layout_height="@dimen/avatar_size_xl"
           android:src="@drawable/r0"
           android:layout_alignParentRight="true"
-          android:layout_marginTop="@dimen/spacing_l"
-          android:contentDescription="@string/cdesc_rank_image"/>
+          android:contentDescription="@string/cdesc_rank_image"
+          />
+
+        <TextView
+          android:id="@+id/soldier_name"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAppearance="@android:style/TextAppearance.Holo.Large"
+          android:textColor="@color/darker_blue"
+          />
+
+        <TextView
+          android:id="@+id/string_soldier_platform"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAppearance="@android:style/TextAppearance.Holo"
+          android:text="@string/soldier_playing_on"
+          android:layout_below="@id/soldier_name"
+          android:textColor="@color/grey"
+          />
+
+        <TextView
+          android:id="@+id/soldier_platform"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAppearance="@android:style/TextAppearance.Holo"
+          android:layout_below="@id/soldier_name"
+          android:layout_toRightOf="@id/string_soldier_platform"
+          android:textColor="@color/darkgrey"
+          android:layout_marginLeft="@dimen/spacing_s"
+          />
 
         <TextView
           android:id="@+id/current_rank_title"
@@ -53,7 +77,8 @@
           android:layout_height="wrap_content"
           android:layout_below="@id/image_rank"
           android:textAllCaps="true"
-          android:textAppearance="@android:style/TextAppearance.Holo.Small"/>
+          android:textAppearance="@android:style/TextAppearance.Holo"
+          />
 
         <ProgressBar
           android:id="@+id/progress_rank"
@@ -61,13 +86,15 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_below="@id/current_rank_title"
-          android:indeterminate="false"/>
+          android:indeterminate="false"
+          />
 
         <TextView
           style="@style/SmallMetaText"
           android:id="@+id/value_rank_progress"
           android:layout_alignParentRight="true"
-          android:layout_below="@id/progress_rank"/>
+          android:layout_below="@id/progress_rank"
+          />
       </RelativeLayout>
 
       <TextView
@@ -107,7 +134,8 @@
           android:id="@+id/skills_table"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="@dimen/spacing_s">
+          android:layout_marginTop="@dimen/spacing_s"
+          >
 
           <LinearLayout
             android:layout_width="match_parent"

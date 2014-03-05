@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -99,5 +100,9 @@ public abstract class BaseFragment extends Fragment {
         final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
         progressBar.setProgress(current);
         progressBar.setMax(max);
+    }
+
+    protected void setImage(final View view, final int viewId, int imageResource) {
+        ((ImageView) view.findViewById(viewId)).setImageResource(imageResource);
     }
 }
