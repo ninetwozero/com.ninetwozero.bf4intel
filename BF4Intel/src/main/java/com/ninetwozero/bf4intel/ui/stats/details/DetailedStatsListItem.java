@@ -5,10 +5,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.adapter.BaseItem;
-import com.ninetwozero.bf4intel.base.adapter.DetailedStatsListAdapter;
+import com.ninetwozero.bf4intel.ui.stats.BaseStatsItem;
+import com.ninetwozero.bf4intel.ui.stats.SimpleStatsListAdapter;
 
-public class DetailedStatsListItem implements BaseItem {
+public class DetailedStatsListItem implements BaseStatsItem {
     private int resourceId;
     private String value;
 
@@ -19,7 +19,7 @@ public class DetailedStatsListItem implements BaseItem {
 
     @Override
     public int getViewType() {
-        return DetailedStatsListAdapter.BaseItemType.ITEM.ordinal();
+        return SimpleStatsListAdapter.StatsRowType.ITEM.ordinal();
     }
 
     @Override

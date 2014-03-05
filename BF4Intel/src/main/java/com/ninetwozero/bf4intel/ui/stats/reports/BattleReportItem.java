@@ -6,15 +6,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.adapter.BaseItem;
-import com.ninetwozero.bf4intel.base.adapter.DetailedStatsListAdapter;
+import com.ninetwozero.bf4intel.ui.stats.BaseStatsItem;
+import com.ninetwozero.bf4intel.ui.stats.SimpleStatsListAdapter;
 import com.ninetwozero.bf4intel.json.stats.reports.GameReport;
 import com.ninetwozero.bf4intel.json.stats.reports.MatchResult;
 import com.ninetwozero.bf4intel.resources.maps.GameModeStringMap;
 import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 
-public class BattleReportItem implements BaseItem {
+public class BattleReportItem implements BaseStatsItem {
 
     private final GameReport report;
     private final int soldierId;
@@ -28,7 +28,7 @@ public class BattleReportItem implements BaseItem {
 
     @Override
     public int getViewType() {
-        return DetailedStatsListAdapter.BaseItemType.ITEM.ordinal();
+        return SimpleStatsListAdapter.StatsRowType.ITEM.ordinal();
     }
 
     @Override

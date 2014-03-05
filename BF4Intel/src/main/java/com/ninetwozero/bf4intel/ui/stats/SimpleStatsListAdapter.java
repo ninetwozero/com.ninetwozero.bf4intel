@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.base.adapter;
+package com.ninetwozero.bf4intel.ui.stats;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,21 +8,21 @@ import android.widget.ArrayAdapter;
 
 import java.util.List;
 
-public class DetailedStatsListAdapter extends ArrayAdapter<BaseItem> {
+public class SimpleStatsListAdapter extends ArrayAdapter<BaseStatsItem> {
     final LayoutInflater layoutInflater;
 
-    public enum BaseItemType {
+    public enum StatsRowType {
         ITEM, HEADER;
     }
 
-    public DetailedStatsListAdapter(final Context context, List<BaseItem> items) {
+    public SimpleStatsListAdapter(final Context context, List<BaseStatsItem> items) {
         super(context, 0, items);
         layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getViewTypeCount() {
-        return BaseItemType.values().length;
+        return StatsRowType.values().length;
     }
 
     @Override

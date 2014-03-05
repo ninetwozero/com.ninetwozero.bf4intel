@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.adapter.BaseItem;
-import com.ninetwozero.bf4intel.base.adapter.DetailedStatsListAdapter;
-import com.ninetwozero.bf4intel.base.adapter.BaseListHeader;
+import com.ninetwozero.bf4intel.ui.stats.BaseStatsItem;
+import com.ninetwozero.bf4intel.ui.stats.SimpleStatsHeader;
+import com.ninetwozero.bf4intel.ui.stats.SimpleStatsListAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.stats.reports.BattleReportStatistics;
@@ -122,19 +122,19 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     }
 
     private void sendDataToListView(final BattleReportStatistics statistics) {
-        List<BaseItem> itemList = new ArrayList<BaseItem>();
+        List<BaseStatsItem> itemList = new ArrayList<BaseStatsItem>();
         if(statistics.getFavoriteReports().size() > 0) {
-            itemList.add(new BaseListHeader(R.string.header_favorite_battlereport));
+            itemList.add(new SimpleStatsHeader(R.string.header_favorite_battlereport));
             itemList.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getFavoriteReports()), statistics.getSoldierId()));
         }
-        itemList.add(new BaseListHeader(R.string.header_latest_battlereport));
+        itemList.add(new SimpleStatsHeader(R.string.header_latest_battlereport));
         itemList.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getStatsGameReports()), statistics.getSoldierId()));
-        DetailedStatsListAdapter adapter = new DetailedStatsListAdapter(getActivity(), itemList);
+        SimpleStatsListAdapter adapter = new SimpleStatsListAdapter(getActivity(), itemList);
         setListAdapter(adapter);
     }
 
-    private List<BaseItem> buildBaseItemList(final List<GameReport> reports, final int soldierId) {
-        List<BaseItem> itemsList = new ArrayList<BaseItem>();
+    private List<BaseStatsItem> buildBaseItemList(final List<GameReport> reports, final int soldierId) {
+        List<BaseStatsItem> itemsList = new ArrayList<BaseStatsItem>();
         for (GameReport report : reports) {
             itemsList.add(new BattleReportItem(report, soldierId, getActivity()));
         }
