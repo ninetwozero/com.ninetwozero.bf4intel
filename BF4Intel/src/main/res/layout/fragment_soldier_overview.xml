@@ -120,19 +120,22 @@
               layout="@layout/list_item_soldier_skills"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
-              android:layout_weight="1"/>
+              android:layout_weight="1"
+              />
 
             <include
               layout="@layout/list_item_soldier_skills"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
-              android:layout_weight="1"/>
+              android:layout_weight="1"
+              />
 
             <include
               layout="@layout/list_item_soldier_skills"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
-              android:layout_weight="1"/>
+              android:layout_weight="1"
+              />
           </LinearLayout>
 
           <LinearLayout
@@ -282,6 +285,7 @@
         android:orientation="vertical"
         android:layout_below="@id/heading_detailed_scores"
         >
+
         <LinearLayout
           android:id="@+id/content_area"
           android:layout_width="match_parent"

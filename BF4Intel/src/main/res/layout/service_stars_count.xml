@@ -24,8 +24,8 @@
 
   <ImageView
     android:id="@+id/service_star_image"
-    android:layout_width="@dimen/small_service_star_size"
-    android:layout_height="@dimen/small_service_star_size"
+    android:layout_width="@dimen/service_star_s"
+    android:layout_height="@dimen/service_star_s"
     android:src="@drawable/service_star"
     android:contentDescription="@string/cdesc_service_star"
     />

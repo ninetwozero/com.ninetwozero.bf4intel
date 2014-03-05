@@ -8,8 +8,11 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ninetwozero.bf4intel.R;
 
 public abstract class BaseFragment extends Fragment {
     protected static final float ALPHA_ENABLED = 0.8f;
@@ -84,5 +87,17 @@ public abstract class BaseFragment extends Fragment {
 
     protected void setText(final View view, final int resourceId, final String text) {
         ((TextView) view.findViewById(resourceId)).setText(text);
+    }
+
+    protected void setProgress(final View view, final int resourceId, final int current) {
+        final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
+        progressBar.setProgress(current);
+        progressBar.setMax(100);
+    }
+
+    protected void setProgress(final View view, final int resourceId, final int current, final int max) {
+        final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
+        progressBar.setProgress(current);
+        progressBar.setMax(max);
     }
 }

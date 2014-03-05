@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,12 +31,13 @@ import com.ninetwozero.bf4intel.resources.maps.ranks.RankStringMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
-import com.ninetwozero.bf4intel.utils.PersonaUtils;
 import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Formatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class SoldierOverviewFragment extends BaseLoadingFragment {
@@ -146,23 +148,44 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         contentArea.removeAllViews();
         List<Integer> keys = new ArrayList<Integer>(serviceStars.keySet());
         Collections.sort(keys);
+        
         for (int key : keys) {
             final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
-            final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
+            final int serviceStarCount = serviceStars.get(key);
+            final int roundedProgress = (int) Math.round(serviceStarProgress.get(key));
 
-            progressBar.setProgress((int) Math.round(serviceStarProgress.get(key)));
-            progressBar.setMax(100);
-
-
-            ((TextView) parent.findViewById(R.id.service_star_count)).setText(
-                String.valueOf(serviceStars.get(key))
+            setProgress(parent, R.id.progressbar, roundedProgress);
+            setText(parent, R.id.title, fetchKitTitleFromId(key));
+            setText(parent, R.id.service_star_count, String.valueOf(serviceStarCount));
+            setText(
+                parent,
+                R.id.progress_text,
+                String.format(
+                    getString(R.string.generic_x_of_y),
+                    (serviceStarCount * 100) + roundedProgress,
+                    (serviceStarCount+1) * 100
+                )
             );
-            ((ImageView) parent.findViewById(R.id.image)).setImageResource(
-                PersonaUtils.getIconForKit(key)
-            );
+            
             contentArea.addView(parent);
         }
+    }
 
+    private int fetchKitTitleFromId(final int key) {
+        switch (key) {
+            case 1:
+                return R.string.class_assault;
+            case 2:
+                return R.string.class_engineer;
+            case 8:
+                return R.string.class_recon;
+            case 32:
+                return R.string.class_support;
+            case 2048:
+                return R.string.class_commander;
+            default:
+                return R.string.na;
+        }
     }
 
     private void displaySkills(final View baseView, final SkillOverview basicSoldierStats) {

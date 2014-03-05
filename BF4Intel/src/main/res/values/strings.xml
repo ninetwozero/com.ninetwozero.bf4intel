@@ -242,4 +242,5 @@
   </string>
   <string name="msg_about_help_heading">Need help?</string>
   <string name="cdesc_item_image">Item image</string>
+  <string name="class_commander">Commander</string>
 </resources>
