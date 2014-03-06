@@ -147,15 +147,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             setProgress(parent, R.id.progressbar, roundedProgress);
             setText(parent, R.id.title, fetchKitTitleFromId(key));
             setText(parent, R.id.service_star_count, String.valueOf(serviceStarCount));
-            setText(
-                parent,
-                R.id.progress_text,
-                String.format(
-                    getString(R.string.generic_x_of_y),
-                    (serviceStarCount * 100) + roundedProgress,
-                    (serviceStarCount+1) * 100
-                )
-            );
+            setText(parent, R.id.progress_text, roundedProgress + "%");
             
             contentArea.addView(parent);
         }
