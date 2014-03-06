@@ -28,4 +28,7 @@
   <string name="cdesc_overflow_menu">Overflow menu</string>
   <string name="cdesc_article_preview">Article preview</string>
 
+  <string name="cdesc_item_image">Item image</string>
+  <string name="cdesc_logo">Logo</string>
+  <string name="cdesc_action_item">Action item</string>
 </resources>
