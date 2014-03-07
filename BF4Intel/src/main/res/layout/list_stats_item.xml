@@ -16,10 +16,7 @@
       android:id="@+id/index"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:textSize="@dimen/text_xl"
-      android:layout_gravity="center_vertical"
-      android:layout_alignParentLeft="true"
-      android:layout_centerVertical="true"
+      android:textAppearance="@android:style/TextAppearance.Holo.Large"
       />
 
     <include
@@ -47,6 +44,8 @@
         android:contentDescription="@string/cdesc_item_image"
         android:adjustViewBounds="true"
         android:visibility="gone"
+        android:layout_marginTop="@dimen/spacing_m"
+        android:layout_marginBottom="@dimen/spacing_m"
         />
 
       <ImageView

@@ -38,7 +38,7 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
         vehicleImg.setImageResource(WeaponsImageMap.get(weapon.getUniqueName()));
         vehicleImg.setVisibility(View.VISIBLE);
 
-        setText(view, R.id.index, "#" + (position + 1));
+        setText(view, R.id.index, String.valueOf(position + 1));
         setText(view, R.id.service_star_count, String.valueOf(weapon.getServiceStarsCount()));
         setText(view, R.id.item_name, WeaponStringMap.get(weapon.getUniqueName()));
         setText(view, R.id.kill_count, R.string.num_kills, weapon.getKills());

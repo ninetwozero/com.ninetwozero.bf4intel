@@ -199,7 +199,7 @@
   <style name="TextViewLightGrey">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">@dimen/text_m</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
     <item name="android:textColor">@color/darkgrey</item>
   </style>
 
