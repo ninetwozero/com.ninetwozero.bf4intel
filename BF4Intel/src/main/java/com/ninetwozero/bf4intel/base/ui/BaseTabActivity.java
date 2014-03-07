@@ -5,7 +5,11 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.ui.adapters.ViewPagerAdapter;
 
@@ -23,6 +27,8 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_multi_tab_activity);
         initialize();
+        //This is to record initial opening of viewPager
+        postToGoogleAnalytics(0);
     }
 
     @Override
@@ -65,6 +71,25 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
             }
         );
         viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                postToGoogleAnalytics(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+    }
+
+    private void postToGoogleAnalytics(int position) {
+        String fragmentName = viewPagerAdapter.getItem(position).getClass().getSimpleName();
+        googleAnalytics(fragmentName);
     }
 
     private void setupActionBar() {
@@ -76,6 +101,13 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
         for (int i = 0, max = titles.length; i < max; i++) {
             actionBar.addTab(actionBar.newTab().setText(titles[i]).setTabListener(this));
         }
+    }
+
+    protected void googleAnalytics(String fragmentName) {
+        EasyTracker tracker = EasyTracker.getInstance(this);
+        tracker.set(Fields.SCREEN_NAME, fragmentName);
+        Log.e("Analytics", fragmentName);
+        tracker.send(MapBuilder.createAppView().build());
     }
 
     protected abstract int[] getTitleResources();

@@ -41,11 +41,14 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        EasyTracker tracker = EasyTracker.getInstance(getActivity());
-        tracker.set(Fields.SCREEN_NAME, this.getClass().getSimpleName());
-        tracker.send(MapBuilder.createAppView().build());
     }
 
+    protected void googleAnalytics(String fragmentName) {
+        EasyTracker tracker = EasyTracker.getInstance(getActivity());
+        tracker.set(Fields.SCREEN_NAME, fragmentName);
+        Log.e("Analytics", fragmentName);
+        tracker.send(MapBuilder.createAppView().build());
+    }
 
 
     protected void updateActionBar(final Activity activity, final String text) {
