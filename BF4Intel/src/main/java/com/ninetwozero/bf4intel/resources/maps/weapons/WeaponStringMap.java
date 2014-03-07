@@ -1,5 +1,7 @@
 package com.ninetwozero.bf4intel.resources.maps.weapons;
 
+import android.util.Log;
+
 import com.ninetwozero.bf4intel.R;
 
 import java.util.HashMap;
@@ -189,10 +191,14 @@ public class WeaponStringMap {
             put("WARSAW_ID_P_XP0_WNAME_M60E4", R.string.weapon_m60e4_fancy);
             put("WARSAW_ID_P_XP0_WNAME_ASVAL", R.string.weapon_asval_fancy);
             put("WARSAW_ID_P_INAME_BPKNIFE7", R.string.weapon_knife_bootknife_fancy);
+            put("WARSAW_ID_P_XP1_VNAME_UCAV", R.string.vehicle_xp1_name_ucav);
         }
     };
 
     public static int get(final String key) {
+        if(!map.containsKey(key)) {
+            Log.e("Missing weapon", key);
+        }
         return map.containsKey(key)? map.get(key) : R.string.na;
     }
 }
