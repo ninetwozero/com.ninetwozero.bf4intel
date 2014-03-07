@@ -54,7 +54,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getLoaderManager().initLoader(ID_LOADER, getArguments(), this);
+        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
     }
 
     @Override

@@ -41,7 +41,7 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
         vehicleImg.setImageResource(VehicleImageMap.get(vehiclesList.get(0).getName()));
         vehicleImg.setVisibility(View.VISIBLE);
 
-        setText(view, R.id.index, "#" + (position + 1));
+        setText(view, R.id.index, String.valueOf(position + 1));
         setText(view, R.id.service_star_count, String.valueOf(stats.getServiceStarsCount()));
         setText(view, R.id.item_name, VehiclesGroupStringMap.get(stats.getGroupName()));
         setText(view, R.id.kill_count, R.string.num_kills, stats.getKillCount());

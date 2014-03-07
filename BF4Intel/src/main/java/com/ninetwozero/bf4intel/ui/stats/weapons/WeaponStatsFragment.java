@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
@@ -44,7 +43,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getLoaderManager().initLoader(ID_LOADER, getArguments(), this);
+        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
     }
 
     @Override
@@ -59,11 +58,6 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
                 )
             )
         );
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Result> resultLoader) {
-        super.onLoaderReset(resultLoader);
     }
 
     @Override
