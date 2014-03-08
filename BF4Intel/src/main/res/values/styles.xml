@@ -55,6 +55,9 @@
   <style name="TextAppearance.Holo.MediumLarge" parent="@android:style/TextAppearance.Holo.Medium">
     <item name="android:textSize">@dimen/text_ml</item>
   </style>
+  <style name="TextAppearance.Holo.XLarge" parent="@android:style/TextAppearance.Holo.Large">
+    <item name="android:textSize">@dimen/text_xl</item>
+  </style>
 
   <style name="TextAppearance.Holo.Huge" parent="@android:style/TextAppearance.Holo.Large">
     <item name="android:textSize">@dimen/text_xxl</item>
