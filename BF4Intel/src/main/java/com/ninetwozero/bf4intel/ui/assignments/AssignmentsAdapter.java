@@ -10,7 +10,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentAward;
-import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequirement;
+import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisite;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentImageMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.ExpansionIconsImageMap;
 
@@ -46,7 +46,7 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
         if (assignment.isTracking()) {
             populateViewForTracking(view, assignment);
         } else {
-            setVisibility(view, R.id.img_assignment_pre_requirement, View.VISIBLE);
+            setVisibility(view, R.id.img_assignment_prerequisite, View.VISIBLE);
             setVisibility(view, R.id.assignment_completion, View.INVISIBLE);
         }
 
@@ -61,9 +61,9 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
     }
 
     private void populateViewForTracking(final View view, final Assignment assignment) {
-        final ImageView imgPreRequirement = (ImageView) view.findViewById(R.id.img_assignment_pre_requirement);
-        imgPreRequirement.setImageResource(fetchPreRequirementImgResource(assignment.getDependencyGroup()));
-        imgPreRequirement.setVisibility(View.INVISIBLE);
+        final ImageView imagePrerequisite = (ImageView) view.findViewById(R.id.img_assignment_prerequisite);
+        imagePrerequisite.setImageResource(fetchPrerequisiteImageResource(assignment.getDependencyGroup()));
+        imagePrerequisite.setVisibility(View.INVISIBLE);
 
         final ProgressBar completionProgress = (ProgressBar) view.findViewById(R.id.assignment_completion);
         completionProgress.setProgress(assignment.getCompletion());
@@ -71,11 +71,11 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
         completionProgress.setVisibility(View.VISIBLE);
     }
 
-    private int fetchPreRequirementImgResource(final String group) {
-        if (group.equalsIgnoreCase(AssignmentPrerequirement.RANK.toString())) {
-            return R.drawable.rank_prerequirement;
-        } else if (group.equalsIgnoreCase(AssignmentPrerequirement.MISSION.toString())) {
-            return R.drawable.group_prerequirement;
+    private int fetchPrerequisiteImageResource(final String group) {
+        if (group.equalsIgnoreCase(AssignmentPrerequisite.RANK.toString())) {
+            return R.drawable.rank_prerequisite;
+        } else if (group.equalsIgnoreCase(AssignmentPrerequisite.MISSION.toString())) {
+            return R.drawable.group_prerequisite;
         } else {
             return R.drawable.empty;
         }

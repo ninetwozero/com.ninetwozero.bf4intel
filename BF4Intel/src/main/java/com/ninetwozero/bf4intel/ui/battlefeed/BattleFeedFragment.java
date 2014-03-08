@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -105,15 +104,10 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    protected void onLoadSuccess(final String resultMessage) {
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         final BattleFeed battleFeed = fromJson(resultMessage, BattleFeed.class);
         sendDataToListView(battleFeed.getFeedItems());
         showLoadingState(false);
-    }
-
-    @Override
-    protected void onLoadFailure(final String resultMessage) {
-        Log.e(getClass().getSimpleName(), "resultMessage => " + resultMessage);
     }
 
     private void initialize(final View view) {

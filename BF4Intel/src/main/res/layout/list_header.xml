@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:background="@color/translucent_black"
-  >
-
-  <TextView
-    android:id="@+id/list_header"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textSize="@dimen/text_ml"
-    android:textColor="@color/dirtywhite"
-    android:textStyle="bold"
-    android:textAllCaps="true"
-    android:padding="@dimen/spacing_m"
-    />
-</LinearLayout>
+<TextView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/RegularHeadingOverCard"
+  android:id="@+id/list_header"
+  />

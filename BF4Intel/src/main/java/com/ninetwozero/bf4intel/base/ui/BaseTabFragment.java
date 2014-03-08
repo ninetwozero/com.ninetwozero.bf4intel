@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.astuetz.PagerSlidingTabStrip;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.ui.adapters.ViewPagerAdapter;
+import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 import java.util.List;
 
@@ -70,7 +71,7 @@ public abstract class BaseTabFragment extends BaseFragment {
 
     private void postToGoogleAnalytics(int position) {
         String fragmentName = viewPagerAdapter.getItem(position).getClass().getSimpleName();
-        googleAnalytics(fragmentName);
+        GoogleAnalytics.post(getActivity(), fragmentName);
     }
 
     protected abstract List<Fragment> generateFragmentList(final Bundle data);

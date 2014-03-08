@@ -5,16 +5,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
-import com.google.analytics.tracking.android.MapBuilder;
 
 public abstract class BaseFragment extends Fragment {
     protected static final float ALPHA_ENABLED = 0.8f;
@@ -42,14 +39,6 @@ public abstract class BaseFragment extends Fragment {
     public void onStart() {
         super.onStart();
     }
-
-    protected void googleAnalytics(String fragmentName) {
-        EasyTracker tracker = EasyTracker.getInstance(getActivity());
-        tracker.set(Fields.SCREEN_NAME, fragmentName);
-        Log.e("Analytics", fragmentName);
-        tracker.send(MapBuilder.createAppView().build());
-    }
-
 
     protected void updateActionBar(final Activity activity, final String text) {
         if (activity == null) {
@@ -102,5 +91,21 @@ public abstract class BaseFragment extends Fragment {
 
     protected void setText(final View view, final int resourceId, final String text) {
         ((TextView) view.findViewById(resourceId)).setText(text);
+    }
+
+    protected void setProgress(final View view, final int resourceId, final int current) {
+        final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
+        progressBar.setProgress(current);
+        progressBar.setMax(100);
+    }
+
+    protected void setProgress(final View view, final int resourceId, final int current, final int max) {
+        final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
+        progressBar.setProgress(current);
+        progressBar.setMax(max);
+    }
+
+    protected void setImage(final View view, final int viewId, int imageResource) {
+        ((ImageView) view.findViewById(viewId)).setImageResource(imageResource);
     }
 }

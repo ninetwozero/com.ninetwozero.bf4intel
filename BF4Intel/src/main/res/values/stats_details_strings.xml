@@ -12,7 +12,7 @@
   <string name="unlock_score">Unlock Score</string>
   <string name="total_score">Total score</string>
 
-  <string name="general_score">GENERAL</string>
+  <string name="general_score">General</string>
   <string name="kills">Kills</string>
   <string name="deaths">Deaths</string>
   <string name="kill_assists">Kill assists</string>
@@ -23,7 +23,7 @@
   <string name="shots_hits">Shots hit</string>
   <string name="accuracy">Accuracy</string>
 
-  <string name="game_modes">GAME MODES</string>
+  <string name="game_modes">Game modes</string>
   <string name="conquest">Conquest</string>
   <string name="rush">Rush</string>
   <string name="death_match">Death Match</string>
@@ -33,7 +33,7 @@
   <string name="air_superiority">Air Superiority</string>
   <string name="defuse">Defuse</string>
 
-  <string name="team_score">TEAM</string>
+  <string name="team_score">Team</string>
   <string name="repairs">Repairs</string>
   <string name="revives">Revives</string>
   <string name="heals">Heals</string>
@@ -43,7 +43,7 @@
   <string name="suppression_assists">Suppression Assists</string>
   <string name="quits">Quits</string>
 
-  <string name="extra_score">EXTRA</string>
+  <string name="extra_score">Extras</string>
   <string name="dogtag_taken">Dogtags Taken</string>
   <string name="vehicles_destroyed">Vehicles Destroyed</string>
   <string name="vehicle_damage">Vehicle Damage</string>
@@ -53,7 +53,7 @@
   <string name="nemesis_kills">Nemesis Kills</string>
   <string name="highest_nemesis_streak">Highest Nemesis Streak</string>
 
-  <string name="game_mode_extra">GAME MODE EXTRA</string>
+  <string name="game_mode_extra">Game mode extras</string>
   <string name="flags_captured">Flags captured</string>
   <string name="flags_defended">Flags defended</string>
 </resources>

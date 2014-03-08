@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/slidingmenu_background">
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/navigation_drawer_bg"
+  >
 
   <LinearLayout
     android:id="@+id/wrap_login_name"
@@ -11,7 +13,8 @@
     android:gravity="left|center"
     android:paddingLeft="@dimen/spacing_m"
     android:paddingRight="@dimen/spacing_m"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    >
 
     <TextView
       android:id="@+id/string_login_status"
@@ -40,6 +43,7 @@
     android:layout_height="match_parent"
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
+    android:listSelector="@drawable/navigation_drawer_selected_item_bg"
     android:layout_below="@id/wrap_login_name"
     />
 

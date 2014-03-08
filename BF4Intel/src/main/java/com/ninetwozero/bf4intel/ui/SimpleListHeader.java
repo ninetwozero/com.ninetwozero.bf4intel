@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.base.adapter;
+package com.ninetwozero.bf4intel.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,17 +6,17 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 
-public class BaseListHeader implements BaseItem {
+public class SimpleListHeader implements BaseListItem {
 
     private final int headerResource;
 
-    public BaseListHeader(int headerResource) {
+    public SimpleListHeader(int headerResource) {
         this.headerResource = headerResource;
     }
 
     @Override
     public int getViewType() {
-        return BaseListAdapter.BaseItemType.HEADER.ordinal();
+        return SimpleListAdapter.RowType.HEADER.ordinal();
     }
 
     @Override

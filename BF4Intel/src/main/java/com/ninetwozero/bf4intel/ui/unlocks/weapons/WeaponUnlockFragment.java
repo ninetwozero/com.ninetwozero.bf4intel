@@ -29,8 +29,12 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
     }
 
     @Override
-    protected void onLoadSuccess(final String resultMessage) {
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         final WeaponUnlocks unlocks = fromJson(resultMessage, WeaponUnlocks.class);
+        if (unlocks.getUnlockMap() == null) {
+            return;
+        }
+
         sendDataToListView(sortItemsInMap(unlocks.getUnlockMap()));
         showLoadingState(false);
     }

@@ -11,17 +11,12 @@ import java.util.Map;
 public class SimplePostRequest extends BaseSimpleRequest {
     private Bundle postData;
 
-    public SimplePostRequest(final String requestUrl, final Bundle postData) {
-        super(requestUrl);
-        this.postData = postData;
-    }
-
     public SimplePostRequest(final URL requestUrl, final Bundle postData) {
         super(requestUrl);
         this.postData = postData;
     }
 
-    public SimplePostRequest(final URL requestUrl, final RequestType requestType, final Bundle postData) {
+    public SimplePostRequest(final URL requestUrl, final Bundle postData, final RequestType requestType) {
         super(requestUrl, requestType);
         this.postData = postData;
     }

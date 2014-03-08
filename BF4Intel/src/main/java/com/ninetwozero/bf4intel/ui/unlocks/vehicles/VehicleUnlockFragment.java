@@ -28,8 +28,12 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
     }
 
     @Override
-    protected void onLoadSuccess(final String resultMessage) {
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         final VehicleUnlocks unlocks = fromJson(resultMessage, VehicleUnlocks.class);
+        if (unlocks.getUnlockMap() == null) {
+            return;
+        }
+
         sendDataToListView(sortItemsInMap(unlocks.getUnlockMap()));
         showLoadingState(false);
     }
