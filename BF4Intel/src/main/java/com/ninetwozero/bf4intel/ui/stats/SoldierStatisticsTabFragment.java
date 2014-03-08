@@ -42,6 +42,10 @@ public class SoldierStatisticsTabFragment extends BaseTabFragment {
     }
 
     @Override
+    protected void postGoogleAnalytics() {
+    }
+
+    @Override
     protected int getOffscreenPageLimit() {
         return 1;
     }

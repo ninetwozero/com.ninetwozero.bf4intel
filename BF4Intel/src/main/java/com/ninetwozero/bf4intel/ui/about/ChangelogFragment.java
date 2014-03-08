@@ -18,7 +18,6 @@ public class ChangelogFragment extends BaseFragment {
     }
 
     public ChangelogFragment() {
-
     }
 
     @Override
@@ -28,6 +27,10 @@ public class ChangelogFragment extends BaseFragment {
         final View view = inflater.inflate(R.layout.generic_webview_card_fragment, parent, false);
         initialize(view);
         return view;
+    }
+
+    @Override
+    protected void postGoogleAnalytics() {
     }
 
     private void initialize(View view) {

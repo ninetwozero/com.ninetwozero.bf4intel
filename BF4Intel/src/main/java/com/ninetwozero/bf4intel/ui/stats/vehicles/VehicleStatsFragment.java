@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
@@ -73,5 +72,9 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
     @Override
     protected void onLoadFailure(final Loader loader, String resultMessage) {
         Log.e(VehicleStatsFragment.class.getSimpleName(), resultMessage);
+    }
+
+    @Override
+    protected void postGoogleAnalytics() {
     }
 }

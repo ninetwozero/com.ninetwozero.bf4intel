@@ -58,6 +58,10 @@ public class KitUnlockFragment extends BaseUnlockFragment {
         );
     }
 
+    @Override
+    protected void postGoogleAnalytics() {
+    }
+
     private void sendDataToListView(final Map<String, List<KitItemUnlockContainer>> unlockMap) {
         final ExpandableListView listView = (ExpandableListView) getListView();
         if (listView == null) {

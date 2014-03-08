@@ -25,7 +25,6 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     }
 
     public AboutFragment() {
-
     }
 
     @Override
@@ -85,5 +84,9 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
         if (null != intent) {
             getActivity().startActivity(intent);
         }
+    }
+
+    @Override
+    protected void postGoogleAnalytics() {
     }
 }

@@ -41,6 +41,10 @@ public class UnlockTabFragment extends BaseTabFragment {
     }
 
     @Override
+    protected void postGoogleAnalytics() {
+    }
+
+    @Override
     protected int getOffscreenPageLimit() {
         return 2;
     }

@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
+
 public abstract class BaseFragment extends Fragment {
     protected static final float ALPHA_ENABLED = 0.8f;
     protected static final float ALPHA_DISABLED = 0.3f;
@@ -38,6 +40,11 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        postGoogleAnalytics();
+    }
+
+    protected void postGoogleAnalytics() {
+        GoogleAnalytics.post(getActivity(), this.getClass().getSimpleName());
     }
 
     protected void updateActionBar(final Activity activity, final String text) {

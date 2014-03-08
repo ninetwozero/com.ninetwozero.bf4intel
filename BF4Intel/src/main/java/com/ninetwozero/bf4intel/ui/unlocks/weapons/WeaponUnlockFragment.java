@@ -58,6 +58,10 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
         );
     }
 
+    @Override
+    protected void postGoogleAnalytics() {
+    }
+
     private void sendDataToListView(final Map<String, List<WeaponUnlockContainer>> unlockMap) {
         final ExpandableListView listView = (ExpandableListView) getListView();
         if (listView == null) {
