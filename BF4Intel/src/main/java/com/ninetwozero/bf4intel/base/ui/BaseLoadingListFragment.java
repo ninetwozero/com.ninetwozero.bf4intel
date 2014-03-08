@@ -1,10 +1,10 @@
 package com.ninetwozero.bf4intel.base.ui;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -103,29 +103,9 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
 
-    /*
-        This should probably not be used until we get it sorted out, as it messes with styles set in
-        the AndroidManifest.xml: http://stackoverflow.com/a/15511741/860212
-
-        This is also why we're getting white text colors at many places, and when getContext() is
-        changed into getActivity(), we get the black colored text.
-     */
-    @Deprecated
-    protected Context getContext() {
-        return getActivity();
-    }
-
-    @Deprecated
-    protected void onLoadSuccess(final String resultMessage) {}
-    @Deprecated
-    protected void onLoadFailure(final String resultMessage) {}
-
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        onLoadSuccess(resultMessage);
-    }
-
+    protected abstract void onLoadSuccess(final Loader loader, final String resultMessage);
     protected void onLoadFailure(final Loader loader, final String resultMessage) {
-        onLoadFailure(resultMessage);
+        Log.w(getClass().getSimpleName(), "[onLoadFailure] " + resultMessage);
     }
 
     protected abstract void startLoadingData();

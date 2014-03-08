@@ -158,7 +158,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         dataBundle.putString(Keys.Profile.USERNAME, profile.getUsername());
         dataBundle.putString(Keys.Profile.GRAVATAR_HASH, profile.getGravatarHash());
 
-        final Intent intent = new Intent(getContext(), SingleFragmentActivity.class)
+        final Intent intent = new Intent(getActivity(), SingleFragmentActivity.class)
             .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, dataBundle)
             .putExtra(
                 SingleFragmentActivity.INTENT_FRAGMENT_TYPE,

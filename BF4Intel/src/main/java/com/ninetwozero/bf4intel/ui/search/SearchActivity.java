@@ -30,12 +30,12 @@ public class SearchActivity extends BaseIntelActivity {
 
     @Override
     protected void onNewIntent(final Intent intent) {
-        final Bundle data = getBundleFromIntent(intent);
+        setupFragment(intent);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
+        getMenuInflater().inflate(R.menu.activity_search, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -51,7 +51,7 @@ public class SearchActivity extends BaseIntelActivity {
 
     private void initialize(final Intent intent) {
         setupActionBar();
-        setupFragment();
+        setupFragment(intent);
     }
 
     private void setupActionBar() {
@@ -65,8 +65,8 @@ public class SearchActivity extends BaseIntelActivity {
         }
     }
 
-    private void setupFragment() {
-        final Bundle data = getBundleFromIntent(getIntent());
+    private void setupFragment(final Intent intent) {
+        final Bundle data = getBundleFromIntent(intent);
         final Fragment fragment = FragmentFactory.get(FragmentFactory.Type.PROFILE_SEARCH, data);
         final FragmentManager manager = getSupportFragmentManager();
         final FragmentTransaction transaction = manager.beginTransaction();

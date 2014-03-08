@@ -7,11 +7,8 @@ import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
@@ -25,12 +22,12 @@ import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.CompletionStringMap;
+import com.ninetwozero.bf4intel.resources.maps.profile.PlatformStringMap;
 import com.ninetwozero.bf4intel.resources.maps.ranks.RankImageMap;
 import com.ninetwozero.bf4intel.resources.maps.ranks.RankStringMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
-import com.ninetwozero.bf4intel.utils.PersonaUtils;
 import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.ArrayList;
@@ -91,23 +88,15 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     }
 
     @Override
-    public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
-        if (result == Result.SUCCESS) {
-            onLoadSuccess(result.getResultMessage());
-        } else {
-            onLoadFailure(result.getResultMessage());
-        }
-    }
-
-    @Override
-    protected void onLoadSuccess(final String resultMessage) {
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         final SoldierOverview soldierOverview = fromJson(resultMessage, SoldierOverview.class);
         displayInformation(getView(), soldierOverview);
         showLoadingState(false);
     }
 
     @Override
-    protected void onLoadFailure(final String resultMessage) {
+    protected void onLoadFailure(final Loader loader, final String resultMessage) {
+        super.onLoadFailure(loader, resultMessage);
         showToast(resultMessage);
     }
 
@@ -123,26 +112,21 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     private void displayGeneralInformation(final View baseView, final SoldierOverview soldierOverview) {
         final Bundle args = getArguments();
         final View root = baseView.findViewById(R.id.wrap_soldier_general);
-        final ProgressBar progressBar = (ProgressBar) baseView.findViewById(R.id.progress_rank);
         final int maxScore = soldierOverview.getMaxScoreCurrentRank();
         final int scoreLeftToNextRank = soldierOverview.getScoreLeftToNextRank();
         final int currentScoreThisRank = maxScore - scoreLeftToNextRank;
 
-        ((TextView) root.findViewById(R.id.soldier_name)).setText(args.getString(Keys.Soldier.NAME));
-        ((TextView) root.findViewById(R.id.current_rank_title)).setText(
-            RankStringMap.get(soldierOverview.getCurrentRank().getName())
-        );
-        ((TextView) root.findViewById(R.id.value_rank_progress)).setText(
+        setText(root, R.id.soldier_name, args.getString(Keys.Soldier.NAME));
+        setText(root, R.id.soldier_platform, PlatformStringMap.get(soldierOverview.getPersonaInfo().getPlatform()));
+        setText(root, R.id.current_rank_title, RankStringMap.get(soldierOverview.getCurrentRank().getName()));
+        setText(
+            root,
+            R.id.value_rank_progress,
             String.format(getString(R.string.generic_x_of_y), currentScoreThisRank, maxScore)
         );
 
-        // FIXME: Display appropriate image in ActionBar
-        ((ImageView) root.findViewById(R.id.image_rank)).setImageResource(
-            RankImageMap.get(soldierOverview.getCurrentRank().getName())
-        );
-
-        progressBar.setMax(maxScore);
-        progressBar.setProgress(currentScoreThisRank);
+        setImage(root, R.id.image_rank, RankImageMap.get(soldierOverview.getCurrentRank().getName()));
+        setProgress(root, R.id.progress_rank, currentScoreThisRank, maxScore);
     }
 
     private void displayServiceStars(final View baseView, final SkillOverview basicSoldierStats) {
@@ -154,16 +138,17 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         contentArea.removeAllViews();
         List<Integer> keys = new ArrayList<Integer>(serviceStars.keySet());
         Collections.sort(keys);
+        
         for (int key : keys) {
             final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
-            final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
+            final int serviceStarCount = serviceStars.get(key);
+            final int roundedProgress = (int) Math.round(serviceStarProgress.get(key));
 
-            progressBar.setProgress((int) Math.round(serviceStarProgress.get(key)));
-            progressBar.setMax(100);
-
-            ((ImageView) parent.findViewById(R.id.image)).setImageResource(
-                PersonaUtils.getIconForKit(key)
-            );
+            setProgress(parent, R.id.progressbar, roundedProgress);
+            setText(parent, R.id.title, fetchKitTitleFromId(key));
+            setText(parent, R.id.service_star_count, String.valueOf(serviceStarCount));
+            setText(parent, R.id.progress_text, roundedProgress + "%");
+            
             contentArea.addView(parent);
         }
     }
@@ -172,22 +157,17 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_skills);
         final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.skills_table);
         final Activity activity = getActivity();
+        final List<Skill> skillsList = skillsListFrom(basicSoldierStats);
+
         final TableLayout.LayoutParams rowLayoutParams = new TableLayout.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         );
         final TableRow.LayoutParams cellLayoutParams = new TableRow.LayoutParams(
-            0,
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            1f
+            0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f
         );
-        final List<Skill> skillsList = skillsListFrom(basicSoldierStats);
 
         contentArea.removeAllViews();
-        ((TextView) root.findViewById(R.id.rating)).setText(
-            String.valueOf(basicSoldierStats.getSkillRating())
-        );
-
         for (int i = 0, counter = 0, maxRows = 2; i < maxRows; i++) {
             final TableRow tableRow = new TableRow(activity);
             tableRow.setLayoutParams(rowLayoutParams);
@@ -195,12 +175,13 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
             for (int j = 0, maxCols = 3; j < maxCols; j++, counter++) {
                 final View cell = layoutInflater.inflate(R.layout.list_item_soldier_skills, null, false);
-                ((TextView) cell.findViewById(R.id.title)).setText(skillsList.get(counter).getStringResource());
-                ((TextView) cell.findViewById(R.id.value)).setText(skillsList.get(counter).getValue());
+                setText(cell, R.id.title, skillsList.get(counter).getStringResource());
+                setText(cell, R.id.value, skillsList.get(counter).getValue());
                 tableRow.addView(cell, cellLayoutParams);
             }
             contentArea.addView(tableRow);
         }
+        setText(root, R.id.rating, String.valueOf(basicSoldierStats.getSkillRating()));
     }
 
     private void displayToplist(final View baseView, final int wrapId, final List<BaseStatsModel> stats, final boolean isWeapon) {
@@ -210,12 +191,9 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
         for (int i = 0, max = 3; i < max; i++) {
             final View parent = layoutInflater.inflate(R.layout.list_item_soldier_toplist, null, false);
-            ((TextView) parent.findViewById(R.id.title)).setText(
-                isWeapon ? WeaponStringMap.get(stats.get(i).getName()) : VehicleStringMap.get(stats.get(i).getName())
-            );
-            ((TextView) parent.findViewById(R.id.value)).setText(
-                String.format(getString(R.string.soldier_num_kills), stats.get(i).getKillCount())
-            );
+            final String name = stats.get(i).getName();
+            setText(parent, R.id.title, isWeapon ? WeaponStringMap.get(name) : VehicleStringMap.get(name));
+            setText(parent, R.id.value, String.format(getString(R.string.num_kills), stats.get(i).getKillCount()));
             contentArea.addView(parent);
         }
     }
@@ -227,19 +205,18 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
         for (CompletionProgress completionProgress : completions) {
             final View parent = layoutInflater.inflate(R.layout.list_item_soldier_completion, null, false);
-            final ProgressBar progressBar = (ProgressBar) parent.findViewById(R.id.progressbar);
 
-            progressBar.setProgress(completionProgress.getCurrentValue());
-            progressBar.setMax(completionProgress.getMaxValue());
-
-            ((TextView) parent.findViewById(R.id.title)).setText(CompletionStringMap.get(completionProgress.getName()));
-            ((TextView) parent.findViewById(R.id.progress_text)).setText(
+            setText(parent, R.id.title, CompletionStringMap.get(completionProgress.getName()));
+            setText(
+                parent,
+                R.id.progress_text,
                 String.format(
                     getString(R.string.generic_x_of_y),
                     completionProgress.getCurrentValue(),
                     completionProgress.getMaxValue()
                 )
             );
+            setProgress(parent, R.id.progressbar, completionProgress.getCurrentValue(), completionProgress.getMaxValue());
             contentArea.addView(parent);
         }
     }
@@ -254,4 +231,22 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         skillList.add(new Skill(R.string.skills_time, DateTimeUtils.toLiteral(so.getTimePlayed())));
         return skillList;
     }
+
+    private int fetchKitTitleFromId(final int key) {
+        switch (key) {
+            case 1:
+                return R.string.class_assault;
+            case 2:
+                return R.string.class_engineer;
+            case 8:
+                return R.string.class_recon;
+            case 32:
+                return R.string.class_support;
+            case 2048:
+                return R.string.class_commander;
+            default:
+                return R.string.na;
+        }
+    }
+
 }

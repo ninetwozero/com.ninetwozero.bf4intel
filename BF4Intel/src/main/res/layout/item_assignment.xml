@@ -26,17 +26,17 @@
       android:contentDescription="@string/cdesc_assignment_expansion_icon" />
 
     <ImageView
-      android:id="@+id/img_assignment_pre_requirement"
+      android:id="@+id/img_assignment_prerequisite"
       android:layout_height="wrap_content"
       android:layout_width="wrap_content"
-      android:contentDescription="@string/cdesc_assignment_pre_requirement" />
+      android:contentDescription="@string/cdesc_assignment_prerequisite" />
   </LinearLayout>
 
   <ProgressBar
+    style="?android:attr/progressBarStyleHorizontal"
     android:id="@+id/assignment_completion"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_below="@id/img_assignment"
-    style="@android:style/Widget.Holo.ProgressBar.Horizontal" />
+    android:layout_below="@id/img_assignment" />
 
 </RelativeLayout>

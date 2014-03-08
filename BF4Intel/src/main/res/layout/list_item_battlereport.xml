@@ -19,7 +19,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
-    android:textColor="@android:color/black"
+    android:textColor="@color/darkgrey"
     />
 
   <TextView
@@ -27,7 +27,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textAppearance="@android:style/TextAppearance.Holo"
-    android:textColor="@android:color/black"
+    android:textColor="@color/darkgrey"
     />
 
   <LinearLayout

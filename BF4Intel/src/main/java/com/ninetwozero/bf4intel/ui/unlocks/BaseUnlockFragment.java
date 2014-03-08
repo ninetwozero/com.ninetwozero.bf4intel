@@ -2,7 +2,6 @@ package com.ninetwozero.bf4intel.ui.unlocks;
 
 import android.os.Bundle;
 import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,12 +31,6 @@ public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
         showLoadingState(false);
         startLoadingData();
     }
-
-    @Override
-    protected void onLoadFailure(final String resultMessage) {
-        Log.d(getClass().getSimpleName(), "[onLoadFailure] resultMessage => " + resultMessage);
-    }
-
 
     @Override
     protected abstract void startLoadingData();

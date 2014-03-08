@@ -28,8 +28,12 @@ public class KitUnlockFragment extends BaseUnlockFragment {
     }
 
     @Override
-    protected void onLoadSuccess(final String resultMessage) {
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         final KitUnlocks unlocks = fromJson(resultMessage, KitUnlocks.class);
+        if (unlocks.getUnlockMap() == null) {
+            return;
+        }
+
         sendDataToListView(sortItemsInMap(unlocks.getUnlockMap()));
         showLoadingState(false);
     }

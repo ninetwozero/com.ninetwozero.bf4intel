@@ -29,13 +29,6 @@ public abstract class BaseIntelAdapter<T> extends BaseAdapter {
         this.layoutInflater = LayoutInflater.from(context);
     }
 
-    @Deprecated
-    public BaseIntelAdapter(List<T> itemsList, Context context) {
-        this.itemsList = itemsList;
-        this.context = context;
-        this.layoutInflater = LayoutInflater.from(context);
-    }
-
     @Override
     public int getCount() {
         return itemsList == null ? 0 : itemsList.size();
@@ -60,6 +53,19 @@ public abstract class BaseIntelAdapter<T> extends BaseAdapter {
         ((TextView) view.findViewById(resourceId)).setText(string);
     }
 
+    public void setText(final View view, final int resourceId, final int stringResource, final Object... values) {
+        ((TextView) view.findViewById(resourceId)).setText(
+            String.format(
+                context.getString(stringResource),
+                values
+            )
+        );
+    }
+
+    public void setText(final View view, final int resourceId, final String string, final Object... values) {
+        ((TextView) view.findViewById(resourceId)).setText(String.format(string, values));
+    }
+
     public void setImage(final View view, final int resourceId, final int imageResource) {
         ((ImageView) view.findViewById(resourceId)).setImageResource(imageResource);
     }
@@ -71,6 +77,12 @@ public abstract class BaseIntelAdapter<T> extends BaseAdapter {
     public void setProgress(final View view, final int resourceId, final int current, final int max) {
         final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
         progressBar.setMax(max);
+        progressBar.setProgress(current);
+    }
+
+    public void setProgress(final View view, final int resourceId, final int current) {
+        final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
+        progressBar.setMax(100);
         progressBar.setProgress(current);
     }
 

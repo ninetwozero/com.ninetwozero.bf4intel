@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
@@ -22,9 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class WeaponStatsFragment extends BaseLoadingListFragment {
-
     private static final int ID_LOADER = 2100;
-    private ListView listView;
 
     public static WeaponStatsFragment newInstance(final Bundle data) {
         final WeaponStatsFragment fragment = new WeaponStatsFragment();
@@ -35,9 +32,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
-        final View view = this.layoutInflater.inflate(R.layout.fragment_list_stats, parent, false);
-        listView = (ListView) view.findViewById(android.R.id.list);
-        return view;
+        return layoutInflater.inflate(R.layout.fragment_list_stats, parent, false);
     }
 
     @Override
@@ -48,7 +43,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getLoaderManager().initLoader(ID_LOADER, getArguments(), this);
+        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
     }
 
     @Override
@@ -66,34 +61,17 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    public void onLoaderReset(Loader<Result> resultLoader) {
-        super.onLoaderReset(resultLoader);
-    }
-
-    @Override
-    public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
-        if (result == Result.SUCCESS) {
-            onLoadSuccess(result.getResultMessage());
-        } else {
-            onLoadFailure(result.getResultMessage());
-        }
-    }
-
-    @Override
-    protected void onLoadSuccess(final String resultMessage) {
+    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         final WeaponStatistics ws = fromJson(resultMessage, WeaponStatistics.class);
         final List<Weapon> weaponList = ws.getWeaponsList();
         Collections.sort(weaponList);
 
-        final WeaponStatsAdapter adapter = new WeaponStatsAdapter(weaponList, getContext());
-        listView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
+        getListView().setAdapter(new WeaponStatsAdapter(getActivity(), weaponList));
         showLoadingState(false);
     }
 
     @Override
-    protected void onLoadFailure(final String resultMessage) {
+    protected void onLoadFailure(final Loader loader, final String resultMessage) {
         Log.e(WeaponStatsFragment.class.getSimpleName(), resultMessage);
     }
 }

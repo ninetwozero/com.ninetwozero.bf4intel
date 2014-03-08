@@ -29,16 +29,16 @@ public class LevelStringMap {
             put("MP_TREMORS", "Dawnbreaker");
 
             // XP0
-            put("MP_XP0_CASPIAN", "Caspian Border 2014");
-            put("MP_XP0_FIRESTORM", "Operation Firestorm 2014");
-            put("MP_XP0_METRO", "Operation Metro 2014");
-            put("MP_XP0_OMAN", "Gulf of Oman 2014");
+            put("XP0_CASPIAN", "Caspian Border 2014");
+            put("XP0_FIRESTORM", "Operation Firestorm 2014");
+            put("XP0_METRO", "Operation Metro 2014");
+            put("XP0_OMAN", "Gulf of Oman 2014");
 
             // XP1
-            put("XP1_001", "SILK ROAD");
-            put("XP1_002", "ALTAI RANGE");
-            put("XP1_003", "GUILIN PEAKS");
-            put("XP1_004", "DRAGON PASS");
+            put("XP1_001", "Silk Road");
+            put("XP1_002", "Altai Range");
+            put("XP1_003", "Guilin Peaks");
+            put("XP1_004", "Dragon Pass");
         }
     };
 

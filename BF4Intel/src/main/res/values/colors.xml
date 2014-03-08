@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
 	This file is part of BF4 Droid
 
     BF4 Droid is free software: you can redistribute it and/or modify
@@ -41,7 +42,7 @@
   <color name="battlereport_draw">#86b886</color>
 
   <!-- NavigationDrawer colors -->
-  <color name="navigation_drawer_selected_bg">#1AFFFFFF</color>
+  <color name="navigation_drawer_selected_bg">#29FFFFFF</color>
   <color name="navigation_drawer_bg">#333333</color>
   <color name="navigation_listview_divider">#444444</color>
 
@@ -49,6 +50,7 @@
   <color name="card_action_selected_bg">#CCCCCC</color>
   <color name="card_selected_overlay">#33FFFFFF</color>
   <color name="card_meta_bg_color">#f0f0f0</color>
+  <color name="text_on_card_bg">#505050</color>
 
   <!-- News colors -->
   <color name="news_comment_bg_selected">#EEEEEE</color>

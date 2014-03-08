@@ -7,7 +7,7 @@
   <string name="cdesc_rank_image">Rank image</string>
   <string name="cdesc_status_link_image">Extra content image</string>
   <string name="cdesc_assignment_image">Assignment image</string>
-  <string name="cdesc_assignment_pre_requirement">Assignment pre-requirement image</string>
+  <string name="cdesc_assignment_prerequisite">Assignment pre-requirement image</string>
   <string name="cdesc_assignment_expansion_icon">Assignment expansion icon</string>
 
   <string name="cdesc_award_medal">Award medal</string>
@@ -28,4 +28,7 @@
   <string name="cdesc_overflow_menu">Overflow menu</string>
   <string name="cdesc_article_preview">Article preview</string>
 
+  <string name="cdesc_item_image">Item image</string>
+  <string name="cdesc_logo">Logo</string>
+  <string name="cdesc_action_item">Action item</string>
 </resources>

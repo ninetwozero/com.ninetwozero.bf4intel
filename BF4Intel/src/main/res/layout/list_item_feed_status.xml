@@ -9,11 +9,13 @@
     style="@style/WhiteContainerContentAreaWrapper"
     android:id="@+id/wrap_content_area"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
 
     <TextView
       style="@style/feed_content"
-      android:id="@+id/content"/>
+      android:id="@+id/content"
+      />
 
     <LinearLayout
       android:id="@+id/wrap_preview"
@@ -21,7 +23,8 @@
       android:layout_height="wrap_content"
       android:orientation="vertical"
       android:layout_below="@id/content"
-      android:visibility="gone">
+      android:visibility="gone"
+      >
 
       <TextView
         android:id="@+id/preview_title"
@@ -35,7 +38,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:src="@drawable/slidingmenu_background"
         android:layout_marginTop="@dimen/spacing_xs"
         android:contentDescription="@string/cdesc_status_link_image"/>
     </LinearLayout>

@@ -2,8 +2,6 @@ package com.ninetwozero.bf4intel.ui.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -13,7 +11,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SearchView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
@@ -53,41 +50,6 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
-
-        final MenuItem searchMenuItem = menu.findItem(R.id.ab_action_search);
-        final MenuItem refreshMenuItem = menu.findItem(R.id.ab_action_refresh);
-        if (refreshMenuItem != null) {
-            refreshMenuItem.setVisible(false);
-        }
-        if (searchMenuItem != null) {
-            searchMenuItem.setVisible(true);
-        }
-
-        final SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        final SearchView abSearchView = (SearchView) searchMenuItem.getActionView();
-        if (abSearchView != null) {
-            abSearchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-            abSearchView.setOnQueryTextListener(
-                new SearchView.OnQueryTextListener() {
-                    @Override
-                    public boolean onQueryTextSubmit(final String s) {
-                        removeSearchView(abSearchView);
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onQueryTextChange(final String s) {
-                        return false;
-                    }
-
-                    private void removeSearchView(final SearchView searchView) {
-                        searchView.setQuery("", false);
-                        searchView.clearFocus();
-                        searchView.onActionViewCollapsed();
-                    }
-                }
-            );
-        }
         return true;
     }
 
