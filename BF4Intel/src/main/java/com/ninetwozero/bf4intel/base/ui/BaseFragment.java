@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,15 @@ import android.widget.Toast;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 public abstract class BaseFragment extends Fragment {
+    public static final String DISABLE_AUTO_ANALYTICS = "disableAutomaticAnalyticsOnStart";
+
     protected static final float ALPHA_ENABLED = 0.8f;
     protected static final float ALPHA_DISABLED = 0.3f;
 
-    private static Toast toast;
-
     protected FragmentManager fragmentManager;
     protected LayoutInflater layoutInflater;
+
+    private static Toast toast;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -40,7 +43,11 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        postGoogleAnalytics();
+
+        final Bundle bundle = getArguments() == null ? new Bundle() : getArguments();
+        if (!bundle.getBoolean(DISABLE_AUTO_ANALYTICS, false)) {
+            postGoogleAnalytics();
+        }
     }
 
     protected void postGoogleAnalytics() {

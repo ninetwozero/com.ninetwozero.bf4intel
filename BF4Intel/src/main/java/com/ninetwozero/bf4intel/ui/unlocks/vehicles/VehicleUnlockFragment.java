@@ -57,9 +57,6 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
         );
     }
 
-    @Override
-    protected void postGoogleAnalytics() {
-    }
 
     private void sendDataToListView(final Map<String, List<VehicleUnlock>> unlockMap) {
         final ExpandableListView listView = (ExpandableListView) getListView();

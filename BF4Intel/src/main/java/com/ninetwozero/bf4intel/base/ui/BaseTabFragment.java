@@ -24,8 +24,6 @@ public abstract class BaseTabFragment extends BaseFragment {
 
         final View view = inflater.inflate(R.layout.generic_multi_tab_fragment, parent, false);
         initialize(view);
-        //This is to record initial opening of viewPager
-        postToGoogleAnalytics(0);
         return view;
     }
 
@@ -33,14 +31,23 @@ public abstract class BaseTabFragment extends BaseFragment {
         setupViewPagerAdapter();
         setupViewPager(view);
         setupTabs(view);
+
+        //This is to record initial opening of viewPager
+        postToGoogleAnalytics(0);
     }
 
     private void setupViewPagerAdapter() {
         viewPagerAdapter = new ViewPagerAdapter(
             getFragmentManager(),
             getTitleResources(),
-            generateFragmentList(getArguments())
+            generateFragmentList(getPreparedArguments())
         );
+    }
+
+    private Bundle getPreparedArguments() {
+        final Bundle arguments = getArguments();
+        arguments.putBoolean(BaseFragment.DISABLE_AUTO_ANALYTICS, true);
+        return arguments;
     }
 
     private void setupViewPager(final View view) {
@@ -53,18 +60,10 @@ public abstract class BaseTabFragment extends BaseFragment {
         final PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
         tabStrip.setShouldExpand(true);
         tabStrip.setViewPager(viewPager);
-        tabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
+        tabStrip.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 postToGoogleAnalytics(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
             }
         });
     }

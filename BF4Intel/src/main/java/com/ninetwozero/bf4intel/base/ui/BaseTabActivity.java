@@ -2,22 +2,19 @@ package com.ninetwozero.bf4intel.base.ui;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Fields;
-import com.google.analytics.tracking.android.MapBuilder;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.ui.adapters.ViewPagerAdapter;
+import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 import java.util.List;
 
 public abstract class BaseTabActivity extends BaseIntelActivity implements ActionBar.TabListener {
-    public static final String INTENT_EXTRA = "profile";
-    private static final int PAGE_LIMIT = 1;
+    public static final String INTENT_EXTRA = "extra";
 
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
@@ -27,8 +24,6 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_multi_tab_activity);
         initialize();
-        //This is to record initial opening of viewPager
-        postToGoogleAnalytics(0);
     }
 
     @Override
@@ -48,6 +43,9 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
         setupViewPagerAdapter();
         setupViewPager();
         setupActionBar();
+
+        //This is to record initial opening of viewPager
+        postToGoogleAnalytics(0);
     }
 
     private void setupViewPagerAdapter() {
@@ -55,41 +53,33 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
     }
 
     private List<Fragment> generateFragmentList() {
-        final Bundle dataBundle = getIntent().getBundleExtra(INTENT_EXTRA);
+        final Bundle dataBundle = getBundleFromIntent(getIntent());
+        dataBundle.putBoolean(BaseFragment.DISABLE_AUTO_ANALYTICS, true);
         return fetchFragmentsForActivity(dataBundle);
+    }
+
+    private Bundle getBundleFromIntent(final Intent intent) {
+        return intent.hasExtra(INTENT_EXTRA) ? intent.getBundleExtra(INTENT_EXTRA) : new Bundle();
     }
 
     private void setupViewPager() {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setOffscreenPageLimit(PAGE_LIMIT);
+        viewPager.setOffscreenPageLimit(getOffscreenPageLimit());
         viewPager.setOnPageChangeListener(
             new ViewPager.SimpleOnPageChangeListener() {
                 @Override
                 public void onPageSelected(int position) {
                     getActionBar().setSelectedNavigationItem(position);
+                    postToGoogleAnalytics(position);
                 }
             }
         );
         viewPager.setAdapter(viewPagerAdapter);
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                postToGoogleAnalytics(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
     }
 
     private void postToGoogleAnalytics(int position) {
         String fragmentName = viewPagerAdapter.getItem(position).getClass().getSimpleName();
-        googleAnalytics(fragmentName);
+        GoogleAnalytics.post(this, fragmentName);
     }
 
     private void setupActionBar() {
@@ -103,13 +93,7 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
         }
     }
 
-    protected void googleAnalytics(String fragmentName) {
-        EasyTracker tracker = EasyTracker.getInstance(this);
-        tracker.set(Fields.SCREEN_NAME, fragmentName);
-        Log.e("Analytics", fragmentName);
-        tracker.send(MapBuilder.createAppView().build());
-    }
-
     protected abstract int[] getTitleResources();
     protected abstract List<Fragment> fetchFragmentsForActivity(final Bundle profileBundle);
+    protected abstract int getOffscreenPageLimit();
 }

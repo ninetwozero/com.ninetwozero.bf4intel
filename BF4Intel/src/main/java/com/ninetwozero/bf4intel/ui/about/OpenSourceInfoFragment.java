@@ -11,9 +11,9 @@ import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 
 public class OpenSourceInfoFragment extends BaseFragment {
 
-    public static OpenSourceInfoFragment newInstance() {
+    public static OpenSourceInfoFragment newInstance(final Bundle data) {
         final OpenSourceInfoFragment fragment = new OpenSourceInfoFragment();
-        fragment.setArguments(new Bundle());
+        fragment.setArguments(data);
         return fragment;
     }
 
@@ -30,9 +30,6 @@ public class OpenSourceInfoFragment extends BaseFragment {
         return view;
     }
 
-    @Override
-    protected void postGoogleAnalytics() {
-    }
 
     private void initialize(View view) {
         final WebView webView = (WebView) view.findViewById(R.id.webview);

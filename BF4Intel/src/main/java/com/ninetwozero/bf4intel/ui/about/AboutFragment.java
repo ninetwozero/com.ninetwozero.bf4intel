@@ -18,9 +18,9 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     private static final String URL_GPLUS = "https://plus.google.com/communities/116943801107614500778";
     private static final String URL_TWITTER = "https://twitter.com/intent/tweet?text=%40karllindmark+%40peter_budo";
 
-    public static AboutFragment newInstance() {
+    public static AboutFragment newInstance(final Bundle data) {
         final AboutFragment fragment = new AboutFragment();
-        fragment.setArguments(new Bundle());
+        fragment.setArguments(data);
         return fragment;
     }
 
@@ -84,9 +84,5 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
         if (null != intent) {
             getActivity().startActivity(intent);
         }
-    }
-
-    @Override
-    protected void postGoogleAnalytics() {
     }
 }

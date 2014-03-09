@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 import java.util.Locale;
@@ -40,7 +42,12 @@ public abstract class BaseListFragment extends ListFragment {
     @Override
     public void onStart() {
         super.onStart();
-        postGoogleAnalytics();
+
+
+        final Bundle bundle = getArguments() == null ? new Bundle() : getArguments();
+        if (!bundle.getBoolean(BaseFragment.DISABLE_AUTO_ANALYTICS, false)) {
+            postGoogleAnalytics();
+        }
     }
 
     protected void postGoogleAnalytics() {

@@ -75,7 +75,4 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
         Log.e(WeaponStatsFragment.class.getSimpleName(), resultMessage);
     }
 
-    @Override
-    protected void postGoogleAnalytics() {
-    }
 }

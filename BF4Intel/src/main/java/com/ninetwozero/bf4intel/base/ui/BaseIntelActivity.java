@@ -12,7 +12,6 @@ import com.bugsense.trace.BugSenseHandler;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.database.CupboardSQLiteOpenHelper;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 public abstract class BaseIntelActivity extends FragmentActivity {
     private static final String BUGSENSE_TOKEN = "f42265ac";
@@ -28,16 +27,6 @@ public abstract class BaseIntelActivity extends FragmentActivity {
         BugSenseHandler.initAndStartSession(this, BUGSENSE_TOKEN);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         reloadSession();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        postGoogleAnalytics();
-    }
-
-    protected void postGoogleAnalytics() {
-        GoogleAnalytics.post(this, this.getClass().getSimpleName());
     }
 
     @Override

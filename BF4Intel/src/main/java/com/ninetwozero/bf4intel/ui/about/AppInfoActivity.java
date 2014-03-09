@@ -25,10 +25,15 @@ public class AppInfoActivity extends BaseTabActivity {
     @Override
     protected List<Fragment> fetchFragmentsForActivity(final Bundle data) {
         final List<Fragment> fragments = new ArrayList<Fragment>();
-        fragments.add(AboutFragment.newInstance());
-        fragments.add(ChangelogFragment.newInstance());
-        fragments.add(CreditListFragment.newInstance());
-        fragments.add(OpenSourceInfoFragment.newInstance());
+        fragments.add(AboutFragment.newInstance(data));
+        fragments.add(ChangelogFragment.newInstance(data));
+        fragments.add(CreditListFragment.newInstance(data));
+        fragments.add(OpenSourceInfoFragment.newInstance(data));
         return fragments;
+    }
+
+    @Override
+    protected int getOffscreenPageLimit() {
+        return 0;
     }
 }

@@ -71,9 +71,6 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         );
     }
 
-    @Override
-    protected void postGoogleAnalytics() {
-    }
 
     @Override
     protected void onLoadSuccess(final Loader loader, final String resultMessage) {

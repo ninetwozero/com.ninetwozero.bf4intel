@@ -41,20 +41,8 @@ public class NewsArticleLayout extends BaseLayoutPopulator implements View.OnCli
         populateActionItems(article);
     }
 
-    public void updateHooahForArticle(final int count, final boolean voted) {
-        ((ImageView) container.findViewById(R.id.button_hooah)).setImageResource(
-            voted ? R.drawable.ic_menu_hooah_ok : R.drawable.ic_menu_hooah
-        );
-        ((TextView) container.findViewById(R.id.num_hooahs)).setText(
-            String.format(
-                context.getString(R.string.num_hooahs),
-                count
-            )
-        );
-    }
-
     private void populateTop(final NewsArticle article) {
-        setText(container, R.id.title, article.getTitle());
+        setText(container, R.id.title, Html.fromHtml(article.getTitle()).toString());
         setText(container, R.id.timestamp, DateTimeUtils.toRelative(article.getTimestamp()));
         if (article.hasAuthor()) {
             setText(container, R.id.username, article.getAuthor().getUsername());
@@ -164,6 +152,18 @@ public class NewsArticleLayout extends BaseLayoutPopulator implements View.OnCli
             }
         );
         menu.show();
+    }
+
+    public void updateHooahForArticle(final int count, final boolean voted) {
+        ((ImageView) container.findViewById(R.id.button_hooah)).setImageResource(
+            voted ? R.drawable.ic_menu_hooah_ok : R.drawable.ic_menu_hooah
+        );
+        ((TextView) container.findViewById(R.id.num_hooahs)).setText(
+            String.format(
+                context.getString(R.string.num_hooahs),
+                count
+            )
+        );
     }
 
     @Override

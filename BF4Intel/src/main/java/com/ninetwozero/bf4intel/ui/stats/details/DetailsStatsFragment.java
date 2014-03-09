@@ -77,9 +77,6 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
         showToast(resultMessage);
     }
 
-    @Override
-    protected void postGoogleAnalytics() {
-    }
 
     private void initialize(final View view) {
         setupListView(view);

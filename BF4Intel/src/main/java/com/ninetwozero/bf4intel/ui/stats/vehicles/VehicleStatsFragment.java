@@ -74,7 +74,4 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
         Log.e(VehicleStatsFragment.class.getSimpleName(), resultMessage);
     }
 
-    @Override
-    protected void postGoogleAnalytics() {
-    }
 }
