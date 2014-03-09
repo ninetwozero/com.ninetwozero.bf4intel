@@ -11,14 +11,13 @@ import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 
 public class ChangelogFragment extends BaseFragment {
 
-    public static ChangelogFragment newInstance() {
+    public static ChangelogFragment newInstance(final Bundle data) {
         final ChangelogFragment fragment = new ChangelogFragment();
-        fragment.setArguments(new Bundle());
+        fragment.setArguments(data);
         return fragment;
     }
 
     public ChangelogFragment() {
-
     }
 
     @Override
@@ -29,6 +28,7 @@ public class ChangelogFragment extends BaseFragment {
         initialize(view);
         return view;
     }
+
 
     private void initialize(View view) {
         final WebView webView = (WebView) view.findViewById(R.id.webview);

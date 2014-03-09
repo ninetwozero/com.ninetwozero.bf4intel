@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
+import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.datatypes.TrackingNewProfileEvent;
@@ -53,6 +54,11 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private Bundle soldierBundleForMenu;
 
     public NavigationDrawerFragment() {
+        if (getArguments() == null) {
+            final Bundle data = new Bundle();
+            data.putBoolean(BaseFragment.DISABLE_AUTO_ANALYTICS, true);
+            setArguments(data);
+        }
     }
 
     @Override

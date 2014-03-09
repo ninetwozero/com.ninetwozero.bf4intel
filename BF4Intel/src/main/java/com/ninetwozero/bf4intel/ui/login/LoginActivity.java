@@ -162,7 +162,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                                 Intent intent = null;
                                 if (item.getItemId() == R.id.menu_about) {
                                     Toast.makeText(getApplicationContext(), "TODO: This should lead to ABout", Toast.LENGTH_SHORT).show();
-                                    // TODO: intent = new Intent(LoginActivity.this, AboutActivity.class);
+                                    // TODO: intent = new Intent(LoginActivity.this, AppInfoActivity.class);
                                 } else if (item.getItemId() == R.id.menu_reset_password) {
                                     intent = new Intent(Intent.ACTION_VIEW).setData(
                                         Uri.parse(RESET_PASSWORD_LINK)

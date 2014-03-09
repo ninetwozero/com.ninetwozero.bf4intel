@@ -40,6 +40,7 @@ public class UnlockTabFragment extends BaseTabFragment {
         return titles;
     }
 
+
     @Override
     protected int getOffscreenPageLimit() {
         return 2;

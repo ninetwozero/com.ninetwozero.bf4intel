@@ -41,6 +41,7 @@ public class SoldierStatisticsTabFragment extends BaseTabFragment {
         return titles;
     }
 
+
     @Override
     protected int getOffscreenPageLimit() {
         return 1;

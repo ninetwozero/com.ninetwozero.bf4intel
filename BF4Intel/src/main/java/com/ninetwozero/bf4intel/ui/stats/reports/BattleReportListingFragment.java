@@ -71,6 +71,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         );
     }
 
+
     @Override
     protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         if (loader.getId() == ID_LOADER) {

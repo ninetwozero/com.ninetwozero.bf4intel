@@ -58,6 +58,7 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
         );
     }
 
+
     private void sendDataToListView(final Map<String, List<WeaponUnlockContainer>> unlockMap) {
         final ExpandableListView listView = (ExpandableListView) getListView();
         if (listView == null) {

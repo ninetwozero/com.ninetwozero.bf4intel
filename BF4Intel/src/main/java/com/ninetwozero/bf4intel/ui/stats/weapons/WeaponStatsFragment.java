@@ -74,4 +74,5 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     protected void onLoadFailure(final Loader loader, final String resultMessage) {
         Log.e(WeaponStatsFragment.class.getSimpleName(), resultMessage);
     }
+
 }

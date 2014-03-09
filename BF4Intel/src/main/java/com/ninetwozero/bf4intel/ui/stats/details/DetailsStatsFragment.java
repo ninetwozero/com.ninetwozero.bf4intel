@@ -77,6 +77,7 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
         showToast(resultMessage);
     }
 
+
     private void initialize(final View view) {
         setupListView(view);
     }

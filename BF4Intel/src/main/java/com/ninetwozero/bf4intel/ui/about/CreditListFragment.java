@@ -11,14 +11,13 @@ import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 
 public class CreditListFragment extends BaseFragment {
 
-    public static CreditListFragment newInstance() {
+    public static CreditListFragment newInstance(final Bundle data) {
         final CreditListFragment fragment = new CreditListFragment();
-        fragment.setArguments(new Bundle());
+        fragment.setArguments(data);
         return fragment;
     }
 
     public CreditListFragment() {
-
     }
 
     @Override
@@ -29,6 +28,7 @@ public class CreditListFragment extends BaseFragment {
         initialize(view);
         return view;
     }
+
 
     private void initialize(View view) {
         final WebView webView = (WebView) view.findViewById(R.id.webview);

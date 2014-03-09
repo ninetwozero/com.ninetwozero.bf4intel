@@ -58,6 +58,7 @@ public class KitUnlockFragment extends BaseUnlockFragment {
         );
     }
 
+
     private void sendDataToListView(final Map<String, List<KitItemUnlockContainer>> unlockMap) {
         final ExpandableListView listView = (ExpandableListView) getListView();
         if (listView == null) {

@@ -9,7 +9,7 @@ import com.ninetwozero.bf4intel.base.ui.BaseTabActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AboutActivity extends BaseTabActivity {
+public class AppInfoActivity extends BaseTabActivity {
     private static final int[] TITLES = {
         R.string.label_about,
         R.string.label_updates,
@@ -25,10 +25,15 @@ public class AboutActivity extends BaseTabActivity {
     @Override
     protected List<Fragment> fetchFragmentsForActivity(final Bundle data) {
         final List<Fragment> fragments = new ArrayList<Fragment>();
-        fragments.add(AppInfoFragment.newInstance());
-        fragments.add(ChangelogFragment.newInstance());
-        fragments.add(CreditListFragment.newInstance());
-        fragments.add(OpenSourceInfoFragment.newInstance());
+        fragments.add(AboutFragment.newInstance(data));
+        fragments.add(ChangelogFragment.newInstance(data));
+        fragments.add(CreditListFragment.newInstance(data));
+        fragments.add(OpenSourceInfoFragment.newInstance(data));
         return fragments;
+    }
+
+    @Override
+    protected int getOffscreenPageLimit() {
+        return 0;
     }
 }
