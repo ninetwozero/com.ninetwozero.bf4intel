@@ -261,6 +261,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
             soldiers.add(result);
         }
 
+        results.close();
         return soldiers;
     }
 
