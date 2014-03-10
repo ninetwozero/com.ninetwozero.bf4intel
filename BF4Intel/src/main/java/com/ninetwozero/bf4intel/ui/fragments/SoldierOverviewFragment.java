@@ -117,7 +117,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         final int currentScoreThisRank = maxScore - scoreLeftToNextRank;
 
         setText(root, R.id.soldier_name, args.getString(Keys.Soldier.NAME));
-        setText(root, R.id.soldier_platform, PlatformStringMap.get(soldierOverview.getPersonaInfo().getPlatform()));
+        setText(root, R.id.soldier_platform, PlatformStringMap.get(soldierOverview.getPlatformId()));
         setText(root, R.id.current_rank_title, RankStringMap.get(soldierOverview.getCurrentRank().getName()));
         setText(
             root,

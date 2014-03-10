@@ -26,6 +26,9 @@ public class SoldierOverview {
     @SerializedName("overviewStats")
     private SkillOverview basicSoldierStats;
 
+    @SerializedName("platformInt")
+    private int platformId;
+
     public PersonaInfo getPersonaInfo() {
         return personaInfo;
     }
@@ -50,6 +53,10 @@ public class SoldierOverview {
 
     public SkillOverview getBasicSoldierStats() {
         return basicSoldierStats;
+    }
+
+    public int getPlatformId() {
+        return platformId;
     }
 
     public int getMaxScoreCurrentRank() {
