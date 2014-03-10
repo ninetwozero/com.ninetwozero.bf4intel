@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.ui.stats.details;
 
 import android.os.Bundle;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,11 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
     @Override
     protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         final StatsDetails.GeneralStats details = fromJson(resultMessage, StatsDetails.class).getGeneralStats();
+        if (details == null) {
+            Log.w(getClass().getSimpleName(), "Detailed Stats is empty.");
+            return;
+        }
+
         final StatsDetailsGrouped stats = new StatsDetailsGrouped(details);
 
         sendDataToListView(stats);

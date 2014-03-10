@@ -90,7 +90,7 @@
   <string name="overview_kits">Kits</string>
   <string name="overview_dogtags">Dog Tags</string>
   <string name="na">N/A</string>
-  <string name="msg_no_stats_details">No detailedtats found.</string>
+  <string name="msg_no_stats_details">No detailed statistics found.</string>
 
   <!-- Battle reports -->
   <string name="battlereport_time">Duration:</string>
