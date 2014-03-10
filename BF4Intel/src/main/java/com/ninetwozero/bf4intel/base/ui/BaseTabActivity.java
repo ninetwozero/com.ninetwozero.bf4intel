@@ -54,7 +54,7 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
 
     private List<Fragment> generateFragmentList() {
         final Bundle dataBundle = getBundleFromIntent(getIntent());
-        dataBundle.putBoolean(BaseFragment.DISABLE_AUTO_ANALYTICS, true);
+        dataBundle.putBoolean(BaseFragment.CALLED_FROM_VIEWPAGER, true);
         return fetchFragmentsForActivity(dataBundle);
     }
 

@@ -56,7 +56,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     public NavigationDrawerFragment() {
         if (getArguments() == null) {
             final Bundle data = new Bundle();
-            data.putBoolean(BaseFragment.DISABLE_AUTO_ANALYTICS, true);
+            data.putBoolean(BaseFragment.CALLED_FROM_VIEWPAGER, true);
             setArguments(data);
         }
     }

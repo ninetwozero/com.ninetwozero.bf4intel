@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 public abstract class BaseFragment extends Fragment {
-    public static final String DISABLE_AUTO_ANALYTICS = "disableAutomaticAnalyticsOnStart";
+    public static final String CALLED_FROM_VIEWPAGER = "disableAutomaticAnalyticsOnStart";
 
     protected static final float ALPHA_ENABLED = 0.8f;
     protected static final float ALPHA_DISABLED = 0.3f;
@@ -30,7 +29,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
-        setRetainInstance(true);
+        setRetainInstance(!getArgumentsBundle().getBoolean(CALLED_FROM_VIEWPAGER, false));
         fragmentManager = getFragmentManager();
     }
 
@@ -44,10 +43,14 @@ public abstract class BaseFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        final Bundle bundle = getArguments() == null ? new Bundle() : getArguments();
-        if (!bundle.getBoolean(DISABLE_AUTO_ANALYTICS, false)) {
+        final Bundle bundle = getArgumentsBundle();
+        if (!bundle.getBoolean(CALLED_FROM_VIEWPAGER, false)) {
             postGoogleAnalytics();
         }
+    }
+
+    protected Bundle getArgumentsBundle() {
+        return getArguments() == null ? new Bundle() : getArguments();
     }
 
     protected void postGoogleAnalytics() {

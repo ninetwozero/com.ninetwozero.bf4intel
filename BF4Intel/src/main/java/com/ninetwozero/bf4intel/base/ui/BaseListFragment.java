@@ -7,14 +7,12 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 import java.util.Locale;
@@ -29,7 +27,7 @@ public abstract class BaseListFragment extends ListFragment {
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
-        setRetainInstance(true);
+        setRetainInstance(!getArgumentsBundle().getBoolean(BaseFragment.CALLED_FROM_VIEWPAGER, false));
         fragmentManager = getFragmentManager();
     }
 
@@ -43,12 +41,16 @@ public abstract class BaseListFragment extends ListFragment {
     public void onStart() {
         super.onStart();
 
-
-        final Bundle bundle = getArguments() == null ? new Bundle() : getArguments();
-        if (!bundle.getBoolean(BaseFragment.DISABLE_AUTO_ANALYTICS, false)) {
+        final Bundle bundle = getArgumentsBundle();
+        if (!bundle.getBoolean(BaseFragment.CALLED_FROM_VIEWPAGER, false)) {
             postGoogleAnalytics();
         }
     }
+
+    protected Bundle getArgumentsBundle() {
+        return getArguments() == null ? new Bundle() : getArguments();
+    }
+
 
     protected void postGoogleAnalytics() {
         GoogleAnalytics.post(getActivity(), this.getClass().getSimpleName());
