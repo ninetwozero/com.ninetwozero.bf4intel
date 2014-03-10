@@ -12,7 +12,6 @@ public class GoogleAnalytics {
     public static void post(Context context, String fragmentName) {
         EasyTracker tracker = EasyTracker.getInstance(context);
         tracker.set(Fields.SCREEN_NAME, fragmentName);
-        Log.e("Analytics", fragmentName);
         tracker.send(MapBuilder.createAppView().build());
     }
 }
