@@ -3,6 +3,8 @@ package com.ninetwozero.bf4intel.json.search;
 import com.google.gson.annotations.SerializedName;
 import com.ninetwozero.bf4intel.json.Profile;
 
+import java.util.Map;
+
 public class ProfileSearchResult {
     @SerializedName("personaId")
     private String personaId;
@@ -12,6 +14,8 @@ public class ProfileSearchResult {
     private String platform;
     @SerializedName("user")
     private Profile profile;
+    @SerializedName("games")
+    private Map<Integer, Integer> games;
 
     public String getPersonaId() {
         return personaId;
@@ -27,5 +31,9 @@ public class ProfileSearchResult {
 
     public Profile getProfile() {
         return profile;
+    }
+
+    public Map<Integer, Integer> getGames() {
+        return games;
     }
 }

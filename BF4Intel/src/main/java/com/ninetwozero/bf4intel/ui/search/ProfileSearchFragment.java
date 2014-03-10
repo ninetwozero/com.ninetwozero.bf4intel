@@ -30,11 +30,15 @@ import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.Result;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ProfileSearchFragment extends BaseLoadingListFragment {
     public static final String INTENT_SEARCH_RESULT = "profile_search_result";
     private static final int ID_LOADER = 10303;
+
+    private static final int GAME_ID_BF4 = 2048;
 
     private String queryString;
 
@@ -92,8 +96,27 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     @Override
     protected void onLoadSuccess(final Loader loader, final String resultMessage) {
         ProfileSearchResults results = fromJson(resultMessage, ProfileSearchResults.class, true);
-        sendDataToListView(results.getResults());
+        sendDataToListView(fetchBf4Accounts(results.getResults()));
         showLoadingState(false);
+    }
+
+    /*
+        Due to Battlelog doing the search by the soldier name (and not the username), we need to
+        get the users that are playing BF4 (gameId >= 2048)
+
+        Info: http://battlelog.battlefield.com/bf4/user/haruhi00/
+    */
+    private List<ProfileSearchResult> fetchBf4Accounts(List<ProfileSearchResult> results) {
+        final List<ProfileSearchResult> validAccounts = new ArrayList<ProfileSearchResult>();
+        for (ProfileSearchResult result : results) {
+            Map<Integer, Integer> games = result.getGames();
+            for (Integer gameId : games.keySet()) {
+                if (games.get(gameId) >= GAME_ID_BF4) {
+                    validAccounts.add(result);
+                }
+            }
+        }
+        return validAccounts;
     }
 
     @Override
