@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -41,7 +42,8 @@ public class NavigationDrawerFragment extends BaseListFragment {
     public static final String BATTLE_CHAT = "BATTLE CHAT";
     public static final String BATTLE_CHAT_PACKAGE = "com.ninetwozero.battlechat";
 
-    private final String STATE_SELECTED_POSITIION = "selected_navigation_drawer_group_position";
+    private final String STATE_SELECTED_POSITION = "selected_navigation_group_position";
+    private final String STATE_SELECTED_POSITION_TRACKING = "selected_navigation_group_position_tracking";
 
     private static final int DEFAULT_POSITION_GUEST = 1;
     private static final int DEFAULT_POSITION_TRACKING = 9;
@@ -50,7 +52,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private ListView listView;
     private NavigationDrawerCallbacks callbacks;
 
-    private int currentSelectedPosition = 0;
+    private int currentSelectedPosition;
     private Bundle soldierBundleForMenu;
 
     public NavigationDrawerFragment() {
@@ -70,7 +72,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
         final View baseView = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-        initialize(baseView, savedState);
+        initialize(baseView);
         return baseView;
     }
 
@@ -88,12 +90,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
     public void onDetach() {
         super.onDetach();
         callbacks = null;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt(STATE_SELECTED_POSITIION, currentSelectedPosition);
     }
 
     @Override
@@ -128,25 +124,21 @@ public class NavigationDrawerFragment extends BaseListFragment {
         ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
     }
 
-    private void initialize(final View view, final Bundle state) {
-        setupDataFromState(state);
+    private void initialize(final View view) {
+        setupDataFromState();
         setupRegularViews(view);
         setupListView(view);
     }
 
-    private void setupDataFromState(final Bundle state) {
-        if (state != null) {
-            currentSelectedPosition = state.getInt(STATE_SELECTED_POSITIION);
-        } else {
-            currentSelectedPosition = fetchStartingPositionForSessionState();
-        }
+    private void setupDataFromState() {
+        currentSelectedPosition = fetchStartingPositionForSessionState();
     }
 
     private int fetchStartingPositionForSessionState() {
         if (SessionStore.isLoggedIn()) {
-            return DEFAULT_POSITION;
+            return sharedPreferences.getInt(STATE_SELECTED_POSITION, DEFAULT_POSITION);
         } else if (SessionStore.hasUserId()) {
-            return DEFAULT_POSITION_TRACKING;
+            return sharedPreferences.getInt(STATE_SELECTED_POSITION_TRACKING, DEFAULT_POSITION_TRACKING);
         } else {
             return DEFAULT_POSITION_GUEST;
         }
@@ -176,6 +168,13 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void storePositionState(final int position) {
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (SessionStore.isLoggedIn()) {
+            editor.putInt(STATE_SELECTED_POSITION, position).commit();
+        } else if (SessionStore.hasUserId()) {
+            editor.putInt(STATE_SELECTED_POSITION_TRACKING, position).commit();
+        }
+
         currentSelectedPosition = position;
     }
 
@@ -319,8 +318,11 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private void selectItemFromState(final int position) {
         final NavigationDrawerListAdapter adapter = (NavigationDrawerListAdapter) getListAdapter();
-        final ListRowElement row = adapter.getItem(position);
+        if (position >= adapter.getCount()) {
+            selectItemFromState(fetchStartingPositionForSessionState());
+        }
 
+        final ListRowElement row = adapter.getItem(position);
         if (row instanceof SimpleListRow) {
             selectItem((SimpleListRow) row, position, true, true);
         }
