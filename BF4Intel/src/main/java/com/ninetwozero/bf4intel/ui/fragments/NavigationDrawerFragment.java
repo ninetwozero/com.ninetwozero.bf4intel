@@ -47,7 +47,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private static final int DEFAULT_POSITION_GUEST = 1;
     private static final int DEFAULT_POSITION_TRACKING = 9;
-    private static final int DEFAULT_POSITION = 3;
+    private static final int DEFAULT_POSITION = 9;
 
     private ListView listView;
     private NavigationDrawerCallbacks callbacks;
@@ -110,7 +110,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
         final ListRowElement item = ((NavigationDrawerListAdapter) getListAdapter()).getItem(position);
         if (item instanceof SimpleListRow) {
             selectItem((SimpleListRow) item, position, true, false);
-            storePositionState(position);
         }
     }
 
@@ -132,6 +131,16 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private void setupDataFromState() {
         currentSelectedPosition = fetchStartingPositionForSessionState();
+    }
+
+    public int fetchDefaultPosition() {
+        if (SessionStore.isLoggedIn()) {
+            return DEFAULT_POSITION;
+        } else if (SessionStore.hasUserId()) {
+            return DEFAULT_POSITION_TRACKING;
+        } else {
+            return DEFAULT_POSITION_GUEST;
+        }
     }
 
     private int fetchStartingPositionForSessionState() {
@@ -338,6 +347,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
             callbacks.onNavigationDrawerItemSelected(position, isFragment ? item.getTitle() : null);
         }
 
+        storePositionState(position);
         startItem(item, isOnResume);
     }
 
@@ -359,6 +369,14 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 showToast(ex.getMessage());
             }
         }
+    }
+
+    public int getCheckedItemPosition() {
+        return getListView().getCheckedItemPosition();
+    }
+
+    public void checkDefaultItemPosition() {
+        selectItemFromState(fetchDefaultPosition());
     }
 
     public static interface NavigationDrawerCallbacks {

@@ -105,10 +105,16 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     public void onBackPressed() {
         if (isDrawerOpen()) {
             toggleNavigationDrawer(false);
-        } else {
-            super.onBackPressed();
+            return;
         }
+
+        if (navigationDrawer.fetchDefaultPosition() != navigationDrawer.getCheckedItemPosition()) {
+            navigationDrawer.checkDefaultItemPosition();
+            return;
+        }
+        super.onBackPressed();
     }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
