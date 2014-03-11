@@ -58,15 +58,10 @@ public class NavigationDrawerFragment extends BaseListFragment {
     public NavigationDrawerFragment() {
         if (getArguments() == null) {
             final Bundle data = new Bundle();
-            data.putBoolean(BaseFragment.CALLED_FROM_VIEWPAGER, true);
+            data.putBoolean(BaseFragment.FLAG_DISABLE_AUTOMATIC_ANALYTICS, true);
+            data.putBoolean(BaseFragment.FLAG_DISABLE_RETAIN_STATE, true);
             setArguments(data);
         }
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(false);
     }
 
     @Override

@@ -27,7 +27,7 @@ public abstract class BaseListFragment extends ListFragment {
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
-        setRetainInstance(!getArgumentsBundle().getBoolean(BaseFragment.CALLED_FROM_VIEWPAGER, false));
+        setRetainInstance(!getArgumentsBundle().getBoolean(BaseFragment.FLAG_DISABLE_RETAIN_STATE, false));
         fragmentManager = getFragmentManager();
     }
 
@@ -42,7 +42,7 @@ public abstract class BaseListFragment extends ListFragment {
         super.onStart();
 
         final Bundle bundle = getArgumentsBundle();
-        if (!bundle.getBoolean(BaseFragment.CALLED_FROM_VIEWPAGER, false)) {
+        if (!bundle.getBoolean(BaseFragment.FLAG_DISABLE_AUTOMATIC_ANALYTICS, false)) {
             postGoogleAnalytics();
         }
     }

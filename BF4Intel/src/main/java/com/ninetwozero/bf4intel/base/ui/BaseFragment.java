@@ -16,7 +16,8 @@ import android.widget.Toast;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 public abstract class BaseFragment extends Fragment {
-    public static final String CALLED_FROM_VIEWPAGER = "fragmentIsCalledFromTheViewPager";
+    public static final String FLAG_DISABLE_AUTOMATIC_ANALYTICS = "flag_disable_automated_analytics";
+    public static final String FLAG_DISABLE_RETAIN_STATE = "flag_disable_retain_instance_state";
 
     protected static final float ALPHA_ENABLED = 0.8f;
     protected static final float ALPHA_DISABLED = 0.3f;
@@ -29,7 +30,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
-        setRetainInstance(!getArgumentsBundle().getBoolean(CALLED_FROM_VIEWPAGER, false));
+        setRetainInstance(!getArgumentsBundle().getBoolean(FLAG_DISABLE_RETAIN_STATE, false));
         fragmentManager = getFragmentManager();
     }
 
@@ -44,7 +45,7 @@ public abstract class BaseFragment extends Fragment {
         super.onStart();
 
         final Bundle bundle = getArgumentsBundle();
-        if (!bundle.getBoolean(CALLED_FROM_VIEWPAGER, false)) {
+        if (!bundle.getBoolean(FLAG_DISABLE_AUTOMATIC_ANALYTICS, false)) {
             postGoogleAnalytics();
         }
     }
