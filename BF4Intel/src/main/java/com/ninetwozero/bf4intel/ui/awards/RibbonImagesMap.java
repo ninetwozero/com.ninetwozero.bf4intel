@@ -57,6 +57,7 @@ public class RibbonImagesMap {
             put("xp1rBD", R.drawable.awards_ribbon_xp1bd);
             put("xp0rCS", R.drawable.awards_ribbon_xp0rcs);
             put("xp0rFD", R.drawable.awards_ribbon_xp0rfd);
+            put("xp2rCA", R.drawable.awards_ribbon_xp2rca);
         }
     };
 

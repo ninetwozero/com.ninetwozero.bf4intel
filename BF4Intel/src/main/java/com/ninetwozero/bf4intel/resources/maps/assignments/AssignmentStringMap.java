@@ -107,6 +107,18 @@ public class AssignmentStringMap {
             put("WARSAW_ID_P_XP1_AWARD_AS_08", R.string.assignments_xp1_name_08);
             put("WARSAW_ID_P_XP1_AWARD_AS_09", R.string.assignments_xp1_name_09);
             put("WARSAW_ID_P_XP1_AWARD_AS_10", R.string.assignments_xp1_name_10);
+
+            /*Expansion 2 Naval Strike*/
+            put("WARSAW_ID_P_XP2_AWARD_AS_01", R.string.assignments_xp2_name_01);
+            put("WARSAW_ID_P_XP2_AWARD_AS_02", R.string.assignments_xp2_name_02);
+            put("WARSAW_ID_P_XP2_AWARD_AS_03", R.string.assignments_xp2_name_23);
+            put("WARSAW_ID_P_XP2_AWARD_AS_04", R.string.assignments_xp2_name_04);
+            put("WARSAW_ID_P_XP2_AWARD_AS_05", R.string.assignments_xp2_name_05);
+            put("WARSAW_ID_P_XP2_AWARD_AS_06", R.string.assignments_xp2_name_06);
+            put("WARSAW_ID_P_XP2_AWARD_AS_07", R.string.assignments_xp2_name_07);
+            put("WARSAW_ID_P_XP2_AWARD_AS_08", R.string.assignments_xp2_name_08);
+            put("WARSAW_ID_P_XP2_AWARD_AS_09", R.string.assignments_xp2_name_09);
+            put("WARSAW_ID_P_XP2_AWARD_AS_10", R.string.assignments_xp2_name_10);
         }
     };
 

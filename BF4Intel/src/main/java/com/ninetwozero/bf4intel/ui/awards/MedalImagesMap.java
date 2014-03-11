@@ -57,6 +57,7 @@ public class MedalImagesMap {
             put("xp1mBD", R.drawable.awards_mxp1mbd);
             put("xp0mCTF", R.drawable.awards_mxp0mctf);
             put("xp0mCTFS", R.drawable.awards_mxp0mctfs);
+            put("xp2mCA", R.drawable.awards_mxp2mca);
         }
     };
 

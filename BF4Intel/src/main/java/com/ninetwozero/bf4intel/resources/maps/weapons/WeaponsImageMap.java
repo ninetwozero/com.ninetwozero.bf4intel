@@ -154,6 +154,19 @@ public class WeaponsImageMap {
             put("WARSAW_ID_P_XP0_WNAME_M60E4", R.drawable.w_m60e4_fancy);
             put("WARSAW_ID_P_XP0_WNAME_ASVAL", R.drawable.w_asval_fancy);
             put("WARSAW_ID_P_INAME_BPKNIFE7", R.drawable.w_knife_bootknife_fancy);
+
+            /*NAVAL STRIKE*/
+            put("WARSAW_ID_P_XP2_WNAME_SR2", R.drawable.w_sr2_fancy);
+            put("WARSAW_ID_P_XP2_WNAME_AR160", R.drawable.w_ar160_fancy);
+            put("WARSAW_ID_P_XP2_WNAME_AWS", R.drawable.w_aws_fancy);
+            put("WARSAW_ID_P_XP2_WNAME_SR338", R.drawable.w_sr338_fancy);
+            put("WARSAW_ID_P_XP2_INAME_AAMINE", R.drawable.w_aamine_fancy);
+            put("WARSAW_ID_P_INAME_DIVERKNIFE", R.drawable.w_knife_diver_fancy);
+            put("WARSAW_ID_P_INAME_KNIFE14100BT", R.drawable.w_knife_tactical2_fancy);
+            put("WARSAW_ID_P_XP2_INAME_40MM_3GL", R.drawable.w_m320_fancy);
+            put("WARSAW_ID_P_XP2_WNAME_SW40", R.drawable.w_sw40_fancy);
+            put("WARSAW_ID_P_INAME_KNIFE2142", R.drawable.w_knife_2142_fancy);
+            put("WARSAW_ID_P_INAME_KNIFEPRECISION", R.drawable.w_knife_precision_fancy);
         }
     };
 

@@ -99,4 +99,20 @@
   <string name="assignments_xp1_name_08">Multi Talent</string>
   <string name="assignments_xp1_name_09">I\'m Dynamite</string>
   <string name="assignments_xp1_name_10">Middle King</string>
+
+  <!--Naval Strike -->
+  <string name="assignments_xp2_name_01">Titans of Steel</string>
+  <string name="assignments_xp2_name_02">Spare Time Sniper</string>
+  <string name="assignments_xp2_name_23">Packing a Punch</string>
+  <string name="assignments_xp2_name_04">Swiss Cheese</string>
+  <string name="assignments_xp2_name_05">Always Deadly</string>
+  <string name="assignments_xp2_name_06">Curve Ball</string>
+  <string name="assignments_xp2_name_07">Multi Tool</string>
+  <string name="assignments_xp2_name_08">Death From Below</string>
+  <string name="assignments_xp2_name_09">Scourge of the Sea</string>
+  <string name="assignments_xp2_name_10">Giant Slayer</string>
+
+  <!--GHOST-->
+  <string name="assignments_mp_name_ghost1">Phantom Prospect</string>
+  <string name="assignments_xp2_name_ghost2">Phantom Trainee</string>
 </resources>
