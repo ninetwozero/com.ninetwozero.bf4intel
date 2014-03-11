@@ -46,7 +46,8 @@ public abstract class BaseTabFragment extends BaseFragment {
 
     private Bundle getPreparedArguments() {
         final Bundle arguments = getArguments();
-        arguments.putBoolean(BaseFragment.DISABLE_AUTO_ANALYTICS, true);
+        arguments.putBoolean(BaseFragment.FLAG_DISABLE_AUTOMATIC_ANALYTICS, true);
+        arguments.putBoolean(BaseFragment.FLAG_DISABLE_RETAIN_STATE, true);
         return arguments;
     }
 

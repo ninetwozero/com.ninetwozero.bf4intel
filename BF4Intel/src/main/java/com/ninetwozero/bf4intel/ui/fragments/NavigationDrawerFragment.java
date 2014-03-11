@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -41,36 +42,32 @@ public class NavigationDrawerFragment extends BaseListFragment {
     public static final String BATTLE_CHAT = "BATTLE CHAT";
     public static final String BATTLE_CHAT_PACKAGE = "com.ninetwozero.battlechat";
 
-    private final String STATE_SELECTED_POSITIION = "selected_navigation_drawer_group_position";
+    private final String STATE_SELECTED_POSITION = "selected_navigation_group_position";
+    private final String STATE_SELECTED_POSITION_TRACKING = "selected_navigation_group_position_tracking";
 
     private static final int DEFAULT_POSITION_GUEST = 1;
     private static final int DEFAULT_POSITION_TRACKING = 9;
-    private static final int DEFAULT_POSITION = 3;
+    private static final int DEFAULT_POSITION = 9;
 
     private ListView listView;
     private NavigationDrawerCallbacks callbacks;
 
-    private int currentSelectedPosition = 0;
+    private int currentSelectedPosition;
     private Bundle soldierBundleForMenu;
 
     public NavigationDrawerFragment() {
         if (getArguments() == null) {
             final Bundle data = new Bundle();
-            data.putBoolean(BaseFragment.DISABLE_AUTO_ANALYTICS, true);
+            data.putBoolean(BaseFragment.FLAG_DISABLE_AUTOMATIC_ANALYTICS, true);
+            data.putBoolean(BaseFragment.FLAG_DISABLE_RETAIN_STATE, true);
             setArguments(data);
         }
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(false);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
         final View baseView = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-        initialize(baseView, savedState);
+        initialize(baseView);
         return baseView;
     }
 
@@ -91,12 +88,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt(STATE_SELECTED_POSITIION, currentSelectedPosition);
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         BusProvider.getInstance().register(this);
@@ -114,7 +105,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
         final ListRowElement item = ((NavigationDrawerListAdapter) getListAdapter()).getItem(position);
         if (item instanceof SimpleListRow) {
             selectItem((SimpleListRow) item, position, true, false);
-            storePositionState(position);
         }
     }
 
@@ -128,25 +118,31 @@ public class NavigationDrawerFragment extends BaseListFragment {
         ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
     }
 
-    private void initialize(final View view, final Bundle state) {
-        setupDataFromState(state);
+    private void initialize(final View view) {
+        setupDataFromState();
         setupRegularViews(view);
         setupListView(view);
     }
 
-    private void setupDataFromState(final Bundle state) {
-        if (state != null) {
-            currentSelectedPosition = state.getInt(STATE_SELECTED_POSITIION);
+    private void setupDataFromState() {
+        currentSelectedPosition = fetchStartingPositionForSessionState();
+    }
+
+    public int fetchDefaultPosition() {
+        if (SessionStore.isLoggedIn()) {
+            return DEFAULT_POSITION;
+        } else if (SessionStore.hasUserId()) {
+            return DEFAULT_POSITION_TRACKING;
         } else {
-            currentSelectedPosition = fetchStartingPositionForSessionState();
+            return DEFAULT_POSITION_GUEST;
         }
     }
 
     private int fetchStartingPositionForSessionState() {
         if (SessionStore.isLoggedIn()) {
-            return DEFAULT_POSITION;
+            return sharedPreferences.getInt(STATE_SELECTED_POSITION, DEFAULT_POSITION);
         } else if (SessionStore.hasUserId()) {
-            return DEFAULT_POSITION_TRACKING;
+            return sharedPreferences.getInt(STATE_SELECTED_POSITION_TRACKING, DEFAULT_POSITION_TRACKING);
         } else {
             return DEFAULT_POSITION_GUEST;
         }
@@ -176,6 +172,13 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void storePositionState(final int position) {
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (SessionStore.isLoggedIn()) {
+            editor.putInt(STATE_SELECTED_POSITION, position).commit();
+        } else if (SessionStore.hasUserId()) {
+            editor.putInt(STATE_SELECTED_POSITION_TRACKING, position).commit();
+        }
+
         currentSelectedPosition = position;
     }
 
@@ -261,6 +264,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
             soldiers.add(result);
         }
 
+        results.close();
         return soldiers;
     }
 
@@ -318,8 +322,11 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private void selectItemFromState(final int position) {
         final NavigationDrawerListAdapter adapter = (NavigationDrawerListAdapter) getListAdapter();
-        final ListRowElement row = adapter.getItem(position);
+        if (position >= adapter.getCount()) {
+            selectItemFromState(fetchStartingPositionForSessionState());
+        }
 
+        final ListRowElement row = adapter.getItem(position);
         if (row instanceof SimpleListRow) {
             selectItem((SimpleListRow) row, position, true, true);
         }
@@ -335,6 +342,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
             callbacks.onNavigationDrawerItemSelected(position, isFragment ? item.getTitle() : null);
         }
 
+        storePositionState(position);
         startItem(item, isOnResume);
     }
 
@@ -356,6 +364,14 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 showToast(ex.getMessage());
             }
         }
+    }
+
+    public int getCheckedItemPosition() {
+        return getListView().getCheckedItemPosition();
+    }
+
+    public void checkDefaultItemPosition() {
+        selectItemFromState(fetchDefaultPosition());
     }
 
     public static interface NavigationDrawerCallbacks {

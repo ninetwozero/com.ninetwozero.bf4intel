@@ -8,9 +8,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.content.Loader;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.ui.about.AppInfoActivity;
 import com.ninetwozero.bf4intel.ui.activities.MainActivity;
 import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
@@ -46,6 +49,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     private Bundle profileBundle;
     private View loginStatusView;
     private TextView alertText;
+    private EditText searchField;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -139,14 +143,9 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     }
 
     private void setupLayout() {
-        setupForm();
         setupMenu();
+        setupForm();
         setupButton();
-    }
-
-    private void setupForm() {
-        alertText = (TextView) findViewById(R.id.login_alert);
-        loginStatusView = findViewById(R.id.login_status);
     }
 
     private void setupMenu() {
@@ -161,8 +160,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                             public boolean onMenuItemClick(MenuItem item) {
                                 Intent intent = null;
                                 if (item.getItemId() == R.id.menu_about) {
-                                    Toast.makeText(getApplicationContext(), "TODO: This should lead to ABout", Toast.LENGTH_SHORT).show();
-                                    // TODO: intent = new Intent(LoginActivity.this, AppInfoActivity.class);
+                                    intent = new Intent(LoginActivity.this, AppInfoActivity.class);
                                 } else if (item.getItemId() == R.id.menu_reset_password) {
                                     intent = new Intent(Intent.ACTION_VIEW).setData(
                                         Uri.parse(RESET_PASSWORD_LINK)
@@ -183,27 +181,50 @@ public class LoginActivity extends BaseLoadingIntelActivity {
         );
     }
 
+    private void setupForm() {
+        alertText = (TextView) findViewById(R.id.login_alert);
+        loginStatusView = findViewById(R.id.login_status);
+        searchField = (EditText) findViewById(R.id.search_term);
+
+        searchField.setOnEditorActionListener(
+            new EditText.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                    if (id == EditorInfo.IME_ACTION_SEND) {
+                        onFormSubmitted();
+                        return true;
+                    }
+                    return false;
+                }
+            }
+        );
+    }
+
     private void setupButton() {
         findViewById(R.id.button_search_account).setOnClickListener(
             new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final EditText searchField = (EditText) findViewById(R.id.search_term);
-                    final String searchTerm = searchField.getText().toString();
-                    if ("".equals(searchTerm) || searchTerm.length() < 3) {
-                        searchField.setError(getString(R.string.msg_search_error_length));
-                        return;
-                    }
-
-                    startActivityForResult(
-                        new Intent(LoginActivity.this, SearchActivity.class).putExtra(
-                            SearchActivity.QUERY,
-                            searchTerm
-                        ),
-                        SearchActivity.REQUEST_SEARCH
-                    );
+                    onFormSubmitted();
                 }
             }
+        );
+    }
+
+    private void onFormSubmitted() {
+        final EditText searchField = (EditText) findViewById(R.id.search_term);
+        final String searchTerm = searchField.getText().toString();
+        if ("".equals(searchTerm) || searchTerm.length() < 3) {
+            searchField.setError(getString(R.string.msg_search_error_length));
+            return;
+        }
+
+        startActivityForResult(
+            new Intent(LoginActivity.this, SearchActivity.class).putExtra(
+                SearchActivity.QUERY,
+                searchTerm
+            ),
+            SearchActivity.REQUEST_SEARCH
         );
     }
 
