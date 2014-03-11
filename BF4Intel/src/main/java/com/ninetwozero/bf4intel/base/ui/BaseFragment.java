@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 public abstract class BaseFragment extends Fragment {
-    public static final String CALLED_FROM_VIEWPAGER = "disableAutomaticAnalyticsOnStart";
+    public static final String CALLED_FROM_VIEWPAGER = "fragmentIsCalledFromTheViewPager";
 
     protected static final float ALPHA_ENABLED = 0.8f;
     protected static final float ALPHA_DISABLED = 0.3f;
