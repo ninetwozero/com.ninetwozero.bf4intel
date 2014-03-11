@@ -101,8 +101,11 @@ public class NavigationDrawerListAdapter extends BaseIntelAdapter<ListRowElement
                 new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        preferences.edit().putLong(Keys.Menu.LATEST_PERSONA, id).commit();
-                        BusProvider.getInstance().post(new ActiveSoldierChangedEvent(id));
+                        final long oldId = preferences.getLong(Keys.Menu.LATEST_PERSONA, -1);
+                        if (oldId != id) {
+                            preferences.edit().putLong(Keys.Menu.LATEST_PERSONA, id).commit();
+                            BusProvider.getInstance().post(new ActiveSoldierChangedEvent(id));
+                        }
                     }
 
                     @Override
