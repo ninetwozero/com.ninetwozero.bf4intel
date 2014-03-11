@@ -74,7 +74,7 @@ public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T>
         } else {
             final String label = criteria.getLabel().toLowerCase(Locale.getDefault());
             final String labelPrefix = label.substring(0, label.lastIndexOf("_"));
-            if (labelPrefix.contains("as")) {
+            if (labelPrefix.contains("as") || labelPrefix.contains("xp23")) {
                 return String.format(
                         context.getString(R.string.unlock_complete_as),
                         context.getString(AssignmentStringMap.get(criteria.getAward().getName()))

@@ -220,6 +220,20 @@ public class WeaponStringSlugMap {
             put("STARSTREAK", R.string.weapon_iname_starstreak);
             put("T-UGS", R.string.weapon_iname_ugs);
             put("V40-MINI", R.string.weapon_iname_v40);
+
+            put("BJ-2", R.string.weapon_knife_2142);
+            put("SEAL", R.string.weapon_knife_sealknife_fancy);
+            put("IMPROVISED", R.string.weapon_knife_improvised_fancy);
+            put("BOOT", R.string.weapon_knife_bootknife_fancy);
+            put("SURVIVAL", R.string.weapon_knife_survival);
+            put("PRECISION", R.string.weapon_knife_precision);
+            put("TACTICAL", R.string.weapon_knife_tactical2);
+            put("DIVE", R.string.weapon_knife_diver);
+            put("AWS", R.string.weapon_aws);
+            put("SR-2", R.string.weapon_sr2);
+            put("SW40", R.string.weapon_sw40);
+            put("SR338", R.string.weapon_sr338);
+            put("AR160", R.string.weapon_ar160);
         }
     };
 

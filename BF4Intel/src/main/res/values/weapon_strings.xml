@@ -188,4 +188,17 @@
   <string name="weapon_m60e4_fancy">M60-E4</string>
   <string name="weapon_asval_fancy">AS VAL</string>
   <string name="weapon_knife_bootknife_fancy">BOOT</string>
+
+  <string name="weapon_sr2">SR-2</string>
+  <string name="weapon_ar160">AR160</string>
+  <string name="weapon_aws">AWS</string>
+  <string name="weapon_sr338">SR338</string>
+  <string name="weapon_aamine">AA MINE</string>
+  <string name="weapon_knife_diver">DIVE</string>
+  <string name="weapon_knife_tactical2">TACTICAL</string>
+  <string name="weapon_40mm_3gl">M320 3GL</string>
+  <string name="weapon_sw40">SW40</string>
+  <string name="weapon_knife_2142">BJ-2</string>
+  <string name="weapon_knife_precision">PRECISION</string>
+  <string name="weapon_knife_survival">SURVIVAL</string>
 </resources>

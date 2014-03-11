@@ -1,7 +1,5 @@
 package com.ninetwozero.bf4intel.resources.maps.weapons;
 
-import android.util.Log;
-
 import com.ninetwozero.bf4intel.R;
 
 import java.util.HashMap;
@@ -192,13 +190,23 @@ public class WeaponStringMap {
             put("WARSAW_ID_P_XP0_WNAME_ASVAL", R.string.weapon_asval_fancy);
             put("WARSAW_ID_P_INAME_BPKNIFE7", R.string.weapon_knife_bootknife_fancy);
             put("WARSAW_ID_P_XP1_VNAME_UCAV", R.string.vehicle_xp1_name_ucav);
+            
+            /*NAVAL STRIKE*/
+            put("WARSAW_ID_P_XP2_WNAME_SR2", R.string.weapon_sr2);
+            put("WARSAW_ID_P_XP2_WNAME_AR160", R.string.weapon_ar160);
+            put("WARSAW_ID_P_XP2_WNAME_AWS", R.string.weapon_aws);
+            put("WARSAW_ID_P_XP2_WNAME_SR338", R.string.weapon_sr338);
+            put("WARSAW_ID_P_XP2_INAME_AAMINE", R.string.weapon_aamine);
+            put("WARSAW_ID_P_INAME_DIVERKNIFE", R.string.weapon_knife_diver);
+            put("WARSAW_ID_P_INAME_KNIFE14100BT", R.string.weapon_knife_tactical2);
+            put("WARSAW_ID_P_XP2_INAME_40MM_3GL", R.string.weapon_40mm_3gl);
+            put("WARSAW_ID_P_XP2_WNAME_SW40", R.string.weapon_sw40);
+            put("WARSAW_ID_P_INAME_KNIFE2142", R.string.weapon_knife_2142);
+            put("WARSAW_ID_P_INAME_KNIFEPRECISION", R.string.weapon_knife_precision);
         }
     };
 
     public static int get(final String key) {
-        if(!map.containsKey(key)) {
-            Log.e("Missing weapon", key);
-        }
         return map.containsKey(key)? map.get(key) : R.string.na;
     }
 }
