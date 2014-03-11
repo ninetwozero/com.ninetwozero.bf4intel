@@ -88,6 +88,19 @@ public class AssignmentImageMap {
 
             /*Unknown award*/
             put("WARSAW_ID_P_XP1_AWARD_GHOST", R.drawable.ghost1);
+            put("WARSAW_ID_P_XP2_AWARD_GHOST", R.drawable.ghost2);
+
+            /*Naval Strike assignments*/
+            put("WARSAW_ID_P_XP2_AWARD_AS_01", R.drawable.xp2as01);
+            put("WARSAW_ID_P_XP2_AWARD_AS_02", R.drawable.xp2as02);
+            put("WARSAW_ID_P_XP2_AWARD_AS_04", R.drawable.xp2as04);
+            put("WARSAW_ID_P_XP2_AWARD_AS_05", R.drawable.xp2as05);
+            put("WARSAW_ID_P_XP2_AWARD_AS_06", R.drawable.xp2as06);
+            put("WARSAW_ID_P_XP2_AWARD_AS_07", R.drawable.xp2as07);
+            put("WARSAW_ID_P_XP2_AWARD_AS_08", R.drawable.xp2as08);
+            put("WARSAW_ID_P_XP2_AWARD_AS_09", R.drawable.xp2as09);
+            put("WARSAW_ID_P_XP2_AWARD_AS_10", R.drawable.xp2as10);
+            put("WARSAW_ID_P_XP2_AWARD_AS_03", R.drawable.xp23);
         }
     };
 
