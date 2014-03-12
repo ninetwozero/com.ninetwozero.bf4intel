@@ -22,8 +22,32 @@ android {
     buildToolsVersion '19.0.1'
 
     defaultConfig {
+        packageName 'com.ninetwozero.bf4intel'
+        versionCode  1614091
+        versionName '0.9.1'
         minSdkVersion 14
         targetSdkVersion 19
+    }
+
+    signingConfigs {
+        bf4intel {
+            storeFile file("${System.properties['user.home']}/.android/debug.keystore")
+            storePassword ""
+            keyAlias ""
+            keyPassword ""
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+
+        release {
+            debuggable false
+            jniDebugBuild false
+            signingConfig signingConfigs.bf4intel
+        }
     }
 
     lintOptions {
