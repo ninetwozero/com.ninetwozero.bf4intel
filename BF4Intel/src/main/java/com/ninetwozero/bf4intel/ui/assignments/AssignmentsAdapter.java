@@ -35,8 +35,7 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
             view = layoutInflater.inflate(R.layout.item_assignment, parent, false);
         }
 
-        setImage(view, R.id.img_assignment, AssignmentImageMap.get(assignment.getAward().getUniqueName()));
-
+        showAssignmentImage(view, award, assignment.isCompleted());
         if (award.hasExpansionPack()) {
             showExpansionPackIcon(view, award);
         } else {
@@ -50,8 +49,13 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
             setVisibility(view, R.id.assignment_completion, View.INVISIBLE);
         }
 
-        view.setAlpha(assignment.isCompleted() ? 1f : 0.5f);
         return view;
+    }
+
+    private void showAssignmentImage(final View view, final AssignmentAward award, final boolean completed) {
+        final ImageView imageView = (ImageView) view.findViewById(R.id.img_assignment);
+        imageView.setImageResource(AssignmentImageMap.get(award.getUniqueName()));
+        imageView.setAlpha(completed ? 1f : 0.5f);
     }
 
     private void showExpansionPackIcon(final View view, final AssignmentAward award) {
