@@ -53,8 +53,8 @@ public class RibbonImagesMap {
             put("r43", R.drawable.awards_ribbon_r43);
             put("r44", R.drawable.awards_ribbon_r44);
             put("r45", R.drawable.awards_ribbon_r45);
-            put("xp1rAS", R.drawable.awards_ribbon_xp1as);
-            put("xp1rBD", R.drawable.awards_ribbon_xp1bd);
+            put("xp1rAS", R.drawable.awards_ribbon_xp1ras);
+            put("xp1rBD", R.drawable.awards_ribbon_xp1rbd);
             put("xp0rCS", R.drawable.awards_ribbon_xp0rcs);
             put("xp0rFD", R.drawable.awards_ribbon_xp0rfd);
             put("xp2rCA", R.drawable.awards_ribbon_xp2rca);
