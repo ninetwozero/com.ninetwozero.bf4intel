@@ -38,25 +38,14 @@
       >
 
       <ImageView
-        android:id="@+id/weapon_image"
-        android:layout_width="@dimen/stats_weapon_width"
+        android:id="@+id/item_image"
+        android:layout_width="@dimen/stats_item_width"
         android:layout_height="wrap_content"
         android:contentDescription="@string/cdesc_item_image"
         android:adjustViewBounds="true"
-        android:visibility="gone"
         android:layout_marginTop="@dimen/spacing_m"
         android:layout_marginBottom="@dimen/spacing_m"
-        />
-
-      <ImageView
-        android:id="@+id/vehicle_image"
-        android:layout_width="@dimen/stats_vehicle_width"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/cdesc_item_image"
-        android:adjustViewBounds="true"
-        android:src="@drawable/vehicle_m224_mortar"
-        android:cropToPadding="false"
-        android:visibility="gone"
+        android:src="@drawable/w_a91_fancy"
         />
     </LinearLayout>
   </RelativeLayout>
