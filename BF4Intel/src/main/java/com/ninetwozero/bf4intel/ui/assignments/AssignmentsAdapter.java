@@ -46,7 +46,6 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
             populateViewForTracking(view, assignment);
         } else {
             setVisibility(view, R.id.img_assignment_prerequisite, View.VISIBLE);
-            setVisibility(view, R.id.assignment_completion, View.INVISIBLE);
         }
 
         return view;
