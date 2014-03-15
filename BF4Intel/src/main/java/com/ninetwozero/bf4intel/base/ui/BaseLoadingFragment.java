@@ -18,6 +18,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.factories.GsonProvider;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.ninetwozero.bf4intel.utils.BusProvider;
+import com.squareup.otto.Subscribe;
 
 public abstract class BaseLoadingFragment extends BaseFragment implements Response.ErrorListener {
     protected final Gson gson = GsonProvider.getInstance();
@@ -34,6 +37,19 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         requestQueue = Volley.newRequestQueue(activity);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BusProvider.getInstance().register(this);
+        startLoadingData();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        BusProvider.getInstance().unregister(this);
     }
 
     @Override
@@ -54,23 +70,9 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
         Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
     }
 
-    @Override
-    public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-
-        final MenuItem menuItem = menu.findItem(R.id.ab_action_refresh);
-        if ( menuItem != null ) {
-            menuItem.setVisible(true);
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
-        if (item.getItemId() == R.id.ab_action_refresh) {
-            startLoadingData();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
+        startLoadingData();
     }
 
     protected <T extends Object> T fromJson(final String jsonString, final Class<T> outClass) {

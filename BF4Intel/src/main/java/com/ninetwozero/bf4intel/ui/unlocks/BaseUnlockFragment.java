@@ -12,6 +12,8 @@ import com.android.volley.Request;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.squareup.otto.Subscribe;
 
 public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
 
@@ -26,8 +28,12 @@ public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
 
     @Override
     public void onResume() {
-        super.onResume();
         showLoadingState(false);
+        super.onResume();
+    }
+
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
     }
 

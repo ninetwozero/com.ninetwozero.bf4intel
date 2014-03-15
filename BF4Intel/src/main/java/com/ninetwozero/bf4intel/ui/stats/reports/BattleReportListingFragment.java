@@ -19,6 +19,8 @@ import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.BaseListItem;
 import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
 import com.ninetwozero.bf4intel.ui.SimpleListHeader;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +46,8 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
     }
 

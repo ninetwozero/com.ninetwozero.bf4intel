@@ -20,6 +20,8 @@ import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
@@ -50,9 +52,8 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
     }
 

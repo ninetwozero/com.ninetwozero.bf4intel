@@ -13,6 +13,8 @@ import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.json.stats.weapons.WeaponStatistics;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.squareup.otto.Subscribe;
 
 import java.util.Collections;
 import java.util.List;
@@ -32,9 +34,8 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
         return layoutInflater.inflate(R.layout.fragment_list_stats, parent, false);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
     }
 

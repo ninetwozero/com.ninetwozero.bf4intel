@@ -25,7 +25,9 @@ import com.ninetwozero.bf4intel.resources.maps.ranks.RankImageMap;
 import com.ninetwozero.bf4intel.resources.maps.ranks.RankStringMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,9 +50,8 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         return layoutInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
     }
 

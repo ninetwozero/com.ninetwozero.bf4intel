@@ -17,6 +17,8 @@ import com.ninetwozero.bf4intel.model.stats.details.StatsDetailsGrouped;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.squareup.otto.Subscribe;
 
 public class DetailsStatsFragment extends BaseLoadingListFragment {
 
@@ -36,9 +38,8 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
     }
 

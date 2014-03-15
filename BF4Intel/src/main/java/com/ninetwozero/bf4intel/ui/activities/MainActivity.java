@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.about.AppInfoActivity;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
 import java.util.Locale;
@@ -80,6 +82,11 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         switch (item.getItemId()) {
             case android.R.id.home:
                 toggleNavigationDrawer(!isDrawerOpen());
+                return true;
+
+            case R.id.ab_action_refresh:
+                Log.d("YOLO", "Refreshing...");
+                BusProvider.getInstance().post(new RefreshEvent());
                 return true;
 
             case R.id.ab_action_select_user:
