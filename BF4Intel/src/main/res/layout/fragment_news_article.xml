@@ -44,7 +44,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_above="@id/wrap_form">
+    android:layout_above="@id/wrap_form"
+    >
     <include
       android:id="@+id/header_when_empty"
       layout="@layout/list_header_news_article"
