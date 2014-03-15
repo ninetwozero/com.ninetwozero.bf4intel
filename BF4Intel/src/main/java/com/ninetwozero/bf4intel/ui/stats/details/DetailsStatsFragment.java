@@ -9,12 +9,13 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;
 import com.ninetwozero.bf4intel.model.stats.details.StatsDetailsGrouped;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
@@ -46,41 +47,43 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
-    }
-
-    @Override
-    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         showLoadingState(true);
-        return new IntelLoader(
-            getActivity(),
-            new SimpleGetRequest(
-                UrlFactory.buildDetailsURL(
-                    bundle.getLong(Keys.Soldier.ID),
-                    bundle.getInt(Keys.Soldier.PLATFORM)
-                )
-            )
-        );
+        requestQueue.add(fetchRequest(getArguments()));
+    }
+
+    private Request<StatsDetailsGrouped> fetchRequest(Bundle bundle) {
+        return new SimpleGetRequest<StatsDetailsGrouped>(
+            UrlFactory.buildDetailsURL(
+                bundle.getLong(Keys.Soldier.ID),
+                bundle.getInt(Keys.Soldier.PLATFORM)
+            ),
+            this
+        ) {
+            @Override
+            protected StatsDetailsGrouped doParse(String json) {
+                final StatsDetails.GeneralStats details = fromJson(json, StatsDetails.class).getGeneralStats();
+                if (details == null) {
+                    Log.w(getClass().getSimpleName(), "Detailed Stats is empty.");
+                    cancel();
+                    return null;
+                }
+
+                final StatsDetailsGrouped stats = new StatsDetailsGrouped(details);
+                return stats;
+            }
+
+            @Override
+            protected void deliverResponse(StatsDetailsGrouped response) {
+                sendDataToListView(response);
+                showLoadingState(false);
+            }
+        };
     }
 
     @Override
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        final StatsDetails.GeneralStats details = fromJson(resultMessage, StatsDetails.class).getGeneralStats();
-        if (details == null) {
-            Log.w(getClass().getSimpleName(), "Detailed Stats is empty.");
-            return;
-        }
-
-        final StatsDetailsGrouped stats = new StatsDetailsGrouped(details);
-
-        sendDataToListView(stats);
-        showLoadingState(false);
-    }
-
-    @Override
-    protected void onLoadFailure(final Loader loader, final String resultMessage) {
-        super.onLoadFailure(loader, resultMessage);
-        showToast(resultMessage);
+    public void onErrorResponse(VolleyError error) {
+        super.onErrorResponse(error);
+        showToast(error.getMessage());
     }
 
 

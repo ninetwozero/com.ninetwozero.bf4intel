@@ -1,17 +1,15 @@
 package com.ninetwozero.bf4intel.ui.unlocks.vehicles;
 
 import android.os.Bundle;
-import android.support.v4.content.Loader;
 import android.widget.ExpandableListView;
 
+import com.android.volley.Request;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlocks;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockFragment;
-import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,42 +26,26 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
     }
 
     @Override
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        final VehicleUnlocks unlocks = fromJson(resultMessage, VehicleUnlocks.class);
-        if (unlocks.getUnlockMap() == null) {
-            return;
-        }
+    protected Request<Map<String, List<VehicleUnlock>>> fetchRequest(Bundle bundle) {
+        return new SimpleGetRequest<Map<String, List<VehicleUnlock>>>(
+            UrlFactory.buildVehicleUnlocksURL(
+                bundle.getLong(Keys.Soldier.ID),
+                bundle.getInt(Keys.Soldier.PLATFORM)
+            ),
+            this
+        ) {
+            @Override
+            protected Map<String, List<VehicleUnlock>> doParse(String json) {
+                final VehicleUnlocks unlocks = fromJson(json, VehicleUnlocks.class);
+                return sortItemsInMap(unlocks.getUnlockMap());
+            }
 
-        sendDataToListView(sortItemsInMap(unlocks.getUnlockMap()));
-        showLoadingState(false);
-    }
-
-    @Override
-    protected void startLoadingData() {
-        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
-    }
-
-    @Override
-    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
-        showLoadingState(true);
-        return new IntelLoader(
-            getActivity(),
-            new SimpleGetRequest(
-                UrlFactory.buildVehicleUnlocksURL(
-                    bundle.getLong(Keys.Soldier.ID),
-                    bundle.getInt(Keys.Soldier.PLATFORM)
-                )
-            )
-        );
-    }
-
-
-    private void sendDataToListView(final Map<String, List<VehicleUnlock>> unlockMap) {
-        final ExpandableListView listView = (ExpandableListView) getListView();
-        if (listView == null) {
-            return;
-        }
-        listView.setAdapter(new VehicleUnlockAdapter(getActivity(), unlockMap));
+            @Override
+            protected void deliverResponse(Map<String, List<VehicleUnlock>> response) {
+                sendDataToListView(response);
+                showLoadingState(false);
+            }
+        };
     }
 
     private Map<String, List<VehicleUnlock>> sortItemsInMap(final Map<String, List<VehicleUnlock>> unlockMap) {
@@ -74,5 +56,13 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
             map.put(key, unlocks);
         }
         return map;
+    }
+
+    private void sendDataToListView(final Map<String, List<VehicleUnlock>> unlockMap) {
+        final ExpandableListView listView = (ExpandableListView) getListView();
+        if (listView == null) {
+            return;
+        }
+        listView.setAdapter(new VehicleUnlockAdapter(getActivity(), unlockMap));
     }
 }

@@ -1,26 +1,24 @@
 package com.ninetwozero.bf4intel.ui.stats.reports;
 
 import android.os.Bundle;
-import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.BaseListItem;
-import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
-import com.ninetwozero.bf4intel.ui.SimpleListHeader;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.stats.reports.BattleReportStatistics;
 import com.ninetwozero.bf4intel.json.stats.reports.GameReport;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.utils.Result;
+import com.ninetwozero.bf4intel.ui.BaseListItem;
+import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
+import com.ninetwozero.bf4intel.ui.SimpleListHeader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,36 +52,50 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
+        requestQueue.add(fetchRequest(getArguments()));
     }
 
-    @Override
-    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
+    public Request<List<BaseListItem>> fetchRequest(final Bundle bundle) {
         showLoadingState(true);
-        return new IntelLoader(
-            getActivity(),
-            new SimpleGetRequest(
-                UrlFactory.buildBattleReportsURL(
-                    bundle.getLong(Keys.Soldier.ID),
-                    bundle.getInt(Keys.Soldier.PLATFORM)
-                )
-            )
-        );
-    }
+        return new SimpleGetRequest<List<BaseListItem>>(
+            UrlFactory.buildBattleReportsURL(
+                bundle.getLong(Keys.Soldier.ID),
+                bundle.getInt(Keys.Soldier.PLATFORM)
+            ),
+            this
+        ) {
+            @Override
+            protected List<BaseListItem> doParse(String json) {
+                final List<BaseListItem> items = new ArrayList<BaseListItem>();
+                final JsonObject baseObject = extractFromJson(json, false);
+                if ((baseObject.get("statsTemplate").getAsString().equals("common.warsawerror"))) {
+                    return null;
+                }
 
-
-    @Override
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        if (loader.getId() == ID_LOADER) {
-            JsonObject baseObject = extractFromJson(resultMessage, false);
-            if ((baseObject.get("statsTemplate").getAsString().equals("common.warsawerror"))) {
-                ((TextView) getView().findViewById(android.R.id.empty)).setText(R.string.msg_error_private_user);
-            } else {
                 final BattleReportStatistics statistics = gson.fromJson(baseObject, BattleReportStatistics.class);
-                sendDataToListView(statistics);
+                if (statistics.getFavoriteReports().size() > 0) {
+                    items.add(new SimpleListHeader(R.string.header_favorite_battlereport));
+                    items.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getFavoriteReports()), statistics.getSoldierId()));
+                }
+
+                if (statistics.getStatsGameReports().size() > 0) {
+                    items.add(new SimpleListHeader(R.string.header_latest_battlereport));
+                    items.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getStatsGameReports()), statistics.getSoldierId()));
+                }
+
+                return items;
             }
-        }
-        showLoadingState(false);
+
+            @Override
+            protected void deliverResponse(List<BaseListItem> response) {
+                if (response == null) {
+                    ((TextView) getView().findViewById(android.R.id.empty)).setText(R.string.msg_error_private_user);
+                } else {
+                    sendDataToListView(response);
+                }
+                showLoadingState(false);
+            }
+        };
     }
 
     @Override
@@ -122,15 +134,8 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         emptyView.setText(R.string.msg_no_battlereports);
     }
 
-    private void sendDataToListView(final BattleReportStatistics statistics) {
-        List<BaseListItem> itemList = new ArrayList<BaseListItem>();
-        if(statistics.getFavoriteReports().size() > 0) {
-            itemList.add(new SimpleListHeader(R.string.header_favorite_battlereport));
-            itemList.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getFavoriteReports()), statistics.getSoldierId()));
-        }
-        itemList.add(new SimpleListHeader(R.string.header_latest_battlereport));
-        itemList.addAll(buildBaseItemList(new ArrayList<GameReport>(statistics.getStatsGameReports()), statistics.getSoldierId()));
-        SimpleListAdapter adapter = new SimpleListAdapter(getActivity(), itemList);
+    private void sendDataToListView(final List<BaseListItem> statistics) {
+        SimpleListAdapter adapter = new SimpleListAdapter(getActivity(), statistics);
         setListAdapter(adapter);
     }
 

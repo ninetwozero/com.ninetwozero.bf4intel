@@ -2,8 +2,6 @@ package com.ninetwozero.bf4intel.ui.battlefeed;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,11 +17,9 @@ import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.battlefeed.BattleFeed;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
-import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.List;
 
@@ -80,34 +76,30 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        final LoaderManager manager = getActivity().getSupportLoaderManager();
-        if (manager.getLoader(ID_LOADER) == null) {
-            manager.initLoader(ID_LOADER, getArguments(), this);
-        } else {
-            manager.restartLoader(ID_LOADER, getArguments(), this);
-        }
-    }
-
-    @Override
-    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         // TODO: userId below should be handled as String in the future
+        final Bundle bundle = getArguments();
         final int count = 0;
         final long userId = Long.valueOf(bundle.getString(Keys.Profile.ID, "0"));
         final boolean fetchGlobalFeed = "0".equals(userId);
 
-        return new IntelLoader(
-            getActivity(),
-            new SimpleGetRequest(
-                fetchGlobalFeed ? UrlFactory.buildGlobalFeedURL(count) : UrlFactory.buildUserFeedURL(userId, count)
-            )
-        );
-    }
+        requestQueue.add(
+            new SimpleGetRequest<BattleFeed>(
+                fetchGlobalFeed ? UrlFactory.buildGlobalFeedURL(count) : UrlFactory.buildUserFeedURL(userId, count),
+                this
+            ) {
+                @Override
+                protected BattleFeed doParse(String json) {
+                    final BattleFeed battleFeed = fromJson(json, BattleFeed.class);
+                    return battleFeed;
+                }
 
-    @Override
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        final BattleFeed battleFeed = fromJson(resultMessage, BattleFeed.class);
-        sendDataToListView(battleFeed.getFeedItems());
-        showLoadingState(false);
+                @Override
+                protected void deliverResponse(BattleFeed battleFeed) {
+                    sendDataToListView(battleFeed.getFeedItems());
+                    showLoadingState(false);
+                }
+            }
+        );
     }
 
     private void initialize(final View view) {

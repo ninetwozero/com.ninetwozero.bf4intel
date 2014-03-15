@@ -2,23 +2,26 @@ package com.ninetwozero.bf4intel.base.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.factories.GsonProvider;
-import com.ninetwozero.bf4intel.utils.Result;
 
-public abstract class BaseLoadingListFragment extends BaseListFragment implements LoaderManager.LoaderCallbacks<Result> {
+public abstract class BaseLoadingListFragment extends BaseListFragment implements Response.ErrorListener {
     protected Gson gson = GsonProvider.getInstance();
+    protected RequestQueue requestQueue;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -27,16 +30,28 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     }
 
     @Override
-    public void onLoadFinished(final Loader<Result> resultLoader, final Result result) {
-        if (result == Result.SUCCESS) {
-            onLoadSuccess(resultLoader, result.getResultMessage());
-        } else {
-            onLoadFailure(resultLoader, result.getResultMessage());
-        }
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        requestQueue = Volley.newRequestQueue(activity);
     }
 
     @Override
-    public void onLoaderReset(final Loader<Result> resultLoader) {}
+    public void onStop(){
+        requestQueue.cancelAll(
+            new RequestQueue.RequestFilter() {
+                @Override
+                public boolean apply(Request<?> request) {
+                    return request.getMethod() == Request.Method.GET;
+                }
+            }
+        );
+        super.onStop();
+    }
+
+    @Override
+    public void onErrorResponse(final VolleyError error) {
+        Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
+    }
 
     @Override
     public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
@@ -101,11 +116,6 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
             return;
         }
         loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
-    }
-
-    protected abstract void onLoadSuccess(final Loader loader, final String resultMessage);
-    protected void onLoadFailure(final Loader loader, final String resultMessage) {
-        Log.w(getClass().getSimpleName(), "[onLoadFailure] " + resultMessage);
     }
 
     protected abstract void startLoadingData();
