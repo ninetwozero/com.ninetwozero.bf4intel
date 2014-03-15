@@ -91,7 +91,11 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
     }
 
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
-        final View loadingView = activity.findViewById(R.id.wrap_loading_progress);
+        if (activity == null) {
+            return;
+        }
+
+        final View loadingView = getView().findViewById(R.id.wrap_loading_progress);
         if (loadingView == null) {
             return;
         }
