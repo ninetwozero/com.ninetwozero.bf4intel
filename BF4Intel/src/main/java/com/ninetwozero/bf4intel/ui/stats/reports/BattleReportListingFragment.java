@@ -135,8 +135,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     }
 
     private void sendDataToListView(final List<BaseListItem> statistics) {
-        SimpleListAdapter adapter = new SimpleListAdapter(getActivity(), statistics);
-        setListAdapter(adapter);
+        setListAdapter(new SimpleListAdapter(getActivity(), statistics));
     }
 
     private List<BaseListItem> buildBaseItemList(final List<GameReport> reports, final int soldierId) {

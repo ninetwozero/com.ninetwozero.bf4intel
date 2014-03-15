@@ -61,7 +61,7 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
 
             @Override
             protected void deliverResponse(List<GroupedVehicleStats> response) {
-                getListView().setAdapter(new VehicleStatsAdapter(getActivity(), response));
+                setListAdapter(new VehicleStatsAdapter(getActivity(), response));
                 showLoadingState(false);
             }
         };

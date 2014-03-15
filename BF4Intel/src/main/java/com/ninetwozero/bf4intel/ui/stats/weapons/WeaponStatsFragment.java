@@ -62,7 +62,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
             @Override
             protected void deliverResponse(List<Weapon> response) {
-                getListView().setAdapter(new WeaponStatsAdapter(getActivity(), response));
+                setListAdapter(new WeaponStatsAdapter(getActivity(), response));
                 showLoadingState(false);
             }
         };

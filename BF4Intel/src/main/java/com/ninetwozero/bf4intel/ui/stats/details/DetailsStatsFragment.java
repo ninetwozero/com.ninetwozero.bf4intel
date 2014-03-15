@@ -1,8 +1,6 @@
 package com.ninetwozero.bf4intel.ui.stats.details;
 
 import android.os.Bundle;
-import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,6 @@ import com.ninetwozero.bf4intel.model.stats.details.StatsDetailsGrouped;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
-import com.ninetwozero.bf4intel.utils.Result;
 
 public class DetailsStatsFragment extends BaseLoadingListFragment {
 
@@ -62,12 +59,6 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
             @Override
             protected StatsDetailsGrouped doParse(String json) {
                 final StatsDetails.GeneralStats details = fromJson(json, StatsDetails.class).getGeneralStats();
-                if (details == null) {
-                    Log.w(getClass().getSimpleName(), "Detailed Stats is empty.");
-                    cancel();
-                    return null;
-                }
-
                 final StatsDetailsGrouped stats = new StatsDetailsGrouped(details);
                 return stats;
             }
