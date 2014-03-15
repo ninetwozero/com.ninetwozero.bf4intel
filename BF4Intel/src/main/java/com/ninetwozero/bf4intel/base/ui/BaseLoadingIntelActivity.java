@@ -1,5 +1,6 @@
 package com.ninetwozero.bf4intel.base.ui;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,11 +18,17 @@ import com.ninetwozero.bf4intel.factories.GsonProvider;
 
 public abstract class BaseLoadingIntelActivity extends BaseIntelActivity implements Response.ErrorListener {
     protected final Gson gson = GsonProvider.getInstance();
-    protected final RequestQueue requestQueue = Volley.newRequestQueue(this);
+    protected RequestQueue requestQueue;
 
     @Override
     public void onErrorResponse(final VolleyError error) {
         Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestQueue = Volley.newRequestQueue(this);
     }
 
     @Override
