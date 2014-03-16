@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.ui.news;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +93,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
                 break;
 
             default:
-                throw new IllegalArgumentException("No request matching " + requestId);
+                Log.w(getClass().getSimpleName, "No request matching " + requestId);
         }
     }
 

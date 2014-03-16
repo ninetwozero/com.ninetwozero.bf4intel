@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.ui.news;
 
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,7 +45,6 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     public static final String COMMENT_ID = "commentId";
 
     private static final int ID_REQUEST_REFRESH_ARTICLE = 4200;
-    private final int ID_REQUEST_REFRESH_COMMENTS = 4300;
     private final int ID_REQUEST_POST_COMMENT = 4400;
     private final int ID_REQUEST_HOOAH = 4500;
     private final int ID_REQUEST_COMMENT_UPVOTE = 4600;
@@ -113,7 +113,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
                 break;
 
             default:
-                throw new IllegalArgumentException("No request matching " + id);
+                Log.w(getClass().getSimpleName, "No request matching " + id);
         }
     }
 
