@@ -1,17 +1,15 @@
 package com.ninetwozero.bf4intel.ui.unlocks.kits;
 
 import android.os.Bundle;
-import android.support.v4.content.Loader;
 import android.widget.ExpandableListView;
 
+import com.android.volley.Request;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.unlocks.KitItemUnlockContainer;
 import com.ninetwozero.bf4intel.json.unlocks.KitUnlocks;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockFragment;
-import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -19,8 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 public class KitUnlockFragment extends BaseUnlockFragment {
-    private static final int ID_LOADER = 3300;
-
     public static KitUnlockFragment newInstance(final Bundle data) {
         final KitUnlockFragment fragment = new KitUnlockFragment();
         fragment.setArguments(data);
@@ -28,45 +24,27 @@ public class KitUnlockFragment extends BaseUnlockFragment {
     }
 
     @Override
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        final KitUnlocks unlocks = fromJson(resultMessage, KitUnlocks.class);
-        if (unlocks.getUnlockMap() == null) {
-            return;
-        }
+    protected Request<Map<String, List<KitItemUnlockContainer>>> fetchRequest(Bundle bundle) {
+        return new SimpleGetRequest<Map<String, List<KitItemUnlockContainer>>>(
+            UrlFactory.buildKitUnlocksURL(
+                bundle.getLong(Keys.Soldier.ID),
+                bundle.getString(Keys.Soldier.NAME),
+                bundle.getInt(Keys.Soldier.PLATFORM)
+            ),
+            this
+        ) {
+            @Override
+            protected Map<String, List<KitItemUnlockContainer>> doParse(String json) {
+                final KitUnlocks unlocks = fromJson(json, KitUnlocks.class);
+                return sortItemsInMap(unlocks.getUnlockMap());
+            }
 
-        sendDataToListView(sortItemsInMap(unlocks.getUnlockMap()));
-        showLoadingState(false);
-    }
-
-    @Override
-    protected void startLoadingData() {
-        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
-    }
-
-    @Override
-    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
-        showLoadingState(true);
-        return new IntelLoader(
-            getActivity(),
-            new SimpleGetRequest(
-                UrlFactory.buildKitUnlocksURL(
-                    bundle.getLong(Keys.Soldier.ID),
-                    bundle.getString(Keys.Soldier.NAME),
-                    bundle.getInt(Keys.Soldier.PLATFORM)
-                )
-            )
-        );
-    }
-
-
-    private void sendDataToListView(final Map<String, List<KitItemUnlockContainer>> unlockMap) {
-        final ExpandableListView listView = (ExpandableListView) getListView();
-        if (listView == null) {
-            return;
-        }
-
-        listView.setAdapter(new KitUnlockAdapter(getActivity(), unlockMap));
-        //TODO: Expand or collapse at start? >>> toggleAllRows(true)
+            @Override
+            protected void deliverResponse(Map<String, List<KitItemUnlockContainer>> response) {
+                sendDataToListView(response);
+                showLoadingState(false);
+            }
+        };
     }
 
     private Map<String, List<KitItemUnlockContainer>> sortItemsInMap(final Map<String, List<KitItemUnlockContainer>> unlockMap) {
@@ -77,5 +55,15 @@ public class KitUnlockFragment extends BaseUnlockFragment {
             map.put(key, unlocks);
         }
         return map;
+    }
+
+    private void sendDataToListView(final Map<String, List<KitItemUnlockContainer>> unlockMap) {
+        final ExpandableListView listView = (ExpandableListView) getListView();
+        if (listView == null) {
+            return;
+        }
+
+        listView.setAdapter(new KitUnlockAdapter(getActivity(), unlockMap));
+        //TODO: Expand or collapse at start? >>> toggleAllRows(true)
     }
 }

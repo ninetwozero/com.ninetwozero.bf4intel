@@ -20,5 +20,6 @@ public class Keys {
 
     public static class Menu {
         public static final String LATEST_PERSONA = "selected_soldier_in_menu";
+        public static final String LATEST_PERSONA_POSITION = "selected_soldier_position_in_menu";
     }
 }

@@ -1,23 +1,17 @@
 package com.ninetwozero.bf4intel.network;
 
-import com.github.kevinsawicki.http.HttpRequest;
+import com.android.volley.Response;
 
 import java.net.URL;
 
-public class SimpleGetRequest extends BaseSimpleRequest {
-    public SimpleGetRequest(final URL requestUrl) {
-        super(requestUrl);
+public abstract class SimpleGetRequest<T> extends BaseSimpleRequest<T> {
+    public SimpleGetRequest(final URL url, final Response.ErrorListener errorListener
+    ) {
+        super(Method.GET, url, RequestType.NORMAL, errorListener);
     }
 
-    public SimpleGetRequest(final URL requestUrl, final RequestType requestType) {
-        super(requestUrl, requestType);
+    public SimpleGetRequest(final URL url, final RequestType type, final Response.ErrorListener errorListener
+    ) {
+        super(Method.GET, url, type, errorListener);
     }
-
-    protected HttpRequest getHttpRequest() {
-        HttpRequest request = HttpRequest.get(requestUrl)
-            .readTimeout(READ_TIMEOUT)
-            .connectTimeout(CONNECT_TIMEOUT)
-            .headers(getHeaders());
-        return request;
-    }
-}
+}        

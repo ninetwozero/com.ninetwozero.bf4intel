@@ -17,6 +17,14 @@ public class ProfileSearchResult {
     @SerializedName("games")
     private Map<Integer, Integer> games;
 
+    public ProfileSearchResult(String personaId, String personaName, String platform, Profile profile, Map<Integer, Integer> games) {
+        this.personaId = personaId;
+        this.personaName = personaName;
+        this.platform = platform;
+        this.profile = profile;
+        this.games = games;
+    }
+
     public String getPersonaId() {
         return personaId;
     }

@@ -1,7 +1,6 @@
 package com.ninetwozero.bf4intel.ui.awards;
 
 import android.os.Bundle;
-import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +13,18 @@ import com.ninetwozero.bf4intel.json.awards.Award;
 import com.ninetwozero.bf4intel.json.awards.Awards;
 import com.ninetwozero.bf4intel.json.awards.Medal;
 import com.ninetwozero.bf4intel.json.awards.Ribbon;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.utils.Result;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.squareup.otto.Subscribe;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class AwardGridFragment extends BaseLoadingFragment {
-    private static final int ID_LOADER = 1100;
-
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
         fragment.setArguments(data);
@@ -35,52 +36,37 @@ public class AwardGridFragment extends BaseLoadingFragment {
         return inflater.inflate(R.layout.fragment_assignments, container, false);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
     }
 
     @Override
     protected void startLoadingData() {
-        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
-    }
+        final Bundle bundle = getArguments();
 
-    @Override
-    public Loader<Result> onCreateLoader(final int loaderId, final Bundle bundle) {
         showLoadingState(true);
-        return new IntelLoader(
-            getActivity(),
-            new SimpleGetRequest(
+        requestQueue.add(
+            new SimpleGetRequest<List<Award>>(
                 UrlFactory.buildAwardsURL(
                     bundle.getLong(Keys.Soldier.ID),
                     bundle.getInt(Keys.Soldier.PLATFORM)
-                )
-            )
+                ),
+                this
+            ) {
+                @Override
+                protected List<Award> doParse(String json) {
+                    final Awards awards = fromJson(json, Awards.class);
+                    return processAwards(awards);
+                }
+
+                @Override
+                protected void deliverResponse(List<Award> response) {
+                    setupGrid(response);
+                    showLoadingState(false);
+                }
+            }
         );
-    }
-
-    @Override
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        if (loader.getId() == ID_LOADER) {
-            processResult(resultMessage);
-        }
-    }
-
-    private void processResult(final String resultMessage) {
-        final Awards awards = fromJson(resultMessage, Awards.class);
-        setupGrid(awards);
-        showLoadingState(false);
-    }
-
-    private void setupGrid(final Awards awards) {
-        final View view = getView();
-        if (view == null) {
-            return;
-        }
-
-        final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
-        gridView.setAdapter(new AwardsAdapter(getActivity(), processAwards(awards)));
     }
 
     private List<Award> processAwards(final Awards awards) {
@@ -110,5 +96,15 @@ public class AwardGridFragment extends BaseLoadingFragment {
             }
         }
         return orderedGroup;
+    }
+
+    private void setupGrid(final List<Award> awards) {
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
+        gridView.setAdapter(new AwardsAdapter(getActivity(), awards));
     }
 }

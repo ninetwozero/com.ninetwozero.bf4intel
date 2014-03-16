@@ -15,7 +15,6 @@ import com.ninetwozero.bf4intel.json.search.ProfileSearchResult;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-import java.util.Locale;
 
 public class ProfileSearchAdapter extends BaseIntelAdapter<ProfileSearchResult> {
 
@@ -43,7 +42,7 @@ public class ProfileSearchAdapter extends BaseIntelAdapter<ProfileSearchResult> 
             String.format(
                 context.getString(R.string.x_on_y),
                 searchResult.getPersonaName(),
-                fetchPlatformNameFromCrypticText(searchResult.getPlatform())
+                searchResult.getPlatform()
             )
         );
 
@@ -51,13 +50,5 @@ public class ProfileSearchAdapter extends BaseIntelAdapter<ProfileSearchResult> 
             UrlFactory.buildGravatarUrl(profile.getGravatarHash())
         ).placeholder(R.drawable.default_gravatar).into(imageView);
         return view;
-    }
-
-    private String fetchPlatformNameFromCrypticText(final String crypticPlatformName) {
-        if (crypticPlatformName.equals("cem_ea_id")) {
-            return "PC";
-        } else {
-            return crypticPlatformName.toUpperCase(Locale.getDefault());
-        }
     }
 }

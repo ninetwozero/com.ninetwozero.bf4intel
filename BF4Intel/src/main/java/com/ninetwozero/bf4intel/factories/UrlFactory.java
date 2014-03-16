@@ -1,11 +1,11 @@
 package com.ninetwozero.bf4intel.factories;
 
+import org.apache.http.client.utils.URIUtils;
+
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Locale;
-
-import org.apache.http.client.utils.URIUtils;
 
 public class UrlFactory {
     private static final String SCHEME = "http";
@@ -46,11 +46,11 @@ public class UrlFactory {
         return createURL(String.format(Locale.getDefault(), "warsawdetailedstatspopulate/%d/%d/", soldierId, platformId));
     }
 
-    public static URL buildAssignmentsURL(final String soldierName, final long soldierId, final long userId, final int platformId) {
+    public static URL buildAssignmentsURL(final String soldierName, final long soldierId, final String userId, final int platformId) {
         return createURL(
             String.format(
                 Locale.getDefault(),
-                "soldier/missionsPopulateStats/%s/%d/%d/%d/",
+                "soldier/missionsPopulateStats/%s/%d/%s/%d/",
                 soldierName,
                 soldierId,
                 userId,

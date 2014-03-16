@@ -1,7 +1,6 @@
 package com.ninetwozero.bf4intel.ui.unlocks;
 
 import android.os.Bundle;
-import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +8,12 @@ import android.widget.AbsListView;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
-import com.ninetwozero.bf4intel.utils.Result;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.squareup.otto.Subscribe;
 
 public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
 
@@ -27,17 +28,19 @@ public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
 
     @Override
     public void onResume() {
-        super.onResume();
         showLoadingState(false);
+        super.onResume();
+    }
+
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
     }
 
     @Override
-    protected abstract void startLoadingData();
-
-    @Override
-    public abstract Loader<Result> onCreateLoader(final int i, final Bundle bundle);
-
+    protected void startLoadingData() {
+        requestQueue.add(fetchRequest(getArguments()));
+    }
     private void initialize(final View view) {
         setupListView(view);
     }
@@ -63,4 +66,6 @@ public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
             }
         }
     }
+
+    protected abstract Request<?> fetchRequest(Bundle bundle);
 }

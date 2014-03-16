@@ -1,29 +1,26 @@
 package com.ninetwozero.bf4intel.ui.stats.details;
 
 import android.os.Bundle;
-import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;
 import com.ninetwozero.bf4intel.model.stats.details.StatsDetailsGrouped;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
-import com.ninetwozero.bf4intel.utils.Result;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.squareup.otto.Subscribe;
 
 public class DetailsStatsFragment extends BaseLoadingListFragment {
-
-    private static final int ID_LOADER = 2400;
-
     public static DetailsStatsFragment newInstance(final Bundle bundle) {
         final DetailsStatsFragment fragment = new DetailsStatsFragment();
         fragment.setArguments(bundle);
@@ -38,49 +35,44 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
     }
 
     @Override
     protected void startLoadingData() {
-        getLoaderManager().restartLoader(ID_LOADER, getArguments(), this);
-    }
-
-    @Override
-    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         showLoadingState(true);
-        return new IntelLoader(
-            getActivity(),
-            new SimpleGetRequest(
-                UrlFactory.buildDetailsURL(
-                    bundle.getLong(Keys.Soldier.ID),
-                    bundle.getInt(Keys.Soldier.PLATFORM)
-                )
-            )
-        );
+        requestQueue.add(fetchRequest(getArguments()));
+    }
+
+    private Request<StatsDetailsGrouped> fetchRequest(Bundle bundle) {
+        return new SimpleGetRequest<StatsDetailsGrouped>(
+            UrlFactory.buildDetailsURL(
+                bundle.getLong(Keys.Soldier.ID),
+                bundle.getInt(Keys.Soldier.PLATFORM)
+            ),
+            this
+        ) {
+            @Override
+            protected StatsDetailsGrouped doParse(String json) {
+                final StatsDetails.GeneralStats details = fromJson(json, StatsDetails.class).getGeneralStats();
+                final StatsDetailsGrouped stats = new StatsDetailsGrouped(details);
+                return stats;
+            }
+
+            @Override
+            protected void deliverResponse(StatsDetailsGrouped response) {
+                sendDataToListView(response);
+                showLoadingState(false);
+            }
+        };
     }
 
     @Override
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        final StatsDetails.GeneralStats details = fromJson(resultMessage, StatsDetails.class).getGeneralStats();
-        if (details == null) {
-            Log.w(getClass().getSimpleName(), "Detailed Stats is empty.");
-            return;
-        }
-
-        final StatsDetailsGrouped stats = new StatsDetailsGrouped(details);
-
-        sendDataToListView(stats);
-        showLoadingState(false);
-    }
-
-    @Override
-    protected void onLoadFailure(final Loader loader, final String resultMessage) {
-        super.onLoadFailure(loader, resultMessage);
-        showToast(resultMessage);
+    public void onErrorResponse(VolleyError error) {
+        super.onErrorResponse(error);
+        showToast(error.getMessage());
     }
 
 

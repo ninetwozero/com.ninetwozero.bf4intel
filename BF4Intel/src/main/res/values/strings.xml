@@ -241,4 +241,5 @@
   <string name="msg_about_help_heading">Need help?</string>
   <string name="class_commander">Commander</string>
   <string name="soldier_enlisted_on">Enlisted on</string>
+  <string name="msg_empty_stats">No stats found.</string>
 </resources>

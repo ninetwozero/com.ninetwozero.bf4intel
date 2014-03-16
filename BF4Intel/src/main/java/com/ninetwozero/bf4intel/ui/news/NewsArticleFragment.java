@@ -2,7 +2,7 @@ package com.ninetwozero.bf4intel.ui.news;
 
 import android.app.ActionBar;
 import android.os.Bundle;
-import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -27,13 +29,11 @@ import com.ninetwozero.bf4intel.json.news.NewsArticle;
 import com.ninetwozero.bf4intel.json.news.NewsArticleComment;
 import com.ninetwozero.bf4intel.json.news.NewsArticleRequest;
 import com.ninetwozero.bf4intel.network.BaseSimpleRequest;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.SimplePostRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.WebsiteErrorMessageMap;
-import com.ninetwozero.bf4intel.utils.BusProvider;
-import com.ninetwozero.bf4intel.utils.Result;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
 
 import java.util.List;
@@ -44,12 +44,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     public static final String ID = "articleId";
     public static final String COMMENT_ID = "commentId";
 
-    private static final int ID_LOADER_REFRESH_ARTICLE = 4200;
-    private final int ID_LOADER_REFRESH_COMMENTS = 4300;
-    private final int ID_LOADER_POST_COMMENT = 4400;
-    private final int ID_LOADER_HOOAH = 4500;
-    private final int ID_LOADER_COMMENT_UPVOTE = 4600;
-    private final int ID_LOADER_COMMENT_DOWNVOTE = 4700;
+    private static final int ID_REQUEST_REFRESH_ARTICLE = 4200;
+    private final int ID_REQUEST_POST_COMMENT = 4400;
+    private final int ID_REQUEST_HOOAH = 4500;
+    private final int ID_REQUEST_COMMENT_UPVOTE = 4600;
+    private final int ID_REQUEST_COMMENT_DOWNVOTE = 4700;
 
     private final String FLAG_SHOW_LOADING = "showLoading";
 
@@ -74,17 +73,9 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
-        BusProvider.getInstance().register(this);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        BusProvider.getInstance().unregister(this);
     }
 
     @Override
@@ -95,80 +86,160 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         }
 
         articleId = arguments.getString(ID, "");
-        getLoaderManager().restartLoader(ID_LOADER_REFRESH_ARTICLE, arguments, this);
+        doRequest(ID_REQUEST_REFRESH_ARTICLE, arguments);
     }
 
-    @Override
-    public Loader<Result> onCreateLoader(final int loaderId, final Bundle bundle) {
-        BaseSimpleRequest request;
-        switch (loaderId) {
-            case ID_LOADER_REFRESH_ARTICLE:
+    private void doRequest(final int id, final Bundle bundle) {
+        switch (id) {
+            case ID_REQUEST_REFRESH_ARTICLE:
                 showLoadingState(bundle.getBoolean(FLAG_SHOW_LOADING, true));
-                request = new SimpleGetRequest(
-                    UrlFactory.buildNewsArticleURL(bundle.getString(ID)),
-                    BaseSimpleRequest.RequestType.FROM_NAVIGATION
-                );
+                requestQueue.add(fetchRequestForArticleRefresh(bundle));
                 break;
 
-            case ID_LOADER_HOOAH:
-                request = new SimplePostRequest(
-                    UrlFactory.buildNewsArticleHooahURL(articleId),
-                    bundle
-                );
+            case ID_REQUEST_HOOAH:
+                requestQueue.add(fetchRequestForHooah(bundle));
                 break;
 
-            case ID_LOADER_POST_COMMENT:
-                request = new SimplePostRequest(
-                    UrlFactory.buildNewsArticlePostCommentURL(articleId),
-                    bundle
-                );
+            case ID_REQUEST_POST_COMMENT:
+                requestQueue.add(fetchRequestForPostComment(bundle));
                 break;
 
-            case ID_LOADER_COMMENT_UPVOTE:
-                request = new SimplePostRequest(
-                    UrlFactory.buildNewsArticleCommentUpvoteURL(bundle.getString(COMMENT_ID)),
-                    bundle
-                );
+            case ID_REQUEST_COMMENT_UPVOTE:
+                requestQueue.add(fetchRequestForCommentUpvote(bundle));
                 break;
 
-            case ID_LOADER_COMMENT_DOWNVOTE:
-                request = new SimplePostRequest(
-                    UrlFactory.buildNewsArticleCommentDownvoteURL(bundle.getString(COMMENT_ID)),
-                    bundle
-                );
+            case ID_REQUEST_COMMENT_DOWNVOTE:
+                requestQueue.add(fetchRequestForCommentDownvote(bundle));
                 break;
 
             default:
-                throw new IllegalArgumentException("No loader matching " + loaderId);
+                Log.w(getClass().getSimpleName(), "No request matching " + id);
         }
-        return new IntelLoader(getActivity(), request);
+    }
+
+    private Request<NewsArticleRequest> fetchRequestForArticleRefresh(Bundle bundle) {
+        return new SimpleGetRequest<NewsArticleRequest>(
+            UrlFactory.buildNewsArticleURL(bundle.getString(ID)),
+            BaseSimpleRequest.RequestType.FROM_NAVIGATION,
+            this
+        ) {
+            @Override
+            protected NewsArticleRequest doParse(String json) {
+                final Gson gson = new Gson();
+                final JsonParser parser = new JsonParser();
+                final JsonElement rootObject = parser.parse(json).getAsJsonObject().get("context");
+                final NewsArticleRequest articleRequest = gson.fromJson(rootObject, NewsArticleRequest.class);
+                return articleRequest;
+            }
+
+            @Override
+            protected void deliverResponse(NewsArticleRequest response) {
+                displayArticle(response);
+                showLoadingState(false);
+            }
+        };
+    }
+
+    private Request<HooahInformation> fetchRequestForHooah(Bundle bundle) {
+        return new SimplePostRequest<HooahInformation>(
+            UrlFactory.buildNewsArticleHooahURL(articleId),
+            bundle,
+            this
+        ) {
+            @Override
+            protected HooahInformation doParse(String json) {
+                final JsonElement dataObject = parser.parse(json).getAsJsonObject().get("data");
+                final JsonElement infoObject = dataObject.getAsJsonObject().get("info").getAsJsonObject();
+                final HooahInformation information = gson.fromJson(infoObject, HooahInformation.class);
+                return information;
+            }
+
+            @Override
+            protected void deliverResponse(HooahInformation response) {
+                final ExpandableListView listView = (ExpandableListView) getView().findViewById(android.R.id.list);
+                View cardParent = listView.findViewById(R.id.card_root);
+                if (cardParent == null) {
+                    cardParent = getActivity().findViewById(R.id.card_root);
+                }
+
+                new NewsArticleLayout(getActivity(), cardParent).updateHooahForArticle(
+                    response.getVoteCount(),
+                    response.isVoted()
+                );
+            }
+        };
+    }
+
+    private Request<Object> fetchRequestForPostComment(Bundle bundle) {
+        return new SimplePostRequest<Object>(
+            UrlFactory.buildNewsArticleHooahURL(articleId),
+            bundle,
+            this
+        ) {
+            @Override
+            protected Object doParse(String json) {
+                return json;
+            }
+
+            @Override
+            protected void deliverResponse(Object response) {
+                final View parent = getView();
+                final EditText input = (EditText) parent.findViewById(R.id.input_content);
+                input.setText("");
+                input.clearFocus();
+
+                toggleButton(parent, true);
+                showToast(R.string.msg_comment_ok);
+            }
+        };
+    }
+
+    private Request<Object> fetchRequestForCommentUpvote(Bundle bundle) {
+        return new SimplePostRequest<Object>(
+            UrlFactory.buildNewsArticleCommentUpvoteURL(bundle.getString(COMMENT_ID)),
+            bundle,
+            this
+        ) {
+            @Override
+            protected Object doParse(String json) {
+                return json;
+            }
+
+            @Override
+            protected void deliverResponse(Object response) {
+                final Bundle data = getArguments();
+                data.putBoolean(FLAG_SHOW_LOADING, false);
+                doRequest(ID_REQUEST_REFRESH_ARTICLE, data);
+            }
+        };
+    }
+
+    private Request<Object> fetchRequestForCommentDownvote(Bundle bundle) {
+        return new SimplePostRequest<Object>(
+            UrlFactory.buildNewsArticleCommentDownvoteURL(bundle.getString(COMMENT_ID)),
+            bundle,
+            this
+        ) {
+            @Override
+            protected Object doParse(String json) {
+                return json;
+            }
+
+            @Override
+            protected void deliverResponse(Object response) {
+                final Bundle data = getArguments();
+                data.putBoolean(FLAG_SHOW_LOADING, false);
+                doRequest(ID_REQUEST_REFRESH_ARTICLE, data);
+            }
+        };
     }
 
     @Override
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        switch (loader.getId()) {
-            case ID_LOADER_REFRESH_ARTICLE:
-                onArticleRefreshed(resultMessage);
-                break;
-            case ID_LOADER_HOOAH:
-                onArticleHooah(resultMessage);
-                break;
-            case ID_LOADER_POST_COMMENT:
-                onCommentPosted();
-                break;
-            case ID_LOADER_COMMENT_UPVOTE:
-            case ID_LOADER_COMMENT_DOWNVOTE:
-                onCommentVote(resultMessage);
-                break;
-        }
-        showLoadingState(false);
-    }
+    public void onErrorResponse(VolleyError error) {
+        super.onErrorResponse(error);
 
-    @Override
-    protected void onLoadFailure(final Loader loader, final String resultMessage) {
-        // TODO: Display error message in bar below ActionBar
-        String errorKey = resultMessage;
-        if (resultMessage.contains("upvote")) {
+        String errorKey = error.getMessage();
+        if (errorKey.contains("upvote")) {
             errorKey = WebsiteErrorMessageMap.ALREADY_UPVOTED;
         }
         showToast(WebsiteErrorMessageMap.get(errorKey));
@@ -208,7 +279,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         data.putString(Keys.CHECKSUM, SessionStore.getChecksum());
         data.putString(ID, request.getId());
 
-        getLoaderManager().restartLoader(ID_LOADER_HOOAH, data, this);
+        doRequest(ID_REQUEST_HOOAH, data);
     }
 
     private void initialize(final View view) {
@@ -300,7 +371,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
         final Bundle data = new Bundle();
         data.putString(ID, articleId);
-        getLoaderManager().restartLoader(ID_LOADER_POST_COMMENT, data, this);
+        doRequest(ID_REQUEST_POST_COMMENT, data);
     }
 
     private void displayArticle(final NewsArticleRequest newsRequest) {
@@ -374,63 +445,8 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         data.putString(COMMENT_ID, comment.getId());
         data.putString(Keys.CHECKSUM, SessionStore.getChecksum());
 
-        getLoaderManager().restartLoader(
-            isUpvote ? ID_LOADER_COMMENT_UPVOTE : ID_LOADER_COMMENT_DOWNVOTE,
-            data,
-            this
-        );
+        doRequest(isUpvote ? ID_REQUEST_COMMENT_UPVOTE : ID_REQUEST_COMMENT_DOWNVOTE, data);
     }
-
-    private void onArticleRefreshed(final String resultMessage) {
-        final Gson gson = new Gson();
-        final JsonParser parser = new JsonParser();
-        final JsonElement rootObject = parser.parse(resultMessage).getAsJsonObject().get("context");
-        final NewsArticleRequest articleRequest = gson.fromJson(rootObject, NewsArticleRequest.class);
-
-        displayArticle(articleRequest);
-    }
-
-    private void onArticleHooah(final String resultMessage) {
-        final Gson gson = new Gson();
-        final JsonParser parser = new JsonParser();
-        final JsonElement dataObject = parser.parse(resultMessage).getAsJsonObject().get("data");
-        final JsonElement infoObject = dataObject.getAsJsonObject().get("info").getAsJsonObject();
-        final HooahInformation information = gson.fromJson(infoObject, HooahInformation.class);
-
-        final ExpandableListView listView = (ExpandableListView) getView().findViewById(android.R.id.list);
-        View cardParent = listView.findViewById(R.id.card_root);
-        if (cardParent == null) {
-            cardParent = getActivity().findViewById(R.id.card_root);
-        }
-
-        new NewsArticleLayout(getActivity(), cardParent).updateHooahForArticle(
-            information.getVoteCount(),
-            information.isVoted()
-        );
-    }
-
-    private void onCommentPosted() {
-        final View parent = getView();
-        if (parent == null) {
-            return;
-        }
-
-        final EditText input = (EditText) parent.findViewById(R.id.input_content);
-        input.setText("");
-        input.clearFocus();
-
-        toggleButton(parent, true);
-        showToast(R.string.msg_comment_ok);
-    }
-
-
-    private void onCommentVote(final String resultMessage) {
-        final Bundle data = getArguments();
-        data.putBoolean(FLAG_SHOW_LOADING, false);
-
-        getLoaderManager().restartLoader(ID_LOADER_REFRESH_ARTICLE, data, this);
-    }
-
 
     @Override
     public void onDestroyActionMode(final ActionMode mode) {

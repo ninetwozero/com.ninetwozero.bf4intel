@@ -27,8 +27,8 @@ public abstract class BaseLayoutPopulator {
 
     public static void setProgress(final View view, final int resourceId, final int current, final int max) {
         final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
-        progressBar.setProgress(current);
         progressBar.setMax(max);
+        progressBar.setProgress(current);
     }
 
     public static void setVisibilty(final View view, final int resourceId, final int state) {
