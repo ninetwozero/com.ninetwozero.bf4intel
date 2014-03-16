@@ -47,7 +47,6 @@
     android:layout_below="@id/wrap_login_name"
     />
 
-
   <TextView
     style="@style/DefaultEmptyText"
     android:id="@android:id/empty"

@@ -10,7 +10,6 @@
     android:id="@android:id/list"
     />
 
-
   <TextView
     style="@style/DefaultEmptyText"
     android:id="@android:id/empty"

@@ -12,7 +12,6 @@
     android:dividerHeight="0dp"
     />
 
-
   <TextView
     style="@style/DefaultEmptyText"
     android:id="@android:id/empty"

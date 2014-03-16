@@ -11,7 +11,6 @@
     android:childDivider="@color/lightgrey"
   />
 
-
   <TextView
     style="@style/DefaultEmptyText"
     android:id="@android:id/empty"
