@@ -33,6 +33,8 @@ import com.ninetwozero.bf4intel.ui.activities.MainActivity;
 import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
+import java.util.List;
+
 import nl.qbusict.cupboard.DatabaseCompartment;
 
 import static nl.qbusict.cupboard.CupboardFactory.cupboard;
@@ -48,6 +50,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     private TextView alertText;
     private EditText searchField;
     private SharedPreferences sharedPreferences;
+    private int selectedSoldierPosition;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -75,6 +78,8 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
         if (requestCode == SearchActivity.REQUEST_SEARCH && resultCode == Activity.RESULT_OK) {
             final Profile profile = (Profile) data.getSerializableExtra(SearchActivity.RESULT_SEARCH_RESULT);
+            selectedSoldierPosition = data.getIntExtra(SearchActivity.RESULT_SEARCH_RESULT_POSITION, 0);
+
             cupboard().withDatabase(getWritableDatabase()).put(profile);
 
             profileBundle = BundleFactory.createForProfile(profile);
@@ -118,7 +123,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                 @Override
                 protected void deliverResponse(SoldierListingRequest response) {
                     if (bf4SoldierCount > 0) {
-                        storeFirstPersonaInPreferences(response.getSoldiers().get(0));
+                        storeSelectedPersonaInPreferences(response.getSoldiers());
                         setResult(Activity.RESULT_OK, new Intent().putExtras(profileBundle));
                     } else {
                         setResult(Activity.RESULT_CANCELED);
@@ -126,10 +131,10 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                     finish();
                 }
 
-                private void storeFirstPersonaInPreferences(SummarizedSoldierStats soldierStats) {
+                private void storeSelectedPersonaInPreferences(List<SummarizedSoldierStats> soldierStats) {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putLong(Keys.Menu.LATEST_PERSONA, soldierStats.getPersonaId());
-                    editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, 0);
+                    editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, selectedSoldierPosition);
+                    editor.putLong(Keys.Menu.LATEST_PERSONA, soldierStats.get(selectedSoldierPosition).getPersonaId());
                     editor.commit();
                 }
             }

@@ -24,6 +24,7 @@ import com.ninetwozero.bf4intel.json.search.ProfileSearchResult;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResults;
 import com.ninetwozero.bf4intel.network.SimplePostRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.resources.maps.profile.PlatformStringMap;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
@@ -128,7 +129,9 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         } else {
             activity.setResult(
                 Activity.RESULT_OK,
-                new Intent().putExtra(SearchActivity.RESULT_SEARCH_RESULT, result.getProfile())
+                new Intent()
+                    .putExtra(SearchActivity.RESULT_SEARCH_RESULT, result.getProfile())
+                    .putExtra(SearchActivity.RESULT_SEARCH_RESULT_POSITION, position)
             );
             activity.finish();
         }
@@ -190,9 +193,17 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         final List<ProfileSearchResult> validAccounts = new ArrayList<ProfileSearchResult>();
         for (ProfileSearchResult result : results) {
             Map<Integer, Integer> games = result.getGames();
-            for (Integer gameId : games.keySet()) {
-                if (games.get(gameId) >= GAME_ID_BF4) {
-                    validAccounts.add(result);
+            for (int platformId : games.keySet()) {
+                if (games.get(platformId) >= GAME_ID_BF4) {
+                    validAccounts.add(
+                        new ProfileSearchResult(
+                            result.getPersonaId(),
+                            result.getPersonaName(),
+                            PlatformStringMap.get(platformId),
+                            result.getProfile(),
+                            result.getGames()
+                        )
+                    );
                 }
             }
         }
