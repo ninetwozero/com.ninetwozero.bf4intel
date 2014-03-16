@@ -16,7 +16,7 @@ public class SummarizedSoldierStatsDeserializer implements JsonDeserializer<Summ
         final SummarizedSoldierStats object = gson.fromJson(json, typeOfT);
         final Persona persona = gson.fromJson(json.getAsJsonObject().get("persona"), Persona.class);
 
-        object.setId(persona.getPersonaId());
+        object.setPersonaId(persona.getPersonaId());
         object.setPersonaName(persona.getPersonaName());
         object.setPicture(persona.getPicture());
         object.setTag(persona.getTag());

@@ -243,4 +243,13 @@
     <item name="android:textColor">#808080</item>
   </style>
 
+  <style name="DefaultEmptyText">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_centerInParent">true</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
+    <item name="android:textColor">@color/text_on_card_bg</item>
+    <item name="android:fontFamily">sans-serif-light</item>
+  </style>
+
 </resources>

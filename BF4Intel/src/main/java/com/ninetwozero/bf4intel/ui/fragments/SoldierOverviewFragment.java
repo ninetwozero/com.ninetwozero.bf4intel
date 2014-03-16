@@ -2,14 +2,13 @@ package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import com.android.volley.Request;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.datatypes.Skill;
@@ -18,7 +17,6 @@ import com.ninetwozero.bf4intel.json.soldieroverview.BaseStatsModel;
 import com.ninetwozero.bf4intel.json.soldieroverview.CompletionProgress;
 import com.ninetwozero.bf4intel.json.soldieroverview.SkillOverview;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.CompletionStringMap;
@@ -27,8 +25,9 @@ import com.ninetwozero.bf4intel.resources.maps.ranks.RankImageMap;
 import com.ninetwozero.bf4intel.resources.maps.ranks.RankStringMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
-import com.ninetwozero.bf4intel.utils.Result;
+import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,9 +35,6 @@ import java.util.List;
 import java.util.Map;
 
 public class SoldierOverviewFragment extends BaseLoadingFragment {
-
-    private static final int ID_LOADER = SoldierOverview.class.hashCode();
-
     public SoldierOverviewFragment() {
     }
 
@@ -54,50 +50,37 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         return layoutInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
     }
 
-    /*
-        TODO: We need to figure out a way to not download new data upon rotating the screen!
-    */
     @Override
     protected void startLoadingData() {
-        final LoaderManager manager = getActivity().getSupportLoaderManager();
-        if (manager.getLoader(ID_LOADER) == null) {
-            manager.initLoader(ID_LOADER, getArguments(), this);
-        } else {
-            manager.restartLoader(ID_LOADER, getArguments(), this);
-        }
+        showLoadingState(true);
+        requestQueue.add(fetchRequest(getArguments()));
     }
 
-    @Override
-    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
-        showLoadingState(true);
-        return new IntelLoader(
-            getActivity(),
-            new SimpleGetRequest(
+    private Request<SoldierOverview> fetchRequest(Bundle bundle) {
+        return new SimpleGetRequest<SoldierOverview>(
                 UrlFactory.buildSoldierOverviewURL(
                     bundle.getLong(Keys.Soldier.ID),
                     bundle.getInt(Keys.Soldier.PLATFORM)
-                )
-            )
-        );
-    }
+                ),
+                this
+            ) {
+                @Override
+                protected SoldierOverview doParse(String json) {
+                    final SoldierOverview soldierOverview = fromJson(json, SoldierOverview.class);
+                    return soldierOverview;
+                }
 
-    @Override
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        final SoldierOverview soldierOverview = fromJson(resultMessage, SoldierOverview.class);
-        displayInformation(getView(), soldierOverview);
-        showLoadingState(false);
-    }
-
-    @Override
-    protected void onLoadFailure(final Loader loader, final String resultMessage) {
-        super.onLoadFailure(loader, resultMessage);
-        showToast(resultMessage);
+                @Override
+                protected void deliverResponse(SoldierOverview response) {
+                    displayInformation(getView(), response);
+                    showLoadingState(false);
+                }
+            };
     }
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {

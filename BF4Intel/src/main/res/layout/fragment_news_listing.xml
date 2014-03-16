@@ -13,12 +13,11 @@
     />
 
   <TextView
+    style="@style/DefaultEmptyText"
     android:id="@android:id/empty"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     android:text="@string/msg_empty_news"
     android:layout_centerInParent="true"
-    android:paddingBottom="@dimen/spacing_m"/>
+    />
 
   <include layout="@layout/loading_progress" />
 </RelativeLayout>

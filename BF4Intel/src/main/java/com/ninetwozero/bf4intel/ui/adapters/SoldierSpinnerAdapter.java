@@ -22,7 +22,7 @@ public class SoldierSpinnerAdapter extends BaseIntelAdapter<SummarizedSoldierSta
 
     @Override
     public long getItemId(final int position) {
-        return getItem(position).getId();
+        return getItem(position).getPersonaId();
     }
 
     @Override

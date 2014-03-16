@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.content.Loader;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.Bf4Intel;
@@ -28,14 +26,16 @@ import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.login.SoldierListingRequest;
 import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.about.AppInfoActivity;
 import com.ninetwozero.bf4intel.ui.activities.MainActivity;
 import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
-import com.ninetwozero.bf4intel.utils.Result;
+
+import java.util.List;
+
+import nl.qbusict.cupboard.DatabaseCompartment;
 
 import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
@@ -44,13 +44,13 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private static final String RESET_PASSWORD_LINK = "https://signin.ea.com/p/web/resetPassword";
     private static final int GAME_ID_BF4 = 2048;
-    private static final int ID_LOADER_GET_SOLDIERS = 0;
 
     private Bundle profileBundle;
     private View loginStatusView;
     private TextView alertText;
     private EditText searchField;
     private SharedPreferences sharedPreferences;
+    private int selectedSoldierPosition;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -78,54 +78,67 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
         if (requestCode == SearchActivity.REQUEST_SEARCH && resultCode == Activity.RESULT_OK) {
             final Profile profile = (Profile) data.getSerializableExtra(SearchActivity.RESULT_SEARCH_RESULT);
+            selectedSoldierPosition = data.getIntExtra(SearchActivity.RESULT_SEARCH_RESULT_POSITION, 0);
+
             cupboard().withDatabase(getWritableDatabase()).put(profile);
 
             profileBundle = BundleFactory.createForProfile(profile);
-            getSupportLoaderManager().restartLoader(ID_LOADER_GET_SOLDIERS, profileBundle, this);
+            loadSoldiers(profileBundle);
         }
     }
 
-    @Override
-    public Loader<Result> onCreateLoader(final int loaderId, final Bundle bundle) {
-        if (loaderId == ID_LOADER_GET_SOLDIERS) {
-            showLoadingOverlay(true);
-            return new IntelLoader(
-                this,
-                new SimpleGetRequest(
-                    UrlFactory.buildSoldierListURL(bundle.getString(Keys.Profile.ID))
-                )
-            );
-        }
-        throw new IllegalStateException("Unknown loader ID: " + loaderId);
-    }
+    private void loadSoldiers(final Bundle bundle) {
+        showLoadingOverlay(true);
+        requestQueue.add(
+            new SimpleGetRequest<SoldierListingRequest>(
+                UrlFactory.buildSoldierListURL(bundle.getString(Keys.Profile.ID)),
+                this
+            ) {
+                private int bf4SoldierCount;
 
-    @Override
-    protected void onLoadSuccess(final Loader<Result> resultLoader, final String resultMessage) {
-        if (resultLoader.getId() == ID_LOADER_GET_SOLDIERS) {
-            final JsonObject baseObject = extractFromJson(resultMessage);
-            final SoldierListingRequest request = gson.fromJson(baseObject, SoldierListingRequest.class);
+                @Override
+                protected SoldierListingRequest doParse(String json) {
+                    final JsonObject baseObject = extractFromJson(json);
+                    final SoldierListingRequest request = gson.fromJson(baseObject, SoldierListingRequest.class);
 
-            int bf4SoldierCount = 0;
-            final SQLiteDatabase database = getWritableDatabase();
-            for (SummarizedSoldierStats stats : request.getSoldiers()) {
-                if (stats.getGameId() == GAME_ID_BF4) {
-                    cupboard().withDatabase(database).put(stats);
-                    bf4SoldierCount++;
+                    final SQLiteDatabase database = getWritableDatabase();
+                    final DatabaseCompartment connection = cupboard().withDatabase(database);
+                    database.beginTransaction();
+
+                    for (SummarizedSoldierStats stats : request.getSoldiers()) {
+                        if (stats.getGameId() == GAME_ID_BF4) {
+                            if (bf4SoldierCount == 0) {
+                                connection.delete(SummarizedSoldierStats.class, "userId = ?", stats.getUserId());
+                            }
+                            connection.put(stats);
+                            bf4SoldierCount++;
+                        }
+                    }
+
+                    database.setTransactionSuccessful();
+                    database.endTransaction();
+                    return request;
+                }
+
+                @Override
+                protected void deliverResponse(SoldierListingRequest response) {
+                    if (bf4SoldierCount > 0) {
+                        storeSelectedPersonaInPreferences(response.getSoldiers());
+                        setResult(Activity.RESULT_OK, new Intent().putExtras(profileBundle));
+                    } else {
+                        setResult(Activity.RESULT_CANCELED);
+                    }
+                    finish();
+                }
+
+                private void storeSelectedPersonaInPreferences(List<SummarizedSoldierStats> soldierStats) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, selectedSoldierPosition);
+                    editor.putLong(Keys.Menu.LATEST_PERSONA, soldierStats.get(selectedSoldierPosition).getPersonaId());
+                    editor.commit();
                 }
             }
-
-            if (bf4SoldierCount > 0) {
-                sharedPreferences.edit().putLong(
-                    Keys.Menu.LATEST_PERSONA,
-                    request.getSoldiers().get(0).getId()
-                ).commit();
-                setResult(Activity.RESULT_OK, new Intent().putExtras(profileBundle));
-            } else {
-                setResult(Activity.RESULT_CANCELED);
-            }
-            finish();
-        }
-        showLoadingOverlay(false);
+        );
     }
 
     private void initialize() {

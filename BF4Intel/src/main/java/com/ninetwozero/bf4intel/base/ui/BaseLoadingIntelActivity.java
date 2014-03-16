@@ -1,42 +1,48 @@
 package com.ninetwozero.bf4intel.base.ui;
 
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.factories.GsonProvider;
-import com.ninetwozero.bf4intel.utils.Result;
 
-public abstract class BaseLoadingIntelActivity extends BaseIntelActivity implements LoaderManager.LoaderCallbacks<Result> {
+public abstract class BaseLoadingIntelActivity extends BaseIntelActivity implements Response.ErrorListener {
     protected final Gson gson = GsonProvider.getInstance();
+    protected RequestQueue requestQueue;
 
     @Override
-    public abstract Loader<Result> onCreateLoader(int i, Bundle bundle);
-
-    @Override
-    public void onLoadFinished(Loader<Result> resultLoader, Result result) {
-        if (result == Result.SUCCESS) {
-            onLoadSuccess(resultLoader, result.getResultMessage());
-        } else {
-            onLoadFailure(resultLoader, result.getResultMessage());
-        }
-    }
-
-    protected abstract void onLoadSuccess(final Loader<Result> resultLoader, final String resultMessage);
-
-    public void onLoadFailure(final Loader loader, final String resultMessage) {
-        Log.d(getClass().getSimpleName(), "[onLoadFailure] resultMessage => " + resultMessage);
+    public void onErrorResponse(final VolleyError error) {
+        Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
     }
 
     @Override
-    public void onLoaderReset(Loader<Result> resultLoader) {}
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestQueue = Volley.newRequestQueue(this);
+    }
+
+    @Override
+    public void onStop(){
+        requestQueue.cancelAll(
+            new RequestQueue.RequestFilter() {
+                @Override
+                public boolean apply(Request<?> request) {
+                    return request.getMethod() == Request.Method.GET;
+                }
+            }
+        );
+        super.onStop();
+    }
 
     public JsonObject extractFromJson(String json) {
         JsonParser parser = new JsonParser();

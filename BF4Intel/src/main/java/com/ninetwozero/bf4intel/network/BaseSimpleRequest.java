@@ -1,68 +1,52 @@
 package com.ninetwozero.bf4intel.network;
 
-import com.github.kevinsawicki.http.HttpRequest;
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import com.ninetwozero.bf4intel.SessionStore;
+import com.ninetwozero.bf4intel.factories.GsonProvider;
 import com.ninetwozero.bf4intel.utils.exception.Failure;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class BaseSimpleRequest {
-    protected static final int CONNECT_TIMEOUT = 5000;
-    protected static final int READ_TIMEOUT = 15000;
-    protected final String requestUrl;
-    protected final RequestType requestType;
+public abstract class BaseSimpleRequest<T> extends Request<T> {
+    protected RequestType requestType;
+    protected Gson gson = GsonProvider.getInstance();
 
-    public BaseSimpleRequest(final URL requestUrl) {
-        this.requestUrl = requestUrl.toString();
-        this.requestType = RequestType.NORMAL;
-    }
-
-    public BaseSimpleRequest(final URL requestUrl, final RequestType requestType) {
-        this.requestUrl = requestUrl.toString();
+    public BaseSimpleRequest(
+        final int method, final URL url, final RequestType requestType, final Response.ErrorListener errorListener
+    ) {
+        super(method, url.toString(), errorListener);
         this.requestType = requestType;
     }
 
-    public String execute() throws Failure {
-        if (requestUrl != null) {
-            try {
-                final HttpRequest httpRequest = getHttpRequest();
-                final String httpContent = fromStream(httpRequest.buffer());
-                if (httpContent.contains("\"type\":\"error\"")) {
-                    final JsonObject json = new JsonParser().parse(httpContent).getAsJsonObject();
-                    throw new Failure(json.get("message").getAsString());
-                }
-                return httpContent;
-            } catch (IOException e) {
-                throw new Failure(e);
-            } catch (HttpRequest.HttpRequestException e) {
-                throw new Failure(e);
-            }
-        } else {
-            throw new Failure("Provided URL is null - cannot execute request!");
+    @Override
+    protected Response<T> parseNetworkResponse(NetworkResponse response) {
+        try {
+            final String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+            checkForJsonInlinedErrors(json);
+            return Response.success(doParse(json), HttpHeaderParser.parseCacheHeaders(response));
+        } catch (UnsupportedEncodingException e) {
+            return Response.error(new ParseError(e));
+        } catch (JsonSyntaxException je) {
+            return Response.error(new ParseError(je));
+        } catch (Failure ex) {
+            return Response.error(new ParseError(ex));
         }
     }
 
-    private String fromStream(final InputStream in) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-        StringBuilder out = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            out.append(line);
-        }
-        in.close();
-        reader.close();
-        return out.toString();
-    }
-
-    protected Map<String, String> getHeaders() {
+    @Override
+    public Map<String, String> getHeaders() throws AuthFailureError {
         final Map<String, String> map = new HashMap<String, String>();
         map.put("X-Requested-With", "XMLHttpRequest");
         map.put("Cookie", "beaker.session.id=" + SessionStore.getSessionId());
@@ -74,10 +58,17 @@ public abstract class BaseSimpleRequest {
         return map;
     }
 
-    protected abstract HttpRequest getHttpRequest();
+    private void checkForJsonInlinedErrors(final String jsonString) throws Failure {
+        if (jsonString.contains("\"type\":\"error\"")) {
+            final JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
+            throw new Failure(json.get("message").getAsString());
+        }
+    }
 
     public enum RequestType {
         NORMAL,
         FROM_NAVIGATION
     }
-}
+
+    protected abstract T doParse(final String json);
+}        

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +26,7 @@ import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.SimpleListRow;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
+import com.ninetwozero.bf4intel.ui.datatypes.ActiveSoldierChangedEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
 import com.squareup.otto.Subscribe;
@@ -114,8 +114,21 @@ public class NavigationDrawerFragment extends BaseListFragment {
         if (view == null) {
             return;
         }
+
         setupRegularViews(view);
         ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
+    }
+
+    @Subscribe
+    public void onActiveSoldierChanged(final ActiveSoldierChangedEvent event) {
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        final int position = getCheckedItemPosition();
+        ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
+        selectItemFromState(position);
     }
 
     private void initialize(final View view) {
@@ -269,8 +282,10 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private Bundle buildBundleForSoldier(final List<SummarizedSoldierStats> listOfStats) {
-        for (SummarizedSoldierStats soldierStats : listOfStats) {
-            if (soldierStats.getId() == sharedPreferences.getLong(Keys.Menu.LATEST_PERSONA, -1)) {
+        for (int i = 0, max = listOfStats.size(); i < max; i++) {
+            if (i == sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0)) {
+                final SummarizedSoldierStats soldierStats = listOfStats.get(i);
+
                 final Bundle bundle = BundleFactory.createForStats(soldierStats);
                 bundle.putString(Keys.Profile.ID, SessionStore.getUserId());
                 bundle.putString(Keys.Profile.USERNAME, SessionStore.getUsername());
@@ -322,13 +337,15 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private void selectItemFromState(final int position) {
         final NavigationDrawerListAdapter adapter = (NavigationDrawerListAdapter) getListAdapter();
-        if (position >= adapter.getCount()) {
-            selectItemFromState(fetchStartingPositionForSessionState());
+        int actualPosition = position;
+
+        if (position >= adapter.getCount() || position == ListView.INVALID_POSITION) {
+            actualPosition = fetchStartingPositionForSessionState();
         }
 
-        final ListRowElement row = adapter.getItem(position);
+        final ListRowElement row = adapter.getItem(actualPosition);
         if (row instanceof SimpleListRow) {
-            selectItem((SimpleListRow) row, position, true, true);
+            selectItem((SimpleListRow) row, actualPosition, true, true);
         }
     }
 
@@ -353,12 +370,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
             try {
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
                 final String tag = item.getFragmentType().toString();
-                final Fragment fragment = fragmentManager.findFragmentByTag(tag);
-                if (fragment == null) {
-                    transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType(), item.getData()), tag);
-                } else {
-                    transaction.show(fragment);
-                }
+                transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType(), item.getData()), tag);
                 transaction.commit();
             } catch (TypeNotPresentException ex) {
                 showToast(ex.getMessage());

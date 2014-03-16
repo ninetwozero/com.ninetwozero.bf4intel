@@ -20,7 +20,7 @@ public class ParseAccountTest {
 
         assertNotNull(request.getSoldiers().get(0));
         assertNotNull(request.getSoldiers().get(0).getPersonaName());
-        assertNotNull(request.getSoldiers().get(0).getId());
+        assertNotNull(request.getSoldiers().get(0).getPersonaId());
     }
 
 }

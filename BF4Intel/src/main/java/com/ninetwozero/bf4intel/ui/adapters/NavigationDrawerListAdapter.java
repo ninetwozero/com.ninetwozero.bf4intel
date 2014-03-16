@@ -15,7 +15,6 @@ import android.widget.Spinner;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
-import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.SimpleListRow;
 import com.ninetwozero.bf4intel.menu.SoldierSpinnerRow;
@@ -33,7 +32,7 @@ import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_REGULAR_CHILD;
 import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_SOLDIER;
 
 public class NavigationDrawerListAdapter extends BaseIntelAdapter<ListRowElement> {
-    final SharedPreferences preferences;
+    private final SharedPreferences preferences;
 
     public NavigationDrawerListAdapter(final Context context, final List<ListRowElement> items) {
         super(context, items);
@@ -94,15 +93,24 @@ public class NavigationDrawerListAdapter extends BaseIntelAdapter<ListRowElement
             final SoldierSpinnerRow row = (SoldierSpinnerRow) item;
             final SoldierSpinnerAdapter adapter = new SoldierSpinnerAdapter(context, row.getSoldierStats());
             final Spinner spinner = (Spinner) view.findViewById(R.id.spinner_soldier);
-            final long id = preferences.getLong(Keys.Menu.LATEST_PERSONA, 0);
+            final int position = preferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0);
 
             spinner.setAdapter(adapter);
             spinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
                     @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        preferences.edit().putLong(Keys.Menu.LATEST_PERSONA, id).commit();
-                        BusProvider.getInstance().post(new ActiveSoldierChangedEvent(id));
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long selectedId) {
+                        if (preferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0) != position) {
+                            storeSelectionInPreferences(selectedId, position);
+                            BusProvider.getInstance().post(new ActiveSoldierChangedEvent(selectedId));
+                        }
+                    }
+
+                    private void storeSelectionInPreferences(long selectedId, int position) {
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putLong(Keys.Menu.LATEST_PERSONA, selectedId);
+                        editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, position);
+                        editor.commit();
                     }
 
                     @Override
@@ -110,17 +118,8 @@ public class NavigationDrawerListAdapter extends BaseIntelAdapter<ListRowElement
                     }
                 }
             );
-            spinner.setSelection(getIndexForSoldierInList(id, row.getSoldierStats()));
+            spinner.setSelection(position > spinner.getCount() ? 0 : position);
         }
-    }
-
-    private int getIndexForSoldierInList(final long id, final List<SummarizedSoldierStats> soldierStats) {
-        for (int i = 0, max = soldierStats.size(); i < max; i++) {
-            if (soldierStats.get(i).getId() == id) {
-                return i;
-            }
-        }
-        return 0;
     }
 
     private void populateSpecialLayouts(final View view, final ListRowElement item) {

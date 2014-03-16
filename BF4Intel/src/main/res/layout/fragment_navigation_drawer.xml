@@ -48,10 +48,8 @@
     />
 
   <TextView
+    style="@style/DefaultEmptyText"
     android:id="@android:id/empty"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
     android:text="@string/msg_no_menu_items"
-    android:textAppearance="@android:style/TextAppearance.Holo.Inverse"/>
+    />
 </RelativeLayout>

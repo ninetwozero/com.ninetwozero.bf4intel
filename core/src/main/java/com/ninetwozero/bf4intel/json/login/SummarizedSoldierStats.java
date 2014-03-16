@@ -25,7 +25,8 @@ public class SummarizedSoldierStats {
     private int gameId;
 
     // Persona related stuff:
-    private long _id;
+    private Long _id = null;
+    private long personaId;
     private String personaName;
     private String tag;
     private String picture;
@@ -77,6 +78,10 @@ public class SummarizedSoldierStats {
         return _id;
     }
 
+    public long getPersonaId() {
+        return personaId;
+    }
+
     public String getPersonaName() {
         return personaName;
     }
@@ -93,8 +98,8 @@ public class SummarizedSoldierStats {
         return userId;
     }
 
-    public void setId(long id) {
-        this._id = id;
+    public void setPersonaId(long personaId) {
+        this.personaId = personaId;
     }
 
     public void setPersonaName(String personaName) {

@@ -13,9 +13,9 @@
     />
 
   <TextView
+    style="@style/DefaultEmptyText"
     android:id="@android:id/empty"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
+    android:text="@string/msg_empty_stats"
     />
 
   <include layout="@layout/loading_progress" />

@@ -3,8 +3,6 @@ package com.ninetwozero.bf4intel.ui.search;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.Loader;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +14,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -23,12 +22,11 @@ import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResult;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResults;
-import com.ninetwozero.bf4intel.network.IntelLoader;
 import com.ninetwozero.bf4intel.network.SimplePostRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.resources.maps.profile.PlatformStringMap;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
-import com.ninetwozero.bf4intel.utils.Result;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +34,6 @@ import java.util.Map;
 
 public class ProfileSearchFragment extends BaseLoadingListFragment {
     public static final String INTENT_SEARCH_RESULT = "profile_search_result";
-    private static final int ID_LOADER = 10303;
 
     private static final int GAME_ID_BF4 = 2048;
 
@@ -93,37 +90,12 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         }
     }
 
-    @Override
-    protected void onLoadSuccess(final Loader loader, final String resultMessage) {
-        ProfileSearchResults results = fromJson(resultMessage, ProfileSearchResults.class, true);
-        sendDataToListView(fetchBf4Accounts(results.getResults()));
-        showLoadingState(false);
-    }
-
     /*
         Due to Battlelog doing the search by the soldier name (and not the username), we need to
         get the users that are playing BF4 (gameId >= 2048)
 
         Info: http://battlelog.battlefield.com/bf4/user/haruhi00/
     */
-    private List<ProfileSearchResult> fetchBf4Accounts(List<ProfileSearchResult> results) {
-        final List<ProfileSearchResult> validAccounts = new ArrayList<ProfileSearchResult>();
-        for (ProfileSearchResult result : results) {
-            Map<Integer, Integer> games = result.getGames();
-            for (Integer gameId : games.keySet()) {
-                if (games.get(gameId) >= GAME_ID_BF4) {
-                    validAccounts.add(result);
-                }
-            }
-        }
-        return validAccounts;
-    }
-
-    @Override
-    protected void onLoadFailure(final Loader loader, final String resultMessage) {
-        Log.d(getClass().getSimpleName(), "[onLoadFailure] resultMessage => " + resultMessage);
-    }
-
 
     @Override
     protected void startLoadingData() {
@@ -136,20 +108,9 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
 
         postData.putString("query", queryString);
         postData.putString(Keys.CHECKSUM, "0xCAFEBABE");
-        getLoaderManager().restartLoader(ID_LOADER, postData, this);
-    }
 
-    @Override
-    public Loader<Result> onCreateLoader(final int i, final Bundle bundle) {
         showLoadingState(true);
-
-        return new IntelLoader(
-            getActivity(),
-            new SimplePostRequest(
-                UrlFactory.buildUserSearchURL(),
-                bundle
-            )
-        );
+        requestQueue.add(fetchRequestForSearch(postData));
     }
 
     @Override
@@ -168,7 +129,9 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         } else {
             activity.setResult(
                 Activity.RESULT_OK,
-                new Intent().putExtra(SearchActivity.RESULT_SEARCH_RESULT, result.getProfile())
+                new Intent()
+                    .putExtra(SearchActivity.RESULT_SEARCH_RESULT, result.getProfile())
+                    .putExtra(SearchActivity.RESULT_SEARCH_RESULT_POSITION, position)
             );
             activity.finish();
         }
@@ -204,6 +167,47 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         final TextView emptyTextView = (TextView) view.findViewById(android.R.id.empty);
         listView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
         emptyTextView.setText(R.string.msg_no_users_found);
+    }
+
+    private Request<List<ProfileSearchResult>> fetchRequestForSearch(Bundle postData) {
+        return new SimplePostRequest<List<ProfileSearchResult>>(
+            UrlFactory.buildUserSearchURL(),
+            postData,
+            this
+        ) {
+            @Override
+            protected List<ProfileSearchResult> doParse(String json) {
+                ProfileSearchResults results = fromJson(json, ProfileSearchResults.class, true);
+                return fetchBf4Accounts(results.getResults());
+            }
+
+            @Override
+            protected void deliverResponse(List<ProfileSearchResult> response) {
+                sendDataToListView(response);
+                showLoadingState(false);
+            }
+        };
+    }
+
+    private List<ProfileSearchResult> fetchBf4Accounts(List<ProfileSearchResult> results) {
+        final List<ProfileSearchResult> validAccounts = new ArrayList<ProfileSearchResult>();
+        for (ProfileSearchResult result : results) {
+            Map<Integer, Integer> games = result.getGames();
+            for (int platformId : games.keySet()) {
+                if (games.get(platformId) >= GAME_ID_BF4) {
+                    validAccounts.add(
+                        new ProfileSearchResult(
+                            result.getPersonaId(),
+                            result.getPersonaName(),
+                            PlatformStringMap.get(platformId),
+                            result.getProfile(),
+                            result.getGames()
+                        )
+                    );
+                }
+            }
+        }
+        return validAccounts;
     }
 
     private void sendDataToListView(final List<ProfileSearchResult> results) {

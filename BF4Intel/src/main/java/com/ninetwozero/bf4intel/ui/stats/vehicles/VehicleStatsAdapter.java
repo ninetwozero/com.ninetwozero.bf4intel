@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
@@ -37,15 +36,12 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
             view = LayoutInflater.from(context).inflate(R.layout.list_stats_item, parent, false);
         }
 
-        ImageView vehicleImg = (ImageView) view.findViewById(R.id.vehicle_image);
-        vehicleImg.setImageResource(VehicleImageMap.get(vehiclesList.get(0).getName()));
-        vehicleImg.setVisibility(View.VISIBLE);
-
         setText(view, R.id.index, String.valueOf(position + 1));
         setText(view, R.id.service_star_count, String.valueOf(stats.getServiceStarsCount()));
         setText(view, R.id.item_name, VehiclesGroupStringMap.get(stats.getGroupName()));
         setText(view, R.id.kill_count, R.string.num_kills, stats.getKillCount());
 
+        setImage(view, R.id.item_image, VehicleImageMap.get(vehiclesList.get(0).getName()));
         setProgress(view, R.id.item_progress, stats.getServiceStarProgress());
 
         return view;
