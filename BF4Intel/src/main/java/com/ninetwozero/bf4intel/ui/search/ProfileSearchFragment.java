@@ -33,7 +33,6 @@ import java.util.Map;
 
 public class ProfileSearchFragment extends BaseLoadingListFragment {
     public static final String INTENT_SEARCH_RESULT = "profile_search_result";
-    private static final int ID_LOADER = 10303;
 
     private static final int GAME_ID_BF4 = 2048;
 

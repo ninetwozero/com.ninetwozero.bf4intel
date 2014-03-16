@@ -42,7 +42,6 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private static final String RESET_PASSWORD_LINK = "https://signin.ea.com/p/web/resetPassword";
     private static final int GAME_ID_BF4 = 2048;
-    private static final int ID_REQUEST_GET_SOLDIERS = 0;
 
     private Bundle profileBundle;
     private View loginStatusView;

@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 
 public class AssignmentGridFragment extends BaseLoadingFragment {
-    private static final int ID_LOADER = 1000;
     private static final List<String> ASSIGNMENT_TYPE = new ArrayList<String>(Arrays.asList("bronze", "silver", "gold", "sp"));
 
     public static AssignmentGridFragment newInstance(final Bundle data) {

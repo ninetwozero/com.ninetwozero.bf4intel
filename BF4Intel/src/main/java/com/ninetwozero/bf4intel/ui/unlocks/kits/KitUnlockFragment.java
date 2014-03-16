@@ -17,8 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 public class KitUnlockFragment extends BaseUnlockFragment {
-    private static final int ID_LOADER = 3300;
-
     public static KitUnlockFragment newInstance(final Bundle data) {
         final KitUnlockFragment fragment = new KitUnlockFragment();
         fragment.setArguments(data);

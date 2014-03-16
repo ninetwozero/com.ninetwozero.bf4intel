@@ -26,8 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BattleReportListingFragment extends BaseLoadingListFragment {
-    private int ID_LOADER = 2300;
-
     public BattleReportListingFragment() {
     }
 

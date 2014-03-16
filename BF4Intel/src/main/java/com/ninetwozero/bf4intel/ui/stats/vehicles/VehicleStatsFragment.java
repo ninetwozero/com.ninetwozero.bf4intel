@@ -19,9 +19,6 @@ import com.squareup.otto.Subscribe;
 import java.util.List;
 
 public class VehicleStatsFragment extends BaseLoadingListFragment {
-
-    private static final int ID_LOADER = 2200;
-
     public static VehicleStatsFragment newInstance(final Bundle data) {
         final VehicleStatsFragment fragment = new VehicleStatsFragment();
         fragment.setArguments(data);

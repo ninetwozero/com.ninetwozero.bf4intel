@@ -17,8 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 public class WeaponUnlockFragment extends BaseUnlockFragment {
-    private static final int ID_LOADER = 3100;
-
     public static WeaponUnlockFragment newInstance(final Bundle data) {
         final WeaponUnlockFragment fragment = new WeaponUnlockFragment();
         fragment.setArguments(data);

@@ -26,8 +26,6 @@ import com.squareup.otto.Subscribe;
 import java.util.List;
 
 public class BattleFeedFragment extends BaseLoadingListFragment {
-    private static final int ID_LOADER = BattleFeedFragment.class.hashCode();
-
     public BattleFeedFragment() {
     }
 

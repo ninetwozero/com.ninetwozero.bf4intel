@@ -113,7 +113,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
                 break;
 
             default:
-                Log.w(getClass().getSimpleName, "No request matching " + id);
+                Log.w(getClass().getSimpleName(), "No request matching " + id);
         }
     }
 

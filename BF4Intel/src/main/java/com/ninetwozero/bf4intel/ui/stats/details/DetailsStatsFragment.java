@@ -21,9 +21,6 @@ import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
 
 public class DetailsStatsFragment extends BaseLoadingListFragment {
-
-    private static final int ID_LOADER = 2400;
-
     public static DetailsStatsFragment newInstance(final Bundle bundle) {
         final DetailsStatsFragment fragment = new DetailsStatsFragment();
         fragment.setArguments(bundle);

@@ -20,8 +20,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class WeaponStatsFragment extends BaseLoadingListFragment {
-    private static final int ID_LOADER = 2100;
-
     public static WeaponStatsFragment newInstance(final Bundle data) {
         final WeaponStatsFragment fragment = new WeaponStatsFragment();
         fragment.setArguments(data);

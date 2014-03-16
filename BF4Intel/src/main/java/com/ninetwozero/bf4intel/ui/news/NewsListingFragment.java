@@ -93,7 +93,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
                 break;
 
             default:
-                Log.w(getClass().getSimpleName, "No request matching " + requestId);
+                Log.w(getClass().getSimpleName(), "No request matching " + requestId);
         }
     }
 

@@ -25,8 +25,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class AwardGridFragment extends BaseLoadingFragment {
-    private static final int ID_LOADER = 1100;
-
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
         fragment.setArguments(data);
