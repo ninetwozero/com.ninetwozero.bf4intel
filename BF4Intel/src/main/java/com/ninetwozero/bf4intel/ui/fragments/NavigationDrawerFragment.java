@@ -282,8 +282,10 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private Bundle buildBundleForSoldier(final List<SummarizedSoldierStats> listOfStats) {
-        for (SummarizedSoldierStats soldierStats : listOfStats) {
-            if (soldierStats.getId() == sharedPreferences.getLong(Keys.Menu.LATEST_PERSONA, -1)) {
+        for (int i = 0, max = listOfStats.size(); i < max; i++) {
+            if (i == sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0)) {
+                final SummarizedSoldierStats soldierStats = listOfStats.get(i);
+
                 final Bundle bundle = BundleFactory.createForStats(soldierStats);
                 bundle.putString(Keys.Profile.ID, SessionStore.getUserId());
                 bundle.putString(Keys.Profile.USERNAME, SessionStore.getUsername());

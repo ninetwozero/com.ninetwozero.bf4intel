@@ -71,7 +71,6 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        Log.d("YOLO", getClass().getSimpleName() + " is refrehshing!");
         startLoadingData();
     }
 
