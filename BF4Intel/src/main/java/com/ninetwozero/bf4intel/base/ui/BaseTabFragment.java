@@ -1,8 +1,11 @@
 package com.ninetwozero.bf4intel.base.ui;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,8 @@ import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 import java.util.List;
 
 public abstract class BaseTabFragment extends BaseFragment {
+    private static final String STATE_SELECTED_TAB = "selected_tab_position";
+
     private ViewPagerAdapter viewPagerAdapter;
     private ViewPager viewPager;
 
@@ -32,8 +37,21 @@ public abstract class BaseTabFragment extends BaseFragment {
         setupViewPager(view);
         setupTabs(view);
 
+        selectTabFromState();
+    }
+
+    final void selectTabFromState() {
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        final int currentPosition = preferences.getInt(fetchKeyForTabState(), 0);
+        final int realPosition = currentPosition >= viewPagerAdapter.getCount() ? 0 : currentPosition;
+
         //This is to record initial opening of viewPager
-        postToGoogleAnalytics(0);
+        viewPager.setCurrentItem(realPosition);
+        postToGoogleAnalytics(realPosition);
+    }
+
+    private String fetchKeyForTabState() {
+        return getClass().getSimpleName() + "_" + STATE_SELECTED_TAB;
     }
 
     private void setupViewPagerAdapter() {
@@ -65,6 +83,7 @@ public abstract class BaseTabFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 postToGoogleAnalytics(position);
+                sharedPreferences.edit().putInt(fetchKeyForTabState(), position).commit();
             }
         });
     }

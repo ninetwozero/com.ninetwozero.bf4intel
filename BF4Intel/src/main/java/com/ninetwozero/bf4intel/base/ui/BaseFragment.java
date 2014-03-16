@@ -2,7 +2,9 @@ package com.ninetwozero.bf4intel.base.ui;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -24,6 +26,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected FragmentManager fragmentManager;
     protected LayoutInflater layoutInflater;
+    protected SharedPreferences sharedPreferences;
 
     private static Toast toast;
 
@@ -32,6 +35,12 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(icicle);
         setRetainInstance(!getArgumentsBundle().getBoolean(FLAG_DISABLE_RETAIN_STATE, false));
         fragmentManager = getFragmentManager();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
     }
 
     @Override
@@ -55,7 +64,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void postGoogleAnalytics() {
-        GoogleAnalytics.post(getActivity(), this.getClass().getSimpleName());
+        GoogleAnalytics.post(getActivity(), getClass().getSimpleName());
     }
 
     protected void updateActionBar(final Activity activity, final String text) {
