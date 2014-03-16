@@ -33,6 +33,8 @@ import com.ninetwozero.bf4intel.ui.activities.MainActivity;
 import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
+import nl.qbusict.cupboard.DatabaseCompartment;
+
 import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 public class LoginActivity extends BaseLoadingIntelActivity {
@@ -96,27 +98,40 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                     final SoldierListingRequest request = gson.fromJson(baseObject, SoldierListingRequest.class);
 
                     final SQLiteDatabase database = getWritableDatabase();
+                    final DatabaseCompartment connection = cupboard().withDatabase(database);
+                    database.beginTransaction();
+
                     for (SummarizedSoldierStats stats : request.getSoldiers()) {
                         if (stats.getGameId() == GAME_ID_BF4) {
-                            cupboard().withDatabase(database).put(stats);
+                            if (bf4SoldierCount == 0) {
+                                connection.delete(SummarizedSoldierStats.class, "userId = ?", stats.getUserId());
+                            }
+                            connection.put(stats);
                             bf4SoldierCount++;
                         }
                     }
+
+                    database.setTransactionSuccessful();
+                    database.endTransaction();
                     return request;
                 }
 
                 @Override
                 protected void deliverResponse(SoldierListingRequest response) {
                     if (bf4SoldierCount > 0) {
-                        sharedPreferences.edit().putLong(
-                            Keys.Menu.LATEST_PERSONA,
-                            response.getSoldiers().get(0).getId()
-                        ).commit();
+                        storeFirstPersonaInPreferences(response.getSoldiers().get(0));
                         setResult(Activity.RESULT_OK, new Intent().putExtras(profileBundle));
                     } else {
                         setResult(Activity.RESULT_CANCELED);
                     }
                     finish();
+                }
+
+                private void storeFirstPersonaInPreferences(SummarizedSoldierStats soldierStats) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putLong(Keys.Menu.LATEST_PERSONA, soldierStats.getPersonaId());
+                    editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, 0);
+                    editor.commit();
                 }
             }
         );
