@@ -90,7 +90,7 @@
       android:hint="@string/hint_search"
       android:maxLines="1"
       android:singleLine="true"
-      android:imeOptions="actionSend"
+      android:imeOptions="actionSearch"
       />
 
     <Button
@@ -116,7 +116,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:visibility="gone"
-    android:background="@color/white"
+    android:background="@color/login_activity_bg"
     >
 
     <ProgressBar
@@ -131,7 +131,7 @@
       android:layout_height="wrap_content"
       android:layout_marginBottom="@dimen/spacing_l"
       android:fontFamily="sans-serif-light"
-      android:text="@string/login_progress_signing_in"
-      android:textAppearance="?android:attr/textAppearanceMedium"/>
+      android:text="@string/msg_downloading"
+      />
   </LinearLayout>
 </RelativeLayout>

@@ -203,7 +203,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             new EditText.OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                    if (id == EditorInfo.IME_ACTION_SEND) {
+                    if (id == EditorInfo.IME_ACTION_SEARCH) {
                         onFormSubmitted();
                         return true;
                     }
