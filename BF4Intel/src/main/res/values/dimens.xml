@@ -56,6 +56,10 @@
   <dimen name="action_button_min_width">64dp</dimen>
   <dimen name="indeterminate_progress_size">32dp</dimen>
 
+  <!--Assignments and awards GridView columnWidth-->
+  <dimen name="grid_view_column_width">150dp</dimen>
+  <dimen name="grid_view_spacing">6dp</dimen>
+
   <!--Grid view images-->
   <dimen name="grid_view_image_height">100dp</dimen>
   <dimen name="grid_view_image_width">@dimen/grid_view_image_height</dimen>
