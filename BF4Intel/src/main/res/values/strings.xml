@@ -32,7 +32,7 @@
   <string name="msg_forums_not_found">Forums not found.</string>
   <string name="msg_no_notifications">No notifications found.</string>
   <string name="msg_no_menu_items">No menu items found</string>
-  <string name="msg_sending">Sending…</string>
+  <string name="msg_sending">Sending&#8230;</string>
   <string name="msg_enter_comment">Enter a comment!</string>
   <string name="msg_comment_ok">Comment posted!</string>
   <string name="soldier_left_until_rankup">%1$s until rank up</string>
