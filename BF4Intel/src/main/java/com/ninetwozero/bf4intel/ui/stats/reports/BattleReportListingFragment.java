@@ -88,7 +88,12 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
             @Override
             protected void deliverResponse(List<BaseListItem> response) {
                 if (response == null) {
-                    ((TextView) getView().findViewById(android.R.id.empty)).setText(R.string.msg_error_private_user);
+                    ((TextView) getView().findViewById(android.R.id.empty)).setText(
+                        String.format(
+                            getString(R.string.msg_error_private_user),
+                            getArguments().getString(Keys.Soldier.NAME)
+                        )
+                    );
                 } else {
                     sendDataToListView(response);
                 }

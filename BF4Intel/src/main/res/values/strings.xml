@@ -223,7 +223,7 @@
   <string name="action_search_short">Search</string>
   <string name="msg_search_error_length">Min length: 3 characters</string>
   <string name="menu_logout">Logout</string>
-  <string name="msg_error_private_user">This user is private.</string>
+  <string name="msg_error_private_user">%s\nis not sharing Battle Reports</string>
 
   <!-- ABOUT -->
   <string name="label_about">About</string>
