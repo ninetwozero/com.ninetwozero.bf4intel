@@ -250,6 +250,9 @@
     <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
     <item name="android:textColor">@color/text_on_card_bg</item>
     <item name="android:fontFamily">sans-serif-light</item>
+    <item name="android:paddingLeft">@dimen/spacing_l</item>
+    <item name="android:paddingRight">@dimen/spacing_l</item>
+    <item name="android:gravity">center</item>
   </style>
 
 </resources>
