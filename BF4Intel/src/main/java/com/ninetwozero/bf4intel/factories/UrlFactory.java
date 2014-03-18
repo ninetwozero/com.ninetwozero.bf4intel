@@ -51,7 +51,7 @@ public class UrlFactory {
             String.format(
                 Locale.getDefault(),
                 "soldier/missionsPopulateStats/%s/%d/%s/%d/",
-                soldierName,
+                soldierName.replace(" ", "%20"),
                 soldierId,
                 userId,
                 platformId
@@ -94,7 +94,7 @@ public class UrlFactory {
             String.format(
                 Locale.getDefault(),
                 "soldier/dogtagsPopulateStats/%s/%s/%d/%d/",
-                soldierName,
+                soldierName.replace(" ", "%20"),
                 soldierId,
                 platformId,
                 page
