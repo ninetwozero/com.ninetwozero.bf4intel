@@ -50,7 +50,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     private TextView alertText;
     private EditText searchField;
     private SharedPreferences sharedPreferences;
-    private int selectedSoldierPosition;
+    private int selectedSoldierPlatform;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -78,7 +78,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
         if (requestCode == SearchActivity.REQUEST_SEARCH && resultCode == Activity.RESULT_OK) {
             final Profile profile = (Profile) data.getSerializableExtra(SearchActivity.RESULT_SEARCH_RESULT);
-            selectedSoldierPosition = data.getIntExtra(SearchActivity.RESULT_SEARCH_RESULT_POSITION, 0);
+            selectedSoldierPlatform = data.getIntExtra(SearchActivity.RESULT_SEARCH_RESULT_PLATFORM, 0);
 
             cupboard().withDatabase(getWritableDatabase()).put(profile);
 
@@ -95,6 +95,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                 this
             ) {
                 private int bf4SoldierCount;
+                private int selectedSoldierPosition;
 
                 @Override
                 protected SoldierListingRequest doParse(String json) {
@@ -105,10 +106,16 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                     final DatabaseCompartment connection = cupboard().withDatabase(database);
                     database.beginTransaction();
 
-                    for (SummarizedSoldierStats stats : request.getSoldiers()) {
+                    final int soldierCount = request.getSoldiers().size();
+                    for (int i = 0; i < soldierCount; i++) {
+                        final SummarizedSoldierStats stats = request.getSoldiers().get(i);
                         if (stats.getGameId() == GAME_ID_BF4) {
                             if (bf4SoldierCount == 0) {
                                 connection.delete(SummarizedSoldierStats.class, "userId = ?", stats.getUserId());
+                            }
+
+                            if (stats.getPlatformId() == selectedSoldierPlatform) {
+                                selectedSoldierPosition = i;
                             }
                             connection.put(stats);
                             bf4SoldierCount++;
@@ -123,7 +130,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                 @Override
                 protected void deliverResponse(SoldierListingRequest response) {
                     if (bf4SoldierCount > 0) {
-                        storeSelectedPersonaInPreferences(response.getSoldiers());
+                        storeSelectedPersonaInPreferences(response.getSoldiers(), selectedSoldierPosition);
                         setResult(Activity.RESULT_OK, new Intent().putExtras(profileBundle));
                     } else {
                         setResult(Activity.RESULT_CANCELED);
@@ -131,10 +138,10 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                     finish();
                 }
 
-                private void storeSelectedPersonaInPreferences(List<SummarizedSoldierStats> soldierStats) {
+                private void storeSelectedPersonaInPreferences(List<SummarizedSoldierStats> soldierStats, final int index) {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, selectedSoldierPosition);
-                    editor.putLong(Keys.Menu.LATEST_PERSONA, soldierStats.get(selectedSoldierPosition).getPersonaId());
+                    editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, index);
+                    editor.putLong(Keys.Menu.LATEST_PERSONA, soldierStats.get(index).getPersonaId());
                     editor.commit();
                 }
             }
