@@ -20,7 +20,7 @@ public class SearchActivity extends BaseIntelActivity {
     public static final int REQUEST_SEARCH = 0;
     public static final String QUERY = SearchManager.QUERY;
     public static final String RESULT_SEARCH_RESULT = "searchResult";
-    public static final String RESULT_SEARCH_RESULT_POSITION = "searchResultPosition";
+    public static final String RESULT_SEARCH_RESULT_PLATFORM = "searchResultPlatformId";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

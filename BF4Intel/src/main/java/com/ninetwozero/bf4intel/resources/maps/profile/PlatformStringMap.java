@@ -17,4 +17,13 @@ public class PlatformStringMap {
     public static String get(final int id) {
         return map.containsKey(id)  ? map.get(id) : "...";
     }
+
+    public static int getIdFromName(final String name) {
+        for (Map.Entry<Integer, String> keyValuePair : map.entrySet()) {
+            if (keyValuePair.getValue().equalsIgnoreCase(name)) {
+                return keyValuePair.getKey();
+            }
+        }
+        return 1;
+    }
 }
