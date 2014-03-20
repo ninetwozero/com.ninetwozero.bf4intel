@@ -15,6 +15,7 @@ import com.ninetwozero.bf4intel.datatypes.Skill;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.soldieroverview.BaseStatsModel;
 import com.ninetwozero.bf4intel.json.soldieroverview.CompletionProgress;
+import com.ninetwozero.bf4intel.json.soldieroverview.GameModeServiceStar;
 import com.ninetwozero.bf4intel.json.soldieroverview.SkillOverview;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
@@ -63,24 +64,24 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     private Request<SoldierOverview> fetchRequest(Bundle bundle) {
         return new SimpleGetRequest<SoldierOverview>(
-                UrlFactory.buildSoldierOverviewURL(
-                    bundle.getLong(Keys.Soldier.ID),
-                    bundle.getInt(Keys.Soldier.PLATFORM)
-                ),
-                this
-            ) {
-                @Override
-                protected SoldierOverview doParse(String json) {
-                    final SoldierOverview soldierOverview = fromJson(json, SoldierOverview.class);
-                    return soldierOverview;
-                }
+            UrlFactory.buildSoldierOverviewURL(
+                bundle.getLong(Keys.Soldier.ID),
+                bundle.getInt(Keys.Soldier.PLATFORM)
+            ),
+            this
+        ) {
+            @Override
+            protected SoldierOverview doParse(String json) {
+                final SoldierOverview soldierOverview = fromJson(json, SoldierOverview.class);
+                return soldierOverview;
+            }
 
-                @Override
-                protected void deliverResponse(SoldierOverview response) {
-                    displayInformation(getView(), response);
-                    showLoadingState(false);
-                }
-            };
+            @Override
+            protected void deliverResponse(SoldierOverview response) {
+                displayInformation(getView(), response);
+                showLoadingState(false);
+            }
+        };
     }
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {
@@ -89,6 +90,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         displayServiceStars(baseView, soldierOverview.getBasicSoldierStats());
         displayToplist(baseView, R.id.wrap_soldier_top3_weapons, soldierOverview.getTopWeapons(), true);
         displayToplist(baseView, R.id.wrap_soldier_top3_vehicles, soldierOverview.getTopVehicles(), false);
+        displayTopGameModes(baseView, soldierOverview.getBasicSoldierStats());
         displayCompletions(baseView, soldierOverview.getCompletions());
     }
 
@@ -121,7 +123,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         contentArea.removeAllViews();
         List<Integer> keys = new ArrayList<Integer>(serviceStars.keySet());
         Collections.sort(keys);
-        
+
         for (int key : keys) {
             final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
             final int serviceStarCount = serviceStars.get(key);
@@ -131,8 +133,52 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             setText(parent, R.id.title, fetchKitTitleFromId(key));
             setText(parent, R.id.service_star_count, String.valueOf(serviceStarCount));
             setText(parent, R.id.progress_text, roundedProgress + "%");
-            
+
             contentArea.addView(parent);
+        }
+    }
+
+    private void displayTopGameModes(final View baseView, final SkillOverview basicSoldierStats) {
+        final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_top3_gamemodes);
+        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
+
+        contentArea.removeAllViews();
+
+        for (GameModeServiceStar serviceStar : basicSoldierStats.getGameModeServiceStars()) {
+            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
+            final int progress = Math.round(serviceStar.getServiceStarProgress());
+
+            setProgress(parent, R.id.progressbar, progress);
+            setText(parent, R.id.title, fetchGameModeTitleFromKey(serviceStar.getCriteria()));
+            setText(parent, R.id.service_star_count, String.valueOf(serviceStar.getServiceStarCount()));
+            setText(parent, R.id.progress_text, progress + "%");
+
+            contentArea.addView(parent);
+        }
+    }
+
+    /*
+        TODO: Figure out where we want to place it - another static resource class?
+     */
+    private int fetchGameModeTitleFromKey(String key) {
+        if (key.equals("sc_conquest")) {
+            return R.string.gamemode_conquest;
+        } else if (key.equals("sc_rush")) {
+            return R.string.gamemode_rush;
+        } else if (key.equals("sc_obliteration")) {
+            return R.string.gamemode_obliteration;
+        } else if (key.equals("sc_capturetheflag")) {
+            return R.string.gamemode_capture_the_flag;
+        } else if (key.equals("sc_airsuperiority")) {
+            return R.string.gamemode_air_superiority;
+        } else if (key.equals("sc_defuse")) {
+            return R.string.gamemode_defuse;
+        } else if (key.equals("sc_domination")) {
+            return R.string.gamemode_domination;
+        } else if (key.equals("sc_deathmatch")) {
+            return R.string.gamemode_deathmatch;
+        } else {
+            return R.string.na;
         }
     }
 

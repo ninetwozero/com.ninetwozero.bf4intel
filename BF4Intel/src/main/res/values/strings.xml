@@ -242,4 +242,13 @@
   <string name="class_commander">Commander</string>
   <string name="soldier_enlisted_on">Enlisted on</string>
   <string name="msg_empty_stats">No stats found.</string>
+  <string name="soldier_top_game_modes">Top Game Modes</string>
+  <string name="gamemode_conquest">Conquest</string>
+  <string name="gamemode_rush">Rush</string>
+  <string name="gamemode_obliteration">Obliteration</string>
+  <string name="gamemode_capture_the_flag">Capture the Flag</string>
+  <string name="gamemode_air_superiority">Air Superiority</string>
+  <string name="gamemode_defuse">Defuse</string>
+  <string name="gamemode_domination">Domination</string>
+  <string name="gamemode_deathmatch">Team Deathmatch</string>
 </resources>
