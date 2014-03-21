@@ -74,6 +74,17 @@
   <string name="x_on_y">%1$s on %2$s</string>
   <string name="generic_x_of_y">%1$s/%2$s</string>
 
+  <!-- Strings for the game modes -->
+  <string name="soldier_top_game_modes">Top Game Modes</string>
+  <string name="gamemode_conquest">Conquest</string>
+  <string name="gamemode_rush">Rush</string>
+  <string name="gamemode_obliteration">Obliteration</string>
+  <string name="gamemode_capture_the_flag">Capture the Flag</string>
+  <string name="gamemode_air_superiority">Air Superiority</string>
+  <string name="gamemode_defuse">Defuse</string>
+  <string name="gamemode_domination">Domination</string>
+  <string name="gamemode_deathmatch">Team Deathmatch</string>
+
   <!-- Strings for the Skills -->
   <string name="skills_kd">K/D</string>
   <string name="skills_spm">SPM</string>
@@ -103,6 +114,7 @@
   <string name="class_recon">Recon</string>
   <string name="class_support">Support</string>
   <string name="class_commander">Commander</string>
+
   <!--Weapon groups-->
   <string name="category_lmgs">Light Machine Guns</string>
   <string name="category_pdws">Personal Defence Weapons</string>

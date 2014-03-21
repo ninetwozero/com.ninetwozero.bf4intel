@@ -3,32 +3,32 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:orientation="horizontal"
   android:paddingTop="@dimen/spacing_s"
   android:paddingBottom="@dimen/spacing_s"
   >
 
   <TextView
     android:id="@+id/title"
-    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
     android:textAllCaps="true"
     android:textAppearance="@android:style/TextAppearance.Holo"
     />
-
   <TextView
-    android:id="@+id/progress_text"
+    android:id="@+id/subtitle"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:textAllCaps="true"
+    android:layout_below="@id/title"
+    android:textAppearance="@android:style/TextAppearance.Holo.Small"
+  />
+  <TextView
+    android:id="@+id/score"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentRight="true"
-    android:textAppearance="@android:style/TextAppearance.Holo"
+    android:layout_below="@id/title"
+    android:textAllCaps="true"
+    android:textAppearance="@android:style/TextAppearance.Holo.Small"
     />
-
-  <ProgressBar
-    style="?android:attr/progressBarStyleHorizontal"
-    android:id="@+id/progressbar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:indeterminate="false"
-    android:layout_below="@id/title"/>
 </RelativeLayout>

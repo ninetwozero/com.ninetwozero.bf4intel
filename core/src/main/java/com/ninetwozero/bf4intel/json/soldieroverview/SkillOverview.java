@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.json.soldieroverview;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
 import java.util.Map;
 
 public class SkillOverview {
@@ -28,6 +29,9 @@ public class SkillOverview {
 
     @SerializedName("serviceStarsProgress")
     private Map<Integer, Double> serviceStarProgress;
+
+    @SerializedName("serviceStarsGameModes")
+    private List<GameModeServiceStar> gameModeServiceStars;
 
     public String getSkillRating() {
         return skillRating;
@@ -63,5 +67,9 @@ public class SkillOverview {
 
     public Map<Integer, Double> getServiceStarProgress() {
         return serviceStarProgress;
+    }
+
+    public List<GameModeServiceStar> getGameModeServiceStars() {
+        return gameModeServiceStars;
     }
 }

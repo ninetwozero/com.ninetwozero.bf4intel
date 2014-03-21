@@ -109,16 +109,26 @@ public class RankImageMap {
             put("WARSAW_ID_P_RANK98_NAME", R.drawable.r98);
             put("WARSAW_ID_P_RANK99_NAME", R.drawable.r99);
             put("WARSAW_ID_P_RANK100_NAME", R.drawable.r100);
-            put("WARSAW_ID_P_RANK101_NAME", R.drawable.r101);
-            put("WARSAW_ID_P_RANK102_NAME", R.drawable.r102);
-            put("WARSAW_ID_P_RANK103_NAME", R.drawable.r103);
-            put("WARSAW_ID_P_RANK104_NAME", R.drawable.r104);
-            put("WARSAW_ID_P_RANK105_NAME", R.drawable.r105);
-            put("WARSAW_ID_P_RANK106_NAME", R.drawable.r106);
-            put("WARSAW_ID_P_RANK107_NAME", R.drawable.r107);
-            put("WARSAW_ID_P_RANK108_NAME", R.drawable.r108);
-            put("WARSAW_ID_P_RANK109_NAME", R.drawable.r109);
-            put("WARSAW_ID_P_RANK110_NAME", R.drawable.r110);
+            put("WARSAW_ID_P_XP1_RANK101_NAME", R.drawable.r101);
+            put("WARSAW_ID_P_XP1_RANK102_NAME", R.drawable.r102);
+            put("WARSAW_ID_P_XP1_RANK103_NAME", R.drawable.r103);
+            put("WARSAW_ID_P_XP1_RANK104_NAME", R.drawable.r104);
+            put("WARSAW_ID_P_XP1_RANK105_NAME", R.drawable.r105);
+            put("WARSAW_ID_P_XP1_RANK106_NAME", R.drawable.r106);
+            put("WARSAW_ID_P_XP1_RANK107_NAME", R.drawable.r107);
+            put("WARSAW_ID_P_XP1_RANK108_NAME", R.drawable.r108);
+            put("WARSAW_ID_P_XP1_RANK109_NAME", R.drawable.r109);
+            put("WARSAW_ID_P_XP1_RANK110_NAME", R.drawable.r110);
+            put("WARSAW_ID_P_RANK111_NAME", R.drawable.r111);
+            put("WARSAW_ID_P_RANK112_NAME", R.drawable.r112);
+            put("WARSAW_ID_P_RANK113_NAME", R.drawable.r113);
+            put("WARSAW_ID_P_RANK114_NAME", R.drawable.r114);
+            put("WARSAW_ID_P_RANK115_NAME", R.drawable.r115);
+            put("WARSAW_ID_P_RANK116_NAME", R.drawable.r116);
+            put("WARSAW_ID_P_RANK117_NAME", R.drawable.r117);
+            put("WARSAW_ID_P_RANK118_NAME", R.drawable.r118);
+            put("WARSAW_ID_P_RANK119_NAME", R.drawable.r119);
+            put("WARSAW_ID_P_RANK120_NAME", R.drawable.r120);
         }
     };
 
