@@ -2,10 +2,10 @@ package com.ninetwozero.bf4intel.json.stats.vehicles;
 
 import com.ninetwozero.bf4intel.util.IntelJsonParser;
 
+import org.junit.Test;
+
 import java.io.IOException;
 import java.util.List;
-
-import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
 
