@@ -121,7 +121,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     private void displayServiceStars(final View baseView, final SkillOverview basicSoldierStats) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_service_stars);
-        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
+        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area_service_stars);
         final Map<Integer, Integer> serviceStars = basicSoldierStats.getServiceStars();
         final Map<Integer, Double> serviceStarProgress = basicSoldierStats.getServiceStarProgress();
 
@@ -144,8 +144,8 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     }
 
     private void displayTopGameModes(final View baseView, final SkillOverview basicSoldierStats) {
-        final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_top3_gamemodes);
-        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
+        final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_top3_game_modes);
+        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area_game_modes);
 
         contentArea.removeAllViews();
 
@@ -242,7 +242,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     private void displayTopLeaderboards(final View baseView, final List<TopLeaderboardItem> leaderboardItems) {
         final Activity activity = getActivity();
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_top_leaderboards);
-        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
+        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area_leaderboards);
 
         contentArea.removeAllViews();
         Collections.sort(leaderboardItems);
@@ -272,7 +272,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     private void displayCompletions(final View baseView, final List<CompletionProgress> completions) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_completions);
-        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
+        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area_completions);
         contentArea.removeAllViews();
 
         for (CompletionProgress completionProgress : completions) {
