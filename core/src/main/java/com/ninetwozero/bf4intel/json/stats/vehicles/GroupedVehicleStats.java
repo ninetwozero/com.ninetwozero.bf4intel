@@ -7,9 +7,9 @@ public class GroupedVehicleStats implements Comparable<GroupedVehicleStats> {
     private final String groupName;
     private final int serviceStarsCount;
     private final int serviceStarProgress;
-    private final int killCount;
-    private final long timeInVehicle;
-    private final List<VehicleStats> vehicleList;
+    private int killCount;
+    private long timeInVehicle;
+    private List<VehicleStats> vehicleList;
 
     public GroupedVehicleStats(String groupName, int serviceStarsCount, int serviceStarProgress, int killCount,
                                long timeInVehicle, List<VehicleStats> vehicleList) {
@@ -43,6 +43,12 @@ public class GroupedVehicleStats implements Comparable<GroupedVehicleStats> {
 
     public List<VehicleStats> getVehicleList() {
         return vehicleList;
+    }
+
+    public void addVehicleStats(VehicleStats stat) {
+        killCount += stat.getKillsCount();
+        timeInVehicle += stat.getTimeInVehicle();
+        vehicleList.add(stat);
     }
 
     @Override
