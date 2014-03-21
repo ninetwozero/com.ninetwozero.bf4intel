@@ -109,6 +109,26 @@ public class RankStringMap {
             put("WARSAW_ID_P_RANK98_NAME", R.string.rank98);
             put("WARSAW_ID_P_RANK99_NAME", R.string.rank99);
             put("WARSAW_ID_P_RANK100_NAME", R.string.rank100);
+            put("WARSAW_ID_P_XP1_RANK101_NAME", R.string.xp1_rank101_name);
+            put("WARSAW_ID_P_XP1_RANK102_NAME", R.string.xp1_rank102_name);
+            put("WARSAW_ID_P_XP1_RANK103_NAME", R.string.xp1_rank103_name);
+            put("WARSAW_ID_P_XP1_RANK104_NAME", R.string.xp1_rank104_name);
+            put("WARSAW_ID_P_XP1_RANK105_NAME", R.string.xp1_rank105_name);
+            put("WARSAW_ID_P_XP1_RANK106_NAME", R.string.xp1_rank106_name);
+            put("WARSAW_ID_P_XP1_RANK107_NAME", R.string.xp1_rank107_name);
+            put("WARSAW_ID_P_XP1_RANK108_NAME", R.string.xp1_rank108_name);
+            put("WARSAW_ID_P_XP1_RANK109_NAME", R.string.xp1_rank109_name);
+            put("WARSAW_ID_P_XP1_RANK110_NAME", R.string.xp1_rank110_name);
+            put("WARSAW_ID_P_RANK111_NAME", R.string.rank111_name);
+            put("WARSAW_ID_P_RANK112_NAME", R.string.rank112_name);
+            put("WARSAW_ID_P_RANK113_NAME", R.string.rank113_name);
+            put("WARSAW_ID_P_RANK114_NAME", R.string.rank114_name);
+            put("WARSAW_ID_P_RANK115_NAME", R.string.rank115_name);
+            put("WARSAW_ID_P_RANK116_NAME", R.string.rank116_name);
+            put("WARSAW_ID_P_RANK117_NAME", R.string.rank117_name);
+            put("WARSAW_ID_P_RANK118_NAME", R.string.rank118_name);
+            put("WARSAW_ID_P_RANK119_NAME", R.string.rank119_name);
+            put("WARSAW_ID_P_RANK120_NAME", R.string.rank120_name);
         }
     };
 

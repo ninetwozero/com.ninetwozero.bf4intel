@@ -101,4 +101,27 @@
   <string name="rank98">Lieutenant Colonel III</string>
   <string name="rank99">Lieutenant Colonel IV</string>
   <string name="rank100">Colonel</string>
+  <string name="rank100_name">Colonel</string>
+
+  <string name="xp1_rank101_name">Colonel II</string>
+  <string name="xp1_rank102_name">Colonel III</string>
+  <string name="xp1_rank103_name">Colonel IV</string>
+  <string name="xp1_rank104_name">Colonel V</string>
+  <string name="xp1_rank105_name">Colonel VI</string>
+  <string name="xp1_rank106_name">Colonel VII</string>
+  <string name="xp1_rank107_name">Colonel VIII</string>
+  <string name="xp1_rank108_name">Colonel IX</string>
+  <string name="xp1_rank109_name">Colonel X</string>
+  <string name="xp1_rank110_name">Brigadier General</string>
+
+  <string name="rank111_name">Brigadier General II</string>
+  <string name="rank112_name">Brigadier General III</string>
+  <string name="rank113_name">Brigadier General IV</string>
+  <string name="rank114_name">Brigadier General V</string>
+  <string name="rank115_name">Brigadier General VI</string>
+  <string name="rank116_name">Brigadier General VII</string>
+  <string name="rank117_name">Brigadier General VIII</string>
+  <string name="rank118_name">Brigadier General IX</string>
+  <string name="rank119_name">Brigadier General X</string>
+  <string name="rank120_name">Major General</string>
 </resources>
