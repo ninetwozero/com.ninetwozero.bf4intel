@@ -1,7 +1,6 @@
 package com.ninetwozero.bf4intel.utils;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.ninetwozero.bf4intel.R;
 
@@ -52,7 +51,6 @@ public class LeaderboardUtils {
         }
 
         if (resource == R.string.na) {
-            Log.d("LeaderbordUtils", "Missing string: " + key);
             return context.getString(resource);
         }
 

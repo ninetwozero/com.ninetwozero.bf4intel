@@ -162,9 +162,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         }
     }
 
-    /*
-        TODO: Figure out where we want to place it - another static resource class?
-     */
     private int fetchGameModeTitleFromKey(String key) {
         if (key.equals("sc_conquest")) {
             return R.string.gamemode_conquest;
