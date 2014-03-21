@@ -298,10 +298,34 @@
       </LinearLayout>
 
       <TextView
+        android:id="@+id/heading_top_leaderboards"
+        style="@style/RegularHeadingOverCard"
+        android:text="@string/soldier_top_leaderboards"
+        android:layout_below="@id/wrap_soldier_top3_vehicles"
+        />
+
+      <LinearLayout
+        android:id="@+id/wrap_soldier_top_leaderboards"
+        style="@style/NonListViewCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/heading_top_leaderboards"
+        >
+
+        <LinearLayout
+          android:id="@+id/content_area"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          />
+      </LinearLayout>
+
+      <TextView
         android:id="@+id/heading_top3_gamemodes"
         style="@style/RegularHeadingOverCard"
         android:text="@string/soldier_top_game_modes"
-        android:layout_below="@id/wrap_soldier_top3_vehicles"
+        android:layout_below="@id/wrap_soldier_top_leaderboards"
         />
 
       <LinearLayout

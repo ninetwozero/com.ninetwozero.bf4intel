@@ -18,9 +18,11 @@ import com.ninetwozero.bf4intel.json.soldieroverview.CompletionProgress;
 import com.ninetwozero.bf4intel.json.soldieroverview.GameModeServiceStar;
 import com.ninetwozero.bf4intel.json.soldieroverview.SkillOverview;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
+import com.ninetwozero.bf4intel.json.soldieroverview.TopLeaderboardItem;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.CompletionStringMap;
+import com.ninetwozero.bf4intel.resources.maps.leaderboards.LeaderboardStringMap;
 import com.ninetwozero.bf4intel.resources.maps.profile.PlatformStringMap;
 import com.ninetwozero.bf4intel.resources.maps.ranks.RankImageMap;
 import com.ninetwozero.bf4intel.resources.maps.ranks.RankStringMap;
@@ -28,6 +30,8 @@ import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
+import com.ninetwozero.bf4intel.utils.LeaderboardUtils;
+import com.ninetwozero.bf4intel.utils.NumberFormatter;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -90,6 +94,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         displayServiceStars(baseView, soldierOverview.getBasicSoldierStats());
         displayToplist(baseView, R.id.wrap_soldier_top3_weapons, soldierOverview.getTopWeapons(), true);
         displayToplist(baseView, R.id.wrap_soldier_top3_vehicles, soldierOverview.getTopVehicles(), false);
+        displayTopLeaderboards(baseView, soldierOverview.getLeaderboardItems());
         displayTopGameModes(baseView, soldierOverview.getBasicSoldierStats());
         displayCompletions(baseView, soldierOverview.getCompletions());
     }
@@ -222,9 +227,47 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             final View parent = layoutInflater.inflate(R.layout.list_item_soldier_toplist, null, false);
             final String name = stats.get(i).getName();
             setText(parent, R.id.title, isWeapon ? WeaponStringMap.get(name) : VehicleStringMap.get(name));
-            setText(parent, R.id.value, String.format(getString(R.string.num_kills), stats.get(i).getKillCount()));
+            setText(
+                parent,
+                R.id.value,
+                String.format(
+                    getString(R.string.num_kills),
+                    NumberFormatter.format(stats.get(i).getKillCount())
+                )
+            );
             contentArea.addView(parent);
         }
+    }
+
+    private void displayTopLeaderboards(final View baseView, final List<TopLeaderboardItem> leaderboardItems) {
+        final Activity activity = getActivity();
+        final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_top_leaderboards);
+        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
+
+        contentArea.removeAllViews();
+        Collections.sort(leaderboardItems);
+
+        for (TopLeaderboardItem item : leaderboardItems) {
+            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_leaderboard, null, false);
+
+            setText(parent, R.id.title, LeaderboardStringMap.Category.get(item.getInformation().getName()));
+            setText(parent, R.id.subtitle, fetchSubtitleForLeaderboard(item));
+            setText(
+                parent,
+                R.id.score,
+                LeaderboardUtils.getScoreString(activity, item.getStatId(), item.getScore())
+            );
+
+            contentArea.addView(parent);
+        }
+    }
+
+    private String fetchSubtitleForLeaderboard(TopLeaderboardItem item) {
+        return String.format(
+            getString(R.string.leaderboard_division),
+            item.getDivision(),
+            getString(LeaderboardStringMap.AreaType.get(item.getArea().getType()))
+        );
     }
 
     private void displayCompletions(final View baseView, final List<CompletionProgress> completions) {
@@ -253,10 +296,10 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     private List<Skill> skillsListFrom(SkillOverview so) {
         final List<Skill> skillList = new ArrayList<Skill>(6);
         skillList.add(new Skill(R.string.skills_kd, so.getKillDeathRatio()));
-        skillList.add(new Skill(R.string.skills_spm, so.getScorePerMinute()));
-        skillList.add(new Skill(R.string.skills_kpm, String.format("%.2f", so.getKillsPerMinute())));
-        skillList.add(new Skill(R.string.skills_kills, so.getKillCount()));
-        skillList.add(new Skill(R.string.skills_score, String.format("%,d", so.getScore())));
+        skillList.add(new Skill(R.string.skills_spm, NumberFormatter.format(so.getScorePerMinute())));
+        skillList.add(new Skill(R.string.skills_kpm, NumberFormatter.format(so.getKillsPerMinute())));
+        skillList.add(new Skill(R.string.skills_kills, NumberFormatter.format(so.getKillCount())));
+        skillList.add(new Skill(R.string.skills_score, NumberFormatter.format(so.getScore())));
         skillList.add(new Skill(R.string.skills_time, DateTimeUtils.toLiteral(so.getTimePlayed())));
         return skillList;
     }

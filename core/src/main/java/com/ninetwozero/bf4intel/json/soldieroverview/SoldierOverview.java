@@ -20,6 +20,9 @@ public class SoldierOverview {
     @SerializedName("topVehicles")
     private List<BaseStatsModel> topVehicles;
 
+    @SerializedName("geolbTopPerformance")
+    private List<TopLeaderboardItem> leaderboardItems;
+
     @SerializedName("gameProgress")
     private List<CompletionProgress> completions;
 
@@ -45,6 +48,10 @@ public class SoldierOverview {
 
     public List<BaseStatsModel> getTopVehicles() {
         return topVehicles;
+    }
+
+    public List<TopLeaderboardItem> getLeaderboardItems() {
+        return leaderboardItems;
     }
 
     public List<CompletionProgress> getCompletions() {
