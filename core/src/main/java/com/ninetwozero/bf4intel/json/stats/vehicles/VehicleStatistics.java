@@ -25,15 +25,8 @@ public class VehicleStatistics {
         GroupedVehicleStats group;
         for (VehicleStats stat : loaderVehicleList) {
             if (vehicleGroupsMap.containsKey(stat.getVehicleGroup())) {
-                GroupedVehicleStats temp = vehicleGroupsMap.get(stat.getVehicleGroup());
-                List<VehicleStats> vehicleStats = new ArrayList<VehicleStats>(temp.getVehicleList());
-                vehicleStats.add(stat);
-                group = new GroupedVehicleStats(temp.getGroupName(),
-                    temp.getServiceStarsCount(),
-                    temp.getServiceStarProgress(),
-                    temp.getKillCount() + stat.getKillsCount(),
-                    temp.getTimeInVehicle() + stat.getTimeInVehicle(),
-                    vehicleStats);
+                group = vehicleGroupsMap.get(stat.getVehicleGroup());
+                group.addVehicleStats(stat);
 
             } else {
                 List<VehicleStats> vehicleStats = new ArrayList<VehicleStats>();
