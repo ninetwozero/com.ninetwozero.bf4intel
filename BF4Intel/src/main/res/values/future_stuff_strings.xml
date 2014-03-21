@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--Navigation drawer-->
+  <string name="navigationdrawer_battle_feed">Battle Feed</string>
+  <string name="navigationdrawer_notifications">Notifications</string>
+  <string name="navigationdrawer_servers">Servers</string>
+  <string name="navigationdrawer_forums">Forums</string>
+  <string name="navigationdrawer_view_forums">View forums</string>
+  <string name="navigationdrawer_saved_threads">Saved threads</string>
+  <string name="forum_posts_in_threads">%1$s posts in %2$s threads</string>
+  <string name="update_status_header">Update your status</string>
+  <string name="update_status_hint">Update message here…</string>
+  <string name="update_attachment_header">Attach item to post</string>
+  <string name="update_attachment_hint">http://</string>
+  <string name="ab_action_new">New entry</string>
+  <string name="msg_empty_feed">The Battle Feed is empty.</string>
+  <string name="msg_forums_not_found">Forums not found.</string>
+  <string name="msg_no_notifications">No notifications found.</string>
+  <string name="msg_invalid_url">Invalid URL!</string>
+  <string name="msg_empty_content">You need to enter some content!</string>
+
+  <string name="msg_unknown_event">Unknown event: %1$s</string>
+  <string name="feed_levelcomplete_heading">Completed a mission:</string>
+  <string name="feed_createdforumthread_heading">Created a forum thread:</string>
+  <string name="msg_feed_levelcomplete_partner">Partner:</string>
+  <string name="msg_feed_levelcomplete_difficulty">Difficulty:</string>
+  <string name="feed_category_status">Status</string>
+  <string name="feed_category_forumthread">Forum Thread</string>
+  <string name="feed_category_wallpost">Wallpost</string>
+  <string name="feed_category_forumpost">Forum post</string>
+  <string name="feed_category_favoriteserver">Favorite Server</string>
+  <string name="feed_category_mission_completed">Mission completed</string>
+  <string name="feed_category_new_game">New game</string>
+  <string name="feed_category_new_friend">New Friend</string>
+  <string name="feed_category_blog_comment">Blog comment</string>
+  <string name="feed_category_game_comment">Game Comment</string>
+  <string name="feed_category_gamereport">Battle Report</string>
+  <string name="feed_category_battlepack">Battle Pack</string>
+  <string name="feed_category_unlocks">Unlocks</string>
+  <string name="feed_gamereport_playerresults">Player results</string>
+  <string name="feed_category_ranked_up">Ranked up</string>
+  <string name="battlefeed_emblem">Emblem</string>
+  <string name="battlefeed_appearance">Camo</string>
+  <string name="battlefeed_paint">Paint</string>
+
+  <string name="label_name">NAME:</string>
+  <string name="label_age">AGE:</string>
+  <string name="label_enlisted">ENLISTED:</string>
+  <string name="label_country">COUNTRY:</string>
+
+  <string name="string_by">by</string>
+  <string name="forum_last_activity">Last activity</string>
+  <string name="forum_x_posts_in_y_threads">%1$s posts in %2$s threads</string>
+  <string name="forum_created_by">Created by</string>
+  <string name="forum_latest_activity">Last activity</string>
+  <string name="dummy_status">status</string>
+  <string name="on">on</string>
+  <string name="at">\@</string>
+</resources>
