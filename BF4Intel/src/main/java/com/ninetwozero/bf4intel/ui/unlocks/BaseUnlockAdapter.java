@@ -9,6 +9,7 @@ import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
 import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
 import com.ninetwozero.bf4intel.resources.maps.UnlockCriteriaStringMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentStringMap;
+import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,8 +69,8 @@ public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T>
             final int targetValue = criteria.getTargetValue();
             return String.format(
                     context.getString(resource),
-                    String.format("%,d", currentValue < targetValue ? currentValue : targetValue),
-                    String.format("%,d", targetValue)
+                    NumberFormatter.format(currentValue < targetValue ? currentValue : targetValue),
+                    NumberFormatter.format(targetValue)
             );
         } else {
             final String label = criteria.getLabel().toLowerCase(Locale.getDefault());

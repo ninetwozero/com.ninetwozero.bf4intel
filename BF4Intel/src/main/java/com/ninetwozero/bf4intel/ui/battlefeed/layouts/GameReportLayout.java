@@ -15,6 +15,7 @@ import com.ninetwozero.bf4intel.json.battlereports.Team;
 import com.ninetwozero.bf4intel.resources.maps.GameModeStringMap;
 import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
 import com.ninetwozero.bf4intel.resources.maps.PersonalHighlightStringMap;
+import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 public class GameReportLayout extends BaseLayoutPopulator implements EventLayout<GameReportEvent> {
     @Override
@@ -40,7 +41,7 @@ public class GameReportLayout extends BaseLayoutPopulator implements EventLayout
             final ProgressBar progressBar = (ProgressBar) teamWrapView.findViewById(R.id.progress);
 
             teamName.setText(team.getName());
-            teamScore.setText(String.format("%,d", team.getFinalscore()));
+            teamScore.setText(NumberFormatter.format(team.getFinalscore()));
             progressBar.setMax(team.getStartingScore());
             progressBar.setProgress(team.getFinalscore());
 
@@ -62,15 +63,15 @@ public class GameReportLayout extends BaseLayoutPopulator implements EventLayout
         final boolean hasPersonalHighlight = event.getPersonalHighlight() != null;
         if (hasPersonalHighlight) {
             titleTextView.setText(PersonalHighlightStringMap.get(event.getPersonalHighlight().getType()));
-            valueTextView.setText(String.format("%,d", event.getPersonalHighlight().getScore()));
+            valueTextView.setText(NumberFormatter.format(event.getPersonalHighlight().getScore()));
         }
         titleTextView.setVisibility(hasPersonalHighlight? View.VISIBLE : View.GONE);
         valueTextView.setVisibility(hasPersonalHighlight? View.VISIBLE : View.GONE);
 
         setText(view, R.id.player_ranking, "#" + event.getPlayerRanking());
-        setText(view, R.id.player_spm, String.format("%,d", event.getSpm()));
-        setText(view, R.id.player_score, String.format("%,d", event.getScore()));
-        setText(view, R.id.player_kills, String.format("%,d", event.getKillCount()));
+        setText(view, R.id.player_spm, NumberFormatter.format(event.getSpm()));
+        setText(view, R.id.player_score, NumberFormatter.format(event.getScore()));
+        setText(view, R.id.player_kills, NumberFormatter.format(event.getKillCount()));
         setText(view, R.id.player_kdr, String.valueOf(event.getKdRatio()));
         setText(view, R.id.player_skill, String.valueOf(event.getSkill()));
     }

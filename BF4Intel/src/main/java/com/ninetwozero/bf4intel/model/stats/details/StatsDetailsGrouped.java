@@ -5,6 +5,7 @@ import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;
 import com.ninetwozero.bf4intel.ui.BaseListItem;
 import com.ninetwozero.bf4intel.ui.SimpleListHeader;
 import com.ninetwozero.bf4intel.ui.stats.details.DetailedStatsListItem;
+import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -120,10 +121,18 @@ public class StatsDetailsGrouped {
     }
 
     private String stringValueOf(double value) {
-        return value != 0.0 ? String.format(Locale.getDefault(), "%.2f",value) : EMPTY_VALUE;
+        return value != 0.0 ? NumberFormatter.format(value) : EMPTY_VALUE;
     }
 
     private String stringValueOf(double value, String postfix) {
-        return value != 0.0 ? String.format(Locale.getDefault(), "%.2f%s", value, postfix) : EMPTY_VALUE;
+        if (value == 0.0) {
+            return EMPTY_VALUE;
+        }
+        return String.format(
+            Locale.getDefault(),
+            "%s%s",
+            NumberFormatter.format(value),
+            postfix
+        );
     }
 }
