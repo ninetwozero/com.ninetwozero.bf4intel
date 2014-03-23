@@ -173,6 +173,8 @@
   <string name="na">N/A</string>
   <string name="msg_empty_stats">No stats found.</string>
   <string name="label_share">Share</string>
+  <string name="toast_unimplemented_functionality">Unimplemented functionality.</string>
+  <string name="toast_please_log_in">@string/toast_unimplemented_functionality</string>  <!--Will replace with login message once login available-->
 
   <string name="create_post_header">Post content</string>
   <string name="create_post_hint">Post message here&#8230;</string>

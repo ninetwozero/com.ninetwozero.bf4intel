@@ -146,6 +146,10 @@ public class NewsListingFragment extends BaseLoadingListFragment {
 
     @Subscribe
     public void onUserPressedHooah(final HooahToggleRequest request) {
+        if (!isUserLoggedIn()) {
+            showToast(R.string.toast_please_log_in);
+            return;
+        }
         final Bundle data = new Bundle();
         data.putString(Keys.CHECKSUM, SessionStore.getChecksum());
         data.putString(ID, request.getId());
@@ -169,5 +173,9 @@ public class NewsListingFragment extends BaseLoadingListFragment {
             setListAdapter(adapter);
         }
         adapter.setItems(items);
+    }
+
+    private boolean isUserLoggedIn() {
+        return false;
     }
 }

@@ -275,6 +275,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     @Subscribe
     public void onUserPressedHooah(final HooahToggleRequest request) {
+        if (!isUserLoggedIn()) {
+            showToast(R.string.toast_please_log_in);
+            return;
+        }
+
         final Bundle data = new Bundle();
         data.putString(Keys.CHECKSUM, SessionStore.getChecksum());
         data.putString(ID, request.getId());
@@ -355,6 +360,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     private void doSendComment() {
         final View container = getView();
         if (container == null) {
+            return;
+        }
+
+        if (!isUserLoggedIn()) {
+            showToast(R.string.toast_please_log_in);
             return;
         }
 
@@ -459,5 +469,9 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
         final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
         listView.setItemChecked(listView.getCheckedItemPosition(), false);
+    }
+
+    private boolean isUserLoggedIn() {
+        return false;
     }
 }
