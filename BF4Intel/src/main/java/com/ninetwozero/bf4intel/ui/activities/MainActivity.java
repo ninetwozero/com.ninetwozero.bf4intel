@@ -48,10 +48,10 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     private void initialize(final Bundle savedInstanceState) {
-        loadSettingsFromXml();
+        shouldShowDualPane = getResources().getBoolean(R.bool.main_is_dualpane);
 
         if (!shouldShowDualPane) {
-            setupNavigationDrawer();
+            navigationDrawer = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
             setupActionBar();
             setupActionBarToggle();
         }
@@ -117,10 +117,8 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
     @Override
     public void onBackPressed() {
-        if (!shouldShowDualPane) {
-            if (isDrawerOpen()) {
-                toggleNavigationDrawer(false);
-            }
+        if (!shouldShowDualPane && isDrawerOpen()) {
+            toggleNavigationDrawer(false);
         }
 
         if (navigationDrawer.fetchDefaultPosition() != navigationDrawer.getCheckedItemPosition()) {
@@ -189,14 +187,6 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         }
     }
 
-    private void loadSettingsFromXml() {
-        shouldShowDualPane = getResources().getBoolean(R.bool.main_is_dualpane);
-    }
-
-    private void setupNavigationDrawer() {
-        navigationDrawer = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-    }
-
     private void setupActionBarToggle() {
         userLearnedDrawer = sharedPreferences.getBoolean(PREF_USER_LEARNED_DRAWER, false);
 
@@ -255,10 +245,8 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     private void setupActivityFromState(final Bundle state) {
-        if (state != null) {
-            if (!shouldShowDualPane) {
-                toggleNavigationDrawer(state.getBoolean(STATE_DRAWER_OPENED, false));
-            }
+        if (state != null && !shouldShowDualPane) {
+            toggleNavigationDrawer(state.getBoolean(STATE_DRAWER_OPENED, false));
         }
     }
 
