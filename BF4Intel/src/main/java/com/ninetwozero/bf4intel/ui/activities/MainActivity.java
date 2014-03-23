@@ -29,25 +29,34 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     private static final String STATE_DRAWER_OPENED = "isDrawerOpened";
 
-    private boolean isRecreated = false;
     private boolean userLearnedDrawer;
+
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private View fragmentContainerView;
     private NavigationDrawerFragment navigationDrawer;
     private String title;
 
+    private boolean shouldShowDualPane = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setupNavigationDrawer();
-        setupActionBar();
-        setupActionBarToggle();
-        setupActivityFromState(savedInstanceState);
+        initialize(savedInstanceState);
     }
 
+    private void initialize(final Bundle savedInstanceState) {
+        loadSettingsFromXml();
+
+        if (!shouldShowDualPane) {
+            setupNavigationDrawer();
+            setupActionBar();
+            setupActionBarToggle();
+        }
+        setupActivityFromState(savedInstanceState);
+    }
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
@@ -108,9 +117,10 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
     @Override
     public void onBackPressed() {
-        if (isDrawerOpen()) {
-            toggleNavigationDrawer(false);
-            return;
+        if (!shouldShowDualPane) {
+            if (isDrawerOpen()) {
+                toggleNavigationDrawer(false);
+            }
         }
 
         if (navigationDrawer.fetchDefaultPosition() != navigationDrawer.getCheckedItemPosition()) {
@@ -124,7 +134,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putBoolean(STATE_DRAWER_OPENED, isDrawerOpen());
+        outState.putBoolean(STATE_DRAWER_OPENED, isDrawerOpen() || shouldShowDualPane);
     }
 
     @Override
@@ -141,10 +151,14 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     @Override
     public void onNavigationDrawerItemSelected(final int position, final String title) {
         this.title = title == null? this.title : title.toUpperCase(Locale.getDefault());
-        if (drawerLayout != null && !isRecreated) {
+        if (drawerLayout != null) {
             toggleNavigationDrawer(false);
         }
-        isRecreated = false;
+
+        final ActionBar actionBar = getActionBar();
+        if (shouldShowDualPane || actionBar.getTitle() != this.title) {
+            actionBar.setTitle(this.title);
+        }
     }
 
     @Override
@@ -173,6 +187,10 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
             navigationDrawer.onStartedTrackingNewProfile(event);
             BusProvider.getInstance().post(event);
         }
+    }
+
+    private void loadSettingsFromXml() {
+        shouldShowDualPane = getResources().getBoolean(R.bool.main_is_dualpane);
     }
 
     private void setupNavigationDrawer() {
@@ -233,13 +251,14 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         final ActionBar actionbar = getActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setDisplayShowHomeEnabled(true);
-        actionbar.setTitle("");
+        actionbar.setTitle(title);
     }
 
     private void setupActivityFromState(final Bundle state) {
         if (state != null) {
-            toggleNavigationDrawer(state.getBoolean(STATE_DRAWER_OPENED, false));
-            isRecreated = true;
+            if (!shouldShowDualPane) {
+                toggleNavigationDrawer(state.getBoolean(STATE_DRAWER_OPENED, false));
+            }
         }
     }
 
