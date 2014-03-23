@@ -14,6 +14,7 @@
     android:paddingLeft="@dimen/spacing_m"
     android:paddingRight="@dimen/spacing_m"
     android:orientation="horizontal"
+    android:clickable="true"
     >
 
     <TextView
