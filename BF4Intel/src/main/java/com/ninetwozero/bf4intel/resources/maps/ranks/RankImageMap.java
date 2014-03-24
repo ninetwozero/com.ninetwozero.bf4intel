@@ -2,8 +2,11 @@ package com.ninetwozero.bf4intel.resources.maps.ranks;
 
 import com.ninetwozero.bf4intel.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class RankImageMap {
     private static final Map<String, Integer> images = new HashMap<String, Integer>() {
@@ -137,6 +140,12 @@ public class RankImageMap {
     }
 
     public static int get(final int rank) {
-        return get("WARSAW_ID_P_RANK" + rank + "_NAME");
+        if (rank < 10) {
+            return get("WARSAW_ID_P_RANK0" + rank + "_NAME");
+        } else if (100 < rank && rank < 111) {
+            return get("WARSAW_ID_P_XP1_RANK" + rank + "_NAME");
+        } else {
+            return get("WARSAW_ID_P_RANK" + rank + "_NAME");
+        }
     }
 }
