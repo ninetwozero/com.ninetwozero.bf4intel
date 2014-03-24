@@ -2,11 +2,8 @@ package com.ninetwozero.bf4intel.resources.maps.ranks;
 
 import com.ninetwozero.bf4intel.R;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class RankImageMap {
     private static final Map<String, Integer> images = new HashMap<String, Integer>() {
