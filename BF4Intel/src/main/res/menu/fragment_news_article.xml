@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/ab_action_share"
+    android:showAsAction="ifRoom"
+    android:title="@string/label_share"
+    android:actionProviderClass="android.widget.ShareActionProvider"
+    />
+</menu>

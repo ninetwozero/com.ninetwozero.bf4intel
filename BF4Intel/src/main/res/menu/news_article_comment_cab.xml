@@ -1,12 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  <item
-    android:id="@+id/ab_action_upvote"
-    android:title="@string/title_hooah"
-    android:icon="@drawable/ic_menu_arrow_up_light"
-    />
-  <item
-    android:id="@+id/ab_action_downvote"
-    android:title="@string/title_unhooah"
-    android:icon="@drawable/ic_menu_arrow_down_light"
-    />
+  <group android:id="@+id/ab_action_voting">
+    <item
+      android:id="@+id/ab_action_upvote"
+      android:title="@string/title_hooah"
+      android:icon="@drawable/ic_menu_arrow_up_light"
+
+      />
+    <item
+      android:id="@+id/ab_action_downvote"
+      android:title="@string/title_unhooah"
+      android:icon="@drawable/ic_menu_arrow_down_light"
+      />
+  </group>
 </menu>
