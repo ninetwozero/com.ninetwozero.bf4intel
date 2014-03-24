@@ -146,6 +146,11 @@ public class NewsListingFragment extends BaseLoadingListFragment {
 
     @Subscribe
     public void onUserPressedHooah(final HooahToggleRequest request) {
+        if (!SessionStore.isLoggedIn()) {
+            showToast(R.string.toast_please_log_in);
+            return;
+        }
+
         final Bundle data = new Bundle();
         data.putString(Keys.CHECKSUM, SessionStore.getChecksum());
         data.putString(ID, request.getId());

@@ -1,11 +1,13 @@
 package com.ninetwozero.bf4intel.ui.news;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.ShareActionProvider;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
@@ -36,6 +39,7 @@ import com.ninetwozero.bf4intel.resources.maps.WebsiteErrorMessageMap;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
 
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
@@ -54,6 +58,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     private ActionMode actionMode;
     private String articleId;
+    private URL articleUrl;
 
     public NewsArticleFragment() {
     }
@@ -86,6 +91,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         }
 
         articleId = arguments.getString(ID, "");
+        articleUrl = UrlFactory.buildNewsArticleURL(articleId);
         doRequest(ID_REQUEST_REFRESH_ARTICLE, arguments);
     }
 
@@ -119,7 +125,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     private Request<NewsArticleRequest> fetchRequestForArticleRefresh(Bundle bundle) {
         return new SimpleGetRequest<NewsArticleRequest>(
-            UrlFactory.buildNewsArticleURL(bundle.getString(ID)),
+            articleUrl,
             BaseSimpleRequest.RequestType.FROM_NAVIGATION,
             this
         ) {
@@ -246,6 +252,20 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_news_article, menu);
+
+        final MenuItem shareItem = menu.findItem(R.id.ab_action_share);
+        if (shareItem != null) {
+            final Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.putExtra(Intent.EXTRA_TEXT, articleUrl.toString());
+            intent.setType("text/plain");
+            ((ShareActionProvider) shareItem.getActionProvider()).setShareIntent(intent);
+        }
+    }
+
+    @Override
     public boolean onCreateActionMode(final ActionMode mode, final Menu menu) {
         actionMode = mode;
         mode.getMenuInflater().inflate(R.menu.news_article_comment_cab, menu);
@@ -254,6 +274,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     @Override
     public boolean onPrepareActionMode(final ActionMode mode, final Menu menu) {
+        menu.setGroupVisible(R.id.ab_action_voting, SessionStore.isLoggedIn());
         return false;
     }
 
@@ -275,6 +296,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     @Subscribe
     public void onUserPressedHooah(final HooahToggleRequest request) {
+        if (!SessionStore.isLoggedIn()) {
+            showToast(R.string.toast_please_log_in);
+            return;
+        }
+
         final Bundle data = new Bundle();
         data.putString(Keys.CHECKSUM, SessionStore.getChecksum());
         data.putString(ID, request.getId());
@@ -283,6 +309,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     }
 
     private void initialize(final View view) {
+        setHasOptionsMenu(true);
         setupActionBar();
         setupListView(view);
         setupForm(view);
@@ -342,6 +369,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     }
 
     private void setupForm(final View view) {
+        if (!SessionStore.isLoggedIn()) {
+            view.findViewById(R.id.wrap_form).setVisibility(View.GONE);
+            return;
+        }
+
         view.findViewById(R.id.button_send).setOnClickListener(
             new View.OnClickListener() {
                 @Override
@@ -355,6 +387,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     private void doSendComment() {
         final View container = getView();
         if (container == null) {
+            return;
+        }
+
+        if (!SessionStore.isLoggedIn()) {
+            showToast(R.string.toast_please_log_in);
             return;
         }
 

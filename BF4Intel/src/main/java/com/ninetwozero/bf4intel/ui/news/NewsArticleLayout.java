@@ -127,7 +127,7 @@ public class NewsArticleLayout extends BaseLayoutPopulator implements View.OnCli
 
     private void setupPopupMenuForActionItems(final View view, final NewsArticle article) {
         final PopupMenu menu = new PopupMenu(context, view);
-        menu.inflate(R.menu.news_article_actions);
+        menu.inflate(R.menu.news_article_popup_actions);
         menu.setOnMenuItemClickListener(
             new PopupMenu.OnMenuItemClickListener() {
                 @Override

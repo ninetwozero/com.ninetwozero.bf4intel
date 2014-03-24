@@ -120,7 +120,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
             startActivity(intent);
         }
         */
-        showToast("Unimplemented functionality.");
+        showToast(R.string.toast_unimplemented_functionality);
     }
 
     private void initialize(final View view) {
