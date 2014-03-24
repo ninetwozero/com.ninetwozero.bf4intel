@@ -24,6 +24,7 @@ local.properties
 #########
 .gradle
 */build/*
+gradle/*
 
 # Various shit
 *Thumbs.db

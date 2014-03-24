@@ -1,7 +1,6 @@
 package com.ninetwozero.bf4intel.utils;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Fields;
