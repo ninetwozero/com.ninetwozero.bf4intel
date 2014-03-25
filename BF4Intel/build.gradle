@@ -68,7 +68,7 @@ dependencies {
             'com.squareup.picasso:picasso:2.1.1',
             'nl.qbusict:cupboard:1.0.4',
             'com.astuetz:pagerslidingtabstrip:1.0.1',
-            'com.bugsense.trace:bugsense:3.6',
+            'com.bugsense.trace:bugsense:3.6.1',
             'com.tonicartos:stickygridheaders:1.0.1'
     compile files('libs/libGoogleAnalyticsServices.jar')
 }
