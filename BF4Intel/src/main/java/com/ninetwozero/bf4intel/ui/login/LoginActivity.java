@@ -3,7 +3,6 @@ package com.ninetwozero.bf4intel.ui.login;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -21,6 +20,8 @@ import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingIntelActivity;
+import com.ninetwozero.bf4intel.database.dao.ProfileDAO;
+import com.ninetwozero.bf4intel.database.dao.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.factories.BundleFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.Profile;
@@ -35,9 +36,8 @@ import com.ninetwozero.bf4intel.utils.BusProvider;
 
 import java.util.List;
 
-import nl.qbusict.cupboard.DatabaseCompartment;
-
-import static nl.qbusict.cupboard.CupboardFactory.cupboard;
+import se.emilsjolander.sprinkles.SqlStatement;
+import se.emilsjolander.sprinkles.Transaction;
 
 public class LoginActivity extends BaseLoadingIntelActivity {
     public static final int REQUEST_PROFILE = 0;
@@ -80,7 +80,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             final Profile profile = (Profile) data.getSerializableExtra(SearchActivity.RESULT_SEARCH_RESULT);
             selectedSoldierPlatform = data.getIntExtra(SearchActivity.RESULT_SEARCH_RESULT_PLATFORM, 0);
 
-            cupboard().withDatabase(getWritableDatabase()).put(profile);
+            new ProfileDAO(profile).saveAsync();
 
             profileBundle = BundleFactory.createForProfile(profile);
             loadSoldiers(profileBundle);
@@ -102,28 +102,29 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                     final JsonObject baseObject = extractFromJson(json);
                     final SoldierListingRequest request = gson.fromJson(baseObject, SoldierListingRequest.class);
 
-                    final SQLiteDatabase database = getWritableDatabase();
-                    final DatabaseCompartment connection = cupboard().withDatabase(database);
-                    database.beginTransaction();
-
+                    Transaction transaction = new Transaction();
                     final int soldierCount = request.getSoldiers().size();
                     for (int i = 0; i < soldierCount; i++) {
                         final SummarizedSoldierStats stats = request.getSoldiers().get(i);
                         if (stats.getGameId() == GAME_ID_BF4) {
                             if (bf4SoldierCount == 0) {
-                                connection.delete(SummarizedSoldierStats.class, "userId = ?", stats.getUserId());
+                                new SqlStatement(
+                                    "DELETE FROM "  +
+                                    SummarizedSoldierStatsDAO.TABLE_NAME +
+                                    " WHERE userId  = ?"
+                                ).execute(stats.getPersona().getUserId());
                             }
 
                             if (stats.getPlatformId() == selectedSoldierPlatform) {
                                 selectedSoldierPosition = i;
                             }
-                            connection.put(stats);
+
+                            new SummarizedSoldierStatsDAO(stats).save(transaction);
                             bf4SoldierCount++;
                         }
                     }
-
-                    database.setTransactionSuccessful();
-                    database.endTransaction();
+                    transaction.setSuccessful(true);
+                    transaction.finish();
                     return request;
                 }
 
@@ -141,7 +142,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                 private void storeSelectedPersonaInPreferences(List<SummarizedSoldierStats> soldierStats, final int index) {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, index);
-                    editor.putLong(Keys.Menu.LATEST_PERSONA, soldierStats.get(index).getPersonaId());
+                    editor.putLong(Keys.Menu.LATEST_PERSONA, soldierStats.get(index).getPersona().getPersonaId());
                     editor.commit();
                 }
             }

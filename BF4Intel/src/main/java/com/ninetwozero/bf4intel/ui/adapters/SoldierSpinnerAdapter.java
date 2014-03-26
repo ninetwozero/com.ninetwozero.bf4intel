@@ -7,16 +7,16 @@ import android.widget.SpinnerAdapter;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
-import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
+import com.ninetwozero.bf4intel.database.dao.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.resources.maps.profile.PlatformStringMap;
 import com.ninetwozero.bf4intel.resources.maps.profile.SoldierImageMap;
 import com.ninetwozero.bf4intel.resources.maps.ranks.RankImageMap;
 
 import java.util.List;
 
-public class SoldierSpinnerAdapter extends BaseIntelAdapter<SummarizedSoldierStats> implements SpinnerAdapter {
+public class SoldierSpinnerAdapter extends BaseIntelAdapter<SummarizedSoldierStatsDAO> implements SpinnerAdapter {
 
-    public SoldierSpinnerAdapter(final Context context, final List<SummarizedSoldierStats> items) {
+    public SoldierSpinnerAdapter(final Context context, final List<SummarizedSoldierStatsDAO> items) {
         super(context, items);
     }
 
@@ -27,7 +27,7 @@ public class SoldierSpinnerAdapter extends BaseIntelAdapter<SummarizedSoldierSta
 
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
-        final SummarizedSoldierStats item = getItem(position);
+        final SummarizedSoldierStatsDAO item = getItem(position);
 
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.list_item_side_soldier, parent, false);
@@ -39,7 +39,7 @@ public class SoldierSpinnerAdapter extends BaseIntelAdapter<SummarizedSoldierSta
 
     @Override
     public View getDropDownView(final int position, View convertView, final ViewGroup parent) {
-        final SummarizedSoldierStats item = getItem(position);
+        final SummarizedSoldierStatsDAO item = getItem(position);
 
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.list_item_side_soldier_dropdown, parent, false);
@@ -49,8 +49,8 @@ public class SoldierSpinnerAdapter extends BaseIntelAdapter<SummarizedSoldierSta
         return convertView;
     }
 
-    private void populateBasicViews(final View view, final SummarizedSoldierStats item) {
-        setImage(view, R.id.soldier_image, SoldierImageMap.get(item.getPersonaPicture()));
+    private void populateBasicViews(final View view, final SummarizedSoldierStatsDAO item) {
+        setImage(view, R.id.soldier_image, SoldierImageMap.get(item.getPicture()));
         setText(view, R.id.soldier_name, item.getPersonaName());
         setText(view, R.id.soldier_platform, PlatformStringMap.get(item.getPlatformId()));
         setImage(view, R.id.soldier_rank,  RankImageMap.get(item.getRank()));

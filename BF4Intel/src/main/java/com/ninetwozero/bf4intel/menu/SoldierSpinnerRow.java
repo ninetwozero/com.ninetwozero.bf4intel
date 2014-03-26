@@ -2,15 +2,16 @@ package com.ninetwozero.bf4intel.menu;
 
 import android.content.Intent;
 
+import com.ninetwozero.bf4intel.database.dao.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
 import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 
 import java.util.List;
 
 public class SoldierSpinnerRow implements ListRowElement {
-    private List<SummarizedSoldierStats> soldiers;
+    private List<SummarizedSoldierStatsDAO> soldiers;
 
-    public SoldierSpinnerRow(List<SummarizedSoldierStats> soldiers) {
+    public SoldierSpinnerRow(List<SummarizedSoldierStatsDAO> soldiers) {
         this.soldiers = soldiers;
     }
 
@@ -44,7 +45,7 @@ public class SoldierSpinnerRow implements ListRowElement {
         return false;
     }
 
-    public List<SummarizedSoldierStats> getSoldierStats() {
+    public List<SummarizedSoldierStatsDAO> getSoldierStats() {
         return soldiers;
     }
 }

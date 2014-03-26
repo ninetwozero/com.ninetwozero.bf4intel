@@ -3,7 +3,7 @@ package com.ninetwozero.bf4intel.factories;
 import android.os.Bundle;
 
 import com.ninetwozero.bf4intel.json.Profile;
-import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
+import com.ninetwozero.bf4intel.database.dao.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.resources.Keys;
 
 public class BundleFactory {
@@ -15,7 +15,7 @@ public class BundleFactory {
         return bundle;
     }
 
-    public static Bundle createForStats(SummarizedSoldierStats soldierStats) {
+    public static Bundle createForStats(SummarizedSoldierStatsDAO soldierStats) {
         final Bundle bundle = new Bundle();
         bundle.putString(Keys.Soldier.NAME, soldierStats.getPersonaName());
         bundle.putLong(Keys.Soldier.ID, soldierStats.getPersonaId());
