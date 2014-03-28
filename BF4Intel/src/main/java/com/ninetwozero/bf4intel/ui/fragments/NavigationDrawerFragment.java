@@ -14,7 +14,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
-import com.ninetwozero.bf4intel.database.dao.SummarizedSoldierStatsDAO;
+import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.datatypes.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.factories.BundleFactory;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;

@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.database.dao;
+package com.ninetwozero.bf4intel.dao;
 
 import com.ninetwozero.bf4intel.json.Profile;
 

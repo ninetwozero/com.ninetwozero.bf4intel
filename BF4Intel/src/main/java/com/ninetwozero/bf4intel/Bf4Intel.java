@@ -4,8 +4,8 @@ import android.app.Application;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.ninetwozero.bf4intel.database.dao.ProfileDAO;
-import com.ninetwozero.bf4intel.database.dao.SummarizedSoldierStatsDAO;
+import com.ninetwozero.bf4intel.dao.ProfileDAO;
+import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
 
 import se.emilsjolander.sprinkles.Migration;
 import se.emilsjolander.sprinkles.Sprinkles;

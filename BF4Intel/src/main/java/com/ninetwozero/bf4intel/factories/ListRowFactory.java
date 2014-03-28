@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.database.dao.SummarizedSoldierStatsDAO;
+import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
 import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.SimpleListRow;
