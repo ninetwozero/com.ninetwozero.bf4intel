@@ -50,8 +50,8 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     private void initialize(final Bundle savedInstanceState) {
         shouldShowDualPane = getResources().getBoolean(R.bool.main_is_dualpane);
 
+        navigationDrawer = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentByTag("NavigationDrawerFragment");
         if (!shouldShowDualPane) {
-            navigationDrawer = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
             setupActionBar();
             setupActionBarToggle();
         }

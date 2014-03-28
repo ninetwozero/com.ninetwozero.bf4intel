@@ -2,7 +2,6 @@ package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -14,14 +13,13 @@ import android.widget.TextView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
-import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
+import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.datatypes.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.factories.BundleFactory;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
-import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.SimpleListRow;
 import com.ninetwozero.bf4intel.resources.Keys;
@@ -34,9 +32,7 @@ import com.squareup.otto.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.qbusict.cupboard.DatabaseCompartment;
-
-import static nl.qbusict.cupboard.CupboardFactory.cupboard;
+import se.emilsjolander.sprinkles.Query;
 
 public class NavigationDrawerFragment extends BaseListFragment {
     public static final String BATTLE_CHAT = "BATTLE CHAT";
@@ -206,7 +202,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private List<ListRowElement> getRowsForSoldier() {
-        final List<SummarizedSoldierStats> stats = fetchSoldiersForMenu();
+        final List<SummarizedSoldierStatsDAO> stats = fetchSoldiersForMenu();
         final List<ListRowElement> items = new ArrayList<ListRowElement>();
         soldierBundleForMenu = buildBundleForSoldier(stats);
 
@@ -265,26 +261,19 @@ public class NavigationDrawerFragment extends BaseListFragment {
         return items;
     }
 
-    private List<SummarizedSoldierStats> fetchSoldiersForMenu() {
-        final BaseIntelActivity activity = (BaseIntelActivity) getActivity();
-        final List<SummarizedSoldierStats> soldiers = new ArrayList<SummarizedSoldierStats>();
-        final DatabaseCompartment database = cupboard().withDatabase(activity.getReadableDatabase());
-        final Cursor results = database.query(SummarizedSoldierStats.class).withSelection(
-            "userId = ?", SessionStore.getUserId()
-        ).getCursor();
-
-        for (SummarizedSoldierStats result : cupboard().withCursor(results).iterate(SummarizedSoldierStats.class)) {
-            soldiers.add(result);
-        }
-
-        results.close();
+    private List<SummarizedSoldierStatsDAO> fetchSoldiersForMenu() {
+        final List<SummarizedSoldierStatsDAO> soldiers = Query.many(
+            SummarizedSoldierStatsDAO.class,
+            "SELECT * FROM " + SummarizedSoldierStatsDAO.TABLE_NAME + " WHERE userId = ?",
+            SessionStore.getUserId()
+        ).get().asList();
         return soldiers;
     }
 
-    private Bundle buildBundleForSoldier(final List<SummarizedSoldierStats> listOfStats) {
+    private Bundle buildBundleForSoldier(final List<SummarizedSoldierStatsDAO> listOfStats) {
         for (int i = 0, max = listOfStats.size(); i < max; i++) {
             if (i == sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0)) {
-                final SummarizedSoldierStats soldierStats = listOfStats.get(i);
+                final SummarizedSoldierStatsDAO soldierStats = listOfStats.get(i);
 
                 final Bundle bundle = BundleFactory.createForStats(soldierStats);
                 bundle.putString(Keys.Profile.ID, SessionStore.getUserId());
