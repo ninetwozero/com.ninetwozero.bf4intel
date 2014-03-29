@@ -9,6 +9,7 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
@@ -39,7 +40,7 @@ public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        requestQueue.add(fetchRequest(getArguments()));
+        Bf4Intel.getRequestQueue().add(fetchRequest(getArguments()));
     }
     private void initialize(final View view) {
         setupListView(view);

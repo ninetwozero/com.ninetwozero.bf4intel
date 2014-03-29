@@ -9,6 +9,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import com.android.volley.Request;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.datatypes.Skill;
@@ -63,7 +64,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     @Override
     protected void startLoadingData() {
         showLoadingState(true);
-        requestQueue.add(fetchRequest(getArguments()));
+        Bf4Intel.getRequestQueue().add(fetchRequest(getArguments()));
     }
 
     private Request<SoldierOverview> fetchRequest(Bundle bundle) {
@@ -77,6 +78,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             @Override
             protected SoldierOverview doParse(String json) {
                 final SoldierOverview soldierOverview = fromJson(json, SoldierOverview.class);
+
                 return soldierOverview;
             }
 

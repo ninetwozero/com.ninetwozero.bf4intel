@@ -13,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
@@ -85,11 +86,11 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         switch(requestId) {
             case ID_REQUEST_REFRESH_LIST:
                 showLoadingState(true);
-                requestQueue.add(fetchRequestForRefresh(bundle));
+                Bf4Intel.getRequestQueue().add(fetchRequestForRefresh(bundle));
                 break;
 
             case ID_REQUEST_HOOAH:
-                requestQueue.add(fetchRequestForHooah(bundle));
+                Bf4Intel.getRequestQueue().add(fetchRequestForHooah(bundle));
                 break;
 
             default:

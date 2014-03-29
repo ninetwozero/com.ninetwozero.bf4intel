@@ -13,12 +13,12 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.factories.GsonProvider;
 
 public abstract class BaseLoadingIntelActivity extends BaseIntelActivity implements Response.ErrorListener {
     protected final Gson gson = GsonProvider.getInstance();
-    protected RequestQueue requestQueue;
 
     @Override
     public void onErrorResponse(final VolleyError error) {
@@ -26,14 +26,8 @@ public abstract class BaseLoadingIntelActivity extends BaseIntelActivity impleme
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestQueue = Volley.newRequestQueue(this);
-    }
-
-    @Override
     public void onStop(){
-        requestQueue.cancelAll(
+        Bf4Intel.getRequestQueue().cancelAll(
             new RequestQueue.RequestFilter() {
                 @Override
                 public boolean apply(Request<?> request) {

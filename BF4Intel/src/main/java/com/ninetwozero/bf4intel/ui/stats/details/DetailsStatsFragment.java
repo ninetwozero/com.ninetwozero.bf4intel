@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
@@ -43,7 +44,7 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
     @Override
     protected void startLoadingData() {
         showLoadingState(true);
-        requestQueue.add(fetchRequest(getArguments()));
+        Bf4Intel.getRequestQueue().add(fetchRequest(getArguments()));
     }
 
     private Request<StatsDetailsGrouped> fetchRequest(Bundle bundle) {

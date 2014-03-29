@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -81,7 +82,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
         final long userId = Long.valueOf(bundle.getString(Keys.Profile.ID, "0"));
         final boolean fetchGlobalFeed = "0".equals(userId);
 
-        requestQueue.add(
+        Bf4Intel.getRequestQueue().add(
             new SimpleGetRequest<BattleFeed>(
                 fetchGlobalFeed ? UrlFactory.buildGlobalFeedURL(count) : UrlFactory.buildUserFeedURL(userId, count),
                 this

@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
@@ -99,23 +100,23 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         switch (id) {
             case ID_REQUEST_REFRESH_ARTICLE:
                 showLoadingState(bundle.getBoolean(FLAG_SHOW_LOADING, true));
-                requestQueue.add(fetchRequestForArticleRefresh(bundle));
+                Bf4Intel.getRequestQueue().add(fetchRequestForArticleRefresh(bundle));
                 break;
 
             case ID_REQUEST_HOOAH:
-                requestQueue.add(fetchRequestForHooah(bundle));
+                Bf4Intel.getRequestQueue().add(fetchRequestForHooah(bundle));
                 break;
 
             case ID_REQUEST_POST_COMMENT:
-                requestQueue.add(fetchRequestForPostComment(bundle));
+                Bf4Intel.getRequestQueue().add(fetchRequestForPostComment(bundle));
                 break;
 
             case ID_REQUEST_COMMENT_UPVOTE:
-                requestQueue.add(fetchRequestForCommentUpvote(bundle));
+                Bf4Intel.getRequestQueue().add(fetchRequestForCommentUpvote(bundle));
                 break;
 
             case ID_REQUEST_COMMENT_DOWNVOTE:
-                requestQueue.add(fetchRequestForCommentDownvote(bundle));
+                Bf4Intel.getRequestQueue().add(fetchRequestForCommentDownvote(bundle));
                 break;
 
             default:

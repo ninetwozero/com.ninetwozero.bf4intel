@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.google.gson.JsonObject;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
@@ -51,7 +52,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        requestQueue.add(fetchRequest(getArguments()));
+        Bf4Intel.getRequestQueue().add(fetchRequest(getArguments()));
     }
 
     public Request<List<BaseListItem>> fetchRequest(final Bundle bundle) {

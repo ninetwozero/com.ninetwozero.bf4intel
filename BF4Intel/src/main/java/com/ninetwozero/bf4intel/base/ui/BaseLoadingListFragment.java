@@ -3,9 +3,6 @@ package com.ninetwozero.bf4intel.base.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.android.volley.Request;
@@ -16,6 +13,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.factories.GsonProvider;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
@@ -32,11 +30,6 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        requestQueue = Volley.newRequestQueue(activity);
-    }
 
     @Override
     public void onResume() {
@@ -53,7 +46,7 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
 
     @Override
     public void onStop(){
-        requestQueue.cancelAll(
+        Bf4Intel.getRequestQueue().cancelAll(
             new RequestQueue.RequestFilter() {
                 @Override
                 public boolean apply(Request<?> request) {

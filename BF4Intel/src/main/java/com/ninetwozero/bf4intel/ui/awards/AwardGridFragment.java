@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
@@ -46,7 +47,7 @@ public class AwardGridFragment extends BaseLoadingFragment {
         final Bundle bundle = getArguments();
 
         showLoadingState(true);
-        requestQueue.add(
+        Bf4Intel.getRequestQueue().add(
             new SimpleGetRequest<List<Award>>(
                 UrlFactory.buildAwardsURL(
                     bundle.getLong(Keys.Soldier.ID),
