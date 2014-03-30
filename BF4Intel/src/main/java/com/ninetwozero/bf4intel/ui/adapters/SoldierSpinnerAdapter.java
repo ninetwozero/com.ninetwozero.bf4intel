@@ -22,7 +22,8 @@ public class SoldierSpinnerAdapter extends BaseIntelAdapter<SummarizedSoldierSta
 
     @Override
     public long getItemId(final int position) {
-        return Long.parseLong(getItem(position).getSoldierId());
+        final String id = getItem(position).getSoldierId();
+        return id == null ? 0L : Long.parseLong(id);
     }
 
     @Override

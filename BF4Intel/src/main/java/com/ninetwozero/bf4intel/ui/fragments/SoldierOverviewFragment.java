@@ -3,7 +3,6 @@ package com.ninetwozero.bf4intel.ui.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +75,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             new OneQuery.ResultHandler<SoldierOverviewDAO>() {
                 @Override
                 public boolean handleResult(SoldierOverviewDAO soldierOverviewDAO) {
-                    Log.d("YOLO", "Results => " + soldierOverviewDAO);
                     final View view = getView();
                     if (view == null || soldierOverviewDAO == null) {
                         return true;
