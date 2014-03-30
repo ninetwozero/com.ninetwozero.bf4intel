@@ -40,6 +40,7 @@ public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
+        showLoadingState(true);
         Bf4Intel.getRequestQueue().add(fetchRequest(getArguments()));
     }
     private void initialize(final View view) {
