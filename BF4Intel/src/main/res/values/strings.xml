@@ -126,6 +126,7 @@
   <string name="category_shotguns">Shotguns</string>
   <string name="category_assault_rifles">Assault Rifles</string>
   <string name="category_knives">Knives</string>
+  <string name="category_gadgets">Gadgets</string>
 
   <!--Unlocks -->
   <string name="msg_no_unlocks">No unlocks available</string>
