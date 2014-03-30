@@ -86,11 +86,11 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         switch(requestId) {
             case ID_REQUEST_REFRESH_LIST:
                 showLoadingState(true);
-                Bf4Intel.getRequestQueue().add(fetchRequestForRefresh(bundle));
+                requestQueue.add(fetchRequestForRefresh(bundle));
                 break;
 
             case ID_REQUEST_HOOAH:
-                Bf4Intel.getRequestQueue().add(fetchRequestForHooah(bundle));
+                requestQueue.add(fetchRequestForHooah(bundle));
                 break;
 
             default:

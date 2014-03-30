@@ -40,7 +40,7 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
     @Override
     protected void startLoadingData() {
         showLoadingState(true);
-        Bf4Intel.getRequestQueue().add(fetchRequest(getArguments()));
+        requestQueue.add(fetchRequest(getArguments()));
     }
 
     private Request<List<GroupedVehicleStats>> fetchRequest(Bundle bundle) {

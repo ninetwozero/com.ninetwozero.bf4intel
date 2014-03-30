@@ -88,8 +88,8 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     }
 
     private void loadSoldiers(final Bundle bundle) {
-        showLoadingOverlay(true);
-        Bf4Intel.getRequestQueue().add(
+        setLoadingState(true);
+        requestQueue.add(
             new SimpleGetRequest<SoldierListingRequest>(
                 UrlFactory.buildSoldierListURL(bundle.getString(Keys.Profile.ID)),
                 this
@@ -101,18 +101,19 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                 protected SoldierListingRequest doParse(String json) {
                     final JsonObject baseObject = extractFromJson(json);
                     final SoldierListingRequest request = gson.fromJson(baseObject, SoldierListingRequest.class);
-
-                    Transaction transaction = new Transaction();
+                    final Transaction transaction = new Transaction();
                     final int soldierCount = request.getSoldiers().size();
+
                     for (int i = 0; i < soldierCount; i++) {
                         final SummarizedSoldierStats stats = request.getSoldiers().get(i);
                         if (stats.getGameId() == GAME_ID_BF4) {
                             if (bf4SoldierCount == 0) {
                                 new SqlStatement(
-                                    "DELETE FROM "  +
-                                    SummarizedSoldierStatsDAO.TABLE_NAME +
-                                    " WHERE userId  = ?"
+                                    "DELETE FROM " +
+                                    SummarizedSoldierStatsDAO.TABLE_NAME + " " +
+                                    "WHERE userId  = ?"
                                 ).execute(stats.getPersona().getUserId());
+
                             }
 
                             if (stats.getPlatformId() == selectedSoldierPlatform) {
@@ -254,7 +255,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
         findViewById(R.id.button_search_account).setEnabled(isConnected);
     }
 
-    private void showLoadingOverlay(final boolean show) {
+    private void setLoadingState(final boolean show) {
         loginStatusView.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 }

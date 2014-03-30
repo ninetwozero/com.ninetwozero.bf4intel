@@ -47,7 +47,7 @@ public class AwardGridFragment extends BaseLoadingFragment {
         final Bundle bundle = getArguments();
 
         showLoadingState(true);
-        Bf4Intel.getRequestQueue().add(
+        requestQueue.add(
             new SimpleGetRequest<List<Award>>(
                 UrlFactory.buildAwardsURL(
                     bundle.getString(Keys.Soldier.ID),

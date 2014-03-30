@@ -46,7 +46,7 @@ public class AssignmentGridFragment extends BaseLoadingFragment {
     protected void startLoadingData() {
         showLoadingState(true);
         final Bundle bundle = getArguments();
-        Bf4Intel.getRequestQueue().add(
+        requestQueue.add(
             new SimpleGetRequest<List<Assignment>>(
                 UrlFactory.buildAssignmentsURL(
                     bundle.getString(Keys.Soldier.NAME),

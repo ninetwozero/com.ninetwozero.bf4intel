@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.LeaderboardUtils;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
+import com.ninetwozero.bf4intel.utils.SoldierOverviewRefreshedEvent;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -88,11 +90,6 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         );
     }
 
-    @Subscribe
-    public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
-    }
-
     @Override
     protected void startLoadingData() {
         if (isReloading) {
@@ -105,6 +102,16 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         final Intent intent = new Intent(getActivity(), SoldierOverviewService.class);
         intent.putExtra(SoldierOverviewService.SOLDIER_BUNDLE, getArgumentsBundle());
         getActivity().startService(intent);
+    }
+
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
+        startLoadingData();
+    }
+
+    @Subscribe
+    public void onSoldierOverviewRefreshed(SoldierOverviewRefreshedEvent event) {
+        isReloading = false;
     }
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {

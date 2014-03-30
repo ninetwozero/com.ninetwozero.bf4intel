@@ -100,23 +100,23 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         switch (id) {
             case ID_REQUEST_REFRESH_ARTICLE:
                 showLoadingState(bundle.getBoolean(FLAG_SHOW_LOADING, true));
-                Bf4Intel.getRequestQueue().add(fetchRequestForArticleRefresh(bundle));
+                requestQueue.add(fetchRequestForArticleRefresh(bundle));
                 break;
 
             case ID_REQUEST_HOOAH:
-                Bf4Intel.getRequestQueue().add(fetchRequestForHooah(bundle));
+                requestQueue.add(fetchRequestForHooah(bundle));
                 break;
 
             case ID_REQUEST_POST_COMMENT:
-                Bf4Intel.getRequestQueue().add(fetchRequestForPostComment(bundle));
+                requestQueue.add(fetchRequestForPostComment(bundle));
                 break;
 
             case ID_REQUEST_COMMENT_UPVOTE:
-                Bf4Intel.getRequestQueue().add(fetchRequestForCommentUpvote(bundle));
+                requestQueue.add(fetchRequestForCommentUpvote(bundle));
                 break;
 
             case ID_REQUEST_COMMENT_DOWNVOTE:
-                Bf4Intel.getRequestQueue().add(fetchRequestForCommentDownvote(bundle));
+                requestQueue.add(fetchRequestForCommentDownvote(bundle));
                 break;
 
             default:

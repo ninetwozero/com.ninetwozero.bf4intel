@@ -111,7 +111,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         postData.putString(Keys.CHECKSUM, "0xCAFEBABE");
 
         showLoadingState(true);
-        Bf4Intel.getRequestQueue().add(fetchRequestForSearch(postData));
+        requestQueue.add(fetchRequestForSearch(postData));
     }
 
     @Override

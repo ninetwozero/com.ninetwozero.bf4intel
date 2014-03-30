@@ -82,7 +82,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
         final long userId = Long.valueOf(bundle.getString(Keys.Profile.ID, "0"));
         final boolean fetchGlobalFeed = "0".equals(userId);
 
-        Bf4Intel.getRequestQueue().add(
+        requestQueue.add(
             new SimpleGetRequest<BattleFeed>(
                 fetchGlobalFeed ? UrlFactory.buildGlobalFeedURL(count) : UrlFactory.buildUserFeedURL(userId, count),
                 this

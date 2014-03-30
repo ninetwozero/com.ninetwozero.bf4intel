@@ -52,7 +52,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        Bf4Intel.getRequestQueue().add(fetchRequest(getArguments()));
+        requestQueue.add(fetchRequest(getArguments()));
     }
 
     public Request<List<BaseListItem>> fetchRequest(final Bundle bundle) {
