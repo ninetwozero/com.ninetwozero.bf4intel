@@ -1,26 +1,25 @@
 package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-import com.android.volley.Request;
-import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
+import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewDAO;
 import com.ninetwozero.bf4intel.datatypes.Skill;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.soldieroverview.BaseStatsModel;
 import com.ninetwozero.bf4intel.json.soldieroverview.CompletionProgress;
 import com.ninetwozero.bf4intel.json.soldieroverview.GameModeServiceStar;
 import com.ninetwozero.bf4intel.json.soldieroverview.SkillOverview;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
 import com.ninetwozero.bf4intel.json.soldieroverview.TopLeaderboardItem;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.CompletionStringMap;
 import com.ninetwozero.bf4intel.resources.maps.leaderboards.LeaderboardStringMap;
@@ -29,6 +28,7 @@ import com.ninetwozero.bf4intel.resources.maps.ranks.RankImageMap;
 import com.ninetwozero.bf4intel.resources.maps.ranks.RankStringMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
+import com.ninetwozero.bf4intel.services.SoldierOverviewService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.LeaderboardUtils;
@@ -39,6 +39,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import se.emilsjolander.sprinkles.OneQuery;
+import se.emilsjolander.sprinkles.Query;
 
 public class SoldierOverviewFragment extends BaseLoadingFragment {
     public SoldierOverviewFragment() {
@@ -56,6 +59,37 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         return layoutInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
     }
 
+    @Override
+    public void onViewCreated(final View view, final Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        final Bundle arguments = getArgumentsBundle();
+        Query.one(
+            SoldierOverviewDAO.class,
+            "SELECT * " +
+            "FROM " + SoldierOverviewDAO.TABLE_NAME + " " +
+            "WHERE soldierId = ? AND platformId = ?",
+            arguments.getString(Keys.Soldier.ID, ""),
+            arguments.getInt(Keys.Soldier.PLATFORM, 0)
+        ).getAsync(
+            getLoaderManager(),
+            new OneQuery.ResultHandler<SoldierOverviewDAO>() {
+                @Override
+                public boolean handleResult(SoldierOverviewDAO soldierOverviewDAO) {
+                    Log.d("YOLO", "Results => " + soldierOverviewDAO);
+                    final View view = getView();
+                    if (view == null || soldierOverviewDAO == null) {
+                        return true;
+                    }
+
+                    displayInformation(view, soldierOverviewDAO.getSoldierOverview());
+                    showLoadingState(false);
+                    return true;
+                }
+            }
+        );
+    }
+
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
@@ -63,31 +97,16 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     @Override
     protected void startLoadingData() {
+        if (isReloading) {
+            return;
+        }
+
         showLoadingState(true);
-        Bf4Intel.getRequestQueue().add(fetchRequest(getArguments()));
-    }
+        isReloading = true;
 
-    private Request<SoldierOverview> fetchRequest(Bundle bundle) {
-        return new SimpleGetRequest<SoldierOverview>(
-            UrlFactory.buildSoldierOverviewURL(
-                bundle.getLong(Keys.Soldier.ID),
-                bundle.getInt(Keys.Soldier.PLATFORM)
-            ),
-            this
-        ) {
-            @Override
-            protected SoldierOverview doParse(String json) {
-                final SoldierOverview soldierOverview = fromJson(json, SoldierOverview.class);
-
-                return soldierOverview;
-            }
-
-            @Override
-            protected void deliverResponse(SoldierOverview response) {
-                displayInformation(getView(), response);
-                showLoadingState(false);
-            }
-        };
+        final Intent intent = new Intent(getActivity(), SoldierOverviewService.class);
+        intent.putExtra(SoldierOverviewService.SOLDIER_BUNDLE, getArgumentsBundle());
+        getActivity().startService(intent);
     }
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {

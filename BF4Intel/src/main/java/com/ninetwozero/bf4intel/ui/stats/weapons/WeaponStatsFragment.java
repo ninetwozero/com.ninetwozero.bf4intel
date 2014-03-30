@@ -47,7 +47,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     private Request<List<Weapon>> fetchRequest(Bundle bundle) {
         return new SimpleGetRequest<List<Weapon>>(
             UrlFactory.buildWeaponStatsURL(
-                bundle.getLong(Keys.Soldier.ID),
+                bundle.getString(Keys.Soldier.ID),
                 bundle.getInt(Keys.Soldier.PLATFORM)
             ),
             this

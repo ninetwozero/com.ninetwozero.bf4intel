@@ -22,7 +22,7 @@ public class SoldierSpinnerAdapter extends BaseIntelAdapter<SummarizedSoldierSta
 
     @Override
     public long getItemId(final int position) {
-        return getItem(position).getPersonaId();
+        return Long.parseLong(getItem(position).getSoldierId());
     }
 
     @Override
@@ -51,7 +51,7 @@ public class SoldierSpinnerAdapter extends BaseIntelAdapter<SummarizedSoldierSta
 
     private void populateBasicViews(final View view, final SummarizedSoldierStatsDAO item) {
         setImage(view, R.id.soldier_image, SoldierImageMap.get(item.getPicture()));
-        setText(view, R.id.soldier_name, item.getPersonaName());
+        setText(view, R.id.soldier_name, item.getSoldierName());
         setText(view, R.id.soldier_platform, PlatformStringMap.get(item.getPlatformId()));
         setImage(view, R.id.soldier_rank,  RankImageMap.get(item.getRank()));
     }

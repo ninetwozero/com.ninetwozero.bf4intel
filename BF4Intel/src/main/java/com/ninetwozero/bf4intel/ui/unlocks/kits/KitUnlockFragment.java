@@ -27,7 +27,7 @@ public class KitUnlockFragment extends BaseUnlockFragment {
     protected Request<Map<String, List<KitItemUnlockContainer>>> fetchRequest(Bundle bundle) {
         return new SimpleGetRequest<Map<String, List<KitItemUnlockContainer>>>(
             UrlFactory.buildKitUnlocksURL(
-                bundle.getLong(Keys.Soldier.ID),
+                bundle.getString(Keys.Soldier.ID),
                 bundle.getString(Keys.Soldier.NAME),
                 bundle.getInt(Keys.Soldier.PLATFORM)
             ),

@@ -50,7 +50,7 @@ public class AssignmentGridFragment extends BaseLoadingFragment {
             new SimpleGetRequest<List<Assignment>>(
                 UrlFactory.buildAssignmentsURL(
                     bundle.getString(Keys.Soldier.NAME),
-                    bundle.getLong(Keys.Soldier.ID),
+                    bundle.getString(Keys.Soldier.ID),
                     bundle.getString(Keys.Profile.ID),
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 ),

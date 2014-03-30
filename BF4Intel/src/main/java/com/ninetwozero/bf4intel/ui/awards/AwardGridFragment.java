@@ -50,7 +50,7 @@ public class AwardGridFragment extends BaseLoadingFragment {
         Bf4Intel.getRequestQueue().add(
             new SimpleGetRequest<List<Award>>(
                 UrlFactory.buildAwardsURL(
-                    bundle.getLong(Keys.Soldier.ID),
+                    bundle.getString(Keys.Soldier.ID),
                     bundle.getInt(Keys.Soldier.PLATFORM)
                 ),
                 this

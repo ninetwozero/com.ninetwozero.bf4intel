@@ -50,7 +50,7 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
     private Request<StatsDetailsGrouped> fetchRequest(Bundle bundle) {
         return new SimpleGetRequest<StatsDetailsGrouped>(
             UrlFactory.buildDetailsURL(
-                bundle.getLong(Keys.Soldier.ID),
+                bundle.getString(Keys.Soldier.ID),
                 bundle.getInt(Keys.Soldier.PLATFORM)
             ),
             this

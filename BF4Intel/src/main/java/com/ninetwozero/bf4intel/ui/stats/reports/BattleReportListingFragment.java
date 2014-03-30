@@ -59,7 +59,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         showLoadingState(true);
         return new SimpleGetRequest<List<BaseListItem>>(
             UrlFactory.buildBattleReportsURL(
-                bundle.getLong(Keys.Soldier.ID),
+                bundle.getString(Keys.Soldier.ID),
                 bundle.getInt(Keys.Soldier.PLATFORM)
             ),
             this

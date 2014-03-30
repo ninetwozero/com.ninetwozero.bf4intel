@@ -27,7 +27,7 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
     protected Request<Map<String, List<VehicleUnlock>>> fetchRequest(Bundle bundle) {
         return new SimpleGetRequest<Map<String, List<VehicleUnlock>>>(
             UrlFactory.buildVehicleUnlocksURL(
-                bundle.getLong(Keys.Soldier.ID),
+                bundle.getString(Keys.Soldier.ID),
                 bundle.getInt(Keys.Soldier.PLATFORM)
             ),
             this

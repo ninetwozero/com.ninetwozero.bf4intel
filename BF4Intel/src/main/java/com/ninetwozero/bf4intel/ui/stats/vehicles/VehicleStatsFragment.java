@@ -46,7 +46,7 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
     private Request<List<GroupedVehicleStats>> fetchRequest(Bundle bundle) {
         return new SimpleGetRequest<List<GroupedVehicleStats>>(
             UrlFactory.buildVehicleStatsURL(
-                bundle.getLong(Keys.Soldier.ID),
+                bundle.getString(Keys.Soldier.ID),
                 bundle.getInt(Keys.Soldier.PLATFORM)
             ),
             this
