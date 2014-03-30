@@ -1,7 +1,5 @@
 package com.ninetwozero.bf4intel.resources.maps.weapons;
 
-import android.util.Log;
-
 import com.ninetwozero.bf4intel.R;
 
 import java.util.HashMap;
