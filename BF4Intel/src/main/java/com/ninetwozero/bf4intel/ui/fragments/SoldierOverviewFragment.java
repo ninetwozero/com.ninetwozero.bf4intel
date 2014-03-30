@@ -62,9 +62,10 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             SoldierOverviewDAO.class,
             "SELECT * " +
             "FROM " + SoldierOverviewDAO.TABLE_NAME + " " +
-            "WHERE soldierId = ? AND platformId = ?",
+            "WHERE soldierId = ? AND platformId = ? AND version = ?",
             arguments.getString(Keys.Soldier.ID, ""),
-            arguments.getInt(Keys.Soldier.PLATFORM, 0)
+            arguments.getInt(Keys.Soldier.PLATFORM, 0),
+            SoldierOverview.VERSION
         ).getAsync(
             getLoaderManager(),
             new OneQuery.ResultHandler<SoldierOverviewDAO>() {

@@ -25,6 +25,9 @@ public class SoldierOverviewDAO extends Model {
     @Column("json")
     private SoldierOverview soldierOverview;
 
+    @Column("version")
+    private int version;
+
     public SoldierOverviewDAO() {}
 
     public SoldierOverviewDAO(String soldierId, String soldierName, int platformId, SoldierOverview json) {
@@ -32,6 +35,7 @@ public class SoldierOverviewDAO extends Model {
         this.soldierName = soldierName;
         this.platformId = platformId;
         this.soldierOverview = json;
+        this.version = SoldierOverview.VERSION;
     }
 
     public String getSoldierId() {
