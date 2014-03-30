@@ -18,6 +18,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.factories.GsonProvider;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
+import com.ninetwozero.bf4intel.utils.NumberFormatter;
 import com.squareup.otto.Subscribe;
 
 public abstract class BaseLoadingFragment extends BaseFragment implements Response.ErrorListener {
@@ -85,7 +86,6 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
         if (activity instanceof BaseLoadingIntelActivity) {
             ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
         }
-;
     }
 
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
@@ -98,6 +98,14 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
             return;
         }
         loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+    }
+
+    protected String format(double value) {
+        return NumberFormatter.format(value);
+    }
+
+    protected String format(long value) {
+        return NumberFormatter.format(value);
     }
 
     protected abstract void startLoadingData();

@@ -3,7 +3,6 @@ package com.ninetwozero.bf4intel.ui.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +13,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewDAO;
 import com.ninetwozero.bf4intel.datatypes.Skill;
-import com.ninetwozero.bf4intel.json.soldieroverview.BaseStatsModel;
-import com.ninetwozero.bf4intel.json.soldieroverview.CompletionProgress;
-import com.ninetwozero.bf4intel.json.soldieroverview.GameModeServiceStar;
-import com.ninetwozero.bf4intel.json.soldieroverview.SkillOverview;
-import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
-import com.ninetwozero.bf4intel.json.soldieroverview.TopLeaderboardItem;
+import com.ninetwozero.bf4intel.json.soldieroverview.*;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.CompletionStringMap;
 import com.ninetwozero.bf4intel.resources.maps.leaderboards.LeaderboardStringMap;
@@ -32,7 +26,6 @@ import com.ninetwozero.bf4intel.services.SoldierOverviewService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.LeaderboardUtils;
-import com.ninetwozero.bf4intel.utils.NumberFormatter;
 import com.ninetwozero.bf4intel.utils.SoldierOverviewRefreshedEvent;
 import com.squareup.otto.Subscribe;
 
@@ -129,8 +122,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         final Bundle args = getArguments();
         final View root = baseView.findViewById(R.id.wrap_soldier_general);
         final int maxScore = soldierOverview.getMaxScoreCurrentRank();
-        final int scoreLeftToNextRank = soldierOverview.getScoreLeftToNextRank();
-        final int currentScoreThisRank = maxScore - scoreLeftToNextRank;
+        final int progressToNextRankToNextRank = soldierOverview.getProgressToNextRank();
 
         setText(root, R.id.soldier_name, args.getString(Keys.Soldier.NAME));
         setText(root, R.id.soldier_platform, PlatformStringMap.get(soldierOverview.getPlatformId()));
@@ -138,11 +130,11 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         setText(
             root,
             R.id.value_rank_progress,
-            String.format(getString(R.string.generic_x_of_y), currentScoreThisRank, maxScore)
+            String.format(getString(R.string.generic_x_of_y), format(progressToNextRankToNextRank), format(maxScore))
         );
 
         setImage(root, R.id.image_rank, RankImageMap.get(soldierOverview.getCurrentRank().getName()));
-        setProgress(root, R.id.progress_rank, currentScoreThisRank, maxScore);
+        setProgress(root, R.id.progress_rank, progressToNextRankToNextRank, maxScore);
     }
 
     private void displayServiceStars(final View baseView, final SkillOverview basicSoldierStats) {
@@ -255,7 +247,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
                 R.id.value,
                 String.format(
                     getString(R.string.num_kills),
-                    NumberFormatter.format(stats.get(i).getKillCount())
+                    format(stats.get(i).getKillCount())
                 )
             );
             contentArea.addView(parent);
@@ -319,10 +311,10 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     private List<Skill> skillsListFrom(SkillOverview so) {
         final List<Skill> skillList = new ArrayList<Skill>(6);
         skillList.add(new Skill(R.string.skills_kd, so.getKillDeathRatio()));
-        skillList.add(new Skill(R.string.skills_spm, NumberFormatter.format(so.getScorePerMinute())));
-        skillList.add(new Skill(R.string.skills_kpm, NumberFormatter.format(so.getKillsPerMinute())));
-        skillList.add(new Skill(R.string.skills_kills, NumberFormatter.format(so.getKillCount())));
-        skillList.add(new Skill(R.string.skills_score, NumberFormatter.format(so.getScore())));
+        skillList.add(new Skill(R.string.skills_spm, format(so.getScorePerMinute())));
+        skillList.add(new Skill(R.string.skills_kpm, format(so.getKillsPerMinute())));
+        skillList.add(new Skill(R.string.skills_kills, format(so.getKillCount())));
+        skillList.add(new Skill(R.string.skills_score, format(so.getScore())));
         skillList.add(new Skill(R.string.skills_time, DateTimeUtils.toLiteral(so.getTimePlayed())));
         return skillList;
     }
@@ -343,5 +335,4 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
                 return R.string.na;
         }
     }
-
 }
