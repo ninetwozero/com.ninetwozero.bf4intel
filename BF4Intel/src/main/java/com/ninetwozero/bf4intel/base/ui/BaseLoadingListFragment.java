@@ -22,7 +22,7 @@ import com.squareup.otto.Subscribe;
 
 public abstract class BaseLoadingListFragment extends BaseListFragment implements Response.ErrorListener {
     protected Gson gson = GsonProvider.getInstance();
-    protected RequestQueue requestQueue;
+    protected boolean isReloading;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -98,6 +98,8 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         if (activity == null) {
             return;
         }
+
+        isReloading = isLoading;
 
         toggleFullScreenProgressBar(activity, isLoading);
         if (activity instanceof BaseLoadingIntelActivity) {

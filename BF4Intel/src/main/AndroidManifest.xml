@@ -7,7 +7,7 @@
   <uses-sdk
     android:minSdkVersion="14"
     android:targetSdkVersion="19"
-  />
+    />
 
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
   <uses-permission android:name="android.permission.INTERNET"/>
@@ -114,6 +114,13 @@
     <meta-data
       android:name="android.app.default_searchable"
       android:value=".ui.activities.SearchActivity"
+      />
+
+    <!-- Services -->
+
+    <service
+      android:name=".services.SoldierOverviewService"
+      android:label="@string/label_service_soldieroverview"
       />
 
   </application>

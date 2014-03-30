@@ -12,7 +12,7 @@ import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.resources.Keys;
 
 public abstract class BaseIntelActivity extends FragmentActivity {
-    private static final String BUGSENSE_TOKEN = "f42265ac";
+    private static final String BUGSENSE_TOKEN = "f42265ac#";
 
     protected Menu optionsMenu;
     protected SharedPreferences sharedPreferences;

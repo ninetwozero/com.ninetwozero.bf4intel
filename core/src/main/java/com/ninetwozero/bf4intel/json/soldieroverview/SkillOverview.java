@@ -10,7 +10,10 @@ public class SkillOverview {
     private String skillRating;
 
     @SerializedName("kills")
-    private long killCount;
+    private int killCount;
+
+    @SerializedName("deaths")
+    private int deathCount;
 
     @SerializedName("kdRatio")
     private double killDeathRatio;
@@ -37,8 +40,12 @@ public class SkillOverview {
         return skillRating;
     }
 
-    public long getKillCount() {
+    public int getKillCount() {
         return killCount;
+    }
+
+    public int getDeathCount() {
+        return deathCount;
     }
 
     public double getKillDeathRatio() {

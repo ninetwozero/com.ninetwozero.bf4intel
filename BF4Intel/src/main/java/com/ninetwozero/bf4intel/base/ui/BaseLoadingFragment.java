@@ -24,6 +24,8 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
     protected final Gson gson = GsonProvider.getInstance();
     protected final JsonParser parser = new JsonParser();
 
+    protected boolean isReloading;
+
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
@@ -77,10 +79,13 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
             return;
         }
 
+        isReloading = isLoading;
+
         toggleFullScreenProgressBar(activity, isLoading);
         if (activity instanceof BaseLoadingIntelActivity) {
             ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
         }
+;
     }
 
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
