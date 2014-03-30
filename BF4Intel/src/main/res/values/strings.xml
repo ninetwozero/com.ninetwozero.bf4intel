@@ -126,6 +126,7 @@
   <string name="category_shotguns">Shotguns</string>
   <string name="category_assault_rifles">Assault Rifles</string>
   <string name="category_knives">Knives</string>
+  <string name="category_gadgets">Gadgets</string>
 
   <!--Unlocks -->
   <string name="msg_no_unlocks">No unlocks available</string>
@@ -199,4 +200,5 @@
   <string name="title_hooah">Hooah</string>
   <string name="title_unhooah">Un-hooah</string>
   <string name="msg_user_said_hooah">You said hooah</string>
+  <string name="label_service_soldieroverview">Soldier Overview Service</string>
 </resources>

@@ -201,4 +201,11 @@
   <string name="weapon_knife_2142">BJ-2</string>
   <string name="weapon_knife_precision">PRECISION</string>
   <string name="weapon_knife_survival">SURVIVAL</string>
+
+  <!-- Gadgets -->
+  <string name="weapon_m15_at_mine">M15 AT MINE</string>
+  <string name="weapon_m32mgl">M32 MGL</string>
+  <string name="weapon_xm25_airburst">XM25 AIRBURST</string>
+  <string name="weapon_c4_explosive">C4 EXPLOSIVE</string>
+  <string name="weapon_ucav">UCAV</string>
 </resources>

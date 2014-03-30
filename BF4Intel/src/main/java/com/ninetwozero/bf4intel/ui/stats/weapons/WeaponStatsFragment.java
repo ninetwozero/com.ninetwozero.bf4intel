@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.volley.Request;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
@@ -46,7 +47,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     private Request<List<Weapon>> fetchRequest(Bundle bundle) {
         return new SimpleGetRequest<List<Weapon>>(
             UrlFactory.buildWeaponStatsURL(
-                bundle.getLong(Keys.Soldier.ID),
+                bundle.getString(Keys.Soldier.ID),
                 bundle.getInt(Keys.Soldier.PLATFORM)
             ),
             this

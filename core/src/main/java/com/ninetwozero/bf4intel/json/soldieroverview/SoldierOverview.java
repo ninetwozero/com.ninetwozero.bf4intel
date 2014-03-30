@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class SoldierOverview {
+    public static final int VERSION = 1;
+
     @SerializedName("viewedPersonaInfo")
     private PersonaInfo personaInfo;
 
@@ -70,7 +72,7 @@ public class SoldierOverview {
         return nextRank.getPointsNeeded() - currentRank.getPointsNeeded();
     }
 
-    public int getScoreLeftToNextRank() {
-        return nextRank.getPointsNeeded() - basicSoldierStats.getScore();
+    public int getProgressToNextRank() {
+        return basicSoldierStats.getRankScore() - currentRank.getPointsNeeded();
     }
 }

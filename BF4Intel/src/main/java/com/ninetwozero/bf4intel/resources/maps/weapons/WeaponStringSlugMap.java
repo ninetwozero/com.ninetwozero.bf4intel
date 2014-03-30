@@ -234,6 +234,12 @@ public class WeaponStringSlugMap {
             put("SW40", R.string.weapon_sw40);
             put("SR338", R.string.weapon_sr338);
             put("AR160", R.string.weapon_ar160);
+
+            put("AA-MINE", R.string.weapon_m15_at_mine);
+            put("M32-MGL", R.string.weapon_m32mgl);
+            put("XM25-AIRBURST", R.string.weapon_xm25_airburst);
+            put("C4-EXPLOSIVE", R.string.weapon_c4_explosive);
+            put("UCAV", R.string.weapon_ucav);
         }
     };
 

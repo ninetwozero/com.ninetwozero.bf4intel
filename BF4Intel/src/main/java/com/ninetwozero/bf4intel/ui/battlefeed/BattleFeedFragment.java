@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;

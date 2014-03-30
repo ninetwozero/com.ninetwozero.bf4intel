@@ -3,9 +3,6 @@ package com.ninetwozero.bf4intel.base.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.android.volley.Request;
@@ -16,10 +13,12 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.factories.GsonProvider;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
+import com.ninetwozero.bf4intel.utils.NumberFormatter;
 import com.squareup.otto.Subscribe;
 
 public abstract class BaseLoadingFragment extends BaseFragment implements Response.ErrorListener {
@@ -27,16 +26,13 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
     protected final JsonParser parser = new JsonParser();
     protected RequestQueue requestQueue;
 
+    protected boolean isReloading;
+
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        requestQueue = Volley.newRequestQueue(activity);
+        requestQueue = Volley.newRequestQueue(getActivity());
     }
 
     @Override
@@ -102,6 +98,14 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
             return;
         }
         loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+    }
+
+    protected String format(double value) {
+        return NumberFormatter.format(value);
+    }
+
+    protected String format(long value) {
+        return NumberFormatter.format(value);
     }
 
     protected abstract void startLoadingData();

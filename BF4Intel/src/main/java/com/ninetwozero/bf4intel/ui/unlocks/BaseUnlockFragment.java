@@ -39,6 +39,7 @@ public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
+        showLoadingState(true);
         requestQueue.add(fetchRequest(getArguments()));
     }
     private void initialize(final View view) {

@@ -10,7 +10,10 @@ public class SkillOverview {
     private String skillRating;
 
     @SerializedName("kills")
-    private long killCount;
+    private int killCount;
+
+    @SerializedName("deaths")
+    private int deathCount;
 
     @SerializedName("kdRatio")
     private double killDeathRatio;
@@ -20,6 +23,9 @@ public class SkillOverview {
 
     @SerializedName("score")
     private int score;
+
+    @SerializedName("rankScore")
+    private int rankScore;
 
     @SerializedName("scorePerMinute")
     private int scorePerMinute;
@@ -37,8 +43,12 @@ public class SkillOverview {
         return skillRating;
     }
 
-    public long getKillCount() {
+    public int getKillCount() {
         return killCount;
+    }
+
+    public int getDeathCount() {
+        return deathCount;
     }
 
     public double getKillDeathRatio() {
@@ -51,6 +61,10 @@ public class SkillOverview {
 
     public int getScore() {
         return score;
+    }
+
+    public int getRankScore() {
+        return rankScore;
     }
 
     public int getScorePerMinute() {

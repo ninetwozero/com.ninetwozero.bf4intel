@@ -26,6 +26,7 @@ public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer
         put("wH", R.string.category_handguns);
         put("wG", R.string.category_handgrenades);
         put("wSPk", R.string.category_knives);
+        put("wX", R.string.category_gadgets);
     }};
 
     public WeaponUnlockAdapter(final Context context, final Map<String, List<WeaponUnlockContainer>> itemMap) {

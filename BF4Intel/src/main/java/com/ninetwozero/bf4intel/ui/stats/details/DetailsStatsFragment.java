@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
@@ -49,7 +50,7 @@ public class DetailsStatsFragment extends BaseLoadingListFragment {
     private Request<StatsDetailsGrouped> fetchRequest(Bundle bundle) {
         return new SimpleGetRequest<StatsDetailsGrouped>(
             UrlFactory.buildDetailsURL(
-                bundle.getLong(Keys.Soldier.ID),
+                bundle.getString(Keys.Soldier.ID),
                 bundle.getInt(Keys.Soldier.PLATFORM)
             ),
             this

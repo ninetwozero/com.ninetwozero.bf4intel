@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;

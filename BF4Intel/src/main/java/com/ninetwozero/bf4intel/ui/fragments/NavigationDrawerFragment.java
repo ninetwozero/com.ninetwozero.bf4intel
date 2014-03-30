@@ -27,6 +27,7 @@ import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
 import com.ninetwozero.bf4intel.ui.datatypes.ActiveSoldierChangedEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
+import com.ninetwozero.bf4intel.utils.SoldierInformationUpdated;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -112,6 +113,15 @@ public class NavigationDrawerFragment extends BaseListFragment {
         }
 
         setupRegularViews(view);
+        ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
+    }
+
+    @Subscribe
+    public void onSoldierInformationUpdated(final SoldierInformationUpdated event) {
+        if (getView() == null) {
+            return;
+        }
+
         ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
     }
 

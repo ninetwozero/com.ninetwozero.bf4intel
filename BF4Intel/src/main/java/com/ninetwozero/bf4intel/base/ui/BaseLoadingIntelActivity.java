@@ -13,6 +13,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.factories.GsonProvider;
 
@@ -21,14 +22,14 @@ public abstract class BaseLoadingIntelActivity extends BaseIntelActivity impleme
     protected RequestQueue requestQueue;
 
     @Override
-    public void onErrorResponse(final VolleyError error) {
-        Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestQueue = Volley.newRequestQueue(this);
+    }
+
+    @Override
+    public void onErrorResponse(final VolleyError error) {
+        Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
     }
 
     @Override

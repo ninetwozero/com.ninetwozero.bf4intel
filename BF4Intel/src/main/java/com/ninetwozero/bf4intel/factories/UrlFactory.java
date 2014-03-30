@@ -22,35 +22,35 @@ public class UrlFactory {
         return createURL(String.format("user/overviewBoxStats/%s/", soldierId));
     }
 
-    public static URL buildSoldierOverviewURL(final long soldierId, final int platformId) {
-        return createURL(String.format(Locale.getDefault(), "warsawoverviewpopulate/%d/%d/", soldierId, platformId));
+    public static URL buildSoldierOverviewURL(final String soldierId, final int platformId) {
+        return createURL(String.format(Locale.getDefault(), "warsawoverviewpopulate/%s/%d/", soldierId, platformId));
     }
 
-    public static URL buildWeaponStatsURL(final long soldierId, final int platformId) {
-        return createURL(String.format(Locale.getDefault(), "warsawWeaponsPopulateStats/%d/%d/stats/", soldierId, platformId));
+    public static URL buildWeaponStatsURL(final String soldierId, final int platformId) {
+        return createURL(String.format(Locale.getDefault(), "warsawWeaponsPopulateStats/%s/%d/stats/", soldierId, platformId));
     }
 
-    public static URL buildVehicleStatsURL(final long soldierId, final int platformId) {
-        return createURL(String.format(Locale.getDefault(), "warsawvehiclesPopulateStats/%d/%d/stats/", soldierId, platformId));
+    public static URL buildVehicleStatsURL(final String soldierId, final int platformId) {
+        return createURL(String.format(Locale.getDefault(), "warsawvehiclesPopulateStats/%s/%d/stats/", soldierId, platformId));
     }
 
-    public static URL buildBattleReportsURL(final long soldierId, final int platformId) {
-        return createURL(String.format(Locale.getDefault(), "warsawbattlereportspopulate/%d/2048/%d/", soldierId, platformId));
+    public static URL buildBattleReportsURL(final String soldierId, final int platformId) {
+        return createURL(String.format(Locale.getDefault(), "warsawbattlereportspopulate/%s/2048/%d/", soldierId, platformId));
     }
 
-    public static URL buildReportMoreStatsURL(final long soldierId, final int platformId, final long reportId) {
-        return createURL(String.format(Locale.getDefault(), "warsawbattlereportspopulate/%d/2048/%d/%d", soldierId, platformId, reportId));
+    public static URL buildReportMoreStatsURL(final String soldierId, final int platformId, final long reportId) {
+        return createURL(String.format(Locale.getDefault(), "warsawbattlereportspopulate/%s/2048/%d/%d", soldierId, platformId, reportId));
     }
 
-    public static URL buildDetailsURL(final long soldierId, final int platformId) {
-        return createURL(String.format(Locale.getDefault(), "warsawdetailedstatspopulate/%d/%d/", soldierId, platformId));
+    public static URL buildDetailsURL(final String soldierId, final int platformId) {
+        return createURL(String.format(Locale.getDefault(), "warsawdetailedstatspopulate/%s/%d/", soldierId, platformId));
     }
 
-    public static URL buildAssignmentsURL(final String soldierName, final long soldierId, final String userId, final int platformId) {
+    public static URL buildAssignmentsURL(final String soldierName, final String soldierId, final String userId, final int platformId) {
         return createURL(
             String.format(
                 Locale.getDefault(),
-                "soldier/missionsPopulateStats/%s/%d/%s/%d/",
+                "soldier/missionsPopulateStats/%s/%s/%s/%d/",
                 soldierName.replace(" ", "%20"),
                 soldierId,
                 userId,
@@ -59,8 +59,8 @@ public class UrlFactory {
         );
     }
 
-    public static URL buildAwardsURL(final long soldierId, final int platformId) {
-        return createURL(String.format(Locale.getDefault(), "warsawawardspopulate/%d/%d/", soldierId, platformId));
+    public static URL buildAwardsURL(final String soldierId, final int platformId) {
+        return createURL(String.format(Locale.getDefault(), "warsawawardspopulate/%s/%d/", soldierId, platformId));
     }
 
     public static URL buildGlobalFeedURL(final int offset) {
@@ -75,16 +75,16 @@ public class UrlFactory {
         return createURL("search/query/");
     }
 
-    public static URL buildWeaponUnlocksURL(final long soldierId, final int platformId) {
-        return createURL(String.format(Locale.getDefault(), "warsawWeaponsPopulateStats/%d/%d/unlocks/", soldierId, platformId));
+    public static URL buildWeaponUnlocksURL(final String soldierId, final int platformId) {
+        return createURL(String.format(Locale.getDefault(), "warsawWeaponsPopulateStats/%s/%d/unlocks/", soldierId, platformId));
     }
 
-    public static URL buildVehicleUnlocksURL(final long soldierId, final int platformId) {
-        return createURL(String.format(Locale.getDefault(), "warsawvehiclesPopulateStats/%d/%d/unlocks/", soldierId, platformId));
+    public static URL buildVehicleUnlocksURL(final String soldierId, final int platformId) {
+        return createURL(String.format(Locale.getDefault(), "warsawvehiclesPopulateStats/%s/%d/unlocks/", soldierId, platformId));
     }
 
-    public static URL buildKitUnlocksURL(final long soldierId, final String soldierName, final int platformId) {
-        return createURL(String.format(Locale.getDefault(), "warsawkitspopulatestats/%d/%d/", soldierId, platformId));
+    public static URL buildKitUnlocksURL(final String soldierId, final String soldierName, final int platformId) {
+        return createURL(String.format(Locale.getDefault(), "warsawkitspopulatestats/%s/%d/", soldierId, platformId));
     }
 
     public static URL buildDogtagsURL(

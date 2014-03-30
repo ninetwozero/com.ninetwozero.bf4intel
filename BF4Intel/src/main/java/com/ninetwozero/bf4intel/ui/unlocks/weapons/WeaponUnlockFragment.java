@@ -27,7 +27,7 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
     protected Request<Map<String, List<WeaponUnlockContainer>>> fetchRequest(Bundle bundle) {
         return new SimpleGetRequest<Map<String, List<WeaponUnlockContainer>>>(
             UrlFactory.buildWeaponUnlocksURL(
-                bundle.getLong(Keys.Soldier.ID),
+                bundle.getString(Keys.Soldier.ID),
                 bundle.getInt(Keys.Soldier.PLATFORM)
             ),
             this

@@ -17,8 +17,8 @@ public class BundleFactory {
 
     public static Bundle createForStats(SummarizedSoldierStatsDAO soldierStats) {
         final Bundle bundle = new Bundle();
-        bundle.putString(Keys.Soldier.NAME, soldierStats.getPersonaName());
-        bundle.putLong(Keys.Soldier.ID, soldierStats.getPersonaId());
+        bundle.putString(Keys.Soldier.NAME, soldierStats.getSoldierName());
+        bundle.putString(Keys.Soldier.ID, soldierStats.getSoldierId());
         bundle.putInt(Keys.Soldier.PLATFORM, soldierStats.getPlatformId());
         return bundle;
     }

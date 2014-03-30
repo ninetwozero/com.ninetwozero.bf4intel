@@ -15,6 +15,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;

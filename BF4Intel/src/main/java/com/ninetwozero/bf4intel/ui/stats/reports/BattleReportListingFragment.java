@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.google.gson.JsonObject;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
@@ -58,7 +59,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         showLoadingState(true);
         return new SimpleGetRequest<List<BaseListItem>>(
             UrlFactory.buildBattleReportsURL(
-                bundle.getLong(Keys.Soldier.ID),
+                bundle.getString(Keys.Soldier.ID),
                 bundle.getInt(Keys.Soldier.PLATFORM)
             ),
             this
