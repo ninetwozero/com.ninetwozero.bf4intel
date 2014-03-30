@@ -51,8 +51,7 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
             new RequestQueue.RequestFilter() {
                 @Override
                 public boolean apply(Request<?> request) {
-                    return false;
-                    //return request.getMethod() == Request.Method.GET;
+                    return request.getMethod() == Request.Method.GET;
                 }
             }
         );
