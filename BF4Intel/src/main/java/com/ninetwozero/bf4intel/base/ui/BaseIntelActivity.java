@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.widget.Toast;
 
 import com.bugsense.trace.BugSenseHandler;
+import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.resources.Keys;
 
@@ -21,7 +22,10 @@ public abstract class BaseIntelActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BugSenseHandler.initAndStartSession(this, BUGSENSE_TOKEN);
+        BugSenseHandler.I_WANT_TO_DEBUG = BuildConfig.isDebug;
+        if (!BugSenseHandler.I_WANT_TO_DEBUG) {
+            BugSenseHandler.initAndStartSession(this, BUGSENSE_TOKEN);
+        }
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         reloadSession();
     }
