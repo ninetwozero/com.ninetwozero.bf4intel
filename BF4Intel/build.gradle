@@ -41,6 +41,7 @@ android {
     buildTypes {
         debug {
             debuggable true
+            buildConfigField "boolean", "isDebug", "true"
         }
 
         release {
@@ -48,6 +49,7 @@ android {
             jniDebugBuild false
             signingConfig signingConfigs.bf4intel
             runProguard false
+            buildConfigField "boolean", "isDebug", "false"
         }
     }
 
