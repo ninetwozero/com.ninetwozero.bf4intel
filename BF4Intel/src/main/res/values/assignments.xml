@@ -115,4 +115,8 @@
   <!--GHOST-->
   <string name="assignments_mp_name_ghost1">Phantom Prospect</string>
   <string name="assignments_xp2_name_ghost2">Phantom Trainee</string>
+  <string name="category_bronze">Bronze</string>
+  <string name="category_silver">Silver</string>
+  <string name="category_gold">Gold</string>
+  <string name="category_sp">Single Player</string>
 </resources>

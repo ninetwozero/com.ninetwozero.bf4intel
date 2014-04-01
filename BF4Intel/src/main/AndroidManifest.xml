@@ -123,6 +123,11 @@
       android:label="@string/label_service_soldieroverview"
       />
 
+    <service
+      android:name=".services.AssignmentService"
+      android:label="@string/label_service_assignments"
+      />
+
   </application>
 
 </manifest>

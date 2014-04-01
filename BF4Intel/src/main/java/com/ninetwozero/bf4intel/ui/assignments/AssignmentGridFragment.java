@@ -1,30 +1,34 @@
 package com.ninetwozero.bf4intel.ui.assignments;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.dao.assignments.AssignmentsDAO;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
+import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.services.AssignmentService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.ninetwozero.bf4intel.utils.AssignmentsRefreshedEvent;
 import com.squareup.otto.Subscribe;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
-public class AssignmentGridFragment extends BaseLoadingFragment {
-    private static final List<String> ASSIGNMENT_TYPE = new ArrayList<String>(Arrays.asList("bronze", "silver", "gold", "sp"));
+import se.emilsjolander.sprinkles.OneQuery;
+import se.emilsjolander.sprinkles.Query;
 
+public class AssignmentGridFragment
+    extends BaseLoadingFragment
+    implements AdapterView.OnItemClickListener {
     public static AssignmentGridFragment newInstance(final Bundle data) {
         final AssignmentGridFragment fragment = new AssignmentGridFragment();
         fragment.setArguments(data);
@@ -34,7 +38,56 @@ public class AssignmentGridFragment extends BaseLoadingFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.fragment_assignments, container, false);
+        final View view = inflater.inflate(R.layout.fragment_assignments, container, false);
+        initialize(view);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(final View view, final Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        final Bundle arguments = getArgumentsBundle();
+        Query.one(
+            AssignmentsDAO.class,
+            "SELECT * " +
+            "FROM " + AssignmentsDAO.TABLE_NAME + " " +
+            "WHERE soldierId = ? AND platformId = ? AND version = ?",
+            arguments.getString(Keys.Soldier.ID, ""),
+            arguments.getInt(Keys.Soldier.PLATFORM, 0),
+            Assignments.VERSION
+        ).getAsync(
+            getLoaderManager(),
+            new OneQuery.ResultHandler<AssignmentsDAO>() {
+                @Override
+                public boolean handleResult(AssignmentsDAO assignmentsDAO) {
+                    final View view = getView();
+                    if (view == null || assignmentsDAO == null) {
+                        return true;
+                    }
+
+                    final SortedAssignmentContainer container = assignmentsDAO.getSortedAssignmentContainer();
+                    Log.d("YOLO", "number of items: " + container);
+                    sendDataToGridView(view, container.getItems());
+                    showLoadingState(false);
+                    return true;
+                }
+            }
+        );
+    }
+
+    @Override
+    protected void startLoadingData() {
+        if (isReloading) {
+            return;
+        }
+
+        showLoadingState(true);
+        isReloading = true;
+
+        final Intent intent = new Intent(getActivity(), AssignmentService.class);
+        intent.putExtra(AssignmentService.SOLDIER_BUNDLE, getArgumentsBundle());
+        getActivity().startService(intent);
     }
 
     @Subscribe
@@ -42,66 +95,37 @@ public class AssignmentGridFragment extends BaseLoadingFragment {
         startLoadingData();
     }
 
-    @Override
-    protected void startLoadingData() {
-        showLoadingState(true);
-        final Bundle bundle = getArguments();
-        requestQueue.add(
-            new SimpleGetRequest<List<Assignment>>(
-                UrlFactory.buildAssignmentsURL(
-                    bundle.getString(Keys.Soldier.NAME),
-                    bundle.getString(Keys.Soldier.ID),
-                    bundle.getString(Keys.Profile.ID),
-                    bundle.getInt(Keys.Soldier.PLATFORM)
-                ),
-                this
-            ) {
-                @Override
-                protected List<Assignment> doParse(String json) {
-                    final Assignments assignments = fromJson(json, Assignments.class);
-                    return processAssignments(assignments);
-                }
-
-                @Override
-                protected void deliverResponse(List<Assignment> response) {
-                    setupGrid(response);
-                    showLoadingState(false);
-                }
-            }
-        );
+    @Subscribe
+    public void onAssignmentsRefreshed(AssignmentsRefreshedEvent event) {
+        isReloading = false;
+        showLoadingState(false);
     }
 
-    private List<Assignment> processAssignments(final Assignments assignments) {
-        return assignments != null ? fetchSortedAssignments(assignments) : new ArrayList<Assignment>();
+    private void initialize(View view) {
+        setupGrid(view);
     }
 
-    private List<Assignment> fetchSortedAssignments(final Assignments assignments) {
-        List<Assignment> orderedAssignments = new ArrayList<Assignment>();
-        Map<String, List<String>> missions = assignments.getAssignmentCategory();
-        for(String assignmentType : ASSIGNMENT_TYPE) {
-            List<String> groupedAssignments = missions.get(assignmentType);
-            orderedAssignments.addAll(fetchGroupedAssignments(assignments, groupedAssignments));
-        }
-        return orderedAssignments;
-    }
-
-    private List<Assignment> fetchGroupedAssignments(final Assignments assignments, final List<String> groupedAssignments) {
-        List<Assignment> orderedGroup = new ArrayList<Assignment>();
-        for(String key: groupedAssignments) {
-            if(assignments.getAssignments().containsKey(key)) {
-                orderedGroup.add(assignments.getAssignments().get(key));
-            }
-        }
-        return orderedGroup;
-    }
-
-    private void setupGrid(final List<Assignment> assignments) {
-        final View view = getView();
+    private void setupGrid(final View view) {
         if (view == null) {
             return;
         }
 
         final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
-        gridView.setAdapter(new AssignmentsAdapter(getActivity(), assignments));
+        gridView.setOnItemClickListener(this);
+    }
+
+    private void sendDataToGridView(final View view, List<Assignment> assignments) {
+        final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
+        AssignmentsAdapter adapter = (AssignmentsAdapter) gridView.getAdapter();
+        if (adapter == null) {
+            adapter = new AssignmentsAdapter(getActivity());
+            gridView.setAdapter(adapter);
+        }
+        adapter.setItems(assignments);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        // TODO: Open details
     }
 }

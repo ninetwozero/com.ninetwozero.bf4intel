@@ -14,11 +14,10 @@ import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisite;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentImageMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.ExpansionIconsImageMap;
 
-import java.util.List;
-
 public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
-    public AssignmentsAdapter(final Context context, final List<Assignment> assignments) {
-        super(context, assignments);
+
+    public AssignmentsAdapter(final Context context) {
+        super(context);
     }
 
     @Override

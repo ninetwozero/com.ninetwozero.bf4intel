@@ -31,3 +31,4 @@ gradle/*
 *.swp
 .DS_STORE
 lint-report.xml
+*.log

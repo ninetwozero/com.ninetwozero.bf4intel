@@ -3,8 +3,9 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/grey"
+  android:background="@color/card_activity_bg"
   >
+
   <GridView
     android:id="@+id/assignments_grid"
     android:layout_width="match_parent"
@@ -15,7 +16,10 @@
     android:gravity="center"
     android:verticalSpacing="@dimen/grid_view_spacing"
     android:horizontalSpacing="@dimen/grid_view_spacing"
+    android:clipToPadding="false"
+    android:padding="@dimen/spacing_m"
     android:listSelector="@drawable/bg_grid_item"
     />
-  <include layout="@layout/loading_progress" />
+
+  <include layout="@layout/loading_progress"/>
 </RelativeLayout>

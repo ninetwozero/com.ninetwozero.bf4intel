@@ -201,4 +201,5 @@
   <string name="title_unhooah">Un-hooah</string>
   <string name="msg_user_said_hooah">You said hooah</string>
   <string name="label_service_soldieroverview">Soldier Overview Service</string>
+  <string name="label_service_assignments">Assignment Service</string>
 </resources>
