@@ -1,5 +1,6 @@
 package com.ninetwozero.bf4intel.dao.soldieroverview;
 
+import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
 
 import se.emilsjolander.sprinkles.Model;
@@ -35,7 +36,7 @@ public class SoldierOverviewDAO extends Model {
         this.soldierName = soldierName;
         this.platformId = platformId;
         this.soldierOverview = json;
-        this.version = SoldierOverview.VERSION;
+        this.version = BuildConfig.VERSION_CODE;
     }
 
     public String getSoldierId() {

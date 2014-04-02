@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Assignments {
-    public static final int VERSION = 1;
-
     @SerializedName("allMissions")
     private Map<String, Assignment> assignments = new HashMap<String, Assignment>();
     @SerializedName("missionCategory")

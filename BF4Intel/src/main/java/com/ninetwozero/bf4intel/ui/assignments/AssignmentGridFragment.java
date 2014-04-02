@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.dao.assignments.AssignmentsDAO;
 import com.ninetwozero.bf4intel.events.assignments.AssignmentsRefreshedEvent;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
-import com.ninetwozero.bf4intel.json.assignments.Assignments;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.AssignmentService;
@@ -54,7 +54,7 @@ public class AssignmentGridFragment
             "WHERE soldierId = ? AND platformId = ? AND version = ?",
             arguments.getString(Keys.Soldier.ID, ""),
             arguments.getInt(Keys.Soldier.PLATFORM, 0),
-            Assignments.VERSION
+            BuildConfig.VERSION_CODE
         ).getAsync(
             getLoaderManager(),
             new OneQuery.ResultHandler<AssignmentsDAO>() {

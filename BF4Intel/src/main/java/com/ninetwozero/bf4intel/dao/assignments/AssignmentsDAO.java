@@ -1,7 +1,6 @@
 package com.ninetwozero.bf4intel.dao.assignments;
 
-import com.ninetwozero.bf4intel.json.assignments.Assignment;
-import com.ninetwozero.bf4intel.json.assignments.Assignments;
+import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 
 import se.emilsjolander.sprinkles.Model;
@@ -37,7 +36,7 @@ public class AssignmentsDAO extends Model {
         this.soldierName = soldierName;
         this.platformId = platformId;
         this.sortedAssignmentContainer = sortedAssignmentContainer;
-        this.version = Assignments.VERSION;
+        this.version = BuildConfig.VERSION_CODE;
     }
 
     public String getSoldierId() {
