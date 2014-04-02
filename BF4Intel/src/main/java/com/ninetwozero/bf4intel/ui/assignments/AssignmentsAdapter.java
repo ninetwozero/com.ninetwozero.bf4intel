@@ -13,6 +13,7 @@ import com.ninetwozero.bf4intel.json.assignments.AssignmentAward;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisite;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentImageMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.ExpansionIconsImageMap;
+import com.squareup.picasso.Picasso;
 
 public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
 
@@ -52,8 +53,8 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
 
     private void showAssignmentImage(final View view, final AssignmentAward award, final boolean completed) {
         final ImageView imageView = (ImageView) view.findViewById(R.id.img_assignment);
-        imageView.setImageResource(AssignmentImageMap.get(award.getUniqueName()));
         imageView.setAlpha(completed ? 1f : 0.5f);
+        Picasso.with(context).load(AssignmentImageMap.get(award.getUniqueName())).into(imageView);
     }
 
     private void showExpansionPackIcon(final View view, final AssignmentAward award) {
