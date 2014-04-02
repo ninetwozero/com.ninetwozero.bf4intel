@@ -9,11 +9,9 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.awards.Award;
 
-import java.util.List;
-
 public class AwardsAdapter extends BaseIntelAdapter<Award> {
-    public AwardsAdapter(final Context context, final List<Award> awards) {
-        super(context, awards);
+    public AwardsAdapter(final Context context) {
+        super(context);
     }
 
     @Override

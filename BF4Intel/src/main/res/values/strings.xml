@@ -17,6 +17,7 @@
   <string name="label_vehicle_unlocks">Vehicle unlocks</string>
   <string name="label_service_soldieroverview">Soldier Overview Service</string>
   <string name="label_service_assignments">Assignment Service</string>
+  <string name="label_service_awards">Award Service</string>
 
   <!--Navigation drawer-->
   <string name="navigationdrawer_selected_soldier">Selected soldier</string>

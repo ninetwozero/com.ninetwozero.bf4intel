@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="wrap_content">
+  android:layout_height="wrap_content"
+  >
 
   <ImageView
     android:id="@+id/award_ribbon"
@@ -11,11 +13,13 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/award_completion"
     android:layout_centerHorizontal="true"
-    android:contentDescription="@string/cdesc_award_ribbon" />
+    android:contentDescription="@string/cdesc_award_ribbon"
+    />
 
   <TextView
     android:id="@+id/ribbons_count"
     style="@style/GridItemCount"
     android:layout_below="@id/award_ribbon"
-    android:layout_alignParentRight="true" />
+    android:layout_alignParentRight="true"
+    />
 </RelativeLayout>

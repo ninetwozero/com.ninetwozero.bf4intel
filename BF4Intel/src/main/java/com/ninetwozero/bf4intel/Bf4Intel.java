@@ -8,9 +8,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.ninetwozero.bf4intel.dao.ProfileDAO;
 import com.ninetwozero.bf4intel.dao.assignments.AssignmentsDAO;
+import com.ninetwozero.bf4intel.dao.awards.AwardsDAO;
+import com.ninetwozero.bf4intel.dao.awards.SortedAwardContainerSerializer;
 import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewDAO;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
+import com.ninetwozero.bf4intel.json.awards.SortedAwardContainer;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
 import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewSerializer;
 import com.ninetwozero.bf4intel.dao.assignments.SortedAssignmentContainerSerializer;
@@ -39,6 +42,7 @@ public class Bf4Intel extends Application {
     private void setupSerializers(Sprinkles sprinkles) {
         sprinkles.registerType(SoldierOverview.class, new SoldierOverviewSerializer());
         sprinkles.registerType(SortedAssignmentContainer.class, new SortedAssignmentContainerSerializer());
+        sprinkles.registerType(SortedAwardContainer.class, new SortedAwardContainerSerializer());
     }
 
     private void setupMigrations(Sprinkles sprinkles) {
@@ -49,6 +53,7 @@ public class Bf4Intel extends Application {
     private Migration getMigrationToVersion_0_9_6() {
         Migration migration = new Migration();
         migration.createTable(AssignmentsDAO.class);
+        migration.createTable(AwardsDAO.class);
         return migration;
     }
 

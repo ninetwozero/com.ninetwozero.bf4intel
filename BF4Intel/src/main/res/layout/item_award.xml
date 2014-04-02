@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/RegularCard"
   android:layout_width="wrap_content"
   android:layout_height="wrap_content"
-  android:background="@color/lightgrey">
+  >
 
   <include
     android:id="@+id/award_medal_container"
-    layout="@layout/item_award_medal" />
+    layout="@layout/item_award_medal"
+    />
 
   <ProgressBar
     style="?android:attr/progressBarStyleHorizontal"
     android:id="@+id/award_completion"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_below="@id/award_medal_container" />
+    android:layout_below="@id/award_medal_container"
+    />
 
   <include
     android:id="@+id/award_ribbon_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     layout="@layout/item_award_ribbon"
-    android:layout_below="@id/award_completion" />
+    android:layout_below="@id/award_completion"
+    />
 </RelativeLayout>
