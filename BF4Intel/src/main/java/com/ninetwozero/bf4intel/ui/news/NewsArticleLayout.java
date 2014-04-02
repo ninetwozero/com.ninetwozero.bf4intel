@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLayoutPopulator;
-import com.ninetwozero.bf4intel.datatypes.HooahToggleRequest;
+import com.ninetwozero.bf4intel.events.HooahToggleRequest;
 import com.ninetwozero.bf4intel.datatypes.Link;
 import com.ninetwozero.bf4intel.datatypes.ParsedArticleContent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;

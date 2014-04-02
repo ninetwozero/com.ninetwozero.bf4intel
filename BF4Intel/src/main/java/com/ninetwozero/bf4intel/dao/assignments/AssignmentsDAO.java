@@ -1,16 +1,16 @@
-package com.ninetwozero.bf4intel.dao.soldieroverview;
+package com.ninetwozero.bf4intel.dao.assignments;
 
 import com.ninetwozero.bf4intel.BuildConfig;
-import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
+import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 
 import se.emilsjolander.sprinkles.Model;
 import se.emilsjolander.sprinkles.annotations.Column;
 import se.emilsjolander.sprinkles.annotations.PrimaryKey;
 import se.emilsjolander.sprinkles.annotations.Table;
 
-@Table("SoldierOverview")
-public class SoldierOverviewDAO extends Model {
-    public static final String TABLE_NAME = "SoldierOverview";
+@Table("SoldierAssignments")
+public class AssignmentsDAO extends Model {
+    public static final String TABLE_NAME = "SoldierAssignments";
 
     @PrimaryKey
     @Column("soldierId")
@@ -24,18 +24,18 @@ public class SoldierOverviewDAO extends Model {
     private int platformId;
 
     @Column("json")
-    private SoldierOverview soldierOverview;
+    private SortedAssignmentContainer sortedAssignmentContainer;
 
     @Column("version")
     private int version;
 
-    public SoldierOverviewDAO() {}
+    public AssignmentsDAO() {}
 
-    public SoldierOverviewDAO(String soldierId, String soldierName, int platformId, SoldierOverview json) {
+    public AssignmentsDAO(String soldierId, String soldierName, int platformId, SortedAssignmentContainer sortedAssignmentContainer) {
         this.soldierId = soldierId;
         this.soldierName = soldierName;
         this.platformId = platformId;
-        this.soldierOverview = json;
+        this.sortedAssignmentContainer = sortedAssignmentContainer;
         this.version = BuildConfig.VERSION_CODE;
     }
 
@@ -51,7 +51,7 @@ public class SoldierOverviewDAO extends Model {
         return platformId;
     }
 
-    public SoldierOverview getSoldierOverview() {
-        return soldierOverview;
+    public SortedAssignmentContainer getSortedAssignmentContainer() {
+        return sortedAssignmentContainer;
     }
 }

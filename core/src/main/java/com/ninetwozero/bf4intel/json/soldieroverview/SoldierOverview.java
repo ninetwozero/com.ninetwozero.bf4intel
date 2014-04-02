@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class SoldierOverview {
-    public static final int VERSION = 1;
-
     @SerializedName("viewedPersonaInfo")
     private PersonaInfo personaInfo;
 

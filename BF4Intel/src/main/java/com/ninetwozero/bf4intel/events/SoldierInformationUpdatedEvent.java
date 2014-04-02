@@ -1,11 +1,11 @@
-package com.ninetwozero.bf4intel.utils;
+package com.ninetwozero.bf4intel.events;
 
 import android.os.Bundle;
 
-public class SoldierInformationUpdated {
+public class SoldierInformationUpdatedEvent {
     private Bundle soldier;
 
-    public SoldierInformationUpdated(Bundle soldier) {
+    public SoldierInformationUpdatedEvent(Bundle soldier) {
         this.soldier = soldier;
     }
 

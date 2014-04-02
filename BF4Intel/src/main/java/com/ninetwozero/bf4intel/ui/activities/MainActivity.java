@@ -15,7 +15,7 @@ import android.view.View;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
-import com.ninetwozero.bf4intel.datatypes.TrackingNewProfileEvent;
+import com.ninetwozero.bf4intel.events.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.about.AppInfoActivity;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;

@@ -9,11 +9,18 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewDAO;
 import com.ninetwozero.bf4intel.datatypes.Skill;
-import com.ninetwozero.bf4intel.json.soldieroverview.*;
+import com.ninetwozero.bf4intel.events.soldieroverview.SoldierOverviewRefreshedEvent;
+import com.ninetwozero.bf4intel.json.soldieroverview.BaseStatsModel;
+import com.ninetwozero.bf4intel.json.soldieroverview.CompletionProgress;
+import com.ninetwozero.bf4intel.json.soldieroverview.GameModeServiceStar;
+import com.ninetwozero.bf4intel.json.soldieroverview.SkillOverview;
+import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
+import com.ninetwozero.bf4intel.json.soldieroverview.TopLeaderboardItem;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.CompletionStringMap;
 import com.ninetwozero.bf4intel.resources.maps.leaderboards.LeaderboardStringMap;
@@ -26,7 +33,6 @@ import com.ninetwozero.bf4intel.services.SoldierOverviewService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.LeaderboardUtils;
-import com.ninetwozero.bf4intel.utils.SoldierOverviewRefreshedEvent;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -65,7 +71,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             "WHERE soldierId = ? AND platformId = ? AND version = ?",
             arguments.getString(Keys.Soldier.ID, ""),
             arguments.getInt(Keys.Soldier.PLATFORM, 0),
-            SoldierOverview.VERSION
+            BuildConfig.VERSION_CODE
         ).getAsync(
             getLoaderManager(),
             new OneQuery.ResultHandler<SoldierOverviewDAO>() {

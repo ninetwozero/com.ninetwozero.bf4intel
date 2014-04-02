@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
+import com.squareup.picasso.Picasso;
 
 public abstract class BaseFragment extends Fragment {
     public static final String FLAG_DISABLE_AUTOMATIC_ANALYTICS = "flag_disable_automated_analytics";
@@ -133,6 +134,6 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void setImage(final View view, final int viewId, int imageResource) {
-        ((ImageView) view.findViewById(viewId)).setImageResource(imageResource);
+        Picasso.with(getActivity()).load(imageResource).into((ImageView) view.findViewById(viewId));
     }
 }

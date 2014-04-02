@@ -13,12 +13,12 @@ import com.ninetwozero.bf4intel.json.assignments.AssignmentAward;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisite;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentImageMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.ExpansionIconsImageMap;
-
-import java.util.List;
+import com.squareup.picasso.Picasso;
 
 public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
-    public AssignmentsAdapter(final Context context, final List<Assignment> assignments) {
-        super(context, assignments);
+
+    public AssignmentsAdapter(final Context context) {
+        super(context);
     }
 
     @Override
@@ -53,14 +53,14 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
 
     private void showAssignmentImage(final View view, final AssignmentAward award, final boolean completed) {
         final ImageView imageView = (ImageView) view.findViewById(R.id.img_assignment);
-        imageView.setImageResource(AssignmentImageMap.get(award.getUniqueName()));
         imageView.setAlpha(completed ? 1f : 0.5f);
+        Picasso.with(context).load(AssignmentImageMap.get(award.getUniqueName())).into(imageView);
     }
 
     private void showExpansionPackIcon(final View view, final AssignmentAward award) {
         final ImageView expansionIcon = (ImageView) view.findViewById(R.id.expansion_icon);
-        expansionIcon.setImageResource(ExpansionIconsImageMap.get(award.getExpansionPack()));
         expansionIcon.setVisibility(View.VISIBLE);
+        Picasso.with(context).load(ExpansionIconsImageMap.get(award.getExpansionPack())).into(expansionIcon);
     }
 
     private void populateViewForTracking(final View view, final Assignment assignment) {

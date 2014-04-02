@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.utils;
+package com.ninetwozero.bf4intel.dao.soldieroverview;
 
 import android.content.ContentValues;
 import android.database.Cursor;

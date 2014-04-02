@@ -11,8 +11,8 @@ import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.utils.BusProvider;
-import com.ninetwozero.bf4intel.utils.SoldierInformationUpdated;
-import com.ninetwozero.bf4intel.utils.SoldierOverviewRefreshedEvent;
+import com.ninetwozero.bf4intel.events.SoldierInformationUpdatedEvent;
+import com.ninetwozero.bf4intel.events.soldieroverview.SoldierOverviewRefreshedEvent;
 
 import se.emilsjolander.sprinkles.Query;
 import se.emilsjolander.sprinkles.Transaction;
@@ -73,7 +73,7 @@ public class SoldierOverviewService extends BaseApiService {
 
                 @Override
                 protected void deliverResponse(Boolean result) {
-                    BusProvider.getInstance().post(new SoldierInformationUpdated(soldier));
+                    BusProvider.getInstance().post(new SoldierInformationUpdatedEvent(soldier));
                     BusProvider.getInstance().post(new SoldierOverviewRefreshedEvent(result));
                     stopSelf(startId);
                 }

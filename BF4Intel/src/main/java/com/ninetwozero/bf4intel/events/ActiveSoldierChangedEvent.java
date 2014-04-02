@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.datatypes;
+package com.ninetwozero.bf4intel.events;
 
 public class ActiveSoldierChangedEvent {
     private long id;
