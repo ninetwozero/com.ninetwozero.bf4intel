@@ -15,8 +15,6 @@ public class AssignmentsTest {
     @Test
     public void should_parse_Json() throws IOException {
         Assignments assignments = IntelJsonParser.parse("/json/assignments.json", Assignments.class);
-        assertEquals(200661244, assignments.getPersonaId());
-        assertEquals("LittleBoySVK", assignments.getPersonaName());
         assertEquals(EXPECTED_COUNT, assignments.getAssignments().size());
     }
 }

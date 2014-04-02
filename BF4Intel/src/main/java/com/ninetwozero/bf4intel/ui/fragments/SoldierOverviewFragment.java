@@ -26,7 +26,7 @@ import com.ninetwozero.bf4intel.services.SoldierOverviewService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.LeaderboardUtils;
-import com.ninetwozero.bf4intel.utils.SoldierOverviewRefreshedEvent;
+import com.ninetwozero.bf4intel.events.soldieroverview.SoldierOverviewRefreshedEvent;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;

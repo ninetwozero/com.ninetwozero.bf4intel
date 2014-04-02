@@ -9,8 +9,8 @@ import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.utils.AssignmentSorter;
-import com.ninetwozero.bf4intel.utils.AssignmentsRefreshedEvent;
+import com.ninetwozero.bf4intel.dao.assignments.AssignmentSorter;
+import com.ninetwozero.bf4intel.events.assignments.AssignmentsRefreshedEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
 import se.emilsjolander.sprinkles.Transaction;

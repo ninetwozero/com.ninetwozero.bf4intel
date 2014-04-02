@@ -18,6 +18,7 @@
     android:horizontalSpacing="@dimen/grid_view_spacing"
     android:clipToPadding="false"
     android:padding="@dimen/spacing_m"
+    android:scrollbarStyle="outsideOverlay"
     android:listSelector="@drawable/bg_grid_item"
     />
 

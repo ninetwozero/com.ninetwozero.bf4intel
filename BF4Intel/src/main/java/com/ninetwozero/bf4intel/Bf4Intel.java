@@ -12,8 +12,8 @@ import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewDAO;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
-import com.ninetwozero.bf4intel.utils.SoldierOverviewSerializer;
-import com.ninetwozero.bf4intel.utils.SortedAssignmentContainerSerializer;
+import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewSerializer;
+import com.ninetwozero.bf4intel.dao.assignments.SortedAssignmentContainerSerializer;
 
 import se.emilsjolander.sprinkles.Migration;
 import se.emilsjolander.sprinkles.Sprinkles;
@@ -43,10 +43,10 @@ public class Bf4Intel extends Application {
 
     private void setupMigrations(Sprinkles sprinkles) {
         sprinkles.addMigration(getInitialMigration());
-        sprinkles.addMigration(getMigrationForVersion095());
+        sprinkles.addMigration(getMigrationToVersion_0_9_6());
     }
 
-    private Migration getMigrationForVersion095() {
+    private Migration getMigrationToVersion_0_9_6() {
         Migration migration = new Migration();
         migration.createTable(AssignmentsDAO.class);
         return migration;

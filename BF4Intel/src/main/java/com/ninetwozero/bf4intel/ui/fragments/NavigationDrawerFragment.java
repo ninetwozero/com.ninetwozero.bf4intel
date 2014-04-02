@@ -15,7 +15,7 @@ import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
-import com.ninetwozero.bf4intel.datatypes.TrackingNewProfileEvent;
+import com.ninetwozero.bf4intel.events.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.factories.BundleFactory;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.ListRowFactory;
@@ -27,7 +27,7 @@ import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
 import com.ninetwozero.bf4intel.ui.datatypes.ActiveSoldierChangedEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
-import com.ninetwozero.bf4intel.utils.SoldierInformationUpdated;
+import com.ninetwozero.bf4intel.events.SoldierInformationUpdatedEvent;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -117,7 +117,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     @Subscribe
-    public void onSoldierInformationUpdated(final SoldierInformationUpdated event) {
+    public void onSoldierInformationUpdated(final SoldierInformationUpdatedEvent event) {
         if (getView() == null) {
             return;
         }

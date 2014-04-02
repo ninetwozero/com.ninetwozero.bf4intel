@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.utils;
+package com.ninetwozero.bf4intel.dao.assignments;
 
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;

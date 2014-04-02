@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.datatypes;
+package com.ninetwozero.bf4intel.events;
 
 public class TrackingNewProfileEvent {
     private final String userId;

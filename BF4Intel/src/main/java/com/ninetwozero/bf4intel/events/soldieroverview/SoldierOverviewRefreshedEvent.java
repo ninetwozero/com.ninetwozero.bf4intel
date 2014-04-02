@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.utils;
+package com.ninetwozero.bf4intel.events.soldieroverview;
 
 public class SoldierOverviewRefreshedEvent {
     private boolean success;

@@ -2,7 +2,6 @@ package com.ninetwozero.bf4intel.ui.assignments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +11,13 @@ import android.widget.GridView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.dao.assignments.AssignmentsDAO;
+import com.ninetwozero.bf4intel.events.assignments.AssignmentsRefreshedEvent;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.AssignmentService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
-import com.ninetwozero.bf4intel.utils.AssignmentsRefreshedEvent;
 import com.squareup.otto.Subscribe;
 
 import java.util.List;
@@ -67,7 +66,6 @@ public class AssignmentGridFragment
                     }
 
                     final SortedAssignmentContainer container = assignmentsDAO.getSortedAssignmentContainer();
-                    Log.d("YOLO", "number of items: " + container);
                     sendDataToGridView(view, container.getItems());
                     showLoadingState(false);
                     return true;
