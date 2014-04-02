@@ -18,7 +18,7 @@ public abstract class BaseLayoutPopulator {
     }
 
     public static void setImage(final View view, final int resourceId, final int imageResource) {
-        ((ImageView) view.findViewById(resourceId)).setImageResource(imageResource);
+        Picasso.with(view.getContext()).load(imageResource).into((ImageView) view.findViewById(resourceId));
     }
 
     public static void loadImage(final View view, final int resourceId, final String url) {

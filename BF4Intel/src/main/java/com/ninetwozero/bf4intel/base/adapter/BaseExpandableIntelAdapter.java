@@ -69,7 +69,7 @@ public abstract class BaseExpandableIntelAdapter<T> extends BaseExpandableListAd
     }
 
     public void setImage(final View view, final int resourceId, final int imageResource) {
-        ((ImageView) view.findViewById(resourceId)).setImageResource(imageResource);
+        Picasso.with(context).load(imageResource).into((ImageView) view.findViewById(resourceId));
     }
 
     public void setVisibility(final View view, final int resourceId, final int value) {

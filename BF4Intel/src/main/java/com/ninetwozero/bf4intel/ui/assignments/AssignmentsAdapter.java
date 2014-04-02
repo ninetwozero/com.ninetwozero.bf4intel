@@ -59,8 +59,8 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
 
     private void showExpansionPackIcon(final View view, final AssignmentAward award) {
         final ImageView expansionIcon = (ImageView) view.findViewById(R.id.expansion_icon);
-        expansionIcon.setImageResource(ExpansionIconsImageMap.get(award.getExpansionPack()));
         expansionIcon.setVisibility(View.VISIBLE);
+        Picasso.with(context).load(ExpansionIconsImageMap.get(award.getExpansionPack())).into(expansionIcon);
     }
 
     private void populateViewForTracking(final View view, final Assignment assignment) {

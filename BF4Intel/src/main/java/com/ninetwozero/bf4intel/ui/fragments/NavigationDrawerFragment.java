@@ -24,7 +24,7 @@ import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.SimpleListRow;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
-import com.ninetwozero.bf4intel.ui.datatypes.ActiveSoldierChangedEvent;
+import com.ninetwozero.bf4intel.events.ActiveSoldierChangedEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
 import com.ninetwozero.bf4intel.events.SoldierInformationUpdatedEvent;

@@ -1,12 +1,9 @@
 package com.ninetwozero.bf4intel.events.assignments;
 
-public class AssignmentsRefreshedEvent {
-    private boolean success;
-    public AssignmentsRefreshedEvent(final boolean success) {
-        this.success = success;
-    }
+import com.ninetwozero.bf4intel.events.RefreshCompletedEvent;
 
-    public boolean isSuccess() {
-        return success;
+public class AssignmentsRefreshedEvent extends RefreshCompletedEvent {
+    public AssignmentsRefreshedEvent(final boolean success) {
+        super(success);
     }
 }

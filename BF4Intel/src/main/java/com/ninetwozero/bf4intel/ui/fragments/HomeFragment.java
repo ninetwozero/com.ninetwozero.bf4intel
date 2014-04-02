@@ -88,7 +88,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         final ImageView gravatarImageView = (ImageView) wrap.findViewById(R.id.selected_user_gravatar);
 
         usernameTextView.setText(SessionStore.getUsername());
-        Picasso.with(getActivity()).load(UrlFactory.buildGravatarUrl(SessionStore.getGravatarHash())).into(gravatarImageView);
+        Picasso.with(getActivity())
+            .load(UrlFactory.buildGravatarUrl(SessionStore.getGravatarHash()))
+            .placeholder(R.drawable.default_gravatar)
+            .into(gravatarImageView);
 
         wrap.findViewById(R.id.button_select_another_account).setOnClickListener(this);
         wrap.setVisibility(View.VISIBLE);
