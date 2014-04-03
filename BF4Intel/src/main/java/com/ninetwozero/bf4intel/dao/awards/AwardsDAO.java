@@ -35,7 +35,7 @@ public class AwardsDAO extends Model {
         this.soldierId = soldierId;
         this.soldierName = soldierName;
         this.platformId = platformId;
-        this.sortedAwardContainer = sortedAwardContainer);
+        this.sortedAwardContainer = sortedAwardContainer;
         this.version = BuildConfig.VERSION_CODE;
     }
 
