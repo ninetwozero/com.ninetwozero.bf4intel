@@ -1,31 +1,34 @@
 package com.ninetwozero.bf4intel.ui.awards;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.ninetwozero.bf4intel.Bf4Intel;
+import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.dao.awards.AwardsDAO;
+import com.ninetwozero.bf4intel.events.awards.AwardsRefreshedEvent;
 import com.ninetwozero.bf4intel.json.awards.Award;
-import com.ninetwozero.bf4intel.json.awards.Awards;
-import com.ninetwozero.bf4intel.json.awards.Medal;
-import com.ninetwozero.bf4intel.json.awards.Ribbon;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
+import com.ninetwozero.bf4intel.json.awards.SortedAwardContainer;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.services.AwardService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-public class AwardGridFragment extends BaseLoadingFragment {
+import se.emilsjolander.sprinkles.OneQuery;
+import se.emilsjolander.sprinkles.Query;
+
+public class AwardGridFragment
+    extends BaseLoadingFragment
+    implements AdapterView.OnItemClickListener {
+
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
         fragment.setArguments(data);
@@ -34,7 +37,56 @@ public class AwardGridFragment extends BaseLoadingFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.fragment_assignments, container, false);
+
+        final View view = inflater.inflate(R.layout.fragment_assignments, container, false);
+        initialize(view);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(final View view, final Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        final Bundle arguments = getArgumentsBundle();
+        Query.one(
+            AwardsDAO.class,
+            "SELECT * " +
+            "FROM " + AwardsDAO.TABLE_NAME + " " +
+            "WHERE soldierId = ? AND platformId = ? AND version = ?",
+            arguments.getString(Keys.Soldier.ID, ""),
+            arguments.getInt(Keys.Soldier.PLATFORM, 0),
+            BuildConfig.VERSION_CODE
+        ).getAsync(
+            getLoaderManager(),
+            new OneQuery.ResultHandler<AwardsDAO>() {
+                @Override
+                public boolean handleResult(AwardsDAO awardsDao) {
+                    final View view = getView();
+                    if (view == null || awardsDao == null) {
+                        return true;
+                    }
+
+                    final SortedAwardContainer container = awardsDao.getSortedAwardContainer();
+                    sendDataToGridView(view, container.getItems());
+                    showLoadingState(false);
+                    return true;
+                }
+            }
+        );
+    }
+
+    @Override
+    protected void startLoadingData() {
+        if (isReloading) {
+            return;
+        }
+
+        showLoadingState(true);
+        isReloading = true;
+
+        final Intent intent = new Intent(getActivity(), AwardService.class);
+        intent.putExtra(AwardService.SOLDIER_BUNDLE, getArgumentsBundle());
+        getActivity().startService(intent);
     }
 
     @Subscribe
@@ -42,70 +94,37 @@ public class AwardGridFragment extends BaseLoadingFragment {
         startLoadingData();
     }
 
-    @Override
-    protected void startLoadingData() {
-        final Bundle bundle = getArguments();
-
-        showLoadingState(true);
-        requestQueue.add(
-            new SimpleGetRequest<List<Award>>(
-                UrlFactory.buildAwardsURL(
-                    bundle.getString(Keys.Soldier.ID),
-                    bundle.getInt(Keys.Soldier.PLATFORM)
-                ),
-                this
-            ) {
-                @Override
-                protected List<Award> doParse(String json) {
-                    final Awards awards = fromJson(json, Awards.class);
-                    return processAwards(awards);
-                }
-
-                @Override
-                protected void deliverResponse(List<Award> response) {
-                    setupGrid(response);
-                    showLoadingState(false);
-                }
-            }
-        );
+    @Subscribe
+    public void onAwardsRefreshed(AwardsRefreshedEvent event) {
+        isReloading = false;
+        showLoadingState(false);
     }
 
-    private List<Award> processAwards(final Awards awards) {
-        return awards != null ? fetchSortedAwards(awards) : new ArrayList<Award>();
+    private void initialize(View view) {
+        setupGrid(view);
     }
 
-    private List<Award> fetchSortedAwards(final Awards awards) {
-        List<Award> orderedAwards = new ArrayList<Award>();
-        Map<String, List<String>> awardsGroups = awards.getAwardsGroups();
-        Set<String> awardTypes = awardsGroups.keySet();
-        for(String group : awardTypes) {
-            List<String> awardsInGroup = awardsGroups.get(group);
-            Collections.sort(awardsInGroup);
-            orderedAwards.addAll(fetchGroupedAwards(awards, awardsInGroup));
-        }
-        return orderedAwards;
-    }
-
-    private List<Award> fetchGroupedAwards(final Awards awards, final List<String> awardsInGroup) {
-        List<Award> orderedGroup = new ArrayList<Award>();
-        for (String key : awardsInGroup) {
-            if(awards.getMedals().containsKey(key)) {
-                Medal medal = awards.getMedals().get(key);
-                String ribbonCode = medal.getMedalAward().getMedalDepencies().get(0).getRibbonDependency();
-                Ribbon ribbon = awards.getRibbons().get(ribbonCode);
-                orderedGroup.add(new Award(key, medal, ribbonCode, ribbon ));
-            }
-        }
-        return orderedGroup;
-    }
-
-    private void setupGrid(final List<Award> awards) {
-        final View view = getView();
+    private void setupGrid(final View view) {
         if (view == null) {
             return;
         }
 
         final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
-        gridView.setAdapter(new AwardsAdapter(getActivity(), awards));
+        gridView.setOnItemClickListener(this);
+    }
+
+    private void sendDataToGridView(final View view, List<Award> awards) {
+        final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
+        AwardsAdapter adapter = (AwardsAdapter) gridView.getAdapter();
+        if (adapter == null) {
+            adapter = new AwardsAdapter(getActivity());
+            gridView.setAdapter(adapter);
+        }
+        adapter.setItems(awards);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        // TODO: Open details
     }
 }
