@@ -124,6 +124,11 @@
       />
 
     <service
+      android:name=".services.stats.WeaponStatsService"
+      android:label="@string/label_service_stats_weapons"
+      />
+
+    <service
       android:name=".services.AssignmentService"
       android:label="@string/label_service_assignments"
       />
