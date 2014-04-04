@@ -55,7 +55,7 @@ public class DetailedStatsAdapter
         final StickyHeaderItem header = getHeader(position);
 
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.list_header, viewGroup, false);
+            view = layoutInflater.inflate(R.layout.list_header_details, viewGroup, false);
         }
 
         setText(view, R.id.list_header, header.getTitle());
