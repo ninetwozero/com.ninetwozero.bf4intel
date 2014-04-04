@@ -14,6 +14,8 @@ import com.ninetwozero.bf4intel.dao.awards.SortedAwardContainerSerializer;
 import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewDAO;
 import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewSerializer;
+import com.ninetwozero.bf4intel.dao.stats.details.DetailedStatsContainerSerializer;
+import com.ninetwozero.bf4intel.dao.stats.details.DetailedStatsDAO;
 import com.ninetwozero.bf4intel.dao.stats.vehicles.GroupedVehicleStatisticsSerializer;
 import com.ninetwozero.bf4intel.dao.stats.vehicles.VehicleStatsDAO;
 import com.ninetwozero.bf4intel.dao.stats.weapons.WeaponStatisticsSerializer;
@@ -21,6 +23,7 @@ import com.ninetwozero.bf4intel.dao.stats.weapons.WeaponStatsDAO;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 import com.ninetwozero.bf4intel.json.awards.SortedAwardContainer;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
+import com.ninetwozero.bf4intel.json.stats.details.DetailedStatsContainer;
 import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStatsContainer;
 import com.ninetwozero.bf4intel.json.stats.weapons.WeaponStatistics;
 
@@ -50,8 +53,8 @@ public class Bf4Intel extends Application {
         sprinkles.registerType(WeaponStatistics.class, new WeaponStatisticsSerializer());
 
         sprinkles.registerType(GroupedVehicleStatsContainer.class, new GroupedVehicleStatisticsSerializer());
-        //sprinkles.registerType(BattleReportStatistics.class, new BattleReportStatisticsSerializer());
-        //sprinkles.registerType(DetailedStatistics.class, new DetailedStatisticsSerializer()); ?
+        //sprinkles.registerType(BattleReportStatistics.class, new BattleReportStatisticsSerializer()); ??
+        sprinkles.registerType(DetailedStatsContainer.class, new DetailedStatsContainerSerializer());
 
         sprinkles.registerType(SortedAssignmentContainer.class, new SortedAssignmentContainerSerializer());
         sprinkles.registerType(SortedAwardContainer.class, new SortedAwardContainerSerializer());
@@ -68,7 +71,7 @@ public class Bf4Intel extends Application {
         migration.createTable(VehicleStatsDAO.class);
         
         //migration.createTable(BattleReportDAO.class);
-        //migration.createTable(DetailedStatsDAO.class);
+        migration.createTable(DetailedStatsDAO.class);
         migration.createTable(AssignmentsDAO.class);
         migration.createTable(AwardsDAO.class);
         return migration;

@@ -132,6 +132,10 @@
       android:name=".services.stats.vehicles.VehicleStatsService"
       android:label="@string/label_service_stats_vehicles"
       />
+    <service
+      android:name=".services.stats.details.DetailedStatsService"
+      android:label="@string/label_service_stats_details"
+      />
 
     <service
       android:name=".services.AssignmentService"

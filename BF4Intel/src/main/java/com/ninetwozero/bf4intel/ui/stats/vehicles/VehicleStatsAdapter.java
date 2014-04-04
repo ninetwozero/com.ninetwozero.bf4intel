@@ -29,6 +29,8 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         final GroupedVehicleStats stats = itemsList.get(position);
+
+        // TODO: Move this to the sorter/grouper
         final List<VehicleStats> vehiclesList = stats.getVehicleList();
         Collections.sort(vehiclesList);
 
