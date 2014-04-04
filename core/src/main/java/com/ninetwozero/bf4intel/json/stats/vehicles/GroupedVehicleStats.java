@@ -11,8 +11,10 @@ public class GroupedVehicleStats implements Comparable<GroupedVehicleStats> {
     private long timeInVehicle;
     private List<VehicleStats> vehicleList;
 
-    public GroupedVehicleStats(String groupName, int serviceStarsCount, int serviceStarProgress, int killCount,
-                               long timeInVehicle, List<VehicleStats> vehicleList) {
+    public GroupedVehicleStats(
+        String groupName, int serviceStarsCount, int serviceStarProgress,
+        int killCount, long timeInVehicle, List<VehicleStats> vehicleList
+    ) {
         this.groupName = groupName;
         this.serviceStarsCount = serviceStarsCount;
         this.serviceStarProgress = serviceStarProgress;

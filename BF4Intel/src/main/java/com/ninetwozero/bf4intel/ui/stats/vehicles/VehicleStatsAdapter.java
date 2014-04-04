@@ -17,8 +17,8 @@ import java.util.List;
 
 public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
 
-    public VehicleStatsAdapter(final Context context, final List<GroupedVehicleStats> vehicleStats) {
-        super(context, vehicleStats);
+    public VehicleStatsAdapter(final Context context) {
+        super(context);
     }
 
     @Override

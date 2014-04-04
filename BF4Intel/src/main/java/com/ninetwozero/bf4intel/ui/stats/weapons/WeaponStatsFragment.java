@@ -14,7 +14,7 @@ import com.ninetwozero.bf4intel.dao.stats.weapons.WeaponStatsDAO;
 import com.ninetwozero.bf4intel.events.stats.weapons.WeaponStatsRefreshedEvent;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.services.stats.WeaponStatsService;
+import com.ninetwozero.bf4intel.services.stats.weapons.WeaponStatsService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
 

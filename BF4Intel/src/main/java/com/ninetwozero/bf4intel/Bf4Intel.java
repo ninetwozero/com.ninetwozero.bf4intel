@@ -14,11 +14,14 @@ import com.ninetwozero.bf4intel.dao.awards.SortedAwardContainerSerializer;
 import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewDAO;
 import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewSerializer;
+import com.ninetwozero.bf4intel.dao.stats.vehicles.GroupedVehicleStatisticsSerializer;
+import com.ninetwozero.bf4intel.dao.stats.vehicles.VehicleStatsDAO;
 import com.ninetwozero.bf4intel.dao.stats.weapons.WeaponStatisticsSerializer;
 import com.ninetwozero.bf4intel.dao.stats.weapons.WeaponStatsDAO;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 import com.ninetwozero.bf4intel.json.awards.SortedAwardContainer;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
+import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStatsContainer;
 import com.ninetwozero.bf4intel.json.stats.weapons.WeaponStatistics;
 
 import se.emilsjolander.sprinkles.Migration;
@@ -46,8 +49,7 @@ public class Bf4Intel extends Application {
         sprinkles.registerType(SoldierOverview.class, new SoldierOverviewSerializer());
         sprinkles.registerType(WeaponStatistics.class, new WeaponStatisticsSerializer());
 
-        //sprinkles.registerType(WeaponStatistics.class, new WeaponStatisticsSerializer());
-        //sprinkles.registerType(VehicleStatistics.class, new VehicleStatisticsSerializer());
+        sprinkles.registerType(GroupedVehicleStatsContainer.class, new GroupedVehicleStatisticsSerializer());
         //sprinkles.registerType(BattleReportStatistics.class, new BattleReportStatisticsSerializer());
         //sprinkles.registerType(DetailedStatistics.class, new DetailedStatisticsSerializer()); ?
 
@@ -63,7 +65,8 @@ public class Bf4Intel extends Application {
     private Migration getMigrationToVersion_0_9_6() {
         Migration migration = new Migration();
         migration.createTable(WeaponStatsDAO.class);
-        //migration.createTable(VehicleStatsDAO.class);
+        migration.createTable(VehicleStatsDAO.class);
+        
         //migration.createTable(BattleReportDAO.class);
         //migration.createTable(DetailedStatsDAO.class);
         migration.createTable(AssignmentsDAO.class);
