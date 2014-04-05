@@ -19,44 +19,45 @@ public class DetailedStatsTitleMap {
             put("sc_unlock", R.string.unlock_score);
             put("sc_total", R.string.total_score);
 
-            put("kills", R.string.assault_score);
-            put("deaths", R.string.engineer_score);
-            put("kill_assists", R.string.recon_score);
-            put("kd_ratio", R.string.support_score);
-            put("wins", R.string.commander_score);
-            put("losses", R.string.squad_score);
-            put("shots_fired", R.string.vehicle_score);
-            put("shots_hits", R.string.award_score);
-            put("accuracy", R.string.unlock_score);
+            put("kills", R.string.kills);
+            put("deaths", R.string.deaths);
+            put("kill_assists", R.string.kill_assists);
+            put("kd_ratio", R.string.kd_ratio);
+            put("wins", R.string.wins);
+            put("losses", R.string.losses);
+            put("shots_fired", R.string.shots_fired);
+            put("shots_hits", R.string.shots_hits);
+            put("accuracy", R.string.accuracy);
 
-            put("conquest", R.string.assault_score);
-            put("rush", R.string.engineer_score);
-            put("death_match", R.string.recon_score);
-            put("domination", R.string.support_score);
-            put("obliteration", R.string.commander_score);
-            put("air_superiority", R.string.squad_score);
-            put("defuse", R.string.squad_score);
+            put("conquest", R.string.conquest);
+            put("rush", R.string.rush);
+            put("death_match", R.string.death_match);
+            put("domination", R.string.domination);
+            put("capture_the_flag", R.string.capture_the_flag);
+            put("obliteration", R.string.obliteration);
+            put("air_superiority", R.string.air_superiority);
+            put("defuse", R.string.defuse);
 
-            put("repairs", R.string.assault_score);
-            put("revives", R.string.engineer_score);
-            put("heals", R.string.recon_score);
-            put("resupplies", R.string.support_score);
-            put("avenger_kills", R.string.commander_score);
-            put("savior_kills", R.string.squad_score);
-            put("suppression_assists", R.string.squad_score);
-            put("quits", R.string.squad_score);
+            put("repairs", R.string.repairs);
+            put("revives", R.string.revives);
+            put("heals", R.string.heals);
+            put("resupplies", R.string.resupplies);
+            put("avenger_kills", R.string.avenger_kills);
+            put("savior_kills", R.string.savior_kills);
+            put("suppression_assists", R.string.suppression_assists);
+            put("quits", R.string.quits);
 
-            put("dogtag_taken", R.string.assault_score);
-            put("vehicles_destroyed", R.string.engineer_score);
-            put("vehicle_damage", R.string.recon_score);
-            put("headshots", R.string.support_score);
-            put("longest_headshot", R.string.commander_score);
-            put("highest_kill_streak", R.string.squad_score);
-            put("nemesis_kills", R.string.squad_score);
-            put("highest_nemesis_streak", R.string.squad_score);
+            put("dogtag_taken", R.string.dogtag_taken);
+            put("vehicles_destroyed", R.string.vehicles_destroyed);
+            put("vehicle_damage", R.string.vehicle_damage);
+            put("headshots", R.string.headshots);
+            put("longest_headshot", R.string.longest_headshot);
+            put("highest_kill_streak", R.string.highest_kill_streak);
+            put("nemesis_kills", R.string.nemesis_kills);
+            put("highest_nemesis_streak", R.string.highest_nemesis_streak);
 
-            put("flags_captured", R.string.assault_score);
-            put("flags_defended", R.string.engineer_score);
+            put("flags_captured", R.string.flags_captured);
+            put("flags_defended", R.string.flags_defended);
         }
     };
 
