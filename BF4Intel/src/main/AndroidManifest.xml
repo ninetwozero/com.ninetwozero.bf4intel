@@ -153,6 +153,13 @@
       />
 
     <service
+      android:name=".services.unlocks.vehicles.VehicleUnlockService"
+      android:label="@string/label_service_unlocks_vehicles"
+      />
+
+    <!-- Misc -->
+
+    <service
       android:name=".services.AssignmentService"
       android:label="@string/label_service_assignments"
       />
