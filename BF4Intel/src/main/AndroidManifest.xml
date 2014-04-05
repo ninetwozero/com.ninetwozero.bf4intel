@@ -123,6 +123,8 @@
       android:label="@string/label_service_soldieroverview"
       />
 
+    <!-- Stats -->
+
     <service
       android:name=".services.stats.weapons.WeaponStatsService"
       android:label="@string/label_service_stats_weapons"
@@ -141,6 +143,13 @@
     <service
       android:name=".services.stats.details.DetailedStatsService"
       android:label="@string/label_service_stats_details"
+      />
+
+    <!-- Unlocks -->
+
+    <service
+      android:name=".services.unlocks.weapons.WeaponUnlockService"
+      android:label="@string/label_service_unlocks_weapons"
       />
 
     <service

@@ -23,7 +23,6 @@ public class KitUnlockFragment extends BaseUnlockFragment {
         return fragment;
     }
 
-    @Override
     protected Request<Map<String, List<KitItemUnlockContainer>>> fetchRequest(Bundle bundle) {
         return new SimpleGetRequest<Map<String, List<KitItemUnlockContainer>>>(
             UrlFactory.buildKitUnlocksURL(

@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.event.stats.reports;
+package com.ninetwozero.bf4intel.events.stats.reports;
 
 import com.ninetwozero.bf4intel.ui.BaseListItem;
 

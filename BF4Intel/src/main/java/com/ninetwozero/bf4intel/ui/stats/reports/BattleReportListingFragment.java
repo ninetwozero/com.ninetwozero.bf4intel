@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
-import com.ninetwozero.bf4intel.event.stats.reports.BattleReportsRefreshedEvent;
+import com.ninetwozero.bf4intel.events.stats.reports.BattleReportsRefreshedEvent;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.stats.reports.BattleReportService;
 import com.ninetwozero.bf4intel.ui.BaseListItem;

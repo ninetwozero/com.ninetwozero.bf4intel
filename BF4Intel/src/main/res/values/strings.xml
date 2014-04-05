@@ -20,6 +20,9 @@
   <string name="label_service_stats_vehicles">Vehicle Stats Service</string>
   <string name="label_service_stats_reports">Reports Stats Service</string>
   <string name="label_service_stats_details">Detailed Stats Service</string>
+  <string name="label_service_unlocks_weapons">Weapon Unlocks Service</string>
+  <string name="label_service_unlocks_vehicles">Vehicle Unlocks Service</string>
+  <string name="label_service_unlocks_kits">Kit Unlocks Service</string>
   <string name="label_service_assignments">Assignment Service</string>
   <string name="label_service_awards">Award Service</string>
 

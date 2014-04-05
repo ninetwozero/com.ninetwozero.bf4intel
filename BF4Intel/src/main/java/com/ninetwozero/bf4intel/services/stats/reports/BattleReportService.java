@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.event.stats.reports.BattleReportsRefreshedEvent;
+import com.ninetwozero.bf4intel.events.stats.reports.BattleReportsRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.stats.reports.BattleReportStatistics;
 import com.ninetwozero.bf4intel.json.stats.reports.GameReport;

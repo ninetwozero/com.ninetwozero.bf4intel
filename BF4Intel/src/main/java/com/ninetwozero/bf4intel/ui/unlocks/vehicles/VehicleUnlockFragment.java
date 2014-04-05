@@ -23,7 +23,6 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
         return fragment;
     }
 
-    @Override
     protected Request<Map<String, List<VehicleUnlock>>> fetchRequest(Bundle bundle) {
         return new SimpleGetRequest<Map<String, List<VehicleUnlock>>>(
             UrlFactory.buildVehicleUnlocksURL(
