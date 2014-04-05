@@ -157,6 +157,11 @@
       android:label="@string/label_service_unlocks_vehicles"
       />
 
+    <service
+      android:name=".services.unlocks.kits.KitUnlockService"
+      android:label="@string/label_service_unlocks_kits"
+      />
+
     <!-- Misc -->
 
     <service

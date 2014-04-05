@@ -20,6 +20,8 @@ import com.ninetwozero.bf4intel.dao.stats.vehicles.GroupedVehicleStatisticsSeria
 import com.ninetwozero.bf4intel.dao.stats.vehicles.VehicleStatsDAO;
 import com.ninetwozero.bf4intel.dao.stats.weapons.WeaponStatisticsSerializer;
 import com.ninetwozero.bf4intel.dao.stats.weapons.WeaponStatsDAO;
+import com.ninetwozero.bf4intel.dao.unlocks.kits.KitUnlockDAO;
+import com.ninetwozero.bf4intel.dao.unlocks.kits.SortedKitUnlocksSerializer;
 import com.ninetwozero.bf4intel.dao.unlocks.vehicles.SortedVehicleUnlocksSerializer;
 import com.ninetwozero.bf4intel.dao.unlocks.vehicles.VehicleUnlockDAO;
 import com.ninetwozero.bf4intel.dao.unlocks.weapons.SortedWeaponUnlocksSerializer;
@@ -30,6 +32,7 @@ import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
 import com.ninetwozero.bf4intel.json.stats.details.DetailedStatsContainer;
 import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStatsContainer;
 import com.ninetwozero.bf4intel.json.stats.weapons.WeaponStatistics;
+import com.ninetwozero.bf4intel.json.unlocks.kits.SortedKitUnlocks;
 import com.ninetwozero.bf4intel.json.unlocks.vehicles.SortedVehicleUnlocks;
 import com.ninetwozero.bf4intel.json.unlocks.weapons.SortedWeaponUnlocks;
 
@@ -64,6 +67,7 @@ public class Bf4Intel extends Application {
 
         sprinkles.registerType(SortedWeaponUnlocks.class, new SortedWeaponUnlocksSerializer());
         sprinkles.registerType(SortedVehicleUnlocks.class, new SortedVehicleUnlocksSerializer());
+        sprinkles.registerType(SortedKitUnlocks.class, new SortedKitUnlocksSerializer());
 
         sprinkles.registerType(SortedAssignmentContainer.class, new SortedAssignmentContainerSerializer());
         sprinkles.registerType(SortedAwardContainer.class, new SortedAwardContainerSerializer());
@@ -83,6 +87,7 @@ public class Bf4Intel extends Application {
 
         migration.createTable(WeaponUnlockDAO.class);
         migration.createTable(VehicleUnlockDAO.class);
+        migration.createTable(KitUnlockDAO.class);
 
         migration.createTable(AssignmentsDAO.class);
         migration.createTable(AwardsDAO.class);
