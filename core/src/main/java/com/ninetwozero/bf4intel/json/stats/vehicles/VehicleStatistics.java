@@ -27,7 +27,6 @@ public class VehicleStatistics {
             if (vehicleGroupsMap.containsKey(stat.getVehicleGroup())) {
                 group = vehicleGroupsMap.get(stat.getVehicleGroup());
                 group.addVehicleStats(stat);
-
             } else {
                 List<VehicleStats> vehicleStats = new ArrayList<VehicleStats>();
                 vehicleStats.add(stat);
@@ -37,12 +36,18 @@ public class VehicleStatistics {
                     stat.getServiceStarProgress(),
                     stat.getKillsCount(),
                     stat.getTimeInVehicle(),
-                    vehicleStats);
+                    vehicleStats
+                );
+                vehicleGroupsMap.put(stat.getVehicleGroup(), group);
             }
-            vehicleGroupsMap.put(stat.getVehicleGroup(), group);
         }
         List<GroupedVehicleStats> groupedVehicleStatsList = new ArrayList<GroupedVehicleStats>(vehicleGroupsMap.values());
         Collections.sort(groupedVehicleStatsList);
+
+        for (GroupedVehicleStats stats : groupedVehicleStatsList) {
+            Collections.sort(stats.getVehicleList());
+        }
+
         return groupedVehicleStatsList;
     }
 }

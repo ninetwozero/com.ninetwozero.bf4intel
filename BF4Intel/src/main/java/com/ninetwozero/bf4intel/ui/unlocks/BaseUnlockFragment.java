@@ -8,12 +8,9 @@ import android.widget.AbsListView;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import com.android.volley.Request;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
-import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
-import com.squareup.otto.Subscribe;
 
 public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
 
@@ -32,16 +29,11 @@ public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
         super.onResume();
     }
 
-    @Subscribe
-    public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
-    }
-
     @Override
     protected void startLoadingData() {
-        showLoadingState(true);
-        requestQueue.add(fetchRequest(getArguments()));
+
     }
+
     private void initialize(final View view) {
         setupListView(view);
     }
@@ -67,6 +59,4 @@ public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
             }
         }
     }
-
-    protected abstract Request<?> fetchRequest(Bundle bundle);
 }

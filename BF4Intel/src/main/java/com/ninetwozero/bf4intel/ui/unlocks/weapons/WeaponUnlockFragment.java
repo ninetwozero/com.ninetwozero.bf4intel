@@ -1,20 +1,26 @@
 package com.ninetwozero.bf4intel.ui.unlocks.weapons;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
 
-import com.android.volley.Request;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.BuildConfig;
+import com.ninetwozero.bf4intel.dao.unlocks.weapons.WeaponUnlockDAO;
+import com.ninetwozero.bf4intel.events.unlocks.weapons.WeaponUnlocksRefreshedEvent;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlockContainer;
-import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlocks;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.services.unlocks.weapons.WeaponUnlockService;
+import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockFragment;
+import com.squareup.otto.Subscribe;
 
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import se.emilsjolander.sprinkles.OneQuery;
+import se.emilsjolander.sprinkles.Query;
 
 public class WeaponUnlockFragment extends BaseUnlockFragment {
     public static WeaponUnlockFragment newInstance(final Bundle data) {
@@ -24,36 +30,64 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
     }
 
     @Override
-    protected Request<Map<String, List<WeaponUnlockContainer>>> fetchRequest(Bundle bundle) {
-        return new SimpleGetRequest<Map<String, List<WeaponUnlockContainer>>>(
-            UrlFactory.buildWeaponUnlocksURL(
-                bundle.getString(Keys.Soldier.ID),
-                bundle.getInt(Keys.Soldier.PLATFORM)
-            ),
-            this
-        ) {
-            @Override
-            protected Map<String, List<WeaponUnlockContainer>> doParse(String json) {
-                final WeaponUnlocks unlocks = fromJson(json, WeaponUnlocks.class);
-                return sortItemsInMap(unlocks.getUnlockMap());
-            }
+    public void onViewCreated(final View view, final Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-            @Override
-            protected void deliverResponse(Map<String, List<WeaponUnlockContainer>> response) {
-                sendDataToListView(response);
-                showLoadingState(false);
+        final Bundle arguments = getArgumentsBundle();
+        Query.one(
+            WeaponUnlockDAO.class,
+            "SELECT * " +
+                "FROM " + WeaponUnlockDAO.TABLE_NAME + " " +
+                "WHERE soldierId = ? AND platformId = ? AND version = ?",
+            arguments.getString(Keys.Soldier.ID, ""),
+            arguments.getInt(Keys.Soldier.PLATFORM, 0),
+            BuildConfig.VERSION_CODE
+        ).getAsync(
+            getLoaderManager(),
+            new OneQuery.ResultHandler<WeaponUnlockDAO>() {
+                @Override
+                public boolean handleResult(WeaponUnlockDAO weaponUnlockDAO) {
+                    final View view = getView();
+                    if (view == null || weaponUnlockDAO == null) {
+                        return true;
+                    }
+
+                    sendDataToListView(weaponUnlockDAO.getWeaponUnlock().getSortedWeaponUnlocksMap());
+                    showLoadingState(false);
+                    return true;
+                }
             }
-        };
+        );
     }
 
-    private Map<String, List<WeaponUnlockContainer>> sortItemsInMap(final Map<String, List<WeaponUnlockContainer>> unlockMap) {
-        final Map<String, List<WeaponUnlockContainer>> map = new HashMap<String, List<WeaponUnlockContainer>>();
-        for (String key : unlockMap.keySet()) {
-            final List<WeaponUnlockContainer> unlocks = unlockMap.get(key);
-            Collections.sort(unlocks);
-            map.put(key, unlocks);
+    @Override
+    protected void startLoadingData() {
+        if (isReloading) {
+            return;
         }
-        return map;
+
+        showLoadingState(true);
+        isReloading = true;
+
+        final Intent intent = new Intent(getActivity(), WeaponUnlockService.class);
+        intent.putExtra(WeaponUnlockService.SOLDIER_BUNDLE, getArgumentsBundle());
+        getActivity().startService(intent);
+    }
+
+    @Override
+    public void onListItemClick(ListView listView, View view, int i, long l) {
+        // TODO: Open details
+    }
+
+    @Subscribe
+    public void onRefreshEvent(RefreshEvent event) {
+        startLoadingData();
+    }
+
+    @Subscribe
+    public void onWeaponUnlocksRefreshed(WeaponUnlocksRefreshedEvent event) {
+        isReloading = false;
+        showLoadingState(false);
     }
 
     private void sendDataToListView(final Map<String, List<WeaponUnlockContainer>> unlockMap) {

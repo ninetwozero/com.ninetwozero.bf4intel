@@ -11,14 +11,11 @@ import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 
-import java.util.List;
-
 public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
 
-    public WeaponStatsAdapter(final Context context, final List<Weapon> weaponStats) {
-        super(context, weaponStats);
+    public WeaponStatsAdapter(final Context context) {
+        super(context);
     }
-
 
     @Override
     public long getItemId(int position) {

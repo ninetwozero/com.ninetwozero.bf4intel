@@ -123,6 +123,47 @@
       android:label="@string/label_service_soldieroverview"
       />
 
+    <!-- Stats -->
+
+    <service
+      android:name=".services.stats.weapons.WeaponStatsService"
+      android:label="@string/label_service_stats_weapons"
+      />
+
+    <service
+      android:name=".services.stats.vehicles.VehicleStatsService"
+      android:label="@string/label_service_stats_vehicles"
+      />
+
+    <service
+      android:name=".services.stats.reports.BattleReportService"
+      android:label="@string/label_service_stats_reports"
+      />
+
+    <service
+      android:name=".services.stats.details.DetailedStatsService"
+      android:label="@string/label_service_stats_details"
+      />
+
+    <!-- Unlocks -->
+
+    <service
+      android:name=".services.unlocks.weapons.WeaponUnlockService"
+      android:label="@string/label_service_unlocks_weapons"
+      />
+
+    <service
+      android:name=".services.unlocks.vehicles.VehicleUnlockService"
+      android:label="@string/label_service_unlocks_vehicles"
+      />
+
+    <service
+      android:name=".services.unlocks.kits.KitUnlockService"
+      android:label="@string/label_service_unlocks_kits"
+      />
+
+    <!-- Misc -->
+
     <service
       android:name=".services.AssignmentService"
       android:label="@string/label_service_assignments"
