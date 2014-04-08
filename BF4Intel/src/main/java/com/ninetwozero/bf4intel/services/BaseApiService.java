@@ -23,7 +23,6 @@ public abstract class BaseApiService extends Service implements Response.ErrorLi
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         soldier = intent.getBundleExtra(SOLDIER_BUNDLE);
-
         return super.onStartCommand(intent, flags, startId);
     }
 

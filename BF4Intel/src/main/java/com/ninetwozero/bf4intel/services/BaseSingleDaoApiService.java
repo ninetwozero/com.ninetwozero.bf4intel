@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 
 import com.ninetwozero.bf4intel.Bf4Intel;
+import com.ninetwozero.bf4intel.events.RefreshCompletedEvent;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
@@ -51,5 +52,5 @@ public abstract class BaseSingleDaoApiService<T extends Model> extends BaseApiSe
 
     protected abstract URL getUrlForService();
 
-    protected abstract Object getEventToBroadcast(boolean result);
+    protected abstract RefreshCompletedEvent getEventToBroadcast(boolean result);
 }
