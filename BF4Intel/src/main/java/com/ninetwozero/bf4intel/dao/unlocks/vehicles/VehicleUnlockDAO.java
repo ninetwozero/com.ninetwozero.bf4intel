@@ -5,21 +5,21 @@ import com.ninetwozero.bf4intel.json.unlocks.vehicles.SortedVehicleUnlocks;
 
 import se.emilsjolander.sprinkles.Model;
 import se.emilsjolander.sprinkles.annotations.Column;
-import se.emilsjolander.sprinkles.annotations.PrimaryKey;
+import se.emilsjolander.sprinkles.annotations.Key;
 import se.emilsjolander.sprinkles.annotations.Table;
 
 @Table("SoldierVehicleUnlocks")
 public class VehicleUnlockDAO extends Model {
     public static final String TABLE_NAME = "SoldierVehicleUnlocks";
 
-    @PrimaryKey
+    @Key
     @Column("soldierId")
     private String soldierId;
 
     @Column("soldierName")
     private String soldierName;
 
-    @PrimaryKey
+    @Key
     @Column("platformId")
     private int platformId;
 
