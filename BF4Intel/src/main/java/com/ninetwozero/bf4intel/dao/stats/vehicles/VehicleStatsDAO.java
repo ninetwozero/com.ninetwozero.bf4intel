@@ -5,21 +5,21 @@ import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStatsContainer
 
 import se.emilsjolander.sprinkles.Model;
 import se.emilsjolander.sprinkles.annotations.Column;
-import se.emilsjolander.sprinkles.annotations.PrimaryKey;
+import se.emilsjolander.sprinkles.annotations.Key;
 import se.emilsjolander.sprinkles.annotations.Table;
 
 @Table("SoldierVehicleStatistics")
 public class VehicleStatsDAO extends Model {
     public static final String TABLE_NAME = "SoldierVehicleStatistics";
 
-    @PrimaryKey
+    @Key
     @Column("soldierId")
     private String soldierId;
 
     @Column("soldierName")
     private String soldierName;
 
-    @PrimaryKey
+    @Key
     @Column("platformId")
     private int platformId;
 
