@@ -35,7 +35,7 @@ public class Version095Migration extends Migration {
             "CREATE TABLE " + tableName + "(" +
                 "soldierId TEXT," +
                 "soldierName TEXT," +
-                "platformId INTEGER" +
+                "platformId INTEGER," +
                 "json TEXT," +
                 "version INTEGER," +
                 "PRIMARY KEY(soldierId, platformId)" +
