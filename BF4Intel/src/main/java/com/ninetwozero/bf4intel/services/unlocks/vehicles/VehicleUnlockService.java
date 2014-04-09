@@ -10,7 +10,7 @@ import com.ninetwozero.bf4intel.services.BaseSingleDaoApiService;
 
 import java.net.URL;
 
-public class VehicleUnlockService extends BaseSingleDaoApiService<VehicleUnlockDAO> {
+public class VehicleUnlockService extends BaseSingleDaoApiService<VehicleUnlockDAO, VehicleUnlocksRefreshedEvent> {
     @Override
     protected VehicleUnlocksRefreshedEvent getEventToBroadcast(boolean result) {
         return new VehicleUnlocksRefreshedEvent(result);

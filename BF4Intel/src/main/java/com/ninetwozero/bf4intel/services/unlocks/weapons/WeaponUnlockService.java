@@ -10,7 +10,7 @@ import com.ninetwozero.bf4intel.services.BaseSingleDaoApiService;
 
 import java.net.URL;
 
-public class WeaponUnlockService extends BaseSingleDaoApiService<WeaponUnlockDAO> {
+public class WeaponUnlockService extends BaseSingleDaoApiService<WeaponUnlockDAO, WeaponUnlocksRefreshedEvent> {
     @Override
     protected WeaponUnlocksRefreshedEvent getEventToBroadcast(boolean result) {
         return new WeaponUnlocksRefreshedEvent(result);

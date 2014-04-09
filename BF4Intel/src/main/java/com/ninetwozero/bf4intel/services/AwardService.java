@@ -9,7 +9,7 @@ import com.ninetwozero.bf4intel.resources.Keys;
 
 import java.net.URL;
 
-public class AwardService extends BaseSingleDaoApiService<AwardsDAO> {
+public class AwardService extends BaseSingleDaoApiService<AwardsDAO, AwardsRefreshedEvent> {
     @Override
     protected AwardsRefreshedEvent getEventToBroadcast(boolean result) {
         return new AwardsRefreshedEvent(result);

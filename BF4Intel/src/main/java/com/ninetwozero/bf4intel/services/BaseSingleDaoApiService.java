@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.services;
 
 import android.app.Service;
 import android.content.Intent;
+import android.util.Log;
 
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.events.RefreshCompletedEvent;
@@ -13,7 +14,7 @@ import java.net.URL;
 import se.emilsjolander.sprinkles.Model;
 import se.emilsjolander.sprinkles.Transaction;
 
-public abstract class BaseSingleDaoApiService<T extends Model> extends BaseApiService {
+public abstract class BaseSingleDaoApiService<T extends Model, E extends RefreshCompletedEvent> extends BaseApiService {
     @Override
     public int onStartCommand(final Intent intent, final int flags, final int startId) {
         super.onStartCommand(intent, flags, startId);
@@ -29,17 +30,22 @@ public abstract class BaseSingleDaoApiService<T extends Model> extends BaseApiSe
                     boolean success = true;
 
                     final T daoObject = parseJsonIntoDao(json);
+                    Log.d("YOLO", "daoObject => " + daoObject.getClass().getSimpleName());
                     if (!daoObject.save(transaction)) {
                         success = false;
                     }
+                    Log.d("YOLO", "daoObject.save() => " + success);
 
                     transaction.setSuccessful(success);
+                    transaction.finish();
                     return success;
                 }
 
                 @Override
                 protected void deliverResponse(Boolean result) {
-                    BusProvider.getInstance().post(getEventToBroadcast(result));
+                    final E event = getEventToBroadcast(result);
+                    Log.d("YOLO", "event => " + event.getClass().getSimpleName());
+                    BusProvider.getInstance().post(event);
                     stopSelf(startId);
                 }
             }
@@ -52,5 +58,5 @@ public abstract class BaseSingleDaoApiService<T extends Model> extends BaseApiSe
 
     protected abstract URL getUrlForService();
 
-    protected abstract RefreshCompletedEvent getEventToBroadcast(boolean result);
+    protected abstract E getEventToBroadcast(boolean result);
 }

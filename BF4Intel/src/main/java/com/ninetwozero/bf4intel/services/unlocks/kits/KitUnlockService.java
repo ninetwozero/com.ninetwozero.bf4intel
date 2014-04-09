@@ -10,7 +10,7 @@ import com.ninetwozero.bf4intel.services.BaseSingleDaoApiService;
 
 import java.net.URL;
 
-public class KitUnlockService extends BaseSingleDaoApiService<KitUnlockDAO> {
+public class KitUnlockService extends BaseSingleDaoApiService<KitUnlockDAO, KitUnlocksRefreshedEvent> {
     @Override
     protected KitUnlocksRefreshedEvent getEventToBroadcast(boolean result) {
         return new KitUnlocksRefreshedEvent(result);
