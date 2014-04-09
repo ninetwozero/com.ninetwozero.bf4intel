@@ -69,8 +69,8 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
         imagePrerequisite.setVisibility(View.INVISIBLE);
 
         final ProgressBar completionProgress = (ProgressBar) view.findViewById(R.id.assignment_completion);
-        completionProgress.setProgress(assignment.getCompletion());
         completionProgress.setMax(100);
+        completionProgress.setProgress(assignment.getCompletion());
         completionProgress.setVisibility(View.VISIBLE);
     }
 
