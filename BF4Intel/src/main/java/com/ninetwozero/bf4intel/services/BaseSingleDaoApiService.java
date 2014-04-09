@@ -2,7 +2,6 @@ package com.ninetwozero.bf4intel.services;
 
 import android.app.Service;
 import android.content.Intent;
-import android.util.Log;
 
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.events.RefreshCompletedEvent;
@@ -30,11 +29,9 @@ public abstract class BaseSingleDaoApiService<T extends Model, E extends Refresh
                     boolean success = true;
 
                     final T daoObject = parseJsonIntoDao(json);
-                    Log.d("YOLO", "daoObject => " + daoObject.getClass().getSimpleName());
                     if (!daoObject.save(transaction)) {
                         success = false;
                     }
-                    Log.d("YOLO", "daoObject.save() => " + success);
 
                     transaction.setSuccessful(success);
                     transaction.finish();
@@ -44,7 +41,6 @@ public abstract class BaseSingleDaoApiService<T extends Model, E extends Refresh
                 @Override
                 protected void deliverResponse(Boolean result) {
                     final E event = getEventToBroadcast(result);
-                    Log.d("YOLO", "event => " + event.getClass().getSimpleName());
                     BusProvider.getInstance().post(event);
                     stopSelf(startId);
                 }
