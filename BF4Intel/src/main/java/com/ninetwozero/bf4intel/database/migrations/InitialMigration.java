@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.ninetwozero.bf4intel.dao.ProfileDAO;
 import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewDAO;
-import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 
 import se.emilsjolander.sprinkles.Migration;
 
@@ -28,7 +27,7 @@ public class InitialMigration extends Migration {
                 "userId TEXT," +
                 "rank INTEGER," +
                 "platform INTEGER," +
-                "game INTEGER," +
+                "game INTEGER" +
             ")"
         );
     }
@@ -48,7 +47,7 @@ public class InitialMigration extends Migration {
             "CREATE TABLE " + SoldierOverviewDAO.TABLE_NAME + "(" +
                 "soldierId TEXT," +
                 "soldierName TEXT," +
-                "platformId INTEGER" +
+                "platformId INTEGER," +
                 "json TEXT," +
                 "version INTEGER," +
                 "PRIMARY KEY(soldierId, platformId)" +
