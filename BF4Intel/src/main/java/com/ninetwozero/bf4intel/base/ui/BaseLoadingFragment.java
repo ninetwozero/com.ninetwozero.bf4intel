@@ -24,7 +24,6 @@ import com.squareup.otto.Subscribe;
 public abstract class BaseLoadingFragment extends BaseFragment implements Response.ErrorListener {
     protected final Gson gson = GsonProvider.getInstance();
     protected final JsonParser parser = new JsonParser();
-    protected RequestQueue requestQueue;
 
     protected boolean isReloading;
 
@@ -32,7 +31,6 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         setHasOptionsMenu(true);
-        requestQueue = Volley.newRequestQueue(getActivity());
     }
 
     @Override
@@ -46,19 +44,6 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
     public void onPause() {
         super.onPause();
         BusProvider.getInstance().unregister(this);
-    }
-
-    @Override
-    public void onStop(){
-        requestQueue.cancelAll(
-            new RequestQueue.RequestFilter() {
-                @Override
-                public boolean apply(Request<?> request) {
-                    return request.getMethod() == Request.Method.GET;
-                }
-            }
-        );
-        super.onStop();
     }
 
     @Override
