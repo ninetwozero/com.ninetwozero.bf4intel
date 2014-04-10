@@ -19,30 +19,15 @@ import com.ninetwozero.bf4intel.factories.GsonProvider;
 
 public abstract class BaseLoadingIntelActivity extends BaseIntelActivity implements Response.ErrorListener {
     protected final Gson gson = GsonProvider.getInstance();
-    protected RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestQueue = Volley.newRequestQueue(this);
     }
 
     @Override
     public void onErrorResponse(final VolleyError error) {
         Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
-    }
-
-    @Override
-    public void onStop(){
-        requestQueue.cancelAll(
-            new RequestQueue.RequestFilter() {
-                @Override
-                public boolean apply(Request<?> request) {
-                    return request.getMethod() == Request.Method.GET;
-                }
-            }
-        );
-        super.onStop();
     }
 
     public JsonObject extractFromJson(String json) {

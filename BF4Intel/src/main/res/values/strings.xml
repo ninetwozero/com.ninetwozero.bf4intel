@@ -25,6 +25,8 @@
   <string name="label_service_unlocks_kits">Kit Unlocks Service</string>
   <string name="label_service_assignments">Assignment Service</string>
   <string name="label_service_awards">Award Service</string>
+  <string name="label_service_battlefeed">Battle Feed Service</string>
+  <string name="label_service_news">News Service</string>
 
   <!--Navigation drawer-->
   <string name="navigationdrawer_selected_soldier">Selected soldier</string>

@@ -174,6 +174,25 @@
       android:label="@string/label_service_awards"
       />
 
+    <!-- News -->
+
+    <service
+      android:name=".services.news.NewsListingService"
+      android:label="@string/label_service_news"
+      />
+
+    <service
+      android:name=".services.news.NewsArticleService"
+      android:label="@string/label_service_news"
+      />
+
+    <!-- Battle feed -->
+
+    <service
+      android:name=".services.battlefeed.BattleFeedService"
+      android:label="@string/label_service_battlefeed"
+      />
+
   </application>
 
 </manifest>

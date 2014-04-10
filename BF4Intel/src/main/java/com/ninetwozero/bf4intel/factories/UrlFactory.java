@@ -67,8 +67,8 @@ public class UrlFactory {
         return createURL(String.format(Locale.getDefault(), "feed/homeevents/?start=%d", offset));
     }
 
-    public static URL buildUserFeedURL(final long userId, final int offset) {
-        return createURL(String.format(Locale.getDefault(), "feed/profileevents/%d/?start=%d", userId, offset));
+    public static URL buildUserFeedURL(final String userId, final int offset) {
+        return createURL(String.format(Locale.getDefault(), "feed/profileevents/%s/?start=%d", userId, offset));
     }
 
     public static URL buildUserSearchURL() {
