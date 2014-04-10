@@ -76,7 +76,7 @@ public class SoldierOverviewService extends BaseApiService {
                     protected void deliverResponse(Boolean result) {
                         BusProvider.getInstance().post(new SoldierInformationUpdatedEvent(soldier));
                         BusProvider.getInstance().post(new SoldierOverviewRefreshedEvent(result));
-                        stopSelf(startId);
+                        stopSelf();
                     }
                 }
             );
