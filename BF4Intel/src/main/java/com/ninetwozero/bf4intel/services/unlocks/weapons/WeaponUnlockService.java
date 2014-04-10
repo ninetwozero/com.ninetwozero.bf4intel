@@ -6,11 +6,11 @@ import com.ninetwozero.bf4intel.events.unlocks.weapons.WeaponUnlocksRefreshedEve
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlocks;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.services.BaseSingleDaoApiService;
+import com.ninetwozero.bf4intel.services.BaseDaoService;
 
 import java.net.URL;
 
-public class WeaponUnlockService extends BaseSingleDaoApiService<WeaponUnlockDAO, WeaponUnlocksRefreshedEvent> {
+public class WeaponUnlockService extends BaseDaoService<WeaponUnlockDAO, WeaponUnlocksRefreshedEvent> {
     @Override
     protected WeaponUnlocksRefreshedEvent getEventToBroadcast(boolean result) {
         return new WeaponUnlocksRefreshedEvent(result);

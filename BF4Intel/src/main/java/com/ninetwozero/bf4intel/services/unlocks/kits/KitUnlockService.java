@@ -6,11 +6,11 @@ import com.ninetwozero.bf4intel.events.unlocks.kits.KitUnlocksRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.unlocks.KitUnlocks;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.services.BaseSingleDaoApiService;
+import com.ninetwozero.bf4intel.services.BaseDaoService;
 
 import java.net.URL;
 
-public class KitUnlockService extends BaseSingleDaoApiService<KitUnlockDAO, KitUnlocksRefreshedEvent> {
+public class KitUnlockService extends BaseDaoService<KitUnlockDAO, KitUnlocksRefreshedEvent> {
     @Override
     protected KitUnlocksRefreshedEvent getEventToBroadcast(boolean result) {
         return new KitUnlocksRefreshedEvent(result);

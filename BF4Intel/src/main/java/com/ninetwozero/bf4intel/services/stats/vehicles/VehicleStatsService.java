@@ -6,11 +6,11 @@ import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStatsContainer;
 import com.ninetwozero.bf4intel.json.stats.vehicles.VehicleStatistics;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.services.BaseSingleDaoApiService;
+import com.ninetwozero.bf4intel.services.BaseDaoService;
 
 import java.net.URL;
 
-public class VehicleStatsService extends BaseSingleDaoApiService<VehicleStatsDAO, VehicleStatsRefreshedEvent> {
+public class VehicleStatsService extends BaseDaoService<VehicleStatsDAO, VehicleStatsRefreshedEvent> {
     @Override
     protected VehicleStatsRefreshedEvent getEventToBroadcast(boolean result) {
         return new VehicleStatsRefreshedEvent(result);

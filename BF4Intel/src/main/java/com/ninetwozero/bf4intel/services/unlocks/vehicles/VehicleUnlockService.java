@@ -6,11 +6,11 @@ import com.ninetwozero.bf4intel.events.unlocks.vehicles.VehicleUnlocksRefreshedE
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlocks;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.services.BaseSingleDaoApiService;
+import com.ninetwozero.bf4intel.services.BaseDaoService;
 
 import java.net.URL;
 
-public class VehicleUnlockService extends BaseSingleDaoApiService<VehicleUnlockDAO, VehicleUnlocksRefreshedEvent> {
+public class VehicleUnlockService extends BaseDaoService<VehicleUnlockDAO, VehicleUnlocksRefreshedEvent> {
     @Override
     protected VehicleUnlocksRefreshedEvent getEventToBroadcast(boolean result) {
         return new VehicleUnlocksRefreshedEvent(result);

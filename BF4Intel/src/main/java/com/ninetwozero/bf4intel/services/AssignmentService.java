@@ -9,7 +9,7 @@ import com.ninetwozero.bf4intel.resources.Keys;
 
 import java.net.URL;
 
-public class AssignmentService extends BaseSingleDaoApiService<AssignmentsDAO, AssignmentsRefreshedEvent> {
+public class AssignmentService extends BaseDaoService<AssignmentsDAO, AssignmentsRefreshedEvent> {
 
     @Override
     protected AssignmentsRefreshedEvent getEventToBroadcast(boolean result) {

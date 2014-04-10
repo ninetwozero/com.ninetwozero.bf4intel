@@ -13,7 +13,7 @@ import java.net.URL;
 import se.emilsjolander.sprinkles.Model;
 import se.emilsjolander.sprinkles.Transaction;
 
-public abstract class BaseSingleDaoApiService<T extends Model, E extends RefreshCompletedEvent> extends BaseApiService {
+public abstract class BaseDaoService<T extends Model, E extends RefreshCompletedEvent> extends BaseApiService {
     @Override
     public int onStartCommand(final Intent intent, final int flags, final int startId) {
         super.onStartCommand(intent, flags, startId);
