@@ -62,7 +62,6 @@ public class BattleReportService extends BaseApiService {
                     stopSelf(startId);
                 }
 
-
                 private List<BaseListItem> buildBaseItemList(final List<GameReport> reports, final int soldierId) {
                     List<BaseListItem> itemsList = new ArrayList<BaseListItem>();
                     for (GameReport report : reports) {
