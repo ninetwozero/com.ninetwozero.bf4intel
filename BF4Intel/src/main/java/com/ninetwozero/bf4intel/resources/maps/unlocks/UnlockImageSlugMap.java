@@ -72,8 +72,8 @@ public class UnlockImageSlugMap {
             put("QBB-95-1", R.drawable.w_lineart_qbb95_1);
             put("QBS-09", R.drawable.w_lineart_qbs09);
             put("QBU-88", R.drawable.w_lineart_qbu88);
-            put("QBZ-95-1", R.drawable.w_qbz951_fancy);
-            put("QSZ-92", R.drawable.w_qsz_92_fancy);
+            put("QBZ-95-1", R.drawable.w_lineart_cbz95_1);
+            put("QSZ-92", R.drawable.w_lineart_qsz92);
             put("RFB", R.drawable.w_lineart_rfb);
             put("RPK-12", R.drawable.w_lineart_rpk12);
             put("SAIGA-12K", R.drawable.w_lineart_saiga_12k);
