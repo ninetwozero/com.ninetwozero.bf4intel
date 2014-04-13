@@ -43,13 +43,8 @@ public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> 
 
         setImage(convertView, R.id.img_unlock, UnlockImageSlugMap.get(unlock.getSlug()));
         setText(convertView, R.id.unlock_title, WeaponStringSlugMap.get(unlock.getSlug()));
-        setProgressText(convertView, R.id.unlock_subtitle, criteria);
-        setProgress(convertView, R.id.unlock_completion, criteria.getCompletion(), 100);
-        setAlpha(
-            convertView,
-            R.id.wrap_content_area,
-            unlock.getCriteria().isCompleted() ? OPACITY_FADED : OPACITY_NORMAL
-        );
+        displayInformationForCriteria(convertView, criteria);
+
         return convertView;
     }
 
