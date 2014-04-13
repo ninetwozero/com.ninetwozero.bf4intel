@@ -2,7 +2,6 @@ package com.ninetwozero.bf4intel.ui.unlocks;
 
 import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
@@ -54,7 +53,7 @@ public abstract class BaseUnlockAdapter<T> extends BaseIntelAdapter<T> {
     protected void displayInformationForCriteria(final View view, final UnlockCriteria criteria) {
         setProgressText(view, R.id.unlock_subtitle, criteria);
         setProgress(view, R.id.unlock_completion, criteria.getCompletion(), 100);
-        setAlpha(view, R.id.wrap_content_area, criteria.isCompleted() ? OPACITY_FADED : OPACITY_NORMAL);
+        setVisibility(view, R.id.unlock_status_icon, criteria.isCompleted() ? View.VISIBLE : View.GONE);
     }
 
     protected abstract int getCategoryString(final String key);

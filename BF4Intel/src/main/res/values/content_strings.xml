@@ -31,4 +31,5 @@
   <string name="cdesc_item_image">Item image</string>
   <string name="cdesc_logo">Logo</string>
   <string name="cdesc_action_item">Action item</string>
+  <string name="cdesc_unlock_status_icon">Unlock status icon</string>
 </resources>
