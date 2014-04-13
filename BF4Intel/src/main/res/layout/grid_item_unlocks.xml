@@ -15,12 +15,11 @@
 
     <ImageView
       android:id="@+id/img_unlock"
-      android:layout_width="@dimen/grid_view_image_width"
+      android:layout_width="@dimen/unlock_image_width"
       android:layout_height="wrap_content"
       android:layout_centerHorizontal="true"
       android:contentDescription="@string/cdesc_unlock_image"
       android:scaleType="fitCenter"
-      android:src="@drawable/w_lineart_handflare"
       />
 
     <TextView
