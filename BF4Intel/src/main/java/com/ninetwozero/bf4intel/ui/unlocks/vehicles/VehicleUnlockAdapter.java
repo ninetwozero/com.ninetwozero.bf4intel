@@ -33,13 +33,7 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
 
         setImage(convertView, R.id.img_unlock, VehicleUnlockImageMap.get(unlock.getName()));
         setText(convertView, R.id.unlock_title, VehicleUnlockStringMap.get(unlock.getName()));
-        setProgressText(convertView, R.id.unlock_subtitle, criteria);
-        setProgress(convertView, R.id.unlock_completion, criteria.getCompletion(), 100);
-        setAlpha(
-            convertView,
-            R.id.wrap_content_area,
-            unlock.getCriteria().isCompleted() ? OPACITY_FADED : OPACITY_NORMAL
-        );
+        displayInformationForCriteria(convertView, criteria);
 
         return convertView;
     }

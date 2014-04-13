@@ -18,13 +18,6 @@ public abstract class BaseUnlockAdapter<T> extends BaseIntelAdapter<T> {
         super(context);
     }
 
-    @Override
-    public View getView(final int position, final View convertView, final ViewGroup parent) {
-        throw new UnsupportedOperationException(
-            "You need to implement getChildView(...) in " + getClass().getSimpleName()
-        );
-    }
-
     protected String resolveCriteriaLabel(final UnlockCriteria criteria) {
         if (criteria.isScoreCriteria()) {
             final int resource = UnlockCriteriaStringMap.get(criteria.getLabel());
@@ -56,6 +49,12 @@ public abstract class BaseUnlockAdapter<T> extends BaseIntelAdapter<T> {
     @Override
     public void setImage(View view, int resourceId, int imageResource) {
         super.setImage(view, resourceId, imageResource, R.drawable.kit_none);
+    }
+
+    protected void displayInformationForCriteria(final View view, final UnlockCriteria criteria) {
+        setProgressText(view, R.id.unlock_subtitle, criteria);
+        setProgress(view, R.id.unlock_completion, criteria.getCompletion(), 100);
+        setAlpha(view, R.id.wrap_content_area, criteria.isCompleted() ? OPACITY_FADED : OPACITY_NORMAL);
     }
 
     protected abstract int getCategoryString(final String key);
