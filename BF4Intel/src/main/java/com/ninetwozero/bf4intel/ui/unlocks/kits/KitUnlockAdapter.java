@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.json.unlocks.KitItemUnlockContainer;
+import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlock;
 import com.ninetwozero.bf4intel.resources.maps.unlocks.UnlockImageSlugMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringSlugMap;
@@ -34,7 +35,7 @@ public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> 
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         final WeaponUnlock unlock = getItem(position).getUnlock();
-        final int completion = unlock.getCriteria().getCompletion();
+        final UnlockCriteria criteria = unlock.getCriteria();
 
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
@@ -42,8 +43,8 @@ public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> 
 
         setImage(convertView, R.id.img_unlock, UnlockImageSlugMap.get(unlock.getSlug()));
         setText(convertView, R.id.unlock_title, WeaponStringSlugMap.get(unlock.getSlug()));
-        setProgressText(convertView, R.id.unlock_subtitle, unlock.getCriteria());
-        setProgress(convertView, R.id.unlock_completion, completion, 100);
+        setProgressText(convertView, R.id.unlock_subtitle, criteria);
+        setProgress(convertView, R.id.unlock_completion, criteria.getCompletion(), 100);
         setAlpha(
             convertView,
             R.id.wrap_content_area,

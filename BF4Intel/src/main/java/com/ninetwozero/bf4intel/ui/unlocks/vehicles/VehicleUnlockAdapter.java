@@ -5,13 +5,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
 import com.ninetwozero.bf4intel.resources.maps.unlocks.VehicleUnlockImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleUnlockStringMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehiclesGroupStringMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
-
-import java.util.List;
 
 public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
     public VehicleUnlockAdapter(final Context context) {
@@ -26,7 +25,7 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         final VehicleUnlock unlock = getItem(position);
-        final int completion = unlock.getCriteria().getCompletion();
+        final UnlockCriteria criteria = unlock.getCriteria();
 
         if (convertView == null) {
             convertView = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
@@ -34,8 +33,8 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
 
         setImage(convertView, R.id.img_unlock, VehicleUnlockImageMap.get(unlock.getName()));
         setText(convertView, R.id.unlock_title, VehicleUnlockStringMap.get(unlock.getName()));
-        setProgressText(convertView, R.id.unlock_subtitle, unlock.getCriteria());
-        setProgress(convertView, R.id.unlock_completion, completion, 100);
+        setProgressText(convertView, R.id.unlock_subtitle, criteria);
+        setProgress(convertView, R.id.unlock_completion, criteria.getCompletion(), 100);
         setAlpha(
             convertView,
             R.id.wrap_content_area,
