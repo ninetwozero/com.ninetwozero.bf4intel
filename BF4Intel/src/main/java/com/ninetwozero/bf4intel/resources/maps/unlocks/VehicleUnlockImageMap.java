@@ -57,7 +57,7 @@ public class VehicleUnlockImageMap {
             put("ID_P_VUNAME_IFVGUNNERFLIR", R.drawable.vuname_thermal_optics);
             put("ID_P_VUNAME_IFVAIRBURST", R.drawable.vuname_zuni_rockets);
             put("ID_P_VUNAME_IFVGUNNERWPSMOKE", R.drawable.vuname_gunner_incendiary);
-            put("ID_P_VUNAME_IFVAIRBIRST", R.drawable.vuname_active_protection);
+            put("ID_P_VUNAME_IFVIRONFIST", R.drawable.vuname_active_protection);
             put("ID_P_VUNAME_JETWPNEFF", R.drawable.vuname_belt_feeder);
             put("ID_P_VUNAME_JETGUIDEDHOMING", R.drawable.vuname_passive_radar);
             put("ID_P_VUNAME_JETPROX", R.drawable.vuname_gunner_proximity_scan);
@@ -97,8 +97,9 @@ public class VehicleUnlockImageMap {
             put("ID_P_VUNAME_MBTSTAFF", R.drawable.vuname_staff_shell);
             put("ID_P_VUNAME_MBTGUNNERFLIR", R.drawable.vuname_thermal_optics);
             put("ID_P_VUNAME_MBTAPFSDS", R.drawable.vuname_sabot_shell);
-            put("ID_P_VUNAME_MBTGUNNERWPSMOKE", R.drawable.vuname_gunner_incendiary);
             put("ID_P_VUNAME_MBTAIRBIRST", R.drawable.vuname_active_protection);
+            put("ID_P_VUNAME_MBTGUNNERWPSMOKE", R.drawable.vuname_gunner_incendiary);
+            put("ID_P_VUNAME_MBTIRONFIST", R.drawable.vuname_active_protection);
             put("ID_P_VUNAME_AASTEALTH", R.drawable.vuname_stealth_coating);
             put("ID_P_VUNAME_AAVIRNV", R.drawable.vuname_irnv_optics);
             put("ID_P_VUNAME_AAWPNEFF", R.drawable.vuname_belt_feeder);

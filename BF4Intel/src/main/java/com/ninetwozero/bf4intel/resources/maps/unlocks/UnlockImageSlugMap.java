@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.resources.maps.unlocks;
 import com.ninetwozero.bf4intel.R;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class UnlockImageSlugMap {
@@ -230,6 +231,7 @@ public class UnlockImageSlugMap {
     };
 
     public static int get(String slug) {
-        return map.containsKey(slug) ? map.get(slug) : R.drawable.kit_none;
+        final String uppercaseSlug = slug.toUpperCase(Locale.getDefault());
+        return map.containsKey(uppercaseSlug) ? map.get(uppercaseSlug) : R.drawable.kit_none;
     }
 }
