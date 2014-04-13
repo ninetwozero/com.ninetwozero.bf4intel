@@ -226,7 +226,7 @@ public class UnlockImageSlugMap {
             put("M32-MGL", R.drawable.w_lineart_m32_mgl);
             put("XM25-AIRBURST", R.drawable.w_lineart_xm25);
             put("C4-EXPLOSIVE", R.drawable.w_lineart_c4_explosives);
-            put("UCAV", R.drawable.vehicle_ucav);
+            put("UCAV", R.drawable.w_lineart_ucav);
         }
     };
 
