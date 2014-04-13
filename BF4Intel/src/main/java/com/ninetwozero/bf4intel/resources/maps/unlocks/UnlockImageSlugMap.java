@@ -228,4 +228,8 @@ public class UnlockImageSlugMap {
             put("UCAV", R.drawable.vehicle_ucav);
         }
     };
+
+    public static int get(String slug) {
+        return map.containsKey(slug) ? map.get(slug) : R.drawable.kit_none;
+    }
 }
