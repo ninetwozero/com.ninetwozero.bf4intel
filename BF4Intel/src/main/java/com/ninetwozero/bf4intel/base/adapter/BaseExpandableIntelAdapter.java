@@ -12,9 +12,6 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 public abstract class BaseExpandableIntelAdapter<T> extends BaseExpandableListAdapter {
-    protected static final float OPACITY_NORMAL = 1.0f;
-    protected static final float OPACITY_FADED = 0.5f;
-
     protected final Context context;
     protected final LayoutInflater layoutInflater;
 

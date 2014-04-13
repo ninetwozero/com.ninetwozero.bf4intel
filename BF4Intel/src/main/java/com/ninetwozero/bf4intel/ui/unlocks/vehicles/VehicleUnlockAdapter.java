@@ -6,32 +6,42 @@ import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
+import com.ninetwozero.bf4intel.resources.maps.unlocks.VehicleUnlockImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleUnlockStringMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehiclesGroupStringMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
 
 import java.util.List;
-import java.util.Map;
 
 public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
-    public VehicleUnlockAdapter(final Context context, final Map<String, List<VehicleUnlock>> itemMap) {
-        super(context, itemMap);
+    public VehicleUnlockAdapter(final Context context) {
+        super(context);
     }
 
     @Override
-    public View getChildView(final int group, final int child, final boolean isLastChild, View convertView, final ViewGroup viewGroup) {
-        final VehicleUnlock unlock = getChild(group, child);
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, final ViewGroup parent) {
+        final VehicleUnlock unlock = getItem(position);
         final int completion = unlock.getCriteria().getCompletion();
 
-        while (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.list_item_unlocks, viewGroup, false);
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
         }
 
-        setText(convertView, R.id.title, VehicleUnlockStringMap.get(unlock.getName()));
-        setText(convertView, R.id.subtitle, resolveCriteriaLabel(unlock.getCriteria()));
-        setProgress(convertView, R.id.progress, completion, 100);
+        setImage(convertView, R.id.img_unlock, VehicleUnlockImageMap.get(unlock.getName()));
+        setText(convertView, R.id.unlock_title, VehicleUnlockStringMap.get(unlock.getName()));
+        setProgressText(convertView, R.id.unlock_subtitle, unlock.getCriteria());
+        setProgress(convertView, R.id.unlock_completion, completion, 100);
+        setAlpha(
+            convertView,
+            R.id.wrap_content_area,
+            unlock.getCriteria().isCompleted() ? OPACITY_FADED : OPACITY_NORMAL
+        );
 
-        convertView.setAlpha(unlock.getCriteria().isCompleted() ? OPACITY_FADED : OPACITY_NORMAL);
         return convertView;
     }
 

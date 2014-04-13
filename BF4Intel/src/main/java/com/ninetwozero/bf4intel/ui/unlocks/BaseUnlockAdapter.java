@@ -5,61 +5,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
+import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
 import com.ninetwozero.bf4intel.resources.maps.UnlockCriteriaStringMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentStringMap;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
-public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T> {
-    protected List<String> keys = new ArrayList<String>();
-    protected Map<String, List<T>> map;
-
-    public BaseUnlockAdapter(final Context context, final Map<String, List<T>> map) {
+public abstract class BaseUnlockAdapter<T> extends BaseIntelAdapter<T> {
+    public BaseUnlockAdapter(final Context context) {
         super(context);
-        this.map = map;
-        keys.addAll(map.keySet());
     }
 
     @Override
-    public View getGroupView(final int position, final boolean isExpanded, View convertView, final ViewGroup viewGroup) {
-        final String title = getGroup(position);
-        if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.list_item_unlocks_heading, viewGroup, false);
-        }
-        setText(convertView, R.id.category_title, getCategoryString(title));
-        return convertView;
-    }
-
-    @Override
-    public View getChildView(final int group, final int child, final boolean isLastChild, final View convertView, final ViewGroup viewGroup) {
+    public View getView(final int position, final View convertView, final ViewGroup parent) {
         throw new UnsupportedOperationException(
             "You need to implement getChildView(...) in " + getClass().getSimpleName()
         );
-    }
-
-    @Override
-    public int getChildrenCount(final int groupPosition) {
-        return map.get(keys.get(groupPosition)).size();
-    }
-
-    @Override
-    public final int getGroupCount() {
-        return keys.size();
-    }
-    @Override
-    public String getGroup(final int groupPosition) {
-        return keys.get(groupPosition);
-    }
-
-    @Override
-    public T getChild(final int groupPosition, final int childPosition) {
-        return map.get(keys.get(groupPosition)).get(childPosition);
     }
 
     protected String resolveCriteriaLabel(final UnlockCriteria criteria) {
@@ -83,6 +46,16 @@ public abstract class BaseUnlockAdapter<T> extends BaseExpandableIntelAdapter<T>
             }
         }
         return criteria.getLabel();
+    }
+
+    protected void setProgressText(View convertView, int textViewId, UnlockCriteria criteria) {
+        final String text = resolveCriteriaLabel(criteria);
+        setText(convertView, textViewId, text);
+    }
+
+    @Override
+    public void setImage(View view, int resourceId, int imageResource) {
+        super.setImage(view, resourceId, imageResource, R.drawable.kit_none);
     }
 
     protected abstract int getCategoryString(final String key);

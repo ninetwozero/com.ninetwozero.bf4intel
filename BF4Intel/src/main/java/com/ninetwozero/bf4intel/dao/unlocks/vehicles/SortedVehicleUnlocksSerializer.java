@@ -23,7 +23,7 @@ public class SortedVehicleUnlocksSerializer implements TypeSerializer<SortedVehi
 
     @Override
     public String toSql(SortedVehicleUnlocks sortedVehicleUnlocks) {
-        return String.valueOf(sortedVehicleUnlocks.getSortedVehicleUnlockMap().size());
+        return String.valueOf(sortedVehicleUnlocks.getSortedVehicles().size());
     }
 
     @Override

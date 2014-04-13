@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/RegularCard"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  >
+
+  <RelativeLayout
+    android:id="@+id/wrap_content_area"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+      android:id="@+id/img_unlock"
+      android:layout_width="@dimen/grid_view_image_width"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:contentDescription="@string/cdesc_unlock_image"
+      android:scaleType="fitCenter"
+      android:src="@drawable/w_lineart_handflare"
+      />
+
+    <TextView
+      android:id="@+id/unlock_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo.Small"
+      android:layout_below="@id/img_unlock"
+      android:layout_centerHorizontal="true"
+      android:singleLine="true"
+      />
+
+    <TextView
+      android:id="@+id/unlock_subtitle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@style/TextAppearance.Holo.Smallest"
+      android:layout_below="@id/unlock_title"
+      android:layout_centerHorizontal="true"
+      android:singleLine="true"
+      />
+
+    <ProgressBar
+      style="?android:attr/progressBarStyleHorizontal"
+      android:id="@+id/unlock_completion"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:layout_below="@id/unlock_subtitle"
+      />
+  </RelativeLayout>
+</LinearLayout>
