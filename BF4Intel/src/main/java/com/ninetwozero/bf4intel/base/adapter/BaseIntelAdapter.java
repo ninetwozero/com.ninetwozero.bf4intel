@@ -14,6 +14,9 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public abstract class BaseIntelAdapter<T> extends BaseAdapter {
+    protected static final float OPACITY_NORMAL = 1.0f;
+    protected static final float OPACITY_FADED = 0.5f;
+
     protected final Context context;
     protected final LayoutInflater layoutInflater;
     protected List<T> itemsList;
@@ -68,6 +71,10 @@ public abstract class BaseIntelAdapter<T> extends BaseAdapter {
 
     public void setImage(final View view, final int resourceId, final int imageResource) {
         Picasso.with(context).load(imageResource).into((ImageView) view.findViewById(resourceId));
+    }
+
+    public void setImage(final View view, final int resourceId, final int imageResource, final int placeholder) {
+        Picasso.with(context).load(imageResource).placeholder(placeholder).into((ImageView) view.findViewById(resourceId));
     }
 
     public void loadImage(final View view, final int resourceId, final String url) {

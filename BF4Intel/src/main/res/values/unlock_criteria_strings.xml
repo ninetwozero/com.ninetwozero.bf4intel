@@ -28,5 +28,5 @@
   <string name="unlock_sc_support">%1$s/%2$s Support Score</string>
 
   <!-- Special criterias -->
-  <string name="unlock_complete_as">Complete assignment \"%1$s\"</string>
+  <string name="unlock_complete_as">Complete \"%1$s\"</string>
 </resources>

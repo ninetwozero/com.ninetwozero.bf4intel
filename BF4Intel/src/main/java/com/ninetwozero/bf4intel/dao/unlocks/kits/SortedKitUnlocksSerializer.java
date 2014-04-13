@@ -23,7 +23,7 @@ public class SortedKitUnlocksSerializer implements TypeSerializer<SortedKitUnloc
 
     @Override
     public String toSql(SortedKitUnlocks sortedKitUnlocks) {
-        return String.valueOf(sortedKitUnlocks.getSortedKitUnlockMap().size());
+        return String.valueOf(sortedKitUnlocks.getSortedUnlocks().size());
     }
 
     @Override

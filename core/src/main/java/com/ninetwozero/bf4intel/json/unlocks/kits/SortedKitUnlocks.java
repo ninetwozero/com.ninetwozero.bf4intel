@@ -4,17 +4,16 @@ import com.google.gson.annotations.SerializedName;
 import com.ninetwozero.bf4intel.json.unlocks.KitItemUnlockContainer;
 
 import java.util.List;
-import java.util.Map;
 
 public class SortedKitUnlocks {
-    @SerializedName("sortedKitUnlockMap")
-    private Map<String, List<KitItemUnlockContainer>> sortedKitUnlockMap;
+    @SerializedName("sortedKitUnlocks")
+    private List<KitItemUnlockContainer> sortedKitUnlocks;
 
-    public SortedKitUnlocks(Map<String, List<KitItemUnlockContainer>> sortedKitUnlockMap) {
-        this.sortedKitUnlockMap = sortedKitUnlockMap;
+    public SortedKitUnlocks(List<KitItemUnlockContainer> sortedKitUnlocks) {
+        this.sortedKitUnlocks = sortedKitUnlocks;
     }
 
-    public Map<String, List<KitItemUnlockContainer>> getSortedKitUnlockMap() {
-        return sortedKitUnlockMap;
+    public List<KitItemUnlockContainer> getSortedUnlocks() {
+        return sortedKitUnlocks;
     }
 }

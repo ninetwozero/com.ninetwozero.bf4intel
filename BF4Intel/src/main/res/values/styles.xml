@@ -255,4 +255,18 @@
     <item name="android:gravity">center</item>
   </style>
 
+  <style name="MiniCardGridView">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:numColumns">auto_fit</item>
+    <item name="android:columnWidth">@dimen/grid_view_column_width</item>
+    <item name="android:stretchMode">columnWidth</item>
+    <item name="android:gravity">center</item>
+    <item name="android:verticalSpacing">@dimen/grid_view_spacing</item>
+    <item name="android:horizontalSpacing">@dimen/grid_view_spacing</item>
+    <item name="android:clipToPadding">false</item>
+    <item name="android:padding">@dimen/spacing_m</item>
+    <item name="android:scrollbarStyle">outsideOverlay</item>
+  </style>
+
 </resources>

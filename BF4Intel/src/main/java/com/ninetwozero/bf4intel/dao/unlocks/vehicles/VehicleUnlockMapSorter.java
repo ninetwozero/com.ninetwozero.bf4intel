@@ -3,19 +3,18 @@ package com.ninetwozero.bf4intel.dao.unlocks.vehicles;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
 import com.ninetwozero.bf4intel.json.unlocks.vehicles.SortedVehicleUnlocks;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class VehicleUnlockMapSorter {
     public static SortedVehicleUnlocks sort(final Map<String, List<VehicleUnlock>> unlockMap) {
-        final Map<String, List<VehicleUnlock>> map = new HashMap<String, List<VehicleUnlock>>();
+        List<VehicleUnlock> list = new ArrayList<VehicleUnlock>();
         for (String key : unlockMap.keySet()) {
-            final List<VehicleUnlock> unlocks = unlockMap.get(key);
-            Collections.sort(unlocks);
-            map.put(key, unlocks);
+            list.addAll(unlockMap.get(key));
         }
-        return new SortedVehicleUnlocks(map);
+        Collections.sort(list);
+        return new SortedVehicleUnlocks(list);
     }
 }
