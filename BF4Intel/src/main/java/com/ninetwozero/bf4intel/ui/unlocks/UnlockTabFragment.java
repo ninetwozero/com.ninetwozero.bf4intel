@@ -57,6 +57,8 @@ public class UnlockTabFragment extends BaseTabFragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_unlocks, menu);
+
+        setupSortModeMenu(menu);
     }
 
     @Override
@@ -77,6 +79,21 @@ public class UnlockTabFragment extends BaseTabFragment {
     private void handleSortingRequest(SortMode sortMode) {
         sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal()).commit();
         BusProvider.getInstance().post(new RefreshEvent());
+    }
+
+    private void setupSortModeMenu(Menu menu) {
+        final SortMode mode = SortMode.fromOrdinal(sharedPreferences.getInt(KEY_SORT_MODE, 0));
+        switch (mode) {
+            case CATEGORIZED:
+                menu.findItem(R.id.ab_action_sort_categorized).setChecked(true);
+                break;
+            case PROGRESS:
+                menu.findItem(R.id.ab_action_sort_progress).setChecked(true);
+                break;
+            default:
+                menu.findItem(R.id.ab_action_sort_categorized).setChecked(true);
+                break;
+        }
     }
 
     @Override

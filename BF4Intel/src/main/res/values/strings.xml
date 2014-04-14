@@ -211,6 +211,6 @@
   <string name="title_unhooah">Un-hooah</string>
   <string name="msg_user_said_hooah">You said hooah</string>
   <string name="menu_title_sort">Sort</string>
-  <string name="label_sort_categorized">Categorized</string>
-  <string name="label_sort_progress">Progress</string>
+  <string name="label_sort_categorized">By category</string>
+  <string name="label_sort_progress">By progress</string>
 </resources>
