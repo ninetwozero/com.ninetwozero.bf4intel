@@ -26,8 +26,6 @@ import com.ninetwozero.bf4intel.dao.unlocks.vehicles.SortedVehicleUnlocksSeriali
 import com.ninetwozero.bf4intel.dao.unlocks.vehicles.VehicleUnlockDAO;
 import com.ninetwozero.bf4intel.dao.unlocks.weapons.SortedWeaponUnlocksSerializer;
 import com.ninetwozero.bf4intel.dao.unlocks.weapons.WeaponUnlockDAO;
-import com.ninetwozero.bf4intel.database.migrations.InitialMigration;
-import com.ninetwozero.bf4intel.database.migrations.Version095Migration;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 import com.ninetwozero.bf4intel.json.awards.SortedAwardContainer;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
@@ -76,8 +74,32 @@ public class Bf4Intel extends Application {
     }
 
     private void setupMigrations(Sprinkles sprinkles) {
-        sprinkles.addMigration(new InitialMigration());
-        sprinkles.addMigration(new Version095Migration());
+        sprinkles.addMigration(getInitialMigration());
+        sprinkles.addMigration(getMigrationToVersion_0_9_6());
+    }
+
+    private Migration getMigrationToVersion_0_9_6() {
+        Migration migration = new Migration();
+        migration.createTable(WeaponStatsDAO.class);
+        migration.createTable(VehicleStatsDAO.class);
+        //migration.createTable(BattleReportDAO.class);
+        migration.createTable(DetailedStatsDAO.class);
+
+        migration.createTable(WeaponUnlockDAO.class);
+        migration.createTable(VehicleUnlockDAO.class);
+        migration.createTable(KitUnlockDAO.class);
+
+        migration.createTable(AssignmentsDAO.class);
+        migration.createTable(AwardsDAO.class);
+        return migration;
+    }
+
+    private Migration getInitialMigration() {
+        Migration migration = new Migration();
+        migration.createTable(SummarizedSoldierStatsDAO.class);
+        migration.createTable(ProfileDAO.class);
+        migration.createTable(SoldierOverviewDAO.class);
+        return migration;
     }
 
     public static RequestQueue getRequestQueue() {

@@ -3,7 +3,7 @@ package com.ninetwozero.bf4intel.dao.login;
 import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 
 import se.emilsjolander.sprinkles.Model;
-import se.emilsjolander.sprinkles.annotations.AutoIncrementKey;
+import se.emilsjolander.sprinkles.annotations.AutoIncrementPrimaryKey;
 import se.emilsjolander.sprinkles.annotations.Column;
 import se.emilsjolander.sprinkles.annotations.Table;
 
@@ -12,7 +12,7 @@ import se.emilsjolander.sprinkles.annotations.Table;
 public class SummarizedSoldierStatsDAO extends Model {
     public static final String TABLE_NAME = "UserSoldier";
 
-    @AutoIncrementKey
+    @AutoIncrementPrimaryKey
     @Column("rowId")
     private long id;
 
