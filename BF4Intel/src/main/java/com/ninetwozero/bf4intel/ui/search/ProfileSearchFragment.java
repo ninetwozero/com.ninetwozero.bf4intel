@@ -15,6 +15,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -99,8 +100,11 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        final Bundle postData = new Bundle();
+        if (isReloading) {
+            return;
+        }
 
+        final Bundle postData = new Bundle();
         if (queryString == null || queryString.length() < 3) {
             showToast(R.string.msg_search_error_length);
             return;
@@ -110,7 +114,10 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         postData.putString(Keys.CHECKSUM, "0xCAFEBABE");
 
         showLoadingState(true);
-        requestQueue.add(fetchRequestForSearch(postData));
+        isReloading = true;
+
+        // TODO: Service in the future?
+        Bf4Intel.getRequestQueue().add(fetchRequestForSearch(postData));
     }
 
     @Override
@@ -185,6 +192,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
             protected void deliverResponse(List<ProfileSearchResult> response) {
                 sendDataToListView(response);
                 showLoadingState(false);
+                isReloading = false;
             }
         };
     }

@@ -21,22 +21,27 @@ import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 
 public abstract class BaseLoadingListFragment extends BaseListFragment implements Response.ErrorListener {
+    private static final String STATE_ROTATED = "stateRotated";
+
     protected Gson gson = GsonProvider.getInstance();
     protected boolean isReloading;
-    protected RequestQueue requestQueue;
+    protected boolean hasChangedOrientation;
 
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         setHasOptionsMenu(true);
-        requestQueue = Volley.newRequestQueue(getActivity());
+        hasChangedOrientation = icicle == null ? false : icicle.getBoolean(STATE_ROTATED, false);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         BusProvider.getInstance().register(this);
-        startLoadingData();
+
+        if (!hasChangedOrientation) {
+            startLoadingData();
+        }
     }
 
     @Override
@@ -46,16 +51,10 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     }
 
     @Override
-    public void onStop(){
-        requestQueue.cancelAll(
-            new RequestQueue.RequestFilter() {
-                @Override
-                public boolean apply(Request<?> request) {
-                    return request.getMethod() == Request.Method.GET;
-                }
-            }
-        );
-        super.onStop();
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean(STATE_ROTATED, getActivity().isChangingConfigurations());
     }
 
     @Override
