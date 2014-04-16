@@ -3,8 +3,6 @@ package com.ninetwozero.bf4intel.ui.unlocks.kits;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ExpandableListView;
-import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.dao.unlocks.kits.KitUnlockDAO;
@@ -17,7 +15,6 @@ import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockFragment;
 import com.squareup.otto.Subscribe;
 
 import java.util.List;
-import java.util.Map;
 
 import se.emilsjolander.sprinkles.OneQuery;
 import se.emilsjolander.sprinkles.Query;
@@ -52,7 +49,7 @@ public class KitUnlockFragment extends BaseUnlockFragment {
                         return true;
                     }
 
-                    sendDataToListView(kitUnlockDAO.getKitUnlocks().getSortedKitUnlockMap());
+                    sendDataToListView(kitUnlockDAO.getKitUnlocks().getSortedUnlocks());
                     showLoadingState(false);
                     return true;
                 }
@@ -74,11 +71,6 @@ public class KitUnlockFragment extends BaseUnlockFragment {
         getActivity().startService(intent);
     }
 
-    @Override
-    public void onListItemClick(ListView listView, View view, int i, long l) {
-        // TODO: Open details
-    }
-
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
@@ -90,11 +82,12 @@ public class KitUnlockFragment extends BaseUnlockFragment {
         showLoadingState(false);
     }
 
-    private void sendDataToListView(final Map<String, List<KitItemUnlockContainer>> unlockMap) {
-        final ExpandableListView listView = (ExpandableListView) getListView();
-        if (listView == null) {
-            return;
+    private void sendDataToListView(final List<KitItemUnlockContainer> unlocks) {
+        KitUnlockAdapter adapter = (KitUnlockAdapter) gridView.getAdapter();
+        if (adapter == null) {
+            adapter = new KitUnlockAdapter(getActivity());
+            gridView.setAdapter(adapter);
         }
-        listView.setAdapter(new KitUnlockAdapter(getActivity(), unlockMap));
+        adapter.setItems(unlocks);
     }
 }

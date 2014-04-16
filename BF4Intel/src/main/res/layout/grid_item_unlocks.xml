@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/RegularCard"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  >
+
+  <ImageView
+    android:id="@+id/unlock_status_icon"
+    android:layout_width="@dimen/unlock_status_icon_size"
+    android:layout_height="@dimen/unlock_status_icon_size"
+    android:contentDescription="@string/cdesc_unlock_status_icon"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentRight="true"
+    android:src="@drawable/icon_completed_dark"
+    />
+
+  <ImageView
+    android:id="@+id/img_unlock"
+    android:layout_width="@dimen/unlock_image_width"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:contentDescription="@string/cdesc_unlock_image"
+    android:scaleType="fitCenter"
+    />
+
+  <TextView
+    android:id="@+id/unlock_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="@android:style/TextAppearance.Holo.Small"
+    android:layout_below="@id/img_unlock"
+    android:layout_centerHorizontal="true"
+    android:singleLine="true"
+    />
+
+  <TextView
+    android:id="@+id/unlock_subtitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="@style/TextAppearance.Holo.Smallest"
+    android:layout_below="@id/unlock_title"
+    android:layout_centerHorizontal="true"
+    android:singleLine="true"
+    />
+
+  <ProgressBar
+    style="?android:attr/progressBarStyleHorizontal"
+    android:id="@+id/unlock_completion"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_below="@id/unlock_subtitle"
+    />
+</RelativeLayout>

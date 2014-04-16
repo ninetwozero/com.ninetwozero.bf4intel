@@ -23,7 +23,7 @@ public class SortedWeaponUnlocksSerializer implements TypeSerializer<SortedWeapo
 
     @Override
     public String toSql(SortedWeaponUnlocks sortedWeaponUnlocks) {
-        return String.valueOf(sortedWeaponUnlocks.getSortedWeaponUnlocksMap().size());
+        return String.valueOf(sortedWeaponUnlocks);
     }
 
     @Override

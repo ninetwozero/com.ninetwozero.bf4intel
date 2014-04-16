@@ -11,7 +11,6 @@ import java.util.Map;
 public class WeaponStringSlugMap {
     private static final Map<String, Integer> map = new HashMap<String, Integer>() {
         {
-
             put("USAS-12-FLIR", R.string.weapon_name_usas12nv);
             put("338-RECON", R.string.weapon_name_338recon);
             put("870-MCS", R.string.weapon_name_870);

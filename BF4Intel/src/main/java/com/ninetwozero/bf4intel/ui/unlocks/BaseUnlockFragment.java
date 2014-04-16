@@ -5,22 +5,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.ExpandableListView;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
-import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
+import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 
-public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
+public abstract class BaseUnlockFragment extends BaseLoadingFragment {
+
+    protected GridView gridView;
+    protected TextView emptyTextView;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
+        return layoutInflater.inflate(R.layout.fragment_unlocks, parent, false);
+    }
 
-        final View view = layoutInflater.inflate(R.layout.fragment_unlocks, parent, false);
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         initialize(view);
-        return view;
     }
 
     @Override
@@ -39,24 +45,11 @@ public abstract class BaseUnlockFragment extends BaseLoadingListFragment {
     }
 
     private void setupListView(final View view) {
-        final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
-        final TextView emptyTextView = (TextView) view.findViewById(android.R.id.empty);
-        listView.setChoiceMode(AbsListView.CHOICE_MODE_NONE);
+        emptyTextView = (TextView) view.findViewById(android.R.id.empty);
         emptyTextView.setText(R.string.msg_no_unlocks);
-    }
 
-    protected void toggleAllRows(final boolean expand) {
-        final ExpandableListView listView = (ExpandableListView) getListView();
-        if (listView == null) {
-            return;
-        }
-        final BaseExpandableIntelAdapter adapter = (BaseExpandableIntelAdapter) listView.getExpandableListAdapter();
-        for (int i = 0, max = adapter.getGroupCount(); i < max; i++) {
-            if (expand) {
-                listView.expandGroup(i);
-            } else {
-                listView.collapseGroup(i);
-            }
-        }
+        gridView = (GridView) view.findViewById(android.R.id.list);
+        gridView.setChoiceMode(AbsListView.CHOICE_MODE_NONE);
+        gridView.setEmptyView(emptyTextView);
     }
 }
