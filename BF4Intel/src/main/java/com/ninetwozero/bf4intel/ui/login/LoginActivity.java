@@ -87,9 +87,11 @@ public class LoginActivity extends BaseLoadingIntelActivity {
         }
     }
 
+
+    // TODO: Service?
     private void loadSoldiers(final Bundle bundle) {
         setLoadingState(true);
-        requestQueue.add(
+        Bf4Intel.getRequestQueue().add(
             new SimpleGetRequest<SoldierListingRequest>(
                 UrlFactory.buildSoldierListURL(bundle.getString(Keys.Profile.ID)),
                 this

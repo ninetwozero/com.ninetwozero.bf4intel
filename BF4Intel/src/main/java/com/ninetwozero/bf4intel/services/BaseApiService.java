@@ -16,6 +16,7 @@ import com.ninetwozero.bf4intel.utils.BusProvider;
 public abstract class BaseApiService extends Service implements Response.ErrorListener {
     public static final String SOLDIER_BUNDLE = "soldierBundle";
 
+    protected int intentCount;
     protected Bundle soldier;
 
     private final Gson gson = GsonProvider.getInstance();
@@ -23,6 +24,8 @@ public abstract class BaseApiService extends Service implements Response.ErrorLi
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         soldier = intent.getBundleExtra(SOLDIER_BUNDLE);
+        intentCount++;
+
         return super.onStartCommand(intent, flags, startId);
     }
 
