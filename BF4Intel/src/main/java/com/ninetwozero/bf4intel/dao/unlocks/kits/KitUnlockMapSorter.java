@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 public class KitUnlockMapSorter {
+    private static final String[] CATEGORY_ORDER = new String[] { "1", "2", "8", "32" };
+
     public static SortedKitUnlocks sort(final Map<String, List<KitItemUnlockContainer>> unlockMap, final SortMode mode) {
         if (mode == SortMode.PROGRESS) {
             return sortItemsByProgress(unlockMap);
@@ -29,8 +31,10 @@ public class KitUnlockMapSorter {
 
     private static SortedKitUnlocks sortItemsByCategory(Map<String, List<KitItemUnlockContainer>> unlockMap) {
         List<KitItemUnlockContainer> list = new ArrayList<KitItemUnlockContainer>();
-        for (String key : unlockMap.keySet()) {
-            list.addAll(unlockMap.get(key));
+        for (String key : CATEGORY_ORDER) {
+            if (unlockMap.containsKey(key)) {
+                list.addAll(unlockMap.get(key));
+            }
         }
         return new SortedKitUnlocks(list);
     }

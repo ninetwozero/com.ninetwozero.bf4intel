@@ -10,6 +10,10 @@ import java.util.List;
 import java.util.Map;
 
 public class WeaponUnlockSorter {
+    private static final String[] CATEGORY_ORDER = new String[] {
+        "wA", "wC", "waS", "wL", "waPDW", "wD", "wSR", "wH", "wG", "wSPk", "wX",
+    };
+
     public static SortedWeaponUnlocks sort(final Map<String, List<WeaponUnlockContainer>> unlockMap, final SortMode mode) {
         if (mode == SortMode.PROGRESS) {
             return sortItemsByProgress(unlockMap);
@@ -29,8 +33,10 @@ public class WeaponUnlockSorter {
 
     private static SortedWeaponUnlocks sortItemsByCategory(Map<String, List<WeaponUnlockContainer>> unlockMap) {
         List<WeaponUnlockContainer> list = new ArrayList<WeaponUnlockContainer>();
-        for (String key : unlockMap.keySet()) {
-            list.addAll(unlockMap.get(key));
+        for (String key : CATEGORY_ORDER) {
+            if (unlockMap.containsKey(key)) {
+                list.addAll(unlockMap.get(key));
+            }
         }
         return new SortedWeaponUnlocks(list);
     }
