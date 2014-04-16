@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <!-- Weapon scores -->
-  <string name="unlock_sc_sniperrifles">%1$s/%2$s Sniper Rifle Score</string>
-  <string name="unlock_sc_lmgs">%1$s/%2$s LMG Score</string>
-  <string name="unlock_sc_pdws">%1$s/%2$s PDW Score</string>
-  <string name="unlock_sc_handgrenades">%1$s/%2$s Grenade Score</string>
-  <string name="unlock_sc_handguns">%1$s/%2$s Pistol Score</string>
-  <string name="unlock_sc_dmrs">%1$s/%2$s DMR Score</string>
-  <string name="unlock_sc_carbines">%1$s/%2$s Carbine Score</string>
-  <string name="unlock_sc_shotguns">%1$s/%2$s Shotgun Score</string>
-  <string name="unlock_sc_assaultrifles">%1$s/%2$s Assault Rifle Score</string>
+  <string name="unlock_sc_sniperrifles">%1$s Sniper Rifle Score left</string>
+  <string name="unlock_sc_lmgs">%1$s LMG Score left</string>
+  <string name="unlock_sc_pdws">%1$s PDW Score left</string>
+  <string name="unlock_sc_handgrenades">%1$s Grenade Score left</string>
+  <string name="unlock_sc_handguns">%1$s Pistol Score left</string>
+  <string name="unlock_sc_dmrs">%1$s DMR Score left</string>
+  <string name="unlock_sc_carbines">%1$s Carbine Score left</string>
+  <string name="unlock_sc_shotguns">%1$s Shotgun Score left</string>
+  <string name="unlock_sc_assaultrifles">%1$s Assault Rifle Score left</string>
 
   <!-- Vehicle scores -->
-  <string name="unlock_sc_vehicleah">%1$s/%2$s Attack Helicopter Score</string>
-  <string name="unlock_sc_vehicleaa">%1$s/%2$s Anti Air Score</string>
-  <string name="unlock_sc_vehicleajet">%1$s/%2$s Attack Jet Score</string>
-  <string name="unlock_sc_vehiclesjet">%1$s/%2$s Stealth Jet Score</string>
-  <string name="unlock_sc_vehicleifv">%1$s/%2$s Infantry Fighting Vehicle Score</string>
-  <string name="unlock_sc_vehiclesh">%1$s/%2$s Scout Helicopter Score</string>
-  <string name="unlock_sc_vehiclembt">%1$s/%2$s Battle Tanks Score</string>
-  <string name="unlock_sc_vehicleaboat">%1$s/%2$s Fast Attack Craft Score</string>
+  <string name="unlock_sc_vehicleah">%1$s Attack Helicopter Score left</string>
+  <string name="unlock_sc_vehicleaa">%1$s Anti Air Score left</string>
+  <string name="unlock_sc_vehicleajet">%1$s Attack Jet Score left</string>
+  <string name="unlock_sc_vehiclesjet">%1$s Stealth Jet Score left</string>
+  <string name="unlock_sc_vehicleifv">%1$s Infantry Fighting Vehicle Score left</string>
+  <string name="unlock_sc_vehiclesh">%1$s Scout Helicopter Score left</string>
+  <string name="unlock_sc_vehiclembt">%1$s Battle Tanks Score left</string>
+  <string name="unlock_sc_vehicleaboat">%1$s Fast Attack Craft Score left</string>
 
   <!-- Kit scores -->
-  <string name="unlock_sc_assault">%1$s/%2$s Assault Score</string>
-  <string name="unlock_sc_engineer">%1$s/%2$s Engineer Score</string>
-  <string name="unlock_sc_recon">%1$s/%2$s Recon Score</string>
-  <string name="unlock_sc_support">%1$s/%2$s Support Score</string>
+  <string name="unlock_sc_assault">%1$s Assault Score left</string>
+  <string name="unlock_sc_engineer">%1$s Engineer Score left</string>
+  <string name="unlock_sc_recon">%1$s Recon Score left</string>
+  <string name="unlock_sc_support">%1$s Support Score left</string>
 
   <!-- Special criterias -->
   <string name="unlock_complete_as">Complete \"%1$s\"</string>

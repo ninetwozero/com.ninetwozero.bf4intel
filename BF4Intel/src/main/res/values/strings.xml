@@ -215,4 +215,5 @@
   <string name="menu_title_sort">Sort</string>
   <string name="label_sort_categorized">By category</string>
   <string name="label_sort_progress">By progress</string>
+  <string name="label_completed">Completed</string>
 </resources>

@@ -9,14 +9,13 @@
     >
     <menu>
       <group
-        android:checkableBehavior="single"
         android:id="@+id/menu_group_sort"
         >
         <item
           android:id="@+id/ab_action_sort_categorized"
           android:title="@string/label_sort_categorized"
           android:showAsAction="never"
-          android:icon="@null"
+          android:icon="@drawable/icon_completed_dark"
           />
         <item
           android:id="@+id/ab_action_sort_progress"
