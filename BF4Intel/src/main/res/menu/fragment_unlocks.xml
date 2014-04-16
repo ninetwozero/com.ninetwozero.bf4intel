@@ -10,12 +10,13 @@
     <menu>
       <group
         android:id="@+id/menu_group_sort"
+        android:checkableBehavior="single"
         >
         <item
           android:id="@+id/ab_action_sort_categorized"
           android:title="@string/label_sort_categorized"
           android:showAsAction="never"
-          android:icon="@drawable/icon_completed_dark"
+          android:icon="@null"
           />
         <item
           android:id="@+id/ab_action_sort_progress"
