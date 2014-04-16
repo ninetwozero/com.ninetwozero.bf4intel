@@ -2,7 +2,6 @@ package com.ninetwozero.bf4intel.ui.news;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,26 +9,18 @@ import android.widget.ListView;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.events.HooahToggleRequest;
-import com.ninetwozero.bf4intel.events.awards.AwardsRefreshedEvent;
 import com.ninetwozero.bf4intel.events.news.NewsListingRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
-import com.ninetwozero.bf4intel.json.news.NewsListRequest;
-import com.ninetwozero.bf4intel.network.BaseSimpleRequest;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.SimplePostRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.WebsiteErrorMessageMap;
-import com.ninetwozero.bf4intel.services.AwardService;
 import com.ninetwozero.bf4intel.services.news.NewsListingService;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
@@ -74,6 +65,12 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.NEWS_ITEM.ordinal());
         intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, data);
         startActivity(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        startLoadingData();
     }
 
     @Override

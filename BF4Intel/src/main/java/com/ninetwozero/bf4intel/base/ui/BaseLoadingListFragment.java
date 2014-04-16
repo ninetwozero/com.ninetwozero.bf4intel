@@ -21,40 +21,25 @@ import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 
 public abstract class BaseLoadingListFragment extends BaseListFragment implements Response.ErrorListener {
-    private static final String STATE_ROTATED = "stateRotated";
-
     protected Gson gson = GsonProvider.getInstance();
     protected boolean isReloading;
-    protected boolean hasChangedOrientation;
 
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         setHasOptionsMenu(true);
-        hasChangedOrientation = icicle == null ? false : icicle.getBoolean(STATE_ROTATED, false);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         BusProvider.getInstance().register(this);
-
-        if (!hasChangedOrientation) {
-            startLoadingData();
-        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
         BusProvider.getInstance().unregister(this);
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        outState.putBoolean(STATE_ROTATED, getActivity().isChangingConfigurations());
     }
 
     @Override
@@ -102,17 +87,15 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         isReloading = isLoading;
 
         toggleFullScreenProgressBar(activity, isLoading);
-        if (activity instanceof BaseLoadingIntelActivity) {
-            ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
-        }
     }
 
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
-        if (activity == null) {
+        final View view = getView();
+        if (activity == null || view == null) {
             return;
         }
 
-        final View loadingView = getView().findViewById(R.id.wrap_loading_progress);
+        final View loadingView = view.findViewById(R.id.wrap_loading_progress);
         if (loadingView == null) {
             return;
         }

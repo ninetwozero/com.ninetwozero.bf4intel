@@ -83,6 +83,12 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        startLoadingData();
+    }
+
+    @Override
     protected void startLoadingData() {
         final Bundle arguments = getArguments();
         if (isReloading) {

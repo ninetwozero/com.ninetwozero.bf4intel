@@ -61,6 +61,7 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
                 public boolean handleResult(DetailedStatsDAO detailedStatsDAO) {
                     final View view = getView();
                     if (view == null || detailedStatsDAO == null) {
+                        startLoadingData();
                         return true;
                     }
 
