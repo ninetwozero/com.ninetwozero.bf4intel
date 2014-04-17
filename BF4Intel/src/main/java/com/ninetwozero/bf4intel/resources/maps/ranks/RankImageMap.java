@@ -38,7 +38,7 @@ public class RankImageMap {
             put("WARSAW_ID_P_RANK27_NAME", R.drawable.r27);
             put("WARSAW_ID_P_RANK28_NAME", R.drawable.r28);
             put("WARSAW_ID_P_RANK29_NAME", R.drawable.r29);
-            put("WARSAW_ID_P_RANK30_NAME", R.drawable.r10);
+            put("WARSAW_ID_P_RANK30_NAME", R.drawable.r30);
             put("WARSAW_ID_P_RANK31_NAME", R.drawable.r31);
             put("WARSAW_ID_P_RANK32_NAME", R.drawable.r32);
             put("WARSAW_ID_P_RANK33_NAME", R.drawable.r33);
