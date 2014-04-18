@@ -42,20 +42,4 @@ public abstract class BaseLoadingIntelActivity extends BaseIntelActivity impleme
         optionsMenu = menu;
         return true;
     }
-
-    protected void showLoadingStateInActionBar(boolean isLoading) {
-        if (optionsMenu == null) {
-            return;
-        }
-
-        final MenuItem refreshItem = optionsMenu.findItem(R.id.ab_action_refresh);
-        if (refreshItem != null) {
-            refreshItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-            if (isLoading) {
-                refreshItem.setActionView(R.layout.actionbar_indeterminate_progress);
-            } else {
-                refreshItem.setActionView(null);
-            }
-        }
-    }
 }
