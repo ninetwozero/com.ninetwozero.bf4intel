@@ -2,8 +2,10 @@ package com.ninetwozero.bf4intel.services;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -17,15 +19,15 @@ public abstract class BaseApiService extends Service implements Response.ErrorLi
     public static final String SOLDIER_BUNDLE = "soldierBundle";
 
     protected int intentCount;
+    protected SharedPreferences sharedPreferences;
     protected Bundle soldier;
 
     private final Gson gson = GsonProvider.getInstance();
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         soldier = intent.getBundleExtra(SOLDIER_BUNDLE);
         intentCount++;
-
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         return super.onStartCommand(intent, flags, startId);
     }
 
