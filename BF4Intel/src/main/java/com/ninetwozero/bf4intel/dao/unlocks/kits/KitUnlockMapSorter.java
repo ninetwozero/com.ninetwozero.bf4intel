@@ -12,11 +12,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class KitUnlockMapSorter {
-    private static final String[] CATEGORY_ORDER = new String[] { "1", "2", "8", "32" };
+    private static final String[] CATEGORY_ORDER = new String[] { "1", "2","32", "8"};
     private static final Set<String> SKIP_LIST = new HashSet<String>() {
         {
             add("1BFBE29D-CA2D-42B8-88DD-8E5C481E40FC"); // AK5C
-            add("93AC8B6A-D3B4-478F-9420-CDBACCE71C1F"); // RFB
+            add("D9899D8B-2D67-4A13-975E-F0D5E8E1525D"); // RFB
             add("9892E6C9-6317-4558-953D-94BA2DCD355C"); // QBS-09
         }
     };
