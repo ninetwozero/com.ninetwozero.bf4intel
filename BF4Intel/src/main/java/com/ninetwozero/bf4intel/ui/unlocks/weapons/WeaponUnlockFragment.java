@@ -3,8 +3,6 @@ package com.ninetwozero.bf4intel.ui.unlocks.weapons;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ExpandableListView;
-import android.widget.ListView;
 
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.dao.unlocks.weapons.WeaponUnlockDAO;
@@ -17,7 +15,6 @@ import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockFragment;
 import com.squareup.otto.Subscribe;
 
 import java.util.List;
-import java.util.Map;
 
 import se.emilsjolander.sprinkles.OneQuery;
 import se.emilsjolander.sprinkles.Query;
@@ -53,7 +50,7 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
                         return true;
                     }
 
-                    sendDataToListView(weaponUnlockDAO.getWeaponUnlock().getSortedWeaponUnlocksMap());
+                    sendDataToListView(weaponUnlockDAO.getWeaponUnlock().getSortedUnlocks());
                     showLoadingState(false);
                     return true;
                 }
@@ -75,11 +72,6 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
         getActivity().startService(intent);
     }
 
-    @Override
-    public void onListItemClick(ListView listView, View view, int i, long l) {
-        // TODO: Open details
-    }
-
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
         startLoadingData();
@@ -91,11 +83,12 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
         showLoadingState(false);
     }
 
-    private void sendDataToListView(final Map<String, List<WeaponUnlockContainer>> unlockMap) {
-        final ExpandableListView listView = (ExpandableListView) getListView();
-        if (listView == null) {
-            return;
+    private void sendDataToListView(final List<WeaponUnlockContainer> unlocks) {
+        WeaponUnlockAdapter adapter = (WeaponUnlockAdapter) gridView.getAdapter();
+        if (adapter == null) {
+            adapter = new WeaponUnlockAdapter(getActivity());
+            gridView.setAdapter(adapter);
         }
-        listView.setAdapter(new WeaponUnlockAdapter(getActivity(), unlockMap));
+        adapter.setItems(unlocks);
     }
 }
