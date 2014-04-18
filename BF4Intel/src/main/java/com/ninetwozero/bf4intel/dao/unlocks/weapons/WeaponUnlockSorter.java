@@ -35,7 +35,7 @@ public class WeaponUnlockSorter {
     private static SortedWeaponUnlocks sortItemsByProgress(Map<String, List<WeaponUnlockContainer>> unlockMap) {
         List<WeaponUnlockContainer> list = new ArrayList<WeaponUnlockContainer>();
         for (String key : unlockMap.keySet()) {
-            list.addAll(unlockMap.get(key));
+            list.addAll(removeInGameUnique(unlockMap.get(key)));
         }
         Collections.sort(list);
         return new SortedWeaponUnlocks(list);
