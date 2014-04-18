@@ -18,34 +18,36 @@ public abstract class BaseDaoService<T extends Model, E extends RefreshCompleted
     public int onStartCommand(final Intent intent, final int flags, final int startId) {
         super.onStartCommand(intent, flags, startId);
 
-        Bf4Intel.getRequestQueue().add(
-            new SimpleGetRequest<Boolean>(
-                getUrlForService(),
-                this
-            ) {
-                @Override
-                protected Boolean doParse(String json) {
-                    final Transaction transaction = new Transaction();
-                    boolean success = true;
+        if (intentCount == 1) {
+            Bf4Intel.getRequestQueue().add(
+                new SimpleGetRequest<Boolean>(
+                    getUrlForService(),
+                    this
+                ) {
+                    @Override
+                    protected Boolean doParse(String json) {
+                        final Transaction transaction = new Transaction();
+                        boolean success = true;
 
-                    final T daoObject = parseJsonIntoDao(json);
-                    if (!daoObject.save(transaction)) {
-                        success = false;
+                        final T daoObject = parseJsonIntoDao(json);
+                        if (!daoObject.save(transaction)) {
+                            success = false;
+                        }
+
+                        transaction.setSuccessful(success);
+                        transaction.finish();
+                        return success;
                     }
 
-                    transaction.setSuccessful(success);
-                    transaction.finish();
-                    return success;
+                    @Override
+                    protected void deliverResponse(Boolean result) {
+                        final E event = getEventToBroadcast(result);
+                        BusProvider.getInstance().post(event);
+                        stopSelf();
+                    }
                 }
-
-                @Override
-                protected void deliverResponse(Boolean result) {
-                    final E event = getEventToBroadcast(result);
-                    BusProvider.getInstance().post(event);
-                    stopSelf(startId);
-                }
-            }
-        );
+            );
+        }
         return Service.START_NOT_STICKY;
     }
 

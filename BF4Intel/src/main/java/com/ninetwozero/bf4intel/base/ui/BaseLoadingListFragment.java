@@ -23,39 +23,23 @@ import com.squareup.otto.Subscribe;
 public abstract class BaseLoadingListFragment extends BaseListFragment implements Response.ErrorListener {
     protected Gson gson = GsonProvider.getInstance();
     protected boolean isReloading;
-    protected RequestQueue requestQueue;
 
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         setHasOptionsMenu(true);
-        requestQueue = Volley.newRequestQueue(getActivity());
     }
 
     @Override
     public void onResume() {
         super.onResume();
         BusProvider.getInstance().register(this);
-        startLoadingData();
     }
 
     @Override
     public void onPause() {
         super.onPause();
         BusProvider.getInstance().unregister(this);
-    }
-
-    @Override
-    public void onStop(){
-        requestQueue.cancelAll(
-            new RequestQueue.RequestFilter() {
-                @Override
-                public boolean apply(Request<?> request) {
-                    return request.getMethod() == Request.Method.GET;
-                }
-            }
-        );
-        super.onStop();
     }
 
     @Override
@@ -103,17 +87,15 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         isReloading = isLoading;
 
         toggleFullScreenProgressBar(activity, isLoading);
-        if (activity instanceof BaseLoadingIntelActivity) {
-            ((BaseLoadingIntelActivity) activity).showLoadingStateInActionBar(isLoading);
-        }
     }
 
     private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
-        if (activity == null) {
+        final View view = getView();
+        if (activity == null || view == null) {
             return;
         }
 
-        final View loadingView = getView().findViewById(R.id.wrap_loading_progress);
+        final View loadingView = view.findViewById(R.id.wrap_loading_progress);
         if (loadingView == null) {
             return;
         }

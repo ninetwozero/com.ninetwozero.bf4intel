@@ -6,12 +6,13 @@ import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.json.unlocks.KitItemUnlockContainer;
+import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlock;
+import com.ninetwozero.bf4intel.resources.maps.unlocks.UnlockImageSlugMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringSlugMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> {
@@ -22,23 +23,28 @@ public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> 
         put("32", R.string.class_support);
     }};
 
-    public KitUnlockAdapter(final Context context, final Map<String, List<KitItemUnlockContainer>> itemMap) {
-        super(context, itemMap);
+    public KitUnlockAdapter(final Context context) {
+        super(context);
     }
 
     @Override
-    public View getChildView(final int group, final int child, final boolean isLastChild, View convertView, final ViewGroup viewGroup) {
-        final WeaponUnlock unlock = getChild(group, child).getUnlock();
-        final int completion = unlock.getCriteria().getCompletion();
-        while (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.list_item_unlocks, viewGroup, false);
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, final ViewGroup parent) {
+        final WeaponUnlock unlock = getItem(position).getUnlock();
+        final UnlockCriteria criteria = unlock.getCriteria();
+
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
         }
 
-        setText(convertView, R.id.title, WeaponStringSlugMap.get(unlock.getSlug()));
-        setText(convertView, R.id.subtitle, resolveCriteriaLabel(unlock.getCriteria()));
-        setProgress(convertView, R.id.progress, completion, 100);
+        setImage(convertView, R.id.img_unlock, UnlockImageSlugMap.get(unlock.getSlug()));
+        setText(convertView, R.id.unlock_title, WeaponStringSlugMap.get(unlock.getSlug()));
+        displayInformationForCriteria(convertView, criteria);
 
-        convertView.setAlpha(unlock.getCriteria().isCompleted() ? OPACITY_FADED : OPACITY_NORMAL);
         return convertView;
     }
 

@@ -11,15 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
+import com.ninetwozero.bf4intel.events.battlefeed.BattleFeedRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.json.battlefeed.BattleFeed;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.services.battlefeed.BattleFeedService;
+import com.ninetwozero.bf4intel.services.news.NewsListingService;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
@@ -76,30 +75,27 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        // TODO: userId below should be handled as String in the future
-        final Bundle bundle = getArguments();
+        if (isReloading) {
+            return;
+        }
+
+        showLoadingState(true);
+        isReloading = true;
+
         final int count = 0;
-        final long userId = Long.valueOf(bundle.getString(Keys.Profile.ID, "0"));
-        final boolean fetchGlobalFeed = "0".equals(userId);
+        final String userId = getArguments().getString(Keys.Profile.ID, "");
 
-        requestQueue.add(
-            new SimpleGetRequest<BattleFeed>(
-                fetchGlobalFeed ? UrlFactory.buildGlobalFeedURL(count) : UrlFactory.buildUserFeedURL(userId, count),
-                this
-            ) {
-                @Override
-                protected BattleFeed doParse(String json) {
-                    final BattleFeed battleFeed = fromJson(json, BattleFeed.class);
-                    return battleFeed;
-                }
+        final Intent intent = new Intent(getActivity(), BattleFeedService.class);
+        intent.putExtra(BattleFeedService.INTENT_COUNT, count);
+        intent.putExtra(BattleFeedService.INTENT_USERID, userId);
+        getActivity().startService(intent);
+    }
 
-                @Override
-                protected void deliverResponse(BattleFeed battleFeed) {
-                    sendDataToListView(battleFeed.getFeedItems());
-                    showLoadingState(false);
-                }
-            }
-        );
+    @Subscribe
+    public void onBattlefeedRefreshed(BattleFeedRefreshedEvent battleFeed) {
+        sendDataToListView(battleFeed.getFeed().getFeedItems());
+        showLoadingState(false);
+        isReloading = false;
     }
 
     private void initialize(final View view) {

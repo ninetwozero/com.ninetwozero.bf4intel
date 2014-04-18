@@ -59,6 +59,7 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
                 public boolean handleResult(VehicleStatsDAO vehiclestatsDAO) {
                     final View view = getView();
                     if (view == null || vehiclestatsDAO == null) {
+                        startLoadingData();
                         return true;
                     }
 

@@ -63,6 +63,12 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        startLoadingData();
+    }
+
+    @Override
     protected void startLoadingData() {
         if (isReloading) {
             return;

@@ -19,23 +19,22 @@ import android.widget.ShareActionProvider;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
-import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.events.HooahToggleRequest;
+import com.ninetwozero.bf4intel.events.news.NewsArticleRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.news.HooahInformation;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
 import com.ninetwozero.bf4intel.json.news.NewsArticleComment;
 import com.ninetwozero.bf4intel.json.news.NewsArticleRequest;
-import com.ninetwozero.bf4intel.network.BaseSimpleRequest;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.SimplePostRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.WebsiteErrorMessageMap;
+import com.ninetwozero.bf4intel.services.news.NewsArticleService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
 
@@ -84,38 +83,45 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        startLoadingData();
+    }
+
+    @Override
     protected void startLoadingData() {
         final Bundle arguments = getArguments();
-        if (arguments == null) {
-            throw new IllegalStateException("NULL bundle passed to " + TAG);
+        if (isReloading) {
+            return;
         }
+
+        showLoadingState(arguments.getBoolean(FLAG_SHOW_LOADING, true));
+        isReloading = true;
 
         articleId = arguments.getString(ID, "");
         articleUrl = UrlFactory.buildNewsArticleURL(articleId);
-        doRequest(ID_REQUEST_REFRESH_ARTICLE, arguments);
+
+        final Intent intent = new Intent(getActivity(), NewsArticleService.class);
+        intent.putExtra(NewsArticleService.INTENT_ARTICLE_ID, articleId);
+        getActivity().startService(intent);
     }
 
     private void doRequest(final int id, final Bundle bundle) {
         switch (id) {
-            case ID_REQUEST_REFRESH_ARTICLE:
-                showLoadingState(bundle.getBoolean(FLAG_SHOW_LOADING, true));
-                requestQueue.add(fetchRequestForArticleRefresh(bundle));
-                break;
-
             case ID_REQUEST_HOOAH:
-                requestQueue.add(fetchRequestForHooah(bundle));
+                Bf4Intel.getRequestQueue().add(fetchRequestForHooah(bundle));
                 break;
 
             case ID_REQUEST_POST_COMMENT:
-                requestQueue.add(fetchRequestForPostComment(bundle));
+                Bf4Intel.getRequestQueue().add(fetchRequestForPostComment(bundle));
                 break;
 
             case ID_REQUEST_COMMENT_UPVOTE:
-                requestQueue.add(fetchRequestForCommentUpvote(bundle));
+                Bf4Intel.getRequestQueue().add(fetchRequestForCommentUpvote(bundle));
                 break;
 
             case ID_REQUEST_COMMENT_DOWNVOTE:
-                requestQueue.add(fetchRequestForCommentDownvote(bundle));
+                Bf4Intel.getRequestQueue().add(fetchRequestForCommentDownvote(bundle));
                 break;
 
             default:
@@ -123,27 +129,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         }
     }
 
-    private Request<NewsArticleRequest> fetchRequestForArticleRefresh(Bundle bundle) {
-        return new SimpleGetRequest<NewsArticleRequest>(
-            articleUrl,
-            BaseSimpleRequest.RequestType.FROM_NAVIGATION,
-            this
-        ) {
-            @Override
-            protected NewsArticleRequest doParse(String json) {
-                final Gson gson = new Gson();
-                final JsonParser parser = new JsonParser();
-                final JsonElement rootObject = parser.parse(json).getAsJsonObject().get("context");
-                final NewsArticleRequest articleRequest = gson.fromJson(rootObject, NewsArticleRequest.class);
-                return articleRequest;
-            }
-
-            @Override
-            protected void deliverResponse(NewsArticleRequest response) {
-                displayArticle(response);
-                showLoadingState(false);
-            }
-        };
+    @Subscribe
+    public void onArticleRefreshed(NewsArticleRefreshedEvent response) {
+        displayArticle(response.getRequest());
+        showLoadingState(false);
+        isReloading = false;
     }
 
     private Request<HooahInformation> fetchRequestForHooah(Bundle bundle) {

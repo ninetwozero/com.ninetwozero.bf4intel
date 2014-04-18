@@ -19,30 +19,15 @@ import com.ninetwozero.bf4intel.factories.GsonProvider;
 
 public abstract class BaseLoadingIntelActivity extends BaseIntelActivity implements Response.ErrorListener {
     protected final Gson gson = GsonProvider.getInstance();
-    protected RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestQueue = Volley.newRequestQueue(this);
     }
 
     @Override
     public void onErrorResponse(final VolleyError error) {
         Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
-    }
-
-    @Override
-    public void onStop(){
-        requestQueue.cancelAll(
-            new RequestQueue.RequestFilter() {
-                @Override
-                public boolean apply(Request<?> request) {
-                    return request.getMethod() == Request.Method.GET;
-                }
-            }
-        );
-        super.onStop();
     }
 
     public JsonObject extractFromJson(String json) {
@@ -56,21 +41,5 @@ public abstract class BaseLoadingIntelActivity extends BaseIntelActivity impleme
         getMenuInflater().inflate(R.menu.base_intel_activity, menu);
         optionsMenu = menu;
         return true;
-    }
-
-    protected void showLoadingStateInActionBar(boolean isLoading) {
-        if (optionsMenu == null) {
-            return;
-        }
-
-        final MenuItem refreshItem = optionsMenu.findItem(R.id.ab_action_refresh);
-        if (refreshItem != null) {
-            refreshItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-            if (isLoading) {
-                refreshItem.setActionView(R.layout.actionbar_indeterminate_progress);
-            } else {
-                refreshItem.setActionView(null);
-            }
-        }
     }
 }

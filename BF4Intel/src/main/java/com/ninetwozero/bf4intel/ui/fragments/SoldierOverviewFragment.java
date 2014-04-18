@@ -79,6 +79,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
                 public boolean handleResult(SoldierOverviewDAO soldierOverviewDAO) {
                     final View view = getView();
                     if (view == null || soldierOverviewDAO == null) {
+                        startLoadingData();
                         return true;
                     }
 

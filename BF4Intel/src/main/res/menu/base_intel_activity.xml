@@ -1,7 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item
     android:id="@+id/ab_action_refresh"
-    android:actionLayout="@layout/actionbar_indeterminate_progress"
     android:title="@string/menu_refresh"
     android:icon="@drawable/ic_action_refresh"
     android:showAsAction="ifRoom"

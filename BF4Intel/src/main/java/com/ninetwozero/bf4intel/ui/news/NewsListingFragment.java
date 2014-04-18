@@ -2,7 +2,6 @@ package com.ninetwozero.bf4intel.ui.news;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,22 +9,19 @@ import android.widget.ListView;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.events.HooahToggleRequest;
+import com.ninetwozero.bf4intel.events.news.NewsListingRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
-import com.ninetwozero.bf4intel.json.news.NewsListRequest;
-import com.ninetwozero.bf4intel.network.BaseSimpleRequest;
-import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.network.SimplePostRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.WebsiteErrorMessageMap;
+import com.ninetwozero.bf4intel.services.news.NewsListingService;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
@@ -34,9 +30,7 @@ import java.util.List;
 
 public class NewsListingFragment extends BaseLoadingListFragment {
     public static final String ID = "articleId";
-    
-    private static final int ID_REQUEST_REFRESH_LIST = 4000;
-    private static final int ID_REQUEST_HOOAH = 4100;
+
     private static final int pageId = 1;
 
     public NewsListingFragment() {
@@ -67,57 +61,37 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         final Bundle data = new Bundle();
         data.putString(NewsArticleFragment.ID, String.valueOf(id));
 
-        startActivity(
-            new Intent(getActivity(), SingleFragmentActivity.class).putExtra(
-                SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.NEWS_ITEM.ordinal()
-            ).putExtra(
-                SingleFragmentActivity.INTENT_FRAGMENT_DATA, data
-            )
-        );
+        final Intent intent = new Intent(getActivity(), SingleFragmentActivity.class);
+        intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.NEWS_ITEM.ordinal());
+        intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, data);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        startLoadingData();
     }
 
     @Override
     protected void startLoadingData() {
-        doRequest(ID_REQUEST_REFRESH_LIST, getArguments());
-    }
-
-    private void doRequest(int requestId, Bundle bundle) {
-        switch(requestId) {
-            case ID_REQUEST_REFRESH_LIST:
-                showLoadingState(true);
-                requestQueue.add(fetchRequestForRefresh(bundle));
-                break;
-
-            case ID_REQUEST_HOOAH:
-                requestQueue.add(fetchRequestForHooah(bundle));
-                break;
-
-            default:
-                Log.w(getClass().getSimpleName(), "No request matching " + requestId);
+        if (isReloading) {
+            return;
         }
+
+        showLoadingState(true);
+        isReloading = true;
+
+        final Intent intent = new Intent(getActivity(), NewsListingService.class);
+        intent.putExtra(NewsListingService.INTENT_PAGE_ID, pageId);
+        getActivity().startService(intent);
     }
 
-    private Request<NewsListRequest> fetchRequestForRefresh(Bundle bundle) {
-        return new SimpleGetRequest<NewsListRequest>(
-            UrlFactory.buildNewsListingURL(pageId),
-            BaseSimpleRequest.RequestType.FROM_NAVIGATION,
-            this
-        ) {
-            @Override
-            protected NewsListRequest doParse(String json) {
-                final Gson gson = new Gson();
-                final JsonParser parser = new JsonParser();
-                final JsonElement rootObject = parser.parse(json).getAsJsonObject().get("context");
-                final NewsListRequest container = gson.fromJson(rootObject, NewsListRequest.class);
-                return container;
-            }
-
-            @Override
-            protected void deliverResponse(NewsListRequest response) {
-                sendItemsToListView(response.getArticles());
-                showLoadingState(false);
-            }
-        };
+    @Subscribe
+    public void onNewsRefreshed(NewsListingRefreshedEvent response) {
+        sendItemsToListView(response.getRequest().getArticles());
+        showLoadingState(false);
+        isReloading = false;
     }
 
     private Request<Object> fetchRequestForHooah(Bundle bundle) {
@@ -155,7 +129,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         data.putString(Keys.CHECKSUM, SessionStore.getChecksum());
         data.putString(ID, request.getId());
 
-        doRequest(ID_REQUEST_HOOAH, data);
+        Bf4Intel.getRequestQueue().add(fetchRequestForHooah(data));
     }
 
     private void initialize() {
