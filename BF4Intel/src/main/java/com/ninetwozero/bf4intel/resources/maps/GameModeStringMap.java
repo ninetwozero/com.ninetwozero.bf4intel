@@ -11,9 +11,11 @@ public class GameModeStringMap {
         put(8, "Squad Deathmatch");
         put(32, "Team Deathmatch");
         put(64, "Conquest Large");
+        put(64, "Conquest Large");
         put(1024, "Domination");
         put(2048, "Hardcore Team Deathmatch");
         put(2097152, "Obliteration");
+        put(67108864, "Carrier Assault Large");
         put(16777216, "Defuse");
     }};
 
