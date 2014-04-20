@@ -87,6 +87,8 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
                 }
             );
             searchView.setIconifiedByDefault(true);
+            searchView.setIconified(false);
+            searchView.clearFocus();
             searchView.setQuery(queryString, true);
             searchItem.setVisible(true);
         }

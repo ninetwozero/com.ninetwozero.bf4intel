@@ -242,6 +242,8 @@ public class LoginActivity extends BaseLoadingIntelActivity {
         if ("".equals(searchTerm) || searchTerm.length() < 3) {
             searchField.setError(getString(R.string.msg_search_error_length));
             return;
+        } else {
+            searchField.setError(null);
         }
 
         startActivityForResult(
