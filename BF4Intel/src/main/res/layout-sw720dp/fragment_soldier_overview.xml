@@ -27,7 +27,8 @@
           android:layout_width="0dp"
           android:layout_height="match_parent"
           android:layout_weight="0.5"
-          android:orientation="vertical">
+          android:orientation="vertical"
+          android:layout_marginRight="@dimen/spacing_s">
 
           <TextView
             style="@style/RegularHeadingOverCard"
@@ -102,7 +103,8 @@
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="0.5"
-          android:orientation="vertical">
+          android:orientation="vertical"
+          android:layout_marginLeft="@dimen/spacing_s">
 
           <TextView
             style="@style/RegularHeadingOverCard"
@@ -201,7 +203,8 @@
           android:layout_width="0dp"
           android:layout_height="match_parent"
           android:layout_weight="0.5"
-          android:orientation="vertical">
+          android:orientation="vertical"
+          android:layout_marginRight="@dimen/spacing_s">
 
           <TextView
             style="@style/RegularHeadingOverCard"
@@ -246,7 +249,8 @@
           android:layout_width="0dp"
           android:layout_height="match_parent"
           android:layout_weight="0.5"
-          android:orientation="vertical">
+          android:orientation="vertical"
+          android:layout_marginLeft="@dimen/spacing_s">
 
           <TextView
             android:id="@+id/heading_top3_game_modes"
@@ -272,7 +276,8 @@
           android:layout_width="0dp"
           android:layout_height="match_parent"
           android:layout_weight="0.5"
-          android:orientation="vertical">
+          android:orientation="vertical"
+          android:layout_marginRight="@dimen/spacing_s">
 
           <TextView
             style="@style/RegularHeadingOverCard"
@@ -291,7 +296,8 @@
           android:layout_width="0dp"
           android:layout_height="match_parent"
           android:layout_weight="0.5"
-          android:orientation="vertical">
+          android:orientation="vertical"
+          android:layout_marginLeft="@dimen/spacing_s">
 
           <TextView
             android:id="@+id/heading_top3_vehicles"
@@ -317,7 +323,8 @@
           android:layout_width="0dp"
           android:layout_height="match_parent"
           android:layout_weight="0.5"
-          android:orientation="vertical">
+          android:orientation="vertical"
+          android:layout_marginRight="@dimen/spacing_s">
 
           <TextView
             style="@style/RegularHeadingOverCard"
@@ -329,7 +336,6 @@
             style="@style/NonListViewCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
             android:orientation="vertical"/>
         </LinearLayout>
 
@@ -337,7 +343,8 @@
           android:layout_width="0dp"
           android:layout_height="match_parent"
           android:layout_weight="0.5"
-          android:orientation="vertical">
+          android:orientation="vertical"
+          android:layout_marginLeft="@dimen/spacing_s">
 
           <TextView
             android:id="@+id/heading_top_leaderboards"
