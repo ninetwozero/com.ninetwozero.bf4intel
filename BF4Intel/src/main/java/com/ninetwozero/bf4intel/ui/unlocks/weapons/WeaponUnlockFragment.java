@@ -45,7 +45,9 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
                 @Override
                 public boolean handleResult(WeaponUnlockDAO weaponUnlockDAO) {
                     final View view = getView();
-                    if (view == null || weaponUnlockDAO == null) {
+                    if (view == null) {
+                        return true;
+                    } else if (weaponUnlockDAO == null) {
                         startLoadingData();
                         return true;
                     }

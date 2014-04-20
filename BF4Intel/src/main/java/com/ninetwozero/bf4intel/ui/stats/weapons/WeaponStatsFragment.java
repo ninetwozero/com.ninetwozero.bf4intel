@@ -58,7 +58,9 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
                 @Override
                 public boolean handleResult(WeaponStatsDAO weaponstatsDAO) {
                     final View view = getView();
-                    if (view == null || weaponstatsDAO == null) {
+                    if (view == null) {
+                        return true;
+                    } else if (weaponstatsDAO == null) {
                         startLoadingData();
                         return true;
                     }

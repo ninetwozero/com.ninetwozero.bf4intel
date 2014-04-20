@@ -62,7 +62,9 @@ public class AwardGridFragment
                 @Override
                 public boolean handleResult(AwardsDAO awardsDao) {
                     final View view = getView();
-                    if (view == null || awardsDao == null) {
+                    if (view == null) {
+                        return true;
+                    } else if (awardsDao == null) {
                         startLoadingData();
                         return true;
                     }
