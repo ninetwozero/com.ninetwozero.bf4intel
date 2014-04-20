@@ -39,6 +39,12 @@ public class LevelStringMap {
             put("XP1_002", "Altai Range");
             put("XP1_003", "Guilin Peaks");
             put("XP1_004", "Dragon Pass");
+
+            // XP2
+            put("XP2_001", "Lost Islands");
+            put("XP2_002", "Nansha Strike");
+            put("XP2_003", "Wave Breaker");
+            put("XP2_004", "Operation Mortar");
         }
     };
 

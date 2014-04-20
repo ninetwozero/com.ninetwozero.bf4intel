@@ -60,7 +60,9 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
                 @Override
                 public boolean handleResult(DetailedStatsDAO detailedStatsDAO) {
                     final View view = getView();
-                    if (view == null || detailedStatsDAO == null) {
+                    if (view == null) {
+                        return true;
+                    } else if (detailedStatsDAO == null) {
                         startLoadingData();
                         return true;
                     }

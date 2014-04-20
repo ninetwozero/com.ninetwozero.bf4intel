@@ -61,7 +61,9 @@ public class AssignmentGridFragment
                 @Override
                 public boolean handleResult(AssignmentsDAO assignmentsDAO) {
                     final View view = getView();
-                    if (view == null || assignmentsDAO == null) {
+                    if (view == null) {
+                        return true;
+                    } else if (assignmentsDAO == null) {
                         startLoadingData();
                         return true;
                     }
