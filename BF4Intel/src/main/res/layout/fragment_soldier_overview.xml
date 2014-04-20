@@ -224,14 +224,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/heading_top3_weapons">
-
-        <LinearLayout
-          android:id="@+id/content_area"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical" />
-      </LinearLayout>
+        android:layout_below="@id/heading_top3_weapons"/>
 
       <TextView
         android:id="@+id/heading_top3_vehicles"
@@ -245,14 +238,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/heading_top3_vehicles">
-
-        <LinearLayout
-          android:id="@+id/content_area"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical" />
-      </LinearLayout>
+        android:layout_below="@id/heading_top3_vehicles"/>
 
       <TextView
         android:id="@+id/heading_top_leaderboards"
@@ -266,14 +252,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/heading_top_leaderboards">
-
-        <LinearLayout
-          android:id="@+id/content_area_leaderboards"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical" />
-      </LinearLayout>
+        android:layout_below="@id/heading_top_leaderboards"/>
 
       <TextView
         android:id="@+id/heading_top3_game_modes"
@@ -287,14 +266,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/heading_top3_game_modes">
-
-        <LinearLayout
-          android:id="@+id/content_area_game_modes"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical" />
-      </LinearLayout>
+        android:layout_below="@id/heading_top3_game_modes"/>
 
       <TextView
         style="@style/RegularHeadingOverCard"
@@ -309,14 +281,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
         android:orientation="vertical"
-        android:layout_below="@id/heading_detailed_scores">
-
-        <LinearLayout
-          android:id="@+id/content_area_completions"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical" />
-      </LinearLayout>
+        android:layout_below="@id/heading_detailed_scores"/>
     </RelativeLayout>
   </ScrollView>
 

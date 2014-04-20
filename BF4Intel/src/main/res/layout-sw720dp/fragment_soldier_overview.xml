@@ -5,7 +5,7 @@
 
   <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:fillViewport="true">
 
     <LinearLayout
@@ -38,7 +38,7 @@
             android:id="@+id/wrap_soldier_general"
             style="@style/NonListViewCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <ImageView
               android:id="@+id/image_rank"
@@ -191,42 +191,75 @@
         </LinearLayout>
       </LinearLayout>
 
-      <TextView
-        style="@style/RegularHeadingOverCard"
-        android:id="@+id/heading_service_stars"
-        android:text="@string/service_stars" />
-
       <LinearLayout
-        android:id="@+id/wrap_soldier_service_stars"
-        style="@style/NonListViewCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:weightSum="1">
 
-        <include
-          layout="@layout/list_item_soldier_service_stars"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" />
+        <LinearLayout
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="0.5"
+          android:orientation="vertical">
 
-        <include
-          layout="@layout/list_item_soldier_service_stars"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" />
+          <TextView
+            style="@style/RegularHeadingOverCard"
+            android:id="@+id/heading_service_stars"
+            android:text="@string/service_stars" />
 
-        <include
-          layout="@layout/list_item_soldier_service_stars"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" />
+          <LinearLayout
+            android:id="@+id/wrap_soldier_service_stars"
+            style="@style/NonListViewCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <include
-          layout="@layout/list_item_soldier_service_stars"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" />
+            <include
+              layout="@layout/list_item_soldier_service_stars"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
 
-        <include
-          layout="@layout/list_item_soldier_service_stars"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" />
+            <include
+              layout="@layout/list_item_soldier_service_stars"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+
+            <include
+              layout="@layout/list_item_soldier_service_stars"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+
+            <include
+              layout="@layout/list_item_soldier_service_stars"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+
+            <include
+              layout="@layout/list_item_soldier_service_stars"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+          </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="0.5"
+          android:orientation="vertical">
+
+          <TextView
+            android:id="@+id/heading_top3_game_modes"
+            style="@style/RegularHeadingOverCard"
+            android:text="@string/soldier_top_game_modes" />
+
+          <LinearLayout
+            android:id="@+id/wrap_soldier_top3_game_modes"
+            style="@style/NonListViewCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
+        </LinearLayout>
       </LinearLayout>
 
       <LinearLayout
@@ -251,14 +284,7 @@
             style="@style/NonListViewCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-              android:id="@+id/content_area"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical" />
-          </LinearLayout>
+            android:orientation="vertical"/>
         </LinearLayout>
 
         <LinearLayout
@@ -277,73 +303,54 @@
             style="@style/NonListViewCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-              android:id="@+id/content_area"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical" />
-          </LinearLayout>
+            android:orientation="vertical"/>
         </LinearLayout>
       </LinearLayout>
 
-      <TextView
-        android:id="@+id/heading_top_leaderboards"
-        style="@style/RegularHeadingOverCard"
-        android:text="@string/soldier_top_leaderboards"/>
-
       <LinearLayout
-        android:id="@+id/wrap_soldier_top_leaderboards"
-        style="@style/NonListViewCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <LinearLayout
-          android:id="@+id/content_area_leaderboards"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical" />
-      </LinearLayout>
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="0.5"
+          android:orientation="vertical">
 
-      <TextView
-        android:id="@+id/heading_top3_game_modes"
-        style="@style/RegularHeadingOverCard"
-        android:text="@string/soldier_top_game_modes"/>
+          <TextView
+            style="@style/RegularHeadingOverCard"
+            android:id="@+id/heading_detailed_scores"
+            android:text="@string/soldier_completion" />
 
-      <LinearLayout
-        android:id="@+id/wrap_soldier_top3_game_modes"
-        style="@style/NonListViewCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-          android:id="@+id/content_area_game_modes"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical" />
-      </LinearLayout>
-
-      <TextView
-        style="@style/RegularHeadingOverCard"
-        android:id="@+id/heading_detailed_scores"
-        android:text="@string/soldier_completion"/>
-
-      <LinearLayout
-        android:id="@+id/wrap_soldier_completions"
-        style="@style/NonListViewCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:orientation="vertical">
+          <LinearLayout
+            android:id="@+id/wrap_soldier_completions"
+            style="@style/NonListViewCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:orientation="vertical"/>
+        </LinearLayout>
 
         <LinearLayout
-          android:id="@+id/content_area_completions"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical" />
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="0.5"
+          android:orientation="vertical">
+
+          <TextView
+            android:id="@+id/heading_top_leaderboards"
+            style="@style/RegularHeadingOverCard"
+            android:text="@string/soldier_top_leaderboards" />
+
+          <LinearLayout
+            android:id="@+id/wrap_soldier_top_leaderboards"
+            style="@style/NonListViewCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
+        </LinearLayout>
       </LinearLayout>
     </LinearLayout>
   </ScrollView>
