@@ -44,6 +44,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private static final String RESET_PASSWORD_LINK = "https://signin.ea.com/p/web/resetPassword";
     private static final int GAME_ID_BF4 = 2048;
+    private static final int GAME_ID_MOHW = 4096;
 
     private Bundle profileBundle;
     private View loginStatusView;
@@ -88,7 +89,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     }
 
 
-    // TODO: Service?
+    // TODO: Refactor functionality to a service?
     private void loadSoldiers(final Bundle bundle) {
         setLoadingState(true);
         Bf4Intel.getRequestQueue().add(
@@ -108,7 +109,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
                     for (int i = 0; i < soldierCount; i++) {
                         final SummarizedSoldierStats stats = request.getSoldiers().get(i);
-                        if (stats.getGameId() == GAME_ID_BF4) {
+                        if (stats.getGameId() >= GAME_ID_BF4 && stats.getGameId() < GAME_ID_MOHW) {
                             if (bf4SoldierCount == 0) {
                                 new SqlStatement(
                                     "DELETE FROM " +
