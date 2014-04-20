@@ -37,6 +37,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     public static final String INTENT_SEARCH_RESULT = "profile_search_result";
 
     private static final int GAME_ID_BF4 = 2048;
+    private static final int GAME_ID_MOHW = 4096;
 
     private String queryString;
 
@@ -86,6 +87,8 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
                 }
             );
             searchView.setIconifiedByDefault(true);
+            searchView.setIconified(false);
+            searchView.clearFocus();
             searchView.setQuery(queryString, true);
             searchItem.setVisible(true);
         }
@@ -93,9 +96,10 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
 
     /*
         Due to Battlelog doing the search by the soldier name (and not the username), we need to
-        get the users that are playing BF4 (gameId >= 2048)
+        get the users that are playing BF4 but not MOHW (gameId >= 2048 && gameId < 4096)
 
         Info: http://battlelog.battlefield.com/bf4/user/haruhi00/
+        Info: http://battlelog.battlefield.com/bf4/user/cursef (MOHW)
     */
 
     @Override
@@ -202,7 +206,8 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         for (ProfileSearchResult result : results) {
             Map<Integer, Integer> games = result.getGames();
             for (int platformId : games.keySet()) {
-                if (games.get(platformId) >= GAME_ID_BF4) {
+                final int gameForPlatform = games.get(platformId);
+                if (gameForPlatform >= GAME_ID_BF4 && gameForPlatform < GAME_ID_MOHW) {
                     validAccounts.add(
                         new ProfileSearchResult(
                             result.getPersonaId(),

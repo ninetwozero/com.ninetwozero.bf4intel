@@ -45,7 +45,9 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
                 @Override
                 public boolean handleResult(VehicleUnlockDAO vehicleUnlockDAO) {
                     final View view = getView();
-                    if (view == null || vehicleUnlockDAO == null) {
+                    if (view == null) {
+                        return true;
+                    } else if (vehicleUnlockDAO == null) {
                         startLoadingData();
                         return true;
                     }

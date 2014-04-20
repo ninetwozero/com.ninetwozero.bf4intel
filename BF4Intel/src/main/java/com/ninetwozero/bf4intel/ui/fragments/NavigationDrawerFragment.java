@@ -15,6 +15,8 @@ import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
 import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
+import com.ninetwozero.bf4intel.events.ActiveSoldierChangedEvent;
+import com.ninetwozero.bf4intel.events.SoldierInformationUpdatedEvent;
 import com.ninetwozero.bf4intel.events.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.factories.BundleFactory;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -24,10 +26,8 @@ import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.SimpleListRow;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
-import com.ninetwozero.bf4intel.events.ActiveSoldierChangedEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
-import com.ninetwozero.bf4intel.events.SoldierInformationUpdatedEvent;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
@@ -369,7 +369,11 @@ public class NavigationDrawerFragment extends BaseListFragment {
             try {
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
                 final String tag = item.getFragmentType().toString();
-                transaction.replace(R.id.activity_root, FragmentFactory.get(item.getFragmentType(), item.getData()), tag);
+                transaction.replace(
+                    R.id.activity_root,
+                    FragmentFactory.get(item.getFragmentType(), item.getData()),
+                    tag
+                );
                 transaction.commit();
             } catch (TypeNotPresentException ex) {
                 showToast(ex.getMessage());

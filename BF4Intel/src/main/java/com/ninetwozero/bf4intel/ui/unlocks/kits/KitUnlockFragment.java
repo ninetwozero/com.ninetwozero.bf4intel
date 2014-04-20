@@ -45,7 +45,9 @@ public class KitUnlockFragment extends BaseUnlockFragment {
                 @Override
                 public boolean handleResult(KitUnlockDAO kitUnlockDAO) {
                     final View view = getView();
-                    if (view == null || kitUnlockDAO == null) {
+                    if (view == null) {
+                        return true;
+                    } else if (kitUnlockDAO == null) {
                         startLoadingData();
                         return true;
                     }

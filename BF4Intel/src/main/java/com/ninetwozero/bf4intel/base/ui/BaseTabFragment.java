@@ -32,6 +32,14 @@ public abstract class BaseTabFragment extends BaseFragment {
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        viewPagerAdapter = null;
+        viewPager = null;
+    }
+
     private void initialize(final View view) {
         setupViewPagerAdapter();
         setupViewPager(view);
@@ -56,7 +64,7 @@ public abstract class BaseTabFragment extends BaseFragment {
 
     private void setupViewPagerAdapter() {
         viewPagerAdapter = new ViewPagerAdapter(
-            getFragmentManager(),
+            getChildFragmentManager(),
             getTitleResources(),
             generateFragmentList(getPreparedArguments())
         );
