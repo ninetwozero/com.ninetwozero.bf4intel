@@ -30,8 +30,8 @@
 
         <ImageView
           android:id="@+id/image_rank"
-          android:layout_width="@dimen/avatar_size_xl"
-          android:layout_height="@dimen/avatar_size_xl"
+          android:layout_width="@dimen/rank_image_size"
+          android:layout_height="@dimen/rank_image_size"
           android:src="@drawable/r0"
           android:layout_alignParentRight="true"
           android:contentDescription="@string/cdesc_rank_image" />
