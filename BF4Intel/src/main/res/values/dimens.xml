@@ -114,4 +114,5 @@
   <dimen name="stats_item_height">77dp</dimen>
   <dimen name="unlock_image_width">128dp</dimen>
   <dimen name="unlock_status_icon_size">16dp</dimen>
+  <dimen name="rank_image_size">64dp</dimen>
 </resources>

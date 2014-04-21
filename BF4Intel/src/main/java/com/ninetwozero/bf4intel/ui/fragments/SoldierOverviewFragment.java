@@ -150,11 +150,10 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     private void displayServiceStars(final View baseView, final SkillOverview basicSoldierStats) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_service_stars);
-        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area_service_stars);
         final Map<Integer, Integer> serviceStars = basicSoldierStats.getServiceStars();
         final Map<Integer, Double> serviceStarProgress = basicSoldierStats.getServiceStarProgress();
 
-        contentArea.removeAllViews();
+        root.removeAllViews();
         List<Integer> keys = new ArrayList<Integer>(serviceStars.keySet());
         Collections.sort(keys);
 
@@ -168,15 +167,14 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             setText(parent, R.id.service_star_count, String.valueOf(serviceStarCount));
             setText(parent, R.id.progress_text, roundedProgress + "%");
 
-            contentArea.addView(parent);
+            root.addView(parent);
         }
     }
 
     private void displayTopGameModes(final View baseView, final SkillOverview basicSoldierStats) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_top3_game_modes);
-        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area_game_modes);
 
-        contentArea.removeAllViews();
+        root.removeAllViews();
 
         for (GameModeServiceStar serviceStar : basicSoldierStats.getGameModeServiceStars()) {
             final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
@@ -187,7 +185,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             setText(parent, R.id.service_star_count, String.valueOf(serviceStar.getServiceStarCount()));
             setText(parent, R.id.progress_text, progress + "%");
 
-            contentArea.addView(parent);
+            root.addView(parent);
         }
     }
 
@@ -246,8 +244,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     private void displayToplist(final View baseView, final int wrapId, final List<BaseStatsModel> stats, final boolean isWeapon) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(wrapId);
-        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area);
-        contentArea.removeAllViews();
+        root.removeAllViews();
 
         for (int i = 0, max = 3; i < max; i++) {
             final View parent = layoutInflater.inflate(R.layout.list_item_soldier_toplist, null, false);
@@ -261,16 +258,15 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
                     format(stats.get(i).getKillCount())
                 )
             );
-            contentArea.addView(parent);
+            root.addView(parent);
         }
     }
 
     private void displayTopLeaderboards(final View baseView, final List<TopLeaderboardItem> leaderboardItems) {
         final Activity activity = getActivity();
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_top_leaderboards);
-        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area_leaderboards);
 
-        contentArea.removeAllViews();
+        root.removeAllViews();
         Collections.sort(leaderboardItems);
 
         for (TopLeaderboardItem item : leaderboardItems) {
@@ -284,7 +280,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
                 LeaderboardUtils.getScoreString(activity, item.getStatId(), item.getScore())
             );
 
-            contentArea.addView(parent);
+            root.addView(parent);
         }
     }
 
@@ -298,8 +294,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     private void displayCompletions(final View baseView, final List<CompletionProgress> completions) {
         final ViewGroup root = (ViewGroup) baseView.findViewById(R.id.wrap_soldier_completions);
-        final ViewGroup contentArea = (ViewGroup) root.findViewById(R.id.content_area_completions);
-        contentArea.removeAllViews();
+        root.removeAllViews();
 
         for (CompletionProgress completionProgress : completions) {
             final View parent = layoutInflater.inflate(R.layout.list_item_soldier_completion, null, false);
@@ -315,7 +310,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
                 )
             );
             setProgress(parent, R.id.progressbar, completionProgress.getCurrentValue(), completionProgress.getMaxValue());
-            contentArea.addView(parent);
+            root.addView(parent);
         }
     }
 
