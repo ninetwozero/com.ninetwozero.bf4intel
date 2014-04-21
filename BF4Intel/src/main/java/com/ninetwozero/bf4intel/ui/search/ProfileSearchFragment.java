@@ -104,7 +104,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        if (isReloading) {
+        if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
@@ -165,6 +165,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     }
 
     private void initialize(final View view) {
+        setupErrorMessage(view);
         setupDataFromBundle(getArguments());
         setupListView(view);
     }

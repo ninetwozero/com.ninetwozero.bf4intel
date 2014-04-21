@@ -69,4 +69,9 @@
         android:indeterminate="true"
         />
     </LinearLayout>
+
+  <include
+    android:id="@+id/inline_error_message"
+    layout="@layout/inlined_error_message"
+    />
 </RelativeLayout>

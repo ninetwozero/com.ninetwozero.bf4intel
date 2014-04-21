@@ -9,7 +9,6 @@
   android:gravity="center"
   android:layout_centerInParent="true"
   android:orientation="vertical"
-  android:visibility="gone"
   >
 
   <ProgressBar

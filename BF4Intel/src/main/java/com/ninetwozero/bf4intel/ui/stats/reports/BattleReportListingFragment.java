@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.events.stats.reports.BattleReportsRefreshedEvent;
@@ -41,7 +42,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
+        onRefreshEventReceived(event);
     }
 
     @Subscribe
@@ -70,7 +71,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        if (isReloading) {
+        if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
@@ -104,6 +105,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     }
 
     private void initialize(final View view) {
+        setupErrorMessage(view);
         setupListView(view);
     }
 

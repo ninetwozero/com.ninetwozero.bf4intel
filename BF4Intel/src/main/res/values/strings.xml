@@ -155,7 +155,8 @@
   <string name="action_sign_in_short">Sign in</string>
   <string name="prompt_email">Origin™ Email</string>
   <string name="prompt_password">Origin™ Password</string>
-  <string name="msg_no_network">This app requires Internet access - are you connected?</string>
+  <string name="msg_no_network">This feature requires Internet access.</string>
+  <string name="msg_unable_to_refresh">This feature requires Internet access.</string>
   <string name="login_progress_signing_in">Signing in&#8230;</string>
   <string name="label_login">Login</string>
   <string name="msg_downloading">Downloading information&#8230;</string>
@@ -216,4 +217,5 @@
   <string name="label_sort_categorized">By category</string>
   <string name="label_sort_progress">By progress</string>
   <string name="label_completed">Completed</string>
+  <string name="label_offline_mode">Offline mode</string>
 </resources>

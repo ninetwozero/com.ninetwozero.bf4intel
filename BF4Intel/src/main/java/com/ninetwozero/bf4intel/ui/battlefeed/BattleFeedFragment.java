@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.events.battlefeed.BattleFeedRefreshedEvent;
@@ -18,7 +19,6 @@ import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.battlefeed.FeedItem;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.battlefeed.BattleFeedService;
-import com.ninetwozero.bf4intel.services.news.NewsListingService;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
@@ -52,7 +52,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
+        onRefreshEventReceived(event);
     }
 
     @Override
@@ -79,6 +79,10 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
             return;
         }
 
+        if (!Bf4Intel.isConnectedToNetwork()) {
+            return;
+        }
+
         showLoadingState(true);
         isReloading = true;
 
@@ -99,6 +103,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     }
 
     private void initialize(final View view) {
+        setupErrorMessage(view);
         updateActionBar(getActivity(), "BATTLE FEED", R.drawable.ic_actionbar_feed);
         setupListView(view);
     }

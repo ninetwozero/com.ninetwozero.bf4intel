@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
@@ -57,10 +58,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
             new OneQuery.ResultHandler<WeaponStatsDAO>() {
                 @Override
                 public boolean handleResult(WeaponStatsDAO weaponstatsDAO) {
-                    final View view = getView();
-                    if (view == null) {
-                        return true;
-                    } else if (weaponstatsDAO == null) {
+                    if (weaponstatsDAO == null) {
                         startLoadingData();
                         return true;
                     }
@@ -75,7 +73,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        if (isReloading) {
+        if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
@@ -94,7 +92,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
+        onRefreshEventReceived(event);
     }
 
     @Subscribe
@@ -104,6 +102,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     }
 
     private void initialize(View view) {
+        setupErrorMessage(view);
         setupListView(view);
     }
 

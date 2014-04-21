@@ -42,11 +42,6 @@ public abstract class BaseUnlockFragment extends BaseLoadingFragment {
         super.onResume();
     }
 
-    @Override
-    protected void startLoadingData() {
-
-    }
-
     protected String resolveCriteriaLabel(final UnlockCriteria criteria) {
         if (criteria.isScoreCriteria()) {
             final int resource = UnlockCriteriaStringMap.get(criteria.getLabel());
@@ -70,6 +65,7 @@ public abstract class BaseUnlockFragment extends BaseLoadingFragment {
     }
 
     private void initialize(final View view) {
+        setupErrorMessage(view);
         setupListView(view);
     }
 

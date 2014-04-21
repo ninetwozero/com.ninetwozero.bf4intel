@@ -1,21 +1,22 @@
 package com.ninetwozero.bf4intel.base.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.factories.GsonProvider;
+import com.ninetwozero.bf4intel.ui.animations.SimpleFadeInAnimation;
+import com.ninetwozero.bf4intel.ui.animations.SimpleFadeOutAnimation;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
@@ -23,6 +24,8 @@ import com.squareup.otto.Subscribe;
 public abstract class BaseLoadingListFragment extends BaseListFragment implements Response.ErrorListener {
     protected Gson gson = GsonProvider.getInstance();
     protected boolean isReloading;
+
+    private TextView errorMessageView;
 
     @Override
     public void onCreate(final Bundle icicle) {
@@ -34,6 +37,13 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     public void onResume() {
         super.onResume();
         BusProvider.getInstance().register(this);
+
+        final ActionBar actionBar = getActivity().getActionBar();
+        if (actionBar != null) {
+            actionBar.setSubtitle(
+                Bf4Intel.isConnectedToNetwork() ? null : getString(R.string.label_offline_mode)
+            );
+        }
     }
 
     @Override
@@ -43,12 +53,24 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     }
 
     @Override
-    public void onErrorResponse(final VolleyError error) {
-        Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
+    public void onDestroyView() {
+        super.onDestroyView();
+        errorMessageView = null;
     }
 
-    @Subscribe
-    public void onRefreshEvent(RefreshEvent event) {
+    @Override
+    public void onErrorResponse(final VolleyError error) {
+        Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
+        if (getView() != null) {
+            showErrorMessage(error.getMessage());
+        }
+    }
+
+    protected void onRefreshEventReceived(RefreshEvent event) {
+        if (!Bf4Intel.isConnectedToNetwork()) {
+            showToast(R.string.msg_no_network);
+            return;
+        }
         startLoadingData();
     }
 
@@ -100,6 +122,36 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
             return;
         }
         loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+    }
+
+
+    protected void setupErrorMessage(final View view) {
+        errorMessageView = (TextView) view.findViewById(R.id.inline_error_message);
+        if (errorMessageView == null) {
+            throw new IllegalStateException("Missing TextView with ID: @id/inline_error_message");
+        }
+
+        errorMessageView.setOnClickListener(
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clearErrorMessage();
+                }
+            }
+        );
+    }
+
+    protected void showErrorMessage(final String textResource) {
+        errorMessageView.setText(textResource);
+        errorMessageView.startAnimation(new SimpleFadeInAnimation(errorMessageView));
+    }
+
+    protected void showErrorMessage(final int textResource) {
+        showErrorMessage(getString(textResource));
+    }
+
+    protected void clearErrorMessage() {
+        errorMessageView.startAnimation(new SimpleFadeOutAnimation(errorMessageView));
     }
 
     protected abstract void startLoadingData();
