@@ -53,25 +53,6 @@
       android:layout_height="wrap_content"
       />
   </ScrollView>
-  <LinearLayout
-    android:id="@+id/wrap_loading_progress"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:visibility="gone"
-    android:gravity="center"
-    android:background="@color/white"
-    >
-      <ProgressBar
-        style="?android:progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        />
-    </LinearLayout>
-
-  <include
-    android:id="@+id/inline_error_message"
-    layout="@layout/inlined_error_message"
-    />
+  <include layout="@layout/loading_progress"/>
+  <include layout="@layout/inlined_error_message"/>
 </RelativeLayout>

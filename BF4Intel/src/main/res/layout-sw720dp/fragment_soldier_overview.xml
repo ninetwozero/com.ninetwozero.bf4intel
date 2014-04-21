@@ -378,4 +378,5 @@
   </ScrollView>
 
   <include layout="@layout/loading_progress" />
+  <include layout="@layout/inlined_error_message" />
 </RelativeLayout>
