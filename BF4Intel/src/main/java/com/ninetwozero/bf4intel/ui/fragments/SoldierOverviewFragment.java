@@ -116,6 +116,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     @Subscribe
     public void onSoldierOverviewRefreshed(SoldierOverviewRefreshedEvent event) {
         isReloading = false;
+        showLoadingState(false);
     }
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {

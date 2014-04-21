@@ -286,7 +286,6 @@
   </ScrollView>
 
   <include layout="@layout/loading_progress" />
-  <include layout="@layout/loading_progress"/>
 
   <include
     android:id="@+id/inline_error_message"
