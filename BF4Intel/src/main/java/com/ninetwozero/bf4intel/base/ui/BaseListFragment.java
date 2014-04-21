@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
+import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 import java.util.Locale;
@@ -84,7 +86,7 @@ public abstract class BaseListFragment extends ListFragment {
         }
 
         final ActionBar actionBar = activity.getActionBar();
-        actionBar.setTitle(getString(resource).toUpperCase(Locale.getDefault()));
+        actionBar.setTitle(getString(resource));
     }
 
     protected void updateActionBar(final Activity activity, final String text, final int icon) {

@@ -28,16 +28,6 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
-      android:id="@+id/login_alert"
-      android:layout_width="wrap_content"
-      android:maxWidth="@dimen/error_message_size"
-      android:layout_height="wrap_content"
-      android:gravity="center"
-      android:drawableLeft="@drawable/ic_menu_warning"
-      android:layout_marginBottom="@dimen/spacing_l"
-      />
-
     <ImageView
       android:id="@+id/logo"
       android:layout_width="@dimen/home_logo_size"
@@ -134,4 +124,9 @@
       android:text="@string/msg_downloading"
       />
   </LinearLayout>
+
+  <include
+    android:id="@+id/inline_error_message"
+    layout="@layout/inlined_error_message"
+    />
 </RelativeLayout>

@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
@@ -59,10 +61,7 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
             new OneQuery.ResultHandler<DetailedStatsDAO>() {
                 @Override
                 public boolean handleResult(DetailedStatsDAO detailedStatsDAO) {
-                    final View view = getView();
-                    if (view == null) {
-                        return true;
-                    } else if (detailedStatsDAO == null) {
+                    if (detailedStatsDAO == null) {
                         startLoadingData();
                         return true;
                     }
@@ -77,7 +76,7 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
 
     @Override
     protected void startLoadingData() {
-        if (isReloading) {
+        if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
@@ -91,7 +90,7 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
+        onRefreshEventReceived(event);
     }
 
     @Subscribe
@@ -101,6 +100,7 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
     }
 
     private void initialize(View view) {
+        setupErrorMessage(view);
         setupListView(view);
     }
 
@@ -109,9 +109,13 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
             return;
         }
 
+        final TextView textView = (TextView) view.findViewById(android.R.id.empty);
+        textView.setText(R.string.msg_no_stats_details);
+
         final StickyListHeadersListView listView = (StickyListHeadersListView) view.findViewById(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setAreHeadersSticky(false);
+        listView.setEmptyView(textView);
     }
 
     private void sendDataToListView(View view, final List<List<DetailedStatsItem>> detailedStats) {

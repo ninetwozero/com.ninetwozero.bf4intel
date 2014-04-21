@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.dao.unlocks.weapons.WeaponUnlockDAO;
 import com.ninetwozero.bf4intel.events.unlocks.weapons.WeaponUnlocksRefreshedEvent;
@@ -44,10 +45,7 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
             new OneQuery.ResultHandler<WeaponUnlockDAO>() {
                 @Override
                 public boolean handleResult(WeaponUnlockDAO weaponUnlockDAO) {
-                    final View view = getView();
-                    if (view == null) {
-                        return true;
-                    } else if (weaponUnlockDAO == null) {
+                    if (weaponUnlockDAO == null) {
                         startLoadingData();
                         return true;
                     }
@@ -62,7 +60,7 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
 
     @Override
     protected void startLoadingData() {
-        if (isReloading) {
+        if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
@@ -76,7 +74,7 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
+        onRefreshEventReceived(event);
     }
 
     @Subscribe

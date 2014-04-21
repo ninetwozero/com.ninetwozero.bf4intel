@@ -79,7 +79,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
+        onRefreshEventReceived(event);
     }
 
     @Override
@@ -91,7 +91,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     @Override
     protected void startLoadingData() {
         final Bundle arguments = getArguments();
-        if (isReloading) {
+        if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
@@ -299,6 +299,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     }
 
     private void initialize(final View view) {
+        setupErrorMessage(view);
         setHasOptionsMenu(true);
         setupActionBar();
         setupListView(view);

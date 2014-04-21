@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.dao.unlocks.kits.KitUnlockDAO;
 import com.ninetwozero.bf4intel.events.unlocks.kits.KitUnlocksRefreshedEvent;
@@ -44,10 +45,7 @@ public class KitUnlockFragment extends BaseUnlockFragment {
             new OneQuery.ResultHandler<KitUnlockDAO>() {
                 @Override
                 public boolean handleResult(KitUnlockDAO kitUnlockDAO) {
-                    final View view = getView();
-                    if (view == null) {
-                        return true;
-                    } else if (kitUnlockDAO == null) {
+                    if (kitUnlockDAO == null) {
                         startLoadingData();
                         return true;
                     }
@@ -62,7 +60,7 @@ public class KitUnlockFragment extends BaseUnlockFragment {
 
     @Override
     protected void startLoadingData() {
-        if (isReloading) {
+        if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
@@ -76,7 +74,7 @@ public class KitUnlockFragment extends BaseUnlockFragment {
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
+        onRefreshEventReceived(event);
     }
 
     @Subscribe

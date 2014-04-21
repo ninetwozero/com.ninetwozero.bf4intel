@@ -47,13 +47,13 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         super.onCreateView(inflater, parent, state);
 
         final View view = layoutInflater.inflate(R.layout.fragment_news_listing, parent, false);
-        initialize();
+        initialize(view);
         return view;
     }
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
+        onRefreshEventReceived(event);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
 
     @Override
     protected void startLoadingData() {
-        if (isReloading) {
+        if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
@@ -132,8 +132,8 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         Bf4Intel.getRequestQueue().add(fetchRequestForHooah(data));
     }
 
-    private void initialize() {
-        updateActionBar(getActivity(), R.string.navigationdrawer_news);
+    private void initialize(final View view) {
+        setupErrorMessage(view);
     }
 
     private void sendItemsToListView(final List<NewsArticle> items) {

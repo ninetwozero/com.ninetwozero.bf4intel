@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.dao.unlocks.vehicles.VehicleUnlockDAO;
 import com.ninetwozero.bf4intel.events.unlocks.vehicles.VehicleUnlocksRefreshedEvent;
@@ -44,10 +45,7 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
             new OneQuery.ResultHandler<VehicleUnlockDAO>() {
                 @Override
                 public boolean handleResult(VehicleUnlockDAO vehicleUnlockDAO) {
-                    final View view = getView();
-                    if (view == null) {
-                        return true;
-                    } else if (vehicleUnlockDAO == null) {
+                    if (vehicleUnlockDAO == null) {
                         startLoadingData();
                         return true;
                     }
@@ -62,7 +60,7 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
 
     @Override
     protected void startLoadingData() {
-        if (isReloading) {
+        if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
@@ -76,7 +74,7 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
+        onRefreshEventReceived(event);
     }
 
     @Subscribe

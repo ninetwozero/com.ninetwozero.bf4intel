@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
@@ -37,7 +38,7 @@ public class AssignmentGridFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        final View view = inflater.inflate(R.layout.fragment_assignments, container, false);
+        final View view = inflater.inflate(R.layout.fragment_card_grid, container, false);
         initialize(view);
         return view;
     }
@@ -60,10 +61,7 @@ public class AssignmentGridFragment
             new OneQuery.ResultHandler<AssignmentsDAO>() {
                 @Override
                 public boolean handleResult(AssignmentsDAO assignmentsDAO) {
-                    final View view = getView();
-                    if (view == null) {
-                        return true;
-                    } else if (assignmentsDAO == null) {
+                    if (assignmentsDAO == null) {
                         startLoadingData();
                         return true;
                     }
@@ -79,7 +77,7 @@ public class AssignmentGridFragment
 
     @Override
     protected void startLoadingData() {
-        if (isReloading) {
+        if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
@@ -93,7 +91,7 @@ public class AssignmentGridFragment
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
+        onRefreshEventReceived(event);
     }
 
     @Subscribe
@@ -103,6 +101,7 @@ public class AssignmentGridFragment
     }
 
     private void initialize(View view) {
+        setupErrorMessage(view);
         setupGrid(view);
     }
 

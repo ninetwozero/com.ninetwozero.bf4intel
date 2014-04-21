@@ -35,7 +35,6 @@ import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
 import java.util.List;
-
 import se.emilsjolander.sprinkles.SqlStatement;
 import se.emilsjolander.sprinkles.Transaction;
 
@@ -48,7 +47,6 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private Bundle profileBundle;
     private View loginStatusView;
-    private TextView alertText;
     private EditText searchField;
     private SharedPreferences sharedPreferences;
     private int selectedSoldierPlatform;
@@ -63,7 +61,9 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        displayNetworkNotice(Bf4Intel.isConnectedToNetwork());
+        if (!Bf4Intel.isConnectedToNetwork()) {
+            displayNetworkNotice();
+        }
         BusProvider.getInstance().register(this);
     }
 
@@ -87,7 +87,6 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             loadSoldiers(profileBundle);
         }
     }
-
 
     // TODO: Refactor functionality to a service?
     private void loadSoldiers(final Bundle bundle) {
@@ -155,6 +154,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private void initialize() {
         setupFromPreExistingData();
+        setupErrorMessage();
         setupLayout();
     }
 
@@ -207,7 +207,6 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     }
 
     private void setupForm() {
-        alertText = (TextView) findViewById(R.id.login_alert);
         loginStatusView = findViewById(R.id.login_status);
         searchField = (EditText) findViewById(R.id.search_term);
 
@@ -216,7 +215,9 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                 @Override
                 public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                     if (id == EditorInfo.IME_ACTION_SEARCH) {
-                        onFormSubmitted();
+                        if (Bf4Intel.isConnectedToNetwork()) {
+                            onFormSubmitted();
+                        }
                         return true;
                     }
                     return false;
@@ -255,9 +256,9 @@ public class LoginActivity extends BaseLoadingIntelActivity {
         );
     }
 
-    private void displayNetworkNotice(final boolean isConnected) {
-        alertText.setVisibility(isConnected ? View.GONE : View.VISIBLE);
-        findViewById(R.id.button_search_account).setEnabled(isConnected);
+    private void displayNetworkNotice() {
+        showErrorMessage(R.string.msg_no_network);
+        findViewById(R.id.button_search_account).setEnabled(false);
     }
 
     private void setLoadingState(final boolean show) {

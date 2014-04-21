@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
@@ -56,7 +57,10 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
-        return layoutInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
+
+        final View view = layoutInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
+        setupErrorMessage(view);
+        return view;
     }
 
     @Override
@@ -77,10 +81,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             new OneQuery.ResultHandler<SoldierOverviewDAO>() {
                 @Override
                 public boolean handleResult(SoldierOverviewDAO soldierOverviewDAO) {
-                    final View view = getView();
-                    if (view == null) {
-                        return true;
-                    } else if (soldierOverviewDAO == null) {
+                    if (soldierOverviewDAO == null) {
                         startLoadingData();
                         return true;
                     }
@@ -95,7 +96,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     @Override
     protected void startLoadingData() {
-        if (isReloading) {
+        if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
@@ -109,12 +110,13 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
 
     @Subscribe
     public void onRefreshEvent(RefreshEvent event) {
-        startLoadingData();
+        onRefreshEventReceived(event);
     }
 
     @Subscribe
     public void onSoldierOverviewRefreshed(SoldierOverviewRefreshedEvent event) {
         isReloading = false;
+        showLoadingState(false);
     }
 
     private void displayInformation(final View baseView, final SoldierOverview soldierOverview) {

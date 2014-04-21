@@ -23,8 +23,6 @@ import com.ninetwozero.bf4intel.ui.login.LoginActivity;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
-import java.util.Locale;
-
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
     private static final String STATE_DRAWER_OPENED = "isDrawerOpened";
@@ -47,22 +45,11 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         initialize(savedInstanceState);
     }
 
-    private void initialize(final Bundle savedInstanceState) {
-        shouldShowDualPane = getResources().getBoolean(R.bool.main_is_dualpane);
-
-        navigationDrawer = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentByTag("NavigationDrawerFragment");
-        if (!shouldShowDualPane) {
-            setupActionBar();
-            setupActionBarToggle();
-        }
-        setupActivityFromState(savedInstanceState);
-    }
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
-
     @Override
     public boolean onPrepareOptionsMenu(final Menu menu) {
         final MenuItem userSelectionItem = menu.findItem(R.id.ab_action_select_user);
@@ -128,12 +115,12 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         super.onBackPressed();
     }
 
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(STATE_DRAWER_OPENED, isDrawerOpen() || shouldShowDualPane);
     }
+
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -148,7 +135,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
     @Override
     public void onNavigationDrawerItemSelected(final int position, final String title) {
-        this.title = title == null? this.title : title.toUpperCase(Locale.getDefault());
+        this.title = title == null? this.title : title;
         if (drawerLayout != null) {
             toggleNavigationDrawer(false);
         }
@@ -185,6 +172,17 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
             navigationDrawer.onStartedTrackingNewProfile(event);
             BusProvider.getInstance().post(event);
         }
+    }
+
+    private void initialize(final Bundle savedInstanceState) {
+        shouldShowDualPane = getResources().getBoolean(R.bool.main_is_dualpane);
+
+        navigationDrawer = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentByTag("NavigationDrawerFragment");
+        if (!shouldShowDualPane) {
+            setupActionBar();
+            setupActionBarToggle();
+        }
+        setupActivityFromState(savedInstanceState);
     }
 
     private void setupActionBarToggle() {
