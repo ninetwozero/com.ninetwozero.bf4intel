@@ -84,7 +84,7 @@ public class SearchActivity extends BaseIntelActivity {
             finish();
         }
 
-        bundle.putString(ProfileSearchFragment.INTENT_SEARCH_RESULT, query);
+        bundle.putString(ProfileSearchFragment.INTENT_QUERY_STRING, query);
         return bundle;
     }
 
