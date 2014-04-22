@@ -344,21 +344,21 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
         final ListRowElement row = adapter.getItem(actualPosition);
         if (row instanceof SimpleListRow) {
-            selectItem((SimpleListRow) row, actualPosition, true, true);
+            selectItem((SimpleListRow) row, actualPosition, !callbacks.isDrawerOpen(), true);
         }
     }
 
-    private void selectItem(final SimpleListRow item, final int position, final boolean closeDrawer, final boolean isOnResume) {
+    private void selectItem(final SimpleListRow item, final int position, final boolean shouldCloseDrawer, final boolean isOnResume) {
         final boolean isFragment = !item.hasIntent();
         if (listView != null && isFragment) {
             listView.setItemChecked(position, true);
+            storePositionState(position);
         }
 
-        if (callbacks != null && closeDrawer) {
-            callbacks.onNavigationDrawerItemSelected(position, isFragment ? item.getTitle() : null);
+        if (callbacks != null && isFragment) {
+            callbacks.onNavigationDrawerItemSelected(position, shouldCloseDrawer, isFragment ? item.getTitle() : null);
         }
-
-        storePositionState(position);
+        
         startItem(item, isOnResume);
     }
 
@@ -390,7 +390,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     public static interface NavigationDrawerCallbacks {
-        void onNavigationDrawerItemSelected(final int position, final String title);
+        void onNavigationDrawerItemSelected(final int position, final boolean shouldClose, final String title);
         boolean isDrawerOpen();
     }
 }

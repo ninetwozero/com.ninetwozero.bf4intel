@@ -134,9 +134,9 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     @Override
-    public void onNavigationDrawerItemSelected(final int position, final String title) {
+    public void onNavigationDrawerItemSelected(final int position, final boolean shouldClose, final String title) {
         this.title = title == null? this.title : title;
-        if (drawerLayout != null) {
+        if (drawerLayout != null && shouldClose) {
             toggleNavigationDrawer(false);
         }
 
