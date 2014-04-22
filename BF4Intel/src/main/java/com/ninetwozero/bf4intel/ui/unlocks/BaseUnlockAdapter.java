@@ -12,11 +12,6 @@ public abstract class BaseUnlockAdapter<T> extends BaseIntelAdapter<T> {
         super(context);
     }
 
-    @Override
-    public void setImage(View view, int resourceId, int imageResource) {
-        super.setImage(view, resourceId, imageResource, R.drawable.kit_none);
-    }
-
     protected void displayInformationForCriteria(final View view, final UnlockCriteria criteria) {
         setProgress(view, R.id.unlock_completion, criteria.getCompletion(), 100);
         setVisibility(view, R.id.unlock_status_icon, criteria.isCompleted() ? View.VISIBLE : View.GONE);
