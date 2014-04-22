@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ProfileSearchFragment extends BaseLoadingListFragment {
-    public static final String INTENT_SEARCH_RESULT = "profile_search_result";
+    public static final String INTENT_QUERY_STRING = "query_string";
 
     private static final int GAME_ID_BF4 = 2048;
     private static final int GAME_ID_MOHW = 4096;
@@ -47,6 +47,11 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(Bundle icicle) {
+        queryString = getArguments().getString(INTENT_QUERY_STRING, "");
+        super.onCreate(icicle);
+    }
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
@@ -166,12 +171,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
 
     private void initialize(final View view) {
         setupErrorMessage(view);
-        setupDataFromBundle(getArguments());
         setupListView(view);
-    }
-
-    private void setupDataFromBundle(final Bundle arguments) {
-        queryString = arguments.getString(INTENT_SEARCH_RESULT, "");
     }
 
     private void setupListView(final View view) {

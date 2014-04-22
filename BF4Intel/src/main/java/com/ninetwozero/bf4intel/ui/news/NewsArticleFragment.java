@@ -69,6 +69,14 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     }
 
     @Override
+    public void onCreate(Bundle icicle) {
+        articleId = getArguments().getString(ID, "");
+        articleUrl = UrlFactory.buildNewsArticleURL(articleId);
+
+        super.onCreate(icicle);
+    }
+
+    @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
@@ -97,9 +105,6 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
         showLoadingState(arguments.getBoolean(FLAG_SHOW_LOADING, true));
         isReloading = true;
-
-        articleId = arguments.getString(ID, "");
-        articleUrl = UrlFactory.buildNewsArticleURL(articleId);
 
         final Intent intent = new Intent(getActivity(), NewsArticleService.class);
         intent.putExtra(NewsArticleService.INTENT_ARTICLE_ID, articleId);
@@ -300,7 +305,6 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
     private void initialize(final View view) {
         setupErrorMessage(view);
-        setHasOptionsMenu(true);
         setupActionBar();
         setupListView(view);
         setupForm(view);
