@@ -20,10 +20,9 @@
   <ImageView
     android:id="@+id/img_unlock"
     android:layout_width="@dimen/unlock_image_width"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/unlock_image_height"
     android:layout_centerHorizontal="true"
     android:contentDescription="@string/cdesc_unlock_image"
-    android:scaleType="fitCenter"
     />
 
   <TextView
