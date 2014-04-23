@@ -39,12 +39,26 @@ import com.squareup.otto.Subscribe;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import se.emilsjolander.sprinkles.OneQuery;
 import se.emilsjolander.sprinkles.Query;
 
 public class SoldierOverviewFragment extends BaseLoadingFragment {
+    private static final Map<String, Integer> gameModeTitleMap = new HashMap<String, Integer>() {
+        {
+            put("sc_conquest", R.string.gamemode_conquest);
+            put("sc_rush", R.string.gamemode_rush);
+            put("sc_obliteration", R.string.gamemode_obliteration);
+            put("sc_capturetheflag", R.string.gamemode_capture_the_flag);
+            put("sc_airsuperiority", R.string.gamemode_air_superiority);
+            put("sc_elimination", R.string.gamemode_defuse);
+            put("sc_domination", R.string.gamemode_domination);
+            put("sc_deathmatch",  R.string.gamemode_deathmatch);
+        }
+    };
+    
     public SoldierOverviewFragment() {
     }
 
@@ -191,25 +205,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     }
 
     private int fetchGameModeTitleFromKey(String key) {
-        if (key.equals("sc_conquest")) {
-            return R.string.gamemode_conquest;
-        } else if (key.equals("sc_rush")) {
-            return R.string.gamemode_rush;
-        } else if (key.equals("sc_obliteration")) {
-            return R.string.gamemode_obliteration;
-        } else if (key.equals("sc_capturetheflag")) {
-            return R.string.gamemode_capture_the_flag;
-        } else if (key.equals("sc_airsuperiority")) {
-            return R.string.gamemode_air_superiority;
-        } else if (key.equals("sc_defuse")) {
-            return R.string.gamemode_defuse;
-        } else if (key.equals("sc_domination")) {
-            return R.string.gamemode_domination;
-        } else if (key.equals("sc_deathmatch")) {
-            return R.string.gamemode_deathmatch;
-        } else {
-            return R.string.na;
-        }
+        return gameModeTitleMap.containsKey(key) ? gameModeTitleMap.get(key) : R.string.na;
     }
 
     private void displaySkills(final View baseView, final SkillOverview basicSoldierStats) {
