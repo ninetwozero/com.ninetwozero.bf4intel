@@ -7,7 +7,6 @@ public class GameModeStringMap {
     private static final Map<Integer, String> map = new HashMap<Integer, String>() {{
         put(1, "Conquest");
         put(2, "Rush");
-        put(4, "Squad Deathmatch");
         put(8, "Squad Deathmatch");
         put(32, "Team Deathmatch");
         put(64, "Conquest Large");
