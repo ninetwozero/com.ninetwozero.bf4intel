@@ -67,12 +67,12 @@ public class StatsDetails {
         private int captureTheFlag;
         @SerializedName("obliteration")
         private int obliteration;
-    /*
-    Missing in JSON
-    @SerializedName("")
-    private int airSupperiority;
-    @SerializedName("")
-    private int defuse;*/
+        @SerializedName("airsuperiority")
+        private int airSuperiority;
+        @SerializedName("elimination")
+        private int defuse;
+        @SerializedName("carrierassault")
+        private int carrieAssault;
 
         /*Team*/
         @SerializedName("repairs")
@@ -214,6 +214,18 @@ public class StatsDetails {
 
         public int getObliteration() {
             return obliteration;
+        }
+
+        public int getAirSuperiority() {
+            return airSuperiority;
+        }
+
+        public int getDefuse() {
+            return defuse;
+        }
+
+        public int getCarrieAssault() {
+            return carrieAssault;
         }
 
         public int getRepairs() {

@@ -62,8 +62,9 @@ public class DetailedStatsGrouper {
         items.add(new DetailedStatsItem("domination",  stringValueOf(details.getDomination())));
         items.add(new DetailedStatsItem("capture_the_flag",  stringValueOf(details.getCaptureTheFlag())));
         items.add(new DetailedStatsItem("obliteration",  stringValueOf(details.getObliteration())));
-        items.add(new DetailedStatsItem("air_superiority", stringValueOf(0 /*details.getAirSuperiority()*/)));
-        items.add(new DetailedStatsItem("defuse", stringValueOf(0 /*details.getDefuse()*/)));
+        items.add(new DetailedStatsItem("air_superiority", stringValueOf(details.getAirSuperiority())));
+        items.add(new DetailedStatsItem("defuse", stringValueOf(details.getDefuse())));
+        items.add(new DetailedStatsItem("carrier_assault", stringValueOf(details.getCarrieAssault())));
         return items;
     }
 
@@ -101,17 +102,14 @@ public class DetailedStatsGrouper {
     }
 
     private static String stringValueOf(int value) {
-        return value != 0 ? String.valueOf(NumberFormat.getInstance(Locale.getDefault()).format(value)) : EMPTY_VALUE;
+        return String.valueOf(NumberFormat.getInstance(Locale.getDefault()).format(value));
     }
 
     private static String stringValueOf(double value) {
-        return value != 0.0 ? NumberFormatter.format(value) : EMPTY_VALUE;
+        return NumberFormatter.format(value);
     }
 
     private static String stringValueOf(double value, String postfix) {
-        if (value == 0.0) {
-            return EMPTY_VALUE;
-        }
         return String.format(
             Locale.getDefault(),
             "%s%s",

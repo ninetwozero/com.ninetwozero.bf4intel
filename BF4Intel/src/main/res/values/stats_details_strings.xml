@@ -26,12 +26,13 @@
   <string name="game_modes">Game modes</string>
   <string name="conquest">Conquest</string>
   <string name="rush">Rush</string>
-  <string name="death_match">Death Match</string>
+  <string name="death_match">Deathmatch</string>
   <string name="domination">Domination</string>
   <string name="capture_the_flag">Capture the Flag</string>
   <string name="obliteration">Obliteration</string>
   <string name="air_superiority">Air Superiority</string>
   <string name="defuse">Defuse</string>
+  <string name="carrier_assault">Carrier Assault</string>
 
   <string name="team_score">Team</string>
   <string name="repairs">Repairs</string>
