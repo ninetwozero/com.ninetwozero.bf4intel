@@ -95,7 +95,7 @@
   <string name="gamemode_air_superiority">Air Superiority</string>
   <string name="gamemode_defuse">Defuse</string>
   <string name="gamemode_domination">Domination</string>
-  <string name="gamemode_deathmatch">Team Deathmatch</string>
+  <string name="gamemode_deathmatch">Deathmatch</string>
 
   <!-- Strings for the Skills -->
   <string name="skills_kd">K/D</string>
