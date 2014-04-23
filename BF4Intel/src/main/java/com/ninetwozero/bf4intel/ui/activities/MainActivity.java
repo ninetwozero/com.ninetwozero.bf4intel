@@ -118,7 +118,12 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putBoolean(STATE_DRAWER_OPENED, isDrawerOpen() || shouldShowDualPane);
+
+        if (shouldShowDualPane) {
+            outState.putBoolean(STATE_DRAWER_OPENED, false);
+        } else {
+            outState.putBoolean(STATE_DRAWER_OPENED, isDrawerOpen());
+        }
     }
 
 
