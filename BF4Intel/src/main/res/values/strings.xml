@@ -13,6 +13,7 @@
   <string name="label_activity_assignments">ASSIGNMENTS</string>
   <string name="label_activity_awards">AWARDS</string>
   <string name="label_activity_unlocks">UNLOCKS</string>
+  <string name="label_activity_test">Test</string>
   <string name="label_search">Search</string>
   <string name="label_vehicle_unlocks">Vehicle unlocks</string>
   <string name="label_service_soldieroverview">Soldier Overview Service</string>
@@ -218,4 +219,8 @@
   <string name="label_sort_progress">By progress</string>
   <string name="label_completed">Completed</string>
   <string name="label_offline_mode">Offline mode</string>
+  <string name="menu_test">Test</string>
+  <string name="assignment_prerequisite">Pre-requisites</string>
+  <string name="assignment_tasks">Tasks</string>
+  <string name="assignment_reward">Reward</string>
 </resources>

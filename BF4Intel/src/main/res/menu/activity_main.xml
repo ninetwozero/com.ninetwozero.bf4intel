@@ -16,6 +16,12 @@
     android:showAsAction="never"
     />
   <item
+    android:id="@+id/ab_action_test"
+    android:title="@string/menu_test"
+    android:showAsAction="never"
+    android:visible="false"
+    />
+  <item
     android:id="@+id/ab_action_logout"
     android:title="@string/menu_logout"
     android:showAsAction="never"
