@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/RegularCard"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="horizontal"
+  android:weightSum="1">
+
+  <FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/mp_abandoned"
+      />
+
+    <TextView
+      android:id="@+id/user_match_result"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="@dimen/text_xxl"
+      android:textStyle="bold"
+      android:background="#33FFFFFF"
+      android:layout_gravity="center"
+      android:padding="8dp"
+      android:text="WON" />
+    </FrameLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="right">
+
+    <TextView
+      android:id="@+id/map_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo.Large"
+      android:textColor="@android:color/holo_blue_light"
+      android:text="Zavod 311" />
+
+    <TextView
+      android:id="@+id/game_mode"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
+      android:textColor="@color/darkgrey"
+      android:text="Conquest Large" />
+
+    <TextView
+      android:id="@+id/server_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo"
+      android:textColor="@color/darkgrey"
+      android:text="SaS]24/7|#1|Hardcore 64|Sniper/M224 Limit| www.sasclan.org.uk"
+      android:gravity="right" />
+
+    <LinearLayout
+      android:id="@+id/match_result"
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:gravity="right">
+
+        <TextView
+          android:id="@+id/label_round_time"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/battlereport_time" />
+
+        <TextView
+          android:id="@+id/round_time"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/label_round_time"
+          android:layout_marginLeft="@dimen/spacing_s"
+          android:text="25m 11s" />
+
+        <TextView
+          android:id="@+id/date"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
+          android:layout_below="@id/label_round_time"
+          android:text="21 hours ago" />
+      </RelativeLayout>
+    </LinearLayout>
+
+
+
+  </LinearLayout>
+
+</LinearLayout>
