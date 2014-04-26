@@ -28,6 +28,7 @@ import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.profile.PlatformStringMap;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
+import com.ninetwozero.bf4intel.utils.PersonaUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +36,6 @@ import java.util.Map;
 
 public class ProfileSearchFragment extends BaseLoadingListFragment {
     public static final String INTENT_QUERY_STRING = "query_string";
-
-    private static final int GAME_ID_BF4 = 2048;
-    private static final int GAME_ID_MOHW = 4096;
 
     private String queryString;
 
@@ -98,14 +96,6 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
             searchItem.setVisible(true);
         }
     }
-
-    /*
-        Due to Battlelog doing the search by the soldier name (and not the username), we need to
-        get the users that are playing BF4 but not MOHW (gameId >= 2048 && gameId < 4096)
-
-        Info: http://battlelog.battlefield.com/bf4/user/haruhi00/
-        Info: http://battlelog.battlefield.com/bf4/user/cursef (MOHW)
-    */
 
     @Override
     protected void startLoadingData() {
@@ -208,7 +198,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
             Map<Integer, Integer> games = result.getGames();
             for (int platformId : games.keySet()) {
                 final int gameForPlatform = games.get(platformId);
-                if (gameForPlatform >= GAME_ID_BF4 && gameForPlatform < GAME_ID_MOHW) {
+                if (PersonaUtils.isBf4Soldier(gameForPlatform)) {
                     validAccounts.add(
                         new ProfileSearchResult(
                             result.getPersonaId(),
