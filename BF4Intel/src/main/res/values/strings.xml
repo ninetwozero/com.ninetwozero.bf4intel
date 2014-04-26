@@ -4,8 +4,6 @@
   <!-- Instead of 3 dots "..." after some messages please use &#8230; -->
 
   <string name="app_name">BF4 Intel</string>
-  <string name="action_settings">Settings</string>
-  <string name="hello_world">Hello world!</string>
 
   <!--Manifest labels-->
   <string name="label_activity_single_fragment">@string/app_name</string>
@@ -14,7 +12,6 @@
   <string name="label_activity_awards">AWARDS</string>
   <string name="label_activity_unlocks">UNLOCKS</string>
   <string name="label_search">Search</string>
-  <string name="label_vehicle_unlocks">Vehicle unlocks</string>
   <string name="label_service_soldieroverview">Soldier Overview Service</string>
   <string name="label_service_stats_weapons">Weapon Stats Service</string>
   <string name="label_service_stats_vehicles">Vehicle Stats Service</string>
@@ -56,12 +53,9 @@
   <string name="details">Details</string>
   <string name="assignments">Assignments</string>
   <string name="awards">Awards</string>
-  <string name="battlereports">Battle Reports</string>
   <string name="service_stars">Service Stars</string>
   <string name="kits">Kits</string>
   <string name="comments">Comments</string>
-  <string name="soldier_quick_stats">Quick Statistics</string>
-  <string name="soldier_detailed_stats">In-depth Statistics</string>
   <string name="soldier_skill">Skill</string>
   <string name="soldier_rating">Rating</string>
   <string name="soldier_completion">Completion level</string>
@@ -70,7 +64,6 @@
   <string name="num_kills">%1$s kills</string>
   <string name="profile_information_header">Basic Information</string>
   <string name="profile_presentation_header">Presentation</string>
-  <string name="progress">Progress</string>
 
   <!-- Soldier Overview -->
   <string name="soldier_enlisted_on">Enlisted on</string>
@@ -146,7 +139,6 @@
   <!-- Login related stuff -->
   <string name="title_home">Welcome to BF4 Intel!</string>
   <string name="home_main_information_guest">Looks like you haven\'t set the app up yet. Let\'s fix that!</string>
-  <string name="home_main_information_tracker">Currently tracking</string>
   <string name="home_select_account">Select account</string>
   <string name="home_select_another_account">Change account</string>
   <string name="action_search_short">Search</string>
