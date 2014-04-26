@@ -10,29 +10,32 @@
   <FrameLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
+
     <ImageView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="@dimen/w_battlereport_list_img"
+      android:layout_height="@dimen/h_battlereport_list_img"
       android:src="@drawable/mp_abandoned"
-      />
+      android:contentDescription="@string/cdesc_battlereport_map_image" />
 
     <TextView
       android:id="@+id/user_match_result"
-      android:layout_width="match_parent"
+      android:layout_width="@dimen/w_battlereport_list_img"
       android:layout_height="wrap_content"
       android:textSize="@dimen/text_xxl"
       android:textStyle="bold"
-      android:background="#33FFFFFF"
+      android:background="@color/table_battlereport_result_bg"
       android:layout_gravity="center"
+      android:gravity="center_horizontal"
       android:padding="8dp"
-      android:text="WON" />
-    </FrameLayout>
+      />
+  </FrameLayout>
 
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="right">
+    android:paddingLeft="@dimen/spacing_xl"
+    android:weightSum="1">
 
     <TextView
       android:id="@+id/map_name"
@@ -40,7 +43,8 @@
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo.Large"
       android:textColor="@android:color/holo_blue_light"
-      android:text="Zavod 311" />
+      android:layout_weight="0.2"
+      />
 
     <TextView
       android:id="@+id/game_mode"
@@ -48,7 +52,8 @@
       android:layout_height="wrap_content"
       android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
       android:textColor="@color/darkgrey"
-      android:text="Conquest Large" />
+      android:layout_weight="0.2"
+      />
 
     <TextView
       android:id="@+id/server_name"
@@ -56,48 +61,37 @@
       android:layout_height="wrap_content"
       android:textAppearance="@android:style/TextAppearance.Holo"
       android:textColor="@color/darkgrey"
-      android:text="SaS]24/7|#1|Hardcore 64|Sniper/M224 Limit| www.sasclan.org.uk"
-      android:gravity="right" />
+      android:layout_weight="0.2"
+      />
 
     <LinearLayout
       android:id="@+id/match_result"
       android:orientation="horizontal"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+      android:layout_weight="0.2">
 
-      <RelativeLayout
-        android:layout_width="0dp"
+      <TextView
+        android:id="@+id/label_round_time"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center_vertical"
-        android:gravity="right">
+        android:text="@string/battlereport_time" />
 
-        <TextView
-          android:id="@+id/label_round_time"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/battlereport_time" />
-
-        <TextView
-          android:id="@+id/round_time"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_toRightOf="@id/label_round_time"
-          android:layout_marginLeft="@dimen/spacing_s"
-          android:text="25m 11s" />
-
-        <TextView
-          android:id="@+id/date"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
-          android:layout_below="@id/label_round_time"
-          android:text="21 hours ago" />
-      </RelativeLayout>
+      <TextView
+        android:id="@+id/round_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_s"
+        />
     </LinearLayout>
 
-
-
+    <TextView
+      android:id="@+id/date"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
+      android:layout_weight="0.2"
+      />
   </LinearLayout>
 
 </LinearLayout>
