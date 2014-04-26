@@ -12,9 +12,9 @@
     android:layout_height="wrap_content">
 
     <ImageView
+      android:id="@+id/battlereport_map_image"
       android:layout_width="@dimen/w_battlereport_list_img"
       android:layout_height="@dimen/h_battlereport_list_img"
-      android:src="@drawable/mp_abandoned"
       android:contentDescription="@string/cdesc_battlereport_map_image" />
 
     <TextView

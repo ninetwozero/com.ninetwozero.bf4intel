@@ -8,7 +8,7 @@ import com.ninetwozero.bf4intel.base.ui.BaseLayoutPopulator;
 import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.events.CommentedGameReportEvent;
 import com.ninetwozero.bf4intel.resources.maps.GameModeStringMap;
-import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
+import com.ninetwozero.bf4intel.resources.maps.levels.LevelStringMap;
 
 public class CommentedGameReportLayout extends BaseLayoutPopulator implements EventLayout<CommentedGameReportEvent> {
     @Override
