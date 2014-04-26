@@ -33,6 +33,7 @@ import com.ninetwozero.bf4intel.ui.about.AppInfoActivity;
 import com.ninetwozero.bf4intel.ui.activities.MainActivity;
 import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
+import com.ninetwozero.bf4intel.utils.PersonaUtils;
 
 import java.util.List;
 import se.emilsjolander.sprinkles.SqlStatement;
@@ -42,8 +43,6 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     public static final int REQUEST_PROFILE = 0;
 
     private static final String RESET_PASSWORD_LINK = "https://signin.ea.com/p/web/resetPassword";
-    private static final int GAME_ID_BF4 = 2048;
-    private static final int GAME_ID_MOHW = 4096;
 
     private Bundle profileBundle;
     private View loginStatusView;
@@ -108,7 +107,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
                     for (int i = 0; i < soldierCount; i++) {
                         final SummarizedSoldierStats stats = request.getSoldiers().get(i);
-                        if (stats.getGameId() >= GAME_ID_BF4 && stats.getGameId() < GAME_ID_MOHW) {
+                        if (PersonaUtils.isBf4Soldier(stats.getGameId())) {
                             if (bf4SoldierCount == 0) {
                                 new SqlStatement(
                                     "DELETE FROM " +
