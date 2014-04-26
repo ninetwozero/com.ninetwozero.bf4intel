@@ -8,11 +8,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/spacing_s"
-    android:text="*NINETWOZERO* commented on your *wallpost*."
     android:textAppearance="@android:style/TextAppearance.Holo.Small" />
   <TextView
     style="@style/SmallMetaText"
     android:id="@+id/timestamp"
-    android:text="4 hours ago"
     android:layout_below="@id/content" />
 </RelativeLayout>
