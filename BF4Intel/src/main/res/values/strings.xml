@@ -172,6 +172,7 @@
   <!--News-->
   <string name="msg_error_not_found">Resource not found.</string>
   <string name="msg_empty_news">No news found.</string>
+  <string name="text_divider">|</string>
 
   <!--Generic used in various places of app-->
   <string name="unknown">Unknown</string>
