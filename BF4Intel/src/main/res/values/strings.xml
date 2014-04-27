@@ -215,4 +215,12 @@
   <string name="assignment_prerequisite">Pre-requisites</string>
   <string name="assignment_requirements">Award Requirements</string>
   <string name="assignment_reward">Reward</string>
+  <string name="label_information">Information</string>
+  <string name="damage">Damage</string>
+  <string name="hip_fire">Hip Fire</string>
+  <string name="range">Range</string>
+  <string name="fire_modes">Fire Modes</string>
+  <string name="fire_mode_single">Single</string>
+  <string name="fire_mode_burst">Burst</string>
+  <string name="fire_mode_auto">Auto</string>
 </resources>
