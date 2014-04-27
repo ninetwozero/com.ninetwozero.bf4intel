@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 import com.squareup.picasso.Picasso;
 
@@ -29,6 +30,9 @@ public abstract class BaseFragment extends Fragment {
     protected LayoutInflater layoutInflater;
     protected SharedPreferences sharedPreferences;
 
+    private boolean sw600dp;
+    private boolean sw720dp;
+
     private static Toast toast;
 
     @Override
@@ -36,6 +40,9 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(icicle);
         setRetainInstance(!getArgumentsBundle().getBoolean(FLAG_DISABLE_RETAIN_STATE, false));
         fragmentManager = getFragmentManager();
+
+        sw600dp = getResources().getBoolean(R.bool.is_sw600dp);
+        sw720dp = getResources().getBoolean(R.bool.is_sw720dp);
     }
 
     @Override
@@ -58,6 +65,14 @@ public abstract class BaseFragment extends Fragment {
         if (!bundle.getBoolean(FLAG_DISABLE_AUTOMATIC_ANALYTICS, false)) {
             postGoogleAnalytics();
         }
+    }
+
+    protected boolean isSw600dp() {
+        return sw600dp;
+    }
+
+    protected boolean isSw720dp() {
+        return sw720dp;
     }
 
     protected Bundle getArgumentsBundle() {
