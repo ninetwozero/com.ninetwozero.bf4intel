@@ -3,10 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:paddingTop="@dimen/spacing_m"
-  android:paddingLeft="@dimen/spacing_m"
-  android:paddingRight="@dimen/spacing_m"
-  android:paddingBottom="@dimen/spacing_m"
+  android:padding="@dimen/spacing_m"
   android:background="@color/card_activity_bg"
   >
   <LinearLayout
@@ -63,7 +60,7 @@
     <Button
       style="@style/BlueButton"
       android:id="@+id/button_email"
-      android:layout_width="@dimen/card_big_button_width"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_gravity="center_horizontal"
       android:text="@string/msg_info_email"
@@ -72,7 +69,7 @@
     <Button
       style="@style/BlueButton"
       android:id="@+id/button_gplus"
-      android:layout_width="@dimen/card_big_button_width"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_gravity="center_horizontal"
       android:text="@string/msg_info_join_gplus"
@@ -81,7 +78,7 @@
     <Button
       style="@style/BlueButton"
       android:id="@+id/button_tweet"
-      android:layout_width="@dimen/card_big_button_width"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_gravity="center_horizontal"
       android:text="@string/msg_info_join_tweet"

@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.ninetwozero.bf4intel"
-  >
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.ninetwozero.bf4intel">
 
-  <uses-sdk
-    android:minSdkVersion="14"
-    android:targetSdkVersion="19"
-    />
-
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
 
   <application
     android:allowBackup="true"
@@ -23,11 +16,11 @@
       android:icon="@drawable/ic_launcher">
       <meta-data
         android:name="android.app.searchable"
-        android:resource="@xml/searchable"/>
+        android:resource="@xml/searchable" />
       <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
+        <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER"/>
+        <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
 
@@ -37,11 +30,10 @@
       android:label="@string/label_login"
       android:launchMode="singleTop"
       android:windowSoftInputMode="adjustPan|stateUnchanged"
-      android:parentActivityName=".ui.activities.MainActivity"
-      >
+      android:parentActivityName=".ui.activities.MainActivity">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ui.activities.MainActivity"/>
+        android:value=".ui.activities.MainActivity" />
     </activity>
 
     <activity
@@ -52,7 +44,7 @@
       android:windowSoftInputMode="stateUnchanged">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ui.activities.MainActivity"/>
+        android:value=".ui.activities.MainActivity" />
     </activity>
 
     <activity
@@ -60,11 +52,10 @@
       android:label="@string/label_activity_assignments"
       android:screenOrientation="portrait"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme"
-      >
+      android:theme="@style/AppTheme">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ui.activities.MainActivity"/>
+        android:value=".ui.activities.MainActivity" />
     </activity>
 
     <activity
@@ -72,23 +63,20 @@
       android:label="@string/label_activity_awards"
       android:screenOrientation="portrait"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme"
-      >
+      android:theme="@style/AppTheme">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ui.activities.MainActivity"/>
+        android:value=".ui.activities.MainActivity" />
     </activity>
 
     <activity
       android:name=".ui.about.AppInfoActivity"
       android:label="@string/label_about"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme"
-      >
+      android:theme="@style/AppTheme">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ui.activities.MainActivity"
-        />
+        android:value=".ui.activities.MainActivity" />
     </activity>
 
     <activity
@@ -98,100 +86,78 @@
       android:launchMode="singleTop"
       android:theme="@style/AppTheme">
       <intent-filter>
-        <action android:name="android.intent.action.SEARCH"/>
+        <action android:name="android.intent.action.SEARCH" />
       </intent-filter>
 
       <meta-data
         android:name="android.app.searchable"
-        android:resource="@xml/searchable">
-      </meta-data>
+        android:resource="@xml/searchable"></meta-data>
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ui.activities.MainActivity">
-      </meta-data>
+        android:value=".ui.activities.MainActivity"></meta-data>
     </activity>
 
     <meta-data
       android:name="android.app.default_searchable"
-      android:value=".ui.activities.SearchActivity"
-      />
+      android:value=".ui.activities.SearchActivity" />
 
     <!-- Services -->
-
     <service
       android:name=".services.SoldierOverviewService"
-      android:label="@string/label_service_soldieroverview"
-      />
+      android:label="@string/label_service_soldieroverview" />
 
     <!-- Stats -->
-
     <service
       android:name=".services.stats.weapons.WeaponStatsService"
-      android:label="@string/label_service_stats_weapons"
-      />
+      android:label="@string/label_service_stats_weapons" />
 
     <service
       android:name=".services.stats.vehicles.VehicleStatsService"
-      android:label="@string/label_service_stats_vehicles"
-      />
+      android:label="@string/label_service_stats_vehicles" />
 
     <service
       android:name=".services.stats.reports.BattleReportService"
-      android:label="@string/label_service_stats_reports"
-      />
+      android:label="@string/label_service_stats_reports" />
 
     <service
       android:name=".services.stats.details.DetailedStatsService"
-      android:label="@string/label_service_stats_details"
-      />
+      android:label="@string/label_service_stats_details" />
 
     <!-- Unlocks -->
-
     <service
       android:name=".services.unlocks.weapons.WeaponUnlockService"
-      android:label="@string/label_service_unlocks_weapons"
-      />
+      android:label="@string/label_service_unlocks_weapons" />
 
     <service
       android:name=".services.unlocks.vehicles.VehicleUnlockService"
-      android:label="@string/label_service_unlocks_vehicles"
-      />
+      android:label="@string/label_service_unlocks_vehicles" />
 
     <service
       android:name=".services.unlocks.kits.KitUnlockService"
-      android:label="@string/label_service_unlocks_kits"
-      />
+      android:label="@string/label_service_unlocks_kits" />
 
     <!-- Misc -->
-
     <service
       android:name=".services.AssignmentService"
-      android:label="@string/label_service_assignments"
-      />
+      android:label="@string/label_service_assignments" />
 
     <service
       android:name=".services.AwardService"
-      android:label="@string/label_service_awards"
-      />
+      android:label="@string/label_service_awards" />
 
     <!-- News -->
-
     <service
       android:name=".services.news.NewsListingService"
-      android:label="@string/label_service_news"
-      />
+      android:label="@string/label_service_news" />
 
     <service
       android:name=".services.news.NewsArticleService"
-      android:label="@string/label_service_news"
-      />
+      android:label="@string/label_service_news" />
 
     <!-- Battle feed -->
-
     <service
       android:name=".services.battlefeed.BattleFeedService"
-      android:label="@string/label_service_battlefeed"
-      />
+      android:label="@string/label_service_battlefeed" />
 
   </application>
 
