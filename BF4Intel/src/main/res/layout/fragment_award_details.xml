@@ -24,12 +24,12 @@
       <TextView
         style="@style/RegularCardTitle"
         android:id="@+id/medal_title"
-        android:text="Sample Medal 1"
+        android:text="@string/dummy_medal_1"
         />
       <TextView
         style="@style/RegularCardSubtitle"
         android:id="@+id/medal_requirement"
-        android:text="Receive 100 'Sample Ribbon 1' ribbons"
+        android:text="@string/dummy_medal_requirement"
         android:layout_below="@id/medal_title"
         />
       <ImageView
@@ -43,18 +43,30 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/medal_requirement"
         />
+      <TextView
+        android:id="@+id/award_completion_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_progress"
+        android:layout_below="@id/award_medal"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/spacing_m"
+        />
       <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:id="@+id/award_completion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/award_medal"
+        android:layout_toLeftOf="@id/award_completion_text"
+        android:layout_alignTop="@id/award_completion_text"
+        android:layout_alignBottom="@id/award_completion_text"
         />
       <TextView
         android:id="@+id/medals_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Received 4 times"
+        android:text="@string/dummy_award_unlock_count"
         android:textColor="@color/grey"
         android:layout_below="@id/award_completion"
         />
@@ -66,12 +78,12 @@
       <TextView
         style="@style/RegularCardTitle"
         android:id="@+id/ribbon_title"
-        android:text="Sample Ribbon 1"
+        android:text="@string/dummy_ribbon_1"
         />
       <TextView
         style="@style/RegularCardSubtitle"
         android:id="@+id/ribbon_requirement"
-        android:text="Do something 5 times"
+        android:text="@string/dummy_ribbon_requirement"
         android:layout_below="@id/ribbon_title"
         />
       <ImageView
@@ -87,7 +99,7 @@
         android:id="@+id/ribbons_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Received 400 times"
+        android:text="@string/dummy_award_unlock_count"
         android:textColor="@color/grey"
         android:layout_below="@id/award_ribbon"
         />

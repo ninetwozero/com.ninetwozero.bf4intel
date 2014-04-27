@@ -10,14 +10,14 @@
     android:id="@+id/task_label"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Obtain 100 kills with the jetski"
+    android:text="@string/dummy_assignment_task_label"
     android:layout_centerVertical="true"
     />
   <ImageView
     android:id="@+id/task_completion"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="100/200"
+    android:text="@string/dummy_progress"
     android:layout_marginLeft="@dimen/spacing_m"
     android:layout_centerVertical="true"
     android:layout_alignParentRight="true"
@@ -29,5 +29,6 @@
     android:src="@drawable/icon_completed_dark"
     android:layout_centerVertical="true"
     android:layout_alignParentRight="true"
+    android:contentDescription="@string/cdesc_completion_indicator"
     />
 </RelativeLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Assignments -->
+  <string name="dummy_assignment_1">Sample Assignment 1</string>
+  <string name="dummy_reward_title">A plain dogtag LOL</string>
+  <string name="dummy_assignment_prereq">Reach rank 120</string>
+  <string name="dummy_assignment_task_label">Obtain 100 kills with the jetski</string>
+  <string name="dummy_progress">100/200</string>
+
+  <!-- Awards -->
+  <string name="dummy_medal_1">Sample Medal 1</string>
+  <string name="dummy_medal_requirement">Receive 100 \'Sample Ribbon 1\' ribbons</string>
+  <string name="dummy_award_unlock_count">Received 4 times</string>
+  <string name="dummy_ribbon_requirement">Do something 5 times</string>
+  <string name="dummy_ribbon_1">Sample Ribbon 1</string>
+</resources>

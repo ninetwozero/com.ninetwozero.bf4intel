@@ -21,7 +21,7 @@
       <TextView
         style="@style/RegularCardTitle"
         android:id="@+id/assignment_title"
-        android:text="Sample Assignment 1"
+        android:text="@string/dummy_assignment_1"
         />
 
       <ImageView
@@ -60,7 +60,7 @@
       <TextView
         style="@style/RegularCardTitle"
         android:id="@+id/string_tasks"
-        android:text="@string/assignment_tasks"
+        android:text="@string/assignment_requirements"
         android:layout_marginBottom="@dimen/spacing_m"
         />
       <include layout="@layout/list_item_assignment_task" />
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/reward_image"
-        android:text="A plain dogtag LOL"
+        android:text="@string/dummy_reward_title"
         />
     </RelativeLayout>
   </RelativeLayout>
