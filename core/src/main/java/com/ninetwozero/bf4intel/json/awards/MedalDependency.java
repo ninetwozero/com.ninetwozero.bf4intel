@@ -2,7 +2,9 @@ package com.ninetwozero.bf4intel.json.awards;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MedalDependency {
+import java.io.Serializable;
+
+public class MedalDependency implements Serializable {
     @SerializedName("count")
     private int count;
     @SerializedName("code")
