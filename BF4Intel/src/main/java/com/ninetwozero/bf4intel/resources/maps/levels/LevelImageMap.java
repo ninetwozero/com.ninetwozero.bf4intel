@@ -43,9 +43,6 @@ public class LevelImageMap {
     };
 
     public static Integer get(final String key) {
-        if (key == null) {
-            return R.drawable.acc_none;
-        }
         return map.containsKey(key.toUpperCase(Locale.getDefault())) ? map.get(key.toUpperCase()) : R.drawable.acc_none;
     }
 }

@@ -49,9 +49,6 @@ public class LevelStringMap {
     };
 
     public static String get(final String key) {
-        if (key == null) {
-            return "N/A";
-        }
         return map.containsKey(key.toUpperCase(Locale.getDefault()))? map.get(key.toUpperCase()) : key;
     }
 }
