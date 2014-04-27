@@ -7,7 +7,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLayoutPopulator;
 import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.events.CompletedLevelEvent;
-import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
+import com.ninetwozero.bf4intel.resources.maps.levels.LevelStringMap;
 
 public class CompletedLevelLayout extends BaseLayoutPopulator implements EventLayout<CompletedLevelEvent> {
     @Override
