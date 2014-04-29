@@ -22,7 +22,6 @@
       <TextView
         style="@style/RegularCardTitle"
         android:id="@+id/medal_title"
-        android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
         android:text="@string/dummy_medal_1" />
