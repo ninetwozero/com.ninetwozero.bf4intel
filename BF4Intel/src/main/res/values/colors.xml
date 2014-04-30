@@ -15,31 +15,26 @@
 <resources>
   <color name="lighterred">#ff4444</color>
   <color name="red">#ffcc0000</color>
-  <color name="orange">#e7ab0a</color>
   <color name="green">#309030</color>
   <color name="lighter_blue">#ff42b3f7</color>
   <color name="blue">#ff3faaeb</color>
   <color name="darker_blue">#308DBF</color>
   <color name="paleblue">#E2F4FB</color>
-  <color name="darkgreen">#ff669900</color>
   <color name="white">#FFFFFF</color>
-  <color name="dirtywhite">#EEEEEE</color>
   <color name="lightgrey">#CCCCCC</color>
-  <color name="shadowgrey">#AAAAAA</color>
   <color name="grey">#848484</color>
   <color name="darkgrey">#555555</color>
-  <color name="very_dark_grey">#1D1D1D</color>
   <color name="almostblack">#111111</color>
   <color name="bg_grid_item">#88212121</color>
   <color name="bg_grid_item_pressed">#77212121</color>
-  <color name="item_locked_overlay">#77575757</color>
   <color name="black">#000000</color>
   <color name="translucent_black">#CC000000</color>
 
-  <!--Battle report results-->
+  <!--Battle report -->
   <color name="battlereport_won">#94cdf3</color>
   <color name="battlereport_lost">#ff9f80</color>
   <color name="battlereport_draw">#86b886</color>
+  <color name="table_battlereport_result_bg">#33FFFFFF</color>
 
   <!-- NavigationDrawer colors -->
   <color name="navigation_drawer_selected_bg">#29FFFFFF</color>

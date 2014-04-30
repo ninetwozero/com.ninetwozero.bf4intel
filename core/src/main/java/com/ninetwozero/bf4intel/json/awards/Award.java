@@ -1,6 +1,8 @@
 package com.ninetwozero.bf4intel.json.awards;
 
-public class Award {
+import java.io.Serializable;
+
+public class Award implements Serializable {
     private final String medalCode;
     private final Medal medal;
     private final String ribbonCode;

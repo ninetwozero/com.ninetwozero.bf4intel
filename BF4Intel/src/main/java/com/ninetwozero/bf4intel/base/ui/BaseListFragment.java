@@ -26,11 +26,16 @@ public abstract class BaseListFragment extends ListFragment {
     protected LayoutInflater layoutInflater;
     protected SharedPreferences sharedPreferences;
 
+    private boolean sw600dp;
+    private boolean sw720dp;
+
     @Override
     public void onCreate(final Bundle icicle) {
         super.onCreate(icicle);
         setRetainInstance(!getArgumentsBundle().getBoolean(BaseFragment.FLAG_DISABLE_RETAIN_STATE, false));
         fragmentManager = getFragmentManager();
+        sw600dp = getResources().getBoolean(R.bool.is_sw600dp);
+        sw720dp = getResources().getBoolean(R.bool.is_sw720dp);
     }
 
     @Override
@@ -47,6 +52,14 @@ public abstract class BaseListFragment extends ListFragment {
         if (!bundle.getBoolean(BaseFragment.FLAG_DISABLE_AUTOMATIC_ANALYTICS, false)) {
             postGoogleAnalytics();
         }
+    }
+
+    protected boolean isSw600dp() {
+        return sw600dp;
+    }
+
+    protected boolean isSw720dp() {
+        return sw720dp;
     }
 
     protected Bundle getArgumentsBundle() {

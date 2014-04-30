@@ -13,7 +13,7 @@ import com.ninetwozero.bf4intel.interfaces.EventLayout;
 import com.ninetwozero.bf4intel.json.battlefeed.events.GameReportEvent;
 import com.ninetwozero.bf4intel.json.battlereports.Team;
 import com.ninetwozero.bf4intel.resources.maps.GameModeStringMap;
-import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
+import com.ninetwozero.bf4intel.resources.maps.levels.LevelStringMap;
 import com.ninetwozero.bf4intel.resources.maps.PersonalHighlightStringMap;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
 

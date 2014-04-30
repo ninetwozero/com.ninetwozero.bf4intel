@@ -10,6 +10,8 @@
   <string name="cdesc_assignment_prerequisite">Assignment pre-requirement image</string>
   <string name="cdesc_assignment_expansion_icon">Assignment expansion icon</string>
 
+  <string name="cdesc_battlereport_map_image">Battlereport map image</string>
+
   <string name="cdesc_award_medal">Award medal</string>
   <string name="cdesc_award_ribbon">Award ribbon</string>
   <string name="cdesc_battlepack_icon">Battlepack icon</string>
@@ -18,15 +20,12 @@
   <string name="cdesc_user_gravatar">User gravatar</string>
 
   <string name="cdesc_service_star">Service star image</string>
-  <string name="cdesc_weapon_stats_image">Weapon image</string>
-  <string name="cdesc_vehicle_stats_image">Vehicle image</string>
 
   <string name="cdesc_unlock_image">Unlock image</string>
   <string name="cdesc_list_group_indicator">Group indicator</string>
   <string name="cdesc_button">Button</string>
   <string name="cdesc_hooah">Hooah</string>
   <string name="cdesc_overflow_menu">Overflow menu</string>
-  <string name="cdesc_article_preview">Article preview</string>
 
   <string name="cdesc_item_image">Item image</string>
   <string name="cdesc_logo">Logo</string>

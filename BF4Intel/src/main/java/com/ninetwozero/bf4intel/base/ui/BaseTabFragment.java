@@ -25,6 +25,12 @@ public abstract class BaseTabFragment extends BaseFragment {
     private ViewPager viewPager;
 
     @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+        setRetainInstance(false);
+    }
+
+    @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 

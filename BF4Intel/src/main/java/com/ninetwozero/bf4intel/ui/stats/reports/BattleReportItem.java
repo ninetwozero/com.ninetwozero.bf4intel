@@ -3,16 +3,19 @@ package com.ninetwozero.bf4intel.ui.stats.reports;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.ui.BaseListItem;
-import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
 import com.ninetwozero.bf4intel.json.stats.reports.GameReport;
 import com.ninetwozero.bf4intel.json.stats.reports.MatchResult;
 import com.ninetwozero.bf4intel.resources.maps.GameModeStringMap;
-import com.ninetwozero.bf4intel.resources.maps.LevelStringMap;
+import com.ninetwozero.bf4intel.resources.maps.levels.LevelImageMap;
+import com.ninetwozero.bf4intel.resources.maps.levels.LevelStringMap;
+import com.ninetwozero.bf4intel.ui.BaseListItem;
+import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
+import com.squareup.picasso.Picasso;
 
 public class BattleReportItem implements BaseListItem {
 
@@ -35,6 +38,11 @@ public class BattleReportItem implements BaseListItem {
     public View getView(LayoutInflater inflater, View view) {
         if (view == null) {
             view = inflater.inflate(R.layout.list_item_battlereport, null);
+        }
+
+        ImageView mapImage = (ImageView) view.findViewById(R.id.battlereport_map_image);
+        if(mapImage != null) {
+            Picasso.with(context).load(LevelImageMap.get(report.getMapName())).into(mapImage);
         }
 
         ((TextView) view.findViewById(R.id.map_name)).setText(LevelStringMap.get(report.getMapName()));

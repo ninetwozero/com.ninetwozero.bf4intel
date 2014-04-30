@@ -14,8 +14,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public abstract class BaseIntelAdapter<T> extends BaseAdapter {
-    protected static final float OPACITY_NORMAL = 1.0f;
-    protected static final float OPACITY_FADED = 0.5f;
 
     protected final Context context;
     protected final LayoutInflater layoutInflater;
