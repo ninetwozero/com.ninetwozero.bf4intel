@@ -1,3 +1,5 @@
+[![Build Status](http://ci.peterscorner.co.uk/buildStatus/icon?job=BF4-Intel)](http://ci.peterscorner.co.uk/job/BF4-Intel/)
+
 BF4 Intel
 =========================
 
