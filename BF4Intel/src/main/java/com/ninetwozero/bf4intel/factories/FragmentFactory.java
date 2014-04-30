@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentGridFragment;
+import com.ninetwozero.bf4intel.ui.awards.AwardDetailFragment;
 import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedPostingFragment;
@@ -43,6 +44,8 @@ public class FragmentFactory {
                 return AssignmentGridFragment.newInstance(data);
             case SOLDIER_AWARDS:
                 return AwardGridFragment.newInstance(data);
+            case SOLDIER_AWARD_DETAILS:
+                return AwardDetailFragment.newInstance(data);
             case WEAPON_STATS:
                 return WeaponStatsFragment.newInstance(data);
             case VEHICLE_STATS:
@@ -117,7 +120,10 @@ public class FragmentFactory {
         KIT_UNLOCKS,
 
         SOLDIER_ASSIGNMENTS,
+        SOLDIER_ASSIGNMENT_DETAILS,
+
         SOLDIER_AWARDS,
+        SOLDIER_AWARD_DETAILS,
 
         BATTLE_FEED,
         BATTLE_FEED_POSTING,

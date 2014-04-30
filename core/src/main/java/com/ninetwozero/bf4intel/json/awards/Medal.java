@@ -2,7 +2,9 @@ package com.ninetwozero.bf4intel.json.awards;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Medal {
+import java.io.Serializable;
+
+public class Medal implements Serializable {
     @SerializedName("unlocked")
     private int unlocked;
     @SerializedName("timesTaken")
