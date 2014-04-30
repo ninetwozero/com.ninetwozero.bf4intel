@@ -12,11 +12,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.events.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.ui.LayoutTestActivity;
 import com.ninetwozero.bf4intel.ui.about.AppInfoActivity;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
@@ -48,6 +50,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
+        menu.findItem(R.id.ab_action_test).setVisible(BuildConfig.isDebug);
         return true;
     }
     @Override
@@ -91,6 +94,10 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
             case R.id.ab_action_about:
                 startActivity(new Intent(this, AppInfoActivity.class));
+                return true;
+
+            case R.id.ab_action_test:
+                startActivity(new Intent(this, LayoutTestActivity.class));
                 return true;
 
             case R.id.ab_action_logout:

@@ -116,4 +116,7 @@
   <dimen name="unlock_image_height">64dp</dimen>
   <dimen name="unlock_status_icon_size">16dp</dimen>
   <dimen name="rank_image_size">64dp</dimen>
+  <dimen name="assignment_details_image_size">192dp</dimen>
+  <dimen name="award_details_medal_size">144dp</dimen>
+  <dimen name="spacing_none">0dp</dimen>
 </resources>

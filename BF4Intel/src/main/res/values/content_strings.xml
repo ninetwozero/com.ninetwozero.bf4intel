@@ -31,4 +31,6 @@
   <string name="cdesc_logo">Logo</string>
   <string name="cdesc_action_item">Action item</string>
   <string name="cdesc_unlock_status_icon">Unlock status icon</string>
+  <string name="cdesc_reward_image">Reward image</string>
+  <string name="cdesc_completion_indicator">Completion indicator</string>
 </resources>

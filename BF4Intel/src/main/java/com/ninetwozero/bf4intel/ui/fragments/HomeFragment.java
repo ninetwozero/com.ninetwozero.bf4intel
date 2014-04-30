@@ -20,6 +20,8 @@ import com.squareup.otto.Subscribe;
 import com.squareup.picasso.Picasso;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
+    private int clickCount;
+
     public static HomeFragment newInstance(final Bundle data) {
         final HomeFragment fragment = new HomeFragment();
         fragment.setArguments(data);

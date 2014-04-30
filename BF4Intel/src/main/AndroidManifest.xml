@@ -97,6 +97,18 @@
         android:value=".ui.activities.MainActivity"></meta-data>
     </activity>
 
+    <activity
+      android:name=".ui.LayoutTestActivity"
+      android:label="@string/label_activity_test"
+      android:parentActivityName=".ui.activities.MainActivity"
+      android:theme="@style/AppTheme"
+      >
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".ui.activities.MainActivity"
+        />
+    </activity>
+
     <meta-data
       android:name="android.app.default_searchable"
       android:value=".ui.activities.SearchActivity" />
