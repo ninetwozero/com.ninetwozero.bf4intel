@@ -72,9 +72,7 @@ public class LayoutTestActivity extends FragmentActivity {
     }
 
     private enum TestLayout {
-        ASSIGNMENT_DETAILS(R.layout.fragment_assignment_details),
-        AWARD_DETAILS(R.layout.fragment_award_details);
-
+        NONE(R.layout.activity_layout_test);
         private int layout;
         TestLayout(final int layout) {
             this.layout = layout;
