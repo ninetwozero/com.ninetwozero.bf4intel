@@ -2,6 +2,8 @@ package com.ninetwozero.bf4intel.ui.assignments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +16,12 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.dao.assignments.AssignmentsDAO;
 import com.ninetwozero.bf4intel.events.assignments.AssignmentsRefreshedEvent;
+import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.AssignmentService;
+import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
 
@@ -127,5 +131,24 @@ public class AssignmentGridFragment
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         // TODO: Open details
+        final Assignment assignment = ((AssignmentsAdapter) adapterView.getAdapter()).getItem(i);
+        final Bundle dataToPass = getArgumentsBundle();
+        dataToPass.putSerializable("assignment", assignment);
+
+        if (isSw720dp()) {
+            // TODO: OPEN DIALOG
+            final FragmentManager fragmentManager = getFragmentManager();
+            DialogFragment fragment = (DialogFragment) fragmentManager.findFragmentByTag(AssignmentDetailFragment.TAG);
+            if (fragment == null) {
+                fragment = (DialogFragment) FragmentFactory.get(FragmentFactory.Type.SOLDIER_ASSIGNMENT_DETAILS, dataToPass);
+            }
+            fragment.show(fragmentManager, AssignmentDetailFragment.TAG);
+
+        } else {
+            final Intent intent = new Intent(getActivity(), SingleFragmentActivity.class);
+            intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.SOLDIER_ASSIGNMENT_DETAILS.ordinal());
+            intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, dataToPass);
+            startActivity(intent);
+        }
     }
 }

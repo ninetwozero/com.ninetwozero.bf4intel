@@ -2,10 +2,11 @@ package com.ninetwozero.bf4intel.json.assignments;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Assignment {
+public class Assignment implements Serializable {
     private static final int COMPLETED = 100;
 
     @SerializedName("completion")
@@ -37,7 +38,7 @@ public class Assignment {
         return unlockDependencieses.isEmpty() ? AssignmentPrerequisite.NONE.toString() : unlockDependencieses.get(0).getGroup();
     }
 
-    public static class UnlockDependencies {
+    public static class UnlockDependencies implements Serializable {
         @SerializedName("group")
         private String group;
 

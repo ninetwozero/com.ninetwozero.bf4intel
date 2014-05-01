@@ -2,7 +2,9 @@ package com.ninetwozero.bf4intel.json.assignments;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AssignmentAward {
+import java.io.Serializable;
+
+public class AssignmentAward implements Serializable {
 
     @SerializedName("code")
     private String assignmentKey;
