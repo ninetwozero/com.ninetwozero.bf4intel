@@ -222,6 +222,7 @@
   <string name="award_asgn9_cr1">Obtain 7 kills with any PDW</string>
   <string name="award_asgn9_cr2">Obtain 10 PDW Ribbons</string>
 
+  // XP0
   <string name="xp0_award_as_01_crit_1">Start 5 fires in Second Assault</string>
   <string name="xp0_award_as_02_crit_1">Shotgun Ribbon x1</string>
   <string name="xp0_award_as_02_crit_2">Raise or lower the Caspian Border Gate</string>
@@ -244,4 +245,57 @@
   <string name="xp0_award_as_10_crit_1">Play 10 hours of Second Assault</string>
   <string name="xp0_award_as_10_crit_2">Get a kill-streak of 10 in a round</string>
   <string name="xp0_award_as_10_crit_3">Land on top of the tallest tower in Caspian or Firestorm</string>
+
+  // XP1
+  <string name="xp1_award_as_01_crit_1">Get a kill with the bombing raid</string>
+  <string name="xp1_award_as_02_crit_1">Air Superiority ribbon x1</string>
+  <string name="xp1_award_as_02_crit_2">Jet Fighter ribbon x3</string>
+  <string name="xp1_award_as_03_crit_1">Assault Rifle ribbon x3</string>
+  <string name="xp1_award_as_03_crit_2">Get a kill with pistol in a round</string>
+  <string name="xp1_award_as_03_crit_3">Get a kill with 40mm grenade in a round</string>
+  <string name="xp1_award_as_03_crit_4">Get a kill with the defibrillator in a round</string>
+  <string name="xp1_award_as_04_crit_1">Destroy an air vehicle with portable AA</string>
+  <string name="xp1_award_as_04_crit_2">Anti-Vehicle ribbon x3</string>
+  <string name="xp1_award_as_05_crit_1">Get 1 Mortar kill</string>
+  <string name="xp1_award_as_05_crit_2">LMG ribbon x3</string>
+  <string name="xp1_award_as_06_crit_1">Sniper Rifle ribbon x3</string>
+  <string name="xp1_award_as_06_crit_2">Get a kill with a shotgun in a round</string>
+  <string name="xp1_award_as_06_crit_3">Get a kill with a DMR in a round</string>
+  <string name="xp1_award_as_06_crit_4">Get a kill with C4 in a round</string>
+  <string name="xp1_award_as_07_crit_1">Get 15 kills with the bombing raid</string>
+  <string name="xp1_award_as_07_crit_2">Destroy an enemy bomber</string>
+  <string name="xp1_award_as_08_crit_1">Get a kill with a sniper rifle in a round</string>
+  <string name="xp1_award_as_08_crit_2">Get a kill with an assault rifle in a round</string>
+  <string name="xp1_award_as_08_crit_3">Get a kill with an LMG in a round</string>
+  <string name="xp1_award_as_08_crit_4">Get a kill with a hand grenade in a round</string>
+  <string name="xp1_award_as_09_crit_1">Bomber Delivery ribbon x3</string>
+  <string name="xp1_award_as_09_crit_2">Get 20 UCAV kills</string>
+  <string name="xp1_award_as_09_crit_3">Score a multikill!</string>
+  <string name="xp1_award_as_10_crit_1">Play 10 hours of China Rising</string>
+  <string name="xp1_award_as_10_crit_2">Get a kill streak of 5</string>
+  <string name="xp1_award_as_10_crit_3">Get a kill with SUAV</string>
+  <string name="xp1_award_ghost_crit1">Score 200 kills with Assault rifles</string>
+  <string name="xp1_award_ghost_crit2">Score 200 kills with Main battle tanks</string>
+  <string name="xp1_award_ghost_crit3">Get a total of 300 meter headshot</string>
+
+  // XP2
+  <string name="xp2_award_as_01_crit_1">Destroy an objective in Carrier Assault</string>
+  <string name="xp2_award_as_02_crit_1">Assault Rifle ribbon x3</string>
+  <string name="xp2_award_as_02_crit_2">Get 20 headshots with Assault Rifles</string>
+  <string name="xp2_award_as_03_crit_1">Destroy 20 boats</string>
+  <string name="xp2_award_as_04_crit_1">LMG ribbon x3</string>
+  <string name="xp2_award_as_04_crit_2">Destroy 3 vehicles as Support</string>
+  <string name="xp2_award_as_05_crit_1">Sniper Rifle ribbon x3</string>
+  <string name="xp2_award_as_05_crit_2">Get 5 kills with C4 on NS maps</string>
+  <string name="xp2_award_as_06_crit_1">Get 10 kills with an Impact Grenade</string>
+  <string name="xp2_award_as_07_crit_1">Get 10 kills with UGL Darts</string>
+  <string name="xp2_award_as_07_crit_2">Get 10 kills with UGL LVG</string>
+  <string name="xp2_award_as_08_crit_1">PDW ribbon x3</string>
+  <string name="xp2_award_as_08_crit_2">Destroy 5 attack air vehicles with Rocket Launchers</string>
+  <string name="xp2_award_as_09_crit_1">Play 10 hours of Naval Strike</string>
+  <string name="xp2_award_as_09_crit_2">Get 1 kill with AA Mine</string>
+  <string name="xp2_award_as_10_crit_1">Win 20 rounds of Carrier Assault</string>
+  <string name="xp2_award_ghost_crit1">Score 200 kills with pistols</string>
+  <string name="xp2_award_ghost_crit2">Score 20 kills in a jet</string>
+  <string name="xp2_award_ghost_crit3">Get 2x Shotgun Ribbons in a round</string>
 </resources>

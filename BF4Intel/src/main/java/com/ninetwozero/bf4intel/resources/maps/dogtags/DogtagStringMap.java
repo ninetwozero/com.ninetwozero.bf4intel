@@ -24,6 +24,7 @@ public class DogtagStringMap {
             put("WARSAW_ID_DLAS8_NAME", R.string.warsaw_id_dlas8_name);
             put("WARSAW_ID_DLAS9_NAME", R.string.warsaw_id_dlas9_name);
             put("WARSAW_ID_DLBLANK_NAME", R.string.warsaw_id_dlblank_name);
+
             put("WARSAW_ID_DLC100_NAME", R.string.warsaw_id_dlc100_name);
             put("WARSAW_ID_DLC101_NAME", R.string.warsaw_id_dlc101_name);
             put("WARSAW_ID_DLC102_NAME", R.string.warsaw_id_dlc102_name);
@@ -274,6 +275,7 @@ public class DogtagStringMap {
             put("WARSAW_ID_DLC98_NAME", R.string.warsaw_id_dlc98_name);
             put("WARSAW_ID_DLC99_NAME", R.string.warsaw_id_dlc99_name);
             put("WARSAW_ID_DLC9_NAME", R.string.warsaw_id_dlc9_name);
+
             put("WARSAW_ID_DLDEV_NAME", R.string.warsaw_id_dldev_name);
             put("WARSAW_ID_DLDICE_NAME", R.string.warsaw_id_dldice_name);
             put("WARSAW_ID_DLESN_NAME", R.string.warsaw_id_dlesn_name);
@@ -294,12 +296,57 @@ public class DogtagStringMap {
             put("WARSAW_ID_DLR3_NAME", R.string.warsaw_id_dlr3_name);
             put("WARSAW_ID_DLR4_NAME", R.string.warsaw_id_dlr4_name);
             put("WARSAW_ID_DLR5_NAME", R.string.warsaw_id_dlr5_name);
+
             put("WARSAW_ID_DLXP01_NAME", R.string.warsaw_id_dlxp01_name);
             put("WARSAW_ID_DLXP02_NAME", R.string.warsaw_id_dlxp02_name);
             put("WARSAW_ID_DLXP03_NAME", R.string.warsaw_id_dlxp03_name);
             put("WARSAW_ID_DLXP04_NAME", R.string.warsaw_id_dlxp04_name);
             put("WARSAW_ID_DLXP05_NAME", R.string.warsaw_id_dlxp05_name);
             put("WARSAW_ID_DLXP06_NAME", R.string.warsaw_id_dlxp06_name);
+
+            put("WARSAW_ID_DRA21_NAME", R.string.warsaw_id_dra21_name);
+            put("WARSAW_ID_DRA22_NAME", R.string.warsaw_id_dra22_name);
+            put("WARSAW_ID_DRA23_NAME", R.string.warsaw_id_dra23_name);
+            put("WARSAW_ID_DRA24_NAME", R.string.warsaw_id_dra24_name);
+            put("WARSAW_ID_DRA25_NAME", R.string.warsaw_id_dra25_name);
+            put("WARSAW_ID_DRA26_NAME", R.string.warsaw_id_dra26_name);
+            put("WARSAW_ID_DRA27_NAME", R.string.warsaw_id_dra27_name);
+            put("WARSAW_ID_DRA28_NAME", R.string.warsaw_id_dra28_name);
+            put("WARSAW_ID_DRA29_NAME", R.string.warsaw_id_dra29_name);
+            put("WARSAW_ID_DRA30_NAME", R.string.warsaw_id_dra30_name);
+            put("WARSAW_ID_DRA31_NAME", R.string.warsaw_id_dra31_name);
+            put("WARSAW_ID_DRA32_NAME", R.string.warsaw_id_dra32_name);
+            put("WARSAW_ID_DRA33_NAME", R.string.warsaw_id_dra33_name);
+            put("WARSAW_ID_DRA34_NAME", R.string.warsaw_id_dra34_name);
+
+            put("WARSAW_ID_DRMA1_NAME", R.string.warsaw_id_drma1_name);
+            put("WARSAW_ID_DRMA2_NAME", R.string.warsaw_id_drma2_name);
+            put("WARSAW_ID_DRMA3_NAME", R.string.warsaw_id_drma3_name);
+            put("WARSAW_ID_DRMAS_NAME", R.string.warsaw_id_drmas_name);
+
+            // XP1
+            put("WARSAW_ID_XP1_DR_PREMIUM_1_NAME", R.string.warsaw_id_xp1_dr_premium_1_name);
+            put("WARSAW_ID_XP1_DR_PREMIUM_2_NAME", R.string.warsaw_id_xp1_dr_premium_2_name);
+            put("WARSAW_ID_XP1_DR_PREMIUM_3_NAME", R.string.warsaw_id_xp1_dr_premium_3_name);
+            put("WARSAW_ID_XP1_DR_PREMIUM_4_NAME", R.string.warsaw_id_xp1_dr_premium_4_name);
+            put("WARSAW_ID_XP1_DRXP1AR_NAME", R.string.warsaw_id_xp1_drxp1ar_name);
+            put("WARSAW_ID_XP1_DRXP1BOMBER_NAME", R.string.warsaw_id_xp1_drxp1bomber_name);
+            put("WARSAW_ID_XP1_DRXP1CA_NAME", R.string.warsaw_id_xp1_drxp1ca_name);
+            put("WARSAW_ID_XP1_DRXP1GHOST1_NAME", R.string.warsaw_id_xp1_drxp1ghost1_name);
+            put("WARSAW_ID_XP1_DRXP1KING_NAME", R.string.warsaw_id_xp1_drxp1king_name);
+            put("WARSAW_ID_XP1_DRXP1LMG_NAME", R.string.warsaw_id_xp1_drxp1lmg_name);
+            put("WARSAW_ID_XP1_DRXP1PDW_NAME", R.string.warsaw_id_xp1_drxp1pdw_name);
+            put("WARSAW_ID_XP1_DRXP1SR_NAME", R.string.warsaw_id_xp1_drxp1sr_name);
+
+            // XP2
+            put("WARSAW_ID_P_XP2_DRXP2AR_NAME", R.string.warsaw_id_xp2_drxp2ar_name);
+            put("WARSAW_ID_P_XP2_DRXP2DMR_NAME", R.string.warsaw_id_xp2_drxp2dmr_name);
+            put("WARSAW_ID_P_XP2_DRXP2LMG_NAME", R.string.warsaw_id_xp2_drxp2lmg_name);
+            put("WARSAW_ID_P_XP2_DRXP2PDW_NAME", R.string.warsaw_id_xp2_drxp2pdw_name);
+            put("WARSAW_ID_P_XP2_DRXP2RV_NAME", R.string.warsaw_id_xp2_drxp2rv_name);
+            put("WARSAW_ID_P_XP2_GIANTSLAYER_NAME", R.string.warsaw_id_xp2_giantslayer_name);
+            put("WARSAW_ID_P_XP2_SCOURGESEA_NAME", R.string.warsaw_id_xp2_scourgesea_name);
+            put("WARSAW_ID_P_XP2_TITANSOFSTEEL_NAME", R.string.warsaw_id_xp2_titansofsteel_name);
         }
     };
 

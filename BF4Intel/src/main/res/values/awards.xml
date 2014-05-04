@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="awards_premium">Play as premium once</string>
   <string name="awards_rank10">Reach rank 10</string>
   <string name="awards_rank100">Reach rank 100</string>
   <string name="awards_rank20">Reach rank 20</string>

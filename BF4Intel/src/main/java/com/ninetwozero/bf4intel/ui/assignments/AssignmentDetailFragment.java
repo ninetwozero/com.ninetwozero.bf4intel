@@ -32,7 +32,9 @@ import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 public class AssignmentDetailFragment extends BaseDialogFragment {
     public static final String INTENT_ASSIGNMENT = "assignment";
@@ -156,7 +158,12 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     }
 
     private void populateRewardBox(final View view) {
+        final Set<String> usedNames = new HashSet<String>();
         for (AssignmentReward reward : assignment.getRewards()) {
+            if (usedNames.contains(reward.getName())) {
+                continue;
+            }
+
             final ViewGroup containerView = (ViewGroup) view.findViewById(R.id.assignment_reward_container);
             final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_reward, containerView, false);
 
@@ -164,6 +171,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             setImageForReward(tempView, R.id.reward_image, reward);
 
             containerView.addView(tempView);
+            usedNames.add(reward.getName());
         }
     }
 
@@ -172,7 +180,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             case WEAPON:
                 return WeaponStringMap.get(reward.getName());
             case VEHICLE_ADDON:
-                return VehicleUnlockStringMap.get(reward.getName());
+                return VehicleStringMap.get(reward.getName());
             case APPEARANCE:
                 return CamoStringMap.get(reward.getName());
             case DOGTAG:

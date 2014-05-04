@@ -53,11 +53,13 @@ public class VehicleStringMap {
             put("WARSAW_ID_P_XP0_VNAME_DPV", R.string.vehicle_xp0_name_dpv);
             put("WARSAW_ID_P_XP0_VNAME_SKIDLOADER", R.string.vehicle_xp0_name_skidloader);
             put("WARSAW_ID_P_XP1_VNAME_BOMBER", R.string.vehicle_xp1_name_bomber);
+            put("WARSAW_ID_P_XP1_VNAME_BOMBCRUISE", R.string.vehicle_xp1_name_bombcruise);
             put("WARSAW_ID_P_XP1_VNAME_BTR90", R.string.vehicle_xp1_name_btr90);
             put("WARSAW_ID_P_XP1_VNAME_DIRTBIKE", R.string.vehicle_xp1_name_dirtbike);
             put("WARSAW_ID_P_XP1_VNAME_F35", R.string.vehicle_xp1_name_f35);
             put("WARSAW_ID_P_XP1_VNAME_SUAV", R.string.vehicle_xp1_name_suav);
             put("WARSAW_ID_P_XP1_VNAME_UCAV", R.string.vehicle_xp1_name_ucav);
+            put("WARSAW_ID_P_XP1_VNAME_UCAVAIRBURST", R.string.vehicle_xp1_name_ucav_airburst);
         }
     };
 
