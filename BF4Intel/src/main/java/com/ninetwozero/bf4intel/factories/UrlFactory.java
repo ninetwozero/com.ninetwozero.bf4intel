@@ -12,7 +12,10 @@ public class UrlFactory {
     private static final String HOST = "battlelog.battlefield.com/bf4";
     private static final int DEFAULT_PORT = -1;
     private static final String GRAVATAR_URL = "http://www.gravatar.com/avatar/%s/?s=320&d=%s";
-    private static final String DEFAULT_GRAVATAR = "http://battlelog-cdn.battlefield.com/cdnprefix/avatar1/public/base/shared/default-avatar-320.png";
+
+    private static final String CDN_HOST = "http://battlelog-cdn.battlefield.com";
+    private static final String DEFAULT_GRAVATAR = CDN_HOST + "/cdnprefix/avatar1/public/base/shared/default-avatar-320.png";
+    private static final String DOGTAG_URL = CDN_HOST + "/cdnprefix/avatar1/public/profile/warsaw/gamedata/dogtags/large/%s";
 
     public static String buildGravatarUrl(final String hash) {
         return String.format(GRAVATAR_URL, hash, DEFAULT_GRAVATAR);
@@ -100,6 +103,16 @@ public class UrlFactory {
                 page
             )
         );
+    }
+
+    public static String buildDogtagImageURL(int imageIndex) {
+        String filename;
+        if (imageIndex > 256) {
+            filename = "advanced" + imageIndex + ".png";
+        } else {
+            filename = "basic" + imageIndex + ".png";
+        }
+        return String.format(Locale.getDefault(), DOGTAG_URL, filename);
     }
 
     public static URL buildWeaponAccessoriesURL(final String soldierId, final String guid, final int platformId) {
