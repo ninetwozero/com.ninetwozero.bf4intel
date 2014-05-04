@@ -13,11 +13,10 @@
     android:text="@string/dummy_assignment_task_label"
     android:layout_centerVertical="true"
     />
-  <ImageView
+  <TextView
     android:id="@+id/task_completion"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/dummy_progress"
     android:layout_marginLeft="@dimen/spacing_m"
     android:layout_centerVertical="true"
     android:layout_alignParentRight="true"

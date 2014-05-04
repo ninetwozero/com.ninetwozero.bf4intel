@@ -130,13 +130,11 @@ public class AssignmentGridFragment
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        // TODO: Open details
         final Assignment assignment = ((AssignmentsAdapter) adapterView.getAdapter()).getItem(i);
         final Bundle dataToPass = getArgumentsBundle();
-        dataToPass.putSerializable("assignment", assignment);
+        dataToPass.putSerializable(AssignmentDetailFragment.INTENT_ASSIGNMENT, assignment);
 
         if (isSw720dp()) {
-            // TODO: OPEN DIALOG
             final FragmentManager fragmentManager = getFragmentManager();
             DialogFragment fragment = (DialogFragment) fragmentManager.findFragmentByTag(AssignmentDetailFragment.TAG);
             if (fragment == null) {
