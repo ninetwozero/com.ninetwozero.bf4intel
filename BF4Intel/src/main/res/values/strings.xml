@@ -223,4 +223,6 @@
   <string name="fire_mode_single">Single</string>
   <string name="fire_mode_burst">Burst</string>
   <string name="fire_mode_auto">Auto</string>
+  <string name="kills_per_shot">Kills per shot</string>
+  <string name="time_equipped">Time equipped</string>
 </resources>

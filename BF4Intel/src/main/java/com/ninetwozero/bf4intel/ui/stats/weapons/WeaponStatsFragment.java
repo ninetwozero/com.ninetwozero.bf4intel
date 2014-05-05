@@ -2,6 +2,8 @@ package com.ninetwozero.bf4intel.ui.stats.weapons;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +15,11 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.dao.stats.weapons.WeaponStatsDAO;
 import com.ninetwozero.bf4intel.events.stats.weapons.WeaponStatsRefreshedEvent;
+import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.stats.weapons.WeaponStatsService;
+import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
 
@@ -87,7 +91,24 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     @Override
     public void onListItemClick(ListView listView, View view, int i, long l) {
-        // TODO: Open details
+        final Weapon weapon = ((WeaponStatsAdapter) listView.getAdapter()).getItem(i);
+        final Bundle dataToPass = getArgumentsBundle();
+        dataToPass.putSerializable(WeaponDetailStatsFragment.INTENT_WEAPON, weapon);
+
+        if (isSw720dp()) {
+            final FragmentManager fragmentManager = getFragmentManager();
+            DialogFragment fragment = (DialogFragment) fragmentManager.findFragmentByTag(WeaponDetailStatsFragment.TAG);
+            if (fragment == null) {
+                fragment = (DialogFragment) FragmentFactory.get(FragmentFactory.Type.WEAPON_STATS_DETAILS, dataToPass);
+            }
+            fragment.show(fragmentManager, WeaponDetailStatsFragment.TAG);
+
+        } else {
+            final Intent intent = new Intent(getActivity(), SingleFragmentActivity.class);
+            intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, FragmentFactory.Type.WEAPON_STATS_DETAILS.ordinal());
+            intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, dataToPass);
+            startActivity(intent);
+        }
     }
 
     @Subscribe

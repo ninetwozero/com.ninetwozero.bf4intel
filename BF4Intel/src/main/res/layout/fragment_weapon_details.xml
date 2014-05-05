@@ -18,7 +18,6 @@
       <TextView
         style="@style/RegularCardTitle"
         android:id="@+id/item_name"
-        android:text="Sample Weapon 1"
         />
 
       <TextView
@@ -26,7 +25,6 @@
         android:id="@+id/service_star_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="4"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/item_name"
         android:layout_alignBottom="@id/item_name"
@@ -40,6 +38,7 @@
         android:layout_toLeftOf="@id/service_star_count"
         android:layout_alignTop="@id/service_star_count"
         android:layout_alignBottom="@id/service_star_count"
+        android:contentDescription="@string/cdesc_service_star"
         />
 
       <ImageView
@@ -52,7 +51,14 @@
         android:layout_marginBottom="@dimen/spacing_m"
         android:layout_below="@id/item_name"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/w_a91_fancy"
+        />
+
+      <TextView
+        android:id="@+id/item_progress_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_image"
+        android:layout_alignParentRight="true"
         />
       <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
@@ -60,7 +66,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="100"
+        android:layout_alignTop="@id/item_progress_value"
+        android:layout_alignBottom="@id/item_progress_value"
+        android:layout_toLeftOf="@id/item_progress_value"
         android:layout_below="@id/item_image"
+        android:layout_marginRight="@dimen/spacing_m"
         />
     </RelativeLayout>
 
@@ -177,13 +187,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/fire_mode_single"
+            android:paddingRight="@dimen/spacing_m"
             />
           <TextView
             android:id="@+id/fire_mode_burst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/fire_mode_burst"
-            android:paddingLeft="@dimen/spacing_m"
             android:paddingRight="@dimen/spacing_m"
             />
           <TextView
@@ -227,7 +237,6 @@
           android:id="@+id/value_kills"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:text="32"
           android:layout_weight="0.5"
           android:gravity="right"
           />
@@ -251,7 +260,6 @@
           android:id="@+id/value_headshots"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:text="32"
           android:layout_weight="0.5"
           android:gravity="right"
           />
@@ -275,7 +283,29 @@
           android:id="@+id/value_shots_fired"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:text="32"
+          android:layout_weight="0.5"
+          android:gravity="right"
+          />
+
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_marginTop="@dimen/spacing_m"
+        >
+        <TextView
+          android:id="@+id/string_time_equipped"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:text="@string/time_equipped"
+          android:layout_weight="0.5"
+          />
+
+        <TextView
+          android:id="@+id/value_time_equipped"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
           android:layout_weight="0.5"
           android:gravity="right"
           />
@@ -298,7 +328,6 @@
           android:id="@+id/value_accuracy"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:text="32"
           android:layout_weight="0.5"
           android:gravity="right"
           />
@@ -313,7 +342,7 @@
           android:id="@+id/string_kills_per_shot"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:text="Kills per shot"
+          android:text="@string/kills_per_shot"
           android:layout_weight="0.5"
           />
 
@@ -321,7 +350,6 @@
           android:id="@+id/value_kills_per_shot"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:text="0.5"
           android:layout_weight="0.5"
           android:gravity="right"
           />

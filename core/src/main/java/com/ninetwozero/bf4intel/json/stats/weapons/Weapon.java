@@ -2,31 +2,40 @@ package com.ninetwozero.bf4intel.json.stats.weapons;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Weapon implements Comparable<Weapon> {
+import java.io.Serializable;
 
-    @SerializedName("serviceStars")
-    private int serviceStarsCount;
-    @SerializedName("serviceStarsProgress")
-    private int serviceStarsProgress;
+public class Weapon implements Comparable<Weapon>, Serializable {
+    @SerializedName("name")
+    private String uniqueName;
+    @SerializedName("slug")
+    private String slug;
     @SerializedName("categorySID")
     private String categorySID;
     @SerializedName("category")
     private String category;
     @SerializedName("kills")
     private int kills;
-    @SerializedName("slug")
-    private String name;
+    @SerializedName("serviceStars")
+    private int serviceStarsCount;
+    @SerializedName("serviceStarsProgress")
+    private int serviceStarsProgress;
     @SerializedName("timeEquipped")
     private long timeEquipped;
-    @SerializedName("name")
-    private String uniqueName;
+    @SerializedName("shotsFired")
+    private int shotsFired;
+    @SerializedName("shotsHit")
+    private int shotsHit;
+    @SerializedName("accuracy")
+    private double accuracy;
+    @SerializedName("headshots")
+    private int headshotCount;
 
-    public int getServiceStarsCount() {
-        return serviceStarsCount;
+    public String getUniqueName() {
+        return uniqueName;
     }
 
-    public int getServiceStarsProgress() {
-        return serviceStarsProgress;
+    public String getSlug() {
+        return slug;
     }
 
     public String getCategorySID() {
@@ -41,16 +50,32 @@ public class Weapon implements Comparable<Weapon> {
         return kills;
     }
 
-    public String getName() {
-        return name;
+    public int getServiceStarsCount() {
+        return serviceStarsCount;
+    }
+
+    public int getServiceStarsProgress() {
+        return serviceStarsProgress;
     }
 
     public long getTimeEquipped() {
         return timeEquipped;
     }
 
-    public String getUniqueName() {
-        return uniqueName;
+    public int getShotsFired() {
+        return shotsFired;
+    }
+
+    public int getShotsHit() {
+        return shotsHit;
+    }
+
+    public double getAccuracy() {
+        return accuracy;
+    }
+
+    public int getHeadshotCount() {
+        return headshotCount;
     }
 
     public int compareTo(Weapon w) {

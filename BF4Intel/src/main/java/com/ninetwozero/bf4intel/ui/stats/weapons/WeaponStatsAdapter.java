@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
-import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 
 public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
 
@@ -35,7 +35,7 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
         setText(view, R.id.item_name, WeaponStringMap.get(weapon.getUniqueName()));
         setText(view, R.id.kill_count, R.string.num_kills, weapon.getKills());
 
-        setImage(view, R.id.item_image, WeaponsImageMap.get(weapon.getUniqueName()));
+        setImage(view, R.id.item_image, WeaponImageMap.get(weapon.getUniqueName()));
         setProgress(view, R.id.item_progress, weapon.getServiceStarsProgress());
 
         return view;
