@@ -46,6 +46,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private static final int DEFAULT_POSITION_TRACKING = 9;
     private static final int DEFAULT_POSITION = 9;
 
+    private boolean isRecreated;
     private ListView listView;
     private NavigationDrawerCallbacks callbacks;
 
@@ -88,7 +89,10 @@ public class NavigationDrawerFragment extends BaseListFragment {
     public void onResume() {
         super.onResume();
         BusProvider.getInstance().register(this);
-        selectItemFromState(currentSelectedPosition);
+        if (!isRecreated) {
+            isRecreated = true;
+            selectItemFromState(currentSelectedPosition);
+        }
     }
 
     @Override
