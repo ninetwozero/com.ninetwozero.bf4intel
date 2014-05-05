@@ -113,7 +113,7 @@
   <string name="assignments_xp2_name_10">Giant Slayer</string>
 
   <!--GHOST-->
-  <string name="assignments_mp_name_ghost1">Phantom Prospect</string>
+  <string name="assignments_xp1_name_ghost1">Phantom Prospect</string>
   <string name="assignments_xp2_name_ghost2">Phantom Trainee</string>
 
   <!-- Criteria strings -->

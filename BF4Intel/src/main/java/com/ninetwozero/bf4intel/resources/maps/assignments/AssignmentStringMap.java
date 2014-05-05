@@ -107,6 +107,7 @@ public class AssignmentStringMap {
             put("WARSAW_ID_P_XP1_AWARD_AS_08", R.string.assignments_xp1_name_08);
             put("WARSAW_ID_P_XP1_AWARD_AS_09", R.string.assignments_xp1_name_09);
             put("WARSAW_ID_P_XP1_AWARD_AS_10", R.string.assignments_xp1_name_10);
+            put("WARSAW_ID_P_XP1_AWARD_GHOST", R.string.assignments_xp1_name_ghost1);
 
             /*Expansion 2 Naval Strike*/
             put("WARSAW_ID_P_XP2_AWARD_AS_01", R.string.assignments_xp2_name_01);
@@ -119,6 +120,7 @@ public class AssignmentStringMap {
             put("WARSAW_ID_P_XP2_AWARD_AS_08", R.string.assignments_xp2_name_08);
             put("WARSAW_ID_P_XP2_AWARD_AS_09", R.string.assignments_xp2_name_09);
             put("WARSAW_ID_P_XP2_AWARD_AS_10", R.string.assignments_xp2_name_10);
+            put("WARSAW_ID_P_XP2_AWARD_GHOST", R.string.assignments_xp2_name_ghost2);
         }
     };
 
