@@ -66,6 +66,7 @@
           android:layout_width="match_parent"
           android:layout_toLeftOf="@id/assignment_completion_text"
           android:layout_marginRight="@dimen/spacing_m"
+          android:layout_centerVertical="true"
           />
       </RelativeLayout>
     </RelativeLayout>
