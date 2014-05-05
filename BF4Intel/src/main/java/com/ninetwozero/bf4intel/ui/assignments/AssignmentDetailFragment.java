@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
@@ -27,7 +26,6 @@ import com.ninetwozero.bf4intel.resources.maps.dogtags.DogtagStringMap;
 import com.ninetwozero.bf4intel.resources.maps.unlocks.VehicleUnlockImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
-import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleUnlockStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 import com.squareup.picasso.Picasso;
@@ -59,11 +57,25 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void initialize(final View view) {
         setupData(getArguments());
+        setupActionBar();
         populateViews(view);
     }
 
     private void setupData(final Bundle data) {
         assignment = (Assignment) data.getSerializable(INTENT_ASSIGNMENT);
+    }
+
+    private void setupActionBar() {
+        if (!isSw720dp()) {
+            final String key = assignment.getAward().getUniqueName();
+            getActivity().getActionBar().setTitle(
+                String.format(
+                    Locale.getDefault(),
+                    getString(R.string.label_viewing),
+                    getString(AssignmentStringMap.get(key))
+                )
+            );
+        }
     }
 
     private void populateViews(final View view) {
@@ -76,6 +88,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void populateOverviewBox(final View view, final AssignmentAward award) {
         setText(view, R.id.assignment_title, AssignmentStringMap.get(award.getUniqueName()));
+        showExpansionPackIcon(view, award);
         showAssignmentImage(view, award, assignment.isCompleted());
         setProgress(view, R.id.assignment_completion, assignment.getCompletion());
         setText(view, R.id.assignment_completion_text, assignment.getCompletion() + "%");
@@ -228,20 +241,13 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     }
 
     private void showExpansionPackIcon(final View view, final AssignmentAward award) {
-        final ImageView expansionIcon = (ImageView) view.findViewById(R.id.expansion_icon);
-        expansionIcon.setVisibility(View.VISIBLE);
-        Picasso.with(getActivity()).load(ExpansionIconsImageMap.get(award.getExpansionPack())).into(expansionIcon);
-    }
-
-    private void populateViewForTracking(final View view, final Assignment assignment) {
-        final ImageView imagePrerequisite = (ImageView) view.findViewById(R.id.assignment_prerequisite);
-        //imagePrerequisite.setImageResource(fetchPrerequisiteImage(assignment.getDependencyGroup()));
-        imagePrerequisite.setVisibility(View.INVISIBLE);
-
-        final ProgressBar completionProgress = (ProgressBar) view.findViewById(R.id.assignment_completion);
-        completionProgress.setMax(100);
-        completionProgress.setProgress(assignment.getCompletion());
-        completionProgress.setVisibility(View.VISIBLE);
+        final ImageView expansionIcon = (ImageView) view.findViewById(R.id.assignment_expansion);
+        if (award.hasExpansionPack()) {
+            expansionIcon.setVisibility(View.VISIBLE);
+            Picasso.with(getActivity()).load(ExpansionIconsImageMap.get(award.getExpansionPack())).into(expansionIcon);
+        } else {
+            expansionIcon.setVisibility(View.GONE);
+        }
     }
 
     private int fetchPrerequisiteImage(final AssignmentPrerequisite.Type group) {

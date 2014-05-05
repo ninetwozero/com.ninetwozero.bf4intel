@@ -215,4 +215,5 @@
   <string name="assignment_prerequisite">Pre-requisites</string>
   <string name="assignment_requirements">Award Requirements</string>
   <string name="assignment_reward">Reward</string>
+  <string name="label_viewing">Viewing %s</string>
 </resources>

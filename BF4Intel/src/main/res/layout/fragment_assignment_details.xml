@@ -35,6 +35,16 @@
         android:layout_centerInParent="true"
         />
 
+      <ImageView
+        android:id="@+id/assignment_expansion"
+        android:layout_width="@dimen/unlock_status_icon_size"
+        android:layout_height="@dimen/unlock_status_icon_size"
+        android:src="@drawable/icon_xp0"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/cdesc_assignment_image"
+        android:layout_alignParentRight="true"
+        />
+
       <RelativeLayout
         android:id="@+id/wrap_assignment_completion"
         android:layout_width="match_parent"
