@@ -105,9 +105,9 @@ public class UrlFactory {
         );
     }
 
-    public static String buildDogtagImageURL(int imageIndex) {
+    public static String buildDogtagImageURL(int imageIndex, boolean advanced) {
         String filename;
-        if (imageIndex > 256) {
+        if (advanced) {
             filename = "advanced" + imageIndex + ".png";
         } else {
             filename = "basic" + imageIndex + ".png";

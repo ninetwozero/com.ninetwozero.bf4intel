@@ -235,7 +235,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void setImageForDogtagReward(View view, int viewId, AssignmentReward reward) {
         Picasso.with(getActivity())
-            .load(UrlFactory.buildDogtagImageURL(reward.getImageIndex()))
+            .load(UrlFactory.buildDogtagImageURL(reward.getImageIndex(), reward.isAdvanced()))
             .placeholder(R.drawable.dogtag_plain)
             .into((ImageView) view.findViewById(viewId));
     }

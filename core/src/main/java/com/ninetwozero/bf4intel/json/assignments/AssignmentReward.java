@@ -12,6 +12,8 @@ public class AssignmentReward implements Serializable {
     private String description;
     @SerializedName("index")
     private int imageIndex;
+    @SerializedName("isAdvanced")
+    private boolean advanced;
     @SerializedName("unlockTypeString")
     private String unlockTypeString;
     @SerializedName("unlockType")
@@ -27,6 +29,10 @@ public class AssignmentReward implements Serializable {
 
     public int getImageIndex() {
         return imageIndex;
+    }
+
+    public boolean isAdvanced() {
+        return advanced;
     }
 
     public String getUnlockTypeString() {
