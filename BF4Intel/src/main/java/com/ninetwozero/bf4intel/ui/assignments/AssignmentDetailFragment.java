@@ -144,14 +144,9 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
                 final AssignmentCriteria criteria = criteriaContainer.getCriteria();
 
                 setText(tempView, R.id.task_label, AssignmentRequirementStringMap.get(criteria.getKey()));
-                if (criteriaContainer.isCompleted()) {
-                    setVisibility(tempView, R.id.task_completion, View.GONE);
-                    setVisibility(tempView, R.id.task_completed_icon, View.VISIBLE);
-                } else {
-                    setVisibility(tempView, R.id.task_completion, View.VISIBLE);
-                    setVisibility(tempView, R.id.task_completed_icon, View.GONE);
-                    setText(tempView, R.id.task_completion, getTaskCompletionString(criteriaContainer, criteria));
-                }
+                setVisibility(tempView, R.id.task_completion, View.VISIBLE);
+                setText(tempView, R.id.task_completion, getTaskCompletionString(criteriaContainer, criteria));
+
                 containerView.addView(tempView);
             }
         } else {

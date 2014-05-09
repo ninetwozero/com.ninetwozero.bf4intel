@@ -21,13 +21,4 @@
     android:layout_centerVertical="true"
     android:layout_alignParentRight="true"
     />
-  <ImageView
-    android:id="@+id/task_completed_icon"
-    android:layout_width="@dimen/unlock_status_icon_size"
-    android:layout_height="@dimen/unlock_status_icon_size"
-    android:src="@drawable/icon_completed_dark"
-    android:layout_centerVertical="true"
-    android:layout_alignParentRight="true"
-    android:contentDescription="@string/cdesc_completion_indicator"
-    />
 </RelativeLayout>
