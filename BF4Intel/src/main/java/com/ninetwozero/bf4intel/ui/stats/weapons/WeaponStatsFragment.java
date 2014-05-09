@@ -93,15 +93,15 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     public void onListItemClick(ListView listView, View view, int i, long l) {
         final Weapon weapon = ((WeaponStatsAdapter) listView.getAdapter()).getItem(i);
         final Bundle dataToPass = getArgumentsBundle();
-        dataToPass.putSerializable(WeaponDetailStatsFragment.INTENT_WEAPON, weapon);
+        dataToPass.putSerializable(WeaponDetailsFragment.INTENT_WEAPON, weapon);
 
         if (isSw720dp()) {
             final FragmentManager fragmentManager = getFragmentManager();
-            DialogFragment fragment = (DialogFragment) fragmentManager.findFragmentByTag(WeaponDetailStatsFragment.TAG);
+            DialogFragment fragment = (DialogFragment) fragmentManager.findFragmentByTag(WeaponDetailsFragment.TAG);
             if (fragment == null) {
                 fragment = (DialogFragment) FragmentFactory.get(FragmentFactory.Type.WEAPON_STATS_DETAILS, dataToPass);
             }
-            fragment.show(fragmentManager, WeaponDetailStatsFragment.TAG);
+            fragment.show(fragmentManager, WeaponDetailsFragment.TAG);
 
         } else {
             final Intent intent = new Intent(getActivity(), SingleFragmentActivity.class);

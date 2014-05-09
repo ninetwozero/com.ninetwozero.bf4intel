@@ -1,13 +1,17 @@
 package com.ninetwozero.bf4intel.ui.stats.weapons;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
+import com.ninetwozero.bf4intel.datatypes.WeaponInfo;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
+import com.ninetwozero.bf4intel.resources.maps.WeaponInfoStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
@@ -15,14 +19,15 @@ import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 import java.util.Locale;
 
-public class WeaponDetailStatsFragment extends BaseFragment {
+public class WeaponDetailsFragment extends BaseFragment {
     public static final String INTENT_WEAPON = "weapon";
-    public static final String TAG = "WeaponDetailStatsFragment";
+    public static final String TAG = "WeaponDetailsFragment";
 
     private Weapon weapon;
+    private final WeaponInfoStringMap weaponInfoStringMap = new WeaponInfoStringMap();
 
-    public static WeaponDetailStatsFragment newInstance(final Bundle data) {
-        final WeaponDetailStatsFragment fragment = new WeaponDetailStatsFragment();
+    public static WeaponDetailsFragment newInstance(final Bundle data) {
+        final WeaponDetailsFragment fragment = new WeaponDetailsFragment();
         fragment.setArguments(data);
         return fragment;
     }
@@ -52,7 +57,7 @@ public class WeaponDetailStatsFragment extends BaseFragment {
             getActivity().getActionBar().setTitle(
                 String.format(
                     Locale.getDefault(),
-                    "Viewing %s", //TODO
+                    "Viewing %s",
                     getString(WeaponStringMap.get(key))
                 )
             );
@@ -73,15 +78,32 @@ public class WeaponDetailStatsFragment extends BaseFragment {
         setText(view, R.id.item_progress_value, weapon.getServiceStarsProgress() + "%");
     }
 
-    /*
-        TODO: WIP get information somewhere
-        http://jsonviewer.stack.hu/#http://eaassets-a.akamaihd.net/bl-cdn/cdnprefix/48b53386750f67b51cd145edda57c2696174953b/public/gamedatawarsaw/warsaw.items.js
-    */
     private void populateInformation(View view) {
-        setText(view, R.id.value_damage, "DAMAGE");
-        setText(view, R.id.value_weapon_accuracy, "ACCURACY");
-        setText(view, R.id.value_hip_fire, "HIP FIRE");
-        setText(view, R.id.value_range, "RANGE");
+        final WeaponInfo weaponInfo = weaponInfoStringMap.get(weapon.getUniqueName());
+        if (weaponInfo.getDamage() == WeaponInfo.NONE) {
+            view.findViewById(R.id.wrap_information_box).setVisibility(View.GONE);
+            return;
+        }
+
+        setText(view, R.id.value_damage, String.valueOf(weaponInfo.getDamage()));
+        setText(view, R.id.value_weapon_accuracy, String.valueOf(weaponInfo.getAccuracy()));
+        setText(view, R.id.value_hip_fire, String.valueOf(weaponInfo.getHipFire()));
+        setText(view, R.id.value_range, String.valueOf(weaponInfo.getRange()));
+
+        setProgress(view, R.id.progress_damage, weaponInfo.getDamage());
+        setProgress(view, R.id.progress_weapon_accuracy, weaponInfo.getAccuracy());
+        setProgress(view, R.id.progress_hip_fire, weaponInfo.getHipFire());
+        setProgress(view, R.id.progress_range, weaponInfo.getRange());
+
+        ((TextView) view.findViewById(R.id.fire_mode_single)).setTypeface(
+            weaponInfo.isSingleFire() ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT
+        );
+        ((TextView) view.findViewById(R.id.fire_mode_burst)).setTypeface(
+            weaponInfo.isBurstFire() ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT
+        );
+        ((TextView) view.findViewById(R.id.fire_mode_auto)).setTypeface(
+            weaponInfo.isAutoFire() ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT
+        );
     }
 
     private void populateStatistics(View view) {

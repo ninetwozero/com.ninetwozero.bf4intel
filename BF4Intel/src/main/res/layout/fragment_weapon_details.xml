@@ -76,6 +76,7 @@
 
     <LinearLayout
       style="@style/NonListViewCard"
+      android:id="@+id/wrap_information_box"
       android:orientation="vertical"
       >
       <TextView
@@ -100,8 +101,15 @@
           android:id="@+id/value_damage"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="100/100"
           android:layout_alignParentRight="true"
+           />
+
+        <ProgressBar
+          style="?android:attr/progressBarStyleHorizontal"
+          android:id="@+id/progress_damage"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/value_damage"
           />
       </RelativeLayout>
       <RelativeLayout
@@ -120,8 +128,15 @@
           android:id="@+id/value_weapon_accuracy"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="32/100"
           android:layout_alignParentRight="true"
+          />
+
+        <ProgressBar
+          style="?android:attr/progressBarStyleHorizontal"
+          android:id="@+id/progress_weapon_accuracy"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/value_weapon_accuracy"
           />
       </RelativeLayout>
       <RelativeLayout
@@ -140,8 +155,15 @@
           android:id="@+id/value_hip_fire"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="33/100"
           android:layout_alignParentRight="true"
+          />
+
+        <ProgressBar
+          style="?android:attr/progressBarStyleHorizontal"
+          android:id="@+id/progress_hip_fire"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/value_hip_fire"
           />
       </RelativeLayout>
       <RelativeLayout
@@ -160,8 +182,14 @@
           android:id="@+id/value_range"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="100/100"
           android:layout_alignParentRight="true"
+          />
+        <ProgressBar
+          style="?android:attr/progressBarStyleHorizontal"
+          android:id="@+id/progress_range"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/value_range"
           />
       </RelativeLayout>
       <RelativeLayout
