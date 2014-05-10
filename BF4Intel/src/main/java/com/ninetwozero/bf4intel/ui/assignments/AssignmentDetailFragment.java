@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.json.UnlockType;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentAward;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentCriteria;
@@ -28,7 +29,9 @@ import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -36,6 +39,8 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     public static final String INTENT_ASSIGNMENT = "assignment";
     public static final String INTENT_USER_HAS_EXPANSION = "expansions";
     public static final String TAG = "AssignmentDetailFragment";
+
+    private static final String KEY_FIRESTARTER = "WARSAW_ID_P_XP0_AS_01";
 
     private Assignment assignment;
     private AssignmentAward assignmentAward;
@@ -180,20 +185,48 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void populateRewardBox(final View view) {
         final Set<String> usedNames = new HashSet<String>();
-        for (AssignmentReward reward : assignment.getRewards()) {
-            if (usedNames.contains(reward.getName())) {
-                continue;
-            }
 
-            final ViewGroup containerView = (ViewGroup) view.findViewById(R.id.assignment_reward_container);
-            final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_reward, containerView, false);
+        final View cardWrapperView = view.findViewById(R.id.wrap_assignment_rewards);
+        List<AssignmentReward> rewards = assignment.getRewards();
 
-            setText(tempView, R.id.reward_title, fetchRewardTitle(reward));
-            setImageForReward(tempView, R.id.reward_image, reward);
-
-            containerView.addView(tempView);
-            usedNames.add(reward.getName());
+        if (assignment.getAward().getUniqueName().equals(KEY_FIRESTARTER)) {
+            rewards = fetchRewardsForFirestarter();
         }
+
+        if (rewards.size() > 0) {
+            for (AssignmentReward reward : rewards) {
+                if (usedNames.contains(reward.getName())) {
+                    continue;
+                }
+
+                final ViewGroup containerView = (ViewGroup) view.findViewById(R.id.assignment_reward_container);
+                final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_reward, containerView, false);
+
+                setText(tempView, R.id.reward_title, fetchRewardTitle(reward));
+                setImageForReward(tempView, R.id.reward_image, reward);
+
+                containerView.addView(tempView);
+                usedNames.add(reward.getName());
+            }
+        } else {
+            cardWrapperView.setVisibility(View.GONE);
+        }
+    }
+
+    // Stupid method needed to get the appropriate rewards for the Firestarter assignment
+    private List<AssignmentReward> fetchRewardsForFirestarter() {
+        final List<AssignmentReward> rewards = new ArrayList<AssignmentReward>();
+        final String[] fakeNames = new String[] {
+            "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER1",
+            "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER2",
+            "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER3"
+        };
+
+        for (String name : fakeNames) {
+            rewards.add(new AssignmentReward(name, null, UnlockType.APPEARANCE));
+        }
+
+        return rewards;
     }
 
     private int fetchRewardTitle(AssignmentReward reward) {

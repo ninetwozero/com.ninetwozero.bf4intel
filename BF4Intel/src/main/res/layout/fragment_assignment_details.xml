@@ -92,7 +92,10 @@
         />
     </LinearLayout>
 
-    <RelativeLayout style="@style/NonListViewCard">
+    <RelativeLayout
+      style="@style/NonListViewCard"
+      android:id="@+id/wrap_assignment_rewards"
+      >
 
       <TextView
         style="@style/RegularCardTitle"

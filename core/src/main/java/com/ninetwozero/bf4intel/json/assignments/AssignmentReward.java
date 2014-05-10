@@ -19,6 +19,13 @@ public class AssignmentReward implements Serializable {
     @SerializedName("unlockType")
     private UnlockType unlockType;
 
+    public AssignmentReward(final String name, final String description, final UnlockType unlockType) {
+        this.name = name;
+        this.description = description;
+        this.unlockTypeString = unlockType.getJsonKey();
+        this.unlockType = unlockType;
+    }
+
     public String getName() {
         return name;
     }

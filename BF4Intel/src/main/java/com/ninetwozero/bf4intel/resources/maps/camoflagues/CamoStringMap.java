@@ -149,6 +149,9 @@ public class CamoStringMap {
             // XP0
             put("WARSAW_ID_P_XP0_CAMO_NAME_DPM6", R.string.xp0_camo_name_dpm6);
             put("WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER", R.string.xp0_camo_name_firestarter);
+            put("WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER1", R.string.xp0_camo_name_firestarter1);
+            put("WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER2", R.string.xp0_camo_name_firestarter2);
+            put("WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER3", R.string.xp0_camo_name_firestarter3);
 
             // XP2
             put("WARSAW_ID_P_XP2_CAMO_NAME_PHANTOM", R.string.xp2_camo_name_phantom);
