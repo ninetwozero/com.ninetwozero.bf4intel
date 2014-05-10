@@ -11,7 +11,7 @@ public class Assignment implements Serializable {
     @SerializedName("award")
     private AssignmentAward award;
     @SerializedName("criterias")
-    private List<AssignmentCriteriaContainer> criterias;
+    private List<AssignmentCriteria> criterias;
     @SerializedName("completion")
     private int completion;
     @SerializedName("isTracking")
@@ -44,7 +44,7 @@ public class Assignment implements Serializable {
         return prerequisites.get(0).getGroup();
     }
 
-    public List<AssignmentCriteriaContainer> getCriterias() {
+    public List<AssignmentCriteria> getCriterias() {
         return criterias;
     }
 

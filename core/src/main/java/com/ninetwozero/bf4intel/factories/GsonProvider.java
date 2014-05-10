@@ -2,6 +2,8 @@ package com.ninetwozero.bf4intel.factories;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ninetwozero.bf4intel.json.assignments.AssignmentCriteria;
+import com.ninetwozero.bf4intel.json.assignments.AssignmentCriteriaDeserializer;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisite;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisiteDeserializer;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentReward;
@@ -27,6 +29,7 @@ public class GsonProvider {
         builder.registerTypeAdapter(FeedItem.class, new FeedItemDeserializer());
         builder.registerTypeAdapter(AssignmentPrerequisite.class, new AssignmentPrerequisiteDeserializer());
         builder.registerTypeAdapter(AssignmentReward.class, new AssignmentRewardDeserializer());
+        builder.registerTypeAdapter(AssignmentCriteria.class, new AssignmentCriteriaDeserializer());
         return builder.create();
     }
 }

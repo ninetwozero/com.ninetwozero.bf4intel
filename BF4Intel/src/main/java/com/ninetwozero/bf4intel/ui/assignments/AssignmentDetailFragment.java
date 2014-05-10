@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.ui.assignments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,6 @@ import com.ninetwozero.bf4intel.json.UnlockType;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentAward;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentCriteria;
-import com.ninetwozero.bf4intel.json.assignments.AssignmentCriteriaContainer;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisite;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentReward;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentCriteriaStringMap;
@@ -155,15 +155,20 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void populateAwardRequirements(final View view) {
         final View cardWrapperView = view.findViewById(R.id.wrap_assignment_tasks);
-        if (assignment.getCriterias().size() > 0) {
-            for (AssignmentCriteriaContainer criteriaContainer : assignment.getCriterias()) {
+        List<AssignmentCriteria> criterias = assignment.getCriterias();
+
+        if (assignment.getAward().getCode().startsWith("SP_")) {
+            criterias = fetchCriteriaForSinglePlayer();
+        }
+
+        if (criterias.size() > 0) {
+            for (AssignmentCriteria criteria : criterias) {
                 final ViewGroup containerView = (ViewGroup) cardWrapperView.findViewById(R.id.assignment_tasks_container);
                 final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_task, containerView, false);
-                final AssignmentCriteria criteria = criteriaContainer.getCriteria();
 
                 setText(tempView, R.id.task_label, AssignmentCriteriaStringMap.get(criteria.getKey()));
                 setVisibility(tempView, R.id.task_completion, View.VISIBLE);
-                setText(tempView, R.id.task_completion, getTaskCompletionString(criteriaContainer, criteria));
+                setText(tempView, R.id.task_completion, getTaskCompletionString(criteria));
 
                 containerView.addView(tempView);
             }
@@ -172,13 +177,27 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         }
     }
 
-    private String getTaskCompletionString(
-        final AssignmentCriteriaContainer criteriaContainer, final AssignmentCriteria criteria
-    ) {
+    // Needed due to Single-player assignments JSON being stupid
+    private List<AssignmentCriteria> fetchCriteriaForSinglePlayer() {
+        final String name = buildCriteriaStringKey(assignment.getAward().getUniqueName());
+        final int completion = assignment.getCompletion();
+        final String criteriaType = "CriteriaType_GLOBAL_AllTimeTotal";
+
+        final List<AssignmentCriteria> criterias = new ArrayList<AssignmentCriteria>();
+        criterias.add(new AssignmentCriteria(name, completion/100, 1, completion, criteriaType));
+        return criterias;
+    }
+
+    private String buildCriteriaStringKey(String key) {
+        final String number = key.substring(key.lastIndexOf("_")+1);
+        return "WARSAW_ID_P_SP_AWARD_ASSGN" + number + "_CR1";
+    }
+
+    private String getTaskCompletionString(final AssignmentCriteria criteria) {
         return String.format(
             Locale.getDefault(),
             getString(R.string.generic_x_of_y),
-            criteriaContainer.getCurrentValue(),
+            criteria.getCurrentValue(),
             criteria.getUnlockThreshold()
         );
     }
