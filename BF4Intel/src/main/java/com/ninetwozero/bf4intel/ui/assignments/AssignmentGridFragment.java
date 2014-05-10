@@ -25,7 +25,9 @@ import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import se.emilsjolander.sprinkles.OneQuery;
 import se.emilsjolander.sprinkles.Query;
@@ -33,6 +35,20 @@ import se.emilsjolander.sprinkles.Query;
 public class AssignmentGridFragment
     extends BaseLoadingFragment
     implements AdapterView.OnItemClickListener {
+    final Map<String, String> expansionNumberMapping = new HashMap<String, String>() {
+        {
+            put("xp0", "524288");
+            put("xp1", "1048576");
+            put("ghost1", "1048576");
+            put("xp2", "2097152");
+            put("ghost2", "2097152");
+            put("xp3", "4194304");
+            put("xp4", "8388608");
+        }
+    };
+
+    private Map<String, List<Long>> expansionMap;
+
     public static AssignmentGridFragment newInstance(final Bundle data) {
         final AssignmentGridFragment fragment = new AssignmentGridFragment();
         fragment.setArguments(data);
@@ -71,6 +87,7 @@ public class AssignmentGridFragment
                     }
 
                     final SortedAssignmentContainer container = assignmentsDAO.getSortedAssignmentContainer();
+                    expansionMap = container.getExpansions();
                     sendDataToGridView(view, container.getItems());
                     showLoadingState(false);
                     return true;
@@ -133,6 +150,9 @@ public class AssignmentGridFragment
         final Assignment assignment = ((AssignmentsAdapter) adapterView.getAdapter()).getItem(i);
         final Bundle dataToPass = getArgumentsBundle();
         dataToPass.putSerializable(AssignmentDetailFragment.INTENT_ASSIGNMENT, assignment);
+        dataToPass.putBoolean(
+            AssignmentDetailFragment.INTENT_USER_HAS_EXPANSION, fetchExpansionStatus(assignment)
+        );
 
         if (isSw720dp()) {
             final FragmentManager fragmentManager = getFragmentManager();
@@ -148,5 +168,17 @@ public class AssignmentGridFragment
             intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, dataToPass);
             startActivity(intent);
         }
+    }
+
+    private boolean fetchExpansionStatus(Assignment assignment) {
+        final String key = expansionNumberMapping.get(assignment.getAward().getExpansionPack());
+        if (expansionMap.containsKey(key)) {
+            for (long value : expansionMap.get(key)) {
+                if (value > 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

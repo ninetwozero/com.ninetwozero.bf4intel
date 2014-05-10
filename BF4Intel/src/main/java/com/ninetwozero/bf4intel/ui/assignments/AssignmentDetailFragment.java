@@ -15,11 +15,9 @@ import com.ninetwozero.bf4intel.json.assignments.AssignmentCriteria;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentCriteriaContainer;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisite;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentReward;
+import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentCriteriaStringMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentImageMap;
-import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentRequirementStringMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentStringMap;
-import com.ninetwozero.bf4intel.resources.maps.assignments.ExpansionIconsImageMap;
-import com.ninetwozero.bf4intel.resources.maps.awards.AwardStringMap;
 import com.ninetwozero.bf4intel.resources.maps.camoflagues.CamoImageMap;
 import com.ninetwozero.bf4intel.resources.maps.camoflagues.CamoStringMap;
 import com.ninetwozero.bf4intel.resources.maps.dogtags.DogtagStringMap;
@@ -36,9 +34,12 @@ import java.util.Set;
 
 public class AssignmentDetailFragment extends BaseDialogFragment {
     public static final String INTENT_ASSIGNMENT = "assignment";
+    public static final String INTENT_USER_HAS_EXPANSION = "expansions";
     public static final String TAG = "AssignmentDetailFragment";
 
     private Assignment assignment;
+    private AssignmentAward assignmentAward;
+    private boolean userHasExpansionPack;
 
     public static AssignmentDetailFragment newInstance(final Bundle data) {
         final AssignmentDetailFragment fragment = new AssignmentDetailFragment();
@@ -58,28 +59,41 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     private void initialize(final View view) {
         setupData(getArguments());
         setupActionBar();
-        populateViews(view);
+        populateViews(view, assignmentAward);
     }
 
     private void setupData(final Bundle data) {
         assignment = (Assignment) data.getSerializable(INTENT_ASSIGNMENT);
+        userHasExpansionPack = data.getBoolean(INTENT_USER_HAS_EXPANSION);
+        assignmentAward = assignment.getAward();
+
+        addExpansionPrerequisiteToList();
+    }
+
+    private void addExpansionPrerequisiteToList() {
+        if (!assignmentAward.hasExpansionPack()) {
+            return;
+        }
+
+        final String pack = assignmentAward.getExpansionPack().toUpperCase(Locale.getDefault());
+        assignment.getPrerequisites().add(
+            new AssignmentPrerequisite(
+                "WARSAW_ID_P_AWARD_" + pack,
+                assignmentAward.getExpansionPack(),
+                AssignmentPrerequisite.Type.EXPANSION.getGroup(),
+                userHasExpansionPack ? 1 : 0
+            )
+        );
     }
 
     private void setupActionBar() {
         if (!isSw720dp()) {
-            final String key = assignment.getAward().getUniqueName();
-            getActivity().getActionBar().setTitle(
-                String.format(
-                    Locale.getDefault(),
-                    getString(R.string.label_viewing),
-                    getString(AssignmentStringMap.get(key))
-                )
-            );
+            final String key = assignmentAward.getUniqueName();
+            getActivity().getActionBar().setTitle(getString(AssignmentStringMap.get(key)));
         }
     }
 
-    private void populateViews(final View view) {
-        final AssignmentAward award = assignment.getAward();
+    private void populateViews(final View view, final AssignmentAward award) {
         populateOverviewBox(view, award);
         populatePreRequisites(view);
         populateAwardRequirements(view);
@@ -87,8 +101,6 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     }
 
     private void populateOverviewBox(final View view, final AssignmentAward award) {
-        setText(view, R.id.assignment_title, AssignmentStringMap.get(award.getUniqueName()));
-        showExpansionPackIcon(view, award);
         showAssignmentImage(view, award, assignment.isCompleted());
         setProgress(view, R.id.assignment_completion, assignment.getCompletion());
         setText(view, R.id.assignment_completion_text, assignment.getCompletion() + "%");
@@ -114,7 +126,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
                 final AssignmentPrerequisite.Type groupType = AssignmentPrerequisite.Type.from(prerequisite.getGroup());
 
                 setImage(tempView, R.id.image_prereq_icon, fetchPrerequisiteImage(groupType));
-                setText(tempView, R.id.assignment_prerequisite, getPrerequisiteString(prerequisite.getKey(), groupType));
+                setText(tempView, R.id.assignment_prerequisite, fetchPrerequisiteTitle(prerequisite.getKey(), groupType));
                 setVisibility(
                     tempView,
                     R.id.assignment_prereq_completed,
@@ -128,11 +140,12 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         }
     }
 
-    private int getPrerequisiteString(String key, AssignmentPrerequisite.Type groupType) {
+    private int fetchPrerequisiteTitle(String key, AssignmentPrerequisite.Type groupType) {
         if (groupType == AssignmentPrerequisite.Type.MISSION) {
             return AssignmentStringMap.get(key);
+        } else {
+            return AssignmentCriteriaStringMap.get(key);
         }
-        return AwardStringMap.get(key);
     }
 
     private void populateAwardRequirements(final View view) {
@@ -143,7 +156,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
                 final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_task, containerView, false);
                 final AssignmentCriteria criteria = criteriaContainer.getCriteria();
 
-                setText(tempView, R.id.task_label, AssignmentRequirementStringMap.get(criteria.getKey()));
+                setText(tempView, R.id.task_label, AssignmentCriteriaStringMap.get(criteria.getKey()));
                 setVisibility(tempView, R.id.task_completion, View.VISIBLE);
                 setText(tempView, R.id.task_completion, getTaskCompletionString(criteriaContainer, criteria));
 
@@ -235,21 +248,13 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             .into((ImageView) view.findViewById(viewId));
     }
 
-    private void showExpansionPackIcon(final View view, final AssignmentAward award) {
-        final ImageView expansionIcon = (ImageView) view.findViewById(R.id.assignment_expansion);
-        if (award.hasExpansionPack()) {
-            expansionIcon.setVisibility(View.VISIBLE);
-            Picasso.with(getActivity()).load(ExpansionIconsImageMap.get(award.getExpansionPack())).into(expansionIcon);
-        } else {
-            expansionIcon.setVisibility(View.GONE);
-        }
-    }
-
     private int fetchPrerequisiteImage(final AssignmentPrerequisite.Type group) {
         switch (group) {
             case RANK:
                 return R.drawable.ic_stat_rank;
             case MISSION:
+                return R.drawable.ic_stat_award;
+            case EXPANSION:
                 return R.drawable.ic_stat_award;
             default:
                 return R.drawable.empty;

@@ -24,7 +24,7 @@ public class AssignmentSorter {
             orderedAssignments.addAll(fetchGroupedAssignments(assignments, groupedAssignments));
 
         }
-        return new SortedAssignmentContainer(orderedAssignments);
+        return new SortedAssignmentContainer(orderedAssignments, assignments.getExpansions());
     }
 
     private static List<Assignment> fetchGroupedAssignments(final Assignments assignments, final List<String> groupedAssignments) {

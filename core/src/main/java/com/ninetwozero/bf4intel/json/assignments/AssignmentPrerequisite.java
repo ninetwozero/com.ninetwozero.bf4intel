@@ -38,6 +38,7 @@ public class AssignmentPrerequisite implements Serializable {
     }
 
     public static enum Type {
+        EXPANSION("AwardGroup_Expansion"),
         MISSION("AwardGroup_Mission"),
         RANK("AwardGroup_Ranks"),
         NONE("single_player");
@@ -45,6 +46,10 @@ public class AssignmentPrerequisite implements Serializable {
         private final String group;
         private Type(String group) {
             this.group = group;
+        }
+
+        public String getGroup() {
+            return group;
         }
 
         public boolean equals(String compareValue) {
