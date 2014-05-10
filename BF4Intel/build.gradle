@@ -7,6 +7,7 @@ buildscript {
     }
 }
 apply plugin: 'android'
+apply plugin: 'jacoco'
 
 project.archivesBaseName = 'com.ninetwozero.bf4intel'
 
@@ -63,6 +64,7 @@ android {
 
     jacoco {
         version = '0.6.2.201302030002'
+        reportsDir = file("$buildDir/reports/jacoco")
     }
 }
 
