@@ -1,7 +1,6 @@
 package com.ninetwozero.bf4intel.ui.assignments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -126,6 +125,8 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         final View cardWrapperView = view.findViewById(R.id.wrap_assignment_prereq);
         if (assignment.getPrerequisites().size() > 0) {
             final ViewGroup containerView = (ViewGroup) cardWrapperView.findViewById(R.id.assignment_prereq_container);
+            containerView.removeAllViews();
+            
             for (AssignmentPrerequisite prerequisite : assignment.getPrerequisites()) {
                 final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_prereq, containerView, false);
                 final AssignmentPrerequisite.Type groupType = AssignmentPrerequisite.Type.from(prerequisite.getGroup());
@@ -162,13 +163,16 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         }
 
         if (criterias.size() > 0) {
+            final ViewGroup containerView = (ViewGroup) cardWrapperView.findViewById(R.id.assignment_tasks_container);
+            containerView.removeAllViews();
+
             for (AssignmentCriteria criteria : criterias) {
-                final ViewGroup containerView = (ViewGroup) cardWrapperView.findViewById(R.id.assignment_tasks_container);
                 final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_task, containerView, false);
+                final boolean showRoundText = "CriteriaType_IAR_InARound".equals(criteria.getCriteriaType());
 
                 setText(tempView, R.id.task_label, AssignmentCriteriaStringMap.get(criteria.getKey()));
-                setVisibility(tempView, R.id.task_completion, View.VISIBLE);
                 setText(tempView, R.id.task_completion, getTaskCompletionString(criteria));
+                setVisibility(tempView, R.id.task_round, showRoundText ? View.VISIBLE : View.GONE);
 
                 containerView.addView(tempView);
             }
@@ -213,19 +217,21 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         }
 
         if (rewards.size() > 0) {
+            final ViewGroup containerView = (ViewGroup) view.findViewById(R.id.assignment_reward_container);
+            containerView.removeAllViews();
+
             for (AssignmentReward reward : rewards) {
                 if (usedNames.contains(reward.getName())) {
                     continue;
                 }
 
-                final ViewGroup containerView = (ViewGroup) view.findViewById(R.id.assignment_reward_container);
                 final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_reward, containerView, false);
 
                 setText(tempView, R.id.reward_title, fetchRewardTitle(reward));
                 setImageForReward(tempView, R.id.reward_image, reward);
 
-                containerView.addView(tempView);
                 usedNames.add(reward.getName());
+                containerView.addView(tempView);
             }
         } else {
             cardWrapperView.setVisibility(View.GONE);
