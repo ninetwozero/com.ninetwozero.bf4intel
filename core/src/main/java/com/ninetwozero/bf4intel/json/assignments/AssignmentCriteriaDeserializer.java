@@ -25,8 +25,8 @@ public class AssignmentCriteriaDeserializer implements JsonDeserializer<Assignme
         final JsonObject subCriteriaObject = jsonObject.get(SUBOBJECT_KEY).getAsJsonObject();
         return new AssignmentCriteria(
             subCriteriaObject.get("descriptionID").getAsString(),
-            subCriteriaObject.get("completionValue").getAsInt(),
             jsonObject.get("actualValue").getAsInt(),
+            subCriteriaObject.get("completionValue").getAsInt(),
             jsonObject.get("completion").getAsInt(),
             subCriteriaObject.get("criteriaType").getAsString()
         );

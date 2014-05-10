@@ -126,7 +126,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         if (assignment.getPrerequisites().size() > 0) {
             final ViewGroup containerView = (ViewGroup) cardWrapperView.findViewById(R.id.assignment_prereq_container);
             containerView.removeAllViews();
-            
+
             for (AssignmentPrerequisite prerequisite : assignment.getPrerequisites()) {
                 final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_prereq, containerView, false);
                 final AssignmentPrerequisite.Type groupType = AssignmentPrerequisite.Type.from(prerequisite.getGroup());
