@@ -23,7 +23,36 @@ public class AssignmentCriteriaStringMap {
             put("WARSAW_ID_P_AWARD_GHOST1", R.string.expansion_xp1);
             put("WARSAW_ID_P_AWARD_GHOST2", R.string.expansion_xp2);
 
-            // Requirements
+            // Requirements (SP)
+            put("WARSAW_ID_P_SP_AWARD_ASSGN01_CR1", R.string.sp_award_assgn01_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN02_CR1", R.string.sp_award_assgn02_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN03_CR1", R.string.sp_award_assgn03_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN04_CR1", R.string.sp_award_assgn04_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN05_CR1", R.string.sp_award_assgn05_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN06_CR1", R.string.sp_award_assgn06_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN07_CR1", R.string.sp_award_assgn07_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN08_CR1", R.string.sp_award_assgn08_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN09_CR1", R.string.sp_award_assgn09_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN10_CR1", R.string.sp_award_assgn10_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN11_CR1", R.string.sp_award_assgn11_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN12_CR1", R.string.sp_award_assgn12_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN13_CR1", R.string.sp_award_assgn13_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN14_CR1", R.string.sp_award_assgn14_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN15_CR1", R.string.sp_award_assgn15_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN16_CR1", R.string.sp_award_assgn16_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN17_CR1", R.string.sp_award_assgn17_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN18_CR1", R.string.sp_award_assgn18_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN19_CR1", R.string.sp_award_assgn19_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN20_CR1", R.string.sp_award_assgn20_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN21_CR1", R.string.sp_award_assgn21_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN22_CR1", R.string.sp_award_assgn22_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN23_CR1", R.string.sp_award_assgn23_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN24_CR1", R.string.sp_award_assgn24_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN25_CR1", R.string.sp_award_assgn25_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN26_CR1", R.string.sp_award_assgn26_cr1);
+            put("WARSAW_ID_P_SP_AWARD_ASSGN27_CR1", R.string.sp_award_assgn27_cr1);
+
+            // MP
             put("WARSAW_ID_P_AWARD_ASGN10_CR1", R.string.award_asgn10_cr1);
             put("WARSAW_ID_P_AWARD_ASGN10_CR2", R.string.award_asgn10_cr2);
             put("WARSAW_ID_P_AWARD_ASGN11_CR1", R.string.award_asgn11_cr1);

@@ -9,7 +9,36 @@
   <string name="awards_rank25">Reach rank 25</string>
   <string name="awards_rank50">Reach rank 50</string>
 
-  <!-- Criteria strings -->
+  <!-- Criteria strings (SP) -->
+  <string name="sp_award_assgn01_cr1">Complete Baku</string>
+  <string name="sp_award_assgn02_cr1">Complete Kunlun Mountains</string>
+  <string name="sp_award_assgn03_cr1">Complete Tashgar</string>
+  <string name="sp_award_assgn04_cr1">Make the final choice</string>
+  <string name="sp_award_assgn05_cr1">Make the final choice</string>
+  <string name="sp_award_assgn06_cr1">Make the final choice</string>
+  <string name="sp_award_assgn07_cr1">Reach 1500 Points in Baku</string>
+  <string name="sp_award_assgn08_cr1">Reach 4000 Points in Baku</string>
+  <string name="sp_award_assgn09_cr1">Reach 6000 Points in Baku</string>
+  <string name="sp_award_assgn10_cr1">Reach 3000 Points in Shanghai</string>
+  <string name="sp_award_assgn11_cr1">Reach 7000 Points in Shanghai</string>
+  <string name="sp_award_assgn12_cr1">Reach 10000 Points in Shanghai</string>
+  <string name="sp_award_assgn13_cr1">Reach 4000 Points in South China Sea</string>
+  <string name="sp_award_assgn14_cr1">Reach 6000 Points in South China Sea</string>
+  <string name="sp_award_assgn15_cr1">Reach 10000 Points in South China Sea</string>
+  <string name="sp_award_assgn16_cr1">Reach 11000 Points on Singapore</string>
+  <string name="sp_award_assgn17_cr1">Reach 15000 Points on Singapore</string>
+  <string name="sp_award_assgn18_cr1">Reach 19000 Points on Singapore</string>
+  <string name="sp_award_assgn19_cr1">Reach 5000 Points in Kunlun Mountains</string>
+  <string name="sp_award_assgn20_cr1">Reach 7000 Points in Kunlun Mountains</string>
+  <string name="sp_award_assgn21_cr1">Reach 11000 Points in Kunlun Mountains</string>
+  <string name="sp_award_assgn22_cr1">Reach 5000 Points on Tashgar</string>
+  <string name="sp_award_assgn23_cr1">Reach 10000 Points on Tashgar</string>
+  <string name="sp_award_assgn24_cr1">Reach 14000 Points on Tashgar</string>
+  <string name="sp_award_assgn25_cr1">Reach 3000 Points in Suez</string>
+  <string name="sp_award_assgn26_cr1">Reach 4000 Points in Suez</string>
+  <string name="sp_award_assgn27_cr1">Reach 5000 Points in Suez</string>
+
+  <!-- MP -->
   <string name="award_asgn10_cr1">Obtain 7 kills with any Shotgun</string>
   <string name="award_asgn10_cr2">Obtain 10 Shotgun Ribbons</string>
   <string name="award_asgn11_cr1">Capture 20 flags in Conquest</string>
@@ -115,7 +144,7 @@
   <string name="award_asgn9_cr1">Obtain 7 kills with any PDW</string>
   <string name="award_asgn9_cr2">Obtain 10 PDW Ribbons</string>
 
-  // XP0
+  <!-- XP0 -->
   <string name="xp0_award_as_01_crit_1">Start 5 fires in Second Assault</string>
   <string name="xp0_award_as_02_crit_1">Shotgun Ribbon x1</string>
   <string name="xp0_award_as_02_crit_2">Raise or lower the Caspian Border Gate</string>
@@ -139,7 +168,7 @@
   <string name="xp0_award_as_10_crit_2">Get a kill-streak of 10 in a round</string>
   <string name="xp0_award_as_10_crit_3">Land on top of the tallest tower in Caspian or Firestorm</string>
 
-  // XP1
+  <!-- XP1 -->
   <string name="xp1_award_as_01_crit_1">Get a kill with the bombing raid</string>
   <string name="xp1_award_as_02_crit_1">Air Superiority ribbon x1</string>
   <string name="xp1_award_as_02_crit_2">Jet Fighter ribbon x3</string>
@@ -171,7 +200,7 @@
   <string name="xp1_award_ghost_crit2">Score 200 kills with Main battle tanks</string>
   <string name="xp1_award_ghost_crit3">Get a total of 300 meter headshot</string>
 
-  // XP2
+  <!-- XP2 -->
   <string name="xp2_award_as_01_crit_1">Destroy an objective in Carrier Assault</string>
   <string name="xp2_award_as_02_crit_1">Assault Rifle ribbon x3</string>
   <string name="xp2_award_as_02_crit_2">Get 20 headshots with Assault Rifles</string>

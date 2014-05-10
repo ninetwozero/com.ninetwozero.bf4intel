@@ -1,7 +1,5 @@
 package com.ninetwozero.bf4intel.resources.maps.assignments;
 
-import android.util.Log;
-
 import com.ninetwozero.bf4intel.R;
 
 import java.util.HashMap;
@@ -20,7 +18,6 @@ public class ExpansionPackStringMap {
     };
 
     public static int get(String expansionID) {
-        Log.d("YOLO", "expansionID => " + expansionID);
         return expansionResources.containsKey(expansionID) ? expansionResources.get(expansionID) : R.string.na;
     }
 }
