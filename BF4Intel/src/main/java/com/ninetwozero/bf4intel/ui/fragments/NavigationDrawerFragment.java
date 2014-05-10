@@ -117,7 +117,10 @@ public class NavigationDrawerFragment extends BaseListFragment {
         }
 
         setupRegularViews(view);
+
+        final int position = getListView().getCheckedItemPosition();
         ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
+        selectItemFromState(position);
     }
 
     @Subscribe
