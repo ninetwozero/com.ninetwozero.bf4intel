@@ -8,13 +8,6 @@ import java.util.Map;
 public class AwardStringMap {
     private static final Map<String, Integer> map = new HashMap<String, Integer>() {
         {
-            put("WARSAW_ID_P_XP1_AWARD_PLAY_PREMIUM", R.string.awards_premium);
-            put("WARSAW_ID_P_AWARDS_RANK10", R.string.awards_rank10);
-            put("WARSAW_ID_P_AWARDS_RANK100", R.string.awards_rank100);
-            put("WARSAW_ID_P_AWARDS_RANK20", R.string.awards_rank20);
-            put("WARSAW_ID_P_AWARDS_RANK25", R.string.awards_rank25);
-            put("WARSAW_ID_P_AWARDS_RANK50", R.string.awards_rank50);
-
             put("WARSAW_ID_P_AWARD_M01_DESC", R.string.award_m01_desc);
             put("WARSAW_ID_P_AWARD_M01_NAME", R.string.award_m01_name);
             put("WARSAW_ID_P_AWARD_M02_DESC", R.string.award_m02_desc);

@@ -5,9 +5,25 @@ import com.ninetwozero.bf4intel.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AssignmentRequirementStringMap {
+public class AssignmentCriteriaStringMap {
     private static final Map<String, Integer> map = new HashMap<String, Integer>() {
         {
+            // Pre-requisite criterias
+            put("WARSAW_ID_P_AWARDS_RANK10", R.string.awards_rank10);
+            put("WARSAW_ID_P_AWARDS_RANK100", R.string.awards_rank100);
+            put("WARSAW_ID_P_AWARDS_RANK20", R.string.awards_rank20);
+            put("WARSAW_ID_P_AWARDS_RANK25", R.string.awards_rank25);
+            put("WARSAW_ID_P_AWARDS_RANK50", R.string.awards_rank50);
+            put("WARSAW_ID_P_XP1_AWARD_PLAY_PREMIUM", R.string.awards_premium);
+            put("WARSAW_ID_P_AWARD_XP0", R.string.expansion_xp0);
+            put("WARSAW_ID_P_AWARD_XP1", R.string.expansion_xp1);
+            put("WARSAW_ID_P_AWARD_XP2", R.string.expansion_xp2);
+            put("WARSAW_ID_P_AWARD_XP3", R.string.expansion_xp3);
+            put("WARSAW_ID_P_AWARD_XP4", R.string.expansion_xp4);
+            put("WARSAW_ID_P_AWARD_GHOST1", R.string.expansion_xp1);
+            put("WARSAW_ID_P_AWARD_GHOST2", R.string.expansion_xp2);
+
+            // Requirements
             put("WARSAW_ID_P_AWARD_ASGN10_CR1", R.string.award_asgn10_cr1);
             put("WARSAW_ID_P_AWARD_ASGN10_CR2", R.string.award_asgn10_cr2);
             put("WARSAW_ID_P_AWARD_ASGN11_CR1", R.string.award_asgn11_cr1);
