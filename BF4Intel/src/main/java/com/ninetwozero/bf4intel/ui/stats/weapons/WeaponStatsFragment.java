@@ -95,7 +95,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
         final Bundle dataToPass = getArgumentsBundle();
         dataToPass.putSerializable(WeaponDetailsFragment.INTENT_WEAPON, weapon);
 
-        if (isSw720dp()) {
+        if (isSw720dp() || isSw600dp()) {
             final FragmentManager fragmentManager = getFragmentManager();
             DialogFragment fragment = (DialogFragment) fragmentManager.findFragmentByTag(WeaponDetailsFragment.TAG);
             if (fragment == null) {

@@ -251,12 +251,9 @@
         </LinearLayout>
       </RelativeLayout>
     </LinearLayout>
-    <!-- Maybe show card with info here:
-    DAMAGE (0-100), ACCURACY (0-100), HIP FIRE (0-100), RANGE (0-100), FIRE MODES (1, 3, 5)
-    -->
 
     <LinearLayout
-      style="@style/NonListViewCard"
+      style="@style/RegularCard"
       android:orientation="vertical"
       >
       <TextView

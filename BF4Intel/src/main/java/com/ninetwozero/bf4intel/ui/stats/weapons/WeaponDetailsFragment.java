@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.ui.BaseFragment;
+import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
 import com.ninetwozero.bf4intel.datatypes.WeaponInfo;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.resources.maps.WeaponInfoMap;
@@ -17,7 +17,7 @@ import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
-public class WeaponDetailsFragment extends BaseFragment {
+public class WeaponDetailsFragment extends BaseDialogFragment {
     public static final String INTENT_WEAPON = "weapon";
     public static final String TAG = "WeaponDetailsFragment";
 
@@ -42,7 +42,7 @@ public class WeaponDetailsFragment extends BaseFragment {
 
     private void initialize(View view) {
         setupData(getArguments());
-        setupActionBar();
+        setupTitle();
         populateViews(view);
     }
 
@@ -55,11 +55,9 @@ public class WeaponDetailsFragment extends BaseFragment {
         return WeaponCategory.from(weapon.getCategorySID());
     }
 
-    private void setupActionBar() {
-        if (!isSw720dp()) {
-            final String key = weapon.getUniqueName();
-            getActivity().getActionBar().setTitle(getString(WeaponStringMap.get(key)));
-        }
+    private void setupTitle() {
+        final String key = weapon.getUniqueName();
+        setTitle(getString(WeaponStringMap.get(key)));
     }
 
     private void populateViews(final View view) {
@@ -133,6 +131,9 @@ public class WeaponDetailsFragment extends BaseFragment {
                 setVisibility(view, R.id.wrap_headshots, View.VISIBLE);
                 setVisibility(view, R.id.wrap_shots_fired, View.VISIBLE);
                 setVisibility(view, R.id.wrap_accuracy, View.VISIBLE);
+                break;
+
+            default:
                 break;
 
         }
