@@ -53,6 +53,7 @@
   <string name="highest_kill_streak">Highest Kill Streak</string>
   <string name="nemesis_kills">Nemesis Kills</string>
   <string name="highest_nemesis_streak">Highest Nemesis Streak</string>
+  <string name="score_per_shot">Score per shot</string>
 
   <string name="game_mode_extra">Game mode extras</string>
   <string name="flags_captured">Flags captured</string>

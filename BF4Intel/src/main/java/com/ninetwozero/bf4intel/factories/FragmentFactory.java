@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.factories;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.ninetwozero.bf4intel.ui.assignments.AssignmentDetailFragment;
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentGridFragment;
 import com.ninetwozero.bf4intel.ui.awards.AwardDetailFragment;
 import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
@@ -51,6 +52,8 @@ public class FragmentFactory {
                 return SoldierStatisticsTabFragment.newInstance(data);
             case SOLDIER_ASSIGNMENTS:
                 return AssignmentGridFragment.newInstance(data);
+            case SOLDIER_ASSIGNMENT_DETAILS:
+                return AssignmentDetailFragment.newInstance(data);
             case SOLDIER_AWARDS:
                 return AwardGridFragment.newInstance(data);
             case SOLDIER_AWARD_DETAILS:

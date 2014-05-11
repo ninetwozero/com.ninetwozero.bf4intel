@@ -11,6 +11,8 @@ public class Assignments {
     private Map<String, Assignment> assignments = new HashMap<String, Assignment>();
     @SerializedName("missionCategory")
     private Map<String, List<String>> assignmentCategory = new HashMap<String, List<String>>();
+    @SerializedName("userGameExpansions")
+    private Map<String, List<Long>> expansions = new HashMap<String, List<Long>>();
 
     public Map<String, Assignment> getAssignments() {
         return assignments;
@@ -18,5 +20,9 @@ public class Assignments {
 
     public Map<String, List<String>> getAssignmentCategory() {
         return assignmentCategory;
+    }
+
+    public Map<String, List<Long>> getExpansions() {
+        return expansions;
     }
 }
