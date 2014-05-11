@@ -17,17 +17,10 @@
 
       <TextView
         style="@style/RegularCardTitle"
-        android:id="@+id/item_name"
-        />
-
-      <TextView
-        style="@style/RegularCardTitle"
         android:id="@+id/service_star_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/item_name"
-        android:layout_alignBottom="@id/item_name"
         android:gravity="center"
         />
 
@@ -49,7 +42,7 @@
         android:adjustViewBounds="true"
         android:layout_marginTop="@dimen/spacing_m"
         android:layout_marginBottom="@dimen/spacing_m"
-        android:layout_below="@id/item_name"
+        android:layout_below="@id/service_star_count"
         android:layout_centerHorizontal="true"
         />
 
@@ -190,6 +183,26 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_below="@id/value_range"
+          />
+      </RelativeLayout>
+      <RelativeLayout
+        android:id="@+id/wrap_rate_of_fire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_m"
+        >
+        <TextView
+          android:id="@+id/string_rate_of_fire"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/rate_of_fire"
+          />
+
+        <TextView
+          android:id="@+id/value_rate_of_fire"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
           />
       </RelativeLayout>
       <RelativeLayout

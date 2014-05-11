@@ -225,4 +225,5 @@
   <string name="fire_mode_auto">Auto</string>
   <string name="kills_per_shot">Kills per shot</string>
   <string name="time_equipped">Time equipped</string>
+  <string name="rate_of_fire">Rate of fire</string>
 </resources>

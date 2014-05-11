@@ -11,20 +11,18 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 import com.ninetwozero.bf4intel.datatypes.WeaponInfo;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
-import com.ninetwozero.bf4intel.resources.maps.WeaponInfoStringMap;
+import com.ninetwozero.bf4intel.resources.maps.WeaponInfoMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
-
-import java.util.Locale;
 
 public class WeaponDetailsFragment extends BaseFragment {
     public static final String INTENT_WEAPON = "weapon";
     public static final String TAG = "WeaponDetailsFragment";
 
     private Weapon weapon;
-    private final WeaponInfoStringMap weaponInfoStringMap = new WeaponInfoStringMap();
+    private final WeaponInfoMap weaponInfoMap = new WeaponInfoMap();
 
     public static WeaponDetailsFragment newInstance(final Bundle data) {
         final WeaponDetailsFragment fragment = new WeaponDetailsFragment();
@@ -54,13 +52,7 @@ public class WeaponDetailsFragment extends BaseFragment {
     private void setupActionBar() {
         if (!isSw720dp()) {
             final String key = weapon.getUniqueName();
-            getActivity().getActionBar().setTitle(
-                String.format(
-                    Locale.getDefault(),
-                    "Viewing %s",
-                    getString(WeaponStringMap.get(key))
-                )
-            );
+            getActivity().getActionBar().setTitle(getString(WeaponStringMap.get(key)));
         }
     }
 
@@ -71,7 +63,6 @@ public class WeaponDetailsFragment extends BaseFragment {
     }
 
     private void populateOverviewBox(View view) {
-        setText(view, R.id.item_name, WeaponStringMap.get(weapon.getUniqueName()));
         setImage(view, R.id.item_image, WeaponImageMap.get(weapon.getUniqueName()));
         setText(view, R.id.service_star_count, String.valueOf(weapon.getServiceStarsCount()));
         setProgress(view, R.id.item_progress, weapon.getServiceStarsProgress());
@@ -79,7 +70,7 @@ public class WeaponDetailsFragment extends BaseFragment {
     }
 
     private void populateInformation(View view) {
-        final WeaponInfo weaponInfo = weaponInfoStringMap.get(weapon.getUniqueName());
+        final WeaponInfo weaponInfo = weaponInfoMap.get(weapon.getUniqueName());
         if (weaponInfo.getDamage() == WeaponInfo.NONE) {
             view.findViewById(R.id.wrap_information_box).setVisibility(View.GONE);
             return;
@@ -89,6 +80,13 @@ public class WeaponDetailsFragment extends BaseFragment {
         setText(view, R.id.value_weapon_accuracy, String.valueOf(weaponInfo.getAccuracy()));
         setText(view, R.id.value_hip_fire, String.valueOf(weaponInfo.getHipFire()));
         setText(view, R.id.value_range, String.valueOf(weaponInfo.getRange()));
+
+        if (weaponInfo.getRateOfFire() > 0) {
+            setText(view, R.id.value_rate_of_fire, String.valueOf(weaponInfo.getRateOfFire()));
+            view.findViewById(R.id.wrap_rate_of_fire).setVisibility(View.VISIBLE);
+        } else {
+            view.findViewById(R.id.wrap_rate_of_fire).setVisibility(View.GONE);
+        }
 
         setProgress(view, R.id.progress_damage, weaponInfo.getDamage());
         setProgress(view, R.id.progress_weapon_accuracy, weaponInfo.getAccuracy());

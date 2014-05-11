@@ -11,18 +11,20 @@ public class WeaponInfo {
     private boolean singleFire;
     private boolean burstFire;
     private boolean autoFire;
+    private int rateOfFire;
 
 
     public WeaponInfo(String category) {
         this.category = category;
     }
 
-    public WeaponInfo(String category, int damage, int accuracy, int range, int hipFire, boolean singleFire, boolean burstFire, boolean autoFire) {
+    public WeaponInfo(String category, int damage, int accuracy, int range, int hipFire, int rateOfFire, boolean singleFire, boolean burstFire, boolean autoFire) {
         this.category = category;
         this.damage = damage;
         this.accuracy = accuracy;
         this.range = range;
         this.hipFire = hipFire;
+        this.rateOfFire = rateOfFire;
         this.singleFire = singleFire;
         this.burstFire = burstFire;
         this.autoFire = autoFire;
@@ -46,6 +48,10 @@ public class WeaponInfo {
 
     public int getHipFire() {
         return hipFire;
+    }
+
+    public int getRateOfFire() {
+        return rateOfFire;
     }
 
     public boolean isSingleFire() {
