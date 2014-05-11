@@ -154,7 +154,7 @@ public class AssignmentGridFragment
             AssignmentDetailFragment.INTENT_USER_HAS_EXPANSION, fetchExpansionStatus(assignment)
         );
 
-        if (isSw720dp()) {
+        if (isSw720dp() || isSw600dp()) {
             final FragmentManager fragmentManager = getFragmentManager();
             DialogFragment fragment = (DialogFragment) fragmentManager.findFragmentByTag(AssignmentDetailFragment.TAG);
             if (fragment == null) {

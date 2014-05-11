@@ -10,11 +10,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.UnlockType;
-import com.ninetwozero.bf4intel.json.assignments.Assignment;
-import com.ninetwozero.bf4intel.json.assignments.AssignmentAward;
-import com.ninetwozero.bf4intel.json.assignments.AssignmentCriteria;
-import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisite;
-import com.ninetwozero.bf4intel.json.assignments.AssignmentReward;
+import com.ninetwozero.bf4intel.json.assignments.*;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentCriteriaStringMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentImageMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentStringMap;
@@ -28,11 +24,7 @@ import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 
 public class AssignmentDetailFragment extends BaseDialogFragment {
     public static final String INTENT_ASSIGNMENT = "assignment";
@@ -62,7 +54,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void initialize(final View view) {
         setupData(getArguments());
-        setupActionBar();
+        setupTitle();
         populateViews(view, assignmentAward);
     }
 
@@ -90,11 +82,9 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         );
     }
 
-    private void setupActionBar() {
-        if (!isSw720dp()) {
+    private void setupTitle() {
             final String key = assignmentAward.getUniqueName();
-            getActivity().getActionBar().setTitle(getString(AssignmentStringMap.get(key)));
-        }
+            setTitle(getString(AssignmentStringMap.get(key)));
     }
 
     private void populateViews(final View view, final AssignmentAward award) {
@@ -187,12 +177,12 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         final String criteriaType = "CriteriaType_GLOBAL_AllTimeTotal";
 
         final List<AssignmentCriteria> criterias = new ArrayList<AssignmentCriteria>();
-        criterias.add(new AssignmentCriteria(name, completion/100, 1, completion, criteriaType));
+        criterias.add(new AssignmentCriteria(name, completion / 100, 1, completion, criteriaType));
         return criterias;
     }
 
     private String buildCriteriaStringKey(String key) {
-        final String number = key.substring(key.lastIndexOf("_")+1);
+        final String number = key.substring(key.lastIndexOf("_") + 1);
         return "WARSAW_ID_P_SP_AWARD_ASSGN" + number + "_CR1";
     }
 
@@ -240,7 +230,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     // Fixes issue with the Firestarter assignment as it returns 12 rewards, but only 3 are needed
     private List<AssignmentReward> fetchRewardsForFirestarter() {
         final List<AssignmentReward> rewards = new ArrayList<AssignmentReward>();
-        final String[] fakeNames = new String[] {
+        final String[] fakeNames = new String[]{
             "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER1",
             "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER2",
             "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER3"

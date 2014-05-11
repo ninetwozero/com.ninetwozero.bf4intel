@@ -1,6 +1,5 @@
 package com.ninetwozero.bf4intel.base.ui;
 
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
@@ -12,7 +11,6 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,9 +24,6 @@ public class BaseDialogFragment extends DialogFragment {
     public static final String FLAG_DISABLE_AUTOMATIC_ANALYTICS = "flag_disable_automated_analytics";
     public static final String FLAG_DISABLE_RETAIN_STATE = "flag_disable_retain_instance_state";
 
-    protected static final float ALPHA_ENABLED = 0.8f;
-    protected static final float ALPHA_DISABLED = 0.3f;
-
     protected FragmentManager fragmentManager;
     protected LayoutInflater layoutInflater;
     protected SharedPreferences sharedPreferences;
@@ -41,7 +36,6 @@ public class BaseDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Dialog dialog = super.onCreateDialog(savedInstanceState);
-        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         return dialog;
     }
 
@@ -74,6 +68,14 @@ public class BaseDialogFragment extends DialogFragment {
         final Bundle bundle = getArgumentsBundle();
         if (!bundle.getBoolean(FLAG_DISABLE_AUTOMATIC_ANALYTICS, false)) {
             postGoogleAnalytics();
+        }
+    }
+
+    protected void setTitle(String title) {
+        if (!isSw720dp() && !isSw600dp()) {
+            getActivity().getActionBar().setTitle(title);
+        } else {
+            getDialog().setTitle(title);
         }
     }
 
