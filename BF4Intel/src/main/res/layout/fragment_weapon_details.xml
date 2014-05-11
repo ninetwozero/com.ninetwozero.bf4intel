@@ -79,6 +79,7 @@
         />
 
       <RelativeLayout
+        android:id="@+id/wrap_damage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_m"
@@ -106,6 +107,7 @@
           />
       </RelativeLayout>
       <RelativeLayout
+        android:id="@+id/wrap_weapon_accuracy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_m"
@@ -133,6 +135,7 @@
           />
       </RelativeLayout>
       <RelativeLayout
+        android:id="@+id/wrap_hip_fire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_m"
@@ -160,6 +163,7 @@
           />
       </RelativeLayout>
       <RelativeLayout
+        android:id="@+id/wrap_range"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_m"
@@ -206,6 +210,7 @@
           />
       </RelativeLayout>
       <RelativeLayout
+        android:id="@+id/wrap_fire_modes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_m"
@@ -261,6 +266,7 @@
         />
 
       <LinearLayout
+        android:id="@+id/wrap_kills"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
@@ -284,10 +290,12 @@
 
       </LinearLayout>
       <LinearLayout
+        android:id="@+id/wrap_headshots"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:layout_marginTop="@dimen/spacing_m"
+        android:visibility="gone"
         >
         <TextView
           android:id="@+id/string_headshots"
@@ -307,10 +315,12 @@
 
       </LinearLayout>
       <LinearLayout
+        android:id="@+id/wrap_shots_fired"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:layout_marginTop="@dimen/spacing_m"
+        android:visibility="gone"
         >
         <TextView
           android:id="@+id/string_shots_fired"
@@ -330,10 +340,12 @@
 
       </LinearLayout>
       <LinearLayout
+        android:id="@+id/wrap_time_equipped"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:layout_marginTop="@dimen/spacing_m"
+        android:visibility="gone"
         >
         <TextView
           android:id="@+id/string_time_equipped"
@@ -353,10 +365,12 @@
 
       </LinearLayout>
       <LinearLayout
+        android:id="@+id/wrap_accuracy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:layout_marginTop="@dimen/spacing_m"
+        android:visibility="gone"
         >
         <TextView
           android:id="@+id/string_accuracy"
@@ -374,6 +388,7 @@
           />
       </LinearLayout>
       <LinearLayout
+        android:id="@+id/wrap_kills_per_shot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"

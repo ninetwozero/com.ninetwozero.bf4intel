@@ -23,6 +23,7 @@ public class WeaponDetailsFragment extends BaseFragment {
 
     private Weapon weapon;
     private final WeaponInfoMap weaponInfoMap = new WeaponInfoMap();
+    private WeaponCategory weaponCategory;
 
     public static WeaponDetailsFragment newInstance(final Bundle data) {
         final WeaponDetailsFragment fragment = new WeaponDetailsFragment();
@@ -47,6 +48,11 @@ public class WeaponDetailsFragment extends BaseFragment {
 
     private void setupData(final Bundle data) {
         weapon = (Weapon) data.getSerializable(INTENT_WEAPON);
+        weaponCategory = fetchCategoryForWeapon();
+    }
+
+    private WeaponCategory fetchCategoryForWeapon() {
+        return WeaponCategory.from(weapon.getCategorySID());
     }
 
     private void setupActionBar() {
@@ -72,7 +78,7 @@ public class WeaponDetailsFragment extends BaseFragment {
     private void populateInformation(View view) {
         final WeaponInfo weaponInfo = weaponInfoMap.get(weapon.getUniqueName());
         if (weaponInfo.getDamage() == WeaponInfo.NONE) {
-            view.findViewById(R.id.wrap_information_box).setVisibility(View.GONE);
+            setVisibility(view, R.id.wrap_information_box, View.GONE);
             return;
         }
 
@@ -83,9 +89,9 @@ public class WeaponDetailsFragment extends BaseFragment {
 
         if (weaponInfo.getRateOfFire() > 0) {
             setText(view, R.id.value_rate_of_fire, String.valueOf(weaponInfo.getRateOfFire()));
-            view.findViewById(R.id.wrap_rate_of_fire).setVisibility(View.VISIBLE);
+            setVisibility(view, R.id.wrap_rate_of_fire, View.VISIBLE);
         } else {
-            view.findViewById(R.id.wrap_rate_of_fire).setVisibility(View.GONE);
+            setVisibility(view, R.id.wrap_rate_of_fire, View.GONE);
         }
 
         setProgress(view, R.id.progress_damage, weaponInfo.getDamage());
@@ -108,9 +114,28 @@ public class WeaponDetailsFragment extends BaseFragment {
         setText(view, R.id.value_kills, String.valueOf(weapon.getKills()));
         setText(view, R.id.value_headshots, String.valueOf(weapon.getHeadshotCount()));
         setText(view, R.id.value_shots_fired, String.valueOf(weapon.getShotsFired()));
-        setText(view, R.id.value_accuracy, NumberFormatter.format(weapon.getAccuracy()) + "%");
+        setText(view, R.id.value_accuracy, NumberFormatter.format(weapon.getAccuracy()*100) + "%");
         setText(view, R.id.value_time_equipped, DateTimeUtils.toLiteral(weapon.getTimeEquipped()));
         setText(view, R.id.value_kills_per_shot, calculateKillsPerShot());
+
+        switch (weaponCategory) {
+            case GADGETS:
+                setVisibility(view, R.id.wrap_shots_fired, View.VISIBLE);
+                setVisibility(view, R.id.wrap_accuracy, View.VISIBLE);
+                break;
+            case ASSAULT_RIFLE:
+            case CARBINE:
+            case SNIPER:
+            case SHOTGUN:
+            case HANDGUN:
+            case DMR:
+            case LMG:
+                setVisibility(view, R.id.wrap_headshots, View.VISIBLE);
+                setVisibility(view, R.id.wrap_shots_fired, View.VISIBLE);
+                setVisibility(view, R.id.wrap_accuracy, View.VISIBLE);
+                break;
+
+        }
     }
 
     private String calculateKillsPerShot() {

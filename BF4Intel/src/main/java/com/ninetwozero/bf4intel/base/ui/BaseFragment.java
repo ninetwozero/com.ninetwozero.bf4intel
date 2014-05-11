@@ -151,4 +151,8 @@ public abstract class BaseFragment extends Fragment {
     protected void setImage(final View view, final int viewId, int imageResource) {
         Picasso.with(getActivity()).load(imageResource).into((ImageView) view.findViewById(viewId));
     }
+
+    public void setVisibility(final View view, final int resourceId, final int state) {
+        view.findViewById(resourceId).setVisibility(state);
+    }
 }
