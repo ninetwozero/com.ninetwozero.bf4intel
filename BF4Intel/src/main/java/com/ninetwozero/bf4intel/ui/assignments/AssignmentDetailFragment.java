@@ -90,7 +90,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void showAssignmentImage(final View view, final AssignmentAward award, final boolean completed) {
         final ImageView imageView = (ImageView) view.findViewById(R.id.assignment_image);
-        imageView.setAlpha(completed ? 1f : 0.5f);
+        imageView.setAlpha(completed ? ALPHA_ENABLED : ALPHA_DISABLED);
         Picasso.with(getActivity()).load(AssignmentImageMap.get(award.getUniqueName())).into(imageView);
     }
 
@@ -131,10 +131,10 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     private AssignmentPrerequisite expansionPrerequisite() {
         final String pack = assignmentAward.getExpansionPack().toUpperCase(Locale.getDefault());
         return new AssignmentPrerequisite(
-                "WARSAW_ID_P_AWARD_" + pack,
-                assignmentAward.getExpansionPack(),
-                AssignmentPrerequisite.Type.EXPANSION.getGroup(),
-                userHasExpansionPack ? 1 : 0
+            "WARSAW_ID_P_AWARD_" + pack,
+            assignmentAward.getExpansionPack(),
+            AssignmentPrerequisite.Type.EXPANSION.getGroup(),
+            userHasExpansionPack ? 1 : 0
         );
     }
 
@@ -160,11 +160,11 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
             for (AssignmentCriteria criteria : criterias) {
                 final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_task, containerView, false);
-                final boolean showRoundText = "CriteriaType_IAR_InARound".equals(criteria.getCriteriaType());
+                final boolean isInRoundRequirement = "CriteriaType_IAR_InARound".equals(criteria.getCriteriaType());
 
                 setText(tempView, R.id.task_label, AssignmentCriteriaStringMap.get(criteria.getKey()));
-                setText(tempView, R.id.task_completion, getTaskCompletionString(criteria));
-                setVisibility(tempView, R.id.task_round, showRoundText ? View.VISIBLE : View.GONE);
+                setText(tempView, R.id.task_completion, getTaskCompletionString(criteria, isInRoundRequirement));
+                setVisibility(tempView, R.id.task_round, isInRoundRequirement ? View.VISIBLE : View.GONE);
 
                 containerView.addView(tempView);
             }
@@ -188,11 +188,11 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         return "WARSAW_ID_P_SP_AWARD_ASSGN" + number + "_CR1";
     }
 
-    private String getTaskCompletionString(final AssignmentCriteria criteria) {
+    private String getTaskCompletionString(final AssignmentCriteria criteria, boolean isInRoundRequirement) {
         return String.format(
             Locale.getDefault(),
             getString(R.string.generic_x_of_y),
-            criteria.getCurrentValue(),
+            isInRoundRequirement ? criteria.getUnlockThreshold() : criteria.getCurrentValue(),
             criteria.getUnlockThreshold()
         );
     }

@@ -24,6 +24,9 @@ public class BaseDialogFragment extends DialogFragment {
     public static final String FLAG_DISABLE_AUTOMATIC_ANALYTICS = "flag_disable_automated_analytics";
     public static final String FLAG_DISABLE_RETAIN_STATE = "flag_disable_retain_instance_state";
 
+    protected static final float ALPHA_ENABLED = 1f;
+    protected static final float ALPHA_DISABLED = 0.5f;
+
     protected FragmentManager fragmentManager;
     protected LayoutInflater layoutInflater;
     protected SharedPreferences sharedPreferences;
