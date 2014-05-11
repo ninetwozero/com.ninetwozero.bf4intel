@@ -63,29 +63,11 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         assignment = (Assignment) data.getSerializable(INTENT_ASSIGNMENT);
         userHasExpansionPack = data.getBoolean(INTENT_USER_HAS_EXPANSION);
         assignmentAward = assignment.getAward();
-
-        addExpansionPrerequisiteToList();
-    }
-
-    private void addExpansionPrerequisiteToList() {
-        if (!assignmentAward.hasExpansionPack()) {
-            return;
-        }
-
-        final String pack = assignmentAward.getExpansionPack().toUpperCase(Locale.getDefault());
-        assignment.getPrerequisites().add(
-            new AssignmentPrerequisite(
-                "WARSAW_ID_P_AWARD_" + pack,
-                assignmentAward.getExpansionPack(),
-                AssignmentPrerequisite.Type.EXPANSION.getGroup(),
-                userHasExpansionPack ? 1 : 0
-            )
-        );
     }
 
     private void setupTitle() {
-            final String key = assignmentAward.getUniqueName();
-            setTitle(getString(AssignmentStringMap.get(key)));
+        final String key = assignmentAward.getUniqueName();
+        setTitle(getString(AssignmentStringMap.get(key)));
     }
 
     private void populateViews(final View view, final AssignmentAward award) {
@@ -120,21 +102,40 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
             for (AssignmentPrerequisite prerequisite : assignment.getPrerequisites()) {
                 final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_prereq, containerView, false);
-                final AssignmentPrerequisite.Type groupType = AssignmentPrerequisite.Type.from(prerequisite.getGroup());
+                containerView.addView(populatePreRequisite(tempView, prerequisite));
+            }
 
-                setImage(tempView, R.id.image_prereq_icon, fetchPrerequisiteImage(groupType));
-                setText(tempView, R.id.assignment_prerequisite, fetchPrerequisiteTitle(prerequisite.getKey(), groupType));
-                setVisibility(
-                    tempView,
-                    R.id.assignment_prereq_completed,
-                    prerequisite.getTimesTaken() > 0 ? View.VISIBLE : View.GONE
-                );
-
-                containerView.addView(tempView);
+            if (assignmentAward.hasExpansionPack()) {
+                final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_prereq, containerView, false);
+                containerView.addView(populatePreRequisite(tempView, expansionPrerequisite()));
             }
         } else {
             cardWrapperView.setVisibility(View.GONE);
         }
+    }
+
+    private View populatePreRequisite(final View view, final AssignmentPrerequisite prerequisite) {
+        final AssignmentPrerequisite.Type groupType = AssignmentPrerequisite.Type.from(prerequisite.getGroup());
+
+        setImage(view, R.id.image_prereq_icon, fetchPrerequisiteImage(groupType));
+        setText(view, R.id.assignment_prerequisite, fetchPrerequisiteTitle(prerequisite.getKey(), groupType));
+        setVisibility(
+            view,
+            R.id.assignment_prereq_completed,
+            prerequisite.getTimesTaken() > 0 ? View.VISIBLE : View.GONE
+        );
+
+        return view;
+    }
+
+    private AssignmentPrerequisite expansionPrerequisite() {
+        final String pack = assignmentAward.getExpansionPack().toUpperCase(Locale.getDefault());
+        return new AssignmentPrerequisite(
+                "WARSAW_ID_P_AWARD_" + pack,
+                assignmentAward.getExpansionPack(),
+                AssignmentPrerequisite.Type.EXPANSION.getGroup(),
+                userHasExpansionPack ? 1 : 0
+        );
     }
 
     private int fetchPrerequisiteTitle(String key, AssignmentPrerequisite.Type groupType) {
