@@ -107,7 +107,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
             if (assignmentAward.hasExpansionPack()) {
                 final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_prereq, containerView, false);
-                containerView.addView(populatePreRequisite(tempView, expansionPrerequisite()));
+                containerView.addView(populatePreRequisite(tempView, fetchPrerequisiteForExpansion()));
             }
         } else {
             cardWrapperView.setVisibility(View.GONE);
@@ -128,7 +128,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         return view;
     }
 
-    private AssignmentPrerequisite expansionPrerequisite() {
+    private AssignmentPrerequisite fetchPrerequisiteForExpansion() {
         final String pack = assignmentAward.getExpansionPack().toUpperCase(Locale.getDefault());
         return new AssignmentPrerequisite(
             "WARSAW_ID_P_AWARD_" + pack,
@@ -150,7 +150,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         final View cardWrapperView = view.findViewById(R.id.wrap_assignment_tasks);
         List<AssignmentCriteria> criterias = assignment.getCriterias();
 
-        if (assignment.getAward().getCode().startsWith("SP_")) {
+        if (assignmentAward.getCode().startsWith("SP_")) {
             criterias = fetchCriteriaForSinglePlayer();
         }
 
@@ -174,7 +174,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     }
 
     private List<AssignmentCriteria> fetchCriteriaForSinglePlayer() {
-        final String name = buildCriteriaStringKey(assignment.getAward().getUniqueName());
+        final String name = buildCriteriaStringKey(assignmentAward.getUniqueName());
         final int completion = assignment.getCompletion();
         final String criteriaType = "CriteriaType_GLOBAL_AllTimeTotal";
 
@@ -203,7 +203,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         final View cardWrapperView = view.findViewById(R.id.wrap_assignment_rewards);
         List<AssignmentReward> rewards = assignment.getRewards();
 
-        if (assignment.getAward().getUniqueName().equals(KEY_FIRESTARTER)) {
+        if (assignmentAward.getUniqueName().equals(KEY_FIRESTARTER)) {
             rewards = fetchRewardsForFirestarter();
         }
 
@@ -311,6 +311,6 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     }
 
     private int fetchExpansionImage() {
-        return ExpansionIconsImageMap.get(assignment.getAward().getExpansionPack());
+        return ExpansionIconsImageMap.get(assignmentAward.getExpansionPack());
     }
 }
