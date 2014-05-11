@@ -14,6 +14,7 @@ import com.ninetwozero.bf4intel.json.assignments.*;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentCriteriaStringMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentImageMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentStringMap;
+import com.ninetwozero.bf4intel.resources.maps.assignments.ExpansionIconsImageMap;
 import com.ninetwozero.bf4intel.resources.maps.camoflagues.CamoImageMap;
 import com.ninetwozero.bf4intel.resources.maps.camoflagues.CamoStringMap;
 import com.ninetwozero.bf4intel.resources.maps.dogtags.DogtagStringMap;
@@ -302,9 +303,13 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             case MISSION:
                 return R.drawable.ic_stat_award;
             case EXPANSION:
-                return R.drawable.ic_stat_award;
+                return fetchExpansionImage();
             default:
                 return R.drawable.empty;
         }
+    }
+
+    private int fetchExpansionImage() {
+        return ExpansionIconsImageMap.get(assignment.getAward().getExpansionPack());
     }
 }
