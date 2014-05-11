@@ -181,7 +181,6 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         }
     }
 
-    // Needed due to Single-player assignments JSON being stupid
     private List<AssignmentCriteria> fetchCriteriaForSinglePlayer() {
         final String name = buildCriteriaStringKey(assignment.getAward().getUniqueName());
         final int completion = assignment.getCompletion();
@@ -238,7 +237,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         }
     }
 
-    // Stupid method needed to get the appropriate rewards for the Firestarter assignment
+    // Fixes issue with the Firestarter assignment as it returns 12 rewards, but only 3 are needed
     private List<AssignmentReward> fetchRewardsForFirestarter() {
         final List<AssignmentReward> rewards = new ArrayList<AssignmentReward>();
         final String[] fakeNames = new String[] {
