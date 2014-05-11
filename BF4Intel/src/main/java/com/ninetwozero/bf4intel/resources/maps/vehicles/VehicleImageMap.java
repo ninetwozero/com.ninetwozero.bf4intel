@@ -51,11 +51,13 @@ public class VehicleImageMap {
             put("WARSAW_ID_P_VNAME_ZBD09", R.drawable.vehicle_zbd09);
             put("WARSAW_ID_P_VNAME_ZFB05", R.drawable.vehicle_zfb05);
             put("WARSAW_ID_P_XP1_VNAME_BOMBER", R.drawable.vehicle_h6k);
+            put("WARSAW_ID_P_XP1_VNAME_BOMBCRUISE", R.drawable.vehicle_h6k);
             put("WARSAW_ID_P_XP1_VNAME_BTR90", R.drawable.vehicle_btr90);
             put("WARSAW_ID_P_XP1_VNAME_DIRTBIKE", R.drawable.vehicle_dirtbike);
             put("WARSAW_ID_P_XP1_VNAME_F35", R.drawable.vehicle_f35);
             put("WARSAW_ID_P_XP1_VNAME_SUAV", R.drawable.vehicle_suav);
             put("WARSAW_ID_P_XP1_VNAME_UCAV", R.drawable.vehicle_ucav);
+            put("WARSAW_ID_P_XP1_VNAME_UCAVAIRBURST", R.drawable.vehicle_ucav);
             put("WARSAW_ID_P_INAME_EOD", R.drawable.vehicle_eodbot);
             put("WARSAW_ID_P_INAME_MORTAR", R.drawable.vehicle_m224_mortar);
             put("WARSAW_ID_P_INAME_MAV", R.drawable.vehicle_mav);

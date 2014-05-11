@@ -119,4 +119,5 @@
   <dimen name="assignment_details_image_size">192dp</dimen>
   <dimen name="award_details_medal_size">144dp</dimen>
   <dimen name="spacing_none">0dp</dimen>
+  <dimen name="reward_image_width">128dp</dimen>
 </resources>

@@ -89,6 +89,7 @@
 
   <style name="NonListViewCard" parent="RegularCard">
     <item name="android:layout_marginBottom">@dimen/spacing_m</item>
+    <item name="android:orientation">vertical</item>
   </style>
 
   <style name="WhiteContainerFeed" parent="BaseWhiteContainer">

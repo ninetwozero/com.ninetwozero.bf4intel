@@ -10,25 +10,21 @@
     android:id="@+id/task_label"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/dummy_assignment_task_label"
-    android:layout_centerVertical="true"
     />
-  <ImageView
+  <TextView
+    android:id="@+id/task_round"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    android:layout_below="@id/task_label"
+    android:textColor="@color/grey"
+    android:text="@string/label_in_a_round"
+    />
+  <TextView
     android:id="@+id/task_completion"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/dummy_progress"
     android:layout_marginLeft="@dimen/spacing_m"
-    android:layout_centerVertical="true"
     android:layout_alignParentRight="true"
-    />
-  <ImageView
-    android:id="@+id/task_completed_icon"
-    android:layout_width="@dimen/unlock_status_icon_size"
-    android:layout_height="@dimen/unlock_status_icon_size"
-    android:src="@drawable/icon_completed_dark"
-    android:layout_centerVertical="true"
-    android:layout_alignParentRight="true"
-    android:contentDescription="@string/cdesc_completion_indicator"
     />
 </RelativeLayout>

@@ -2,20 +2,28 @@ package com.ninetwozero.bf4intel.json.assignments;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
-public class Assignment {
+public class Assignment implements Serializable {
     private static final int COMPLETED = 100;
 
+    @SerializedName("award")
+    private AssignmentAward award;
+    @SerializedName("criterias")
+    private List<AssignmentCriteria> criterias;
     @SerializedName("completion")
     private int completion;
     @SerializedName("isTracking")
     private boolean isTracking;
-    @SerializedName("award")
-    private AssignmentAward award;
     @SerializedName("unlockDependencies")
-    private List<UnlockDependencies> unlockDependencieses = new ArrayList<UnlockDependencies>();
+    private List<AssignmentPrerequisite> prerequisites;
+    @SerializedName("upcomingUnlocks")
+    private List<AssignmentReward> rewards;
+
+    public AssignmentAward getAward() {
+        return award;
+    }
 
     public int getCompletion() {
         return completion;
@@ -29,20 +37,22 @@ public class Assignment {
         return isTracking;
     }
 
-    public AssignmentAward getAward() {
-        return award;
-    }
-
     public String getDependencyGroup() {
-        return unlockDependencieses.isEmpty() ? AssignmentPrerequisite.NONE.toString() : unlockDependencieses.get(0).getGroup();
+        if (prerequisites == null || prerequisites.isEmpty()) {
+            return AssignmentPrerequisite.Type.NONE.toString();
+        }
+        return prerequisites.get(0).getGroup();
     }
 
-    public static class UnlockDependencies {
-        @SerializedName("group")
-        private String group;
+    public List<AssignmentCriteria> getCriterias() {
+        return criterias;
+    }
 
-        protected String getGroup() {
-            return group;
-        }
+    public List<AssignmentPrerequisite> getPrerequisites() {
+        return prerequisites;
+    }
+
+    public List<AssignmentReward> getRewards() {
+        return rewards;
     }
 }

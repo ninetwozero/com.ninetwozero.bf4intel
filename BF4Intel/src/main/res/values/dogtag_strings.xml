@@ -16,6 +16,7 @@
   <string name="warsaw_id_dlas8_name">Carbine Basic Dog Tag</string>
   <string name="warsaw_id_dlas9_name">PDW Basic Dog Tag</string>
   <string name="warsaw_id_dlblank_name">Default Dog Tag</string>
+
   <string name="warsaw_id_dlc100_name">Hungary</string>
   <string name="warsaw_id_dlc101_name">Iceland</string>
   <string name="warsaw_id_dlc102_name">India</string>
@@ -266,6 +267,7 @@
   <string name="warsaw_id_dlc98_name">Honduras</string>
   <string name="warsaw_id_dlc99_name">Hong Kong</string>
   <string name="warsaw_id_dlc9_name">Antigua and Barbuda</string>
+
   <string name="warsaw_id_dldev_name">Battlefield 4 Dev Team Dog Tag</string>
   <string name="warsaw_id_dldice_name">DICE Dog Tag</string>
   <string name="warsaw_id_dlesn_name">ESN Dog Tag</string>
@@ -286,10 +288,55 @@
   <string name="warsaw_id_dlr3_name">Rank 50 Dog Tag</string>
   <string name="warsaw_id_dlr4_name">Rank 75 Dog Tag</string>
   <string name="warsaw_id_dlr5_name">Rank 100 Dog Tag</string>
+
   <string name="warsaw_id_dlxp01_name">Trade Master Dog Tag</string>
   <string name="warsaw_id_dlxp02_name">Jump Master Dog Tag</string>
   <string name="warsaw_id_dlxp03_name">Flag Shredder Dog Tag</string>
   <string name="warsaw_id_dlxp04_name">CTF Savior Dog Tag</string>
   <string name="warsaw_id_dlxp05_name">Battlefield Veteran Dog Tag</string>
   <string name="warsaw_id_dlxp06_name">Extra Crispy Dog Tag</string>
+
+  <string name="warsaw_id_dra21_name">Tin Foil Hat Dog Tag</string>
+  <string name="warsaw_id_dra22_name">We\'ll Meet Again Dog Tag</string>
+  <string name="warsaw_id_dra23_name">Leave No Man Behind Dog Tag</string>
+  <string name="warsaw_id_dra24_name">Wrecking Ball Dog Tag</string>
+  <string name="warsaw_id_dra25_name">Offensive Commander Dog Tag</string>
+  <string name="warsaw_id_dra26_name">Hitman Dog Tag</string>
+  <string name="warsaw_id_dra27_name">Land Warrior Dog Tag</string>
+  <string name="warsaw_id_dra28_name">Air Warrior Dog Tag</string>
+  <string name="warsaw_id_dra29_name">Taxi Driver Dog Tag</string>
+  <string name="warsaw_id_dra30_name">Wall of Shotgun Dog Tag</string>
+  <string name="warsaw_id_dra31_name">Swedish Steel Dog Tag</string>
+  <string name="warsaw_id_dra32_name">Made in China Dog Tag</string>
+  <string name="warsaw_id_dra33_name">From Russia With Lead Dog Tag</string>
+  <string name="warsaw_id_dra34_name">American Classics Dog Tag</string>
+
+  <string name="warsaw_id_drma1_name">Himars Master Dog Tag</string>
+  <string name="warsaw_id_drma2_name">Stealth Assassin Dog Tag</string>
+  <string name="warsaw_id_drma3_name">Melee Expert Dog Tag</string>
+  <string name="warsaw_id_drmas_name">M26 Mass Master Dog Tag</string>
+
+  <!-- XP1 -->
+  <string name="warsaw_id_xp1_dr_premium_1_name">The Premium Yin-Yang Dog Tag</string>
+  <string name="warsaw_id_xp1_dr_premium_2_name">The Premium Jet Dog Tag</string>
+  <string name="warsaw_id_xp1_dr_premium_3_name">The Premium Fist Dog Tag</string>
+  <string name="warsaw_id_xp1_dr_premium_4_name">The Premium Bomber Dog Tag</string>
+  <string name="warsaw_id_xp1_drxp1ar_name">L85A2 Master Dog Tag</string>
+  <string name="warsaw_id_xp1_drxp1bomber_name">Bomb Delivery Dog Tag</string>
+  <string name="warsaw_id_xp1_drxp1ca_name">MTAR-21 Master Dog Tag</string>
+  <string name="warsaw_id_xp1_drxp1ghost1_name">Phantom Program Dog Tag</string>
+  <string name="warsaw_id_xp1_drxp1king_name">Middle King Dog Tag</string>
+  <string name="warsaw_id_xp1_drxp1lmg_name">RPK-74M Master Dog Tag</string>
+  <string name="warsaw_id_xp1_drxp1pdw_name">MP7 Master Dog Tag</string>
+  <string name="warsaw_id_xp1_drxp1sr_name">L96A1 Master Dog Tag</string>
+
+  <!-- XP2 -->
+  <string name="warsaw_id_xp2_drxp2ar_name">AR-160 Master Dog Tag</string>
+  <string name="warsaw_id_xp2_drxp2dmr_name">SR338 Master Dog Tag</string>
+  <string name="warsaw_id_xp2_drxp2lmg_name">AWS Master Dog Tag</string>
+  <string name="warsaw_id_xp2_drxp2pdw_name">SR-2 Master Dog Tag</string>
+  <string name="warsaw_id_xp2_drxp2rv_name">SW40 Master Dog Tag</string>
+  <string name="warsaw_id_xp2_giantslayer_name">Giant Slayer Dog tag</string>
+  <string name="warsaw_id_xp2_scourgesea_name">Scourge of the Sea Dog tag</string>
+  <string name="warsaw_id_xp2_titansofsteel_name">Titans of Steel Dog tag</string>
 </resources>

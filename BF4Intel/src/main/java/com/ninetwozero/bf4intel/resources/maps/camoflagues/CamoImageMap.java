@@ -145,6 +145,16 @@ public class CamoImageMap {
             put("WARSAW_ID_P_CAMO_NAME_WORM_SNOW", R.drawable.camo_worm_snow);
             put("WARSAW_ID_P_CAMO_NAME_WORM_URBAN", R.drawable.camo_worm_urban);
             put("WARSAW_ID_P_CAMO_NAME_WORM_WOODLAND", R.drawable.camo_worm_woodland);
+
+            // XP0
+            put("WARSAW_ID_P_XP0_CAMO_NAME_DPM6", R.drawable.camo_splinter_adaptive);
+            put("WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER", R.drawable.xp0_camo_firestarter);
+            put("WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER1", R.drawable.xp0_camo_firestarter);
+            put("WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER2", R.drawable.xp0_camo_firestarter2);
+            put("WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER3", R.drawable.xp0_camo_firestarter3);
+
+            // XP2
+            put("WARSAW_ID_P_XP2_CAMO_NAME_PHANTOM", R.drawable.camo_snakeskin);
         }
     };
 

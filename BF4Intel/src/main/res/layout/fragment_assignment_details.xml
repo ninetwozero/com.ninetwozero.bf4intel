@@ -5,25 +5,21 @@
   android:layout_height="match_parent"
   android:background="@color/card_activity_bg"
   >
-  <RelativeLayout
+  <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/spacing_m"
     android:paddingRight="@dimen/spacing_m"
     android:paddingBottom="@dimen/spacing_none"
     android:paddingLeft="@dimen/spacing_m"
+    android:orientation="vertical"
     >
 
     <RelativeLayout
       style="@style/NonListViewCard"
+      android:paddingTop="@dimen/spacing_none"
       android:id="@+id/wrap_top"
       >
-      <TextView
-        style="@style/RegularCardTitle"
-        android:id="@+id/assignment_title"
-        android:text="@string/dummy_assignment_1"
-        />
-
       <ImageView
         android:id="@+id/assignment_image"
         android:layout_width="@dimen/assignment_details_image_size"
@@ -31,15 +27,38 @@
         android:src="@drawable/as01a"
         android:adjustViewBounds="true"
         android:contentDescription="@string/cdesc_assignment_image"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         />
+
+      <RelativeLayout
+        android:id="@+id/wrap_assignment_completion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/assignment_image"
+        >
+
+        <TextView
+          android:id="@+id/assignment_completion_text"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          />
+
+        <ProgressBar
+          style="?android:attr/progressBarStyleHorizontal"
+          android:id="@+id/assignment_completion"
+          android:layout_height="wrap_content"
+          android:layout_width="match_parent"
+          android:layout_toLeftOf="@id/assignment_completion_text"
+          android:layout_marginRight="@dimen/spacing_m"
+          android:layout_centerVertical="true"
+          />
+      </RelativeLayout>
     </RelativeLayout>
 
     <LinearLayout
-      style="@style/NonListViewCard"
       android:id="@+id/wrap_assignment_prereq"
-      android:layout_below="@id/wrap_top"
-      android:orientation="vertical"
+      style="@style/NonListViewCard"
       >
       <TextView
         style="@style/RegularCardTitle"
@@ -47,30 +66,35 @@
         android:text="@string/assignment_prerequisite"
         android:layout_marginBottom="@dimen/spacing_m"
         />
-      <include layout="@layout/list_item_assignment_prereq" />
+      <LinearLayout
+        android:id="@+id/assignment_prereq_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        />
     </LinearLayout>
 
     <LinearLayout
-      style="@style/NonListViewCard"
       android:id="@+id/wrap_assignment_tasks"
-      android:layout_below="@id/wrap_assignment_prereq"
-      android:orientation="vertical"
+      style="@style/NonListViewCard"
       >
-
       <TextView
         style="@style/RegularCardTitle"
         android:id="@+id/string_tasks"
         android:text="@string/assignment_requirements"
         android:layout_marginBottom="@dimen/spacing_m"
         />
-      <include layout="@layout/list_item_assignment_task" />
-      <include layout="@layout/list_item_assignment_task" />
+      <LinearLayout
+        android:id="@+id/assignment_tasks_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        />
     </LinearLayout>
 
     <RelativeLayout
       style="@style/NonListViewCard"
-      android:id="@+id/wrap_reward"
-      android:layout_below="@id/wrap_assignment_tasks"
+      android:id="@+id/wrap_assignment_rewards"
       >
 
       <TextView
@@ -78,26 +102,14 @@
         android:id="@+id/string_reward"
         android:text="@string/assignment_reward"
         />
-      <ImageView
-        android:id="@+id/reward_image"
-        android:layout_width="128dp"
+
+      <LinearLayout
+        android:id="@+id/assignment_reward_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/cdesc_reward_image"
-        android:src="@drawable/dogtag_plain"
-        android:adjustViewBounds="true"
-        android:layout_marginTop="@dimen/spacing_m"
-        android:layout_marginBottom="@dimen/spacing_m"
+        android:orientation="vertical"
         android:layout_below="@id/string_reward"
         />
-      <TextView
-        android:id="@+id/reward_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/reward_image"
-        android:text="@string/dummy_reward_title"
-        />
     </RelativeLayout>
-  </RelativeLayout>
+  </LinearLayout>
 </ScrollView>
