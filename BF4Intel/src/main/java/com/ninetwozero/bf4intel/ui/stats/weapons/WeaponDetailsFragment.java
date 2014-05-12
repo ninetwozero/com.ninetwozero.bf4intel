@@ -12,6 +12,7 @@ import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
 import com.ninetwozero.bf4intel.datatypes.WeaponInfo;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.resources.maps.WeaponInfoMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.GadgetStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
@@ -62,8 +63,19 @@ public class WeaponDetailsFragment extends BaseDialogFragment {
 
     private void populateViews(final View view) {
         populateOverviewBox(view);
+        populateDescriptionBox(view);
         populateInformation(view);
         populateStatistics(view);
+    }
+
+    private void populateDescriptionBox(View view) {
+        final String nameKey = weapon.getUniqueName();
+        final boolean hasDescription = nameKey.contains("_INAME_");
+        final String descriptionKey = nameKey.replace("_INAME_", "_IDESC_");
+        if (hasDescription) {
+            setText(view, R.id.value_description, GadgetStringMap.get(descriptionKey));
+        }
+        setVisibility(view, R.id.wrap_description_box, hasDescription ? View.VISIBLE : View.GONE);
     }
 
     private void populateOverviewBox(View view) {
@@ -75,7 +87,7 @@ public class WeaponDetailsFragment extends BaseDialogFragment {
 
     private void populateInformation(View view) {
         final WeaponInfo weaponInfo = weaponInfoMap.get(weapon.getUniqueName());
-        if (weaponInfo.getDamage() == WeaponInfo.NONE) {
+        if (weaponInfo.getDamage() == WeaponInfo.NONE || weaponInfo.getDamage() == 0) {
             setVisibility(view, R.id.wrap_information_box, View.GONE);
             return;
         }
@@ -87,6 +99,7 @@ public class WeaponDetailsFragment extends BaseDialogFragment {
 
         if (weaponInfo.getRateOfFire() > 0) {
             setText(view, R.id.value_rate_of_fire, String.valueOf(weaponInfo.getRateOfFire()));
+            setProgress(view, R.id.progress_rate_of_fire, weaponInfo.getRateOfFire(), 1000);
             setVisibility(view, R.id.wrap_rate_of_fire, View.VISIBLE);
         } else {
             setVisibility(view, R.id.wrap_rate_of_fire, View.GONE);
@@ -118,6 +131,10 @@ public class WeaponDetailsFragment extends BaseDialogFragment {
 
         switch (weaponCategory) {
             case GADGETS:
+                setVisibility(view, R.id.wrap_shots_fired, View.VISIBLE);
+                setVisibility(view, R.id.wrap_accuracy, View.VISIBLE);
+                break;
+            case GRENADE:
                 setVisibility(view, R.id.wrap_shots_fired, View.VISIBLE);
                 setVisibility(view, R.id.wrap_accuracy, View.VISIBLE);
                 break;
