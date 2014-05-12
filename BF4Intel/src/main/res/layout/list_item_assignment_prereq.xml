@@ -12,7 +12,8 @@
     android:layout_height="@dimen/unlock_status_icon_size"
     android:src="@drawable/rank_prerequisite"
     android:contentDescription="@string/cdesc_assignment_prerequisite"
-    android:layout_below="@id/string_prerequisite"
+    android:layout_centerVertical="true"
+    android:layout_marginTop="@dimen/spacing_xs"
     />
   <TextView
     android:id="@+id/assignment_prerequisite"
@@ -20,16 +21,16 @@
     android:layout_height="wrap_content"
     android:text="@string/dummy_assignment_prereq"
     android:layout_marginLeft="@dimen/spacing_m"
-    android:layout_centerVertical="true"
     android:layout_toRightOf="@id/image_prereq_icon"
     android:layout_below="@id/string_prerequisite"
     />
   <ImageView
+    android:id="@+id/assignment_prereq_completed"
     android:layout_width="@dimen/unlock_status_icon_size"
     android:layout_height="@dimen/unlock_status_icon_size"
     android:src="@drawable/icon_completed_dark"
     android:layout_centerVertical="true"
+    android:contentDescription="@string/cdesc_completion_indicator"
     android:layout_alignParentRight="true"
-    android:layout_below="@id/string_prerequisite"
     />
 </RelativeLayout>

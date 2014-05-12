@@ -45,9 +45,11 @@
   <string name="vehicle_xp0_name_dpv">DPV</string>
   <string name="vehicle_xp0_name_skidloader">Skid Loader</string>
   <string name="vehicle_xp1_name_bomber">BOMBER</string>
+  <string name="vehicle_xp1_name_bombcruise">CRUISE MISSILE</string>
   <string name="vehicle_xp1_name_btr90">BTR-90</string>
   <string name="vehicle_xp1_name_dirtbike">DIRTBIKE</string>
   <string name="vehicle_xp1_name_f35">F35</string>
   <string name="vehicle_xp1_name_suav">SUAV</string>
   <string name="vehicle_xp1_name_ucav">UCAV</string>
+  <string name="vehicle_xp1_name_ucav_airburst">AIR BURST</string>
 </resources>

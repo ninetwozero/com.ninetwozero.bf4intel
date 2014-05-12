@@ -2,21 +2,23 @@ package com.ninetwozero.bf4intel.json.assignments;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AssignmentAward {
+import java.io.Serializable;
 
-    @SerializedName("code")
-    private String assignmentKey;
+public class AssignmentAward implements Serializable {
+
     @SerializedName("stringID")
     private String uniqueName;
+    @SerializedName("code")
+    private String code;
     @SerializedName("license")
     private String expansionPack;
 
-    public String getAssignmentKey() {
-        return assignmentKey;
-    }
-
     public String getUniqueName() {
         return uniqueName;
+    }
+
+    public String getCode() {
+        return code;
     }
 
     public String getExpansionPack() {

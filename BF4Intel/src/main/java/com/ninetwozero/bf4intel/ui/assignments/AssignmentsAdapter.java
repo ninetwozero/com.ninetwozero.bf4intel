@@ -74,10 +74,10 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
     }
 
     private int fetchPrerequisiteImageResource(final String group) {
-        if (group.equalsIgnoreCase(AssignmentPrerequisite.RANK.toString())) {
-            return R.drawable.rank_prerequisite;
-        } else if (group.equalsIgnoreCase(AssignmentPrerequisite.MISSION.toString())) {
-            return R.drawable.group_prerequisite;
+        if (group.equalsIgnoreCase(AssignmentPrerequisite.Type.RANK.toString())) {
+            return R.drawable.ic_stat_rank;
+        } else if (group.equalsIgnoreCase(AssignmentPrerequisite.Type.MISSION.toString())) {
+            return R.drawable.ic_stat_award;
         } else {
             return R.drawable.empty;
         }

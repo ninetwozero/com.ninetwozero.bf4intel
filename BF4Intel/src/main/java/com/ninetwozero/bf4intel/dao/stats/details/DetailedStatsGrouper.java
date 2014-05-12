@@ -43,25 +43,25 @@ public class DetailedStatsGrouper {
 
     private static List<DetailedStatsItem> generateGroupForScores(final StatsDetails.GeneralStats details) {
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
-        items.add(new DetailedStatsItem("kills",  stringValueOf(details.getKills())));
-        items.add(new DetailedStatsItem("deaths",  stringValueOf(details.getDeaths())));
-        items.add(new DetailedStatsItem("kill_assists",  stringValueOf(details.getKillAssits())));
-        items.add(new DetailedStatsItem("kd_ratio",  stringValueOf(details.getKdRatio())));
-        items.add(new DetailedStatsItem("wins",  stringValueOf(details.getWins())));
-        items.add(new DetailedStatsItem("losses",  stringValueOf(details.getLosses())));
-        items.add(new DetailedStatsItem("shots_fired",  stringValueOf(details.getShotsFired())));
-        items.add(new DetailedStatsItem("shots_hits",  stringValueOf(details.getShotsHit())));
-        items.add(new DetailedStatsItem("accuracy",  stringValueOf(details.getAccuracy(), PERCENT_SIGN)));
+        items.add(new DetailedStatsItem("kills", stringValueOf(details.getKills())));
+        items.add(new DetailedStatsItem("deaths", stringValueOf(details.getDeaths())));
+        items.add(new DetailedStatsItem("kill_assists", stringValueOf(details.getKillAssits())));
+        items.add(new DetailedStatsItem("kd_ratio", stringValueOf(details.getKdRatio())));
+        items.add(new DetailedStatsItem("wins", stringValueOf(details.getWins())));
+        items.add(new DetailedStatsItem("losses", stringValueOf(details.getLosses())));
+        items.add(new DetailedStatsItem("shots_fired", stringValueOf(details.getShotsFired())));
+        items.add(new DetailedStatsItem("shots_hits", stringValueOf(details.getShotsHit())));
+        items.add(new DetailedStatsItem("accuracy", stringValueOf(details.getAccuracy(), PERCENT_SIGN)));
         return items;
     }
     private static List<DetailedStatsItem> generateGroupForGameModes(StatsDetails.GeneralStats details) {
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
-        items.add(new DetailedStatsItem("conquest",  stringValueOf(details.getConquest())));
-        items.add(new DetailedStatsItem("rush",  stringValueOf(details.getRush())));
-        items.add(new DetailedStatsItem("death_match",  stringValueOf(details.getDeathMatch())));
-        items.add(new DetailedStatsItem("domination",  stringValueOf(details.getDomination())));
-        items.add(new DetailedStatsItem("capture_the_flag",  stringValueOf(details.getCaptureTheFlag())));
-        items.add(new DetailedStatsItem("obliteration",  stringValueOf(details.getObliteration())));
+        items.add(new DetailedStatsItem("conquest", stringValueOf(details.getConquest())));
+        items.add(new DetailedStatsItem("rush", stringValueOf(details.getRush())));
+        items.add(new DetailedStatsItem("death_match", stringValueOf(details.getDeathMatch())));
+        items.add(new DetailedStatsItem("domination", stringValueOf(details.getDomination())));
+        items.add(new DetailedStatsItem("capture_the_flag", stringValueOf(details.getCaptureTheFlag())));
+        items.add(new DetailedStatsItem("obliteration", stringValueOf(details.getObliteration())));
         items.add(new DetailedStatsItem("air_superiority", stringValueOf(details.getAirSuperiority())));
         items.add(new DetailedStatsItem("defuse", stringValueOf(details.getDefuse())));
         items.add(new DetailedStatsItem("carrier_assault", stringValueOf(details.getCarrieAssault())));
@@ -70,34 +70,37 @@ public class DetailedStatsGrouper {
 
     private static List<DetailedStatsItem> generateGroupForTeamScores(StatsDetails.GeneralStats details) {
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
-        items.add(new DetailedStatsItem("repairs",  stringValueOf(details.getRepairs())));
-        items.add(new DetailedStatsItem("revives",  stringValueOf(details.getRevives())));
-        items.add(new DetailedStatsItem("heals",  stringValueOf(details.getHeals())));
-        items.add(new DetailedStatsItem("resupplies",  stringValueOf(details.getResupplies())));
-        items.add(new DetailedStatsItem("avenger_kills",  stringValueOf(details.getAvengerKills())));
-        items.add(new DetailedStatsItem("savior_kills",  stringValueOf(details.getSaviorKills())));
-        items.add(new DetailedStatsItem("suppression_assists",  stringValueOf(details.getSuppresionAssists())));
-        items.add(new DetailedStatsItem("quits",  stringValueOf(details.getQuits(), PERCENT_SIGN)));
+        items.add(new DetailedStatsItem("repairs", stringValueOf(details.getRepairs())));
+        items.add(new DetailedStatsItem("revives", stringValueOf(details.getRevives())));
+        items.add(new DetailedStatsItem("heals", stringValueOf(details.getHeals())));
+        items.add(new DetailedStatsItem("resupplies", stringValueOf(details.getResupplies())));
+        items.add(new DetailedStatsItem("avenger_kills", stringValueOf(details.getAvengerKills())));
+        items.add(new DetailedStatsItem("savior_kills", stringValueOf(details.getSaviorKills())));
+        items.add(new DetailedStatsItem("suppression_assists", stringValueOf(details.getSuppresionAssists())));
+        items.add(new DetailedStatsItem("quits", stringValueOf(details.getQuits(), PERCENT_SIGN)));
         return items;
     }
 
     private static List<DetailedStatsItem> generateGroupForExtras(StatsDetails.GeneralStats details) {
+        final double scorePerShot = ((double)details.getTotalScore()) / details.getShotsFired();
+
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
-        items.add(new DetailedStatsItem("dogtag_taken",  stringValueOf(details.getDogtagTaken())));
-        items.add(new DetailedStatsItem("vehicles_destroyed",  stringValueOf(details.getVehiclesDestroyed())));
-        items.add(new DetailedStatsItem("vehicle_damage",  stringValueOf(details.getVehicleDamage())));
-        items.add(new DetailedStatsItem("headshots",  stringValueOf(details.getHeadshots())));
-        items.add(new DetailedStatsItem("longest_headshot",  stringValueOf(details.getLongestHeadshot(), METERS)));
-        items.add(new DetailedStatsItem("highest_kill_streak",  stringValueOf(details.getHighestKillStreak())));
-        items.add(new DetailedStatsItem("nemesis_kills",  stringValueOf(details.getNemesisKills())));
-        items.add(new DetailedStatsItem("highest_nemesis_streak",  stringValueOf(details.getHighestNemesisStreak())));
+        items.add(new DetailedStatsItem("dogtag_taken", stringValueOf(details.getDogtagTaken())));
+        items.add(new DetailedStatsItem("vehicles_destroyed", stringValueOf(details.getVehiclesDestroyed())));
+        items.add(new DetailedStatsItem("vehicle_damage", stringValueOf(details.getVehicleDamage())));
+        items.add(new DetailedStatsItem("headshots", stringValueOf(details.getHeadshots())));
+        items.add(new DetailedStatsItem("longest_headshot", stringValueOf(details.getLongestHeadshot(), METERS)));
+        items.add(new DetailedStatsItem("highest_kill_streak", stringValueOf(details.getHighestKillStreak())));
+        items.add(new DetailedStatsItem("nemesis_kills", stringValueOf(details.getNemesisKills())));
+        items.add(new DetailedStatsItem("highest_nemesis_streak", stringValueOf(details.getHighestNemesisStreak())));
+        items.add(new DetailedStatsItem("score_per_shot", stringValueOf(scorePerShot)));
         return items;
     }
 
     private static List<DetailedStatsItem> generateGroupForGameModeExtras(StatsDetails.GeneralStats details) {
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
-        items.add(new DetailedStatsItem("flags_captured",  stringValueOf(details.getFlagsCaptured())));
-        items.add(new DetailedStatsItem("flags_defended",  stringValueOf(details.getFlagsDefended())));
+        items.add(new DetailedStatsItem("flags_captured", stringValueOf(details.getFlagsCaptured())));
+        items.add(new DetailedStatsItem("flags_defended", stringValueOf(details.getFlagsDefended())));
         return items;
     }
 

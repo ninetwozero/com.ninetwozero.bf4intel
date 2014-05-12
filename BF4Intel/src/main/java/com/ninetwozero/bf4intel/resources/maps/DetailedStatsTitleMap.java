@@ -56,6 +56,7 @@ public class DetailedStatsTitleMap {
             put("highest_kill_streak", R.string.highest_kill_streak);
             put("nemesis_kills", R.string.nemesis_kills);
             put("highest_nemesis_streak", R.string.highest_nemesis_streak);
+            put("score_per_shot", R.string.score_per_shot);
 
             put("flags_captured", R.string.flags_captured);
             put("flags_defended", R.string.flags_defended);
