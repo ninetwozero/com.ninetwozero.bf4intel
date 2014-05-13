@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:background="@color/card_activity_bg">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/card_activity_bg">
 
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="@dimen/spacing_m"
-    android:paddingRight="@dimen/spacing_m"
-    android:paddingBottom="@dimen/spacing_none"
-    android:paddingLeft="@dimen/spacing_m">
+    android:padding="@dimen/spacing_m">
 
     <RelativeLayout
       style="@style/NonListViewCard"
@@ -29,18 +26,16 @@
           android:id="@+id/award_medal"
           android:layout_width="@dimen/award_details_medal_size"
           android:layout_height="@dimen/award_details_medal_size"
-          android:src="@drawable/awards_m01"
           android:contentDescription="@string/cdesc_award_medal"
           android:layout_marginTop="@dimen/spacing_m"
           android:layout_marginBottom="@dimen/spacing_m"
-          android:layout_gravity="center" />
+          android:layout_gravity="center"/>
 
         <TextView
           android:id="@+id/medals_count"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="x4"
-          android:layout_gravity="right|bottom" />
+          android:layout_gravity="right|bottom"/>
       </FrameLayout>
 
 
@@ -49,22 +44,21 @@
         android:id="@+id/award_completion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/award_image_container" />
+        android:layout_below="@id/award_image_container"/>
 
       <TextView
-        style="@style/RegularCardSubtitle"
         android:id="@+id/medal_requirement"
-        android:text="Receive XYZ Ribbon 50x"
-        android:layout_below="@id/award_completion" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/award_completion"/>
 
       <TextView
         android:id="@+id/award_completion_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="10/50"
         android:layout_below="@id/award_completion"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="@dimen/spacing_m" />
+        android:layout_marginLeft="@dimen/spacing_m"/>
 
     </RelativeLayout>
 
@@ -76,7 +70,7 @@
         style="@style/RegularCardTitle"
         android:id="@+id/ribbon_title"
         android:layout_alignParentTop="true"
-        android:text="XYZ Ribbon" />
+        />
 
 
       <ImageView
@@ -84,23 +78,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/cdesc_award_ribbon"
-        android:src="@drawable/awards_ribbon_r01"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/ribbon_title" />
+        android:layout_below="@id/ribbon_title"/>
 
       <TextView
-        style="@style/RegularCardSubtitle"
         android:id="@+id/ribbon_requirement"
-        android:text="Do something 5x"
-        android:layout_below="@id/award_ribbon" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/award_ribbon"/>
 
       <TextView
         android:id="@+id/ribbons_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="x20"
         android:layout_below="@id/award_ribbon"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"/>
     </RelativeLayout>
   </LinearLayout>
 </ScrollView>
