@@ -58,12 +58,4 @@
   <color name="action_item_bg">#99FFFFFF</color>
   <color name="login_activity_bg">#333333</color>
   <color name="card_activity_bg">#DDDDDD</color>
-
-  <!-- Expansion colors -->
-  <color name="expansion_xp0">#B46A13</color>
-  <color name="expansion_xp1">#2B593B</color>
-  <color name="expansion_xp2">#1D4576</color>
-  <!-- TODO: When XP3+XP4 shows up -->
-  <color name="expansion_xp3">#808080</color>
-  <color name="expansion_xp4">#808080</color>
 </resources>
