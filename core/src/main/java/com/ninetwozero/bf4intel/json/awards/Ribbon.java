@@ -9,6 +9,8 @@ public class Ribbon implements Serializable {
     private int unlocked;
     @SerializedName("timesTaken")
     private int timesTaken;
+    @SerializedName("award")
+    private RibbonAward ribbonAward;
 
     public int getUnlocked() {
         return unlocked;
@@ -19,4 +21,8 @@ public class Ribbon implements Serializable {
     }
 
     public boolean isTaken() { return timesTaken > 0; }
+
+    public RibbonAward getRibbonAward() {
+        return ribbonAward;
+    }
 }

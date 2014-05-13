@@ -39,6 +39,7 @@ public class AwardGridFragment
         fragment.setArguments(data);
         return fragment;
     }
+
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -56,8 +57,8 @@ public class AwardGridFragment
         Query.one(
             AwardsDAO.class,
             "SELECT * " +
-            "FROM " + AwardsDAO.TABLE_NAME + " " +
-            "WHERE soldierId = ? AND platformId = ? AND version = ?",
+                "FROM " + AwardsDAO.TABLE_NAME + " " +
+                "WHERE soldierId = ? AND platformId = ? AND version = ?",
             arguments.getString(Keys.Soldier.ID, ""),
             arguments.getInt(Keys.Soldier.PLATFORM, 0),
             BuildConfig.VERSION_CODE
@@ -131,13 +132,11 @@ public class AwardGridFragment
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        // TODO: Open details
         final Award award = ((AwardsAdapter) adapterView.getAdapter()).getItem(i);
         final Bundle dataToPass = getArgumentsBundle();
-        dataToPass.putSerializable("award", award);
+        dataToPass.putSerializable(AwardDetailFragment.INTENT_AWARD, award);
 
-        if (isSw720dp()) {
-            // TODO: OPEN DIALOG
+        if (isSw720dp() || isSw600dp()) {
             final FragmentManager fragmentManager = getFragmentManager();
             DialogFragment fragment = (DialogFragment) fragmentManager.findFragmentByTag(AwardDetailFragment.TAG);
             if (fragment == null) {

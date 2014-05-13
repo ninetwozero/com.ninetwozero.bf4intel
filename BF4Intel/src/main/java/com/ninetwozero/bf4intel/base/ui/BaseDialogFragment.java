@@ -177,4 +177,8 @@ public class BaseDialogFragment extends DialogFragment {
     public void setVisibility(final View view, final int resourceId, final int state) {
         view.findViewById(resourceId).setVisibility(state);
     }
+
+    public void setAlpha(final View view, final int resourceId, final float alpha) {
+        view.findViewById(resourceId).setAlpha(alpha);
+    }
 }
