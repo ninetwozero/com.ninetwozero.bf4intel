@@ -46,6 +46,8 @@
   <color name="card_selected_overlay">#33FFFFFF</color>
   <color name="card_meta_bg_color">#f0f0f0</color>
   <color name="text_on_card_bg">#505050</color>
+  <color name="regular_card_title">#707070</color>
+  <color name="regular_card_subtitle">#808080</color>
 
   <!-- News colors -->
   <color name="news_comment_bg_selected">#EEEEEE</color>
