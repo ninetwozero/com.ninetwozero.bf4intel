@@ -182,6 +182,15 @@
   <string name="award_r45_name">COMMANDER GUNSHIP RIBBON</string>
 
   <!-- EXPANSIONS -->
+  <string name="award_xp0mctf_name">CAPTURE THE FLAG MEDAL</string>
+  <string name="award_xp0mctf_desc">Receive 50 Capture the Flag Winner Ribbon</string>
+  <string name="award_xp0mctfs_name">CAPTURE SPECIALIST MEDAL</string>
+  <string name="award_xp0mctfs_desc">Receive 50 Capture Specialist Ribbons</string>
+  <string name="award_xp0rfd_name">CAPTURE THE FLAG WINNER RIBBON</string>
+  <string name="award_xp0rfd_desc">Win a Capture the Flag round</string>
+  <string name="award_xp0rcs_name">CAPTURE SPECIALIST RIBBON</string>
+  <string name="award_xp0rcs_desc">Capture a flag for your team in CTF</string>
+
   <string name="award_xp1ras_desc">Win an Air Superiority round</string>
   <string name="award_xp1ras_name">AIR SUPERIORITY RIBBON</string>
   <string name="award_xp1rbd_desc">Get 3 kills with the bomber in a round</string>
@@ -190,4 +199,9 @@
   <string name="award_xp1mas_name">AIR SUPERIORITY MEDAL</string>
   <string name="award_xp1mbd_desc">Receive 20 Bomber Delivery Ribbons</string>
   <string name="award_xp1mbd_name">BOMBER DELIVERY MEDAL</string>
+
+  <string name="award_xp2mca_name">CARRIER ASSAULT MEDAL</string>
+  <string name="award_xp2mca_desc">Recieve 50 Carrier Assault Ribbons</string>
+  <string name="award_xp2rca_name">CARRIER ASSAULT RIBBON</string>
+  <string name="award_xp2rca_desc">Win an Carrier Assault round</string>
 </resources>

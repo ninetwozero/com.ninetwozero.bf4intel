@@ -62,6 +62,20 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+      style="@style/NonListViewCard"
+      android:id="@+id/expansion_award_container">
+
+      <TextView
+        android:id="@+id/expansion_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/icon_xp0"
+        android:drawablePadding="@dimen/spacing_m"
+        />
+
+    </LinearLayout>
+
     <RelativeLayout
       style="@style/NonListViewCard"
       android:id="@+id/award_ribbon_container">
@@ -70,6 +84,8 @@
         style="@style/RegularCardTitle"
         android:id="@+id/ribbon_title"
         android:layout_alignParentTop="true"
+        android:textColor="@android:color/holo_blue_light"
+        android:textStyle="bold"
         />
 
 
