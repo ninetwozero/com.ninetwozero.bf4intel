@@ -19,18 +19,11 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content">
 
-      <TextView
-        style="@style/RegularCardTitle"
-        android:id="@+id/medal_title"
-        android:layout_centerInParent="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/dummy_medal_1" />
-
       <FrameLayout
         android:id="@+id/award_image_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/medal_title">
+        >
 
         <ImageView
           android:id="@+id/award_medal"
@@ -46,8 +39,7 @@
           android:id="@+id/medals_count"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="@string/dummy_award_unlock_count"
-          android:textColor="@color/grey"
+          android:text="x4"
           android:layout_gravity="right|bottom" />
       </FrameLayout>
 
@@ -62,14 +54,14 @@
       <TextView
         style="@style/RegularCardSubtitle"
         android:id="@+id/medal_requirement"
-        android:text="@string/dummy_medal_requirement"
+        android:text="Receive XYZ Ribbon 50x"
         android:layout_below="@id/award_completion" />
 
       <TextView
         android:id="@+id/award_completion_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dummy_progress"
+        android:text="10/50"
         android:layout_below="@id/award_completion"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="@dimen/spacing_m" />
@@ -83,9 +75,8 @@
       <TextView
         style="@style/RegularCardTitle"
         android:id="@+id/ribbon_title"
-        android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
-        android:text="@string/dummy_ribbon_1" />
+        android:text="XYZ Ribbon" />
 
 
       <ImageView
@@ -100,15 +91,14 @@
       <TextView
         style="@style/RegularCardSubtitle"
         android:id="@+id/ribbon_requirement"
-        android:text="@string/dummy_ribbon_requirement"
+        android:text="Do something 5x"
         android:layout_below="@id/award_ribbon" />
 
       <TextView
         android:id="@+id/ribbons_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dummy_award_unlock_count"
-        android:textColor="@color/grey"
+        android:text="x20"
         android:layout_below="@id/award_ribbon"
         android:layout_alignParentRight="true" />
     </RelativeLayout>
