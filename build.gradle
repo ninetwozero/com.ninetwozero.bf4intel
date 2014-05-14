@@ -27,11 +27,6 @@ subprojects {
     findbugs {
         ignoreFailures = true
     }
-
-    apply plugin: 'pmd'
-    pmd {
-        ignoreFailures = true
-    }
 }
 
 task wrapper(type: Wrapper) {
