@@ -64,7 +64,9 @@
 
     <LinearLayout
       style="@style/NonListViewCard"
-      android:id="@+id/expansion_award_container">
+      android:id="@+id/expansion_award_container"
+      android:layout_width="match_parent"
+      android:gravity="center_vertical">
 
       <TextView
         android:id="@+id/expansion_label"
@@ -72,6 +74,7 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/icon_xp0"
         android:drawablePadding="@dimen/spacing_m"
+        android:textAlignment="center"
         />
 
     </LinearLayout>

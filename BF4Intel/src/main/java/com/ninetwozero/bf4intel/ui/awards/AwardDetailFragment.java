@@ -67,10 +67,10 @@ public class AwardDetailFragment extends BaseDialogFragment {
             final TextView medalsCount = (TextView) view.findViewById(R.id.medals_count);
             medalsCount.setText(String.format("x%d", award.getMedal().getTimesTaken()));
             medalsCount.setVisibility(View.VISIBLE);
-            setAlpha(view, R.id.award_medal_container, 1f);
+            setAlpha(view, R.id.award_medal, 1f);
         } else {
             setVisibility(view, R.id.medals_count, View.INVISIBLE);
-            setAlpha(view, R.id.award_medal_container, 0.5f);
+            setAlpha(view, R.id.award_medal, 0.5f);
         }
     }
 
