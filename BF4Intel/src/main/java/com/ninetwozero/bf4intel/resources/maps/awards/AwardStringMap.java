@@ -190,6 +190,15 @@ public class AwardStringMap {
             put("WARSAW_ID_P_AWARD_R45_NAME", R.string.award_r45_name);
 
             // Expansions
+            put("WARSAW_ID_P_XP0_AWARD_M_CTF_DESC", R.string.award_xp0mctf_desc);
+            put("WARSAW_ID_P_XP0_AWARD_M_CTF_NAME", R.string.award_xp0mctf_name);
+            put("WARSAW_ID_P_XP0_AWARD_M_CTFS_DESC", R.string.award_xp0mctfs_desc);
+            put("WARSAW_ID_P_XP0_AWARD_M_CTFS_NAME", R.string.award_xp0mctfs_name);
+            put("WARSAW_ID_P_XP0_AWARD_R_CTFWINNER_DESC", R.string.award_xp0rfd_desc);
+            put("WARSAW_ID_P_XP0_AWARD_R_CTFWINNER_NAME", R.string.award_xp0rfd_name);
+            put("WARSAW_ID_P_XP0_AWARD_R_CAPTURESPEC_DESC", R.string.award_xp0rcs_desc);
+            put("WARSAW_ID_P_XP0_AWARD_R_CAPTURESPEC_NAME", R.string.award_xp0rcs_name);
+
             put("WARSAW_ID_P_XP1_AWARD_M_AIRSUPERIORITY_DESC", R.string.award_xp1mas_desc);
             put("WARSAW_ID_P_XP1_AWARD_M_AIRSUPERIORITY_NAME", R.string.award_xp1mas_name);
             put("WARSAW_ID_P_XP1_AWARD_M_BOMBDELIVERY_DESC", R.string.award_xp1mbd_desc);
@@ -198,6 +207,11 @@ public class AwardStringMap {
             put("WARSAW_ID_P_XP1_AWARD_R_AIRSUPERIORITY_NAME", R.string.award_xp1ras_name);
             put("WARSAW_ID_P_XP1_AWARD_R_BOMBDELIVERY_DESC", R.string.award_xp1rbd_desc);
             put("WARSAW_ID_P_XP1_AWARD_R_BOMBDELIVERY_NAME", R.string.award_xp1rbd_name);
+
+            put("WARSAW_ID_P_XP2_AWARD_M_CARRIERASSAULT_NAME", R.string.award_xp2mca_name);
+            put("WARSAW_ID_P_XP2_AWARD_M_CARRIERASSAULT_DESC", R.string.award_xp2mca_desc);
+            put("WARSAW_ID_P_XP2_AWARD_R_CARRIERASSAULT_NAME", R.string.award_xp2rca_name);
+            put("WARSAW_ID_P_XP2_AWARD_R_CARRIERASSAULT_DESC", R.string.award_xp2rca_desc);
         }
     };
 
