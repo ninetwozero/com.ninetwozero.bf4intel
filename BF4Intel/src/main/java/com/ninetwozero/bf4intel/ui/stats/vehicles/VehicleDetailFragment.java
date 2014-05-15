@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
@@ -82,5 +83,11 @@ public class VehicleDetailFragment extends BaseDialogFragment {
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         BaseAdapter adapter = new VehicleDatailAdapter(getActivity(), vehicleStats);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                populateImageContainer(getView(), position);
+            }
+        });
     }
 }
