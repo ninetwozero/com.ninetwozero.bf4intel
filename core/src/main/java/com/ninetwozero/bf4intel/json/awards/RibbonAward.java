@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class RibbonAward implements Serializable{
+public class RibbonAward implements Serializable {
 
     @SerializedName("descriptionID")
     private String descriptionId;
