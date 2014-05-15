@@ -150,7 +150,7 @@ public class AssignmentGridFragment
         dataToPass.putBoolean(
             AssignmentDetailFragment.INTENT_USER_HAS_EXPANSION, fetchExpansionStatus(assignment)
         );
-        castDetailFragment(dataToPass, FragmentFactory.Type.SOLDIER_ASSIGNMENT_DETAILS, AssignmentDetailFragment.TAG);
+        openDetailFragment(FragmentFactory.Type.SOLDIER_ASSIGNMENT_DETAILS, dataToPass, AssignmentDetailFragment.TAG);
     }
 
     private boolean fetchExpansionStatus(Assignment assignment) {

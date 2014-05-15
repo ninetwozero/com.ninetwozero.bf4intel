@@ -83,7 +83,7 @@ public abstract class BaseFragment extends Fragment {
         return getArguments() == null ? new Bundle() : getArguments();
     }
 
-    protected void castDetailFragment(final Bundle dataToPass, final FragmentFactory.Type fragmentType, final String tag) {
+    protected void openDetailFragment(final FragmentFactory.Type fragmentType, final Bundle dataToPass, final String tag) {
         if (isSw720dp() || isSw600dp()) {
             final FragmentManager fragmentManager = getFragmentManager();
             DialogFragment fragment = (DialogFragment) fragmentManager.findFragmentByTag(tag);

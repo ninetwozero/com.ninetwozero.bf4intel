@@ -132,6 +132,6 @@ public class AwardGridFragment
         final Award award = ((AwardsAdapter) adapterView.getAdapter()).getItem(i);
         final Bundle dataToPass = getArgumentsBundle();
         dataToPass.putSerializable(AwardDetailFragment.INTENT_AWARD, award);
-        castDetailFragment(dataToPass, FragmentFactory.Type.SOLDIER_AWARD_DETAILS, AwardDetailFragment.TAG);
+        openDetailFragment(FragmentFactory.Type.SOLDIER_AWARD_DETAILS, dataToPass, AwardDetailFragment.TAG);
     }
 }
