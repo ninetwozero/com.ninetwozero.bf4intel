@@ -44,6 +44,7 @@ public class AssignmentPrerequisite implements Serializable {
         NONE("single_player");
 
         private final String group;
+
         private Type(String group) {
             this.group = group;
         }
