@@ -89,8 +89,8 @@ public class AwardDetailFragment extends BaseDialogFragment {
 
     private void populateRibbonViews(final View view) {
         setText(view, R.id.ribbon_title, AwardStringMap.get(award.getRibbon().getRibbonAward().getUniqueName()));
-        setAlpha(view, R.id.award_ribbon_container, award.getRibbon().isTaken() ? 1f : 0.5f);
         setImage(view, R.id.award_ribbon, RibbonImagesMap.get(award.getRibbonCode()));
+        setAlpha(view, R.id.award_ribbon, award.getRibbon().isTaken() ? 1f : 0.5f);
         setText(view, R.id.ribbon_requirement, AwardStringMap.get(award.getRibbon().getRibbonAward().getDescriptionId()));
         setText(view, R.id.ribbons_count, String.format("x%d", award.getRibbon().getTimesTaken()));
     }
