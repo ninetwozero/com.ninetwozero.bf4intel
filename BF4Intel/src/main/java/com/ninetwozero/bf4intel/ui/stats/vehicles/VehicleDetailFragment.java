@@ -13,6 +13,7 @@ import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStats;
 import com.ninetwozero.bf4intel.json.stats.vehicles.VehicleStats;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
+import com.ninetwozero.bf4intel.resources.maps.vehicles.VehiclesGroupStringMap;
 
 import java.util.Collections;
 import java.util.List;
@@ -53,7 +54,7 @@ public class VehicleDetailFragment extends BaseDialogFragment {
     }
 
     private void setupTitle() {
-        final String title = groupedVehicles.getGroupName();
+        final String title = getString(VehiclesGroupStringMap.get(groupedVehicles.getGroupName()));
         setTitle(title);
     }
 
