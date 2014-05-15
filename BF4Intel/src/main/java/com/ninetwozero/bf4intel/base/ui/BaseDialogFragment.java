@@ -151,6 +151,12 @@ public class BaseDialogFragment extends DialogFragment {
         ((TextView) view.findViewById(resourceId)).setText(text);
     }
 
+    protected void setTextWithDrawable(final View view, final int resourceId, final String text, final int drawableId) {
+        TextView textView = (TextView) view.findViewById(resourceId);
+        textView.setText(text);
+        textView.setCompoundDrawablesWithIntrinsicBounds(drawableId, 0, 0, 0);
+    }
+
     protected void setProgress(final View view, final int resourceId, final int current) {
         final ProgressBar progressBar = (ProgressBar) view.findViewById(resourceId);
         progressBar.setMax(100);
@@ -176,5 +182,9 @@ public class BaseDialogFragment extends DialogFragment {
 
     public void setVisibility(final View view, final int resourceId, final int state) {
         view.findViewById(resourceId).setVisibility(state);
+    }
+
+    public void setAlpha(final View view, final int resourceId, final float alpha) {
+        view.findViewById(resourceId).setAlpha(alpha);
     }
 }
