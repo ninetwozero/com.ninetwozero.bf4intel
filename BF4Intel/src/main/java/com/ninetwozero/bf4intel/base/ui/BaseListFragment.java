@@ -2,9 +2,11 @@ package com.ninetwozero.bf4intel.base.ui;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -13,8 +15,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.factories.FragmentFactory;
+import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 import java.util.Locale;
@@ -66,6 +69,22 @@ public abstract class BaseListFragment extends ListFragment {
         return getArguments() == null ? new Bundle() : getArguments();
     }
 
+    protected void openDetailFragment(final FragmentFactory.Type fragmentType, final Bundle dataToPass, final String tag) {
+        if (isSw720dp() || isSw600dp()) {
+            final FragmentManager fragmentManager = getFragmentManager();
+            DialogFragment fragment = (DialogFragment) fragmentManager.findFragmentByTag(tag);
+            if (fragment == null) {
+                fragment = (DialogFragment) FragmentFactory.get(fragmentType, dataToPass);
+            }
+            fragment.show(fragmentManager, tag);
+
+        } else {
+            final Intent intent = new Intent(getActivity(), SingleFragmentActivity.class);
+            intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, fragmentType.ordinal());
+            intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, dataToPass);
+            startActivity(intent);
+        }
+    }
 
     protected void postGoogleAnalytics() {
         GoogleAnalytics.post(getActivity(), this.getClass().getSimpleName());
