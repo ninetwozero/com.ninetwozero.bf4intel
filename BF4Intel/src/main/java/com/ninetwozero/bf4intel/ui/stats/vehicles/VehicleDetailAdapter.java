@@ -12,9 +12,9 @@ import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 import java.util.List;
 
-public class VehicleDatailAdapter extends BaseIntelAdapter<VehicleStats> {
+public class VehicleDetailAdapter extends BaseIntelAdapter<VehicleStats> {
 
-    public VehicleDatailAdapter(Context context, List<VehicleStats> itemsList) {
+    public VehicleDetailAdapter(Context context, List<VehicleStats> itemsList) {
         super(context, itemsList);
     }
 

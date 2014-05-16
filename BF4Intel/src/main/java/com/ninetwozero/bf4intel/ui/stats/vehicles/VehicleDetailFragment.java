@@ -82,7 +82,7 @@ public class VehicleDetailFragment extends BaseDialogFragment {
     private void populateListView(final View view) {
         ListView listView = (ListView) view.findViewById(R.id.vehicles_list);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        BaseAdapter adapter = new VehicleDatailAdapter(getActivity(), vehicleStats);
+        BaseAdapter adapter = new VehicleDetailAdapter(getActivity(), vehicleStats);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
