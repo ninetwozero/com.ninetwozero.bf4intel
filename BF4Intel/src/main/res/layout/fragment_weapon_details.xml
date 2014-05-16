@@ -245,6 +245,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/fire_modes"
+          android:layout_centerVertical="true"
           />
 
         <LinearLayout
@@ -253,25 +254,28 @@
           android:orientation="horizontal"
           android:layout_alignParentRight="true"
           >
-          <TextView
+          <ImageView
             android:id="@+id/fire_mode_single"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fire_mode_single"
-            android:paddingRight="@dimen/spacing_m"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="@dimen/spacing_m"
+            android:contentDescription="@string/fire_mode_single"
+            android:src="@drawable/ammo_single"
             />
-          <TextView
+          <ImageView
             android:id="@+id/fire_mode_burst"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fire_mode_burst"
-            android:paddingRight="@dimen/spacing_m"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginRight="@dimen/spacing_m"
+            android:contentDescription="@string/fire_mode_burst"
+            android:src="@drawable/ammo_burst"
             />
-          <TextView
+          <ImageView
             android:id="@+id/fire_mode_auto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fire_mode_auto"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/fire_mode_auto"
+            android:src="@drawable/ammo_auto"
             />
         </LinearLayout>
       </RelativeLayout>

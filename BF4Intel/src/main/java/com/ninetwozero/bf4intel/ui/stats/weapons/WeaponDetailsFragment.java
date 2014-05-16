@@ -1,11 +1,9 @@
 package com.ninetwozero.bf4intel.ui.stats.weapons;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
@@ -110,15 +108,9 @@ public class WeaponDetailsFragment extends BaseDialogFragment {
         setProgress(view, R.id.progress_hip_fire, weaponInfo.getHipFire());
         setProgress(view, R.id.progress_range, weaponInfo.getRange());
 
-        ((TextView) view.findViewById(R.id.fire_mode_single)).setTypeface(
-            weaponInfo.isSingleFire() ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT
-        );
-        ((TextView) view.findViewById(R.id.fire_mode_burst)).setTypeface(
-            weaponInfo.isBurstFire() ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT
-        );
-        ((TextView) view.findViewById(R.id.fire_mode_auto)).setTypeface(
-            weaponInfo.isAutoFire() ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT
-        );
+        setAlpha(view, R.id.fire_mode_single, weaponInfo.isSingleFire() ? ALPHA_ENABLED : ALPHA_DISABLED);
+        setAlpha(view, R.id.fire_mode_burst, weaponInfo.isBurstFire() ? ALPHA_ENABLED : ALPHA_DISABLED);
+        setAlpha(view, R.id.fire_mode_auto, weaponInfo.isAutoFire() ? ALPHA_ENABLED : ALPHA_DISABLED);
     }
 
     private void populateStatistics(View view) {
