@@ -32,7 +32,7 @@ public class VehicleDetailAdapter extends BaseIntelAdapter<VehicleStats> {
         }
 
         setText(view, R.id.vehicle_list_item_name, VehicleStringMap.get(stats.getName()));
-        setText(view, R.id.vehicle_list_item_score, String.valueOf(NumberFormatter.format(stats.getKillsCount())));
+        setText(view, R.id.vehicle_list_item_score, NumberFormatter.format(stats.getKillsCount()));
 
         return view;
     }

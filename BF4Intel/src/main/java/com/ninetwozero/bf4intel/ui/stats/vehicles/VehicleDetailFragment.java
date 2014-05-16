@@ -71,12 +71,12 @@ public class VehicleDetailFragment extends BaseDialogFragment {
         VehicleStats stats = vehicleStats.get(index);
         setImage(view, R.id.vehicle_image, VehicleImageMap.get(stats.getName()));
         setText(view, R.id.vehicle_name, VehicleStringMap.get(stats.getName()));
-        setText(view, R.id.vehicle_kills, String.valueOf(NumberFormatter.format(stats.getKillsCount())));
+        setText(view, R.id.vehicle_kills, NumberFormatter.format(stats.getKillsCount()));
     }
 
     private void populateTotalScore(final View view) {
         setText(view, R.id.vehicles_total_score_label, R.string.total_kills);
-        setText(view, R.id.vehicles_score, String.valueOf(NumberFormatter.format(groupedVehicles.getKillCount())));
+        setText(view, R.id.vehicles_score, NumberFormatter.format(groupedVehicles.getKillCount()));
     }
 
     private void populateListView(final View view) {
