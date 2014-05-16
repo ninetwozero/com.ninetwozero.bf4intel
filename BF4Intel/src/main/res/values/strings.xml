@@ -231,4 +231,5 @@
   <string name="time_equipped">Time equipped</string>
   <string name="rate_of_fire">Rate of fire</string>
   <string name="label_description">Description</string>
+  <string name="stat_item_title">%1$s. %2$s</string>
 </resources>

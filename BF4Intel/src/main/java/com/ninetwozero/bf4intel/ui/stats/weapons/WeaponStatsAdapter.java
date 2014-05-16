@@ -30,11 +30,22 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
             view = LayoutInflater.from(context).inflate(R.layout.list_stats_item, parent, false);
         }
 
-        setText(view, R.id.index, String.valueOf(position + 1));
         setText(view, R.id.service_star_count, String.valueOf(weapon.getServiceStarsCount()));
-        setText(view, R.id.item_name, WeaponStringMap.get(weapon.getUniqueName()));
+        setText(
+            view,
+            R.id.item_name,
+            R.string.stat_item_title,
+            position + 1,
+            context.getString(WeaponStringMap.get(weapon.getUniqueName()))
+        );
         setText(view, R.id.kill_count, R.string.num_kills, weapon.getKills());
-
+        setText(
+            view,
+            R.id.item_progress_value,
+            R.string.generic_x_of_y,
+            weapon.getServiceStarsProgress(),
+            100
+        );
         setImage(view, R.id.item_image, WeaponImageMap.get(weapon.getUniqueName()));
         setProgress(view, R.id.item_progress, weapon.getServiceStarsProgress());
 
