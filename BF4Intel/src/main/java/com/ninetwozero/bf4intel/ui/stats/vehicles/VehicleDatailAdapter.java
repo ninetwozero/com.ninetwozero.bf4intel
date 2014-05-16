@@ -8,6 +8,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.stats.vehicles.VehicleStats;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
+import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class VehicleDatailAdapter extends BaseIntelAdapter<VehicleStats> {
         }
 
         setText(view, R.id.vehicle_list_item_name, VehicleStringMap.get(stats.getName()));
-        setText(view, R.id.vehicle_list_item_score, String.valueOf(stats.getKillsCount()));
+        setText(view, R.id.vehicle_list_item_score, String.valueOf(NumberFormatter.format(stats.getKillsCount())));
 
         return view;
     }

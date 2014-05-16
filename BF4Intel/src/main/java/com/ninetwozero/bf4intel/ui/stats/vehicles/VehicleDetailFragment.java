@@ -15,6 +15,7 @@ import com.ninetwozero.bf4intel.json.stats.vehicles.VehicleStats;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehiclesGroupStringMap;
+import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 import java.util.Collections;
 import java.util.List;
@@ -70,12 +71,12 @@ public class VehicleDetailFragment extends BaseDialogFragment {
         VehicleStats stats = vehicleStats.get(index);
         setImage(view, R.id.vehicle_image, VehicleImageMap.get(stats.getName()));
         setText(view, R.id.vehicle_name, VehicleStringMap.get(stats.getName()));
-        setText(view, R.id.vehicle_kills, String.valueOf(stats.getKillsCount()));
+        setText(view, R.id.vehicle_kills, String.valueOf(NumberFormatter.format(stats.getKillsCount())));
     }
 
     private void populateTotalScore(final View view) {
         setText(view, R.id.vehicles_total_score_label, R.string.total_kills);
-        setText(view, R.id.vehicles_score, String.valueOf(groupedVehicles.getKillCount()));
+        setText(view, R.id.vehicles_score, String.valueOf(NumberFormatter.format(groupedVehicles.getKillCount())));
     }
 
     private void populateListView(final View view) {

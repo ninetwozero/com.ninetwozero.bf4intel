@@ -9,6 +9,7 @@ import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStats;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehiclesGroupStringMap;
+import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
 
@@ -32,7 +33,7 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
         setText(view, R.id.index, String.valueOf(position + 1));
         setText(view, R.id.service_star_count, String.valueOf(stats.getServiceStarsCount()));
         setText(view, R.id.item_name, VehiclesGroupStringMap.get(stats.getGroupName()));
-        setText(view, R.id.kill_count, R.string.num_kills, stats.getKillCount());
+        setText(view, R.id.kill_count, R.string.num_kills, NumberFormatter.format(stats.getKillCount()));
 
         setImage(view, R.id.item_image, VehicleImageMap.get(stats.getVehicleList().get(0).getName()));
         setProgress(view, R.id.item_progress, stats.getServiceStarProgress());

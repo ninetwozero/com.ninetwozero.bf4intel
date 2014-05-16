@@ -32,12 +32,16 @@
 
       <TextView
         android:id="@+id/vehicle_name"
-        style="@style/TextViewLightGrey" />
+        style="@style/TextViewLightGrey"
+        android:paddingLeft="@dimen/spacing_m"
+        />
 
       <TextView
         android:id="@+id/vehicle_kills"
         style="@style/TextViewLightGrey"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:paddingRight="@dimen/spacing_m"
+        />
     </RelativeLayout>
 
   </LinearLayout>
@@ -47,7 +51,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:divider="@drawable/divider"
+    android:showDividers="middle"
+    >
 
     <RelativeLayout
       android:layout_width="match_parent"
@@ -55,12 +62,18 @@
 
       <TextView
         android:id="@+id/vehicles_total_score_label"
-        style="@style/RegularHeadingOverCard" />
+        style="@style/RegularHeadingOverCard"
+        android:fontFamily="sans-serif"
+        android:paddingLeft="@dimen/spacing_m"
+        />
 
       <TextView
         android:id="@+id/vehicles_score"
         style="@style/RegularHeadingOverCard"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:fontFamily="sans-serif"
+        android:paddingRight="@dimen/spacing_m"
+        />
     </RelativeLayout>
 
     <ListView
