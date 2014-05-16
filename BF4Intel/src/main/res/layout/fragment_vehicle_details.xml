@@ -12,13 +12,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    >
 
-    <ImageView
-      android:id="@+id/vehicle_image"
-      android:layout_width="@dimen/stats_item_width"
-      android:layout_height="wrap_content"
-      android:contentDescription="@string/cdesc_vehicle_image" />
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/stats_item_width"
+      android:gravity="center_horizontal">
+
+      <ImageView
+        android:id="@+id/vehicle_image"
+        android:layout_width="@dimen/stats_item_width"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cdesc_vehicle_image" />
+    </LinearLayout>
 
     <RelativeLayout
       android:layout_width="match_parent"
