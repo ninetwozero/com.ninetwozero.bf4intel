@@ -18,7 +18,7 @@ import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 public class WeaponDetailsFragment extends BaseDialogFragment {
     public static final String INTENT_WEAPON = "weapon";
-    public static final String TAG = "WeaponDetailsFragment";
+    public static final String TAG = WeaponDetailsFragment.class.getSimpleName();
 
     private Weapon weapon;
     private final WeaponInfoMap weaponInfoMap = new WeaponInfoMap();

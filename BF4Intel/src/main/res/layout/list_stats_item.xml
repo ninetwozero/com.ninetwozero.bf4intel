@@ -15,16 +15,12 @@
     <TextView
       style="@style/RegularCardTitle"
       android:id="@+id/item_name"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
       android:singleLine="true"
       />
 
     <TextView
       style="@style/RegularCardTitle"
       android:id="@+id/service_star_count"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
       android:layout_alignParentRight="true"
       android:gravity="center"
       />

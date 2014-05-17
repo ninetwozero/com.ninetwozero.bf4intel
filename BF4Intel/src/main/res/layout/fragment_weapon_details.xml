@@ -18,8 +18,6 @@
       <TextView
         style="@style/RegularCardTitle"
         android:id="@+id/service_star_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:gravity="center"
         />
@@ -82,7 +80,6 @@
         android:id="@+id/value_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/idesc_bayonett"
         />
     </LinearLayout>
 
@@ -256,24 +253,24 @@
           >
           <ImageView
             android:id="@+id/fire_mode_single"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/fire_mode_image_size"
+            android:layout_height="@dimen/fire_mode_image_size"
             android:layout_marginRight="@dimen/spacing_m"
             android:contentDescription="@string/fire_mode_single"
             android:src="@drawable/ammo_single"
             />
           <ImageView
             android:id="@+id/fire_mode_burst"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/fire_mode_image_size"
+            android:layout_height="@dimen/fire_mode_image_size"
             android:layout_marginRight="@dimen/spacing_m"
             android:contentDescription="@string/fire_mode_burst"
             android:src="@drawable/ammo_burst"
             />
           <ImageView
             android:id="@+id/fire_mode_auto"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/fire_mode_image_size"
+            android:layout_height="@dimen/fire_mode_image_size"
             android:contentDescription="@string/fire_mode_auto"
             android:src="@drawable/ammo_auto"
             />
