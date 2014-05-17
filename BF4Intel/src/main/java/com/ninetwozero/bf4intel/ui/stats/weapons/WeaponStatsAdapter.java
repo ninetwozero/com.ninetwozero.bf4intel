@@ -10,6 +10,7 @@ import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
+import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
 
@@ -38,7 +39,7 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
             position + 1,
             context.getString(WeaponStringMap.get(weapon.getUniqueName()))
         );
-        setText(view, R.id.kill_count, R.string.num_kills, weapon.getKills());
+        setText(view, R.id.kill_count, R.string.num_kills, NumberFormatter.format(weapon.getKills()));
         setText(
             view,
             R.id.item_progress_value,

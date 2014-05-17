@@ -114,9 +114,9 @@ public class WeaponDetailsFragment extends BaseDialogFragment {
     }
 
     private void populateStatistics(View view) {
-        setText(view, R.id.value_kills, String.valueOf(weapon.getKills()));
-        setText(view, R.id.value_headshots, String.valueOf(weapon.getHeadshotCount()));
-        setText(view, R.id.value_shots_fired, String.valueOf(weapon.getShotsFired()));
+        setText(view, R.id.value_kills, NumberFormatter.format(weapon.getKills()));
+        setText(view, R.id.value_headshots, NumberFormatter.format(weapon.getHeadshotCount()));
+        setText(view, R.id.value_shots_fired, NumberFormatter.format(weapon.getShotsFired()));
         setText(view, R.id.value_accuracy, NumberFormatter.format(weapon.getAccuracy()*100) + "%");
         setText(view, R.id.value_time_equipped, DateTimeUtils.toLiteral(weapon.getTimeEquipped()));
         setText(view, R.id.value_kills_per_shot, calculateKillsPerShot());
