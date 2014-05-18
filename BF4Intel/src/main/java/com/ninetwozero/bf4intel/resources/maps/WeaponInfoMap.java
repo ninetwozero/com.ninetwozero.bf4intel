@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class WeaponInfoMap {
     private final Map<String, WeaponInfo> map = new HashMap<String, WeaponInfo>() {
-        {
+        {        
             put("WARSAW_ID_P_INAME_40MM", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
             put("WARSAW_ID_P_INAME_40MM_FLASH", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
             put("WARSAW_ID_P_INAME_40MM_LVG", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
@@ -20,20 +20,27 @@ public class WeaponInfoMap {
             put("WARSAW_ID_P_INAME_40MM_SMK", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
             put("WARSAW_ID_P_INAME_ACB90", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_INAME_BAYONETT", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
+            put("WARSAW_ID_P_INAME_BPKNIFE1", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_INAME_BPKNIFE2", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_INAME_BPKNIFE3", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_INAME_BPKNIFE4", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_INAME_BPKNIFE5", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_INAME_BPKNIFE6", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
+            put("WARSAW_ID_P_INAME_BPKNIFE7", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
+            put("WARSAW_ID_P_INAME_BPKNIFE8", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_INAME_C4", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
             put("WARSAW_ID_P_INAME_CLAYMORE", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
             put("WARSAW_ID_P_INAME_DEFIB", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
+            put("WARSAW_ID_P_INAME_DIVERKNIFE", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_INAME_FGM148", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
             put("WARSAW_ID_P_INAME_FIM92", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
             put("WARSAW_ID_P_INAME_FLARE", new WeaponInfo("WARSAW_ID_P_CAT_GRENADE", 0, 0, 0, 0, 0, false, false, false));
             put("WARSAW_ID_P_INAME_FLASHBANG", new WeaponInfo("WARSAW_ID_P_CAT_GRENADE", 0, 0, 0, 0, 0, false, false, false));
             put("WARSAW_ID_P_INAME_IGLA", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
             put("WARSAW_ID_P_INAME_IMPACT", new WeaponInfo("WARSAW_ID_P_CAT_GRENADE", 0, 0, 0, 0, 0, false, false, false));
+            put("WARSAW_ID_P_INAME_KNIFE14100BT", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
+            put("WARSAW_ID_P_INAME_KNIFE2142", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
+            put("WARSAW_ID_P_INAME_KNIFEPRECISION", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_INAME_M136", new WeaponInfo("WARSAW_ID_P_CAT_BATTLEPICKUP", 0, 0, 0, 0, 0, true, false, false));
             put("WARSAW_ID_P_INAME_M15", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
             put("WARSAW_ID_P_INAME_M18", new WeaponInfo("WARSAW_ID_P_CAT_GRENADE", 0, 0, 0, 0, 0, false, false, false));
@@ -91,13 +98,13 @@ public class WeaponInfoMap {
             put("WARSAW_ID_P_WNAME_LSAT", new WeaponInfo("WARSAW_ID_P_CAT_LMG", 30, 40, 28, 30, 700, false, false, true));
             put("WARSAW_ID_P_WNAME_M1014", new WeaponInfo("WARSAW_ID_P_CAT_SHOTGUN", 70, 20, 10, 60, 0, true, false, false));
             put("WARSAW_ID_P_WNAME_M16A4", new WeaponInfo("WARSAW_ID_P_CAT_ASSAULTRIFLE", 30, 50, 28, 50, 800, true, true, false));
-            put("WARSAW_ID_P_WNAME_M1911", new WeaponInfo("WARSAW_ID_P_CAT_SIDEARM", 40, 29, 10, 70, 0, true, false, false));
+            put("WARSAW_ID_P_WNAME_M1911", new WeaponInfo("WARSAW_ID_P_CAT_SIDEARM", 40, 40, 10, 70, 0, true, false, false));
             put("WARSAW_ID_P_WNAME_M200", new WeaponInfo("WARSAW_ID_P_CAT_SNIPER", 100, 100, 100, 20, 0, true, false, false));
             put("WARSAW_ID_P_WNAME_M240", new WeaponInfo("WARSAW_ID_P_CAT_LMG", 40, 40, 42, 10, 650, false, false, true));
             put("WARSAW_ID_P_WNAME_M249", new WeaponInfo("WARSAW_ID_P_CAT_LMG", 30, 40, 32, 20, 800, false, false, true));
             put("WARSAW_ID_P_WNAME_M39", new WeaponInfo("WARSAW_ID_P_CAT_DMR", 60, 75, 60, 30, 0, true, false, false));
             put("WARSAW_ID_P_WNAME_M40A5", new WeaponInfo("WARSAW_ID_P_CAT_SNIPER", 100, 100, 60, 20, 0, true, false, false));
-            put("WARSAW_ID_P_WNAME_M412REX", new WeaponInfo("WARSAW_ID_P_CAT_SIDEARM", 65, 16, 18, 48, 0, true, false, false));
+            put("WARSAW_ID_P_WNAME_M412REX", new WeaponInfo("WARSAW_ID_P_CAT_SIDEARM", 65, 40, 18, 48, 0, true, false, false));
             put("WARSAW_ID_P_WNAME_M416", new WeaponInfo("WARSAW_ID_P_CAT_ASSAULTRIFLE", 30, 50, 28, 50, 750, true, false, true));
             put("WARSAW_ID_P_WNAME_M4A1", new WeaponInfo("WARSAW_ID_P_CAT_CARBINE", 30, 40, 25, 60, 800, true, true, false));
             put("WARSAW_ID_P_WNAME_M82A3", new WeaponInfo("WARSAW_ID_P_CAT_BATTLEPICKUP", 100, 100, 100, 10, 0, true, false, true));
@@ -135,7 +142,7 @@ public class WeaponInfoMap {
             put("WARSAW_ID_P_WNAME_STEYRAUG", new WeaponInfo("WARSAW_ID_P_CAT_ASSAULTRIFLE", 30, 45, 28, 55, 700, true, false, true));
             put("WARSAW_ID_P_WNAME_SV98", new WeaponInfo("WARSAW_ID_P_CAT_SNIPER", 90, 100, 55, 25, 0, true, false, false));
             put("WARSAW_ID_P_WNAME_SVD12", new WeaponInfo("WARSAW_ID_P_CAT_DMR", 60, 75, 60, 30, 0, true, false, false));
-            put("WARSAW_ID_P_WNAME_TAURUS44", new WeaponInfo("WARSAW_ID_P_CAT_SIDEARM", 85, 12, 24, 40, 0, true, false, false));
+            put("WARSAW_ID_P_WNAME_TAURUS44", new WeaponInfo("WARSAW_ID_P_CAT_SIDEARM", 85, 65, 24, 40, 0, true, false, false));
             put("WARSAW_ID_P_WNAME_TYPE88", new WeaponInfo("WARSAW_ID_P_CAT_LMG", 30, 40, 32, 20, 700, false, false, true));
             put("WARSAW_ID_P_WNAME_TYPE95B1", new WeaponInfo("WARSAW_ID_P_CAT_CARBINE", 30, 45, 28, 55, 650, true, true, true));
             put("WARSAW_ID_P_WNAME_ULTIM", new WeaponInfo("WARSAW_ID_P_CAT_LMG", 30, 40, 28, 30, 590, true, true, true));
@@ -143,6 +150,24 @@ public class WeaponInfoMap {
             put("WARSAW_ID_P_WNAME_UMP9", new WeaponInfo("WARSAW_ID_P_CAT_PDW", 30, 30, 15, 65, 700, true, true, true));
             put("WARSAW_ID_P_WNAME_USAS12", new WeaponInfo("WARSAW_ID_P_CAT_BATTLEPICKUP", 70, 20, 10, 60, 300, true, false, true));
             put("WARSAW_ID_P_WNAME_UTAS", new WeaponInfo("WARSAW_ID_P_CAT_SHOTGUN", 90, 30, 10, 60, 0, true, false, false));
+            put("WARSAW_ID_P_XP0_WNAME_ASVAL", new WeaponInfo("WARSAW_ID_P_CAT_PDW", 35, 25, 10, 60, 900, true, false, true));
+            put("WARSAW_ID_P_XP0_WNAME_DAO12", new WeaponInfo("WARSAW_ID_P_CAT_SHOTGUN", 70, 25, 10, 60, 0, true, false, false));
+            put("WARSAW_ID_P_XP0_WNAME_F2000", new WeaponInfo("WARSAW_ID_P_CAT_ASSAULTRIFLE", 30, 45, 28, 55, 850, true, false, true));
+            put("WARSAW_ID_P_XP0_WNAME_GOL", new WeaponInfo("WARSAW_ID_P_CAT_SNIPER", 100, 100, 70, 28, 0, true, false, false));
+            put("WARSAW_ID_P_XP0_WNAME_M60E4", new WeaponInfo("WARSAW_ID_P_CAT_LMG", 40, 40, 42, 15, 570, false, false, true));
+            put("WARSAW_ID_P_XP1_VNAME_UCAV", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
+            put("WARSAW_ID_P_XP1_WNAME_L85A2", new WeaponInfo("WARSAW_ID_P_CAT_ASSAULTRIFLE", 30, 35, 28, 55, 750, true, false, true));
+            put("WARSAW_ID_P_XP1_WNAME_L96A1", new WeaponInfo("WARSAW_ID_P_CAT_SNIPER", 100, 100, 60, 20, 0, true, false, false));
+            put("WARSAW_ID_P_XP1_WNAME_MP7", new WeaponInfo("WARSAW_ID_P_CAT_PDW", 25, 28, 15, 75, 950, true, false, true));
+            put("WARSAW_ID_P_XP1_WNAME_MTAR21", new WeaponInfo("WARSAW_ID_P_CAT_CARBINE", 30, 30, 25, 65, 900, true, true, true));
+            put("WARSAW_ID_P_XP1_WNAME_RPK74", new WeaponInfo("WARSAW_ID_P_CAT_LMG", 30, 50, 35, 10, 600, true, false, true));
+            put("WARSAW_ID_P_XP2_INAME_40MM_3GL", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
+            put("WARSAW_ID_P_XP2_INAME_AAMINE", new WeaponInfo("WARSAW_ID_P_CAT_GADGET"));
+            put("WARSAW_ID_P_XP2_WNAME_AR160", new WeaponInfo("WARSAW_ID_P_CAT_ASSAULTRIFLE", 30, 50, 50, 50, 700, true, false, true));
+            put("WARSAW_ID_P_XP2_WNAME_AWS", new WeaponInfo("WARSAW_ID_P_CAT_LMG", 30, 40, 28, 30, 800, false, false, true));
+            put("WARSAW_ID_P_XP2_WNAME_SR2", new WeaponInfo("WARSAW_ID_P_CAT_PDW", 40, 30, 10, 70, 900, true, false, true));
+            put("WARSAW_ID_P_XP2_WNAME_SR338", new WeaponInfo("WARSAW_ID_P_CAT_SNIPER", 55, 75, 60, 30, 0, true, false, false));
+            put("WARSAW_ID_P_XP2_WNAME_SW40", new WeaponInfo("WARSAW_ID_P_CAT_SIDEARM", 65, 12, 20, 45, 0, true, false, false));
         }
     };
 
