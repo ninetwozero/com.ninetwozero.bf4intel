@@ -26,9 +26,10 @@ public abstract class BaseLoadingIntelActivity extends BaseIntelActivity impleme
         errorMessageView = null;
     }
 
+
     @Override
     public void onErrorResponse(final VolleyError error) {
-        Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
+        Log.w(getClass().getSimpleName(), "[" + error.getClass().getSimpleName() + " in onLoadFailure] " + error.getMessage());
     }
 
     @Override
