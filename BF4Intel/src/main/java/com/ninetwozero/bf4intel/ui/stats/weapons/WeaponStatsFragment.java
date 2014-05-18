@@ -13,6 +13,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.dao.stats.weapons.WeaponStatsDAO;
 import com.ninetwozero.bf4intel.events.stats.weapons.WeaponStatsRefreshedEvent;
+import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.stats.weapons.WeaponStatsService;
@@ -87,7 +88,11 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     @Override
     public void onListItemClick(ListView listView, View view, int i, long l) {
-        // TODO: Open details
+        final Weapon weapon = ((WeaponStatsAdapter) listView.getAdapter()).getItem(i);
+        final Bundle dataToPass = getArgumentsBundle();
+        dataToPass.putSerializable(WeaponDetailsFragment.INTENT_WEAPON, weapon);
+
+       openDetailFragment(FragmentFactory.Type.WEAPON_STATS_DETAILS, dataToPass, WeaponDetailsFragment.TAG);
     }
 
     @Subscribe

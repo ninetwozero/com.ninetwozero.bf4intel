@@ -10,7 +10,11 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.UnlockType;
-import com.ninetwozero.bf4intel.json.assignments.*;
+import com.ninetwozero.bf4intel.json.assignments.Assignment;
+import com.ninetwozero.bf4intel.json.assignments.AssignmentAward;
+import com.ninetwozero.bf4intel.json.assignments.AssignmentCriteria;
+import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisite;
+import com.ninetwozero.bf4intel.json.assignments.AssignmentReward;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentCriteriaStringMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentImageMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentStringMap;
@@ -21,11 +25,15 @@ import com.ninetwozero.bf4intel.resources.maps.dogtags.DogtagStringMap;
 import com.ninetwozero.bf4intel.resources.maps.unlocks.VehicleUnlockImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
-import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 import com.squareup.picasso.Picasso;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 public class AssignmentDetailFragment extends BaseDialogFragment {
     public static final String INTENT_ASSIGNMENT = "assignment";
@@ -266,7 +274,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         int imageResource = 0;
         switch (reward.getUnlockType()) {
             case WEAPON:
-                imageResource = WeaponsImageMap.get(reward.getName());
+                imageResource = WeaponImageMap.get(reward.getName());
                 break;
             case VEHICLE_ADDON:
                 imageResource = VehicleUnlockImageMap.get(reward.getName());

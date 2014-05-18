@@ -29,8 +29,8 @@ import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryStringMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
-import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponsImageMap;
 
 public class SharedGameEventLayout extends BaseLayoutPopulator implements EventLayout<SharedGameEvent> {
     @Override
@@ -101,7 +101,7 @@ public class SharedGameEventLayout extends BaseLayoutPopulator implements EventL
 
     private void populateGameReportCell(final View cell, final String itemKey) {
         if (itemKey.contains("WNAME") || itemKey.contains("INAME")) {
-            populateCell(cell, WeaponsImageMap.get(itemKey), WeaponStringMap.get(itemKey));
+            populateCell(cell, WeaponImageMap.get(itemKey), WeaponStringMap.get(itemKey));
         } else if (itemKey.contains("VNAME")) {
             populateCell(cell, VehicleImageMap.get(itemKey), VehicleStringMap.get(itemKey));
         } else if (itemKey.contains("ANAME")) {

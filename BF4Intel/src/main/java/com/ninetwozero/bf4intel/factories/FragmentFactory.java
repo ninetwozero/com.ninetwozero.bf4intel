@@ -52,6 +52,8 @@ public class FragmentFactory {
                 return AwardDetailFragment.newInstance(data);
             case WEAPON_STATS:
                 return WeaponStatsFragment.newInstance(data);
+            case WEAPON_STATS_DETAILS:
+                return WeaponDetailsFragment.newInstance(data);
             case VEHICLE_STATS:
                 return VehicleStatsFragment.newInstance(data);
             case VEHICLE_DETAIL_STATS:
@@ -117,6 +119,7 @@ public class FragmentFactory {
         SOLDIER_OVERVIEW,
         SOLDIER_STATS,
         WEAPON_STATS,
+        WEAPON_STATS_DETAILS,
         VEHICLE_STATS,
         VEHICLE_DETAIL_STATS,
         DETAILS_STATS,
