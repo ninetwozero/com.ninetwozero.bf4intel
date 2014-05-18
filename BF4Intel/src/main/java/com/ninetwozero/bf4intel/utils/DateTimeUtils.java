@@ -19,10 +19,10 @@ public class DateTimeUtils {
         put(SECOND, "s");
     }};
 
-    public static String toLiteral(final int seconds) {
+    public static String toLiteral(final long seconds) {
         final StringBuilder stringBuilder = new StringBuilder();
-        int secondsKeeper = seconds;
-        int count;
+        long secondsKeeper = seconds;
+        long count;
         int numOutputs = 0;
 
         for (int key : literalMapping.keySet()) {

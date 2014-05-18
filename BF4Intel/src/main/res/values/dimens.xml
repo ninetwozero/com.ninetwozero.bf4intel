@@ -120,4 +120,5 @@
   <dimen name="award_details_medal_size">192dp</dimen>
   <dimen name="spacing_none">0dp</dimen>
   <dimen name="reward_image_width">128dp</dimen>
+  <dimen name="fire_mode_image_size">32dp</dimen>
 </resources>

@@ -9,17 +9,26 @@ import com.ninetwozero.bf4intel.ui.awards.AwardDetailFragment;
 import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedPostingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.*;
+import com.ninetwozero.bf4intel.ui.fragments.AccountProfileFragment;
+import com.ninetwozero.bf4intel.ui.fragments.ForumListingFragment;
+import com.ninetwozero.bf4intel.ui.fragments.HomeFragment;
+import com.ninetwozero.bf4intel.ui.fragments.NotificationFragment;
+import com.ninetwozero.bf4intel.ui.fragments.PostCreationFragment;
+import com.ninetwozero.bf4intel.ui.fragments.PostListingFragment;
+import com.ninetwozero.bf4intel.ui.fragments.SoldierOverviewFragment;
+import com.ninetwozero.bf4intel.ui.fragments.ThreadCreationFragment;
+import com.ninetwozero.bf4intel.ui.fragments.ThreadListingFragment;
+import com.ninetwozero.bf4intel.ui.news.NewsArticleFragment;
+import com.ninetwozero.bf4intel.ui.news.NewsListingFragment;
 import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
 import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsTabFragment;
 import com.ninetwozero.bf4intel.ui.stats.details.DetailedStatsFragment;
-import com.ninetwozero.bf4intel.ui.unlocks.UnlockTabFragment;
 import com.ninetwozero.bf4intel.ui.stats.reports.BattleReportFragment;
 import com.ninetwozero.bf4intel.ui.stats.reports.BattleReportListingFragment;
-import com.ninetwozero.bf4intel.ui.news.NewsArticleFragment;
-import com.ninetwozero.bf4intel.ui.news.NewsListingFragment;
 import com.ninetwozero.bf4intel.ui.stats.vehicles.VehicleStatsFragment;
+import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponDetailsFragment;
 import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponStatsFragment;
+import com.ninetwozero.bf4intel.ui.unlocks.UnlockTabFragment;
 import com.ninetwozero.bf4intel.ui.unlocks.kits.KitUnlockFragment;
 import com.ninetwozero.bf4intel.ui.unlocks.vehicles.VehicleUnlockFragment;
 import com.ninetwozero.bf4intel.ui.unlocks.weapons.WeaponUnlockFragment;
@@ -51,6 +60,8 @@ public class FragmentFactory {
                 return AwardDetailFragment.newInstance(data);
             case WEAPON_STATS:
                 return WeaponStatsFragment.newInstance(data);
+            case WEAPON_STATS_DETAILS:
+                return WeaponDetailsFragment.newInstance(data);
             case VEHICLE_STATS:
                 return VehicleStatsFragment.newInstance(data);
             case DETAILS_STATS:
@@ -114,6 +125,7 @@ public class FragmentFactory {
         SOLDIER_OVERVIEW,
         SOLDIER_STATS,
         WEAPON_STATS,
+        WEAPON_STATS_DETAILS,
         VEHICLE_STATS,
         DETAILS_STATS,
 

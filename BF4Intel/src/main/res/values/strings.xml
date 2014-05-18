@@ -218,4 +218,18 @@
   <string name="assignment_reward">Reward</string>
   <string name="label_viewing">Viewing %s</string>
   <string name="label_in_a_round">In a round</string>
+
+  <string name="label_information">Information</string>
+  <string name="damage">Damage</string>
+  <string name="hip_fire">Hip Fire</string>
+  <string name="range">Range</string>
+  <string name="fire_modes">Fire Modes</string>
+  <string name="fire_mode_single">Single</string>
+  <string name="fire_mode_burst">Burst</string>
+  <string name="fire_mode_auto">Auto</string>
+  <string name="kills_per_shot">Kills per shot</string>
+  <string name="time_equipped">Time equipped</string>
+  <string name="rate_of_fire">Rate of fire</string>
+  <string name="label_description">Description</string>
+  <string name="stat_item_title">%1$s. %2$s</string>
 </resources>

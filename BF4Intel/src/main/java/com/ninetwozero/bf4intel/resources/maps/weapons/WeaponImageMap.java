@@ -5,7 +5,7 @@ import com.ninetwozero.bf4intel.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WeaponsImageMap {
+public class WeaponImageMap {
 
     private static final Map<String, Integer> map = new HashMap<String, Integer>() {
         {
