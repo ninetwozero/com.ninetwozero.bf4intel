@@ -37,14 +37,19 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
             position + 1,
             context.getString(VehiclesGroupStringMap.get(stats.getGroupName()))
         );
-
-        //setText(view, R.id.item_name, VehiclesGroupStringMap.get(stats.getGroupName()));
         setText(view, R.id.kill_count, R.string.num_kills, NumberFormatter.format(stats.getKillCount()));
-
-        setText(view, R.id.item_progress_value, stats.getServiceStarProgress() + "%");
-        setText(view, R.id.service_star_count, String.valueOf(stats.getServiceStarsCount()));
         setImage(view, R.id.item_image, VehicleImageMap.get(stats.getVehicleList().get(0).getName()));
-        setProgress(view, R.id.item_progress, stats.getServiceStarProgress());
+
+        if (VehiclesGroupStringMap.hasServiceStar(stats.getGroupName())) {
+            setVisibility(view, R.id.service_star_count, View.GONE);
+            setVisibility(view, R.id.item_progress_value, View.GONE);
+            setVisibility(view, R.id.item_progress, View.GONE);
+            setVisibility(view, R.id.item_service_star, View.GONE);
+        } else {
+            setText(view, R.id.item_progress_value, stats.getServiceStarProgress() + "%");
+            setText(view, R.id.service_star_count, String.valueOf(stats.getServiceStarsCount()));
+            setProgress(view, R.id.item_progress, stats.getServiceStarProgress());
+        }
 
         return view;
     }
