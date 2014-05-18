@@ -27,7 +27,6 @@ public class VehicleDetailFragment extends BaseDialogFragment {
     private GroupedVehicleStats groupedVehicles;
     private List<VehicleStats> vehicleStats;
 
-
     public static VehicleDetailFragment newInstance(Bundle bundle) {
         final VehicleDetailFragment fragment = new VehicleDetailFragment();
         fragment.setArguments(bundle);
@@ -61,7 +60,6 @@ public class VehicleDetailFragment extends BaseDialogFragment {
     }
 
     private void populateViews(final View view) {
-
         populateImageContainer(view, 0);
         populateTotalScore(view);
         populateListView(view);
