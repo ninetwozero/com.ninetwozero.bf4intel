@@ -60,9 +60,10 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
 
     @Override
     public void onErrorResponse(final VolleyError error) {
-        Log.w(getClass().getSimpleName(), "[onLoadFailure] " + error.getMessage());
+        Log.w(getClass().getSimpleName(), "[" + error.getClass().getSimpleName() + " in onLoadFailure] " + error.getMessage());
         if (getView() != null) {
-            showErrorMessage(error.getMessage());
+            final String message = error.getMessage();
+            showErrorMessage(message == null ? error.getClass().getSimpleName() : message);
         }
     }
 
