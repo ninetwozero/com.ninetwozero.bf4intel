@@ -26,7 +26,23 @@ public class VehiclesGroupStringMap {
         }
     };
 
+    private static final Map<String, Integer> vehiclesNoServiceStar = new HashMap<String, Integer>() {
+        {
+            put("Vehicle Transport", R.string.vehicle_group_transport_vehicle);
+            put("Weapon Stationary ", R.string.vehicle_group_stationary_weapon);
+            put("Vehicle Air", R.string.vehicle_group_air);
+            put("Vehicle Mobile Artillery", R.string.vehicle_group_mobile_artillery);
+            put("Soldier Equiment", R.string.vehicle_group_soldier_equipment);
+            put("Vehicle Boat", R.string.vehicle_group_boat);
+            put("Weapon Stationary AA", R.string.vehicle_group_stationary_aa);
+        }
+    };
+
     public static int get(final String key) {
         return map.containsKey(key) ? map.get(key) : R.string.na;
+    }
+
+    public static boolean hasServiceStar(String key) {
+        return vehiclesNoServiceStar.containsKey(key);
     }
 }

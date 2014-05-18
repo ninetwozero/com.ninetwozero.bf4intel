@@ -2,7 +2,9 @@ package com.ninetwozero.bf4intel.json.stats.vehicles;
 
 import com.google.gson.annotations.SerializedName;
 
-public class VehicleStats implements Comparable<VehicleStats> {
+import java.io.Serializable;
+
+public class VehicleStats implements Comparable<VehicleStats>, Serializable {
     @SerializedName("serviceStars")
     private int serviceStarsCount;
     @SerializedName("serviceStarsProgress")

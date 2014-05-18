@@ -26,6 +26,7 @@
       />
 
     <ImageView
+      android:id="@+id/item_service_star"
       android:layout_width="@dimen/service_star_m"
       android:layout_height="@dimen/service_star_m"
       android:src="@drawable/ic_menu_star_dark"

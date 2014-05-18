@@ -12,6 +12,7 @@
 
   <string name="cdesc_battlereport_map_image">Battlereport map image</string>
 
+  <string name="cdesc_vehicle_image">Vehicle image</string>
   <string name="cdesc_award_medal">Award medal</string>
   <string name="cdesc_award_ribbon">Award ribbon</string>
   <string name="cdesc_battlepack_icon">Battlepack icon</string>

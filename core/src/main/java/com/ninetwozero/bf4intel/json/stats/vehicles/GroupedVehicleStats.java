@@ -1,8 +1,9 @@
 package com.ninetwozero.bf4intel.json.stats.vehicles;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class GroupedVehicleStats implements Comparable<GroupedVehicleStats> {
+public class GroupedVehicleStats implements Comparable<GroupedVehicleStats>, Serializable {
 
     private final String groupName;
     private final int serviceStarsCount;

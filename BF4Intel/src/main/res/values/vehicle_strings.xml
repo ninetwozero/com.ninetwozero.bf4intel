@@ -52,4 +52,6 @@
   <string name="vehicle_xp1_name_suav">SUAV</string>
   <string name="vehicle_xp1_name_ucav">UCAV</string>
   <string name="vehicle_xp1_name_ucav_airburst">AIR BURST</string>
+  <string name="vehicle_xp2_acv">ACV</string>
+  <string name="vehicle_xp2_old_canon">OLD CANON</string>
 </resources>

@@ -60,6 +60,12 @@ public class VehicleStringMap {
             put("WARSAW_ID_P_XP1_VNAME_SUAV", R.string.vehicle_xp1_name_suav);
             put("WARSAW_ID_P_XP1_VNAME_UCAV", R.string.vehicle_xp1_name_ucav);
             put("WARSAW_ID_P_XP1_VNAME_UCAVAIRBURST", R.string.vehicle_xp1_name_ucav_airburst);
+            put("WARSAW_ID_P_INAME_EOD", R.string.weapon_iname_eod);
+            put("WARSAW_ID_P_INAME_MORTAR", R.string.weapon_iname_mortar);
+            put("WARSAW_ID_P_INAME_MAV", R.string.weapon_iname_mav);
+            put("WARSAW_ID_P_XP2_INAME_AAMINE", R.string.weapon_aamine);
+            put("WARSAW_ID_P_XP2_VNAME_ACV", R.string.vehicle_xp2_acv);
+            put("WARSAW_ID_P_XP2_VNAME_OLDCANNON", R.string.vehicle_xp2_old_canon);
         }
     };
 

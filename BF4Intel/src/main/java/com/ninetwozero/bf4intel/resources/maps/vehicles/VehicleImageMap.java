@@ -61,8 +61,11 @@ public class VehicleImageMap {
             put("WARSAW_ID_P_INAME_EOD", R.drawable.vehicle_eodbot);
             put("WARSAW_ID_P_INAME_MORTAR", R.drawable.vehicle_m224_mortar);
             put("WARSAW_ID_P_INAME_MAV", R.drawable.vehicle_mav);
-// Not available yet            put("WARSAW_ID_P_XP0_VNAME_DPV", R.drawable.vehicle_xp0_dpv);
-// Not available yet           put("WARSAW_ID_P_XP0_VNAME_SKIDLOADER", R.drawable.vehicle_xp0_skidloader);
+            put("WARSAW_ID_P_XP0_VNAME_DPV", R.drawable.vehicle_dpv_fancy);
+            put("WARSAW_ID_P_XP0_VNAME_SKIDLOADER", R.drawable.vehicle_skidloader_fancy);
+            put("WARSAW_ID_P_XP2_INAME_AAMINE", R.drawable.w_aamine_fancy);
+            put("WARSAW_ID_P_XP2_VNAME_ACV", R.drawable.vehicle_acv_fancy);
+            put("WARSAW_ID_P_XP2_VNAME_OLDCANNON", R.drawable.vehicle_oldcannon_fancy);
         }
     };
 

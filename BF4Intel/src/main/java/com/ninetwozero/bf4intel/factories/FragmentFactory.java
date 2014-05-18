@@ -9,15 +9,7 @@ import com.ninetwozero.bf4intel.ui.awards.AwardDetailFragment;
 import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedFragment;
 import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedPostingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.AccountProfileFragment;
-import com.ninetwozero.bf4intel.ui.fragments.ForumListingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.HomeFragment;
-import com.ninetwozero.bf4intel.ui.fragments.NotificationFragment;
-import com.ninetwozero.bf4intel.ui.fragments.PostCreationFragment;
-import com.ninetwozero.bf4intel.ui.fragments.PostListingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.SoldierOverviewFragment;
-import com.ninetwozero.bf4intel.ui.fragments.ThreadCreationFragment;
-import com.ninetwozero.bf4intel.ui.fragments.ThreadListingFragment;
+import com.ninetwozero.bf4intel.ui.fragments.*;
 import com.ninetwozero.bf4intel.ui.news.NewsArticleFragment;
 import com.ninetwozero.bf4intel.ui.news.NewsListingFragment;
 import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
@@ -25,6 +17,7 @@ import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsTabFragment;
 import com.ninetwozero.bf4intel.ui.stats.details.DetailedStatsFragment;
 import com.ninetwozero.bf4intel.ui.stats.reports.BattleReportFragment;
 import com.ninetwozero.bf4intel.ui.stats.reports.BattleReportListingFragment;
+import com.ninetwozero.bf4intel.ui.stats.vehicles.VehicleDetailFragment;
 import com.ninetwozero.bf4intel.ui.stats.vehicles.VehicleStatsFragment;
 import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponDetailsFragment;
 import com.ninetwozero.bf4intel.ui.stats.weapons.WeaponStatsFragment;
@@ -64,6 +57,8 @@ public class FragmentFactory {
                 return WeaponDetailsFragment.newInstance(data);
             case VEHICLE_STATS:
                 return VehicleStatsFragment.newInstance(data);
+            case VEHICLE_DETAIL_STATS:
+                return VehicleDetailFragment.newInstance(data);
             case DETAILS_STATS:
                 return DetailedStatsFragment.newInstance(data);
             case NEWS_LISTING:
@@ -127,6 +122,7 @@ public class FragmentFactory {
         WEAPON_STATS,
         WEAPON_STATS_DETAILS,
         VEHICLE_STATS,
+        VEHICLE_DETAIL_STATS,
         DETAILS_STATS,
 
         SOLDIER_UNLOCKS,

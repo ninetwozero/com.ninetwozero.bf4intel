@@ -13,6 +13,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.dao.stats.vehicles.VehicleStatsDAO;
 import com.ninetwozero.bf4intel.events.stats.vehicles.VehicleStatsRefreshedEvent;
+import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStats;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.stats.vehicles.VehicleStatsService;
@@ -87,7 +88,10 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
 
     @Override
     public void onListItemClick(ListView listView, View view, int i, long l) {
-        // TODO: Open details
+        final GroupedVehicleStats groupedVehicles = (GroupedVehicleStats) getListAdapter().getItem(i);
+        final Bundle dataToPass = getArgumentsBundle();
+        dataToPass.putSerializable(VehicleDetailFragment.INTENT_VEHICLES_GROUP, groupedVehicles);
+        openDetailFragment(FragmentFactory.Type.VEHICLE_DETAIL_STATS, dataToPass, VehicleDetailFragment.TAG);
     }
 
     @Subscribe
