@@ -14,12 +14,10 @@ import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResult;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
-
 public class ProfileSearchAdapter extends BaseIntelAdapter<ProfileSearchResult> {
 
-    public ProfileSearchAdapter(final Context context, final List<ProfileSearchResult> itemsList) {
-        super(context, itemsList);
+    public ProfileSearchAdapter(final Context context) {
+        super(context);
     }
 
     @Override
