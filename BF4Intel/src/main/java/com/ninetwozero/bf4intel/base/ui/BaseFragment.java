@@ -90,8 +90,10 @@ public abstract class BaseFragment extends Fragment {
             if (fragment == null) {
                 fragment = (DialogFragment) FragmentFactory.get(fragmentType, dataToPass);
             }
-            fragment.show(fragmentManager, tag);
 
+            if (!fragment.isAdded()) {
+                fragment.show(fragmentManager, tag);
+            }
         } else {
             final Intent intent = new Intent(getActivity(), SingleFragmentActivity.class);
             intent.putExtra(SingleFragmentActivity.INTENT_FRAGMENT_TYPE, fragmentType.ordinal());
