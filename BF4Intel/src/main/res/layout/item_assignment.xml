@@ -28,7 +28,6 @@
       android:layout_width="@dimen/small_icon_size"
       android:layout_height="@dimen/small_icon_size"
       android:contentDescription="@string/cdesc_assignment_expansion_icon"
-      android:src="@drawable/icon_xp0"
       />
 
     <ImageView
