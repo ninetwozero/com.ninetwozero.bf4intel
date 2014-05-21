@@ -76,14 +76,13 @@ public class AwardDetailFragment extends BaseDialogFragment {
 
     private void populateRequiredExpansion(final View view) {
         if(!award.getMedalCode().contains("xp")) {
-            view.findViewById(R.id.expansion_award_container).setVisibility(View.GONE);
+            setVisibility(view, R.id.expansion_award_container, View.GONE);
         } else {
-            view.findViewById(R.id.expansion_award_container).setVisibility(View.VISIBLE);
-            String expansionPrefix = award.getMedalCode().substring(0, 3);
-            setTextWithDrawable(view, R.id.expansion_label,
-                getExpansionLabel(expansionPrefix),
-                ExpansionIconsImageMap.get(expansionPrefix)
-                );
+            final String expansionPrefix = award.getMedalCode().substring(0, 3);
+
+            setText(view, R.id.expansion_label, getExpansionLabel(expansionPrefix));
+            setImage(view, R.id.expansion_icon, ExpansionIconsImageMap.get(expansionPrefix));
+            setVisibility(view, R.id.expansion_award_container, View.VISIBLE);
         }
     }
 

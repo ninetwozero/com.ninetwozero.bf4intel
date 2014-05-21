@@ -12,6 +12,8 @@ public class ExpansionIconsImageMap {
             put("xp0", R.drawable.icon_xp0);
             put("xp1", R.drawable.icon_xp1);
             put("xp2", R.drawable.icon_xp2);
+            put("xp3", R.drawable.icon_xp3);
+            put("xp4", R.drawable.icon_xp4);
             put("ghost1", R.drawable.icon_xp1);
             put("ghost2", R.drawable.icon_xp2);
         }
