@@ -215,10 +215,15 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     }
 
     private void sendDataToListView(final List<ProfileSearchResult> results) {
-        final ListView listView = getListView();
-        if (listView == null) {
+        if (getView() == null) {
             return;
         }
-        setListAdapter(new ProfileSearchAdapter(getActivity(), results));
+
+        ProfileSearchAdapter adapter = (ProfileSearchAdapter) getListAdapter();
+        if (adapter == null) {
+            adapter = new ProfileSearchAdapter(getActivity());
+            setListAdapter(adapter);
+        }
+        adapter.setItems(results);
     }
 }
