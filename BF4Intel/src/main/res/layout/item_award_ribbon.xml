@@ -9,8 +9,8 @@
 
   <ImageView
     android:id="@+id/award_ribbon"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="@dimen/grid_view_image_width"
+    android:layout_height="@dimen/grid_view_image_height"
     android:layout_below="@id/award_completion"
     android:layout_centerHorizontal="true"
     android:contentDescription="@string/cdesc_award_ribbon"
