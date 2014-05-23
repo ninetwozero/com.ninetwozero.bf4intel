@@ -3,7 +3,7 @@ package com.ninetwozero.bf4intel.factories;
 import android.os.Bundle;
 
 import com.ninetwozero.bf4intel.json.Profile;
-import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
+import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.resources.Keys;
 
 public class BundleFactory {

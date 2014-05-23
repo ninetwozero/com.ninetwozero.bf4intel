@@ -12,7 +12,7 @@ import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
-import com.ninetwozero.bf4intel.dao.awards.AwardsDAO;
+import com.ninetwozero.bf4intel.database.dao.awards.AwardsDAO;
 import com.ninetwozero.bf4intel.events.awards.AwardsRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.awards.Award;

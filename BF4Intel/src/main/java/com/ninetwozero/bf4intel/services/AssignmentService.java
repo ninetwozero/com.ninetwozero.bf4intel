@@ -1,7 +1,7 @@
 package com.ninetwozero.bf4intel.services;
 
-import com.ninetwozero.bf4intel.dao.assignments.AssignmentSorter;
-import com.ninetwozero.bf4intel.dao.assignments.AssignmentsDAO;
+import com.ninetwozero.bf4intel.database.dao.assignments.AssignmentSorter;
+import com.ninetwozero.bf4intel.database.dao.assignments.AssignmentsDAO;
 import com.ninetwozero.bf4intel.events.assignments.AssignmentsRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;

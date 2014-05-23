@@ -2,7 +2,7 @@ package com.ninetwozero.bf4intel.menu;
 
 import android.content.Intent;
 
-import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
+import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
 
 import java.util.List;

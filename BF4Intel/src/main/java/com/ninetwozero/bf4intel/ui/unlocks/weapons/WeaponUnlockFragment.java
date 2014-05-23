@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
-import com.ninetwozero.bf4intel.dao.unlocks.weapons.WeaponUnlockDAO;
+import com.ninetwozero.bf4intel.database.dao.unlocks.weapons.WeaponUnlockDAO;
 import com.ninetwozero.bf4intel.events.unlocks.weapons.WeaponUnlocksRefreshedEvent;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlockContainer;
 import com.ninetwozero.bf4intel.resources.Keys;

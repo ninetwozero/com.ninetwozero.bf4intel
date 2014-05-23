@@ -1,6 +1,6 @@
 package com.ninetwozero.bf4intel.services.stats.vehicles;
 
-import com.ninetwozero.bf4intel.dao.stats.vehicles.VehicleStatsDAO;
+import com.ninetwozero.bf4intel.database.dao.stats.vehicles.VehicleStatsDAO;
 import com.ninetwozero.bf4intel.events.stats.vehicles.VehicleStatsRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStatsContainer;

@@ -11,7 +11,7 @@ import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
-import com.ninetwozero.bf4intel.dao.stats.vehicles.VehicleStatsDAO;
+import com.ninetwozero.bf4intel.database.dao.stats.vehicles.VehicleStatsDAO;
 import com.ninetwozero.bf4intel.events.stats.vehicles.VehicleStatsRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStats;

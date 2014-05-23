@@ -1,8 +1,8 @@
 package com.ninetwozero.bf4intel.services.unlocks.kits;
 
-import com.ninetwozero.bf4intel.dao.unlocks.SortMode;
-import com.ninetwozero.bf4intel.dao.unlocks.kits.KitUnlockDAO;
-import com.ninetwozero.bf4intel.dao.unlocks.kits.KitUnlockMapSorter;
+import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
+import com.ninetwozero.bf4intel.database.dao.unlocks.kits.KitUnlockDAO;
+import com.ninetwozero.bf4intel.database.dao.unlocks.kits.KitUnlockMapSorter;
 import com.ninetwozero.bf4intel.events.unlocks.kits.KitUnlocksRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.unlocks.KitUnlocks;
