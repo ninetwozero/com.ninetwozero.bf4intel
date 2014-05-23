@@ -1,7 +1,7 @@
 package com.ninetwozero.bf4intel.services.stats.details;
 
-import com.ninetwozero.bf4intel.dao.stats.details.DetailedStatsDAO;
-import com.ninetwozero.bf4intel.dao.stats.details.DetailedStatsGrouper;
+import com.ninetwozero.bf4intel.database.dao.stats.details.DetailedStatsDAO;
+import com.ninetwozero.bf4intel.database.dao.stats.details.DetailedStatsGrouper;
 import com.ninetwozero.bf4intel.events.stats.details.DetailedStatsRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;

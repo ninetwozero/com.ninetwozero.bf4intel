@@ -1,8 +1,8 @@
 package com.ninetwozero.bf4intel.services.unlocks.weapons;
 
-import com.ninetwozero.bf4intel.dao.unlocks.SortMode;
-import com.ninetwozero.bf4intel.dao.unlocks.weapons.WeaponUnlockDAO;
-import com.ninetwozero.bf4intel.dao.unlocks.weapons.WeaponUnlockSorter;
+import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
+import com.ninetwozero.bf4intel.database.dao.unlocks.weapons.WeaponUnlockDAO;
+import com.ninetwozero.bf4intel.database.dao.unlocks.weapons.WeaponUnlockSorter;
 import com.ninetwozero.bf4intel.events.unlocks.weapons.WeaponUnlocksRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlocks;

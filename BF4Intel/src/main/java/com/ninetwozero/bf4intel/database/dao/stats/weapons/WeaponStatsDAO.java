@@ -5,21 +5,21 @@ import com.ninetwozero.bf4intel.json.stats.weapons.WeaponStatistics;
 
 import se.emilsjolander.sprinkles.Model;
 import se.emilsjolander.sprinkles.annotations.Column;
-import se.emilsjolander.sprinkles.annotations.PrimaryKey;
+import se.emilsjolander.sprinkles.annotations.Key;
 import se.emilsjolander.sprinkles.annotations.Table;
 
 @Table("SoldierWeaponStatistics")
 public class WeaponStatsDAO extends Model {
     public static final String TABLE_NAME = "SoldierWeaponStatistics";
 
-    @PrimaryKey
+    @Key
     @Column("soldierId")
     private String soldierId;
 
     @Column("soldierName")
     private String soldierName;
 
-    @PrimaryKey
+    @Key
     @Column("platformId")
     private int platformId;
 

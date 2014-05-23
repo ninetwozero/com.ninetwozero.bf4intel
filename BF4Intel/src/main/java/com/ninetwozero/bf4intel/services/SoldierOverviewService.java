@@ -4,8 +4,8 @@ import android.app.Service;
 import android.content.Intent;
 
 import com.ninetwozero.bf4intel.Bf4Intel;
-import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
-import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewDAO;
+import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
+import com.ninetwozero.bf4intel.database.dao.soldieroverview.SoldierOverviewDAO;
 import com.ninetwozero.bf4intel.events.SoldierInformationUpdatedEvent;
 import com.ninetwozero.bf4intel.events.soldieroverview.SoldierOverviewRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;

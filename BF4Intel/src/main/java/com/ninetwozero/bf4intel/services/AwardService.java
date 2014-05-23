@@ -1,7 +1,7 @@
 package com.ninetwozero.bf4intel.services;
 
-import com.ninetwozero.bf4intel.dao.awards.AwardSorter;
-import com.ninetwozero.bf4intel.dao.awards.AwardsDAO;
+import com.ninetwozero.bf4intel.database.dao.awards.AwardSorter;
+import com.ninetwozero.bf4intel.database.dao.awards.AwardsDAO;
 import com.ninetwozero.bf4intel.events.awards.AwardsRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.awards.Awards;

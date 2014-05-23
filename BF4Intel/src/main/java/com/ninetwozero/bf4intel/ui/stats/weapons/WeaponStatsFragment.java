@@ -11,7 +11,7 @@ import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
-import com.ninetwozero.bf4intel.dao.stats.weapons.WeaponStatsDAO;
+import com.ninetwozero.bf4intel.database.dao.stats.weapons.WeaponStatsDAO;
 import com.ninetwozero.bf4intel.events.stats.weapons.WeaponStatsRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;

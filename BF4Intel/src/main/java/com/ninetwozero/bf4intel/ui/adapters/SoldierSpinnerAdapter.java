@@ -7,7 +7,7 @@ import android.widget.SpinnerAdapter;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
-import com.ninetwozero.bf4intel.dao.login.SummarizedSoldierStatsDAO;
+import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.resources.maps.profile.PlatformStringMap;
 import com.ninetwozero.bf4intel.resources.maps.profile.SoldierImageMap;
 import com.ninetwozero.bf4intel.resources.maps.ranks.RankImageMap;

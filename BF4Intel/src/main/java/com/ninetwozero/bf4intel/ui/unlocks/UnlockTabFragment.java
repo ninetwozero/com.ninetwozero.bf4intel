@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseTabFragment;
-import com.ninetwozero.bf4intel.dao.unlocks.SortMode;
+import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;

@@ -1,8 +1,8 @@
 package com.ninetwozero.bf4intel.services.unlocks.vehicles;
 
-import com.ninetwozero.bf4intel.dao.unlocks.SortMode;
-import com.ninetwozero.bf4intel.dao.unlocks.vehicles.VehicleUnlockDAO;
-import com.ninetwozero.bf4intel.dao.unlocks.vehicles.VehicleUnlockMapSorter;
+import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
+import com.ninetwozero.bf4intel.database.dao.unlocks.vehicles.VehicleUnlockDAO;
+import com.ninetwozero.bf4intel.database.dao.unlocks.vehicles.VehicleUnlockMapSorter;
 import com.ninetwozero.bf4intel.events.unlocks.vehicles.VehicleUnlocksRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlocks;

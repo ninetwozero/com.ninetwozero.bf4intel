@@ -13,7 +13,7 @@ import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
-import com.ninetwozero.bf4intel.dao.soldieroverview.SoldierOverviewDAO;
+import com.ninetwozero.bf4intel.database.dao.soldieroverview.SoldierOverviewDAO;
 import com.ninetwozero.bf4intel.datatypes.Skill;
 import com.ninetwozero.bf4intel.events.soldieroverview.SoldierOverviewRefreshedEvent;
 import com.ninetwozero.bf4intel.json.soldieroverview.BaseStatsModel;
