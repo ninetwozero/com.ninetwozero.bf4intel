@@ -70,7 +70,7 @@ dependencies {
             'com.squareup.picasso:picasso:2.2.0',
             'com.astuetz:pagerslidingtabstrip:1.0.1',
             'com.bugsense.trace:bugsense:3.6.1',
-            'se.emilsjolander:stickylistheaders:2.2.0'
+            'se.emilsjolander:stickylistheaders:2.2.0',
+            'se.emilsjolander:sprinkles:1.3.0'
     compile files('libs/libGoogleAnalyticsServices.jar')
-    compile files('libs/sprinkles-1.2.5-SNAPSHOT.jar')
 }
