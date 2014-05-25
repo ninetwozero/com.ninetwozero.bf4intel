@@ -18,11 +18,13 @@ public class DetailedStatsTitleMap {
             put("sc_award", R.string.award_score);
             put("sc_unlock", R.string.unlock_score);
             put("sc_total", R.string.total_score);
+            put("sc_per_minute", R.string.score_per_minute);
 
             put("kills", R.string.kills);
             put("deaths", R.string.deaths);
             put("kill_assists", R.string.kill_assists);
             put("kd_ratio", R.string.kd_ratio);
+            put("kills_per_minute", R.string.kills_per_minute);
             put("wins", R.string.wins);
             put("losses", R.string.losses);
             put("shots_fired", R.string.shots_fired);
