@@ -33,6 +33,8 @@ public class StatsDetails {
         private int unlockScore;
         @SerializedName("totalScore")
         private int totalScore;
+        @SerializedName("scorePerMinute")
+        private int scorePerMinute;
 
         /*General*/
         @SerializedName("kills")
@@ -40,9 +42,11 @@ public class StatsDetails {
         @SerializedName("deaths")
         private int deaths;
         @SerializedName("killAssists")
-        private int killAssits;
+        private int killAssists;
         @SerializedName("kdRatio")
         private double kdRatio;
+        @SerializedName("killsPerMinute")
+        private double killsPerMinute;
         @SerializedName("numWins")
         private int wins;
         @SerializedName("numLosses")
@@ -156,6 +160,10 @@ public class StatsDetails {
             return totalScore;
         }
 
+        public int getScorePerMinute() {
+            return scorePerMinute;
+        }
+
         public int getKills() {
             return kills;
         }
@@ -164,12 +172,16 @@ public class StatsDetails {
             return deaths;
         }
 
-        public int getKillAssits() {
-            return killAssits;
+        public int getKillAssists() {
+            return killAssists;
         }
 
         public double getKdRatio() {
             return kdRatio;
+        }
+
+        public double getKillsPerMinute() {
+            return killsPerMinute;
         }
 
         public int getWins() {

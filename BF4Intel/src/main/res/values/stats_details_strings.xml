@@ -11,12 +11,14 @@
   <string name="award_score">Award score</string>
   <string name="unlock_score">Unlock Score</string>
   <string name="total_score">Total score</string>
+  <string name="score_per_minute">Score per minute</string>
 
   <string name="general_score">General</string>
   <string name="kills">Kills</string>
   <string name="deaths">Deaths</string>
   <string name="kill_assists">Kill assists</string>
   <string name="kd_ratio">K/D ratio</string>
+  <string name="kills_per_minute">Kills per minute</string>
   <string name="wins">Wins</string>
   <string name="losses">Losses</string>
   <string name="shots_fired">Shots fired</string>

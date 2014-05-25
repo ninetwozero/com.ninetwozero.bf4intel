@@ -38,6 +38,7 @@ public class DetailedStatsGrouper {
         items.add(new DetailedStatsItem("sc_award", stringValueOf(details.getAwardScore())));
         items.add(new DetailedStatsItem("sc_unlock", stringValueOf(details.getUnlockScore())));
         items.add(new DetailedStatsItem("sc_total", stringValueOf(details.getTotalScore())));
+        items.add(new DetailedStatsItem("sc_per_minute", stringValueOf(details.getScorePerMinute())));
         return items;
     }
 
@@ -45,8 +46,9 @@ public class DetailedStatsGrouper {
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
         items.add(new DetailedStatsItem("kills", stringValueOf(details.getKills())));
         items.add(new DetailedStatsItem("deaths", stringValueOf(details.getDeaths())));
-        items.add(new DetailedStatsItem("kill_assists", stringValueOf(details.getKillAssits())));
+        items.add(new DetailedStatsItem("kill_assists", stringValueOf(details.getKillAssists())));
         items.add(new DetailedStatsItem("kd_ratio", stringValueOf(details.getKdRatio())));
+        items.add(new DetailedStatsItem("kills_per_minute", stringValueOf(details.getKillsPerMinute())));
         items.add(new DetailedStatsItem("wins", stringValueOf(details.getWins())));
         items.add(new DetailedStatsItem("losses", stringValueOf(details.getLosses())));
         items.add(new DetailedStatsItem("shots_fired", stringValueOf(details.getShotsFired())));
