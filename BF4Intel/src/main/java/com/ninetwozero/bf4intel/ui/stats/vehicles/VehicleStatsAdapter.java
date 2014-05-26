@@ -61,6 +61,7 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
         if (stats.getTimeInVehicle() > 0 && stats.getKillCount() != 0) {
             double killPerMinValue = (stats.getKillCount() * 100) / DateTimeUtils.toMinutes(stats.getTimeInVehicle());
             setText(view, R.id.kill_per_minute, NumberFormatter.format(killPerMinValue / 100));
+            setVisibility(view, R.id.kill_per_minute, View.VISIBLE);
             setVisibility(view, R.id.kill_per_minute_label, View.VISIBLE);
         } else {
             setVisibility(view, R.id.kill_per_minute_label, View.INVISIBLE);
