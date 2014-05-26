@@ -99,6 +99,7 @@
   <string name="skills_kills">Kills</string>
   <string name="skills_score">Score</string>
   <string name="skills_time">Time</string>
+  <string name="kill_a_minute">K/Min</string>
 
   <!-- Battle reports -->
   <string name="battlereport_time">Duration:</string>

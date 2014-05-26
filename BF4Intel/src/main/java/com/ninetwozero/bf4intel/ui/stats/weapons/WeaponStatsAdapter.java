@@ -4,12 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
+import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
@@ -49,6 +51,22 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
         );
         setImage(view, R.id.item_image, WeaponImageMap.get(weapon.getUniqueName()));
         setProgress(view, R.id.item_progress, weapon.getServiceStarsProgress());
+
+        TextView accuracy = (TextView) view.findViewById(R.id.accuracy_with_weapon);
+        if (accuracy != null && weapon.getAccuracy() > 0) {
+            accuracy.setText(NumberFormatter.percentageFormat(weapon.getAccuracy()));
+            setVisibility(view, R.id.accuracy_label, View.VISIBLE);
+        } else {
+            setVisibility(view, R.id.accuracy_label, View.INVISIBLE);
+        }
+
+        if (weapon.getTimeEquipped() > 0) {
+            double killPerMinValue = (weapon.getKills() * 100) / DateTimeUtils.toMinutes(weapon.getTimeEquipped());
+            setText(view, R.id.kill_per_minute, NumberFormatter.format(killPerMinValue / 100));
+            setVisibility(view, R.id.kill_per_minute_label, View.VISIBLE);
+        } else {
+            setVisibility(view, R.id.kill_per_minute_label, View.INVISIBLE);
+        }
 
         return view;
     }
