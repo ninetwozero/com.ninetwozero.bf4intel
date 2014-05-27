@@ -30,7 +30,7 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
         final Weapon weapon = itemsList.get(position);
 
         if (view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.list_stats_item, parent, false);
+            view = LayoutInflater.from(context).inflate(R.layout.list_item_weapon, parent, false);
         }
 
         setText(view, R.id.service_star_count, String.valueOf(weapon.getServiceStarsCount()));
@@ -56,15 +56,16 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
         if (accuracy != null && weapon.getAccuracy() > 0) {
             accuracy.setText(NumberFormatter.percentageFormat(weapon.getAccuracy()));
             setVisibility(view, R.id.accuracy_label, View.VISIBLE);
-        } else {
+        } else if (accuracy != null) {
             setVisibility(view, R.id.accuracy_label, View.INVISIBLE);
         }
 
-        if (weapon.getTimeEquipped() > 0) {
+        TextView killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
+        if (killPerMinute != null && weapon.getTimeEquipped() > 0) {
             double killPerMinValue = (weapon.getKills() * 100) / DateTimeUtils.toMinutes(weapon.getTimeEquipped());
-            setText(view, R.id.kill_per_minute, NumberFormatter.format(killPerMinValue / 100));
+            killPerMinute.setText(NumberFormatter.format(killPerMinValue / 100));
             setVisibility(view, R.id.kill_per_minute_label, View.VISIBLE);
-        } else {
+        } else if (killPerMinute != null) {
             setVisibility(view, R.id.kill_per_minute_label, View.INVISIBLE);
         }
 

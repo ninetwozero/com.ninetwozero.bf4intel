@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.stats.vehicles;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
@@ -28,7 +29,7 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
         final GroupedVehicleStats stats = itemsList.get(position);
 
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.list_stats_item, parent, false);
+            view = layoutInflater.inflate(R.layout.list_item_vehicle, parent, false);
         }
 
         setText(
@@ -56,14 +57,13 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
             setProgress(view, R.id.item_progress, stats.getServiceStarProgress());
         }
 
-        setVisibility(view, R.id.accuracy_label, View.INVISIBLE);
-
-        if (stats.getTimeInVehicle() > 0 && stats.getKillCount() != 0) {
+        TextView killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
+        if (killPerMinute != null && stats.getTimeInVehicle() > 0 && stats.getKillCount() != 0) {
             double killPerMinValue = (stats.getKillCount() * 100) / DateTimeUtils.toMinutes(stats.getTimeInVehicle());
-            setText(view, R.id.kill_per_minute, NumberFormatter.format(killPerMinValue / 100));
+            killPerMinute.setText(NumberFormatter.format(killPerMinValue / 100));
             setVisibility(view, R.id.kill_per_minute, View.VISIBLE);
             setVisibility(view, R.id.kill_per_minute_label, View.VISIBLE);
-        } else {
+        } else if (killPerMinute != null) {
             setVisibility(view, R.id.kill_per_minute_label, View.INVISIBLE);
             setVisibility(view, R.id.kill_per_minute, View.INVISIBLE);
         }

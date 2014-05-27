@@ -42,7 +42,7 @@
         android:id="@+id/item_image"
         android:layout_width="@dimen/stats_item_width"
         android:layout_height="@dimen/stats_item_height"
-        android:contentDescription="@string/cdesc_item_image"
+        android:contentDescription="@string/cdesc_weapon_image"
         android:adjustViewBounds="true"
         android:layout_marginTop="@dimen/spacing_m"
         android:layout_marginBottom="@dimen/spacing_m"
