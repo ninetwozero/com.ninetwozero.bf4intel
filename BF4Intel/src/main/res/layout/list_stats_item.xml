@@ -51,7 +51,6 @@
         android:adjustViewBounds="true"
         android:layout_marginTop="@dimen/spacing_m"
         android:layout_marginBottom="@dimen/spacing_m"
-        android:src="@drawable/w_a91_fancy"
         />
     </LinearLayout>
   </RelativeLayout>
