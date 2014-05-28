@@ -37,7 +37,7 @@
       />
 
     <LinearLayout
-      android:id="@+id/wrap_image"
+      android:id="@+id/vehicle_image"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_below="@id/item_name"

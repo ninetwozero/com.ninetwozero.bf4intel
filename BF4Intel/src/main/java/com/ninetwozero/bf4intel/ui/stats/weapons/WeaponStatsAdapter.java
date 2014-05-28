@@ -49,7 +49,7 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
             weapon.getServiceStarsProgress(),
             100
         );
-        setImage(view, R.id.item_image, WeaponImageMap.get(weapon.getUniqueName()));
+        setImage(view, R.id.weapon_image, WeaponImageMap.get(weapon.getUniqueName()));
         setProgress(view, R.id.item_progress, weapon.getServiceStarsProgress());
 
         TextView accuracy = (TextView) view.findViewById(R.id.accuracy_with_weapon);
