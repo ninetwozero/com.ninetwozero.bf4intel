@@ -30,7 +30,7 @@ public abstract class BaseFilterableIntelAdapter<T> extends BaseIntelAdapter<T> 
                         results.values = itemsList;
                         results.count = itemsList.size();
                     } else {
-                        results.values = filterAwards(constraint);
+                        results.values = filterItems(constraint);
                         results.count = ((List<T>) results.values).size();
                     }
                     return results;
@@ -50,5 +50,5 @@ public abstract class BaseFilterableIntelAdapter<T> extends BaseIntelAdapter<T> 
         return filter;
     }
 
-    protected abstract List<T> filterAwards(final CharSequence constraint);
+    protected abstract List<T> filterItems(final CharSequence constraint);
 }

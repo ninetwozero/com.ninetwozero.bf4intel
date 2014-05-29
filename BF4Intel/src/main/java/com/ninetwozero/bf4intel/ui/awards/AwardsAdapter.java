@@ -37,7 +37,7 @@ public class AwardsAdapter extends BaseFilterableIntelAdapter<Award> {
     }
 
     @Override
-    protected List<Award> filterAwards(final CharSequence constraint) {
+    protected List<Award> filterItems(final CharSequence constraint) {
         List<Award> filteredAwards = new ArrayList<Award>();
         for (Award award : listWithAllItems) {
             if (award.getCategory().equals(constraint)) {
