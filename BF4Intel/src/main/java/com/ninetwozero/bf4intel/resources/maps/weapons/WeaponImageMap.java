@@ -48,9 +48,9 @@ public class WeaponImageMap {
             put("WARSAW_ID_P_INAME_MACHETE", R.drawable.w_machete_fancy);
             put("WARSAW_ID_P_INAME_SMAW", R.drawable.w_mk153_smaw_fancy);
             put("WARSAW_ID_P_WNAME_GALIL53", R.drawable.w_galil_ace53sv_fancy);
-            put("WARSAW_ID_P_INAME_MORTAR", R.drawable.w_m224_mortar_fancy);
+            put("WARSAW_ID_P_INAME_MORTAR", R.drawable.vehicle_m224_mortar);
             put("WARSAW_ID_P_XP1_WNAME_MTAR21", R.drawable.w_mtar21_fancy);
-            put("WARSAW_ID_P_XP1_VNAME_UCAV", R.drawable.w_uacv_fancy);
+            put("WARSAW_ID_P_XP1_VNAME_UCAV", R.drawable.vehicle_ucav);
             put("WARSAW_ID_P_XP1_WNAME_RPK74", R.drawable.w_rpk74_fancy);
             put("WARSAW_ID_P_WNAME_M39", R.drawable.w_m39_fancy);
             put("WARSAW_ID_P_WNAME_PECHENEG", R.drawable.w_pecheneg_fancy);
