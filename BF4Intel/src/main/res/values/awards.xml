@@ -201,7 +201,7 @@
   <string name="award_xp1mbd_name">BOMBER DELIVERY MEDAL</string>
 
   <string name="award_xp2mca_name">CARRIER ASSAULT MEDAL</string>
-  <string name="award_xp2mca_desc">Recieve 50 Carrier Assault Ribbons</string>
+  <string name="award_xp2mca_desc">Receive 50 Carrier Assault Ribbons</string>
   <string name="award_xp2rca_name">CARRIER ASSAULT RIBBON</string>
   <string name="award_xp2rca_desc">Win an Carrier Assault round</string>
 </resources>
