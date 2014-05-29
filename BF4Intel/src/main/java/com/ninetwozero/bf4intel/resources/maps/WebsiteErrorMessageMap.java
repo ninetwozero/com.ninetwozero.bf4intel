@@ -20,6 +20,6 @@ public class WebsiteErrorMessageMap {
     };
 
     public static int get(final String key) {
-        return map.containsKey(key.toLowerCase(Locale.getDefault())) ? map.get(key.toLowerCase()) : R.string.na;
+        return map.containsKey(key.toLowerCase(Locale.getDefault())) ? map.get(key.toLowerCase(Locale.getDefault())) : R.string.na;
     }
 }
