@@ -43,7 +43,7 @@ public class DateTimeUtils {
         return DateUtils.getRelativeTimeSpanString(timeInSeconds * 1000, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
     }
 
-    public static long toMinutes( final long timeInSeconds) {
+    public static long toMinutes(final long timeInSeconds) {
         return timeInSeconds / SECONDS_IN_MINUTE;
     }
 }
