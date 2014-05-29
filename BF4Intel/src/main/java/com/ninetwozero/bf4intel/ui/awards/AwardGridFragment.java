@@ -153,14 +153,50 @@ public class AwardGridFragment
     public boolean onOptionsItemSelected(MenuItem item) {
         item.setChecked(true);
         switch (item.getItemId()) {
-            case R.id.ab_action_sort_categorized:
-                handleSortingRequest(SortMode.CATEGORIZED);
+            case R.id.ab_action_sort_all:
+                handleSortingRequest(SortMode.ALL);
                 return true;
+            case R.id.ab_action_sort_cat_game_modes:
+            case R.id.ab_action_sort_cat_kits:
+            case R.id.ab_action_sort_cat_weapons:
+            case R.id.ab_action_sort_cat_vehicles:
+            case R.id.ab_action_sort_cat_team:
+                handleFilterRequest(item.getItemId());
+                return true;
+
             case R.id.ab_action_sort_progress:
                 handleSortingRequest(SortMode.PROGRESS);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void handleFilterRequest(final int itemId) {
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
+        final AwardsAdapter adapter = (AwardsAdapter) gridView.getAdapter();
+        adapter.getFilter().filter(fetchKeyForCategoryItem(itemId));
+    }
+
+    private CharSequence fetchKeyForCategoryItem(final int itemId) {
+        switch (itemId) {
+            case R.id.ab_action_sort_cat_game_modes:
+                return "gamemode";
+            case R.id.ab_action_sort_cat_kits:
+                return "kits";
+            case R.id.ab_action_sort_cat_weapons:
+                return "weapon";
+            case R.id.ab_action_sort_cat_vehicles:
+                return "vehicles";
+            case R.id.ab_action_sort_cat_team:
+                return "team";
+            default:
+                return "";
         }
     }
 

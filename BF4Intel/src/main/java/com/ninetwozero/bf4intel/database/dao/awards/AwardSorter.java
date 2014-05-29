@@ -28,7 +28,7 @@ public class AwardSorter {
         Set<String> awardTypes = awardsGroups.keySet();
         for(String group : awardTypes) {
             List<String> awardsInGroup = awardsGroups.get(group);
-            orderedAwards.addAll(fetchGroupedAwards(awards, awardsInGroup));
+            orderedAwards.addAll(fetchGroupedAwards(awards, awardsInGroup, group));
         }
         Collections.sort(orderedAwards);
         return new SortedAwardContainer(orderedAwards);
@@ -41,19 +41,19 @@ public class AwardSorter {
         for(String group : awardTypes) {
             List<String> awardsInGroup = awardsGroups.get(group);
             Collections.sort(awardsInGroup);
-            orderedAwards.addAll(fetchGroupedAwards(awards, awardsInGroup));
+            orderedAwards.addAll(fetchGroupedAwards(awards, awardsInGroup, group));
         }
         return new SortedAwardContainer(orderedAwards);
     }
 
-    private static List<Award> fetchGroupedAwards(final Awards awards, final List<String> awardsInGroup) {
+    private static List<Award> fetchGroupedAwards(final Awards awards, final List<String> awardsInGroup, final String group) {
         List<Award> orderedGroup = new ArrayList<Award>();
         for (String key : awardsInGroup) {
             if(awards.getMedals().containsKey(key)) {
                 Medal medal = awards.getMedals().get(key);
                 String ribbonCode = medal.getMedalAward().getMedalDepencies().get(0).getRibbonDependency();
                 Ribbon ribbon = awards.getRibbons().get(ribbonCode);
-                orderedGroup.add(new Award(key, medal, ribbonCode, ribbon ));
+                orderedGroup.add(new Award(key, medal, ribbonCode, ribbon, group));
             }
         }
         return orderedGroup;

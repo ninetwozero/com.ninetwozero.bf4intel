@@ -13,11 +13,55 @@
         android:checkableBehavior="single"
         >
         <item
+          android:id="@+id/ab_action_sort_all"
+          android:title="@string/label_sort_all"
+          android:showAsAction="never"
+          android:icon="@null"
+          />
+        <item
           android:id="@+id/ab_action_sort_categorized"
           android:title="@string/label_sort_categorized"
           android:showAsAction="never"
           android:icon="@null"
-          />
+          >
+          <menu>
+            <group
+              android:id="@+id/menu_group_categories"
+              android:checkableBehavior="single"
+              >
+              <item
+                android:id="@+id/ab_action_sort_cat_kits"
+                android:title="Kits"
+                android:showAsAction="never"
+                android:icon="@null"
+                />
+              <item
+                android:id="@+id/ab_action_sort_cat_game_modes"
+                android:title="Game Modes"
+                android:showAsAction="never"
+                android:icon="@null"
+                />
+              <item
+                android:id="@+id/ab_action_sort_cat_weapons"
+                android:title="Weapons"
+                android:showAsAction="never"
+                android:icon="@null"
+                />
+              <item
+                android:id="@+id/ab_action_sort_cat_vehicles"
+                android:title="Vehicles"
+                android:showAsAction="never"
+                android:icon="@null"
+                />
+              <item
+                android:id="@+id/ab_action_sort_cat_team"
+                android:title="Team"
+                android:showAsAction="never"
+                android:icon="@null"
+                />
+            </group>
+          </menu>
+        </item>
         <item
           android:id="@+id/ab_action_sort_progress"
           android:title="@string/label_sort_progress"
