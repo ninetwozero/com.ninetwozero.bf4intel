@@ -3,12 +3,14 @@ package com.ninetwozero.bf4intel.ui.stats.vehicles;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStats;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehiclesGroupStringMap;
+import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
@@ -27,7 +29,7 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
         final GroupedVehicleStats stats = itemsList.get(position);
 
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.list_stats_item, parent, false);
+            view = layoutInflater.inflate(R.layout.list_item_vehicle, parent, false);
         }
 
         setText(
@@ -38,7 +40,7 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
             context.getString(VehiclesGroupStringMap.get(stats.getGroupName()))
         );
         setText(view, R.id.kill_count, R.string.num_kills, NumberFormatter.format(stats.getKillCount()));
-        setImage(view, R.id.item_image, VehicleImageMap.get(stats.getVehicleList().get(0).getName()));
+        setImage(view, R.id.vehicle_image, VehicleImageMap.get(stats.getVehicleList().get(0).getName()));
 
         if (VehiclesGroupStringMap.hasServiceStar(stats.getGroupName())) {
             setVisibility(view, R.id.service_star_count, View.GONE);
@@ -46,9 +48,24 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
             setVisibility(view, R.id.item_progress, View.GONE);
             setVisibility(view, R.id.item_service_star, View.GONE);
         } else {
+            setVisibility(view, R.id.service_star_count, View.VISIBLE);
+            setVisibility(view, R.id.item_progress_value, View.VISIBLE);
+            setVisibility(view, R.id.item_progress, View.VISIBLE);
+            setVisibility(view, R.id.item_service_star, View.VISIBLE);
             setText(view, R.id.item_progress_value, stats.getServiceStarProgress() + "%");
             setText(view, R.id.service_star_count, String.valueOf(stats.getServiceStarsCount()));
             setProgress(view, R.id.item_progress, stats.getServiceStarProgress());
+        }
+
+        TextView killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
+        if (killPerMinute != null && stats.getTimeInVehicle() > 0 && stats.getKillCount() != 0) {
+            double killPerMinValue = (stats.getKillCount() * 100) / DateTimeUtils.toMinutes(stats.getTimeInVehicle());
+            killPerMinute.setText(NumberFormatter.format(killPerMinValue / 100));
+            setVisibility(view, R.id.kill_per_minute, View.VISIBLE);
+            setVisibility(view, R.id.kill_per_minute_label, View.VISIBLE);
+        } else if (killPerMinute != null) {
+            setVisibility(view, R.id.kill_per_minute_label, View.INVISIBLE);
+            setVisibility(view, R.id.kill_per_minute, View.INVISIBLE);
         }
 
         return view;

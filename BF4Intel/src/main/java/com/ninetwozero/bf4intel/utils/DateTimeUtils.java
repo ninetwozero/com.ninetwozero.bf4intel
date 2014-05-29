@@ -7,8 +7,9 @@ import java.util.Map;
 
 public class DateTimeUtils {
     public final static int SECOND = 0;
-    public final static int MINUTE = 60;
-    public final static int HOUR = MINUTE * 60;
+    public final static int SECONDS_IN_MINUTE = 60;
+    public final static int MINUTE = SECONDS_IN_MINUTE;
+    public final static int HOUR = MINUTE * SECONDS_IN_MINUTE;
     public final static int DAY = HOUR * 24;
 
     private final static int OUTPUT_LIMIT = 2;
@@ -40,5 +41,9 @@ public class DateTimeUtils {
 
     public static String toRelative(final long timeInSeconds) {
         return DateUtils.getRelativeTimeSpanString(timeInSeconds * 1000, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+    }
+
+    public static long toMinutes(final long timeInSeconds) {
+        return timeInSeconds / SECONDS_IN_MINUTE;
     }
 }
