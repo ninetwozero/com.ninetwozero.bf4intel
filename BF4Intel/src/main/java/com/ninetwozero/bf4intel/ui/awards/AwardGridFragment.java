@@ -36,6 +36,7 @@ public class AwardGridFragment
     extends BaseLoadingFragment
     implements AdapterView.OnItemClickListener {
     public static final String KEY_SORT_MODE = "awardSortMode";
+    private static final String KEY_SORT_MODE_CATEGORY = "awardSortModeCategory";
 
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
@@ -131,6 +132,10 @@ public class AwardGridFragment
             gridView.setAdapter(adapter);
         }
         adapter.setItems(awards);
+
+        if (sharedPreferences.getInt(KEY_SORT_MODE, 0) == SortMode.CATEGORIZED.ordinal()) {
+            adapter.getFilter().filter(sharedPreferences.getString(KEY_SORT_MODE_CATEGORY, ""));
+        }
     }
 
     @Override
@@ -163,7 +168,6 @@ public class AwardGridFragment
             case R.id.ab_action_sort_cat_team:
                 handleFilterRequest(item.getItemId());
                 return true;
-
             case R.id.ab_action_sort_progress:
                 handleSortingRequest(SortMode.PROGRESS);
                 return true;
@@ -180,10 +184,17 @@ public class AwardGridFragment
 
         final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
         final AwardsAdapter adapter = (AwardsAdapter) gridView.getAdapter();
-        adapter.getFilter().filter(fetchKeyForCategoryItem(itemId));
+        final String category = fetchKeyForCategoryItem(itemId);
+
+        adapter.getFilter().filter(category);
+
+        sharedPreferences.edit()
+            .putInt(KEY_SORT_MODE, SortMode.CATEGORIZED.ordinal())
+            .putString(KEY_SORT_MODE_CATEGORY, category)
+            .commit();
     }
 
-    private CharSequence fetchKeyForCategoryItem(final int itemId) {
+    private String fetchKeyForCategoryItem(final int itemId) {
         switch (itemId) {
             case R.id.ab_action_sort_cat_game_modes:
                 return "gamemode";
