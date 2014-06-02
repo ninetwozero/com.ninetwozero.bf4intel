@@ -214,7 +214,7 @@
   <string name="title_unhooah">Un-hooah</string>
   <string name="msg_user_said_hooah">You said hooah</string>
   <string name="label_sort_all">Show all</string>
-  <string name="label_sort_categorized">By category&#8230;</string>
+  <string name="label_sort_categorized">Select category</string>
   <string name="label_sort_progress">By progress</string>
   <string name="label_completed">Completed</string>
   <string name="label_offline_mode">Offline mode</string>

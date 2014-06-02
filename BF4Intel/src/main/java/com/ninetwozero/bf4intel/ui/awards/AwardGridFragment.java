@@ -159,6 +159,7 @@ public class AwardGridFragment
         item.setChecked(true);
         switch (item.getItemId()) {
             case R.id.ab_action_sort_all:
+                setActionBarSubTitle(R.string.label_sort_all);
                 handleSortingRequest(SortMode.ALL);
                 return true;
             case R.id.ab_action_sort_cat_game_modes:
@@ -169,6 +170,7 @@ public class AwardGridFragment
                 handleFilterRequest(item.getItemId());
                 return true;
             case R.id.ab_action_sort_progress:
+                setActionBarSubTitle(R.string.label_sort_progress);
                 handleSortingRequest(SortMode.PROGRESS);
                 return true;
             default:
@@ -197,14 +199,19 @@ public class AwardGridFragment
     private String fetchKeyForCategoryItem(final int itemId) {
         switch (itemId) {
             case R.id.ab_action_sort_cat_game_modes:
+                setActionBarSubTitle(R.string.game_modes);
                 return "gamemode";
             case R.id.ab_action_sort_cat_kits:
+                setActionBarSubTitle(R.string.kits);
                 return "kits";
             case R.id.ab_action_sort_cat_weapons:
+                setActionBarSubTitle(R.string.weapons);
                 return "weapon";
             case R.id.ab_action_sort_cat_vehicles:
+                setActionBarSubTitle(R.string.vehicles);
                 return "vehicles";
             case R.id.ab_action_sort_cat_team:
+                setActionBarSubTitle(R.string.team);
                 return "team";
             default:
                 return "";

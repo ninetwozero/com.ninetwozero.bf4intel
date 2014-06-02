@@ -19,6 +19,11 @@
           android:icon="@null"
           />
         <item
+          android:id="@+id/ab_action_sort_progress"
+          android:title="@string/label_sort_progress"
+          android:showAsAction="never"
+          android:icon="@null" />
+        <item
           android:id="@+id/ab_action_sort_categorized"
           android:title="@string/label_sort_categorized"
           android:showAsAction="never"
@@ -62,12 +67,6 @@
             </group>
           </menu>
         </item>
-        <item
-          android:id="@+id/ab_action_sort_progress"
-          android:title="@string/label_sort_progress"
-          android:showAsAction="never"
-          android:icon="@null"
-          />
       </group>
     </menu>
   </item>
