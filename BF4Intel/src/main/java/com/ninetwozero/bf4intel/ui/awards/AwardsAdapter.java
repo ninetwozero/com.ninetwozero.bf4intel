@@ -6,10 +6,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
+import com.ninetwozero.bf4intel.base.adapter.BaseFilterableIntelAdapter;
 import com.ninetwozero.bf4intel.json.awards.Award;
 
-public class AwardsAdapter extends BaseIntelAdapter<Award> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class AwardsAdapter extends BaseFilterableIntelAdapter<Award> {
     public AwardsAdapter(final Context context) {
         super(context);
     }
@@ -31,6 +34,17 @@ public class AwardsAdapter extends BaseIntelAdapter<Award> {
         populateRibbonViews(view, award);
 
         return view;
+    }
+
+    @Override
+    protected List<Award> filterItems(final CharSequence constraint) {
+        List<Award> filteredAwards = new ArrayList<Award>();
+        for (Award award : listWithAllItems) {
+            if (award.getCategory().equals(constraint)) {
+                filteredAwards.add(award);
+            }
+        }
+        return filteredAwards;
     }
 
     private void populateMedalViews(final View view, final Award award) {

@@ -3,6 +3,9 @@ package com.ninetwozero.bf4intel.ui.awards;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,6 +16,7 @@ import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.database.dao.awards.AwardsDAO;
+import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.events.awards.AwardsRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.awards.Award;
@@ -20,6 +24,7 @@ import com.ninetwozero.bf4intel.json.awards.SortedAwardContainer;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.AwardService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 
 import java.util.List;
@@ -30,6 +35,8 @@ import se.emilsjolander.sprinkles.Query;
 public class AwardGridFragment
     extends BaseLoadingFragment
     implements AdapterView.OnItemClickListener {
+    public static final String KEY_SORT_MODE = "awardSortMode";
+    private static final String KEY_SORT_MODE_CATEGORY = "awardSortModeCategory";
 
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
@@ -125,6 +132,10 @@ public class AwardGridFragment
             gridView.setAdapter(adapter);
         }
         adapter.setItems(awards);
+
+        if (sharedPreferences.getInt(KEY_SORT_MODE, 0) == SortMode.CATEGORIZED.ordinal()) {
+            adapter.getFilter().filter(sharedPreferences.getString(KEY_SORT_MODE_CATEGORY, ""));
+        }
     }
 
     @Override
@@ -133,5 +144,82 @@ public class AwardGridFragment
         final Bundle dataToPass = getArgumentsBundle();
         dataToPass.putSerializable(AwardDetailFragment.INTENT_AWARD, award);
         openDetailFragment(FragmentFactory.Type.SOLDIER_AWARD_DETAILS, dataToPass, AwardDetailFragment.TAG);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_awards, menu);
+
+        setupSortModeMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        item.setChecked(true);
+        switch (item.getItemId()) {
+            case R.id.ab_action_sort_all:
+                handleSortingRequest(SortMode.ALL, R.string.label_sort_all);
+                return true;
+            case R.id.ab_action_sort_cat_game_modes:
+                handleFilterRequest("gamemode", R.string.game_modes);
+                return true;
+            case R.id.ab_action_sort_cat_kits:
+                handleFilterRequest("kits", R.string.kits);
+                return true;
+            case R.id.ab_action_sort_cat_weapons:
+                handleFilterRequest("weapon", R.string.weapons);
+                return true;
+            case R.id.ab_action_sort_cat_vehicles:
+                handleFilterRequest("vehicles", R.string.vehicles);
+                return true;
+            case R.id.ab_action_sort_cat_team:
+                handleFilterRequest("team", R.string.team);
+                return true;
+            case R.id.ab_action_sort_progress:
+                handleSortingRequest(SortMode.PROGRESS, R.string.label_sort_progress);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void handleFilterRequest(final String category, final int subtitleResString) {
+        setActionBarSubTitle(subtitleResString);
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
+        final AwardsAdapter adapter = (AwardsAdapter) gridView.getAdapter();
+
+        adapter.getFilter().filter(category);
+
+        sharedPreferences.edit()
+            .putInt(KEY_SORT_MODE, SortMode.CATEGORIZED.ordinal())
+            .putString(KEY_SORT_MODE_CATEGORY, category)
+            .commit();
+    }
+
+    private void handleSortingRequest(SortMode sortMode, final int subtitleResString) {
+        setActionBarSubTitle(subtitleResString);
+        sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal()).commit();
+        BusProvider.getInstance().post(new RefreshEvent());
+    }
+
+    private void setupSortModeMenu(Menu menu) {
+        final SortMode mode = SortMode.fromOrdinal(sharedPreferences.getInt(KEY_SORT_MODE, 0));
+        switch (mode) {
+            case CATEGORIZED:
+                menu.findItem(R.id.ab_action_sort_categorized).setChecked(true);
+                break;
+            case PROGRESS:
+                menu.findItem(R.id.ab_action_sort_progress).setChecked(true);
+                break;
+            default:
+                menu.findItem(R.id.ab_action_sort_categorized).setChecked(true);
+                break;
+        }
     }
 }

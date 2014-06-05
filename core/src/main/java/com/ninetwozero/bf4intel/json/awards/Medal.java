@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Medal implements Serializable {
+public class Medal implements Comparable<Medal>, Serializable {
     @SerializedName("unlocked")
     private int unlocked;
     @SerializedName("timesTaken")
@@ -36,5 +36,16 @@ public class Medal implements Serializable {
 
     public MedalAward getMedalAward() {
         return medalAward;
+    }
+
+    @Override
+    public int compareTo(final Medal m) {
+        if (presentProgress > m.getPresentProgress()) {
+            return -1;
+        } else if (presentProgress < m.getPresentProgress()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
