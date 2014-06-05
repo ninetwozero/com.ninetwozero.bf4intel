@@ -159,26 +159,33 @@ public class AwardGridFragment
         item.setChecked(true);
         switch (item.getItemId()) {
             case R.id.ab_action_sort_all:
-                setActionBarSubTitle(R.string.label_sort_all);
-                handleSortingRequest(SortMode.ALL);
+                handleSortingRequest(SortMode.ALL, R.string.label_sort_all);
                 return true;
             case R.id.ab_action_sort_cat_game_modes:
+                handleFilterRequest("gamemode", R.string.game_modes);
+                return true;
             case R.id.ab_action_sort_cat_kits:
+                handleFilterRequest("kits", R.string.kits);
+                return true;
             case R.id.ab_action_sort_cat_weapons:
+                handleFilterRequest("weapon", R.string.weapons);
+                return true;
             case R.id.ab_action_sort_cat_vehicles:
+                handleFilterRequest("vehicles", R.string.vehicles);
+                return true;
             case R.id.ab_action_sort_cat_team:
-                handleFilterRequest(item.getItemId());
+                handleFilterRequest("team", R.string.team);
                 return true;
             case R.id.ab_action_sort_progress:
-                setActionBarSubTitle(R.string.label_sort_progress);
-                handleSortingRequest(SortMode.PROGRESS);
+                handleSortingRequest(SortMode.PROGRESS, R.string.label_sort_progress);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void handleFilterRequest(final int itemId) {
+    private void handleFilterRequest(final String category, final int subtitleResString) {
+        setActionBarSubTitle(subtitleResString);
         final View view = getView();
         if (view == null) {
             return;
@@ -186,7 +193,6 @@ public class AwardGridFragment
 
         final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
         final AwardsAdapter adapter = (AwardsAdapter) gridView.getAdapter();
-        final String category = fetchKeyForCategoryItem(itemId);
 
         adapter.getFilter().filter(category);
 
@@ -196,29 +202,8 @@ public class AwardGridFragment
             .commit();
     }
 
-    private String fetchKeyForCategoryItem(final int itemId) {
-        switch (itemId) {
-            case R.id.ab_action_sort_cat_game_modes:
-                setActionBarSubTitle(R.string.game_modes);
-                return "gamemode";
-            case R.id.ab_action_sort_cat_kits:
-                setActionBarSubTitle(R.string.kits);
-                return "kits";
-            case R.id.ab_action_sort_cat_weapons:
-                setActionBarSubTitle(R.string.weapons);
-                return "weapon";
-            case R.id.ab_action_sort_cat_vehicles:
-                setActionBarSubTitle(R.string.vehicles);
-                return "vehicles";
-            case R.id.ab_action_sort_cat_team:
-                setActionBarSubTitle(R.string.team);
-                return "team";
-            default:
-                return "";
-        }
-    }
-
-    private void handleSortingRequest(SortMode sortMode) {
+    private void handleSortingRequest(SortMode sortMode, final int subtitleResString) {
+        setActionBarSubTitle(subtitleResString);
         sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal()).commit();
         BusProvider.getInstance().post(new RefreshEvent());
     }
