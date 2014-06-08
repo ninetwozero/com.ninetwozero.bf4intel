@@ -224,7 +224,7 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
     <item name="android:fontFamily">sans-serif-light</item>
-    <item name="android:textSize">@dimen/text_card_title</item>
+    <item name="android:textSize">@dimen/heading_over_card_size</item>
     <item name="android:textColor">@color/text_on_card_bg</item>
     <item name="android:layout_marginBottom">@dimen/spacing_m</item>
   </style>
@@ -235,6 +235,7 @@
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Large</item>
     <item name="android:fontFamily">sans-serif-light</item>
     <item name="android:textColor">@color/regular_card_title</item>
+    <item name="android:textSize">@dimen/text_l</item>
   </style>
 
   <style name="RegularCardSubtitle">
@@ -242,6 +243,7 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
     <item name="android:textColor">@color/regular_card_subtitle</item>
+    <item name="android:textSize">@dimen/text_s</item>
   </style>
 
   <style name="DefaultEmptyText">
