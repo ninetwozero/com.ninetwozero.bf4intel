@@ -58,16 +58,22 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
         }
 
         TextView killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
-        if (killPerMinute != null && stats.getTimeInVehicle() > 0 && stats.getKillCount() != 0) {
-            double killPerMinValue = (stats.getKillCount() * 100) / DateTimeUtils.toMinutes(stats.getTimeInVehicle());
-            killPerMinute.setText(NumberFormatter.format(killPerMinValue / 100));
-            setVisibility(view, R.id.kill_per_minute, View.VISIBLE);
-            setVisibility(view, R.id.kill_per_minute_label, View.VISIBLE);
+        if (killPerMinute != null && stats.getKillCount() > 0) {
+            double killPerMinValue = calculateKillPerMinuteValue(stats.getKillCount(), stats.getTimeInVehicle());
+            killPerMinute.setText(NumberFormatter.format(killPerMinValue));
+            setVisibility(view, R.id.wrap_kill_per_minute, View.VISIBLE);
         } else if (killPerMinute != null) {
-            setVisibility(view, R.id.kill_per_minute_label, View.INVISIBLE);
-            setVisibility(view, R.id.kill_per_minute, View.INVISIBLE);
+            setVisibility(view, R.id.wrap_kill_per_minute, View.INVISIBLE);
         }
 
         return view;
+    }
+
+    private double calculateKillPerMinuteValue(final int killCount, final long time) {
+        if (time > DateTimeUtils.MINUTE) {
+            return (((double) killCount) / time) * DateTimeUtils.MINUTE;
+        } else {
+            return killCount;
+        }
     }
 }
