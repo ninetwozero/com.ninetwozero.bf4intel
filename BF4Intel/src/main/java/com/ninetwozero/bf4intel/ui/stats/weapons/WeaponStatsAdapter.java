@@ -11,8 +11,8 @@ import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
-import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
+import com.ninetwozero.bf4intel.utils.StatsUtils;
 
 public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
 
@@ -61,7 +61,9 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
 
         TextView killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
         if (killPerMinute != null && weapon.getKills() > 0) {
-            double killPerMinuteValue = calculateKillPerMinuteValue(weapon.getKills(), weapon.getTimeEquipped());
+            double killPerMinuteValue = StatsUtils.calculateKillsPerMinute(
+                weapon.getKills(), weapon.getTimeEquipped()
+            );
             killPerMinute.setText(NumberFormatter.format(killPerMinuteValue));
             setVisibility(view, R.id.wrap_kill_per_minute, View.VISIBLE);
         } else if (killPerMinute != null) {
@@ -70,13 +72,5 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
         }
 
         return view;
-    }
-
-    private double calculateKillPerMinuteValue(final int killCount, final long time) {
-        if (time > DateTimeUtils.MINUTE) {
-            return (((double) killCount) / time) * DateTimeUtils.MINUTE;
-        } else {
-            return killCount;
-        }
     }
 }

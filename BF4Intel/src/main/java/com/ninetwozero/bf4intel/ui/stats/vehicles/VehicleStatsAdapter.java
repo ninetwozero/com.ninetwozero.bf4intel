@@ -12,6 +12,7 @@ import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehiclesGroupStringMap;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
+import com.ninetwozero.bf4intel.utils.StatsUtils;
 
 public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
 
@@ -59,21 +60,15 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
 
         TextView killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
         if (killPerMinute != null && stats.getKillCount() > 0) {
-            double killPerMinValue = calculateKillPerMinuteValue(stats.getKillCount(), stats.getTimeInVehicle());
-            killPerMinute.setText(NumberFormatter.format(killPerMinValue));
+            double killPerMinuteValue = StatsUtils.calculateKillsPerMinute(
+                stats.getKillCount(), stats.getTimeInVehicle()
+            );
+            killPerMinute.setText(NumberFormatter.format(killPerMinuteValue));
             setVisibility(view, R.id.wrap_kill_per_minute, View.VISIBLE);
         } else if (killPerMinute != null) {
             setVisibility(view, R.id.wrap_kill_per_minute, View.INVISIBLE);
         }
 
         return view;
-    }
-
-    private double calculateKillPerMinuteValue(final int killCount, final long time) {
-        if (time > DateTimeUtils.MINUTE) {
-            return (((double) killCount) / time) * DateTimeUtils.MINUTE;
-        } else {
-            return killCount;
-        }
     }
 }
