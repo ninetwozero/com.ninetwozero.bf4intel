@@ -1,6 +1,4 @@
 <resources>
-  <!-- Customize dimensions originally defined in res/values/dimens.xml (such as
-       screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here. -->
   <dimen name="activity_horizontal_margin">128dp</dimen>
 
   <dimen name="text_xs">16sp</dimen>
@@ -13,4 +11,6 @@
 
   <dimen name="w_battlereport_list_img">335dp</dimen>
   <dimen name="h_battlereport_list_img">160dp</dimen>
+
+  <dimen name="grid_view_column_width">300dp</dimen>
 </resources>
