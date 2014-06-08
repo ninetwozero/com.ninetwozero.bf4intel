@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="ab_award_menus">
+    <item>@string/label_sort_all</item>
+    <item>@string/label_sort_progress</item>
+    <item>@string/kits</item>
+    <item>@string/game_modes</item>
+    <item>@string/weapons</item>
+    <item>@string/vehicles</item>
+    <item>@string/team</item>
+  </string-array>
+</resources>

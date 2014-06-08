@@ -2,18 +2,16 @@ package com.ninetwozero.bf4intel.ui.awards;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.view.MenuItemCompat;
+import android.util.Log;
+import android.view.*;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.provider.MenuProvider;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.database.dao.awards.AwardsDAO;
 import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
@@ -34,9 +32,12 @@ import se.emilsjolander.sprinkles.Query;
 
 public class AwardGridFragment
     extends BaseLoadingFragment
-    implements AdapterView.OnItemClickListener {
+    implements AdapterView.OnItemClickListener, MenuProvider.OnMenuProviderSelectedListener {
     public static final String KEY_SORT_MODE = "awardSortMode";
     private static final String KEY_SORT_MODE_CATEGORY = "awardSortModeCategory";
+    private MenuProvider menuProvider;
+    private String[] menuTitleResources;
+    private String[] sortingKeys = new String[]{"all", "progress", "kits", "gamemode", "weapon", "vehicles", "team"};
 
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
@@ -150,41 +151,30 @@ public class AwardGridFragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_awards, menu);
+        MenuItem sort = menu.findItem(R.id.ab_action_sort);
+        menuTitleResources = getActivity().getResources().getStringArray(R.array.ab_award_menus);
 
-        setupSortModeMenu(menu);
+        menuProvider = (MenuProvider) MenuItemCompat.getActionProvider(sort);
+        menuProvider.setMenuTitles(menuTitleResources);
+        menuProvider.setExpansionItemTitle(R.string.filter_more_options);
+        menuProvider.setOnMenuSelectedListener(this);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        item.setChecked(true);
-        switch (item.getItemId()) {
-            case R.id.ab_action_sort_all:
-                handleSortingRequest(SortMode.ALL, R.string.label_sort_all);
-                return true;
-            case R.id.ab_action_sort_cat_game_modes:
-                handleFilterRequest("gamemode", R.string.game_modes);
-                return true;
-            case R.id.ab_action_sort_cat_kits:
-                handleFilterRequest("kits", R.string.kits);
-                return true;
-            case R.id.ab_action_sort_cat_weapons:
-                handleFilterRequest("weapon", R.string.weapons);
-                return true;
-            case R.id.ab_action_sort_cat_vehicles:
-                handleFilterRequest("vehicles", R.string.vehicles);
-                return true;
-            case R.id.ab_action_sort_cat_team:
-                handleFilterRequest("team", R.string.team);
-                return true;
-            case R.id.ab_action_sort_progress:
-                handleSortingRequest(SortMode.PROGRESS, R.string.label_sort_progress);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+    public void onMenuSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == 0) {
+            handleSortingRequest(SortMode.ALL, R.string.label_sort_all);
+        } else if (itemId == 1) {
+            handleSortingRequest(SortMode.PROGRESS, R.string.label_sort_progress);
+        } else if (itemId > 1 && itemId < sortingKeys.length) {
+            handleFilterRequest(sortingKeys[itemId], menuTitleResources[itemId]);
+        } else {
+            Log.d(AwardGridFragment.class.getSimpleName(), "Unknown MenuItem " + item.getTitle());
         }
     }
 
-    private void handleFilterRequest(final String category, final int subtitleResString) {
+    private void handleFilterRequest(final String category, final String subtitleResString) {
         setActionBarSubTitle(subtitleResString);
         final View view = getView();
         if (view == null) {
@@ -206,20 +196,5 @@ public class AwardGridFragment
         setActionBarSubTitle(subtitleResString);
         sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal()).commit();
         BusProvider.getInstance().post(new RefreshEvent());
-    }
-
-    private void setupSortModeMenu(Menu menu) {
-        final SortMode mode = SortMode.fromOrdinal(sharedPreferences.getInt(KEY_SORT_MODE, 0));
-        switch (mode) {
-            case CATEGORIZED:
-                menu.findItem(R.id.ab_action_sort_categorized).setChecked(true);
-                break;
-            case PROGRESS:
-                menu.findItem(R.id.ab_action_sort_progress).setChecked(true);
-                break;
-            default:
-                menu.findItem(R.id.ab_action_sort_categorized).setChecked(true);
-                break;
-        }
     }
 }

@@ -49,6 +49,7 @@
   <string name="ab_action_send">Send</string>
 
   <!-- HEADINGS -->
+  <string name="filter_more_options">More options</string>
   <string name="weapons">Weapons</string>
   <string name="vehicles">Vehicles</string>
   <string name="reports">Reports</string>

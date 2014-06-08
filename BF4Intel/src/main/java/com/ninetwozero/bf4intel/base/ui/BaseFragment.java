@@ -125,8 +125,12 @@ public abstract class BaseFragment extends Fragment {
         actionBar.setIcon(icon);
     }
 
-    protected void setActionBarSubTitle(int resourceId) {
-        getActivity().getActionBar().setSubtitle(resourceId);
+    protected void setActionBarSubTitle(int resurceID) {
+        getActivity().getActionBar().setSubtitle(resurceID);
+    }
+
+    protected void setActionBarSubTitle(String subtitle) {
+        getActivity().getActionBar().setSubtitle(subtitle);
     }
 
     protected void showToast(final int resource) {
