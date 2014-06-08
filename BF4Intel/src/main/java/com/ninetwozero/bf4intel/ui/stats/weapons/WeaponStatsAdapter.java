@@ -42,8 +42,7 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
             context.getString(WeaponStringMap.get(weapon.getUniqueName()))
         );
         setText(view, R.id.kill_count, R.string.num_kills, NumberFormatter.format(weapon.getKills()));
-        setText(
-            view,
+        setText(view,
             R.id.item_progress_value,
             R.string.generic_x_of_y,
             weapon.getServiceStarsProgress(),
@@ -53,22 +52,31 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
         setProgress(view, R.id.item_progress, weapon.getServiceStarsProgress());
 
         TextView accuracy = (TextView) view.findViewById(R.id.accuracy_with_weapon);
-        if (accuracy != null && weapon.getAccuracy() > 0) {
+        if (accuracy != null && weapon.getShotsFired() > 0) {
             accuracy.setText(NumberFormatter.percentageFormat(weapon.getAccuracy()));
-            setVisibility(view, R.id.accuracy_label, View.VISIBLE);
+            setVisibility(view, R.id.wrap_accuracy, View.VISIBLE);
         } else if (accuracy != null) {
-            setVisibility(view, R.id.accuracy_label, View.INVISIBLE);
+            setVisibility(view, R.id.wrap_accuracy, View.INVISIBLE);
         }
 
         TextView killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
-        if (killPerMinute != null && weapon.getTimeEquipped() > 0) {
-            double killPerMinValue = (weapon.getKills() * 100) / DateTimeUtils.toMinutes(weapon.getTimeEquipped());
-            killPerMinute.setText(NumberFormatter.format(killPerMinValue / 100));
-            setVisibility(view, R.id.kill_per_minute_label, View.VISIBLE);
+        if (killPerMinute != null && weapon.getKills() > 0) {
+            double killPerMinuteValue = calculateKillPerMinuteValue(weapon.getKills(), weapon.getTimeEquipped());
+            killPerMinute.setText(NumberFormatter.format(killPerMinuteValue));
+            setVisibility(view, R.id.wrap_kill_per_minute, View.VISIBLE);
         } else if (killPerMinute != null) {
-            setVisibility(view, R.id.kill_per_minute_label, View.INVISIBLE);
+            killPerMinute.setText(R.string.empty);
+            setVisibility(view, R.id.wrap_kill_per_minute, View.INVISIBLE);
         }
 
         return view;
+    }
+
+    private double calculateKillPerMinuteValue(final int killCount, final long time) {
+        if (time > DateTimeUtils.MINUTE) {
+            return (((double) killCount) / time) * DateTimeUtils.MINUTE;
+        } else {
+            return killCount;
+        }
     }
 }
