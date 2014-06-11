@@ -49,6 +49,7 @@
         android:layout_weight="0.4" />
 
       <LinearLayout
+        android:id="@+id/wrap_kill_per_minute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.3"
@@ -60,7 +61,6 @@
           android:textColor="@color/regular_card_title" />
 
         <TextView
-          android:id="@+id/kill_per_minute_label"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:textColor="@color/regular_card_title"
