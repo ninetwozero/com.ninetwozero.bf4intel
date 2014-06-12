@@ -25,7 +25,7 @@
     </activity>
 
     <activity
-      android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
+      android:theme="@style/Bf4IntelTheme.NoActionBar.Fullscreen"
       android:name=".ui.login.LoginActivity"
       android:label="@string/label_login"
       android:launchMode="singleTop"

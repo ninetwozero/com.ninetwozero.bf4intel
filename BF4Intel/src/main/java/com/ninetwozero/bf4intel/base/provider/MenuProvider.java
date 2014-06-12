@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 
+import com.ninetwozero.bf4intel.R;
+
 public class MenuProvider extends ActionProvider {
 
     private OnMenuProviderSelectedListener listener;
@@ -18,7 +20,7 @@ public class MenuProvider extends ActionProvider {
     }
 
     private Context context;
-    private int maximumMenuCount = 2;
+    private int maximumMenuCount = 3;
     private String[] menuTitles;
 
     public MenuProvider(Context context) {
@@ -48,6 +50,10 @@ public class MenuProvider extends ActionProvider {
         expansionItemResourceTitle = resourceId;
     }
 
+    private int getExpansionItemResourceTitle() {
+        return expansionItemResourceTitle == -1 ? R.string.filter_more_options : expansionItemResourceTitle;
+    }
+
     @Override
     public void onPrepareSubMenu(SubMenu subMenu) {
         subMenu.clear();
@@ -59,7 +65,7 @@ public class MenuProvider extends ActionProvider {
 
         if (maximumMenuCount < menuTitlesCount) {
             SubMenu expandedSubMenu = subMenu
-                .addSubMenu(Menu.NONE, maximumMenuCount, maximumMenuCount, context.getResources().getString(expansionItemResourceTitle));
+                .addSubMenu(Menu.NONE, maximumMenuCount, maximumMenuCount, context.getResources().getString(getExpansionItemResourceTitle()));
             for (int i = 0; i < menuTitlesCount; i++) {
                 expandedSubMenu.add(0, i, i, menuTitles[i])
                     .setOnMenuItemClickListener(menuProviderOnMenuItemClickListener);

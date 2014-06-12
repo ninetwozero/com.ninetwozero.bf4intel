@@ -152,11 +152,11 @@ public class AwardGridFragment
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_awards, menu);
         MenuItem sort = menu.findItem(R.id.ab_action_sort);
-        menuTitleResources = getActivity().getResources().getStringArray(R.array.ab_award_menus);
+        menuTitleResources = getActivity().getResources().getStringArray(R.array.ab_filter_menus);
 
         menuProvider = (MenuProvider) MenuItemCompat.getActionProvider(sort);
         menuProvider.setMenuTitles(menuTitleResources);
-        menuProvider.setExpansionItemTitle(R.string.filter_more_options);
+        //menuProvider.setExpansionItemTitle(R.string.filter_more_options);
         menuProvider.setOnMenuSelectedListener(this);
     }
 

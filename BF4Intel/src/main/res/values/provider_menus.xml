@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="ab_award_menus">
-    <item>@string/label_sort_all</item>
-    <item>@string/label_sort_progress</item>
-    <item>@string/kits</item>
-    <item>@string/game_modes</item>
-    <item>@string/weapons</item>
-    <item>@string/vehicles</item>
-    <item>@string/team</item>
+  <string-array name="ab_filter_menus">
+    <item>Sort by categories</item>
+    <item>Sort by progress</item>
+  </string-array>
+
+  <string-array name="ab_award_options_menu">
+    <item>Show kits</item>
+    <item>Show game modes</item>
+    <item>Show weapons</item>
+    <item>Show vehicles</item>
+    <item>Show teams</item>
   </string-array>
 </resources>
