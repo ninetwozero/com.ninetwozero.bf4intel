@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.10.4'
+        classpath 'com.android.tools.build:gradle:0.11.1'
     }
 }
 apply plugin: 'android'
@@ -22,7 +22,7 @@ android {
     buildToolsVersion '19.1'
 
     defaultConfig {
-        packageName 'com.ninetwozero.bf4intel'
+        applicationId 'com.ninetwozero.bf4intel'
         versionCode 1614101
         versionName '1.0.1'
         minSdkVersion 14
