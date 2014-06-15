@@ -3,6 +3,8 @@ package com.ninetwozero.bf4intel.ui.search;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -71,7 +72,9 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         super.onCreateOptionsMenu(menu, inflater);
 
         final MenuItem searchItem = menu.findItem(R.id.ab_action_search);
+        Log.d("YOLO", "searchItem => " + searchItem);
         final SearchView searchView = (SearchView) searchItem.getActionView();
+        Log.d("YOLO", "searchView => " + searchView);
         if (searchView != null) {
             searchView.setOnQueryTextListener(
                 new SearchView.OnQueryTextListener() {

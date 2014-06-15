@@ -40,7 +40,7 @@
       android:name=".ui.activities.SingleFragmentActivity"
       android:label="@string/label_activity_soldier_statistics"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme"
+      android:theme="@style/Bf4IntelTheme"
       android:windowSoftInputMode="stateUnchanged">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
@@ -52,7 +52,7 @@
       android:label="@string/label_activity_assignments"
       android:screenOrientation="portrait"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
+      android:theme="@style/Bf4IntelTheme">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity" />
@@ -63,7 +63,7 @@
       android:label="@string/label_activity_awards"
       android:screenOrientation="portrait"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
+      android:theme="@style/Bf4IntelTheme">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity" />
@@ -73,7 +73,7 @@
       android:name=".ui.about.AppInfoActivity"
       android:label="@string/label_about"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
+      android:theme="@style/Bf4IntelTheme">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity" />
@@ -84,7 +84,7 @@
       android:label="@string/label_search"
       android:parentActivityName=".ui.activities.MainActivity"
       android:launchMode="singleTop"
-      android:theme="@style/AppTheme">
+      android:theme="@style/Bf4IntelTheme">
       <intent-filter>
         <action android:name="android.intent.action.SEARCH" />
       </intent-filter>
