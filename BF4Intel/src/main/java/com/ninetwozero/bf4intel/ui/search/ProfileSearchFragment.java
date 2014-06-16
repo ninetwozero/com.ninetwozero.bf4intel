@@ -72,9 +72,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         super.onCreateOptionsMenu(menu, inflater);
 
         final MenuItem searchItem = menu.findItem(R.id.ab_action_search);
-        Log.d("YOLO", "searchItem => " + searchItem);
         final SearchView searchView = (SearchView) searchItem.getActionView();
-        Log.d("YOLO", "searchView => " + searchView);
         if (searchView != null) {
             searchView.setOnQueryTextListener(
                 new SearchView.OnQueryTextListener() {
