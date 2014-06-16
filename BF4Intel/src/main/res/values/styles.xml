@@ -84,7 +84,10 @@
   </style>
 
   <style name="RegularCard" parent="BaseWhiteContainer">
-    <item name="android:padding">@dimen/spacing_m</item>
+    <item name="android:paddingTop">@dimen/spacing_m</item>
+    <item name="android:paddingBottom">@dimen/spacing_m</item>
+    <item name="android:paddingLeft">@dimen/side_spacing</item>
+    <item name="android:paddingRight">@dimen/side_spacing</item>
   </style>
 
   <style name="NonListViewCard" parent="RegularCard">
