@@ -9,21 +9,23 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.view.MenuItemCompat;
+import android.util.Log;
+import android.view.*;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.base.provider.MenuProvider;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
+import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 import com.squareup.picasso.Picasso;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements MenuProvider.OnMenuProviderSelectedListener {
     public static final String FLAG_DISABLE_AUTOMATIC_ANALYTICS = "flag_disable_automated_analytics";
     public static final String FLAG_DISABLE_RETAIN_STATE = "flag_disable_retain_instance_state";
 
@@ -133,6 +135,13 @@ public abstract class BaseFragment extends Fragment {
         getActivity().getActionBar().setSubtitle(subtitle);
     }
 
+    protected void addMenuProviderFor(int menuId, Menu menu, String[] providerTitles) {
+        MenuItem sortMenu = menu.findItem(menuId);
+        MenuProvider sortMenuProvider = (MenuProvider) MenuItemCompat.getActionProvider(sortMenu);
+        sortMenuProvider.setMenuTitles(providerTitles);
+        sortMenuProvider.setOnMenuSelectedListener(this);
+    }
+
     protected void showToast(final int resource) {
         final Activity activity = getActivity();
         if (activity == null) {
@@ -185,5 +194,9 @@ public abstract class BaseFragment extends Fragment {
 
     public void setVisibility(final View view, final int resourceId, final int state) {
         view.findViewById(resourceId).setVisibility(state);
+    }
+
+    @Override
+    public void onMenuSelected(MenuItem item) {
     }
 }

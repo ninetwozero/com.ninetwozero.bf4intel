@@ -2,7 +2,6 @@ package com.ninetwozero.bf4intel.ui.awards;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
@@ -11,7 +10,6 @@ import android.widget.GridView;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.provider.MenuProvider;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.database.dao.awards.AwardsDAO;
 import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
@@ -33,7 +31,7 @@ import se.emilsjolander.sprinkles.Query;
 
 public class AwardGridFragment
     extends BaseLoadingFragment
-    implements AdapterView.OnItemClickListener, MenuProvider.OnMenuProviderSelectedListener {
+    implements AdapterView.OnItemClickListener {
     public static final String KEY_SORT_MODE = "awardSortMode";
     private static final String KEY_SORT_MODE_CATEGORY = "awardSortModeCategory";
     private String[] filterTitleResources;
@@ -152,17 +150,11 @@ public class AwardGridFragment
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_awards, menu);
 
-        MenuItem sortMenu = menu.findItem(R.id.ab_action_sort);
         String[] sortTitleResources = getActivity().getResources().getStringArray(R.array.ab_sort_menus);
-        MenuProvider sortMenuProvider = (MenuProvider) MenuItemCompat.getActionProvider(sortMenu);
-        sortMenuProvider.setMenuTitles(sortTitleResources);
-        sortMenuProvider.setOnMenuSelectedListener(this);
+        addMenuProviderFor(R.id.ab_action_sort, menu, sortTitleResources);
 
-        MenuItem filterMenu = menu.findItem(R.id.ab_action_filter);
         filterTitleResources = getActivity().getResources().getStringArray(R.array.ab_award_filter_menu);
-        MenuProvider filterMenuProvider = (MenuProvider) MenuItemCompat.getActionProvider(filterMenu);
-        filterMenuProvider.setMenuTitles(filterTitleResources);
-        filterMenuProvider.setOnMenuSelectedListener(this);
+        addMenuProviderFor(R.id.ab_action_filter, menu, filterTitleResources);
     }
 
     @Override
