@@ -58,7 +58,8 @@ public class MenuProvider extends ActionProvider {
     public void onPrepareSubMenu(SubMenu subMenu) {
         subMenu.clear();
         int menuTitlesCount = menuTitles.length;
-        for (int i = 0; i < maximumMenuCount; i++) {
+        final int collapsedActivityCount = Math.min(maximumMenuCount, menuTitlesCount);
+        for (int i = 0; i < collapsedActivityCount; i++) {
             subMenu.add(0, i, i, menuTitles[i])
                 .setOnMenuItemClickListener(menuProviderOnMenuItemClickListener);
         }
