@@ -51,7 +51,7 @@ public class MenuProvider extends ActionProvider {
     }
 
     private int getExpansionItemResourceTitle() {
-        return expansionItemResourceTitle == -1 ? R.string.filter_more_options : expansionItemResourceTitle;
+        return expansionItemResourceTitle == 0 ? R.string.filter_more_options : expansionItemResourceTitle;
     }
 
     @Override
