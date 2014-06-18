@@ -25,6 +25,7 @@ import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 
+import java.util.Arrays;
 import java.util.List;
 
 import se.emilsjolander.sprinkles.OneQuery;
@@ -35,9 +36,8 @@ public class AwardGridFragment
     implements AdapterView.OnItemClickListener, MenuProvider.OnMenuProviderSelectedListener {
     public static final String KEY_SORT_MODE = "awardSortMode";
     private static final String KEY_SORT_MODE_CATEGORY = "awardSortModeCategory";
-    private MenuProvider menuProvider;
-    private String[] menuTitleResources;
-    private String[] sortingKeys = new String[]{"all", "progress", "kits", "gamemode", "weapon", "vehicles", "team"};
+    private String[] filterTitleResources;
+    private String[] sortingKeys = new String[]{"kits", "gamemode", "weapon", "vehicles", "team"};
 
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
@@ -151,25 +151,31 @@ public class AwardGridFragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_awards, menu);
-        MenuItem sort = menu.findItem(R.id.ab_action_sort);
-        menuTitleResources = getActivity().getResources().getStringArray(R.array.ab_filter_menus);
 
-        menuProvider = (MenuProvider) MenuItemCompat.getActionProvider(sort);
-        menuProvider.setMenuTitles(menuTitleResources);
-        //menuProvider.setExpansionItemTitle(R.string.filter_more_options);
-        menuProvider.setOnMenuSelectedListener(this);
+        MenuItem sortMenu = menu.findItem(R.id.ab_action_sort);
+        String[] sortTitleResources = getActivity().getResources().getStringArray(R.array.ab_sort_menus);
+        MenuProvider sortMenuProvider = (MenuProvider) MenuItemCompat.getActionProvider(sortMenu);
+        sortMenuProvider.setMenuTitles(sortTitleResources);
+        sortMenuProvider.setOnMenuSelectedListener(this);
+
+        MenuItem filterMenu = menu.findItem(R.id.ab_action_filter);
+        filterTitleResources = getActivity().getResources().getStringArray(R.array.ab_award_filter_menu);
+        MenuProvider filterMenuProvider = (MenuProvider) MenuItemCompat.getActionProvider(filterMenu);
+        filterMenuProvider.setMenuTitles(filterTitleResources);
+        filterMenuProvider.setOnMenuSelectedListener(this);
     }
 
     @Override
     public void onMenuSelected(MenuItem item) {
         int itemId = item.getItemId();
-        if (itemId == 0) {
+        String itemTitle = item.getTitle().toString();
+        if (Arrays.asList(filterTitleResources).contains(itemTitle)) {
+            handleFilterRequest(sortingKeys[itemId], filterTitleResources[itemId]);
+        } else if (itemId == 0) {
             handleSortingRequest(SortMode.ALL, R.string.label_sort_all);
         } else if (itemId == 1) {
             handleSortingRequest(SortMode.PROGRESS, R.string.label_sort_progress);
-        } else if (itemId > 1 && itemId < sortingKeys.length) {
-            handleFilterRequest(sortingKeys[itemId], menuTitleResources[itemId]);
-        } else {
+        }  else {
             Log.d(AwardGridFragment.class.getSimpleName(), "Unknown MenuItem " + item.getTitle());
         }
     }
