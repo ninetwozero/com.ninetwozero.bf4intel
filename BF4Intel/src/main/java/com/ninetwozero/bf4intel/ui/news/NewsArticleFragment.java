@@ -3,6 +3,8 @@ package com.ninetwozero.bf4intel.ui.news;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -15,7 +17,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
-import android.widget.ShareActionProvider;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
@@ -253,10 +254,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
 
         final MenuItem shareItem = menu.findItem(R.id.ab_action_share);
         if (shareItem != null) {
+            MenuItemCompat.setActionProvider(shareItem, new ShareActionProvider(getActivity()));
             final Intent intent = new Intent(Intent.ACTION_SEND);
             intent.putExtra(Intent.EXTRA_TEXT, articleUrl.toString());
             intent.setType("text/plain");
-            ((ShareActionProvider) shareItem.getActionProvider()).setShareIntent(intent);
+            ((ShareActionProvider) MenuItemCompat.getActionProvider(shareItem)).setShareIntent(intent);
         }
     }
 
@@ -468,7 +470,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         }
 
         final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
-        final int checkedItemPosition = listView.getCheckedItemPosition()-listView.getHeaderViewsCount();
+        final int checkedItemPosition = listView.getCheckedItemPosition() - listView.getHeaderViewsCount();
         final ArticleCommentListAdapter adapter = (ArticleCommentListAdapter) listView.getExpandableListAdapter();
         final NewsArticleComment comment = adapter.getGroup(checkedItemPosition);
 
