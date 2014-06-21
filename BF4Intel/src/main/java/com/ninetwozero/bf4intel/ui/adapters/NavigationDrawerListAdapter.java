@@ -8,19 +8,13 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.Spinner;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
 import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.SimpleListRow;
-import com.ninetwozero.bf4intel.menu.SoldierSpinnerRow;
-import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.events.ActiveSoldierChangedEvent;
-import com.ninetwozero.bf4intel.utils.BusProvider;
 
 import java.io.File;
 import java.util.List;
@@ -29,7 +23,6 @@ import static com.ninetwozero.bf4intel.menu.ListRowType.HEADING;
 import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_HEADING;
 import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_REGULAR;
 import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_REGULAR_CHILD;
-import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_SOLDIER;
 
 public class NavigationDrawerListAdapter extends BaseIntelAdapter<ListRowElement> {
     private final SharedPreferences preferences;
@@ -80,46 +73,10 @@ public class NavigationDrawerListAdapter extends BaseIntelAdapter<ListRowElement
 
         if (isRegular || isHeading) {
             setText(view, R.id.text1, item.getTitle());
-        } else if (type == SIDE_SOLDIER) {
-            populateSoldierBox(view, item);
         } else {
             populateSpecialLayouts(view, item);
         }
         return view;
-    }
-
-    private void populateSoldierBox(final View view, final ListRowElement item) {
-        if (item instanceof SoldierSpinnerRow) {
-            final SoldierSpinnerRow row = (SoldierSpinnerRow) item;
-            final SoldierSpinnerAdapter adapter = new SoldierSpinnerAdapter(context, row.getSoldierStats());
-            final Spinner spinner = (Spinner) view.findViewById(R.id.spinner_soldier);
-            final int position = preferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0);
-
-            spinner.setAdapter(adapter);
-            spinner.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long selectedId) {
-                        if (preferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0) != position) {
-                            storeSelectionInPreferences(selectedId, position);
-                            BusProvider.getInstance().post(new ActiveSoldierChangedEvent(selectedId));
-                        }
-                    }
-
-                    private void storeSelectionInPreferences(long selectedId, int position) {
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putLong(Keys.Menu.LATEST_PERSONA, selectedId);
-                        editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, position);
-                        editor.commit();
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                }
-            );
-            spinner.setSelection(position > spinner.getCount() ? 0 : position);
-        }
     }
 
     private void populateSpecialLayouts(final View view, final ListRowElement item) {
