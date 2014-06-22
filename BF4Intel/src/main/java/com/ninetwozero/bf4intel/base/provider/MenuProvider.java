@@ -20,7 +20,7 @@ public class MenuProvider extends ActionProvider {
     }
 
     private Context context;
-    private int maximumMenuCount = 3;
+    private int maximumMenuCount = 5;
     private String[] menuTitles;
 
     public MenuProvider(Context context) {
