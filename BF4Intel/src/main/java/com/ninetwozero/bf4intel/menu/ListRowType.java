@@ -4,7 +4,6 @@ import com.ninetwozero.bf4intel.R;
 
 public enum ListRowType {
     SIDE_ACCOUNT,
-    SIDE_SOLDIER,
     SIDE_PLATOON,
     SIDE_REGULAR,
     SIDE_REGULAR_CHILD,
@@ -33,8 +32,6 @@ public enum ListRowType {
         switch (type) {
             case SIDE_ACCOUNT:
                 return R.layout.side_account_box;
-            case SIDE_SOLDIER:
-                return R.layout.side_soldier_box;
             case SIDE_PLATOON:
                 return R.layout.side_platoon_box;
             case SIDE_REGULAR_CHILD:

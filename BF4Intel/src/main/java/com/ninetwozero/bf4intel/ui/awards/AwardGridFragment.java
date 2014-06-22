@@ -66,21 +66,21 @@ public class AwardGridFragment
             arguments.getInt(Keys.Soldier.PLATFORM, 0),
             BuildConfig.VERSION_CODE
         ).getAsync(
-            getLoaderManager(),
-            new OneQuery.ResultHandler<AwardsDAO>() {
-                @Override
-                public boolean handleResult(AwardsDAO awardsDao) {
-                    if (awardsDao == null) {
-                        startLoadingData();
+                getLoaderManager(),
+                new OneQuery.ResultHandler<AwardsDAO>() {
+                    @Override
+                    public boolean handleResult(AwardsDAO awardsDao) {
+                        if (awardsDao == null) {
+                            startLoadingData();
+                            return true;
+                        }
+
+                        final SortedAwardContainer container = awardsDao.getSortedAwardContainer();
+                        sendDataToGridView(view, container.getItems());
+                        showLoadingState(false);
                         return true;
                     }
-
-                    final SortedAwardContainer container = awardsDao.getSortedAwardContainer();
-                    sendDataToGridView(view, container.getItems());
-                    showLoadingState(false);
-                    return true;
                 }
-            }
         );
     }
 

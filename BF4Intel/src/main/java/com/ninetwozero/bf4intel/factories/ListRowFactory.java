@@ -4,13 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.interfaces.ListRowElement;
 import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.SimpleListRow;
-import com.ninetwozero.bf4intel.menu.SoldierSpinnerRow;
-
-import java.util.List;
 
 public class ListRowFactory {
     private ListRowFactory() {
@@ -70,9 +66,5 @@ public class ListRowFactory {
                 .drawableMappings(drawableMappings)
                 .data(data)
                 .build();
-    }
-
-    public static SoldierSpinnerRow createSoldierRow(final List<SummarizedSoldierStatsDAO> soldiers) {
-       return new SoldierSpinnerRow(soldiers);
     }
 }
