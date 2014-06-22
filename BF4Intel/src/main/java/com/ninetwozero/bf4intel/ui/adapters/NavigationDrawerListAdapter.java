@@ -1,10 +1,8 @@
 package com.ninetwozero.bf4intel.ui.adapters;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,17 +17,12 @@ import com.ninetwozero.bf4intel.menu.SimpleListRow;
 import java.io.File;
 import java.util.List;
 
-import static com.ninetwozero.bf4intel.menu.ListRowType.HEADING;
-import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_HEADING;
-import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_REGULAR;
-import static com.ninetwozero.bf4intel.menu.ListRowType.SIDE_REGULAR_CHILD;
+import static com.ninetwozero.bf4intel.menu.ListRowType.*;
 
 public class NavigationDrawerListAdapter extends BaseIntelAdapter<ListRowElement> {
-    private final SharedPreferences preferences;
 
     public NavigationDrawerListAdapter(final Context context, final List<ListRowElement> items) {
         super(context, items);
-        preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     @Override
