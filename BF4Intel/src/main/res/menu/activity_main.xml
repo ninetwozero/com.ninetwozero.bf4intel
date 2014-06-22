@@ -12,6 +12,11 @@
     bf4intel:showAsAction="never"
     />
   <item
+    android:id="@+id/ab_action_settings"
+    android:title="@string/menu_settings"
+    bf4intel:showAsAction="never"
+    />
+  <item
     android:id="@+id/ab_action_about"
     android:title="@string/menu_about"
     bf4intel:showAsAction="never"
