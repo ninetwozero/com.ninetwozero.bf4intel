@@ -1,56 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/navigation_drawer_bg"
-  >
+  android:background="@color/navigation_drawer_bg">
 
   <LinearLayout
-    android:id="@+id/wrap_login_name"
+    android:id="@+id/wrap_login_info"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/actionBarSize"
-    android:gravity="left|center"
-    android:paddingLeft="@dimen/spacing_m"
-    android:paddingRight="@dimen/spacing_m"
-    android:orientation="horizontal"
+    android:layout_height="wrap_content"
     android:clickable="true"
-    >
+    android:orientation="vertical">
 
-    <TextView
-      android:id="@+id/string_login_status"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/logged_in_as"
-      android:textAllCaps="true"
-      android:layout_marginRight="@dimen/spacing_xs"
-      android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
-      android:textColor="@color/grey"
-      />
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="?android:attr/actionBarSize"
+      android:gravity="center_vertical"
+      android:paddingLeft="@dimen/spacing_m"
+      android:paddingRight="@dimen/spacing_m">
 
-    <TextView
-      android:id="@+id/login_name"
-      android:layout_width="wrap_content"
+      <TextView
+        android:id="@+id/string_login_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacing_xs"
+        android:text="@string/logged_in_as"
+        android:textAllCaps="true"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
+        android:textColor="@color/grey" />
+
+      <TextView
+        android:id="@+id/login_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_s"
+        android:textAllCaps="true"
+        android:textAppearance="@android:style/TextAppearance.Holo.Inverse" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:id="@+id/wrap_soldier_dropdown"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:textAllCaps="true"
-      android:layout_marginLeft="@dimen/spacing_s"
-      android:textAppearance="@android:style/TextAppearance.Holo.Inverse"
-      />
+      android:layout_gravity="left|bottom"
+      android:orientation="vertical">
+
+      <TextView
+        style="@style/NavigationDrawerHeading"
+        android:text="@string/navigationdrawer_selected_soldier" />
+
+      <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/lightgrey" />
+
+      <Spinner
+        android:id="@+id/spinner_soldier"
+        style="@android:style/Widget.Holo.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown" />
+    </LinearLayout>
+
   </LinearLayout>
 
   <ListView
     android:id="@android:id/list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_below="@id/wrap_login_info"
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
-    android:listSelector="@drawable/navigation_drawer_selected_item_bg"
-    android:layout_below="@id/wrap_login_name"
-    />
+    android:listSelector="@drawable/navigation_drawer_selected_item_bg" />
 
   <TextView
-    style="@style/DefaultEmptyText"
     android:id="@android:id/empty"
-    android:text="@string/msg_no_menu_items"
-    />
+    style="@style/DefaultEmptyText"
+    android:text="@string/msg_no_menu_items" />
 </RelativeLayout>
