@@ -1,6 +1,6 @@
 package com.ninetwozero.bf4intel.base.ui;
 
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +10,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuItemCompat;
-import android.util.Log;
+import android.support.v7.app.ActionBarActivity;
 import android.view.*;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -21,7 +21,6 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.provider.MenuProvider;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
-import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 import com.squareup.picasso.Picasso;
 
@@ -113,7 +112,7 @@ public abstract class BaseFragment extends Fragment implements MenuProvider.OnMe
             return;
         }
 
-        final ActionBar actionBar = activity.getActionBar();
+        final ActionBar actionBar = ((ActionBarActivity) activity).getSupportActionBar();
         actionBar.setTitle(text);
     }
 
@@ -122,7 +121,7 @@ public abstract class BaseFragment extends Fragment implements MenuProvider.OnMe
             return;
         }
 
-        final ActionBar actionBar = activity.getActionBar();
+        final ActionBar actionBar = ((ActionBarActivity) activity).getSupportActionBar();
         actionBar.setTitle(text);
         actionBar.setIcon(icon);
     }

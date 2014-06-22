@@ -1,9 +1,10 @@
 package com.ninetwozero.bf4intel.ui.news;
 
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.ActionMode;
@@ -313,7 +314,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     }
 
     private void setupActionBar() {
-        final ActionBar actionBar = getActivity().getActionBar();
+        final ActionBar actionBar = ((ActionBarActivity)getActivity()).getSupportActionBar();
         if (actionBar == null) {
             return;
         }

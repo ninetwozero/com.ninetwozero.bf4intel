@@ -1,6 +1,5 @@
 package com.ninetwozero.bf4intel.base.ui;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,7 +8,8 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,7 +111,7 @@ public abstract class BaseListFragment extends ListFragment {
             return;
         }
 
-        final ActionBar actionBar = activity.getActionBar();
+        final ActionBar actionBar = ((ActionBarActivity)activity).getSupportActionBar();
         actionBar.setTitle(text.toUpperCase(Locale.getDefault()));
     }
 
@@ -120,7 +120,7 @@ public abstract class BaseListFragment extends ListFragment {
             return;
         }
 
-        final ActionBar actionBar = activity.getActionBar();
+        final ActionBar actionBar = ((ActionBarActivity) activity).getSupportActionBar();
         actionBar.setTitle(getString(resource));
     }
 
@@ -129,7 +129,7 @@ public abstract class BaseListFragment extends ListFragment {
             return;
         }
 
-        final ActionBar actionBar = activity.getActionBar();
+        final ActionBar actionBar = ((ActionBarActivity) activity).getSupportActionBar();
         actionBar.setTitle(text.toUpperCase(Locale.getDefault()));
         actionBar.setIcon(icon);
     }
@@ -139,7 +139,7 @@ public abstract class BaseListFragment extends ListFragment {
             return;
         }
 
-        final ActionBar actionBar = activity.getActionBar();
+        final ActionBar actionBar = ((ActionBarActivity) activity).getSupportActionBar();
         actionBar.setTitle(getString(text).toUpperCase(Locale.getDefault()));
         actionBar.setIcon(icon);
     }

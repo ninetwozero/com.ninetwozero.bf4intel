@@ -1,6 +1,6 @@
 package com.ninetwozero.bf4intel.ui.search;
 
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
@@ -56,7 +56,7 @@ public class SearchActivity extends BaseIntelActivity {
     }
 
     private void setupActionBar() {
-        final ActionBar actionBar = getActionBar();
+        final ActionBar actionBar = getSupportActionBar();
         if (actionBar == null) {
             return;
         }

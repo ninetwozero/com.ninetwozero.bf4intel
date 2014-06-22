@@ -1,11 +1,11 @@
 package com.ninetwozero.bf4intel.base.ui;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.ui.adapters.ViewPagerAdapter;
@@ -27,16 +27,18 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
     }
 
     @Override
-    public void onTabSelected(final ActionBar.Tab tab, final FragmentTransaction fragmentTransaction) {
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         viewPager.setCurrentItem(tab.getPosition(), true);
     }
 
     @Override
-    public void onTabUnselected(final ActionBar.Tab tab, final FragmentTransaction fragmentTransaction) {
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
     }
 
     @Override
-    public void onTabReselected(final ActionBar.Tab tab, final FragmentTransaction fragmentTransaction) {
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
     }
 
     private void initialize() {
@@ -85,7 +87,7 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
 
     private void setupActionBar() {
         final int[] titles = getTitleResources();
-        final ActionBar actionBar = getActionBar();
+        final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);

@@ -1,6 +1,6 @@
 package com.ninetwozero.bf4intel.base.ui;
 
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.SharedPreferences;
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,21 +99,21 @@ public class BaseDialogFragment extends DialogFragment {
         GoogleAnalytics.post(getActivity(), getClass().getSimpleName());
     }
 
-    protected void updateActionBar(final Activity activity, final String text) {
+    protected void updateActionBar(final ActionBarActivity activity, final String text) {
         if (activity == null) {
             return;
         }
 
-        final ActionBar actionBar = activity.getActionBar();
+        final ActionBar actionBar = activity.getSupportActionBar();
         actionBar.setTitle(text);
     }
 
-    protected void updateActionBar(final Activity activity, final String text, final int icon) {
+    protected void updateActionBar(final ActionBarActivity activity, final String text, final int icon) {
         if (activity == null) {
             return;
         }
 
-        final ActionBar actionBar = activity.getActionBar();
+        final ActionBar actionBar = activity.getSupportActionBar();
         actionBar.setTitle(text);
         actionBar.setIcon(icon);
     }
