@@ -47,18 +47,21 @@
         android:layout_below="@id/award_image_container"/>
 
       <TextView
-        android:id="@+id/medal_requirement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/award_completion"/>
-
-      <TextView
         android:id="@+id/award_completion_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/award_completion"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="@dimen/spacing_m"/>
+
+      <TextView
+        android:id="@+id/medal_requirement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/award_completion"
+        android:singleLine="false"
+        android:layout_toLeftOf="@+id/award_completion_text"
+        />
 
     </RelativeLayout>
 
@@ -107,17 +110,19 @@
         android:layout_below="@id/ribbon_title"/>
 
       <TextView
-        android:id="@+id/ribbon_requirement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/award_ribbon"/>
-
-      <TextView
         android:id="@+id/ribbons_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/award_ribbon"
         android:layout_alignParentRight="true"/>
+
+      <TextView
+        android:id="@+id/ribbon_requirement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:layout_below="@id/award_ribbon"
+        android:layout_toLeftOf="@+id/ribbons_count"/>
     </RelativeLayout>
   </LinearLayout>
 </ScrollView>
