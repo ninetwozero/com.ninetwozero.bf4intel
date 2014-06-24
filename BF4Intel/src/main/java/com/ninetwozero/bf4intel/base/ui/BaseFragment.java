@@ -198,4 +198,17 @@ public abstract class BaseFragment extends Fragment implements MenuProvider.OnMe
     @Override
     public void onMenuSelected(MenuItem item) {
     }
+
+    protected String getResourceString(int resourceId) {
+        return getActivity().getResources().getString(resourceId);
+    }
+
+    protected void actionBarSetSubtitleFromSharedPref(String sharedPrefKey, int defaultResource) {
+        String defaultSubtitle = getResourceString(defaultResource);
+        String subtitle = sharedPreferences.contains(sharedPrefKey)
+            ? sharedPreferences.getString(sharedPrefKey, defaultSubtitle)
+            : defaultSubtitle;
+
+        setActionBarSubTitle(subtitle);
+    }
 }

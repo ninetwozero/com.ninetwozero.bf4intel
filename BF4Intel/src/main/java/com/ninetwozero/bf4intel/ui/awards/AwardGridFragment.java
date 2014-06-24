@@ -33,6 +33,7 @@ public class AwardGridFragment
     extends BaseLoadingFragment
     implements AdapterView.OnItemClickListener {
     public static final String KEY_SORT_MODE = "awardSortMode";
+    private static final String AWARDS_AB_SUBTITLE = "awards_ab_subtitle";
     private static final String KEY_SORT_MODE_CATEGORY = "awardSortModeCategory";
     private String[] filterTitleResources;
     private String[] sortingKeys = new String[]{"kits", "gamemode", "weapon", "vehicles", "team"};
@@ -135,6 +136,8 @@ public class AwardGridFragment
         if (sharedPreferences.getInt(KEY_SORT_MODE, 0) == SortMode.CATEGORIZED.ordinal()) {
             adapter.getFilter().filter(sharedPreferences.getString(KEY_SORT_MODE_CATEGORY, ""));
         }
+
+        actionBarSetSubtitleFromSharedPref(AWARDS_AB_SUBTITLE, R.string.label_sort_all);
     }
 
     @Override
@@ -186,13 +189,17 @@ public class AwardGridFragment
 
         sharedPreferences.edit()
             .putInt(KEY_SORT_MODE, SortMode.CATEGORIZED.ordinal())
-            .putString(KEY_SORT_MODE_CATEGORY, category)
-            .commit();
+            .putString(KEY_SORT_MODE_CATEGORY, category);
+        sharedPreferences.edit().putString(AWARDS_AB_SUBTITLE, subtitleResString).commit();
     }
 
     private void handleSortingRequest(SortMode sortMode, final int subtitleResString) {
         setActionBarSubTitle(subtitleResString);
-        sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal()).commit();
+        String subtitle = getResourceString(subtitleResString);
+        sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal());
+        sharedPreferences.edit().putString(AWARDS_AB_SUBTITLE, subtitle).commit();
         BusProvider.getInstance().post(new RefreshEvent());
     }
+
+
 }
