@@ -126,10 +126,6 @@ public abstract class BaseFragment extends Fragment implements MenuProvider.OnMe
         actionBar.setIcon(icon);
     }
 
-    protected void setActionBarSubTitle(int resurceID) {
-        getActivity().getActionBar().setSubtitle(resurceID);
-    }
-
     protected void setActionBarSubTitle(String subtitle) {
         getActivity().getActionBar().setSubtitle(subtitle);
     }
@@ -201,6 +197,10 @@ public abstract class BaseFragment extends Fragment implements MenuProvider.OnMe
 
     protected String getResourceString(int resourceId) {
         return getActivity().getResources().getString(resourceId);
+    }
+
+    protected String[] getResourceStringArray(int resourceId) {
+        return getActivity().getResources().getStringArray(resourceId);
     }
 
     protected void actionBarSetSubtitleFromSharedPref(String sharedPrefKey, int defaultResource) {

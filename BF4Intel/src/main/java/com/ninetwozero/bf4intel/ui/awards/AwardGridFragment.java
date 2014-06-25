@@ -37,6 +37,7 @@ public class AwardGridFragment
     private static final String KEY_SORT_MODE_CATEGORY = "awardSortModeCategory";
     private String[] filterTitleResources;
     private String[] sortingKeys = new String[]{"kits", "gamemode", "weapon", "vehicles", "team"};
+    private String[] sortTitleResources;
 
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
@@ -153,10 +154,10 @@ public class AwardGridFragment
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_awards, menu);
 
-        String[] sortTitleResources = getActivity().getResources().getStringArray(R.array.ab_sort_menus);
+        sortTitleResources = getResourceStringArray(R.array.ab_sort_menus);
         addMenuProviderFor(R.id.ab_action_sort, menu, sortTitleResources);
 
-        filterTitleResources = getActivity().getResources().getStringArray(R.array.ab_award_filter_menu);
+        filterTitleResources = getResourceStringArray(R.array.ab_award_filter_menu);
         addMenuProviderFor(R.id.ab_action_filter, menu, filterTitleResources);
     }
 
@@ -166,10 +167,10 @@ public class AwardGridFragment
         String itemTitle = item.getTitle().toString();
         if (Arrays.asList(filterTitleResources).contains(itemTitle)) {
             handleFilterRequest(sortingKeys[itemId], filterTitleResources[itemId]);
-        } else if (itemId == 0) {
-            handleSortingRequest(SortMode.ALL, R.string.label_sort_all);
-        } else if (itemId == 1) {
-            handleSortingRequest(SortMode.PROGRESS, R.string.label_sort_progress);
+        } else if (itemTitle.equals(sortTitleResources[0])) {
+            handleSortingRequest(SortMode.ALL, sortTitleResources[0]);
+        } else if (itemTitle.equals(sortTitleResources[1])) {
+            handleSortingRequest(SortMode.PROGRESS, sortTitleResources[1]);
         }  else {
             Log.d(AwardGridFragment.class.getSimpleName(), "Unknown MenuItem " + item.getTitle());
         }
@@ -193,13 +194,10 @@ public class AwardGridFragment
         sharedPreferences.edit().putString(AWARDS_AB_SUBTITLE, subtitleResString).commit();
     }
 
-    private void handleSortingRequest(SortMode sortMode, final int subtitleResString) {
+    private void handleSortingRequest(SortMode sortMode, final String subtitleResString) {
         setActionBarSubTitle(subtitleResString);
-        String subtitle = getResourceString(subtitleResString);
         sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal());
-        sharedPreferences.edit().putString(AWARDS_AB_SUBTITLE, subtitle).commit();
+        sharedPreferences.edit().putString(AWARDS_AB_SUBTITLE, subtitleResString).commit();
         BusProvider.getInstance().post(new RefreshEvent());
     }
-
-
 }
