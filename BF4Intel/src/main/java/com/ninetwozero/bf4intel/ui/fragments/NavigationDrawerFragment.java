@@ -46,8 +46,8 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private final String STATE_SELECTED_POSITION_TRACKING = "selected_navigation_group_position_tracking";
 
     private static final int DEFAULT_POSITION_GUEST = 1;
-    private static final int DEFAULT_POSITION_TRACKING = 9;
-    private static final int DEFAULT_POSITION = 9;
+    private static final int DEFAULT_POSITION_TRACKING = 7;
+    private static final int DEFAULT_POSITION = 7;
 
     private boolean isRecreated;
     private ListView listView;
