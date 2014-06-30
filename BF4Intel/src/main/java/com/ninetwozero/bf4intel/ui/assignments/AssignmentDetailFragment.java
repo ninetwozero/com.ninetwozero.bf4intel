@@ -198,7 +198,6 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private String getTaskCompletionString(final AssignmentCriteria criteria, boolean isInRoundRequirement) {
         return String.format(
-            Locale.getDefault(),
             getString(R.string.generic_x_of_y),
             isInRoundRequirement ? criteria.getUnlockThreshold() : criteria.getCurrentValue(),
             criteria.getUnlockThreshold()

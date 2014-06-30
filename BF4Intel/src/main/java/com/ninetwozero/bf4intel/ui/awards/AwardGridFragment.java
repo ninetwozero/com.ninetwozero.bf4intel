@@ -68,21 +68,21 @@ public class AwardGridFragment
             arguments.getInt(Keys.Soldier.PLATFORM, 0),
             BuildConfig.VERSION_CODE
         ).getAsync(
-                getLoaderManager(),
-                new OneQuery.ResultHandler<AwardsDAO>() {
-                    @Override
-                    public boolean handleResult(AwardsDAO awardsDao) {
-                        if (awardsDao == null) {
-                            startLoadingData();
-                            return true;
-                        }
-
-                        final SortedAwardContainer container = awardsDao.getSortedAwardContainer();
-                        sendDataToGridView(view, container.getItems());
-                        showLoadingState(false);
+            getLoaderManager(),
+            new OneQuery.ResultHandler<AwardsDAO>() {
+                @Override
+                public boolean handleResult(AwardsDAO awardsDao) {
+                    if (awardsDao == null) {
+                        startLoadingData();
                         return true;
                     }
+
+                    final SortedAwardContainer container = awardsDao.getSortedAwardContainer();
+                    sendDataToGridView(view, container.getItems());
+                    showLoadingState(false);
+                    return true;
                 }
+            }
         );
     }
 
@@ -171,7 +171,7 @@ public class AwardGridFragment
             handleSortingRequest(SortMode.ALL, sortTitleResources[0]);
         } else if (itemTitle.equals(sortTitleResources[1])) {
             handleSortingRequest(SortMode.PROGRESS, sortTitleResources[1]);
-        }  else {
+        } else {
             Log.d(AwardGridFragment.class.getSimpleName(), "Unknown MenuItem " + item.getTitle());
         }
     }
@@ -190,14 +190,16 @@ public class AwardGridFragment
 
         sharedPreferences.edit()
             .putInt(KEY_SORT_MODE, SortMode.CATEGORIZED.ordinal())
-            .putString(KEY_SORT_MODE_CATEGORY, category);
-        sharedPreferences.edit().putString(AWARDS_AB_SUBTITLE, subtitleResString).commit();
+            .putString(KEY_SORT_MODE_CATEGORY, category)
+            .putString(AWARDS_AB_SUBTITLE, subtitleResString)
+            .commit();
     }
 
     private void handleSortingRequest(SortMode sortMode, final String subtitleResString) {
         setActionBarSubTitle(subtitleResString);
-        sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal());
-        sharedPreferences.edit().putString(AWARDS_AB_SUBTITLE, subtitleResString).commit();
+        sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal())
+            .putString(AWARDS_AB_SUBTITLE, subtitleResString)
+            .commit();
         BusProvider.getInstance().post(new RefreshEvent());
     }
 }

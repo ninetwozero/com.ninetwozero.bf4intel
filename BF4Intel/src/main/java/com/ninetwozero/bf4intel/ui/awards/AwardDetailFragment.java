@@ -13,8 +13,6 @@ import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentCriteriaStr
 import com.ninetwozero.bf4intel.resources.maps.assignments.ExpansionIconsImageMap;
 import com.ninetwozero.bf4intel.resources.maps.awards.AwardStringMap;
 
-import java.util.Locale;
-
 public class AwardDetailFragment extends BaseDialogFragment {
     public static final String INTENT_AWARD = "award";
     public static final String TAG = "AwardDetailFragment";
@@ -75,7 +73,7 @@ public class AwardDetailFragment extends BaseDialogFragment {
     }
 
     private void populateRequiredExpansion(final View view) {
-        if(!award.getMedalCode().contains("xp")) {
+        if (!award.getMedalCode().contains("xp")) {
             setVisibility(view, R.id.expansion_award_container, View.GONE);
         } else {
             final String expansionPrefix = award.getMedalCode().substring(0, 3);
@@ -96,7 +94,6 @@ public class AwardDetailFragment extends BaseDialogFragment {
 
     private String formatXofY() {
         return String.format(
-            Locale.getDefault(),
             getString(R.string.generic_x_of_y),
             award.getMedal().getPresentProgress(),
             award.getMedal().getMaxProgress()
@@ -105,7 +102,7 @@ public class AwardDetailFragment extends BaseDialogFragment {
 
     private String getExpansionLabel(final String expansionPrefix) {
         String expansion;
-        if(expansionPrefix.equals("xp0")) {
+        if (expansionPrefix.equals("xp0")) {
             expansion = getString(AssignmentCriteriaStringMap.get("WARSAW_ID_P_AWARD_XP0"));
         } else if (expansionPrefix.equals("xp1")) {
             expansion = getString(AssignmentCriteriaStringMap.get("WARSAW_ID_P_AWARD_XP1"));

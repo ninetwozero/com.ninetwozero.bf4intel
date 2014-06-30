@@ -33,12 +33,10 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
     }
 
     private void initialize() {
