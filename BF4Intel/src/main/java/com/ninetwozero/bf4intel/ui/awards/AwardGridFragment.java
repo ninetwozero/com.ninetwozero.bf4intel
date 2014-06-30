@@ -2,9 +2,8 @@ package com.ninetwozero.bf4intel.ui.awards;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.util.Log;
+import android.view.*;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
@@ -13,6 +12,7 @@ import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.database.dao.awards.AwardsDAO;
+import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.events.awards.AwardsRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.awards.Award;
@@ -20,8 +20,10 @@ import com.ninetwozero.bf4intel.json.awards.SortedAwardContainer;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.AwardService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 
+import java.util.Arrays;
 import java.util.List;
 
 import se.emilsjolander.sprinkles.OneQuery;
@@ -30,6 +32,12 @@ import se.emilsjolander.sprinkles.Query;
 public class AwardGridFragment
     extends BaseLoadingFragment
     implements AdapterView.OnItemClickListener {
+    public static final String KEY_SORT_MODE = "awardSortMode";
+    private static final String AWARDS_AB_SUBTITLE = "awards_ab_subtitle";
+    private static final String KEY_SORT_MODE_CATEGORY = "awardSortModeCategory";
+    private String[] filterTitleResources;
+    private String[] sortingKeys = new String[]{"kits", "gamemode", "weapon", "vehicles", "team"};
+    private String[] sortTitleResources;
 
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
@@ -60,21 +68,21 @@ public class AwardGridFragment
             arguments.getInt(Keys.Soldier.PLATFORM, 0),
             BuildConfig.VERSION_CODE
         ).getAsync(
-                getLoaderManager(),
-                new OneQuery.ResultHandler<AwardsDAO>() {
-                    @Override
-                    public boolean handleResult(AwardsDAO awardsDao) {
-                        if (awardsDao == null) {
-                            startLoadingData();
-                            return true;
-                        }
-
-                        final SortedAwardContainer container = awardsDao.getSortedAwardContainer();
-                        sendDataToGridView(view, container.getItems());
-                        showLoadingState(false);
+            getLoaderManager(),
+            new OneQuery.ResultHandler<AwardsDAO>() {
+                @Override
+                public boolean handleResult(AwardsDAO awardsDao) {
+                    if (awardsDao == null) {
+                        startLoadingData();
                         return true;
                     }
+
+                    final SortedAwardContainer container = awardsDao.getSortedAwardContainer();
+                    sendDataToGridView(view, container.getItems());
+                    showLoadingState(false);
+                    return true;
                 }
+            }
         );
     }
 
@@ -125,6 +133,12 @@ public class AwardGridFragment
             gridView.setAdapter(adapter);
         }
         adapter.setItems(awards);
+
+        if (sharedPreferences.getInt(KEY_SORT_MODE, 0) == SortMode.CATEGORIZED.ordinal()) {
+            adapter.getFilter().filter(sharedPreferences.getString(KEY_SORT_MODE_CATEGORY, ""));
+        }
+
+        actionBarSetSubtitleFromSharedPref(AWARDS_AB_SUBTITLE, R.string.label_sort_all);
     }
 
     @Override
@@ -133,5 +147,60 @@ public class AwardGridFragment
         final Bundle dataToPass = getArgumentsBundle();
         dataToPass.putSerializable(AwardDetailFragment.INTENT_AWARD, award);
         openDetailFragment(FragmentFactory.Type.SOLDIER_AWARD_DETAILS, dataToPass, AwardDetailFragment.TAG);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_awards, menu);
+
+        sortTitleResources = getResourceStringArray(R.array.ab_sort_menus);
+        addMenuProviderFor(R.id.ab_action_sort, menu, sortTitleResources);
+
+        filterTitleResources = getResourceStringArray(R.array.ab_award_filter_menu);
+        addMenuProviderFor(R.id.ab_action_filter, menu, filterTitleResources);
+    }
+
+    @Override
+    public void onMenuSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        String itemTitle = item.getTitle().toString();
+        if (Arrays.asList(filterTitleResources).contains(itemTitle)) {
+            handleFilterRequest(sortingKeys[itemId], filterTitleResources[itemId]);
+        } else if (itemTitle.equals(sortTitleResources[0])) {
+            handleSortingRequest(SortMode.ALL, sortTitleResources[0]);
+        } else if (itemTitle.equals(sortTitleResources[1])) {
+            handleSortingRequest(SortMode.PROGRESS, sortTitleResources[1]);
+        } else {
+            Log.d(AwardGridFragment.class.getSimpleName(), "Unknown MenuItem " + item.getTitle());
+        }
+    }
+
+    private void handleFilterRequest(final String category, final String subtitleResString) {
+        setActionBarSubTitle(subtitleResString);
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
+        final AwardsAdapter adapter = (AwardsAdapter) gridView.getAdapter();
+
+        adapter.getFilter().filter(category);
+
+        sharedPreferences.edit()
+            .putInt(KEY_SORT_MODE, SortMode.CATEGORIZED.ordinal())
+            .putString(KEY_SORT_MODE_CATEGORY, category)
+            .putString(AWARDS_AB_SUBTITLE, subtitleResString)
+            .commit();
+    }
+
+    private void handleSortingRequest(SortMode sortMode, final String subtitleResString) {
+        setActionBarSubTitle(subtitleResString);
+        sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal())
+            .putString(AWARDS_AB_SUBTITLE, subtitleResString)
+            .putString(KEY_SORT_MODE_CATEGORY, "")
+            .commit();
+        BusProvider.getInstance().post(new RefreshEvent());
     }
 }

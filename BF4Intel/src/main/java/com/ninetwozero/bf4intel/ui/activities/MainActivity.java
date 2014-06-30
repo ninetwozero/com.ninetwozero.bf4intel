@@ -1,6 +1,6 @@
 package com.ninetwozero.bf4intel.ui.activities;
 
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -145,7 +145,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
             toggleNavigationDrawer(false);
         }
 
-        final ActionBar actionBar = getActionBar();
+        final ActionBar actionBar = getSupportActionBar();
         if (shouldShowDualPane || actionBar.getTitle() != this.title) {
             actionBar.setTitle(this.title);
         }
@@ -241,7 +241,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     private void setupActionBar() {
-        final ActionBar actionbar = getActionBar();
+        final ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setDisplayShowHomeEnabled(true);
         actionbar.setTitle(title);

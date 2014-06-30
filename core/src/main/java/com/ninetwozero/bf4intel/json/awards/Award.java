@@ -2,18 +2,19 @@ package com.ninetwozero.bf4intel.json.awards;
 
 import java.io.Serializable;
 
-public class Award implements Serializable {
+public class Award implements Comparable<Award>, Serializable {
     private final String medalCode;
     private final Medal medal;
     private final String ribbonCode;
     private final Ribbon ribbon;
+    private final String category;
 
-    public Award(String medalCode, Medal medal, String ribbonCode, Ribbon ribbon) {
-
+    public Award(String medalCode, Medal medal, String ribbonCode, Ribbon ribbon, String category) {
         this.medalCode = medalCode;
         this.medal = medal;
         this.ribbonCode = ribbonCode;
         this.ribbon = ribbon;
+        this.category = category;
     }
 
     public String getMedalCode() {
@@ -30,5 +31,14 @@ public class Award implements Serializable {
 
     public Ribbon getRibbon() {
         return ribbon;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    @Override
+    public int compareTo(final Award o) {
+        return medal.compareTo(o.getMedal());
     }
 }

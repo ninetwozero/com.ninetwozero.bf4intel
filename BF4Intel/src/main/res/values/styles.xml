@@ -4,7 +4,7 @@
       Base application theme, dependent on API level. This theme is replaced
       by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
   -->
-  <style name="AppBaseTheme" parent="android:Theme.Light">
+  <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     <!--
         Theme customizations available in newer API levels can go in
         res/values-vXX/styles.xml, while customizations related to
@@ -17,9 +17,22 @@
     <item name="android:icon">@drawable/ic_actionbar_logo</item>
   </style>
 
-  <style name="AppThemeSpecialSpecial" parent="AppTheme">
+  <style name="Bf4IntelTheme" parent="AppTheme">
     <item name="android:homeAsUpIndicator">@drawable/ic_navigation_drawer</item>
     <item name="android:icon">@drawable/ic_actionbar_logo</item>
+  </style>
+
+  <style name="AppTheme.NoActionBar" parent="Theme.AppCompat">
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+
+  <!-- Variant of the holographic (dark) theme that has no title bar and fills
+       the entire screen.  This theme
+       sets {@link android.R.attr#windowFullscreen} to true.  -->
+  <style name="AppTheme.NoActionBar.Fullscreen" parent="AppTheme.NoActionBar">
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowContentOverlay">@null</item>
   </style>
 
   <style name="separator">

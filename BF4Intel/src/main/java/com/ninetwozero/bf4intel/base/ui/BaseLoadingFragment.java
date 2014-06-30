@@ -1,9 +1,9 @@
 package com.ninetwozero.bf4intel.base.ui;
 
-import android.app.ActionBar;
+import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -21,7 +21,6 @@ import com.ninetwozero.bf4intel.ui.animations.SimpleFadeOutAnimation;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
-import com.squareup.otto.Subscribe;
 
 public abstract class BaseLoadingFragment extends BaseFragment implements Response.ErrorListener {
     protected final Gson gson = GsonProvider.getInstance();
@@ -42,7 +41,7 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
         super.onResume();
         BusProvider.getInstance().register(this);
 
-        final ActionBar actionBar = getActivity().getActionBar();
+        final ActionBar actionBar = ((ActionBarActivity)getActivity()).getSupportActionBar();
         if (actionBar != null) {
             actionBar.setSubtitle(
                 Bf4Intel.isConnectedToNetwork() ? null : getString(R.string.label_offline_mode)

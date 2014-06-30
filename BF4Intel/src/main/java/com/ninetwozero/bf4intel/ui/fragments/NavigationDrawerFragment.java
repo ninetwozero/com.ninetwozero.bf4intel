@@ -46,8 +46,8 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private final String STATE_SELECTED_POSITION_TRACKING = "selected_navigation_group_position_tracking";
 
     private static final int DEFAULT_POSITION_GUEST = 1;
-    private static final int DEFAULT_POSITION_TRACKING = 9;
-    private static final int DEFAULT_POSITION = 9;
+    private static final int DEFAULT_POSITION_TRACKING = 7;
+    private static final int DEFAULT_POSITION = 7;
 
     private boolean isRecreated;
     private ListView listView;
@@ -186,13 +186,16 @@ public class NavigationDrawerFragment extends BaseListFragment {
             loginStatusView.setText(R.string.logged_in_as);
             loginUsernameView.setText(SessionStore.getUsername());
             setupSoldierDropdown(view);
+            wrapper.setVisibility(View.VISIBLE);
         } else if (SessionStore.hasUserId()) {
             loginStatusView.setText(R.string.tracking_user);
             loginUsernameView.setText(SessionStore.getUsername());
             setupSoldierDropdown(view);
+            wrapper.setVisibility(View.VISIBLE);
         } else {
             loginStatusView.setText(R.string.not_logged_in);
             loginUsernameView.setText(R.string.empty);
+            wrapper.setVisibility(View.GONE);
         }
     }
 

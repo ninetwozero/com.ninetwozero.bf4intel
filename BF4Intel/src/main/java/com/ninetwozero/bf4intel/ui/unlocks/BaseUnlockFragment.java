@@ -20,7 +20,6 @@ import com.ninetwozero.bf4intel.utils.NumberFormatter;
 import java.util.Locale;
 
 public abstract class BaseUnlockFragment extends BaseLoadingFragment {
-
     protected GridView gridView;
     protected TextView emptyTextView;
 

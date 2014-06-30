@@ -30,7 +30,7 @@ public class SingleFragmentActivity extends BaseIntelActivity {
     }
 
     private void setupActionBar() {
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void loadFragmentFromIntent(final Intent intent) {
