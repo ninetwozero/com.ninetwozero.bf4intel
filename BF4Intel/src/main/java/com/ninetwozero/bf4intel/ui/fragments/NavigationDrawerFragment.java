@@ -186,13 +186,16 @@ public class NavigationDrawerFragment extends BaseListFragment {
             loginStatusView.setText(R.string.logged_in_as);
             loginUsernameView.setText(SessionStore.getUsername());
             setupSoldierDropdown(view);
+            wrapper.setVisibility(View.VISIBLE);
         } else if (SessionStore.hasUserId()) {
             loginStatusView.setText(R.string.tracking_user);
             loginUsernameView.setText(SessionStore.getUsername());
             setupSoldierDropdown(view);
+            wrapper.setVisibility(View.VISIBLE);
         } else {
             loginStatusView.setText(R.string.not_logged_in);
             loginUsernameView.setText(R.string.empty);
+            wrapper.setVisibility(View.GONE);
         }
     }
 
