@@ -199,6 +199,7 @@ public class AwardGridFragment
         setActionBarSubTitle(subtitleResString);
         sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal())
             .putString(AWARDS_AB_SUBTITLE, subtitleResString)
+            .putString(KEY_SORT_MODE_CATEGORY, "")
             .commit();
         BusProvider.getInstance().post(new RefreshEvent());
     }
