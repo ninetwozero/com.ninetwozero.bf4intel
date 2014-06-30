@@ -3,25 +3,15 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  android:orientation="vertical"
   android:gravity="left|bottom"
-  >
+  android:orientation="vertical">
+
   <TextView
     android:id="@+id/text1"
-    android:paddingTop="@dimen/spacing_m"
-    android:paddingRight="@dimen/spacing_m"
-    android:paddingBottom="@dimen/spacing_s"
-    android:paddingLeft="@dimen/spacing_m"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
-    android:textAllCaps="true"
-    android:textColor="@color/lightgrey"
-    />
+    style="@style/NavigationDrawerHeading" />
 
   <View
     android:layout_width="match_parent"
     android:layout_height="1px"
-    android:background="@color/lightgrey"
-    />
+    android:background="@color/lightgrey" />
 </LinearLayout>

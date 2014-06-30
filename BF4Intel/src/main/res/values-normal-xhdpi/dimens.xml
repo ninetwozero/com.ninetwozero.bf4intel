@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2011 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<resources>
+  <!-- Sliding menu related -->
+  <dimen name="navigation_drawer_width">320dp</dimen>
+
+  <!-- Stats item dimens -->
+  <dimen name="stats_item_width">142dp</dimen>
+  <dimen name="stats_item_height">77dp</dimen>
+
+  <!-- Unlocks gridview -->
+  <dimen name="grid_view_column_width">150dp</dimen>
+
+  <!-- Text related -->
+  <dimen name="text_xs">12sp</dimen>
+  <dimen name="text_s">14sp</dimen>
+  <dimen name="text_m">18sp</dimen>
+  <dimen name="text_ml">20sp</dimen>
+  <dimen name="text_l">24sp</dimen>
+  <dimen name="text_xl">32sp</dimen>
+  <dimen name="text_xxl">40sp</dimen>
+
+  <dimen name="heading_over_card_size">@dimen/text_l</dimen>
+
+  <!-- Spacing -->
+  <dimen name="spacing_xxs">1dp</dimen>
+  <dimen name="spacing_xs">2dp</dimen>
+  <dimen name="spacing_s">4dp</dimen>
+  <dimen name="spacing_m">8dp</dimen>
+  <dimen name="spacing_l">16dp</dimen>
+  <dimen name="spacing_xl">32dp</dimen>
+  <dimen name="spacing_xxl">64dp</dimen>
+</resources>

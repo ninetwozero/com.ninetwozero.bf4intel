@@ -7,7 +7,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
@@ -26,6 +28,7 @@ import com.ninetwozero.bf4intel.menu.ListRowType;
 import com.ninetwozero.bf4intel.menu.SimpleListRow;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
+import com.ninetwozero.bf4intel.ui.adapters.SoldierSpinnerAdapter;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
 import com.squareup.otto.Subscribe;
@@ -175,20 +178,53 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void setupRegularViews(final View view) {
-        final View wrapper = view.findViewById(R.id.wrap_login_name);
+        final View wrapper = view.findViewById(R.id.wrap_login_info);
         final TextView loginStatusView = (TextView) wrapper.findViewById(R.id.string_login_status);
         final TextView loginUsernameView = (TextView) wrapper.findViewById(R.id.login_name);
 
         if (SessionStore.isLoggedIn()) {
             loginStatusView.setText(R.string.logged_in_as);
             loginUsernameView.setText(SessionStore.getUsername());
+            setupSoldierDropdown(view);
         } else if (SessionStore.hasUserId()) {
             loginStatusView.setText(R.string.tracking_user);
             loginUsernameView.setText(SessionStore.getUsername());
+            setupSoldierDropdown(view);
         } else {
             loginStatusView.setText(R.string.not_logged_in);
             loginUsernameView.setText(R.string.empty);
         }
+    }
+
+    private void setupSoldierDropdown(final View view) {
+        final SoldierSpinnerAdapter adapter = new SoldierSpinnerAdapter(getActivity(), fetchSoldiersForMenu());
+        final Spinner spinner = (Spinner) view.findViewById(R.id.spinner_soldier);
+        final int position = sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0);
+
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long selectedId) {
+                        if (sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0) != position) {
+                            storeSelectionInPreferences(selectedId, position);
+                            BusProvider.getInstance().post(new ActiveSoldierChangedEvent(selectedId));
+                        }
+                    }
+
+                    private void storeSelectionInPreferences(long selectedId, int position) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putLong(Keys.Menu.LATEST_PERSONA, selectedId);
+                        editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, position);
+                        editor.commit();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                }
+        );
+        spinner.setSelection(position > spinner.getCount() ? 0 : position);
     }
 
     private void setupListView(final View view) {
@@ -222,14 +258,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
         final List<SummarizedSoldierStatsDAO> stats = fetchSoldiersForMenu();
         final List<ListRowElement> items = new ArrayList<ListRowElement>();
         soldierBundleForMenu = buildBundleForSoldier(stats);
-
-        items.add(
-            ListRowFactory.create(
-                ListRowType.SIDE_HEADING,
-                getString(R.string.navigationdrawer_selected_soldier)
-            )
-        );
-        items.add(ListRowFactory.createSoldierRow(stats));
         items.add(
             ListRowFactory.create(
                 ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)
