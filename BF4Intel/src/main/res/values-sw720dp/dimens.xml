@@ -13,4 +13,8 @@
   <dimen name="h_battlereport_list_img">160dp</dimen>
 
   <dimen name="grid_view_column_width">300dp</dimen>
+
+  <!--Grid view images-->
+  <dimen name="grid_view_image_height">150dp</dimen>
+  <dimen name="grid_view_image_width">@dimen/grid_view_image_height</dimen>
 </resources>
