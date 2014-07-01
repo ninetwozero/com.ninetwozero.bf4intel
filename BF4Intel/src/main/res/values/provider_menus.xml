@@ -12,4 +12,11 @@
     <item>Show vehicles</item>
     <item>Show teams</item>
   </string-array>
+
+  <string-array name="ab_assignment_filter_menu">
+    <item>Bronze assignments</item>
+    <item>Silver assignments</item>
+    <item>Gold assignments</item>
+    <item>Single player assignments</item>
+  </string-array>
 </resources>

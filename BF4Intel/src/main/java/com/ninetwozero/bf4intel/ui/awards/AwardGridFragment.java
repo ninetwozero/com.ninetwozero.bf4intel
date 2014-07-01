@@ -35,9 +35,7 @@ public class AwardGridFragment
     public static final String KEY_SORT_MODE = "awardSortMode";
     private static final String AWARDS_AB_SUBTITLE = "awards_ab_subtitle";
     private static final String KEY_SORT_MODE_CATEGORY = "awardSortModeCategory";
-    private String[] filterTitleResources;
-    private String[] sortingKeys = new String[]{"kits", "gamemode", "weapon", "vehicles", "team"};
-    private String[] sortTitleResources;
+
 
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
@@ -152,13 +150,14 @@ public class AwardGridFragment
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.fragment_awards, menu);
+        inflater.inflate(R.menu.filter_sort, menu);
 
         sortTitleResources = getResourceStringArray(R.array.ab_sort_menus);
         addMenuProviderFor(R.id.ab_action_sort, menu, sortTitleResources);
 
         filterTitleResources = getResourceStringArray(R.array.ab_award_filter_menu);
         addMenuProviderFor(R.id.ab_action_filter, menu, filterTitleResources);
+        sortingKeys = new String[]{"kits", "gamemode", "weapon", "vehicles", "team"};
     }
 
     @Override

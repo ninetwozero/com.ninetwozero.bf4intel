@@ -3,6 +3,9 @@ package com.ninetwozero.bf4intel.ui.assignments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,6 +16,7 @@ import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.database.dao.assignments.AssignmentsDAO;
+import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.events.assignments.AssignmentsRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
@@ -163,5 +167,32 @@ public class AssignmentGridFragment
             }
         }
         return false;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.filter_sort, menu);
+
+        sortTitleResources = getResourceStringArray(R.array.ab_sort_menus);
+        addMenuProviderFor(R.id.ab_action_sort, menu, sortTitleResources);
+
+        filterTitleResources = getResourceStringArray(R.array.ab_assignment_filter_menu);
+        addMenuProviderFor(R.id.ab_action_filter, menu, filterTitleResources);
+
+        sortingKeys = new String[] {};
+    }
+
+    @Override
+    public void onMenuSelected(MenuItem item) {
+        super.onMenuSelected(item);
+    }
+
+    protected void handleFilterRequest(String category, String subtitleResString) {
+
+    }
+
+    protected void handleSortingRequest(SortMode sortMode, String subtitleResString) {
+
     }
 }

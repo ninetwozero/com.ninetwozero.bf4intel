@@ -25,6 +25,9 @@ import com.ninetwozero.bf4intel.utils.NumberFormatter;
 public abstract class BaseLoadingFragment extends BaseFragment implements Response.ErrorListener {
     protected final Gson gson = GsonProvider.getInstance();
     protected final JsonParser parser = new JsonParser();
+    protected String[] filterTitleResources;
+    protected String[] sortingKeys;
+    protected String[] sortTitleResources;
 
     protected boolean isReloading;
 
