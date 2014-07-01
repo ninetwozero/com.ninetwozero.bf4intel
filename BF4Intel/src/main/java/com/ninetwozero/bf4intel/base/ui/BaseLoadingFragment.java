@@ -1,10 +1,11 @@
 package com.ninetwozero.bf4intel.base.ui;
 
-import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,12 +16,16 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
+import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.factories.GsonProvider;
 import com.ninetwozero.bf4intel.ui.animations.SimpleFadeInAnimation;
 import com.ninetwozero.bf4intel.ui.animations.SimpleFadeOutAnimation;
+import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
+
+import java.util.Arrays;
 
 public abstract class BaseLoadingFragment extends BaseFragment implements Response.ErrorListener {
     protected final Gson gson = GsonProvider.getInstance();
@@ -147,4 +152,23 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
     }
 
     protected abstract void startLoadingData();
+
+    @Override
+    public void onMenuSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        String itemTitle = item.getTitle().toString();
+        if (Arrays.asList(filterTitleResources).contains(itemTitle)) {
+            handleFilterRequest(sortingKeys[itemId], filterTitleResources[itemId]);
+        } else if (itemTitle.equals(sortTitleResources[0])) {
+            handleSortingRequest(SortMode.ALL, sortTitleResources[0]);
+        } else if (itemTitle.equals(sortTitleResources[1])) {
+            handleSortingRequest(SortMode.PROGRESS, sortTitleResources[1]);
+        } else {
+            Log.d(AwardGridFragment.class.getSimpleName(), "Unknown MenuItem " + item.getTitle());
+        }
+    }
+
+    protected void handleFilterRequest(final String category, final String subtitleResString){}
+
+    protected void handleSortingRequest(SortMode sortMode, final String subtitleResString) {}
 }

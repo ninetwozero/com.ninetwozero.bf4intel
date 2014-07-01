@@ -2,7 +2,6 @@ package com.ninetwozero.bf4intel.ui.awards;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -23,7 +22,6 @@ import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 
-import java.util.Arrays;
 import java.util.List;
 
 import se.emilsjolander.sprinkles.OneQuery;
@@ -160,22 +158,9 @@ public class AwardGridFragment
         sortingKeys = new String[]{"kits", "gamemode", "weapon", "vehicles", "team"};
     }
 
-    @Override
-    public void onMenuSelected(MenuItem item) {
-        int itemId = item.getItemId();
-        String itemTitle = item.getTitle().toString();
-        if (Arrays.asList(filterTitleResources).contains(itemTitle)) {
-            handleFilterRequest(sortingKeys[itemId], filterTitleResources[itemId]);
-        } else if (itemTitle.equals(sortTitleResources[0])) {
-            handleSortingRequest(SortMode.ALL, sortTitleResources[0]);
-        } else if (itemTitle.equals(sortTitleResources[1])) {
-            handleSortingRequest(SortMode.PROGRESS, sortTitleResources[1]);
-        } else {
-            Log.d(AwardGridFragment.class.getSimpleName(), "Unknown MenuItem " + item.getTitle());
-        }
-    }
 
-    private void handleFilterRequest(final String category, final String subtitleResString) {
+    @Override
+    protected void handleFilterRequest(final String category, final String subtitleResString) {
         setActionBarSubTitle(subtitleResString);
         final View view = getView();
         if (view == null) {
@@ -194,7 +179,8 @@ public class AwardGridFragment
             .commit();
     }
 
-    private void handleSortingRequest(SortMode sortMode, final String subtitleResString) {
+    @Override
+    protected void handleSortingRequest(SortMode sortMode, final String subtitleResString) {
         setActionBarSubTitle(subtitleResString);
         sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal())
             .putString(AWARDS_AB_SUBTITLE, subtitleResString)
