@@ -20,7 +20,7 @@ public class AwardService extends BaseDaoService<AwardsDAO, AwardsRefreshedEvent
     @Override
     protected AwardsDAO parseJsonIntoDao(String json) {
         final Awards awards = fromJson(json, Awards.class);
-        final SortMode sortMode = SortMode.fromOrdinal(sharedPreferences.getInt(AwardGridFragment.KEY_SORT_MODE, 0));
+        final SortMode sortMode = SortMode.fromOrdinal(sharedPreferences.getInt(AwardGridFragment.AWARD_SORT_MODE, 0));
         return new AwardsDAO(
             soldier.getString(Keys.Soldier.ID),
             soldier.getString(Keys.Soldier.NAME),

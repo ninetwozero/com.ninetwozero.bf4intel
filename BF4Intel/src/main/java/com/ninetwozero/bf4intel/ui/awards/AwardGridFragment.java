@@ -30,10 +30,10 @@ import se.emilsjolander.sprinkles.Query;
 public class AwardGridFragment
     extends BaseLoadingFragment
     implements AdapterView.OnItemClickListener {
-    public static final String KEY_SORT_MODE = "awardSortMode";
+    public static final String AWARD_SORT_MODE = "awardSortMode";
     private static final String AWARDS_AB_SUBTITLE = "awards_ab_subtitle";
-    private static final String KEY_SORT_MODE_CATEGORY = "awardSortModeCategory";
-
+    private static final String AWARD_SORT_MODE_CATEGORY = "awardSortModeCategory";
+    private GridView gridView;
 
     public static AwardGridFragment newInstance(final Bundle data) {
         final AwardGridFragment fragment = new AwardGridFragment();
@@ -122,7 +122,7 @@ public class AwardGridFragment
     }
 
     private void sendDataToGridView(final View view, List<Award> awards) {
-        final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
+        gridView = (GridView) view.findViewById(R.id.assignments_grid);
         AwardsAdapter adapter = (AwardsAdapter) gridView.getAdapter();
         if (adapter == null) {
             adapter = new AwardsAdapter(getActivity());
@@ -130,8 +130,8 @@ public class AwardGridFragment
         }
         adapter.setItems(awards);
 
-        if (sharedPreferences.getInt(KEY_SORT_MODE, 0) == SortMode.CATEGORIZED.ordinal()) {
-            adapter.getFilter().filter(sharedPreferences.getString(KEY_SORT_MODE_CATEGORY, ""));
+        if (sharedPreferences.getInt(AWARD_SORT_MODE, 0) == SortMode.CATEGORIZED.ordinal()) {
+            adapter.getFilter().filter(sharedPreferences.getString(AWARD_SORT_MODE_CATEGORY, ""));
         }
 
         actionBarSetSubtitleFromSharedPref(AWARDS_AB_SUBTITLE, R.string.label_sort_all);
@@ -167,14 +167,13 @@ public class AwardGridFragment
             return;
         }
 
-        final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
         final AwardsAdapter adapter = (AwardsAdapter) gridView.getAdapter();
 
         adapter.getFilter().filter(category);
 
         sharedPreferences.edit()
-            .putInt(KEY_SORT_MODE, SortMode.CATEGORIZED.ordinal())
-            .putString(KEY_SORT_MODE_CATEGORY, category)
+            .putInt(AWARD_SORT_MODE, SortMode.CATEGORIZED.ordinal())
+            .putString(AWARD_SORT_MODE_CATEGORY, category)
             .putString(AWARDS_AB_SUBTITLE, subtitleResString)
             .commit();
     }
@@ -182,9 +181,9 @@ public class AwardGridFragment
     @Override
     protected void handleSortingRequest(SortMode sortMode, final String subtitleResString) {
         setActionBarSubTitle(subtitleResString);
-        sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal())
+        sharedPreferences.edit().putInt(AWARD_SORT_MODE, sortMode.ordinal())
             .putString(AWARDS_AB_SUBTITLE, subtitleResString)
-            .putString(KEY_SORT_MODE_CATEGORY, "")
+            .putString(AWARD_SORT_MODE_CATEGORY, "")
             .commit();
         BusProvider.getInstance().post(new RefreshEvent());
     }
