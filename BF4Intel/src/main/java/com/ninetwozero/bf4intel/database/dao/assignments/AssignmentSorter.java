@@ -37,29 +37,24 @@ public class AssignmentSorter extends AbstractSorter<SortedAssignmentContainer> 
 
     @Override
     protected SortedAssignmentContainer sortByCategory() {
-        return null;
-    }
-
-    private static SortedAssignmentContainer fetchSortedAssignments(final Assignments assignments) {
         List<Assignment> orderedAssignments = new ArrayList<Assignment>();
         Map<String, List<String>> missions = assignments.getAssignmentCategory();
-        for (String assignmentType : ASSIGNMENT_TYPE) {
-            List<String> groupedAssignments = missions.get(assignmentType);
+        for (String group : ASSIGNMENT_TYPE) {
+            List<String> groupedAssignments = missions.get(group);
             orderedAssignments.addAll(
-                fetchGroupedAssignments(
-                    assignments.getAssignments(),
-                    groupedAssignments
-                )
+                fetchGroupedAssignments(groupedAssignments, group)
             );
         }
         return new SortedAssignmentContainer(orderedAssignments, assignments.getExpansions());
     }
 
-    private static List<Assignment> fetchGroupedAssignments(final Map<String, Assignment> assignments, final List<String> groupedAssignments) {
+    private List<Assignment> fetchGroupedAssignments(final List<String> assignmentsInGroup, final String group) {
         List<Assignment> orderedGroup = new ArrayList<Assignment>();
-        for (String key : groupedAssignments) {
-            if (assignments.containsKey(key)) {
-                orderedGroup.add(assignments.get(key));
+        for (String key : assignmentsInGroup) {
+            if (assignments.getAssignments().containsKey(key)) {
+                Assignment assignment = assignments.getAssignments().get(key);
+                assignment.setGroup(group);
+                orderedGroup.add(assignment);
             }
         }
         return orderedGroup;

@@ -20,6 +20,7 @@ public class Assignment implements Serializable {
     private List<AssignmentPrerequisite> prerequisites;
     @SerializedName("upcomingUnlocks")
     private List<AssignmentReward> rewards;
+    private String group;
 
     public AssignmentAward getAward() {
         return award;
@@ -54,5 +55,13 @@ public class Assignment implements Serializable {
 
     public List<AssignmentReward> getRewards() {
         return rewards;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
     }
 }
