@@ -8,6 +8,7 @@ import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +33,9 @@ public class AssignmentSorter extends AbstractSorter<SortedAssignmentContainer> 
 
     @Override
     protected SortedAssignmentContainer sortByProgress() {
-        return null;
+        List<Assignment> uncompleted = fetchUncompletedAssignments();
+        Collections.sort(uncompleted);
+        return new SortedAssignmentContainer(uncompleted, assignments.getExpansions());
     }
 
     @Override
@@ -58,5 +61,16 @@ public class AssignmentSorter extends AbstractSorter<SortedAssignmentContainer> 
             }
         }
         return orderedGroup;
+    }
+
+    private List<Assignment> fetchUncompletedAssignments() {
+        List<Assignment> allAssignments = new ArrayList<Assignment>(assignments.getAssignments().values());
+        List<Assignment> uncompleted = new ArrayList<Assignment>();
+        for (Assignment assignment : allAssignments) {
+            if (assignment.getCompletion() != 100) {
+                uncompleted.add(assignment);
+            }
+        }
+        return uncompleted;
     }
 }

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class Assignment implements Serializable {
+public class Assignment implements Comparable<Assignment>, Serializable {
     private static final int COMPLETED = 100;
 
     @SerializedName("award")
@@ -63,5 +63,16 @@ public class Assignment implements Serializable {
 
     public void setGroup(String group) {
         this.group = group;
+    }
+
+    @Override
+    public int compareTo(Assignment assignment) {
+        if ( completion > assignment.getCompletion()) {
+            return -1;
+        } else if (completion < assignment.getCompletion()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
