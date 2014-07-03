@@ -15,15 +15,13 @@ import java.util.Map;
 public class AssignmentSorter extends AbstractSorter<SortedAssignmentContainer> {
     public static final List<String> ASSIGNMENT_TYPE = new ArrayList<String>(Arrays.asList("bronze", "silver", "gold", "sp"));
     private final Assignments assignments;
-    private final SortMode mode;
 
-    public AssignmentSorter(final Assignments assignments, final SortMode mode) {
+    public AssignmentSorter(final Assignments assignments) {
         this.assignments = assignments;
-        this.mode = mode;
     }
 
     @Override
-    public SortedAssignmentContainer sort() {
+    public SortedAssignmentContainer sort(final SortMode mode) {
         if (mode == SortMode.PROGRESS) {
             return sortByProgress();
         } else {

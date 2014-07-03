@@ -26,7 +26,7 @@ public class AssignmentService extends BaseDaoService<AssignmentsDAO, Assignment
             soldier.getString(Keys.Soldier.ID),
             soldier.getString(Keys.Soldier.NAME),
             soldier.getInt(Keys.Soldier.PLATFORM),
-            new AssignmentSorter(assignments, sortMode).sort()
+            new AssignmentSorter(assignments).sort(sortMode)
         );
     }
 

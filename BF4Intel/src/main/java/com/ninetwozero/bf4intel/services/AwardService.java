@@ -25,7 +25,7 @@ public class AwardService extends BaseDaoService<AwardsDAO, AwardsRefreshedEvent
             soldier.getString(Keys.Soldier.ID),
             soldier.getString(Keys.Soldier.NAME),
             soldier.getInt(Keys.Soldier.PLATFORM),
-            new AwardSorter(awards, sortMode).sort()
+            new AwardSorter(awards).sort(sortMode)
         );
     }
 

@@ -17,15 +17,13 @@ import java.util.Set;
 public class AwardSorter extends AbstractSorter<SortedAwardContainer> {
 
     private final Awards awards;
-    private final SortMode mode;
 
-    public AwardSorter(final Awards awards, final SortMode mode) {
+    public AwardSorter(final Awards awards) {
         this.awards = awards;
-        this.mode = mode;
     }
 
     @Override
-    public SortedAwardContainer sort() {
+    public SortedAwardContainer sort(final SortMode mode) {
         if (mode == SortMode.PROGRESS) {
             return sortByProgress();
         } else {
