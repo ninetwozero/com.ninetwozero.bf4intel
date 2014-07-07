@@ -145,6 +145,12 @@ public class AssignmentGridFragment
             gridView.setAdapter(adapter);
         }
         adapter.setItems(assignments);
+
+        if (sharedPreferences.getInt(ASSIGNMENT_SORT_MODE, 0) == SortMode.CATEGORIZED.ordinal()) {
+            adapter.getFilter().filter(sharedPreferences.getString(ASSIGNMENT_SORT_MODE_CATEGORY, ""));
+        }
+
+        actionBarSetSubtitleFromSharedPref(ASSIGNMENTS_AB_SUBTITLE, R.string.label_sort_all);
     }
 
     @Override
