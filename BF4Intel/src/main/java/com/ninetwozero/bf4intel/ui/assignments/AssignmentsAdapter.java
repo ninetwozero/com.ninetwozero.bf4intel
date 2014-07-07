@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
+import com.ninetwozero.bf4intel.base.adapter.BaseFilterableIntelAdapter;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentAward;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisite;
@@ -15,7 +15,10 @@ import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentImageMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.ExpansionIconsImageMap;
 import com.squareup.picasso.Picasso;
 
-public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class AssignmentsAdapter extends BaseFilterableIntelAdapter<Assignment> {
 
     public AssignmentsAdapter(final Context context) {
         super(context);
@@ -48,6 +51,17 @@ public class AssignmentsAdapter extends BaseIntelAdapter<Assignment> {
         }
 
         return view;
+    }
+
+    @Override
+    protected List<Assignment> filterItems(CharSequence constraint) {
+        List<Assignment> filteredAssignments = new ArrayList<Assignment>();
+        for (Assignment assignment : listWithAllItems) {
+            if (assignment.getGroup().equals(constraint)){
+                filteredAssignments.add(assignment);
+            }
+        }
+        return filteredAssignments;
     }
 
     private void showAssignmentImage(final View view, final AssignmentAward award, final boolean completed) {

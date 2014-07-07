@@ -30,7 +30,7 @@ public class MigrationToZeroNineSix extends Migration {
 
     }
 
-    private void createRegularJsonTable(final SQLiteDatabase db, final String tableName) {
+    protected void createRegularJsonTable(final SQLiteDatabase db, final String tableName) {
         db.execSQL(
             "CREATE TABLE " + tableName + "(" +
                 "soldierId TEXT," +
