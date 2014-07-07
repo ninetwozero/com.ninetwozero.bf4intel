@@ -14,9 +14,9 @@
   </string-array>
 
   <string-array name="ab_assignment_filter_menu">
-    <item>Bronze assignments</item>
-    <item>Silver assignments</item>
-    <item>Gold assignments</item>
-    <item>Single player assignments</item>
+    <item>Bronze</item>
+    <item>Silver</item>
+    <item>Gold</item>
+    <item>Single player</item>
   </string-array>
 </resources>
