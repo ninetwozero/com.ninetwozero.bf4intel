@@ -36,7 +36,7 @@ public class AssignmentSorter extends AbstractSorter<SortedAssignmentContainer> 
         List<Assignment> uncompleted = new ArrayList<Assignment>();
         List<Assignment> completed = new ArrayList<Assignment>();
         for (String group : ASSIGNMENT_TYPE) {
-            Pair<List<Assignment>, List<Assignment>> pair = fetchUncompletedAssignments(group);
+            Pair<List<Assignment>, List<Assignment>> pair = fetchPairedAssignmentLists(group);
             uncompleted.addAll(pair.first);
             completed.addAll(pair.second);
         }
@@ -76,7 +76,7 @@ public class AssignmentSorter extends AbstractSorter<SortedAssignmentContainer> 
         return orderedGroup;
     }
 
-    private Pair<List<Assignment>, List<Assignment>> fetchUncompletedAssignments(final String group) {
+    private Pair<List<Assignment>, List<Assignment>> fetchPairedAssignmentLists(final String group) {
         List<Assignment> uncompleted = new ArrayList<Assignment>();
         List<Assignment> completed = new ArrayList<Assignment>();
         List<Assignment> assignmentsOfGroup = groupedMap.get(group);
