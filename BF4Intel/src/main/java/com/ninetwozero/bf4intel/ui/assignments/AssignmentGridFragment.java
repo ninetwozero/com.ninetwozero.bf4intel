@@ -133,12 +133,11 @@ public class AssignmentGridFragment
             return;
         }
 
-        final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
+        gridView = (GridView) view.findViewById(R.id.assignments_grid);
         gridView.setOnItemClickListener(this);
     }
 
     private void sendDataToGridView(final View view, List<Assignment> assignments) {
-        gridView = (GridView) view.findViewById(R.id.assignments_grid);
         AssignmentsAdapter adapter = (AssignmentsAdapter) gridView.getAdapter();
         if (adapter == null) {
             adapter = new AssignmentsAdapter(getActivity());

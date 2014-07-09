@@ -1,6 +1,5 @@
 package com.ninetwozero.bf4intel.database.dao.awards;
 
-import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.database.dao.AbstractSorter;
 import com.ninetwozero.bf4intel.json.awards.Award;
 import com.ninetwozero.bf4intel.json.awards.Awards;
@@ -20,15 +19,6 @@ public class AwardSorter extends AbstractSorter<SortedAwardContainer> {
 
     public AwardSorter(final Awards awards) {
         this.awards = awards;
-    }
-
-    @Override
-    public SortedAwardContainer sort(final SortMode mode) {
-        if (mode == SortMode.PROGRESS) {
-            return sortByProgress();
-        } else {
-            return sortByCategory();
-        }
     }
 
     @Override
