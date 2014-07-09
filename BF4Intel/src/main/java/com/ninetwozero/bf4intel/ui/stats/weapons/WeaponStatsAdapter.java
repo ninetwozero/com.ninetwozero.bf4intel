@@ -7,14 +7,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
+import com.ninetwozero.bf4intel.base.adapter.BaseFilterableIntelAdapter;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
 import com.ninetwozero.bf4intel.utils.StatsUtils;
 
-public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
 
     public WeaponStatsAdapter(final Context context) {
         super(context);
@@ -72,5 +75,16 @@ public class WeaponStatsAdapter extends BaseIntelAdapter<Weapon> {
         }
 
         return view;
+    }
+
+    @Override
+    protected List<Weapon> filterItems(CharSequence constraint) {
+        List<Weapon> filteredWeapons = new ArrayList<Weapon>();
+        for (Weapon weapon : listWithAllItems) {
+            if (weapon.getGroupCode().equals(constraint)) {
+                filteredWeapons.add(weapon);
+            }
+        }
+        return filteredWeapons;
     }
 }

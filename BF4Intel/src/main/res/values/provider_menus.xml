@@ -5,6 +5,11 @@
     <item>Sort by progress</item>
   </string-array>
 
+  <string-array name="ab_weapons_sort_menus">
+    <item>Sort by kills</item>
+    <item>Sort by progress</item>
+  </string-array>
+
   <string-array name="ab_award_filter_menu">
     <item>Show kits</item>
     <item>Show game modes</item>
