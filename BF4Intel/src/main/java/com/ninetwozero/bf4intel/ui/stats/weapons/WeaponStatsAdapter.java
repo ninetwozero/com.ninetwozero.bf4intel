@@ -63,7 +63,7 @@ public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
         }
 
         TextView killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
-        if (killPerMinute != null && weapon.getKills() > 0) {
+        if (killPerMinute != null && weapon.getTimeEquipped()> 0) {
             double killPerMinuteValue = StatsUtils.calculateKillsPerMinute(
                 weapon.getKills(), weapon.getTimeEquipped()
             );
