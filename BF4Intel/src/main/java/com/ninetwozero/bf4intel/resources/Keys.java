@@ -22,4 +22,8 @@ public class Keys {
         public static final String LATEST_PERSONA = "selected_soldier_in_menu";
         public static final String LATEST_PERSONA_POSITION = "selected_soldier_position_in_menu";
     }
+
+    public class Settings {
+        public static final String USER_IN_CRASH_REPORT = "user_in_crash_report";
+    }
 }
