@@ -21,6 +21,7 @@ import com.ninetwozero.bf4intel.ui.about.AppInfoActivity;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
+import com.ninetwozero.bf4intel.ui.settings.SettingsActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -91,6 +92,10 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
             case R.id.ab_action_about:
                 startActivity(new Intent(this, AppInfoActivity.class));
+                return true;
+
+            case R.id.ab_action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
                 return true;
 
             case R.id.ab_action_logout:

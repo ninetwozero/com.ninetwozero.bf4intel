@@ -13,6 +13,7 @@ import com.ninetwozero.bf4intel.ui.fragments.*;
 import com.ninetwozero.bf4intel.ui.news.NewsArticleFragment;
 import com.ninetwozero.bf4intel.ui.news.NewsListingFragment;
 import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
+import com.ninetwozero.bf4intel.ui.settings.SettingsFragment;
 import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsTabFragment;
 import com.ninetwozero.bf4intel.ui.stats.details.DetailedStatsFragment;
 import com.ninetwozero.bf4intel.ui.stats.reports.BattleReportFragment;
@@ -153,6 +154,6 @@ public class FragmentFactory {
         POST_CREATING,
 
         NOTIFICATION,
-        PROFILE_SEARCH,
+        PROFILE_SEARCH
     }
 }
