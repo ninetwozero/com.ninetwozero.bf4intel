@@ -242,5 +242,5 @@
   <string name="team">Team</string>
 
   <string name="settings_title_user_in_crash_report">Send username in crash log</string>
-  <string name="settings_summary_user_in_crash_report">Keeping this option checked means it\'ll be easier for us to reproduce issues that get reported.</string>
+  <string name="settings_summary_user_in_crash_report">By keeping this option checked you are helping us to reproduce and solve reported issues faster.</string>
 </resources>
