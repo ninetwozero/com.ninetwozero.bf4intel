@@ -145,6 +145,7 @@ public class WeaponImageMap {
             put("WARSAW_ID_P_WNAME_FN57", R.drawable.w_fn57_fancy);
             put("WARSAW_ID_P_WNAME_JS2", R.drawable.w_js2_fancy);
             put("WARSAW_ID_P_INAME_FLARE", R.drawable.w_handflare_fancy);
+            put("WARSAW_ID_P_INAME_EOD", R.drawable.vehicle_eodbot);
             /*SECOND ASSAULT*/
             put("WARSAW_ID_P_XP0_WNAME_DAO12", R.drawable.w_dao12_fancy);
             put("WARSAW_ID_P_INAME_BPKNIFE1", R.drawable.w_knife_improvised_fancy);
@@ -167,6 +168,15 @@ public class WeaponImageMap {
             put("WARSAW_ID_P_XP2_WNAME_SW40", R.drawable.w_sw40_fancy);
             put("WARSAW_ID_P_INAME_KNIFE2142", R.drawable.w_knife_2142_fancy);
             put("WARSAW_ID_P_INAME_KNIFEPRECISION", R.drawable.w_knife_precision_fancy);
+
+            /*DRAGON'S TEETH*/
+            put("WARSAW_ID_P_XP3_WNAME_UN6", R.drawable.w_unica6_fancy);
+            put("WARSAW_ID_P_XP3_WNAME_MPX", R.drawable.w_mpx_fancy);
+            put("WARSAW_ID_P_XP3_WNAME_DEAGLE", R.drawable.w_deserteagle_fancy);
+            put("WARSAW_ID_P_INAME_NECKKNIFE", R.drawable.w_knife_neck_fancy);
+            put("WARSAW_ID_P_XP3_WNAME_BULLDOG", R.drawable.w_bulldog_fancy);
+            put("WARSAW_ID_P_XP3_WNAME_CS5", R.drawable.w_cs5_fancy);
+            put("WARSAW_ID_P_XP3_WNAME_SHIELD", R.drawable.w_shield_fancy);
         }
     };
 
