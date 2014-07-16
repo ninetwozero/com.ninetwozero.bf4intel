@@ -98,6 +98,7 @@ public class AwardStringMap {
             put("WARSAW_ID_P_AWARD_M44_NAME", R.string.award_m44_name);
             put("WARSAW_ID_P_AWARD_M45_DESC", R.string.award_m45_desc);
             put("WARSAW_ID_P_AWARD_M45_NAME", R.string.award_m45_name);
+
             put("WARSAW_ID_P_AWARD_R01_DESC", R.string.award_r01_desc);
             put("WARSAW_ID_P_AWARD_R01_NAME", R.string.award_r01_name);
             put("WARSAW_ID_P_AWARD_R02_DESC", R.string.award_r02_desc);
@@ -212,6 +213,21 @@ public class AwardStringMap {
             put("WARSAW_ID_P_XP2_AWARD_M_CARRIERASSAULT_DESC", R.string.award_xp2mca_desc);
             put("WARSAW_ID_P_XP2_AWARD_R_CARRIERASSAULT_NAME", R.string.award_xp2rca_name);
             put("WARSAW_ID_P_XP2_AWARD_R_CARRIERASSAULT_DESC", R.string.award_xp2rca_desc);
+
+            put("WARSAW_ID_P_XP3_AWARD_M_CHLKWINNER_NAME", R.string.award_xp3mcw_name);
+            put("WARSAW_ID_P_XP3_AWARD_M_CHLKWINNER_DESC", R.string.award_xp3mcw_desc);
+            put("WARSAW_ID_P_XP3_AWARD_R_CHLKWINNER_NAME", R.string.award_xp3rcw_name);
+            put("WARSAW_ID_P_XP3_AWARD_R_CHLKWINNER_DESC", R.string.award_xp3rcw_desc);
+
+            put("WARSAW_ID_P_XP3_AWARD_M_LINKBREAKER_NAME", R.string.award_xp3mlb_name);
+            put("WARSAW_ID_P_XP3_AWARD_M_LINKBREAKER_DESC", R.string.award_xp3mlb_desc);
+            put("WARSAW_ID_P_XP3_AWARD_R_LINKBREAKER_NAME", R.string.award_xp3rlb_name);
+            put("WARSAW_ID_P_XP3_AWARD_R_LINKBREAKER_DESC", R.string.award_xp3rlb_desc);
+
+            put("WARSAW_ID_P_XP3_AWARD_M_LINKMAKER_NAME", R.string.award_xp3mlm_name);
+            put("WARSAW_ID_P_XP3_AWARD_M_LINKMAKER_DESC", R.string.award_xp3mlm_desc);
+            put("WARSAW_ID_P_XP3_AWARD_R_LINKMAKER_NAME", R.string.award_xp3rlm_name);
+            put("WARSAW_ID_P_XP3_AWARD_R_LINKMAKER_DESC", R.string.award_xp3rlm_desc);
         }
     };
 
