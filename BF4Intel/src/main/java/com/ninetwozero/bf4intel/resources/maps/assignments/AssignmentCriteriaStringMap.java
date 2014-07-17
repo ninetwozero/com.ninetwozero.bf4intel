@@ -238,6 +238,7 @@ public class AssignmentCriteriaStringMap {
     };
 
     public static int get(final String key) {
+        if(!map.containsKey(key)) android.util.Log.e(AssignmentCriteriaStringMap.class.getSimpleName(), key);
         return map.containsKey(key)? map.get(key) : R.string.na;
     }
 }

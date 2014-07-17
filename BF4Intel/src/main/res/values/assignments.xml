@@ -112,7 +112,20 @@
   <string name="assignments_xp2_name_09">Scourge of the Sea</string>
   <string name="assignments_xp2_name_10">Giant Slayer</string>
 
+  <!--Dragon's Teeth-->
+  <string name="assignments_xp3_name_01">Big Splash</string>
+  <string name="assignments_xp3_name_02">Lions and Tigers and Bears</string>
+  <string name="assignments_xp3_name_03">Not The Weakest Link</string>
+  <string name="assignments_xp3_name_04">The \'I\' In Team</string>
+  <string name="assignments_xp3_name_05">Vanguard</string>
+  <string name="assignments_xp3_name_06">Road Warrior</string>
+  <string name="assignments_xp3_name_07">Remote Operator</string>
+  <string name="assignments_xp3_name_08">Recoil Kinetics</string>
+  <string name="assignments_xp3_name_09">Killjoy</string>
+  <string name="assignments_xp3_name_10">City Slicker</string>
+
   <!--GHOST-->
   <string name="assignments_xp1_name_ghost1">Phantom Prospect</string>
   <string name="assignments_xp2_name_ghost2">Phantom Trainee</string>
+  <string name="assignments_xp3_name_ghost3">Phantom Initiate</string>
 </resources>
