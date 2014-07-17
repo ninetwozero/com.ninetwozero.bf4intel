@@ -201,23 +201,23 @@
   <string name="award_xp1mbd_name">BOMBER DELIVERY MEDAL</string>
 
   <string name="award_xp2mca_name">CARRIER ASSAULT MEDAL</string>
-  <string name="award_xp2mca_desc">Recieve 50 Carrier Assault Ribbons</string>
+  <string name="award_xp2mca_desc">Receive 50 Carrier Assault Ribbons</string>
   <string name="award_xp2rca_name">CARRIER ASSAULT RIBBON</string>
   <string name="award_xp2rca_desc">Win an Carrier Assault round</string>
   
   <!--DRAGON'S TEETH-->
-  <string name="award_xp3mcw_name"></string>
-  <string name="award_xp3mcw_desc"></string>
-  <string name="award_xp3rcw_name"></string>
-  <string name="award_xp3rcw_desc"></string>
+  <string name="award_xp3mcw_name">CHAINLINK MEDAL</string>
+  <string name="award_xp3mcw_desc">Receive 50 Chainlink Ribbons</string>
+  <string name="award_xp3rcw_name">CHAINLINK RIBBON</string>
+  <string name="award_xp3rcw_desc">Win a round of Chainlink</string>
 
-  <string name="award_xp3mlb_name"></string>
-  <string name="award_xp3mlb_desc"></string>
-  <string name="award_xp3rlb_name"></string>
-  <string name="award_xp3rlb_desc"></string>
+  <string name="award_xp3mlb_name">LINK BREAKER MEDAL</string>
+  <string name="award_xp3mlb_desc">Obtain 50 Link Breaker Ribbons</string>
+  <string name="award_xp3rlb_name">LINK BREAKER RIBBON</string>
+  <string name="award_xp3rlb_desc">Break 4 enemy links in a round of Chainlink</string>
 
-  <string name="award_xp3mlm_name"></string>
-  <string name="award_xp3mlm_desc"></string>
-  <string name="award_xp3rlm_name"></string>
-  <string name="award_xp3rlm_desc"></string>
+  <string name="award_xp3mlm_name">LINK MAKER MEDAL</string>
+  <string name="award_xp3mlm_desc">Obtain 50 Link Maker Ribbons</string>
+  <string name="award_xp3rlm_name">LINK MAKER RIBBON</string>
+  <string name="award_xp3rlm_desc">Create 5 links in a round of Chainlink</string>
 </resources>
