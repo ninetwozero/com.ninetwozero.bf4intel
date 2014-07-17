@@ -347,6 +347,12 @@ public class DogtagStringMap {
             put("WARSAW_ID_P_XP2_GIANTSLAYER_NAME", R.string.warsaw_id_xp2_giantslayer_name);
             put("WARSAW_ID_P_XP2_SCOURGESEA_NAME", R.string.warsaw_id_xp2_scourgesea_name);
             put("WARSAW_ID_P_XP2_TITANSOFSTEEL_NAME", R.string.warsaw_id_xp2_titansofsteel_name);
+
+            //XP3
+            put("WARSAW_ID_P_XP3_DRAS06_NAME", R.string.warsaw_id_xp3_roadwarrior_name);
+            put("WARSAW_ID_P_XP3_DRAS07_NAME", R.string.warsaw_id_xp3_remotecontrol_name);
+            put("WARSAW_ID_P_XP3_DRAS09_NAME", R.string.warsaw_id_xp3_killjoy_name);
+            put("WARSAW_ID_P_XP3_DRAS10_NAME", R.string.warsaw_id_xp3_cityslicker_name);
         }
     };
 
