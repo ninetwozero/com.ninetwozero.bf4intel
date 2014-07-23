@@ -121,6 +121,20 @@ public class AssignmentStringMap {
             put("WARSAW_ID_P_XP2_AWARD_AS_09", R.string.assignments_xp2_name_09);
             put("WARSAW_ID_P_XP2_AWARD_AS_10", R.string.assignments_xp2_name_10);
             put("WARSAW_ID_P_XP2_AWARD_GHOST", R.string.assignments_xp2_name_ghost2);
+
+            /*Dragon's Teeth*/
+            put("WARSAW_ID_P_XP3_AWARD_AS_01_NAME", R.string.assignments_xp3_name_01);
+            put("WARSAW_ID_P_XP3_AWARD_AS_02_NAME", R.string.assignments_xp3_name_02);
+            put("WARSAW_ID_P_XP3_AWARD_AS_03_NAME", R.string.assignments_xp3_name_03);
+            put("WARSAW_ID_P_XP3_AWARD_AS_04_NAME", R.string.assignments_xp3_name_04);
+            put("WARSAW_ID_P_XP3_AWARD_AS_05_NAME", R.string.assignments_xp3_name_05);
+            put("WARSAW_ID_P_XP3_AWARD_AS_06_NAME", R.string.assignments_xp3_name_06);
+            put("WARSAW_ID_P_XP3_AWARD_AS_07_NAME", R.string.assignments_xp3_name_07);
+            put("WARSAW_ID_P_XP3_AWARD_AS_08_NAME", R.string.assignments_xp3_name_08);
+            put("WARSAW_ID_P_XP3_AWARD_AS_09_NAME", R.string.assignments_xp3_name_09);
+            put("WARSAW_ID_P_XP3_AWARD_AS_10_NAME", R.string.assignments_xp3_name_10);
+            put("WARSAW_ID_P_XP3_AWARD_GHOST", R.string.assignments_xp3_name_ghost3);
+            put("WARSAW_ID_P_XP3_AWARD_PLAY_XP3", R.string.assignments_xp3_play_xp3);
         }
     };
 

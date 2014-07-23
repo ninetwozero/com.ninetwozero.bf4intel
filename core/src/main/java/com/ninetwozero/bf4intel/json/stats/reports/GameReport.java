@@ -11,7 +11,7 @@ public abstract class GameReport {
     @SerializedName("winner")
     private int winner;
     @SerializedName("gameMode")
-    private int gameMode;
+    private long gameMode;
     @SerializedName("gameReportId")
     private long gameReportId;
     @SerializedName("createdAt")
@@ -29,7 +29,7 @@ public abstract class GameReport {
         return winner;
     }
 
-    public int getGameMode() {
+    public long getGameMode() {
         return gameMode;
     }
 

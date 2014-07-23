@@ -14,7 +14,7 @@ public class GameReportEvent extends BaseEvent {
     @SerializedName("map")
     private String map;
     @SerializedName("gameMode")
-    private int gameMode;
+    private long gameMode;
 
     @SerializedName("position")
     private int playerRanking;
@@ -53,7 +53,7 @@ public class GameReportEvent extends BaseEvent {
         return map;
     }
 
-    public int getGameMode() {
+    public long getGameMode() {
         return gameMode;
     }
 

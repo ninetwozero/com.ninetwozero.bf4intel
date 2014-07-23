@@ -227,11 +227,19 @@ public class UnlockImageSlugMap {
             put("XM25-AIRBURST", R.drawable.w_lineart_xm25);
             put("C4-EXPLOSIVE", R.drawable.w_lineart_c4_explosives);
             put("UCAV", R.drawable.w_lineart_ucav);
+
+            put("BULLDOG", R.drawable.w_lineart_bulldog);
+            put("MPX", R.drawable.w_lineart_mpx);
+            put("CS5", R.drawable.w_lineart_cs5);
+            put("DEAGLE-44", R.drawable.w_lineart_deagle_44);
+            put("UNICA-6", R.drawable.w_lineart_unica_6);
+            put("NECK", R.drawable.w_lineart_neck);
         }
     };
 
     public static int get(String slug) {
         final String uppercaseSlug = slug.toUpperCase(Locale.getDefault());
+        if(!map.containsKey(uppercaseSlug)) android.util.Log.e(UnlockImageSlugMap.class.getSimpleName(), uppercaseSlug);
         return map.containsKey(uppercaseSlug) ? map.get(uppercaseSlug) : R.drawable.kit_none;
     }
 }

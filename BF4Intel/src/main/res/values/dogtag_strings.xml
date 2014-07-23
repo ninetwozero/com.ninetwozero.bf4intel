@@ -339,4 +339,10 @@
   <string name="warsaw_id_xp2_giantslayer_name">Giant Slayer Dog tag</string>
   <string name="warsaw_id_xp2_scourgesea_name">Scourge of the Sea Dog tag</string>
   <string name="warsaw_id_xp2_titansofsteel_name">Titans of Steel Dog tag</string>
+
+  <!--XP3 -->
+  <string name="warsaw_id_xp3_roadwarrior_name">Road Warrior Dog Tag</string>
+  <string name="warsaw_id_xp3_remotecontrol_name">Remote Control Dog Tag</string>
+  <string name="warsaw_id_xp3_killjoy_name">Killjoy Dog tag</string>
+  <string name="warsaw_id_xp3_cityslicker_name">City Slicker Dog Tag</string>
 </resources>
