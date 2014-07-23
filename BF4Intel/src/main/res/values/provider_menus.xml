@@ -5,6 +5,11 @@
     <item>Sort by progress</item>
   </string-array>
 
+  <string-array name="ab_weapons_sort_menus">
+    <item>Sort by kills</item>
+    <item>Sort by progress</item>
+  </string-array>
+
   <string-array name="ab_award_filter_menu">
     <item>Show kits</item>
     <item>Show game modes</item>
@@ -18,5 +23,19 @@
     <item>Silver</item>
     <item>Gold</item>
     <item>Single player</item>
+  </string-array>
+
+  <string-array name="ab_weapon_filter_menu">
+    <item>Assault Rifles</item>
+    <item>Carbines</item>
+    <item>Shotguns</item>
+    <item>LMG</item>
+    <item>PDW</item>
+    <item>DMR</item>
+    <item>Sniper Rifles</item>
+    <item>Hand Guns</item>
+    <item>Hand Grenades</item>
+    <item>Knives</item>
+    <item>Gadget</item>
   </string-array>
 </resources>

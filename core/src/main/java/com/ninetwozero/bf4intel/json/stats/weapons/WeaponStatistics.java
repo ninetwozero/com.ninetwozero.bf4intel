@@ -13,4 +13,8 @@ public class WeaponStatistics {
     public List<Weapon> getWeaponsList() {
         return weaponsList;
     }
+
+    public void setWeaponsList(List<Weapon> weaponsList) {
+        this.weaponsList = new ArrayList<Weapon>(weaponsList);
+    }
 }

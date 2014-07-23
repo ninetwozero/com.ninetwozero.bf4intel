@@ -3,12 +3,16 @@ package com.ninetwozero.bf4intel.database.dao.assignments;
 import android.util.Pair;
 
 import com.ninetwozero.bf4intel.database.dao.AbstractSorter;
-import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AssignmentSorter extends AbstractSorter<SortedAssignmentContainer> {
     public static final List<String> ASSIGNMENT_TYPE = new ArrayList<String>(Arrays.asList("bronze", "silver", "gold", "sp"));
@@ -17,15 +21,6 @@ public class AssignmentSorter extends AbstractSorter<SortedAssignmentContainer> 
 
     public AssignmentSorter(final Assignments assignments) {
         this.assignments = assignments;
-    }
-
-    @Override
-    public SortedAssignmentContainer sort(final SortMode mode) {
-        if (mode == SortMode.PROGRESS) {
-            return sortByProgress();
-        } else {
-            return sortByCategory();
-        }
     }
 
     @Override
