@@ -11,11 +11,11 @@
   </string-array>
 
   <string-array name="ab_award_filter_menu">
-    <item>Show kits</item>
-    <item>Show game modes</item>
-    <item>Show weapons</item>
-    <item>Show vehicles</item>
-    <item>Show teams</item>
+    <item>Kits</item>
+    <item>Game modes</item>
+    <item>Weapons</item>
+    <item>Vehicles</item>
+    <item>Teams</item>
   </string-array>
 
   <string-array name="ab_assignment_filter_menu">
