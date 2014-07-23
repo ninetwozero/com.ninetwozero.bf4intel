@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- Instead of 3 dots "..." after some messages please use &#8230; -->
+
+  <string name="app_name">BF4 Intel</string>
+
+  <!--Manifest labels-->
+  <string name="label_activity_single_fragment">@string/app_name</string>
+  <string name="label_activity_soldier_statistics">STATISTICS</string>
+  <string name="label_activity_assignments">ASSIGNMENTS</string>
+  <string name="label_activity_awards">AWARDS</string>
+  <string name="label_activity_unlocks">UNLOCKS</string>
+  <string name="label_search">Search</string>
+  <string name="label_service_soldieroverview">Soldier Overview Service</string>
+  <string name="label_service_stats_weapons">Weapon Stats Service</string>
+  <string name="label_service_stats_vehicles">Vehicle Stats Service</string>
+  <string name="label_service_stats_reports">Reports Stats Service</string>
+  <string name="label_service_stats_details">Detailed Stats Service</string>
+  <string name="label_service_unlocks_weapons">Weapon Unlocks Service</string>
+  <string name="label_service_unlocks_vehicles">Vehicle Unlocks Service</string>
+  <string name="label_service_unlocks_kits">Kit Unlocks Service</string>
+  <string name="label_service_assignments">Assignment Service</string>
+  <string name="label_service_awards">Award Service</string>
+  <string name="label_service_battlefeed">Battle Feed Service</string>
+  <string name="label_service_news">News Service</string>
+
+  <!--Navigation drawer-->
+  <string name="navigationdrawer_selected_soldier">Selected soldier</string>
+  <string name="navigationdrawer_my_soldier">My soldier</string>
+  <string name="navigationdrawer_overview">Overview</string>
+  <string name="navigationdrawer_statistics">Statistics</string>
+  <string name="navigationdrawer_unlocks">Unlocks</string>
+  <string name="navigationdrawer_social">Social</string>
+  <string name="navigationdrawer_home">Home</string>
+  <string name="navigationdrawer_news">News</string>
+  <string name="tracking_user">Tracking</string>
+  <string name="logged_in_as">Logged in as</string>
+  <string name="not_logged_in">Not logged in</string>
+  <string name="msg_no_menu_items">No menu items found</string>
+
+  <!-- Menu -->
+  <string name="menu_refresh">Refresh</string>
+  <string name="menu_about">About</string>
+  <string name="menu_settings">Settings</string>
+  <string name="menu_title_sort">Sort</string>
+  <string name="menu_title_filter">Filter</string>
+  <string name="menu_reset_password">Reset password&#8230;</string>
+  <string name="menu_logout">Logout</string>
+  <string name="ab_action_send">Send</string>
+
+  <!-- HEADINGS -->
+  <string name="filter_more_options">More options</string>
+  <string name="weapons">Weapons</string>
+  <string name="vehicles">Vehicles</string>
+  <string name="reports">Reports</string>
+  <string name="details">Details</string>
+  <string name="assignments">Assignments</string>
+  <string name="awards">Awards</string>
+  <string name="service_stars">Service Stars</string>
+  <string name="kits">Kits</string>
+  <string name="comments">Comments</string>
+  <string name="soldier_skill">Skill</string>
+  <string name="soldier_rating">Rating</string>
+  <string name="soldier_completion">Completion level</string>
+  <string name="soldier_top_weapons">Top Weapons</string>
+  <string name="soldier_top_vehicles">Top Vehicles</string>
+  <string name="num_kills">%1$s kills</string>
+  <string name="profile_information_header">Basic Information</string>
+  <string name="profile_presentation_header">Presentation</string>
+
+  <!-- Soldier Overview -->
+  <string name="soldier_enlisted_on">Enlisted on</string>
+  <string name="overview_campaign">Campaign</string>
+  <string name="overview_assignments">Assignments</string>
+  <string name="overview_medals">Medals</string>
+  <string name="overview_ribbons">Ribbons</string>
+  <string name="overview_weapons">Weapons</string>
+  <string name="overview_vehicles">Vehicle Unlocks</string>
+  <string name="overview_kits">Kits</string>
+  <string name="overview_dogtags">Dog Tags</string>
+  <string name="msg_no_stats_details">No detailed statistics found.</string>
+  <string name="x_on_y">%1$s on %2$s</string>
+  <string name="generic_x_of_y">%1$s/%2$s</string>
+
+  <!-- Strings for the game modes -->
+  <string name="soldier_top_game_modes">Top Game Modes</string>
+  <string name="gamemode_conquest">Conquest</string>
+  <string name="gamemode_rush">Rush</string>
+  <string name="gamemode_obliteration">Obliteration</string>
+  <string name="gamemode_capture_the_flag">Capture the Flag</string>
+  <string name="gamemode_air_superiority">Air Superiority</string>
+  <string name="gamemode_defuse">Defuse</string>
+  <string name="gamemode_domination">Domination</string>
+  <string name="gamemode_deathmatch">Deathmatch</string>
+
+  <!-- Strings for the Skills -->
+  <string name="skills_kd">K/D</string>
+  <string name="skills_spm">SPM</string>
+  <string name="skills_kpm">KPM</string>
+  <string name="skills_kills">Kills</string>
+  <string name="skills_score">Score</string>
+  <string name="skills_time">Time</string>
+  <string name="kill_a_minute">K/Min</string>
+
+  <!-- Battle reports -->
+  <string name="battlereport_time">Duration:</string>
+  <string name="msg_no_battlereports">No Battle Reports found.</string>
+  <string name="skills_ranking">Ranking</string>
+  <string name="gamereport_results">Results</string>
+
+  <!--Battlereport match results-->
+  <string name="msg_error_private_user">%s\nis not sharing Battle Reports</string>
+  <string name="match_won">Won</string>
+  <string name="match_lost">Lost</string>
+  <string name="match_draw">Draw</string>
+  <string name="header_favorite_battlereport">Favorite Reports</string>
+  <string name="header_latest_battlereport">Latest Reports</string>
+  <string name="feed_gamereport_highlight">Highlight</string>
+
+  <!--Soldier classes-->
+  <string name="class_assault">Assault</string>
+  <string name="class_engineer">Engineer</string>
+  <string name="class_recon">Recon</string>
+  <string name="class_support">Support</string>
+  <string name="class_commander">Commander</string>
+
+  <!--Weapon groups-->
+  <string name="category_lmgs">Light Machine Guns</string>
+  <string name="category_pdws">Personal Defence Weapons</string>
+  <string name="category_handgrenades">Hand Grenades</string>
+  <string name="category_handguns">Hand Guns</string>
+  <string name="category_snipers">Sniper Rifles</string>
+  <string name="category_dmrs">Designated Marksman Rifles</string>
+  <string name="category_carbines">Carbines</string>
+  <string name="category_shotguns">Shotguns</string>
+  <string name="category_assault_rifles">Assault Rifles</string>
+  <string name="category_knives">Knives</string>
+  <string name="category_gadgets">Gadgets</string>
+
+  <!--Vehicle details-->
+  <string name="total_kills">Total kills</string>
+
+  <!--Unlocks -->
+  <string name="msg_no_unlocks">No unlocks available</string>
+
+  <!-- Login related stuff -->
+  <string name="title_home">Welcome to BF4 Intel!</string>
+  <string name="home_main_information_guest">Looks like you haven\'t set the app up yet. Let\'s fix that!</string>
+  <string name="home_select_account">Select account</string>
+  <string name="home_select_another_account">Change account</string>
+  <string name="action_search_short">Search</string>
+  <string name="msg_search_error_length">Min length: 3 characters</string>
+  <string name="title_login">Login</string>
+  <string name="action_sign_in_short">Sign in</string>
+  <string name="prompt_email">Origin™ Email</string>
+  <string name="prompt_password">Origin™ Password</string>
+  <string name="msg_no_network">This feature requires Internet access.</string>
+  <string name="msg_unable_to_refresh">This feature requires Internet access.</string>
+  <string name="login_progress_signing_in">Signing in&#8230;</string>
+  <string name="label_login">Login</string>
+  <string name="msg_downloading">Downloading information&#8230;</string>
+  <string name="msg_no_users_found">No users found.</string>
+  <string name="hint_search">Search for users</string>
+
+  <!-- ABOUT -->
+  <string name="label_about">About</string>
+  <string name="label_updates">Changelog</string>
+  <string name="label_credits">Credits</string>
+  <string name="label_opensource">Licenses</string>
+  <string name="app_email">help@bf4intel.com</string>
+  <string name="msg_info_join_gplus">Join our community on G+</string>
+  <string name="msg_info_join_tweet">Tweet with us</string>
+  <string name="msg_info_email">Send us an e-mail</string>
+  <string name="msg_about_help_text">If you ever encounter any issues with BF4 Intel, you can count on us
+    to help. Just tap one of the buttons below to get started!
+  </string>
+  <string name="msg_about_help_heading">Need help?</string>
+
+  <!--News-->
+  <string name="msg_error_not_found">Resource not found.</string>
+  <string name="msg_empty_news">No news found.</string>
+  <string name="text_divider">|</string>
+
+  <!--Generic used in various places of app-->
+  <string name="unknown">Unknown</string>
+  <string name="empty"/>
+  <string name="na">N/A</string>
+  <string name="msg_empty_stats">No stats found.</string>
+  <string name="label_share">Share</string>
+  <string name="toast_unimplemented_functionality">Unimplemented functionality.</string>
+  <string name="toast_please_log_in">@string/toast_unimplemented_functionality</string>  <!-- TODO: Will replace with login message once login available-->
+  <string name="award_available">Available in&#160;</string> <!--&#160; stands for empty space-->
+
+  <string name="create_post_header">Post content</string>
+  <string name="create_post_hint">Post message here&#8230;</string>
+  <string name="new_thread_header">Thread title</string>
+  <string name="new_thread_title_hint">When is next patch coming out?</string>
+  <string name="new_thread_content_header">Content</string>
+  <string name="new_thread_content_hint">What is date for new patch</string>
+  <string name="msg_empty_comments">No comments found.</string>
+  <string name="msg_sending">Sending&#8230;</string>
+  <string name="msg_enter_comment">Enter a comment!</string>
+  <string name="msg_comment_ok">Comment posted!</string>
+  <string name="msg_error_gate_redirect">Please login to continue.</string>
+  <string name="msg_error_already_upvoted">You\'ve already hooah\'d this post!</string>
+  <string name="done">Done</string>
+  <string name="label_read">Read</string>
+  <string name="label_discuss">Discuss</string>
+  <string name="label_comment">Comment</string>
+  <string name="hint_comment">Your comment here&#8230;</string>
+  <string name="num_hooahs">%1$s hooahs</string>
+  <string name="num_comments">%1$s comments</string>
+  <string name="title_revoke_hooah">Revoke hooah</string>
+  <string name="title_hooah">Hooah</string>
+  <string name="title_unhooah">Un-hooah</string>
+  <string name="msg_user_said_hooah">You said hooah</string>
+  <string name="label_sort_all">Show all</string>
+  <string name="label_sort_categorized">Select category</string>
+  <string name="label_sort_progress">By progress</string>
+  <string name="label_completed">Completed</string>
+  <string name="label_offline_mode">Offline mode</string>
+  <string name="assignment_prerequisite">Pre-requisites</string>
+  <string name="assignment_requirements">Award Requirements</string>
+  <string name="assignment_reward">Reward</string>
+  <string name="label_viewing">Viewing %s</string>
+  <string name="label_in_a_round">In a round</string>
+
+  <string name="label_information">Information</string>
+  <string name="damage">Damage</string>
+  <string name="hip_fire">Hip Fire</string>
+  <string name="range">Range</string>
+  <string name="fire_modes">Fire Modes</string>
+  <string name="fire_mode_single">Single</string>
+  <string name="fire_mode_burst">Burst</string>
+  <string name="fire_mode_auto">Auto</string>
+  <string name="kills_per_shot">Kills per shot</string>
+  <string name="time_equipped">Time equipped</string>
+  <string name="rate_of_fire">Rate of fire</string>
+  <string name="label_description">Description</string>
+  <string name="stat_item_title">%1$s. %2$s</string>
+  <string name="team">Team</string>
+
+  <string name="settings_title_user_in_crash_report">Send username in crash log</string>
+  <string name="settings_summary_user_in_crash_report">By keeping this option checked you are helping us to reproduce and solve reported issues faster.</string>
+</resources>

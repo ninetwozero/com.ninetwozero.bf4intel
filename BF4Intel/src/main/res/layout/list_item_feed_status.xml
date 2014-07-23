@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/WhiteContainerFeed">
+
+  <include layout="@layout/list_item_feed_tpl_top"/>
+
+  <RelativeLayout
+    style="@style/WhiteContainerContentAreaWrapper"
+    android:id="@+id/wrap_content_area"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <TextView
+      style="@style/feed_content"
+      android:id="@+id/content"
+      />
+
+    <LinearLayout
+      android:id="@+id/wrap_preview"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:layout_below="@id/content"
+      android:visibility="gone"
+      >
+
+      <TextView
+        android:id="@+id/preview_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small"
+        android:layout_marginTop="@dimen/spacing_m"/>
+
+      <ImageView
+        android:id="@+id/link_image"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:contentDescription="@string/cdesc_status_link_image"/>
+    </LinearLayout>
+    <TextView
+      style="@style/SmallMetaText"
+      android:layout_below="@id/wrap_preview"
+      />
+  </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,7 @@
+<resources>
+  <integer name="num_cols">1</integer>
+
+  <!-- Home -->
+  <dimen name="home_logo_size">192dp</dimen>
+  <dimen name="home_logo_margin_top">@dimen/spacing_xxl</dimen>
+</resources>

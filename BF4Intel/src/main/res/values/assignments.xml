@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- SP -->
+  <string name="assignments_sp_name_01">Tombstone Actual (Campaign)</string>
+  <string name="assignments_sp_name_02">Fang of the Underworld (Campaign)</string>
+  <string name="assignments_sp_name_03">A Trapped Wolf Will (Campaign)</string>
+  <string name="assignments_sp_name_04">To Valhalla (Campaign)</string>
+  <string name="assignments_sp_name_05">Peace Maker (Campaign)</string>
+  <string name="assignments_sp_name_06">Final Duty (Campaign)</string>
+  <string name="assignments_sp_name_07">Baku Bronze (Campaign)</string>
+  <string name="assignments_sp_name_08">Baku Silver (Campaign)</string>
+  <string name="assignments_sp_name_09">Baku Gold (Campaign)</string>
+  <string name="assignments_sp_name_10">Shanghai Bronze (Campaign)</string>
+  <string name="assignments_sp_name_11">Shanghai Silver (Campaign)</string>
+  <string name="assignments_sp_name_12">Shanghai Gold (Campaign)</string>
+  <string name="assignments_sp_name_13">South China Sea Bronze (Campaign)</string>
+  <string name="assignments_sp_name_14">South China Sea Silver (Campaign)</string>
+  <string name="assignments_sp_name_15">South China Sea Gold (Campaign)</string>
+  <string name="assignments_sp_name_16">Singapore Bronze (Campaign)</string>
+  <string name="assignments_sp_name_17">Singapore Silver (Campaign)</string>
+  <string name="assignments_sp_name_18">Singapore Gold (Campaign)</string>
+  <string name="assignments_sp_name_19">Kunlun Mountains Bronze (Campaign)</string>
+  <string name="assignments_sp_name_20">Kunlun Mountains Silver (Campaign)</string>
+  <string name="assignments_sp_name_21">Kunlun Mountains Gold (Campaign)</string>
+  <string name="assignments_sp_name_22">Tashgar Bronze (Campaign)</string>
+  <string name="assignments_sp_name_23">Tashgar Silver (Campaign)</string>
+  <string name="assignments_sp_name_24">Tashgar Gold (Campaign)</string>
+  <string name="assignments_sp_name_25">Suez Bronze (Campaign)</string>
+  <string name="assignments_sp_name_26">Suez Silver (Campaign)</string>
+  <string name="assignments_sp_name_27">Suez Gold (Campaign)</string>
+
+  <!-- MP -->
+  <string name="assignments_mp_name_01">Assault Basic</string>
+  <string name="assignments_mp_name_02">Engineer Basic</string>
+  <string name="assignments_mp_name_03">Recon Basic</string>
+  <string name="assignments_mp_name_04">Support Basic</string>
+  <string name="assignments_mp_name_05">Land Vehicle Basic</string>
+  <string name="assignments_mp_name_06">Aircraft Basic</string>
+  <string name="assignments_mp_name_07">Watercraft Basic</string>
+  <string name="assignments_mp_name_08">Carbine Basic</string>
+  <string name="assignments_mp_name_09">PDW Basic</string>
+  <string name="assignments_mp_name_10">Shotgun Basic</string>
+  <string name="assignments_mp_name_11">Conqueror</string>
+  <string name="assignments_mp_name_12">Rusher</string>
+  <string name="assignments_mp_name_13">Obliterator</string>
+  <string name="assignments_mp_name_14">By My Command</string>
+  <string name="assignments_mp_name_15">Blade Runner</string>
+  <string name="assignments_mp_name_16">Assault Veteran</string>
+  <string name="assignments_mp_name_17">Engineer Veteran</string>
+  <string name="assignments_mp_name_18">Recon Veteran</string>
+  <string name="assignments_mp_name_19">Support Veteran</string>
+  <string name="assignments_mp_name_20">Land Vehicles Veteran</string>
+  <string name="assignments_mp_name_21">Aircraft Veteran</string>
+  <string name="assignments_mp_name_22">Watercraft Veteran</string>
+  <string name="assignments_mp_name_23">Carbine Veteran</string>
+  <string name="assignments_mp_name_24">PDW Veteran</string>
+  <string name="assignments_mp_name_25">Shotgun Veteran</string>
+  <string name="assignments_mp_name_26">Tin Foil Hat</string>
+  <string name="assignments_mp_name_27">We\'ll Meet Again</string>
+  <string name="assignments_mp_name_28">Leave No Man Behind</string>
+  <string name="assignments_mp_name_29">Wrecking Ball</string>
+  <string name="assignments_mp_name_30">Stealth Assassin</string>
+  <string name="assignments_mp_name_31">Assault Expert</string>
+  <string name="assignments_mp_name_32">Engineer Expert</string>
+  <string name="assignments_mp_name_33">Recon Expert</string>
+  <string name="assignments_mp_name_34">Support Expert</string>
+  <string name="assignments_mp_name_35">Offensive Commander</string>
+  <string name="assignments_mp_name_36">Hitman</string>
+  <string name="assignments_mp_name_37">Land Warrior</string>
+  <string name="assignments_mp_name_38">Air Warrior</string>
+  <string name="assignments_mp_name_39">Taxi Driver</string>
+  <string name="assignments_mp_name_40">Wall of Shotgun</string>
+  <string name="assignments_mp_name_41">Swedish Steel</string>
+  <string name="assignments_mp_name_42">Made in China</string>
+  <string name="assignments_mp_name_43">From Russia With Lead</string>
+  <string name="assignments_mp_name_44">American Classics</string>
+  <string name="assignments_mp_name_45">Melee Expert</string>
+
+  <!-- SECOND ASSAULT -->
+  <string name="assignments_xp0_name_01">Fire Starter</string>
+  <string name="assignments_xp0_name_02">Dead Stop</string>
+  <string name="assignments_xp0_name_03">Express Train</string>
+  <string name="assignments_xp0_name_04">Co-Pilot</string>
+  <string name="assignments_xp0_name_05">Dust Devil</string>
+  <string name="assignments_xp0_name_06">Eagle\'s Nest</string>
+  <string name="assignments_xp0_name_07">Air Mail</string>
+  <string name="assignments_xp0_name_08">Scorched</string>
+  <string name="assignments_xp0_name_09">Re-Mastered</string>
+  <string name="assignments_xp0_name_10">Perfect Landing</string>
+
+  <!-- CHINA RISING -->
+  <string name="assignments_xp1_name_01">Safe Raiding</string>
+  <string name="assignments_xp1_name_02">Eyes in the Sky</string>
+  <string name="assignments_xp1_name_03">Open Fire</string>
+  <string name="assignments_xp1_name_04">Make a dent</string>
+  <string name="assignments_xp1_name_05">Powder Keg</string>
+  <string name="assignments_xp1_name_06">Need Only One</string>
+  <string name="assignments_xp1_name_07">Mother Of All Bombs</string>
+  <string name="assignments_xp1_name_08">Multi Talent</string>
+  <string name="assignments_xp1_name_09">I\'m Dynamite</string>
+  <string name="assignments_xp1_name_10">Middle King</string>
+
+  <!--Naval Strike -->
+  <string name="assignments_xp2_name_01">Titans of Steel</string>
+  <string name="assignments_xp2_name_02">Spare Time Sniper</string>
+  <string name="assignments_xp2_name_23">Packing a Punch</string>
+  <string name="assignments_xp2_name_04">Swiss Cheese</string>
+  <string name="assignments_xp2_name_05">Always Deadly</string>
+  <string name="assignments_xp2_name_06">Curve Ball</string>
+  <string name="assignments_xp2_name_07">Multi Tool</string>
+  <string name="assignments_xp2_name_08">Death From Below</string>
+  <string name="assignments_xp2_name_09">Scourge of the Sea</string>
+  <string name="assignments_xp2_name_10">Giant Slayer</string>
+
+  <!--Dragon's Teeth-->
+  <string name="assignments_xp3_name_01">Big Splash</string>
+  <string name="assignments_xp3_name_02">Lions and Tigers and Bears</string>
+  <string name="assignments_xp3_name_03">Not The Weakest Link</string>
+  <string name="assignments_xp3_name_04">The \'I\' In Team</string>
+  <string name="assignments_xp3_name_05">Vanguard</string>
+  <string name="assignments_xp3_name_06">Road Warrior</string>
+  <string name="assignments_xp3_name_07">Remote Operator</string>
+  <string name="assignments_xp3_name_08">Recoil Kinetics</string>
+  <string name="assignments_xp3_name_09">Killjoy</string>
+  <string name="assignments_xp3_name_10">City Slicker</string>
+  <string name="assignments_xp3_play_xp3">Play a Dragon\'s Teeth map</string>
+
+  <!--GHOST-->
+  <string name="assignments_xp1_name_ghost1">Phantom Prospect</string>
+  <string name="assignments_xp2_name_ghost2">Phantom Trainee</string>
+  <string name="assignments_xp3_name_ghost3">Phantom Initiate</string>
+</resources>

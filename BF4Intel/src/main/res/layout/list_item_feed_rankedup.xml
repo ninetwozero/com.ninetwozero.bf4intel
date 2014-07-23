@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/WhiteContainerFeed">
+
+  <include layout="@layout/list_item_feed_tpl_top"/>
+
+  <RelativeLayout
+    style="@style/WhiteContainerContentAreaWrapper"
+    android:id="@+id/wrap_content_area"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+      android:id="@+id/rank_image"
+      android:layout_width="@dimen/feed_item_rank_image_width"
+      android:layout_height="@dimen/feed_item_rank_image_height"
+      android:layout_centerInParent="true"
+      android:layout_marginTop="@dimen/spacing_l"
+      android:src="@drawable/r0"
+      android:contentDescription="@string/cdesc_rank_image"/>
+
+    <TextView
+      android:id="@+id/rank_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo"
+      android:textColor="@color/darker_blue"
+      android:layout_below="@id/rank_image"
+      android:layout_centerHorizontal="true"/>
+
+    <TextView
+      style="@style/SmallMetaText"
+      android:layout_below="@id/game_name"/>
+  </RelativeLayout>
+</LinearLayout>

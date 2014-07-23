@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="multiplayer_score">Multiplayer score</string>
+  <string name="assault_score">Assault score</string>
+  <string name="engineer_score">Engineer score</string>
+  <string name="support_score">Support score</string>
+  <string name="recon_score">Recon score</string>
+  <string name="commander_score">Commander Score</string>
+  <string name="squad_score">Squad score</string>
+  <string name="vehicle_score">Vehicle score</string>
+  <string name="award_score">Award score</string>
+  <string name="unlock_score">Unlock Score</string>
+  <string name="total_score">Total score</string>
+  <string name="score_per_minute">Score per minute</string>
+
+  <string name="general_score">General</string>
+  <string name="kills">Kills</string>
+  <string name="deaths">Deaths</string>
+  <string name="kill_assists">Kill assists</string>
+  <string name="kd_ratio">K/D ratio</string>
+  <string name="kills_per_minute">Kills per minute</string>
+  <string name="wins">Wins</string>
+  <string name="losses">Losses</string>
+  <string name="shots_fired">Shots fired</string>
+  <string name="shots_hits">Shots hit</string>
+  <string name="accuracy">Accuracy</string>
+
+  <string name="game_modes">Game modes</string>
+  <string name="conquest">Conquest</string>
+  <string name="rush">Rush</string>
+  <string name="death_match">Deathmatch</string>
+  <string name="domination">Domination</string>
+  <string name="capture_the_flag">Capture the Flag</string>
+  <string name="obliteration">Obliteration</string>
+  <string name="air_superiority">Air Superiority</string>
+  <string name="defuse">Defuse</string>
+  <string name="carrier_assault">Carrier Assault</string>
+
+  <string name="team_score">Team</string>
+  <string name="repairs">Repairs</string>
+  <string name="revives">Revives</string>
+  <string name="heals">Heals</string>
+  <string name="resupplies">Resupplies</string>
+  <string name="avenger_kills">Avenger kills</string>
+  <string name="savior_kills">Savior kills</string>
+  <string name="suppression_assists">Suppression Assists</string>
+  <string name="quits">Quits</string>
+
+  <string name="extra_score">Extras</string>
+  <string name="dogtag_taken">Dogtags Taken</string>
+  <string name="vehicles_destroyed">Vehicles Destroyed</string>
+  <string name="vehicle_damage">Vehicle Damage</string>
+  <string name="headshots">Headshots</string>
+  <string name="longest_headshot">Longest Headshot</string>
+  <string name="highest_kill_streak">Highest Kill Streak</string>
+  <string name="nemesis_kills">Nemesis Kills</string>
+  <string name="highest_nemesis_streak">Highest Nemesis Streak</string>
+  <string name="score_per_shot">Score per shot</string>
+
+  <string name="game_mode_extra">Game mode extras</string>
+  <string name="flags_captured">Flags captured</string>
+  <string name="flags_defended">Flags defended</string>
+</resources>

@@ -23,7 +23,13 @@ local.properties
 #Gradle#
 #########
 .gradle
-app/build/*
-core/build/*
-BF4Droid/build/*
-Thumbs.db
+build/*
+*/build/*
+gradle/*
+
+# Various shit
+*Thumbs.db
+*.swp
+.DS_STORE
+lint-report.xml
+*.log

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/card_activity_bg">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_m">
+
+    <RelativeLayout
+      style="@style/NonListViewCard"
+      android:id="@+id/award_medal_container"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+
+      <FrameLayout
+        android:id="@+id/award_image_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+          android:id="@+id/award_medal"
+          android:layout_width="@dimen/award_details_medal_size"
+          android:layout_height="@dimen/award_details_medal_size"
+          android:contentDescription="@string/cdesc_award_medal"
+          android:layout_marginTop="@dimen/spacing_m"
+          android:layout_marginBottom="@dimen/spacing_m"
+          android:layout_gravity="center"/>
+
+        <TextView
+          android:id="@+id/medals_count"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="right|bottom"/>
+      </FrameLayout>
+
+
+      <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/award_completion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/award_image_container"/>
+
+      <TextView
+        android:id="@+id/award_completion_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/award_completion"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/spacing_m"
+        />
+
+      <TextView
+        android:id="@+id/medal_requirement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/award_completion"
+        android:singleLine="false"
+        android:layout_toLeftOf="@+id/award_completion_text"
+        android:layout_alignParentLeft="true"
+        />
+
+    </RelativeLayout>
+
+    <LinearLayout
+      style="@style/NonListViewCard"
+      android:id="@+id/expansion_award_container"
+      android:layout_width="match_parent"
+      android:gravity="center_vertical"
+      android:orientation="horizontal"
+      >
+
+      <ImageView
+        android:id="@+id/expansion_icon"
+        android:layout_width="@dimen/small_icon_size"
+        android:layout_height="@dimen/small_icon_size"
+        android:contentDescription="@string/cdesc_expansion_icon"
+        android:layout_marginRight="@dimen/spacing_m"
+        />
+
+      <TextView
+        android:id="@+id/expansion_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    </LinearLayout>
+
+    <RelativeLayout
+      style="@style/NonListViewCard"
+      android:id="@+id/award_ribbon_container">
+
+      <TextView
+        style="@style/RegularCardTitle"
+        android:id="@+id/ribbon_title"
+        android:layout_alignParentTop="true"
+        android:textColor="@android:color/holo_blue_light"
+        android:textStyle="bold"
+        />
+
+      <ImageView
+        android:id="@+id/award_ribbon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cdesc_award_ribbon"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ribbon_title"/>
+
+      <TextView
+        android:id="@+id/ribbons_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/award_ribbon"
+        android:layout_alignParentRight="true"
+        />
+
+      <TextView
+        android:id="@+id/ribbon_requirement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:layout_below="@id/award_ribbon"
+        android:layout_toLeftOf="@+id/ribbons_count"
+        android:layout_alignParentLeft="true"
+        />
+    </RelativeLayout>
+  </LinearLayout>
+</ScrollView>

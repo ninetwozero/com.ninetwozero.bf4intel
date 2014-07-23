@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/wrap_loading_progress"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/card_activity_bg"
+  android:gravity="center"
+  android:layout_centerInParent="true"
+  android:orientation="vertical"
+  >
+
+  <ProgressBar
+    style="?android:progressBarStyleLarge"
+    android:id="@+id/progress_bar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:indeterminate="true"
+    android:layout_marginBottom="@dimen/spacing_m"
+    />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/msg_downloading"
+    android:gravity="center"
+    android:textAppearance="@android:style/TextAppearance.Holo"
+    android:textColor="@color/text_on_card_bg"
+    android:fontFamily="sans-serif-light"
+    />
+</LinearLayout>

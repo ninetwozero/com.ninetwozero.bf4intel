@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	This file is part of BF4 Droid
+
+    BF4 Droid is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    BF4 Droid is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+-->
+<resources>
+  <color name="lighterred">#ff4444</color>
+  <color name="red">#ffcc0000</color>
+  <color name="green">#309030</color>
+  <color name="lighter_blue">#ff42b3f7</color>
+  <color name="blue">#ff3faaeb</color>
+  <color name="darker_blue">#308DBF</color>
+  <color name="paleblue">#E2F4FB</color>
+  <color name="white">#FFFFFF</color>
+  <color name="lightgrey">#CCCCCC</color>
+  <color name="grey">#848484</color>
+  <color name="darkgrey">#555555</color>
+  <color name="almostblack">#111111</color>
+  <color name="bg_grid_item">#88212121</color>
+  <color name="bg_grid_item_pressed">#77212121</color>
+  <color name="black">#000000</color>
+  <color name="translucent_black">#CC000000</color>
+
+  <!--Battle report -->
+  <color name="battlereport_won">#94cdf3</color>
+  <color name="battlereport_lost">#ff9f80</color>
+  <color name="battlereport_draw">#86b886</color>
+  <color name="table_battlereport_result_bg">#33FFFFFF</color>
+
+  <!-- NavigationDrawer colors -->
+  <color name="navigation_drawer_selected_bg">#29FFFFFF</color>
+  <color name="navigation_drawer_bg">#333333</color>
+  <color name="navigation_listview_divider">#444444</color>
+
+  <!-- Card related colors -->
+  <color name="card_action_selected_bg">#CCCCCC</color>
+  <color name="card_selected_overlay">#33FFFFFF</color>
+  <color name="card_meta_bg_color">#f0f0f0</color>
+  <color name="text_on_card_bg">#505050</color>
+  <color name="regular_card_title">#707070</color>
+  <color name="regular_card_subtitle">#808080</color>
+
+  <!-- News colors -->
+  <color name="news_comment_bg_selected">#EEEEEE</color>
+  <color name="news_link_item_bg">#CCC</color>
+  <color name="news_link_item_bg_selected">@color/news_comment_bg_selected</color>
+
+  <!-- Misc background colors -->
+  <color name="action_item_bg">#99FFFFFF</color>
+  <color name="login_activity_bg">#333333</color>
+  <color name="card_activity_bg">#DDDDDD</color>
+</resources>

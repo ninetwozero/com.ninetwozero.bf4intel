@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/WhiteContainerFeed">
+
+  <include layout="@layout/list_item_feed_tpl_top"/>
+
+  <RelativeLayout
+    style="@style/WhiteContainerContentAreaWrapper"
+    android:id="@+id/wrap_content_area"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+      android:id="@+id/wrap_level_info"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_s"
+      >
+
+      <TextView
+        android:id="@+id/level"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo"
+        android:textColor="@color/darker_blue"/>
+
+      <TextView
+        android:id="@+id/string_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small"
+        android:text="@string/msg_feed_levelcomplete_difficulty"
+        android:layout_below="@id/level"/>
+
+      <TextView
+        android:id="@+id/difficulty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small"
+        android:layout_toRightOf="@id/string_difficulty"
+        android:layout_below="@id/level"
+        android:layout_marginLeft="@dimen/spacing_s"
+        android:textColor="@color/darker_blue"
+        />
+
+      <LinearLayout
+        android:id="@+id/wrap_partner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/difficulty"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAppearance="@android:style/TextAppearance.Holo.Small"
+          android:text="@string/msg_feed_levelcomplete_partner"
+          />
+
+        <TextView
+          android:id="@+id/partner"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAppearance="@android:style/TextAppearance.Holo.Small"
+          android:textColor="@color/darker_blue"
+          android:layout_marginLeft="@dimen/spacing_s"
+          android:text="@string/na"
+          />
+      </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+      style="@style/SmallMetaText"
+      android:layout_below="@id/wrap_level_info"
+      />
+  </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/NavigationDrawerRow"
+  android:id="@+id/wrap_platoons">
+
+  <ImageView
+    android:id="@+id/platoon_image"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:contentDescription="@string/cdesc_platoon_badge" />
+
+  <TextView
+    android:id="@+id/platoon_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="@android:style/TextAppearance.Holo.Medium.Inverse"
+    android:layout_toRightOf="@id/platoon_image"
+    android:layout_marginLeft="@dimen/spacing_m" />
+
+  <ImageView
+    android:id="@+id/platoon_platform"
+    android:layout_width="39dp"
+    android:layout_height="11dp"
+    android:layout_below="@id/platoon_name"
+    android:layout_toRightOf="@id/platoon_image"
+    android:layout_marginLeft="@dimen/spacing_m"
+    android:contentDescription="@string/cdesc_platform_icon" />
+</RelativeLayout>

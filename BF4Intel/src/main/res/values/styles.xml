@@ -1,0 +1,304 @@
+<resources>
+
+  <!--
+      Base application theme, dependent on API level. This theme is replaced
+      by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+  -->
+  <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--
+        Theme customizations available in newer API levels can go in
+        res/values-vXX/styles.xml, while customizations related to
+        backward-compatibility can go here.
+    -->
+  </style>
+
+  <!-- Application theme. -->
+  <style name="AppTheme" parent="AppBaseTheme">
+    <item name="android:icon">@drawable/ic_actionbar_logo</item>
+  </style>
+
+  <style name="Bf4IntelTheme" parent="AppTheme">
+    <item name="android:homeAsUpIndicator">@drawable/ic_navigation_drawer</item>
+    <item name="android:icon">@drawable/ic_actionbar_logo</item>
+  </style>
+
+  <style name="AppTheme.NoActionBar" parent="Theme.AppCompat">
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+
+  <!-- Variant of the holographic (dark) theme that has no title bar and fills
+       the entire screen.  This theme
+       sets {@link android.R.attr#windowFullscreen} to true.  -->
+  <style name="AppTheme.NoActionBar.Fullscreen" parent="AppTheme.NoActionBar">
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+  </style>
+
+  <style name="separator">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">1dp</item>
+    <item name="android:background">#FFCCCCCC</item>
+    <item name="android:layout_marginTop">@dimen/spacing_m</item>
+    <item name="android:layout_marginBottom">@dimen/spacing_m</item>
+  </style>
+
+  <style name="heading">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
+    <item name="android:textColor">@android:color/darker_gray</item>
+    <item name="android:textAllCaps">true</item>
+    <item name="android:paddingTop">@dimen/spacing_s</item>
+    <item name="android:paddingBottom">@dimen/spacing_s</item>
+  </style>
+
+
+  <style name="SmallMetaText">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">@style/TextAppearance.Holo.Smallest</item>
+    <item name="android:textColor">@color/grey</item>
+  </style>
+
+  <style name="TextAppearance.Holo.Smallest" parent="@android:style/TextAppearance.Holo.Small">
+    <item name="android:textSize">@dimen/text_xs</item>
+  </style>
+
+  <style name="TextAppearance.Holo.MediumLarge" parent="@android:style/TextAppearance.Holo.Medium">
+    <item name="android:textSize">@dimen/text_ml</item>
+  </style>
+
+  <style name="TextAppearance.Holo.XLarge" parent="@android:style/TextAppearance.Holo.Large">
+    <item name="android:textSize">@dimen/text_xl</item>
+  </style>
+
+  <style name="TextAppearance.Holo.Huge" parent="@android:style/TextAppearance.Holo.Large">
+    <item name="android:textSize">@dimen/text_xxl</item>
+  </style>
+
+  <!-- MENU -->
+
+  <style name="NavigationDrawerRow">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingTop">@dimen/spacing_m</item>
+    <item name="android:paddingRight">@dimen/spacing_m</item>
+    <item name="android:paddingBottom">@dimen/spacing_m</item>
+    <item name="android:paddingLeft">@dimen/spacing_m</item>
+    <item name="android:background">?android:attr/activatedBackgroundIndicator</item>
+    <item name="android:textAllCaps">true</item>
+  </style>
+
+  <!-- Soldier "card" pseudo style -->
+  <style name="BaseWhiteContainer">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:background">@drawable/card_bg_selector</item>
+  </style>
+
+  <style name="RegularCard" parent="BaseWhiteContainer">
+    <item name="android:paddingTop">@dimen/spacing_m</item>
+    <item name="android:paddingBottom">@dimen/spacing_m</item>
+    <item name="android:paddingLeft">@dimen/side_spacing</item>
+    <item name="android:paddingRight">@dimen/side_spacing</item>
+  </style>
+
+  <style name="NonListViewCard" parent="RegularCard">
+    <item name="android:layout_marginBottom">@dimen/spacing_m</item>
+    <item name="android:orientation">vertical</item>
+  </style>
+
+  <style name="WhiteContainerFeed" parent="BaseWhiteContainer">
+    <item name="android:paddingTop">@dimen/spacing_s</item>
+    <item name="android:paddingRight">0dp</item>
+    <item name="android:paddingBottom">@dimen/spacing_s</item>
+    <item name="android:paddingLeft">@dimen/spacing_s</item>
+    <item name="android:minHeight">100dp</item>
+    <item name="android:orientation">vertical</item>
+  </style>
+
+  <style name="WhiteContainerContentAreaWrapper">
+    <item name="android:paddingTop">0dp</item>
+    <item name="android:paddingRight">@dimen/spacing_s</item>
+    <item name="android:paddingBottom">@dimen/spacing_s</item>
+    <item name="android:paddingLeft">@dimen/spacing_s</item>
+  </style>
+
+  <style name="CardListView">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:divider">@color/card_activity_bg</item>
+    <item name="android:dividerHeight">@dimen/spacing_m</item>
+    <item name="android:clipToPadding">false</item>
+    <item name="android:scrollbarStyle">outsideOverlay</item>
+  </style>
+
+  <!-- FEED -->
+
+  <style name="FeedCategoryBox">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_centerVertical">true</item>
+    <item name="android:layout_alignParentRight">true</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
+    <item name="android:textAllCaps">true</item>
+    <item name="android:textColor">@color/darker_blue</item>
+    <item name="android:background">@color/paleblue</item>
+    <item name="android:paddingTop">@dimen/spacing_xs</item>
+    <item name="android:paddingRight">@dimen/spacing_s</item>
+    <item name="android:paddingBottom">@dimen/spacing_xs</item>
+    <item name="android:paddingLeft">@dimen/spacing_s</item>
+  </style>
+
+  <style name="feed_wrap_user">
+    <item name="android:id">@+id/wrap_user</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginTop">@dimen/spacing_m</item>
+    <item name="android:layout_marginBottom">@dimen/spacing_s</item>
+    <item name="android:paddingRight">0dp</item>
+    <item name="android:paddingLeft">@dimen/spacing_m</item>
+  </style>
+
+
+  <style name="feed_avatar">
+    <item name="android:id">@+id/avatar</item>
+    <item name="android:layout_width">@dimen/avatar_size_l</item>
+    <item name="android:layout_height">@dimen/avatar_size_l</item>
+  </style>
+
+  <style name="feed_username">
+    <item name="android:id">@+id/username</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+
+    <item name="android:textColor">@color/darker_blue</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo.Medium</item>
+    <item name="android:layout_marginLeft">@dimen/spacing_m</item>
+  </style>
+
+  <style name="feed_content">
+    <item name="android:id">@+id/content</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
+    <item name="android:layout_below">@id/wrap_user</item>
+    <item name="android:layout_marginTop">@dimen/spacing_m</item>
+  </style>
+
+  <style name="GridItemCount">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingRight">@dimen/spacing_s</item>
+    <item name="android:textColor">@color/black</item>
+  </style>
+
+  <style name="LoginFormContainer">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_centerInParent">true</item>
+  </style>
+
+  <!-- Buttons -->
+  <style name="BaseButton">
+    <item name="android:layout_width">@dimen/standard_button_width</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">18sp</item>
+    <item name="android:textColor">@android:color/white</item>
+  </style>
+
+  <style name="BlueButton" parent="BaseButton">
+    <item name="android:background">@drawable/blue_button_background</item>
+  </style>
+
+  <style name="RedButton" parent="BaseButton">
+    <item name="android:background">@drawable/red_button_background</item>
+  </style>
+
+  <!--LIST ITEM TEXT-->
+  <style name="TextViewLightGrey">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
+    <item name="android:textColor">@color/darkgrey</item>
+  </style>
+
+  <style name="card_action_button">
+    <item name="android:layout_width">@dimen/send_button_size</item>
+    <item name="android:layout_height">@dimen/send_button_size</item>
+    <item name="android:alpha">0.6</item>
+    <item name="android:padding">8dp</item>
+    <item name="android:clickable">true</item>
+    <item name="android:background">@drawable/card_action_selector</item>
+  </style>
+
+  <!-- Card -->
+
+  <!-- Card related styles -->
+  <style name="RegularHeadingOverCard">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
+    <item name="android:fontFamily">sans-serif-light</item>
+    <item name="android:textSize">@dimen/heading_over_card_size</item>
+    <item name="android:textColor">@color/text_on_card_bg</item>
+    <item name="android:layout_marginBottom">@dimen/spacing_m</item>
+  </style>
+
+  <style name="RegularCardTitle">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo.Large</item>
+    <item name="android:fontFamily">sans-serif-light</item>
+    <item name="android:textColor">@color/regular_card_title</item>
+    <item name="android:textSize">@dimen/text_l</item>
+  </style>
+
+  <style name="RegularCardSubtitle">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
+    <item name="android:textColor">@color/regular_card_subtitle</item>
+    <item name="android:textSize">@dimen/text_s</item>
+  </style>
+
+  <style name="DefaultEmptyText">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_centerInParent">true</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
+    <item name="android:textColor">@color/text_on_card_bg</item>
+    <item name="android:fontFamily">sans-serif-light</item>
+    <item name="android:paddingLeft">@dimen/spacing_l</item>
+    <item name="android:paddingRight">@dimen/spacing_l</item>
+    <item name="android:gravity">center</item>
+  </style>
+
+  <style name="MiniCardGridView">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:numColumns">auto_fit</item>
+    <item name="android:columnWidth">@dimen/grid_view_column_width</item>
+    <item name="android:stretchMode">columnWidth</item>
+    <item name="android:gravity">center</item>
+    <item name="android:verticalSpacing">@dimen/grid_view_spacing</item>
+    <item name="android:horizontalSpacing">@dimen/grid_view_spacing</item>
+    <item name="android:clipToPadding">false</item>
+    <item name="android:padding">@dimen/spacing_m</item>
+    <item name="android:scrollbarStyle">outsideOverlay</item>
+  </style>
+
+  <style name="NavigationDrawerHeading">
+    <item name="android:paddingTop">@dimen/spacing_m</item>
+    <item name="android:paddingRight">@dimen/spacing_m</item>
+    <item name="android:paddingBottom">@dimen/spacing_s</item>
+    <item name="android:paddingLeft">@dimen/spacing_m</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small.Inverse</item>
+    <item name="android:textAllCaps">true</item>
+    <item name="android:textColor">@color/lightgrey</item>
+  </style>
+
+</resources>

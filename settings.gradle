@@ -1,1 +1,1 @@
-include ':BF4Droid'
+include ':core', ':BF4Intel'

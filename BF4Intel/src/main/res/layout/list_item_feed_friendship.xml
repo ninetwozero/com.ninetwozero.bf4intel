@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/WhiteContainerFeed">
+
+  <include layout="@layout/list_item_feed_tpl_top"/>
+
+  <RelativeLayout
+    style="@style/WhiteContainerContentAreaWrapper"
+    android:id="@+id/wrap_content_area"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:id="@+id/wrap_friend"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:gravity="center"
+      android:layout_marginTop="@dimen/spacing_l"
+      android:layout_marginBottom="@dimen/spacing_l">
+
+      <ImageView
+        style="@style/feed_avatar"
+        android:id="@+id/friend_avatar"
+        android:src="@drawable/test_gravatar"
+        android:contentDescription="@string/cdesc_user_gravatar"
+        />
+
+      <TextView
+        style="@style/feed_username"
+        android:id="@+id/friend_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      />
+    </LinearLayout>
+
+    <TextView
+      style="@style/SmallMetaText"
+
+      android:layout_below="@id/wrap_friend"/>
+  </RelativeLayout>
+</LinearLayout>

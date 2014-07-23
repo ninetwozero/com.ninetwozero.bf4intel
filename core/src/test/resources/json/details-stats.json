@@ -1,0 +1,235 @@
+{
+  "type": "success",
+  "message": "OK",
+  "data": {
+    "personaId": 200661244,
+    "platformInt": 1,
+    "generalStats": {
+      "vehiclesDestroyed": "918",
+      "kitMaxMeleeKillsInRound": {
+
+      },
+      "skill": "244",
+      "elo": 0,
+      "sc_award": "1870650",
+      "revives": "185",
+      "kitLosses": {
+
+      },
+      "rushWlr": null,
+      "gameModesScore": {
+        "32": "400",
+        "1": "1074540",
+        "2": "28330",
+        "1024": "12777",
+        "64": "1074540",
+        "8": "400",
+        "2097152": "39265",
+        "16777216": 0
+      },
+      "teamdeathmatch": "400",
+      "kills": "4836",
+      "kdRatio": 1.22,
+      "sc_bonus": "50712",
+      "kitMaxHeadshotsInRound": {
+
+      },
+      "rank": "69",
+      "flagrunner": null,
+      "rsKills": 0,
+      "kitDeployments": {
+
+      },
+      "kdRatioDelta": null,
+      "kitTimesInPercentage": {
+        "8": 29.2217513565,
+        "1": 17.8486276684,
+        "2": 22.6016871955,
+        "2048": 16.9072042457,
+        "32": 13.4207295338
+      },
+      "squadRushWlr": null,
+      "quitPercentage": 4.8101265823,
+      "spm_engineer": null,
+      "accuracy": 11.2203783594,
+      "sc_unlock": "22400",
+      "kitLongestHeadshot": {
+
+      },
+      "reDeploys": null,
+      "clubRepution": null,
+      "rushLosses": null,
+      "resupplies": "354",
+      "spm_support": null,
+      "repairs": "1252",
+      "shotsFired": "315943",
+      "maxHeadshotsInRound": null,
+      "score": "4554408",
+      "kitMeleeKills": {
+
+      },
+      "timePlayedDelta": 0,
+      "engineer": "434771",
+      "timePlayed": "535037",
+      "kitScores": {
+        "8": "447509",
+        "1": "364040",
+        "2": "434771",
+        "2048": "113125",
+        "32": "232170"
+      },
+      "suppressionAssists": "90",
+      "rsDeaths": 0,
+      "timePlayedSinceLastReset": 0,
+      "winPercentage": null,
+      "tdmWlr": null,
+      "obliteration": "39265",
+      "wlRatio": 0.0,
+      "meleeKills": null,
+      "numRounds": "395",
+      "maxKillsInRound": null,
+      "killStreakBonus": "23",
+      "lastReset": 0,
+      "spm_recon": null,
+      "rsShotsFired": 0,
+      "shotsHit": "35450",
+      "serviceStarsGameModes": [
+        {
+          "serviceStars": 51,
+          "serviceStarsProgress": 16.8571428571,
+          "valueNeeded": 1092000,
+          "codeNeeded": "sc_conquest",
+          "actualValue": "1074540"
+        },
+        {
+          "serviceStars": 2,
+          "serviceStarsProgress": 37.9696969697,
+          "valueNeeded": 49500,
+          "codeNeeded": "sc_obliteration",
+          "actualValue": "39265"
+        },
+        {
+          "serviceStars": 1,
+          "serviceStarsProgress": 88.8666666667,
+          "valueNeeded": 30000,
+          "codeNeeded": "sc_rush",
+          "actualValue": "28330"
+        }
+      ],
+      "numLosses": "185",
+      "spm_assault": null,
+      "squadDMLosses": null,
+      "maxScoreInRound": null,
+      "sqdm": "400",
+      "serviceStarsProgress": {
+        "8": 30.2971153846,
+        "1": 34.864516129,
+        "2": 31.886259542,
+        "2048": 65.625,
+        "32": 73.2611940299
+      },
+      "rsScorePerMinute": 0.0,
+      "rsScore": 0,
+      "conquest": "1074540",
+      "rsNumLosses": 0,
+      "kitWins": {
+
+      },
+      "rushWins": null,
+      "sc_vehicle": "1043630",
+      "conquestlarge": "1074540",
+      "sc_team": "52001",
+      "totalScore": "4554408",
+      "heals": "1105",
+      "kitTimes": {
+        "8": "73782",
+        "1": "45066",
+        "2": "57067",
+        "2048": "42689",
+        "32": "33886"
+      },
+      "longestHeadshot": 270.01,
+      "conquestWlr": null,
+      "tdmLosses": null,
+      "longestWinStreak": null,
+      "support": "232170",
+      "mcomDefendKills": "1",
+      "vehiclesDestroyedAssists": null,
+      "squadDMWins": null,
+      "kitKills": {
+
+      },
+      "kitMaxScoreInRound": {
+
+      },
+      "kitDeaths": {
+
+      },
+      "squadRushLosses": null,
+      "flagDefend": "878",
+      "domination": "12777",
+      "nemesisStreak": "11",
+      "elimination": 0,
+      "numWins": "191",
+      "killAssists": "172",
+      "conquestWins": null,
+      "scorePerMinuteDelta": 0,
+      "kitHeadshots": {
+
+      },
+      "rush": "28330",
+      "sc_objective": 0,
+      "rsTimePlayed": 0,
+      "vehicleScores": {
+        "32": "324272",
+        "1": 0,
+        "2": "227820",
+        "4": "143620",
+        "8": "100326",
+        "16": "78382"
+      },
+      "rsShotsHit": 0,
+      "recon": "447509",
+      "nemesisKills": "96",
+      "sc_squad": "253769",
+      "vehicleDamage": "1045",
+      "kitKillStreak": {
+
+      },
+      "serviceStars": {
+        "8": 4,
+        "1": 2,
+        "2": 3,
+        "2048": 5,
+        "32": 1
+      },
+      "dogtagsTaken": "242",
+      "deaths": "3979",
+      "commander": "113125",
+      "tdmWins": null,
+      "headshots": "443",
+      "avengerKills": "274",
+      "conquestLosses": null,
+      "rsNumWins": 0,
+      "squadDmWlr": null,
+      "maxMeleeKillsInRound": null,
+      "rankScore": "4528220",
+      "kitMaxKillsInRound": {
+
+      },
+      "flagCaptures": "1222",
+      "scoreDelta": 0,
+      "timeDead": null,
+      "scorePerMinute": 510,
+      "assault": "364040",
+      "combatScore": "2635245",
+      "scoreMultiplier": 0,
+      "mcomDestroy": 0.0,
+      "squadRushWins": null,
+      "sc_general": "1066860",
+      "saviorKills": "133"
+    },
+    "statsTemplate": "profile.warsawdetailedstatspopulate",
+    "mySoldier": false
+  }
+}

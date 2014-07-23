@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/WhiteContainerFeed">
+
+  <include layout="@layout/list_item_feed_tpl_top"/>
+
+  <RelativeLayout
+    style="@style/WhiteContainerContentAreaWrapper"
+    android:id="@+id/wrap_content_area"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableLayout
+      android:id="@+id/content_grid"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/wrap_battlepack_info">
+    </TableLayout>
+
+    <TextView
+      style="@style/SmallMetaText"
+
+      android:layout_marginTop="@dimen/spacing_m"
+      android:layout_below="@id/content_grid"/>
+  </RelativeLayout>
+</LinearLayout>

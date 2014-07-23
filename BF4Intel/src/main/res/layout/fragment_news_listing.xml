@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/card_activity_bg"
+  >
+
+  <ListView
+    style="@style/CardListView"
+    android:id="@android:id/list"
+    android:dividerHeight="0dp"
+    />
+
+  <TextView
+    style="@style/DefaultEmptyText"
+    android:id="@android:id/empty"
+    android:text="@string/msg_empty_news"
+    android:layout_centerInParent="true"
+    />
+
+  <include layout="@layout/loading_progress" />
+  <include layout="@layout/inlined_error_message" />
+</RelativeLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/WhiteContainerFeed"
+  >
+
+  <include layout="@layout/list_item_feed_tpl_top"/>
+
+  <RelativeLayout
+    style="@style/WhiteContainerContentAreaWrapper"
+    android:id="@+id/wrap_content_area"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+      android:id="@+id/wrap_battlepack_info"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:layout_marginTop="@dimen/spacing_m"
+      >
+
+      <ImageView
+        android:id="@+id/battlepack_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/battlepack_silver"
+        android:contentDescription="@string/cdesc_battlepack_icon"
+        />
+
+      <TextView
+        android:id="@+id/battlepack_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Large"
+        android:textColor="@color/darker_blue"
+        android:layout_marginLeft="@dimen/spacing_m"
+        />
+    </LinearLayout>
+
+    <TableLayout
+      android:id="@+id/content_grid"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/wrap_battlepack_info">
+    </TableLayout>
+
+    <TextView
+      style="@style/SmallMetaText"
+      android:layout_marginTop="@dimen/spacing_m"
+      android:layout_below="@id/content_grid"
+      />
+  </RelativeLayout>
+</LinearLayout>

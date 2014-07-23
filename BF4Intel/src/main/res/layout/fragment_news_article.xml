@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/card_activity_bg"
+  >
+  <RelativeLayout
+    android:id="@+id/wrap_form"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/send_button_size"
+    android:layout_alignParentBottom="true"
+    android:background="@color/white"
+    >
+    <ImageView
+      android:id="@+id/button_send"
+      android:layout_width="@dimen/send_button_size"
+      android:layout_height="@dimen/send_button_size"
+      android:text="@string/label_comment"
+      android:layout_alignParentRight="true"
+      android:src="@drawable/ic_menu_send"
+      android:contentDescription="@string/cdesc_button"
+      />
+    <EditText
+      android:id="@+id/input_content"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_toLeftOf="@id/button_send"
+      android:inputType="text"
+      android:hint="@string/hint_comment"
+      android:layout_alignBottom="@id/button_send"
+      />
+  </RelativeLayout>
+  <ExpandableListView
+    android:id="@android:id/list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@id/wrap_form"
+    android:headerDividersEnabled="false"
+    android:groupIndicator="@null"
+    />
+  <ScrollView
+    android:id="@android:id/empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_above="@id/wrap_form"
+    >
+    <include
+      android:id="@+id/header_when_empty"
+      layout="@layout/list_header_news_article"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      />
+  </ScrollView>
+  <include layout="@layout/loading_progress"/>
+  <include layout="@layout/inlined_error_message"/>
+</RelativeLayout>

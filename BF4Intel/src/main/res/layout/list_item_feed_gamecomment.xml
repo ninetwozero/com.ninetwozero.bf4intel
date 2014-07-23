@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/WhiteContainerFeed">
+
+  <include layout="@layout/list_item_feed_tpl_top"/>
+
+  <RelativeLayout
+    style="@style/WhiteContainerContentAreaWrapper"
+    android:id="@+id/wrap_content_area"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+      android:id="@+id/server_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+      android:textColor="@color/darker_blue"
+      android:maxLines="1"
+      />
+
+    <TextView
+      android:id="@+id/game_mode"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo.Small"
+      android:textColor="@color/darker_blue"
+      android:textAllCaps="true"
+      android:layout_below="@id/server_name"
+      />
+
+    <TextView
+      android:id="@+id/string_map_game_separator"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo.Small"
+      android:text="@string/at"
+      android:textAllCaps="true"
+      android:layout_marginLeft="@dimen/spacing_s"
+      android:layout_marginRight="@dimen/spacing_s"
+      android:layout_toRightOf="@id/game_mode"
+      android:layout_below="@id/server_name"
+      />
+
+    <TextView
+      android:id="@+id/map_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo.Small"
+      android:textColor="@color/darker_blue"
+      android:textAllCaps="true"
+      android:layout_below="@id/server_name"
+      android:layout_toRightOf="@id/string_map_game_separator"
+      />
+
+    <TextView
+      android:id="@+id/comment"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo"
+      android:textAllCaps="true"
+      android:layout_below="@id/map_name"
+      android:layout_marginTop="@dimen/spacing_s"
+      />
+
+    <TextView
+      style="@style/SmallMetaText"
+      android:layout_below="@id/comment"
+      />
+  </RelativeLayout>
+</LinearLayout>

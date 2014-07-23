@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/SlidingMenuRow"
-    android:id="@+id/text1"
-    android:textAppearance="@android:style/TextAppearance.Holo.Medium.Inverse" />

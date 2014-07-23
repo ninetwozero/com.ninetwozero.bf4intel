@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:bf4intel="http://schemas.android.com/apk/res-auto">
+
+  <item
+    android:id="@+id/ab_action_search"
+    android:title="@string/label_search"
+    android:icon="@drawable/ic_menu_search"
+    bf4intel:showAsAction="always"
+    bf4intel:actionViewClass="android.support.v7.widget.SearchView"
+    />
+  <item
+    android:id="@+id/ab_action_refresh"
+    android:actionLayout="@layout/actionbar_indeterminate_progress"
+    android:title="@string/menu_refresh"
+    android:icon="@drawable/ic_action_refresh"
+    bf4intel:showAsAction="never"
+    />
+  <item
+    android:id="@+id/ab_action_about"
+    android:title="@string/menu_about"
+    bf4intel:showAsAction="never"
+    />
+  <item
+    android:id="@+id/ab_action_logout"
+    android:title="@string/menu_logout"
+    bf4intel:showAsAction="never"
+    android:visible="false"
+    />
+</menu>

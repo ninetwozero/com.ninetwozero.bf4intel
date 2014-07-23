@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="cdesc_gravatar">Gravatar</string>
+  <string name="cdesc_soldier_avatar">Soldier avatar</string>
+  <string name="cdesc_platoon_badge">Platoon badge</string>
+  <string name="cdesc_platform_icon">Platform icon</string>
+  <string name="cdesc_rank_image">Rank image</string>
+  <string name="cdesc_status_link_image">Extra content image</string>
+  <string name="cdesc_assignment_image">Assignment image</string>
+  <string name="cdesc_assignment_prerequisite">Assignment pre-requirement image</string>
+  <string name="cdesc_assignment_expansion_icon">Assignment expansion icon</string>
+
+  <string name="cdesc_battlereport_map_image">Battlereport map image</string>
+
+  <string name="cdesc_weapon_image">Weapon image</string>
+  <string name="cdesc_vehicle_image">Vehicle image</string>
+  <string name="cdesc_award_medal">Award medal</string>
+  <string name="cdesc_award_ribbon">Award ribbon</string>
+  <string name="cdesc_battlepack_icon">Battlepack icon</string>
+  <string name="cdesc_battle_pack_icon">Battle Pack Icon</string>
+  <string name="cdesc_award_image">Award image</string>
+  <string name="cdesc_user_gravatar">User gravatar</string>
+
+  <string name="cdesc_service_star">Service star image</string>
+
+  <string name="cdesc_unlock_image">Unlock image</string>
+  <string name="cdesc_list_group_indicator">Group indicator</string>
+  <string name="cdesc_button">Button</string>
+  <string name="cdesc_hooah">Hooah</string>
+  <string name="cdesc_overflow_menu">Overflow menu</string>
+
+  <string name="cdesc_item_image">Item image</string>
+  <string name="cdesc_logo">Logo</string>
+  <string name="cdesc_action_item">Action item</string>
+  <string name="cdesc_unlock_status_icon">Unlock status icon</string>
+  <string name="cdesc_reward_image">Reward image</string>
+  <string name="cdesc_completion_indicator">Completion indicator</string>
+  <string name="cdesc_expansion_icon">Expansion icon</string>
+</resources>

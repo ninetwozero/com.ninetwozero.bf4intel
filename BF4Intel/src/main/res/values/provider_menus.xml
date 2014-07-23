@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="ab_sort_menus">
+    <item>Sort by categories</item>
+    <item>Sort by progress</item>
+  </string-array>
+
+  <string-array name="ab_weapons_sort_menus">
+    <item>Sort by kills</item>
+    <item>Sort by progress</item>
+  </string-array>
+
+  <string-array name="ab_award_filter_menu">
+    <item>Kits</item>
+    <item>Game modes</item>
+    <item>Weapons</item>
+    <item>Vehicles</item>
+    <item>Teams</item>
+  </string-array>
+
+  <string-array name="ab_assignment_filter_menu">
+    <item>Bronze</item>
+    <item>Silver</item>
+    <item>Gold</item>
+    <item>Single player</item>
+  </string-array>
+
+  <string-array name="ab_weapon_filter_menu">
+    <item>Assault Rifles</item>
+    <item>Carbines</item>
+    <item>Shotguns</item>
+    <item>LMG</item>
+    <item>PDW</item>
+    <item>DMR</item>
+    <item>Sniper Rifles</item>
+    <item>Hand Guns</item>
+    <item>Hand Grenades</item>
+    <item>Knives</item>
+    <item>Gadget</item>
+  </string-array>
+</resources>

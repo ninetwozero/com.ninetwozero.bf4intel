@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="soldier_top_leaderboards">Top Leaderboards</string>
+  <string name="leaderboard_division">Division %1$s %2$s</string>
+
+  <string name="lb_name_accuracy">Accuracy</string>
+  <string name="lb_name_assault">Assault score</string>
+  <string name="lb_name_assault_rifles">Assault Rifles</string>
+  <string name="lb_name_carbine_rifles">Carbines</string>
+  <string name="lb_name_commander">Commander score</string>
+  <string name="lb_name_marksman_rifles">Marksman Rifles</string>
+  <string name="lb_name_engineer">Engineer score</string>
+  <string name="lb_name_fast_attack_crafts">Fast Attack Crafts</string>
+  <string name="lb_name_handguns">Handguns</string>
+  <string name="lb_name_grenades">Hand grenades</string>
+  <string name="lb_name_heals">Heals</string>
+  <string name="lb_name_kdr">Kill death ratio</string>
+  <string name="lb_name_kills">Kills</string>
+  <string name="lb_name_light_machine_guns">Light Machine Guns</string>
+  <string name="lb_name_melee">Melee Weapons</string>
+  <string name="lb_name_personal_defence_weapons">Personal Defense</string>
+  <string name="lb_name_recon">Recon score</string>
+  <string name="lb_name_repairs">Repairs</string>
+  <string name="lb_name_revives">Revives</string>
+  <string name="lb_name_rocket_launchers">Rocket Launchers</string>
+  <string name="lb_name_score">Score</string>
+  <string name="lb_name_shotguns">Shotguns</string>
+  <string name="lb_name_skill">Skill</string>
+  <string name="lb_name_sniper_rifles">Sniper Rifles</string>
+  <string name="lb_name_spm">Score per minute</string>
+  <string name="lb_name_squad">Squad score</string>
+  <string name="lb_name_support">Support score</string>
+  <string name="lb_name_time_played">Time played</string>
+  <string name="lb_name_attach_helicopter">Attack Helicopter</string>
+  <string name="lb_name_scout_helicopter">Scout Helicopter</string>
+  <string name="lb_name_attack_jet">Attack Jet</string>
+  <string name="lb_name_fighter_jet">Fighter Jet</string>
+  <string name="lb_name_anti_air">Anti Air</string>
+  <string name="lb_name_infantry_fighting_vehicle">Infantry Fighting Vehicle</string>
+  <string name="lb_name_main_battle_tank">Main Battle Tank</string>
+  <string name="lb_name_wlr">Win loss ratio</string>
+
+  <string name="lb_name_mission_heli_pilot">Heli Pilot</string>
+  <string name="lb_name_mission_rifle_expert">Rifle Expert</string>
+  <string name="lb_name_mission_best_assault">Best Assault</string>
+  <string name="lb_name_mission_best_engineer">Best Engineer</string>
+  <string name="lb_name_mission_best_recon">Best Recon</string>
+  <string name="lb_name_mission_best_squad">Best Squad Player</string>
+  <string name="lb_name_mission_best_support">Best Support</string>
+  <string name="lb_name_mission_bullseye_king">Bullseye King</string>
+  <string name="lb_name_mission_carbine_expert">Carbine Expert</string>
+  <string name="lb_name_mission_handgun_expert">Handgun Expert</string>
+  <string name="lb_name_mission_steersman">Steersman</string>
+  <string name="lb_name_mission_killing_machine">Killing Machine</string>
+  <string name="lb_name_mission_lmg_expert">LMG Expert</string>
+  <string name="lb_name_mission_marksman">Marksman</string>
+  <string name="lb_name_mission_road_king">Road King</string>
+  <string name="lb_name_mission_killstreaker">Killstreaker</string>
+  <string name="lb_name_mission_sniper_expert">Sniper Expert</string>
+  <string name="lb_name_mission_top_commander">Top Commander</string>
+  <string name="lb_name_mission_ace_aviator">Ace Aviator</string>
+  <string name="lb_name_mission_vehicle_destroyer">Vehicle Destroyer</string>
+
+  <string name="lb_sctype_kdr">%1$s KDR</string>
+  <string name="lb_sctype_kills">%1$s kills</string>
+  <string name="lb_sctype_score">%1$s score</string>
+  <string name="lb_sctype_skill">%1$s skill</string>
+  <string name="lb_sctype_spm">%1$s SPM</string>
+  <string name="lb_sctype_accuracy">%1$s%% accuracy</string>
+  <string name="lb_sctype_destroyed">%1$s destroyed</string>
+  <string name="lb_sctype_wlr">%1$s WLR</string>
+
+  <string name="lb_sctype_headshots">%1$s headshots</string>
+  <string name="lb_sctype_heals">%1$s heals</string>
+  <string name="lb_sctype_hit_percentage">%1$s Hit Percentage</string>
+  <string name="lb_sctype_killstreak">%1$s Kill Streak</string>
+  <string name="lb_sctype_longest_hs">%1$s Longest Headshot</string>
+  <string name="lb_sctype_repairs">%1$s repairs</string>
+  <string name="lb_sctype_revives">%1$s revives</string>
+  <string name="lb_sctype_time">%1$s Time Played</string>
+
+  <string name="lb_area_world">World</string>
+</resources>

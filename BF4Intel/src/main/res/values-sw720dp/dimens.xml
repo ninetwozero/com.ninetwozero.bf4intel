@@ -1,0 +1,20 @@
+<resources>
+  <dimen name="activity_horizontal_margin">128dp</dimen>
+
+  <dimen name="text_xs">16sp</dimen>
+  <dimen name="text_s">18sp</dimen>
+  <dimen name="text_m">22sp</dimen>
+  <dimen name="text_ml">24sp</dimen>
+  <dimen name="text_l">28sp</dimen>
+  <dimen name="text_xl">36sp</dimen>
+  <dimen name="text_xxl">44sp</dimen>
+
+  <dimen name="w_battlereport_list_img">335dp</dimen>
+  <dimen name="h_battlereport_list_img">160dp</dimen>
+
+  <dimen name="grid_view_column_width">300dp</dimen>
+
+  <!--Grid view images-->
+  <dimen name="grid_view_image_height">150dp</dimen>
+  <dimen name="grid_view_image_width">@dimen/grid_view_image_height</dimen>
+</resources>
