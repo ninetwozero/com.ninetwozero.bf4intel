@@ -134,6 +134,7 @@ public class AssignmentStringMap {
             put("WARSAW_ID_P_XP3_AWARD_AS_09_NAME", R.string.assignments_xp3_name_09);
             put("WARSAW_ID_P_XP3_AWARD_AS_10_NAME", R.string.assignments_xp3_name_10);
             put("WARSAW_ID_P_XP3_AWARD_GHOST", R.string.assignments_xp3_name_ghost3);
+            put("WARSAW_ID_P_XP3_AWARD_PLAY_XP3", R.string.assignments_xp3_play_xp3);
         }
     };
 
