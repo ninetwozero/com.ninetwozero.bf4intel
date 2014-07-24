@@ -173,7 +173,9 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
         }
 
         final WeaponStatsAdapter adapter = (WeaponStatsAdapter) getListView().getAdapter();
-
+        if (adapter == null) {
+            return;
+        }
         adapter.getFilter().filter(category);
 
         sharedPreferences.edit()
