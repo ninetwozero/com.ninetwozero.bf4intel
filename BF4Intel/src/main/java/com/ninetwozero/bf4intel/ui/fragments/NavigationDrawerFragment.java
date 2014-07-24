@@ -128,10 +128,12 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     @Subscribe
     public void onSoldierInformationUpdated(final SoldierInformationUpdatedEvent event) {
-        if (getView() == null) {
+        final View view = getView();
+        if (view == null) {
             return;
         }
 
+        setupRegularViews(view);
         ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
     }
 
