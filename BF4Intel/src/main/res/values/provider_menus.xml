@@ -25,6 +25,13 @@
     <item>Single player</item>
   </string-array>
 
+  <string-array name="ab_kit_unlocks_filter_menu">
+    <item>@string/class_assault</item>
+    <item>@string/class_engineer</item>
+    <item>@string/class_support</item>
+    <item>@string/class_recon</item>
+  </string-array>
+
   <string-array name="ab_weapon_filter_menu">
     <item>Assault Rifles</item>
     <item>Carbines</item>

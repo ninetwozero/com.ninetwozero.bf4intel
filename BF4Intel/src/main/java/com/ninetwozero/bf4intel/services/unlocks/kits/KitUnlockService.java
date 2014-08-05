@@ -26,7 +26,7 @@ public class KitUnlockService extends BaseDaoService<KitUnlockDAO, KitUnlocksRef
             soldier.getString(Keys.Soldier.ID),
             soldier.getString(Keys.Soldier.NAME),
             soldier.getInt(Keys.Soldier.PLATFORM),
-            KitUnlockMapSorter.sort(unlocks.getUnlockMap(), sortMode)
+            new KitUnlockMapSorter(unlocks.getUnlockMap()).sort(sortMode)
         );
     }
 
