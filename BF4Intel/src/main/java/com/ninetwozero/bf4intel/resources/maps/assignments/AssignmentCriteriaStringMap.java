@@ -15,13 +15,14 @@ public class AssignmentCriteriaStringMap {
             put("WARSAW_ID_P_AWARDS_RANK25", R.string.awards_rank25);
             put("WARSAW_ID_P_AWARDS_RANK50", R.string.awards_rank50);
             put("WARSAW_ID_P_XP1_AWARD_PLAY_PREMIUM", R.string.awards_premium);
-            put("WARSAW_ID_P_AWARD_XP0", R.string.expansion_xp0);
-            put("WARSAW_ID_P_AWARD_XP1", R.string.expansion_xp1);
-            put("WARSAW_ID_P_AWARD_XP2", R.string.expansion_xp2);
-            put("WARSAW_ID_P_AWARD_XP3", R.string.expansion_xp3);
-            put("WARSAW_ID_P_AWARD_XP4", R.string.expansion_xp4);
-            put("WARSAW_ID_P_AWARD_GHOST1", R.string.expansion_xp1);
-            put("WARSAW_ID_P_AWARD_GHOST2", R.string.expansion_xp2);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_XP0", R.string.expansion_xp0);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_XP1", R.string.expansion_xp1);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_XP2", R.string.expansion_xp2);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_XP3", R.string.expansion_xp3);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_XP4", R.string.expansion_xp4);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_GHOST1", R.string.expansion_xp1);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_GHOST2", R.string.expansion_xp2);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_GHOST3", R.string.expansion_xp3);
 
             // Requirements (SP)
             put("WARSAW_ID_P_SP_AWARD_ASSGN01_CR1", R.string.sp_award_assgn01_cr1);
