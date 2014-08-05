@@ -11,6 +11,7 @@ import com.ninetwozero.bf4intel.resources.maps.unlocks.VehicleUnlockImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleUnlockStringMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
@@ -20,7 +21,14 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
 
     @Override
     protected List<VehicleUnlock> filterItems(final CharSequence constraint) {
-        return null; // TODO: Will be implemented correctly in new PR
+        List<VehicleUnlock> filteredItems = new ArrayList<VehicleUnlock>();
+
+        for (VehicleUnlock item : listWithAllItems) {
+            if (item.getCategory().equalsIgnoreCase(constraint.toString())) {
+                filteredItems.add(item);
+            }
+        }
+        return filteredItems;
     }
 
     @Override
