@@ -155,6 +155,12 @@ public class CamoImageMap {
 
             // XP2
             put("WARSAW_ID_P_XP2_CAMO_NAME_PHANTOM", R.drawable.camo_snakeskin);
+
+            //XP3
+            put("WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE1", R.drawable.camo_phantominitiate1);
+            put("WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE2", R.drawable.camo_phantominitiate2);
+            put("WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE3", R.drawable.camo_phantominitiate3);
+
         }
     };
 
