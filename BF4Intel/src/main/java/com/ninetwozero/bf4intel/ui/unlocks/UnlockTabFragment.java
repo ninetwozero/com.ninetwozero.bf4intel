@@ -2,16 +2,10 @@ package com.ninetwozero.bf4intel.ui.unlocks;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseTabFragment;
-import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
-import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
-import com.ninetwozero.bf4intel.utils.BusProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,49 +45,6 @@ public class UnlockTabFragment extends BaseTabFragment {
             titles.add(getString(title));
         }
         return titles;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.fragment_unlocks, menu);
-
-        setupSortModeMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        item.setChecked(true);
-        switch (item.getItemId()) {
-            case R.id.ab_action_sort_categorized:
-                handleSortingRequest(SortMode.CATEGORIZED);
-                return true;
-            case R.id.ab_action_sort_progress:
-                handleSortingRequest(SortMode.PROGRESS);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    private void handleSortingRequest(SortMode sortMode) {
-        sharedPreferences.edit().putInt(KEY_SORT_MODE, sortMode.ordinal()).commit();
-        BusProvider.getInstance().post(new RefreshEvent());
-    }
-
-    private void setupSortModeMenu(Menu menu) {
-        final SortMode mode = SortMode.fromOrdinal(sharedPreferences.getInt(KEY_SORT_MODE, 0));
-        switch (mode) {
-            case CATEGORIZED:
-                menu.findItem(R.id.ab_action_sort_categorized).setChecked(true);
-                break;
-            case PROGRESS:
-                menu.findItem(R.id.ab_action_sort_progress).setChecked(true);
-                break;
-            default:
-                menu.findItem(R.id.ab_action_sort_categorized).setChecked(true);
-                break;
-        }
     }
 
     @Override

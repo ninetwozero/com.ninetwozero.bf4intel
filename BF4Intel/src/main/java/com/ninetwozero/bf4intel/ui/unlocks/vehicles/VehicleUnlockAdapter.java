@@ -9,12 +9,18 @@ import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
 import com.ninetwozero.bf4intel.resources.maps.unlocks.VehicleUnlockImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleUnlockStringMap;
-import com.ninetwozero.bf4intel.resources.maps.vehicles.VehiclesGroupStringMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
+
+import java.util.List;
 
 public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
     public VehicleUnlockAdapter(final Context context) {
         super(context);
+    }
+
+    @Override
+    protected List<VehicleUnlock> filterItems(final CharSequence constraint) {
+        return null; // TODO: Will be implemented correctly in new PR
     }
 
     @Override
@@ -36,10 +42,5 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
         displayInformationForCriteria(convertView, criteria);
 
         return convertView;
-    }
-
-    @Override
-    protected int getCategoryString(final String key) {
-        return VehiclesGroupStringMap.get(key);
     }
 }
