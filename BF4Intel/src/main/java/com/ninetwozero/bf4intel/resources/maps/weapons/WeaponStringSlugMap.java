@@ -134,6 +134,7 @@ public class WeaponStringSlugMap {
             put("DEFIBRILLATOR", R.string.weapon_iname_defib);
             put("DEFIBRILLATOR1", R.string.weapon_iname_defib);
             put("DMR", R.string.weapon_iname_dmrs);
+            put("EOD-BOT", R.string.weapon_iname_eod);
             put("EOD-BOT1", R.string.weapon_iname_eod);
             put("FIM-92-STINGER", R.string.weapon_iname_fim92);
             put("FIRST-AID-PACK", R.string.weapon_iname_first_aid_pack);
