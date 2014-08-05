@@ -1,13 +1,18 @@
 package com.ninetwozero.bf4intel.database.dao.unlocks.weapons;
 
-import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
+import com.ninetwozero.bf4intel.database.dao.AbstractSorter;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlockContainer;
 import com.ninetwozero.bf4intel.json.unlocks.weapons.SortedWeaponUnlocks;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class WeaponUnlockSorter {
-    private static final String[] CATEGORY_ORDER = new String[] {
+public class WeaponUnlockSorter extends AbstractSorter<SortedWeaponUnlocks>{
+    public static final String[] CATEGORY_ORDER = new String[] {
         "wA", "wC", "waS", "wL", "waPDW", "wD", "wSR", "wH", "wG", "wSPk", "wX",
     };
     private static final Set<String> SKIP_LIST = new HashSet<String>() {
@@ -23,32 +28,10 @@ public class WeaponUnlockSorter {
             add("B21346FC-365F-4BE9-8FE2-A9588A78A4CD"); // m32-mgl
         }
     };
+    private final Map<String, List<WeaponUnlockContainer>> unlockMap;
 
-    public static SortedWeaponUnlocks sort(final Map<String, List<WeaponUnlockContainer>> unlockMap, final SortMode mode) {
-        if (mode == SortMode.PROGRESS) {
-            return sortItemsByProgress(unlockMap);
-        } else {
-            return sortItemsByCategory(unlockMap);
-        }
-    }
-
-    private static SortedWeaponUnlocks sortItemsByProgress(Map<String, List<WeaponUnlockContainer>> unlockMap) {
-        List<WeaponUnlockContainer> list = new ArrayList<WeaponUnlockContainer>();
-        for (String key : unlockMap.keySet()) {
-            list.addAll(removeInGameUnique(unlockMap.get(key)));
-        }
-        Collections.sort(list);
-        return new SortedWeaponUnlocks(list);
-    }
-
-    private static SortedWeaponUnlocks sortItemsByCategory(Map<String, List<WeaponUnlockContainer>> unlockMap) {
-        List<WeaponUnlockContainer> list = new ArrayList<WeaponUnlockContainer>();
-        for (String key : CATEGORY_ORDER) {
-            if (unlockMap.containsKey(key)) {
-                list.addAll(removeInGameUnique(unlockMap.get(key)));
-            }
-        }
-        return new SortedWeaponUnlocks(list);
+    public WeaponUnlockSorter(final Map<String, List<WeaponUnlockContainer>> unlockMap) {
+        this.unlockMap = unlockMap;
     }
 
     private static List<WeaponUnlockContainer> removeInGameUnique(final List<WeaponUnlockContainer> containers) {
@@ -64,5 +47,36 @@ public class WeaponUnlockSorter {
             uniqueList.add(container);
         }
         return uniqueList;
+    }
+
+    @Override
+    protected SortedWeaponUnlocks sortByProgress() {
+        List<WeaponUnlockContainer> list = new ArrayList<WeaponUnlockContainer>();
+        for (String key : unlockMap.keySet()) {
+            final List<WeaponUnlockContainer> validItems = removeInGameUnique(unlockMap.get(key));
+            addCategoryToItems(validItems, key);
+            list.addAll(validItems);
+        }
+        Collections.sort(list);
+        return new SortedWeaponUnlocks(list);
+    }
+
+    @Override
+    protected SortedWeaponUnlocks sortByCategory() {
+        List<WeaponUnlockContainer> list = new ArrayList<WeaponUnlockContainer>();
+        for (String key : CATEGORY_ORDER) {
+            if (unlockMap.containsKey(key)) {
+                final List<WeaponUnlockContainer> validItems = removeInGameUnique(unlockMap.get(key));
+                addCategoryToItems(validItems, key);
+                list.addAll(validItems);
+            }
+        }
+        return new SortedWeaponUnlocks(list);
+    }
+
+    private void addCategoryToItems(final List<WeaponUnlockContainer> validItems, final String category) {
+        for (WeaponUnlockContainer unlockContainer : validItems) {
+            unlockContainer.setCategory(category);
+        }
     }
 }

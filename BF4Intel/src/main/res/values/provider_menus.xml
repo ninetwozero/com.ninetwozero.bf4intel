@@ -44,16 +44,16 @@
   </string-array>
 
   <string-array name="ab_weapon_filter_menu">
-    <item>Assault Rifles</item>
-    <item>Carbines</item>
-    <item>Shotguns</item>
-    <item>LMG</item>
-    <item>PDW</item>
-    <item>DMR</item>
-    <item>Sniper Rifles</item>
-    <item>Hand Guns</item>
-    <item>Hand Grenades</item>
-    <item>Knives</item>
-    <item>Gadget</item>
+    <item>@string/category_assault_rifles</item>
+    <item>@string/category_carbines</item>
+    <item>@string/category_shotguns</item>
+    <item>@string/category_lmgs</item>
+    <item>@string/category_pdws</item>
+    <item>@string/category_dmrs</item>
+    <item>@string/category_snipers</item>
+    <item>@string/category_handguns</item>
+    <item>@string/category_handgrenades</item>
+    <item>@string/category_knives</item>
+    <item>@string/category_gadgets</item>
   </string-array>
 </resources>

@@ -5,9 +5,16 @@ import com.google.gson.annotations.SerializedName;
 public class WeaponUnlockContainer implements Comparable<WeaponUnlockContainer>, UnlockContainer {
     @SerializedName("weaponUnlock")
     private WeaponUnlock unlock;
+    @SerializedName("category")
+    private String category;
 
     public WeaponUnlock getUnlock() {
         return unlock;
+    }
+
+    @Override
+    public UnlockCriteria getCriteria() {
+        return unlock.getCriteria();
     }
 
     @Override
@@ -15,8 +22,12 @@ public class WeaponUnlockContainer implements Comparable<WeaponUnlockContainer>,
         return unlock.compareTo(otherUnlock.getUnlock());
     }
 
-    @Override
-    public UnlockCriteria getCriteria() {
-        return unlock.getCriteria();
+    public String getCategory() {
+        return category;
     }
+
+    public void setCategory(final String category) {
+        this.category = category;
+    }
+
 }

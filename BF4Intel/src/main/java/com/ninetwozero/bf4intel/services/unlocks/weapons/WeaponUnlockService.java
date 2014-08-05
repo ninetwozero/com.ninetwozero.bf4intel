@@ -26,7 +26,7 @@ public class WeaponUnlockService extends BaseDaoService<WeaponUnlockDAO, WeaponU
             soldier.getString(Keys.Soldier.ID),
             soldier.getString(Keys.Soldier.NAME),
             soldier.getInt(Keys.Soldier.PLATFORM),
-            WeaponUnlockSorter.sort(unlocks.getUnlockMap(), sortMode)
+            new WeaponUnlockSorter(unlocks.getUnlockMap()).sort(sortMode)
         );
     }
 
