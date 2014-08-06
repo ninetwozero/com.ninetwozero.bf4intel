@@ -119,6 +119,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     private void initialize(View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupListView(view);
     }
 

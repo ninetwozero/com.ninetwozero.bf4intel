@@ -101,6 +101,7 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
 
     private void initialize(View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupListView(view);
     }
 
