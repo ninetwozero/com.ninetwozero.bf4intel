@@ -7,11 +7,18 @@
   android:background="@color/card_activity_bg"
   >
 
-  <ListView
-    style="@style/CardListView"
-    android:id="@android:id/list"
-    android:padding="@dimen/spacing_m"
-    />
+  <android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ListView
+      style="@style/CardListView"
+      android:id="@android:id/list"
+      android:padding="@dimen/spacing_m"
+      />
+  </android.support.v4.widget.SwipeRefreshLayout>
 
   <TextView
     style="@style/DefaultEmptyText"

@@ -106,6 +106,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     private void initialize(final View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupListView(view);
     }
 
