@@ -65,6 +65,7 @@ public abstract class BaseUnlockFragment extends BaseLoadingFragment {
 
     private void initialize(final View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupListView(view);
     }
 
