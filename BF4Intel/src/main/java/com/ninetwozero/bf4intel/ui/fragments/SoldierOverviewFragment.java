@@ -38,8 +38,8 @@ import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import se.emilsjolander.sprinkles.OneQuery;
@@ -73,8 +73,13 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         super.onCreateView(inflater, parent, state);
 
         final View view = layoutInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
-        setupErrorMessage(view);
+        initialize(view);
         return view;
+    }
+
+    private void initialize(final View view) {
+        setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
     }
 
     @Override
