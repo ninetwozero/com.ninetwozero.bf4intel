@@ -125,6 +125,7 @@ public class AssignmentGridFragment
 
     private void initialize(View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupGrid(view);
     }
 
