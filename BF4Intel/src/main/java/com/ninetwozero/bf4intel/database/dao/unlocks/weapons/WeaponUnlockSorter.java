@@ -1,13 +1,13 @@
 package com.ninetwozero.bf4intel.database.dao.unlocks.weapons;
 
-import com.ninetwozero.bf4intel.database.dao.unlocks.AbstractUnlockSorter;
+import com.ninetwozero.bf4intel.database.dao.unlocks.UnlockSorter;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlockContainer;
 import com.ninetwozero.bf4intel.json.unlocks.weapons.SortedWeaponUnlocks;
 
 import java.util.List;
 import java.util.Map;
 
-public class WeaponUnlockSorter extends AbstractUnlockSorter<SortedWeaponUnlocks, WeaponUnlockContainer> {
+public class WeaponUnlockSorter extends UnlockSorter<SortedWeaponUnlocks, WeaponUnlockContainer> {
     public static final String[] CATEGORY_ORDER = new String[] {
         "wA", "wC", "waS", "wL", "waPDW", "wD", "wSR", "wH", "wG", "wSPk", "wX",
     };

@@ -1,13 +1,13 @@
 package com.ninetwozero.bf4intel.database.dao.unlocks.kits;
 
-import com.ninetwozero.bf4intel.database.dao.unlocks.AbstractUnlockSorter;
+import com.ninetwozero.bf4intel.database.dao.unlocks.UnlockSorter;
 import com.ninetwozero.bf4intel.json.unlocks.KitItemUnlockContainer;
 import com.ninetwozero.bf4intel.json.unlocks.kits.SortedKitUnlocks;
 
 import java.util.List;
 import java.util.Map;
 
-public class KitUnlockMapSorter extends AbstractUnlockSorter<SortedKitUnlocks, KitItemUnlockContainer> {
+public class KitUnlockMapSorter extends UnlockSorter<SortedKitUnlocks, KitItemUnlockContainer> {
     public static final String[] CATEGORY_ORDER = new String[] { "1", "2","32", "8"};
 
     public KitUnlockMapSorter(final Map<String, List<KitItemUnlockContainer>> unlockMap) {

@@ -7,10 +7,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-public abstract class AbstractUnlockSorter<T, D extends Comparable> extends AbstractSorter<T>{
+public abstract class UnlockSorter<T, D extends Comparable> extends AbstractSorter<T>{
     private final Map<String, List<D>> unlockMap;
 
-    public AbstractUnlockSorter(final Map<String, List<D>> unlockMap) {
+    public UnlockSorter(final Map<String, List<D>> unlockMap) {
         this.unlockMap = unlockMap;
     }
 

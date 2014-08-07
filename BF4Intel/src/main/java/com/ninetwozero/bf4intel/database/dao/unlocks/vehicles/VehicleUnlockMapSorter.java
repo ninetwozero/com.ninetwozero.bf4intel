@@ -1,13 +1,13 @@
 package com.ninetwozero.bf4intel.database.dao.unlocks.vehicles;
 
-import com.ninetwozero.bf4intel.database.dao.unlocks.AbstractUnlockSorter;
+import com.ninetwozero.bf4intel.database.dao.unlocks.UnlockSorter;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlock;
 import com.ninetwozero.bf4intel.json.unlocks.vehicles.SortedVehicleUnlocks;
 
 import java.util.List;
 import java.util.Map;
 
-public class VehicleUnlockMapSorter extends AbstractUnlockSorter<SortedVehicleUnlocks, VehicleUnlock> {
+public class VehicleUnlockMapSorter extends UnlockSorter<SortedVehicleUnlocks, VehicleUnlock> {
     public static final String[] CATEGORY_ORDER = new String[] {
         "Vehicle Air Helicopter Scout", "Vehicle Air Jet Attack",
         "Vehicle Fast Attack Craft", "Vehicle Infantry Fighting Vehicle",
