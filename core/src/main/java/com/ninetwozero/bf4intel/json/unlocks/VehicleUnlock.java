@@ -9,6 +9,8 @@ public class VehicleUnlock implements Comparable<VehicleUnlock>, UnlockContainer
     private String guid;
     @SerializedName("unlockedBy")
     private UnlockCriteria criteria;
+    @SerializedName("category")
+    private String category;
 
     public VehicleUnlock(final String name) {
         this.name = name;
@@ -24,6 +26,14 @@ public class VehicleUnlock implements Comparable<VehicleUnlock>, UnlockContainer
 
     public UnlockCriteria getCriteria() {
         return criteria;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(final String category) {
+        this.category = category;
     }
 
     @Override
