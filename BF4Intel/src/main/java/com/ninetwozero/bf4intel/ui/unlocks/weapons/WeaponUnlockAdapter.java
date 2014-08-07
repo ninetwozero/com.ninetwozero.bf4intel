@@ -12,6 +12,7 @@ import com.ninetwozero.bf4intel.resources.maps.unlocks.UnlockImageSlugMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringSlugMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,14 @@ public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer
 
     @Override
     protected List<WeaponUnlockContainer> filterItems(final CharSequence constraint) {
-        return null; // TODO: Will be implemented correctly in new PR
+        List<WeaponUnlockContainer> filteredItems = new ArrayList<WeaponUnlockContainer>();
+
+        for (WeaponUnlockContainer item : listWithAllItems) {
+            if (item.getCategory().equalsIgnoreCase(constraint.toString())) {
+                filteredItems.add(item);
+            }
+        }
+        return filteredItems;
     }
 
     @Override

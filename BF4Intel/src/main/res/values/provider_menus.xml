@@ -32,17 +32,28 @@
     <item>@string/class_recon</item>
   </string-array>
 
+  <string-array name="ab_vehicle_unlocks_filter_menu">
+    <item>@string/vehicle_group_scout_helicopter</item>
+    <item>@string/vehicle_group_attack_jet</item>
+    <item>@string/vehicle_group_fast_attack_craft</item>
+    <item>@string/vehicle_group_infantry_fighting_vehicle</item>
+    <item>@string/vehicle_group_stealth_jet</item>
+    <item>@string/vehicle_group_attack_helicopter</item>
+    <item>@string/vehicle_group_main_battle_tank</item>
+    <item>@string/vehicle_group_anti_air</item>
+  </string-array>
+
   <string-array name="ab_weapon_filter_menu">
-    <item>Assault Rifles</item>
-    <item>Carbines</item>
-    <item>Shotguns</item>
-    <item>LMG</item>
-    <item>PDW</item>
-    <item>DMR</item>
-    <item>Sniper Rifles</item>
-    <item>Hand Guns</item>
-    <item>Hand Grenades</item>
-    <item>Knives</item>
-    <item>Gadget</item>
+    <item>@string/category_assault_rifles</item>
+    <item>@string/category_carbines</item>
+    <item>@string/category_shotguns</item>
+    <item>@string/category_lmgs</item>
+    <item>@string/category_pdws</item>
+    <item>@string/category_dmrs</item>
+    <item>@string/category_snipers</item>
+    <item>@string/category_handguns</item>
+    <item>@string/category_handgrenades</item>
+    <item>@string/category_knives</item>
+    <item>@string/category_gadgets</item>
   </string-array>
 </resources>
