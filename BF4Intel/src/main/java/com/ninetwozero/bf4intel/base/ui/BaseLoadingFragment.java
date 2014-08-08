@@ -2,11 +2,14 @@ package com.ninetwozero.bf4intel.base.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -27,7 +30,9 @@ import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
 import java.util.Arrays;
 
-public abstract class BaseLoadingFragment extends BaseFragment implements Response.ErrorListener {
+public abstract class BaseLoadingFragment
+    extends BaseFragment
+    implements Response.ErrorListener, SwipeRefreshLayout.OnRefreshListener {
     protected final Gson gson = GsonProvider.getInstance();
     protected final JsonParser parser = new JsonParser();
     protected String[] filterTitleResources;
@@ -36,6 +41,7 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
 
     protected boolean isReloading;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
     private TextView errorMessageView;
 
     @Override
@@ -55,6 +61,11 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
                 Bf4Intel.isConnectedToNetwork() ? null : getString(R.string.label_offline_mode)
             );
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        startLoadingData();
     }
 
     @Override
@@ -78,6 +89,18 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
         }
     }
 
+    protected void setupSwipeRefreshLayout(final View view) {
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setOnRefreshListener(this);
+            swipeRefreshLayout.setColorScheme(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light
+            );
+        }
+    }
+
     protected void onRefreshEventReceived(RefreshEvent event) {
         if (!Bf4Intel.isConnectedToNetwork()) {
             showToast(R.string.msg_no_network);
@@ -97,20 +120,18 @@ public abstract class BaseLoadingFragment extends BaseFragment implements Respon
             return;
         }
 
-        toggleFullScreenProgressBar(activity, isLoading);
+        toggleActionBarProgressBar(activity, isLoading);
     }
 
-    private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
+    private void toggleActionBarProgressBar(final Activity activity, final boolean isLoading) {
         final View view = getView();
         if (activity == null || view == null) {
             return;
         }
 
-        final View loadingView = view.findViewById(R.id.wrap_loading_progress);
-        if (loadingView == null) {
-            return;
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setRefreshing(isLoading);
         }
-        loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
 
     protected void setupErrorMessage(final View view) {

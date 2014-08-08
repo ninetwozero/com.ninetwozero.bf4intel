@@ -109,6 +109,7 @@ public class AwardGridFragment
 
     private void initialize(View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupGrid(view);
     }
 

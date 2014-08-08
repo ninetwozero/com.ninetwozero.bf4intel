@@ -134,6 +134,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
 
     private void initialize(final View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
     }
 
     private void sendItemsToListView(final List<NewsArticle> items) {

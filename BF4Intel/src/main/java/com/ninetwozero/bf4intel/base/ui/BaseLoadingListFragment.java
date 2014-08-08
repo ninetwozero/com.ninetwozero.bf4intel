@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.base.ui;
 
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
@@ -29,13 +30,19 @@ import com.ninetwozero.bf4intel.utils.BusProvider;
 
 import java.util.Arrays;
 
-public abstract class BaseLoadingListFragment extends BaseListFragment implements Response.ErrorListener, MenuProvider.OnMenuProviderSelectedListener  {
+public abstract class BaseLoadingListFragment
+    extends BaseListFragment
+    implements Response.ErrorListener,
+               MenuProvider.OnMenuProviderSelectedListener,
+               SwipeRefreshLayout.OnRefreshListener {
+
     protected Gson gson = GsonProvider.getInstance();
     protected boolean isReloading;
     protected String[] filterTitleResources;
     protected String[] sortingKeys;
     protected String[] sortTitleResources;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
     private TextView errorMessageView;
 
     @Override
@@ -58,6 +65,11 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     }
 
     @Override
+    public void onRefresh() {
+        startLoadingData();
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         BusProvider.getInstance().unregister(this);
@@ -75,6 +87,18 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         if (getView() != null) {
             final String message = error.getMessage();
             showErrorMessage(message == null ? error.getClass().getSimpleName() : message);
+        }
+    }
+
+    protected void setupSwipeRefreshLayout(final View view) {
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setOnRefreshListener(this);
+            swipeRefreshLayout.setColorScheme(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light
+            );
         }
     }
 
@@ -118,22 +142,18 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
             return;
         }
 
-        isReloading = isLoading;
-
-        toggleFullScreenProgressBar(activity, isLoading);
+        toggleActionBarProgressBar(activity, isLoading);
     }
 
-    private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
+    private void toggleActionBarProgressBar(final Activity activity, final boolean isLoading) {
         final View view = getView();
         if (activity == null || view == null) {
             return;
         }
 
-        final View loadingView = view.findViewById(R.id.wrap_loading_progress);
-        if (loadingView == null) {
-            return;
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setRefreshing(isLoading);
         }
-        loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
 
 

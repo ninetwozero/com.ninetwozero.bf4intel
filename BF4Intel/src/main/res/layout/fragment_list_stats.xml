@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical"
   android:background="@color/card_activity_bg"
   >
 
-  <ListView
-    style="@style/CardListView"
-    android:id="@android:id/list"
-    android:padding="@dimen/spacing_m"
-    />
+  <android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ListView
+      style="@style/CardListView"
+      android:id="@android:id/list"
+      android:padding="@dimen/spacing_m"
+      />
+  </android.support.v4.widget.SwipeRefreshLayout>
 
   <TextView
     style="@style/DefaultEmptyText"
@@ -18,6 +26,5 @@
     android:text="@string/msg_empty_stats"
     />
 
-  <include layout="@layout/loading_progress" />
-  <include layout="@layout/inlined_error_message" />
+  <include layout="@layout/inlined_error_message"/>
 </RelativeLayout>
