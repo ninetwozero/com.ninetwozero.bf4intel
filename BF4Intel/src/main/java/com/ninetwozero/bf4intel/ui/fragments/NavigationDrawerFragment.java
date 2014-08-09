@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.fragments;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -397,10 +398,18 @@ public class NavigationDrawerFragment extends BaseListFragment {
         }
 
         if (callbacks != null && isFragment) {
-            callbacks.onNavigationDrawerItemSelected(position, shouldCloseDrawer, isFragment ? item.getTitle() : null);
+            callbacks.onNavigationDrawerItemSelected(position, shouldCloseDrawer, item.getTitle());
         }
-        
-        startItem(item, isOnResume);
+
+        // This should ensure that the closing animation is smooth
+        new Handler().postDelayed(
+            new Runnable() {
+                @Override
+                public void run() {
+                    startItem(item, isOnResume);
+                }
+            }, 300
+        );
     }
 
     private void startItem(final SimpleListRow item, final boolean isOnResume) {
