@@ -11,12 +11,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.*;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bugsense.trace.BugSenseHandler;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.provider.MenuProvider;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -127,7 +129,16 @@ public abstract class BaseFragment extends Fragment implements MenuProvider.OnMe
     }
 
     protected void setActionBarSubTitle(String subtitle) {
-        getActivity().getActionBar().setSubtitle(subtitle);
+        if (getActivity() != null && getActivity().getActionBar() != null && subtitle != null) {
+            getActivity().getActionBar().setSubtitle(subtitle);
+        } else {
+            String message = String.format(BaseFragment.class.getSimpleName()
+                    + " Some of following objects maybe null getActivity() %b getActivity().getActionBar() %b subtitle %b"
+                    , getActivity() == null
+                    , getActivity().getActionBar() == null
+                    , subtitle == null);
+            BugSenseHandler.sendEvent(message);
+        }
     }
 
     protected void addMenuProviderFor(int menuId, Menu menu, String[] providerTitles) {
