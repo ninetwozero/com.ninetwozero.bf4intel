@@ -90,7 +90,7 @@ public class Weapon implements Comparable<Weapon>, Serializable {
     }
 
     public static class Comparators {
-        public static Comparator<Weapon> KILLS = new Comparator<Weapon>() {
+        public static final Comparator<Weapon> KILLS = new Comparator<Weapon>() {
             @Override
             public int compare(Weapon w1, Weapon w2) {
                 if (w1.kills == w2.kills) {
