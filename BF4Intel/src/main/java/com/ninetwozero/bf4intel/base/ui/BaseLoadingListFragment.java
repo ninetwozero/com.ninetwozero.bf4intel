@@ -1,9 +1,9 @@
 package com.ninetwozero.bf4intel.base.ui;
 
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
