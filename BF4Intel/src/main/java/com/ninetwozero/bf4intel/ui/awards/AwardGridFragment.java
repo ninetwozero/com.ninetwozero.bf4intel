@@ -168,7 +168,9 @@ public class AwardGridFragment
         }
 
         final AwardsAdapter adapter = (AwardsAdapter) gridView.getAdapter();
-
+        if (adapter == null) {
+            return;
+        }
         adapter.getFilter().filter(category);
 
         sharedPreferences.edit()

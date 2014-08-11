@@ -1,9 +1,9 @@
 package com.ninetwozero.bf4intel.base.ui;
 
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.bugsense.trace.BugSenseHandler;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -167,7 +168,16 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     }
 
     protected void setActionBarSubTitle(String subtitle) {
-        getActivity().getActionBar().setSubtitle(subtitle);
+        if (getActivity() != null && getActivity().getActionBar() != null && subtitle != null) {
+            getActivity().getActionBar().setSubtitle(subtitle);
+        } else {
+            String message = String.format(BaseFragment.class.getSimpleName()
+                    + " Some of following objects maybe null getActivity() %b getActivity().getActionBar() %b subtitle %b"
+                    , getActivity() == null
+                    , getActivity().getActionBar() == null
+                    , subtitle == null);
+            BugSenseHandler.sendEvent(message);
+        }
     }
 
     protected void actionBarSetSubtitleFromSharedPref(String sharedPrefKey, int defaultResource) {

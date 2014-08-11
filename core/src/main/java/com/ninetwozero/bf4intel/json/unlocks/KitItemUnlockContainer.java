@@ -7,6 +7,8 @@ public class KitItemUnlockContainer implements Comparable<KitItemUnlockContainer
     private WeaponUnlock kitItemUnlock;
     @SerializedName("weaponUnlock")
     private WeaponUnlock weaponUnlock;
+    @SerializedName("kitId")
+    private int kitId;
 
     public WeaponUnlock getUnlock() {
         return weaponUnlock == null ? kitItemUnlock : weaponUnlock;
@@ -20,5 +22,13 @@ public class KitItemUnlockContainer implements Comparable<KitItemUnlockContainer
     @Override
     public UnlockCriteria getCriteria() {
         return getUnlock().getCriteria();
+    }
+
+    public int getKitId() {
+        return kitId;
+    }
+
+    public void setKitId(final int kitId) {
+        this.kitId = kitId;
     }
 }

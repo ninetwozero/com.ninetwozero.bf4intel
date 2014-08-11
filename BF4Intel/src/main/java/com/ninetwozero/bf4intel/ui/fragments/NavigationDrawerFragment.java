@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.fragments;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +55,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private NavigationDrawerCallbacks callbacks;
 
     private int currentSelectedPosition;
-    private Bundle soldierBundleForMenu;
 
     public NavigationDrawerFragment() {
         if (getArguments() == null) {
@@ -128,10 +128,12 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     @Subscribe
     public void onSoldierInformationUpdated(final SoldierInformationUpdatedEvent event) {
-        if (getView() == null) {
+        final View view = getView();
+        if (view == null) {
             return;
         }
 
+        setupRegularViews(view);
         ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
     }
 
@@ -169,9 +171,11 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private int fetchStartingPositionForSessionState() {
         if (SessionStore.isLoggedIn()) {
-            return sharedPreferences.getInt(STATE_SELECTED_POSITION, DEFAULT_POSITION);
+            int index = sharedPreferences.getInt(STATE_SELECTED_POSITION, DEFAULT_POSITION);
+            return index <= DEFAULT_POSITION ? index : DEFAULT_POSITION;
         } else if (SessionStore.hasUserId()) {
-            return sharedPreferences.getInt(STATE_SELECTED_POSITION_TRACKING, DEFAULT_POSITION_TRACKING);
+            int index = sharedPreferences.getInt(STATE_SELECTED_POSITION_TRACKING, DEFAULT_POSITION_TRACKING);
+            return index <= DEFAULT_POSITION_TRACKING ? index : DEFAULT_POSITION_TRACKING;
         } else {
             return DEFAULT_POSITION_GUEST;
         }
@@ -260,7 +264,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private List<ListRowElement> getRowsForSoldier() {
         final List<SummarizedSoldierStatsDAO> stats = fetchSoldiersForMenu();
         final List<ListRowElement> items = new ArrayList<ListRowElement>();
-        soldierBundleForMenu = buildBundleForSoldier(stats);
+        Bundle soldierBundleForMenu = buildBundleForSoldier(stats);
         items.add(
             ListRowFactory.create(
                 ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)
@@ -394,10 +398,18 @@ public class NavigationDrawerFragment extends BaseListFragment {
         }
 
         if (callbacks != null && isFragment) {
-            callbacks.onNavigationDrawerItemSelected(position, shouldCloseDrawer, isFragment ? item.getTitle() : null);
+            callbacks.onNavigationDrawerItemSelected(position, shouldCloseDrawer, item.getTitle());
         }
-        
-        startItem(item, isOnResume);
+
+        // This should ensure that the closing animation is smooth
+        new Handler().postDelayed(
+            new Runnable() {
+                @Override
+                public void run() {
+                    startItem(item, isOnResume);
+                }
+            }, 300
+        );
     }
 
     private void startItem(final SimpleListRow item, final boolean isOnResume) {

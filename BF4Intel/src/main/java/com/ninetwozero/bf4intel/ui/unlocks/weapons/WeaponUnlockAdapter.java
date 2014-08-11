@@ -12,7 +12,9 @@ import com.ninetwozero.bf4intel.resources.maps.unlocks.UnlockImageSlugMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringSlugMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer> {
@@ -35,6 +37,18 @@ public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer
     }
 
     @Override
+    protected List<WeaponUnlockContainer> filterItems(final CharSequence constraint) {
+        List<WeaponUnlockContainer> filteredItems = new ArrayList<WeaponUnlockContainer>();
+
+        for (WeaponUnlockContainer item : listWithAllItems) {
+            if (item.getCategory().equalsIgnoreCase(constraint.toString())) {
+                filteredItems.add(item);
+            }
+        }
+        return filteredItems;
+    }
+
+    @Override
     public long getItemId(int position) {
         return position;
     }
@@ -53,10 +67,5 @@ public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer
         displayInformationForCriteria(convertView, criteria);
 
         return convertView;
-    }
-
-    @Override
-    protected int getCategoryString(final String key) {
-        return categoryStringMap.containsKey(key) ? categoryStringMap.get(key) : R.string.na;
     }
 }

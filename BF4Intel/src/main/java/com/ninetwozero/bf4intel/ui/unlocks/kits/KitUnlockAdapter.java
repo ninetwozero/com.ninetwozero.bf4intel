@@ -12,17 +12,10 @@ import com.ninetwozero.bf4intel.resources.maps.unlocks.UnlockImageSlugMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringSlugMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> {
-    private final Map<String, Integer> categoryStringMap = new HashMap<String, Integer>() {{
-        put("1", R.string.class_assault);
-        put("2", R.string.class_engineer);
-        put("8", R.string.class_recon);
-        put("32", R.string.class_support);
-    }};
-
     public KitUnlockAdapter(final Context context) {
         super(context);
     }
@@ -49,7 +42,15 @@ public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> 
     }
 
     @Override
-    protected int getCategoryString(final String key) {
-        return categoryStringMap.containsKey(key) ? categoryStringMap.get(key) : R.string.na;
+    protected List<KitItemUnlockContainer> filterItems(CharSequence constraint) {
+        List<KitItemUnlockContainer> filteredItems = new ArrayList<KitItemUnlockContainer>();
+
+        int kitId = Integer.parseInt(constraint.toString());
+        for (KitItemUnlockContainer item : listWithAllItems) {
+            if (item.getKitId() == kitId) {
+                filteredItems.add(item);
+             }
+        }
+        return filteredItems;
     }
 }

@@ -132,6 +132,7 @@ public class UnlockImageSlugMap {
             put("DEFIBRILLATOR", R.drawable.w_lineart_defibrillator);
             put("DEFIBRILLATOR1", R.drawable.w_lineart_defibrillator);
             put("DMR", R.drawable.w_lineart_rfb);
+            put("EOD-BOT", R.drawable.kit_eod_bot);
             put("EOD-BOT1", R.drawable.kit_eod_bot);
             put("FIM-92-STINGER", R.drawable.w_lineart_fim92_stinger);
             put("FIRST-AID-PACK", R.drawable.kit_medikit);

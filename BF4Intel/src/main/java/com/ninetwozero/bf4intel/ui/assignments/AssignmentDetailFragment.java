@@ -41,6 +41,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     public static final String TAG = "AssignmentDetailFragment";
 
     private static final String KEY_FIRESTARTER = "WARSAW_ID_P_XP0_AS_01";
+    private static final String KEY_PHANTOMINITIATE = "WARSAW_ID_P_XP3_AWARD_GHOST";
 
     private Assignment assignment;
     private AssignmentAward assignmentAward;
@@ -139,7 +140,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     private AssignmentPrerequisite fetchPrerequisiteForExpansion() {
         final String pack = assignmentAward.getExpansionPack().toUpperCase(Locale.getDefault());
         return new AssignmentPrerequisite(
-            "WARSAW_ID_P_AWARD_" + pack,
+            "WARSAW_ID_P_AWARD_PREREQUISITE_" + pack,
             assignmentAward.getExpansionPack(),
             AssignmentPrerequisite.Type.EXPANSION.getGroup(),
             userHasExpansionPack ? 1 : 0
@@ -214,6 +215,10 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             rewards = fetchRewardsForFirestarter();
         }
 
+        if (assignmentAward.getUniqueName().equals(KEY_PHANTOMINITIATE)) {
+            rewards = fetchRewardsForPhantomInitiate();
+        }
+
         if (rewards.size() > 0) {
             final ViewGroup containerView = (ViewGroup) view.findViewById(R.id.assignment_reward_container);
             containerView.removeAllViews();
@@ -243,6 +248,22 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER1",
             "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER2",
             "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER3"
+        };
+
+        for (String name : fakeNames) {
+            rewards.add(new AssignmentReward(name, null, UnlockType.APPEARANCE));
+        }
+
+        return rewards;
+    }
+
+    /*Phantom Initiate hardcoded assignments same as firestarter*/
+    private List<AssignmentReward> fetchRewardsForPhantomInitiate() {
+        final List<AssignmentReward> rewards = new ArrayList<AssignmentReward>();
+        final String[] fakeNames = new String[]{
+            "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE1",
+            "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE2",
+            "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE3"
         };
 
         for (String name : fakeNames) {

@@ -198,7 +198,9 @@ public class AssignmentGridFragment
         }
 
         final AssignmentsAdapter adapter = (AssignmentsAdapter) gridView.getAdapter();
-
+        if (adapter == null) {
+            return;
+        }
         adapter.getFilter().filter(category);
 
         sharedPreferences.edit()
