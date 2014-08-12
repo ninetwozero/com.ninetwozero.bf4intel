@@ -3,6 +3,8 @@ package com.ninetwozero.bf4intel.ui.awards;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
@@ -25,13 +27,39 @@ public class AwardsAdapter extends BaseFilterableIntelAdapter<Award> {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         Award award = getItem(position);
-
+        AwardHolder holder;
         if (view == null) {
             view = layoutInflater.inflate(R.layout.item_award, parent, false);
+            holder = new AwardHolder();
+            holder.awardMedal = (ImageView) view.findViewById(R.id.award_medal);
+            holder.awardCompletion = (ProgressBar) view.findViewById(R.id.award_completion);
+            holder.awardCompletion.setMax(50);
+            holder.medalsCount = (TextView) view.findViewById(R.id.medals_count);
+            holder.awardMedalContainer = (ViewGroup) view.findViewById(R.id.award_medal_container);
+            holder.awardRibbonContainer = (ViewGroup) view.findViewById(R.id.award_ribbon_container);
+            holder.awardRibbon = (ImageView) view.findViewById(R.id.award_ribbon);
+            holder.ribbonsCount = (TextView) view.findViewById(R.id.ribbons_count);
+
+            view.setTag(holder);
+        } else {
+            holder = (AwardHolder) view.getTag();
         }
 
-        populateMedalViews(view, award);
-        populateRibbonViews(view, award);
+        setImage(holder.awardMedal, MedalImagesMap.get(award.getMedalCode()));
+        holder.awardCompletion.setProgress(award.getMedal().getPresentProgress());
+
+        if (award.getMedal().isTaken()) {
+            holder.medalsCount.setText(String.format("x%d", award.getMedal().getTimesTaken()));
+            holder.medalsCount.setVisibility(View.VISIBLE);
+            holder.awardMedalContainer.setAlpha(1f);
+        } else {
+            holder.medalsCount.setVisibility(View.INVISIBLE);
+            holder.awardMedalContainer.setAlpha(0.5f);
+        }
+
+        holder.awardRibbonContainer.setAlpha(award.getRibbon().isTaken() ? 1f : 0.5f);
+        setImage(holder.awardRibbon, RibbonImagesMap.get(award.getRibbonCode()));
+        holder.ribbonsCount.setText(String.format("x%d", award.getRibbon().getTimesTaken()));
 
         return view;
     }
@@ -47,24 +75,14 @@ public class AwardsAdapter extends BaseFilterableIntelAdapter<Award> {
         return filteredAwards;
     }
 
-    private void populateMedalViews(final View view, final Award award) {
-        setImage(view, R.id.award_medal, MedalImagesMap.get(award.getMedalCode()));
-        setProgress(view, R.id.award_completion, award.getMedal().getPresentProgress(), 50);
+    private static class AwardHolder {
 
-        if (award.getMedal().isTaken()) {
-            final TextView medalsCount = (TextView) view.findViewById(R.id.medals_count);
-            medalsCount.setText(String.format("x%d", award.getMedal().getTimesTaken()));
-            medalsCount.setVisibility(View.VISIBLE);
-            setAlpha(view, R.id.award_medal_container, 1f);
-        } else {
-            setVisibility(view, R.id.medals_count, View.INVISIBLE);
-            setAlpha(view, R.id.award_medal_container, 0.5f);
-        }
-    }
-
-    private void populateRibbonViews(final View view, final Award award) {
-        setAlpha(view, R.id.award_ribbon_container, award.getRibbon().isTaken() ? 1f : 0.5f);
-        setImage(view, R.id.award_ribbon, RibbonImagesMap.get(award.getRibbonCode()));
-        setText(view, R.id.ribbons_count, String.format("x%d", award.getRibbon().getTimesTaken()));
+        public ImageView awardMedal;
+        public ProgressBar awardCompletion;
+        public TextView medalsCount;
+        public ViewGroup awardMedalContainer;
+        public ViewGroup awardRibbonContainer;
+        public ImageView awardRibbon;
+        public TextView ribbonsCount;
     }
 }
