@@ -15,7 +15,6 @@ import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
 import com.ninetwozero.bf4intel.utils.StatsUtils;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,11 +55,11 @@ public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
             holder = (WeaponHolder) view.getTag();
         }
         holder.serviceStarCount.setText(String.valueOf(weapon.getServiceStarsCount()));
-        holder.itemName.setText(textFromResources(R.string.stat_item_title,
+        holder.itemName.setText(formattedTextFromResources(R.string.stat_item_title,
             position + 1,
             context.getString(WeaponStringMap.get(weapon.getUniqueName()))));
-        holder.killCount.setText(textFromResources(R.string.num_kills, NumberFormatter.format(weapon.getKills())));
-        holder.itemProgressValue.setText(textFromResources(R.string.generic_x_of_y,
+        holder.killCount.setText(formattedTextFromResources(R.string.num_kills, NumberFormatter.format(weapon.getKills())));
+        holder.itemProgressValue.setText(formattedTextFromResources(R.string.generic_x_of_y,
             weapon.getServiceStarsProgress(),
             100));
         setImage(holder.weaponImage, WeaponImageMap.get(weapon.getUniqueName()));

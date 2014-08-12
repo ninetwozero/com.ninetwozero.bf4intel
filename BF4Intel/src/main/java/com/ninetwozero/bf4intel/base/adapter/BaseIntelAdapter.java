@@ -67,7 +67,7 @@ public abstract class BaseIntelAdapter<T> extends BaseAdapter {
         ((TextView) view.findViewById(resourceId)).setText(String.format(string, values));
     }
 
-    public String textFromResources(final int stringResource, final Object... values) {
+    public String formattedTextFromResources(final int stringResource, final Object... values) {
         return String.format(context.getString(stringResource), values);
     }
 
