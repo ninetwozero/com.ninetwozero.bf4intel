@@ -67,8 +67,16 @@ public abstract class BaseIntelAdapter<T> extends BaseAdapter {
         ((TextView) view.findViewById(resourceId)).setText(String.format(string, values));
     }
 
+    public String textFromResources(final int stringResource, final Object... values) {
+        return String.format(context.getString(stringResource), values);
+    }
+
     public void setImage(final View view, final int resourceId, final int imageResource) {
         Picasso.with(context).load(imageResource).into((ImageView) view.findViewById(resourceId));
+    }
+
+    public void setImage(final ImageView view, final int resourceId) {
+        Picasso.with(context).load(resourceId).into(view);
     }
 
     public void setImage(final View view, final int resourceId, final int imageResource, final int placeholder) {

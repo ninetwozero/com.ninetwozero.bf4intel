@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
@@ -31,50 +33,60 @@ public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         final Weapon weapon = itemsList.get(position);
-
+        WeaponHolder holder;
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.list_item_weapon, parent, false);
-        }
+            holder = new WeaponHolder();
+            holder.serviceStarCount = (TextView) view.findViewById(R.id.service_star_count);
+            holder.itemName = (TextView) view.findViewById(R.id.item_name);
+            holder.killCount = (TextView) view.findViewById(R.id.kill_count);
+            holder.itemProgressValue = (TextView) view.findViewById(R.id.item_progress_value);
+            holder.weaponImage = (ImageView) view.findViewById(R.id.weapon_image);
+            holder.itemProgress = (ProgressBar) view.findViewById(R.id.item_progress);
+            holder.itemProgress.setMax(100);
+            holder.wrapAccuracy = (ViewGroup) view.findViewById(R.id.wrap_accuracy);
+            holder.accuracyWithWeapon = (TextView) view.findViewById(R.id.accuracy_with_weapon);
 
-        setText(view, R.id.service_star_count, String.valueOf(weapon.getServiceStarsCount()));
-        setText(
-            view,
-            R.id.item_name,
-            R.string.stat_item_title,
-            position + 1,
-            context.getString(WeaponStringMap.get(weapon.getUniqueName()))
-        );
-        setText(view, R.id.kill_count, R.string.num_kills, NumberFormatter.format(weapon.getKills()));
-        setText(view,
-            R.id.item_progress_value,
-            R.string.generic_x_of_y,
-            weapon.getServiceStarsProgress(),
-            100
-        );
-        setImage(view, R.id.weapon_image, WeaponImageMap.get(weapon.getUniqueName()));
-        setProgress(view, R.id.item_progress, weapon.getServiceStarsProgress());
-
-        TextView accuracy = (TextView) view.findViewById(R.id.accuracy_with_weapon);
-        if (accuracy != null && weapon.getShotsFired() > 0) {
-            accuracy.setText(NumberFormatter.percentageFormat(weapon.getAccuracy()));
-            setVisibility(view, R.id.wrap_accuracy, View.VISIBLE);
-        } else if (accuracy != null) {
-            setVisibility(view, R.id.wrap_accuracy, View.INVISIBLE);
-        }
-
-        TextView killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
-        if (killPerMinute != null && weapon.getKills() > 0 && weapon.getTimeEquipped()> 0) {
-            double killPerMinuteValue = StatsUtils.calculateKillsPerMinute(
-                weapon.getKills(), weapon.getTimeEquipped()
-            );
-            killPerMinute.setText(NumberFormatter.format(killPerMinuteValue));
-            setVisibility(view, R.id.wrap_kill_per_minute, View.VISIBLE);
-        } else if (killPerMinute != null) {
-            killPerMinute.setText(R.string.empty);
-            setVisibility(view, R.id.wrap_kill_per_minute, View.INVISIBLE);
+            view.setTag(holder);
+        } else {
+            holder = (WeaponHolder) view.getTag();
+            holder.serviceStarCount.setText(String.valueOf(weapon.getServiceStarsCount()));
+            holder.itemName.setText(textFromResources(R.string.stat_item_title,
+                position + 1,
+                context.getString(WeaponStringMap.get(weapon.getUniqueName()))));
+            holder.killCount.setText(textFromResources(R.string.num_kills, NumberFormatter.format(weapon.getKills())));
+            holder.itemProgressValue.setText(textFromResources(R.string.generic_x_of_y,
+                weapon.getServiceStarsProgress(),
+                100));
+            setImage(holder.weaponImage, WeaponImageMap.get(weapon.getUniqueName()));
+            holder.itemProgress.setProgress(weapon.getServiceStarsProgress());
+            setupAccuracyView(weapon, holder);
+            setupKillPerMinuteView(weapon, holder);
         }
 
         return view;
+    }
+
+    private void setupAccuracyView(final Weapon weapon, final WeaponHolder holder) {
+        if (holder.accuracyWithWeapon != null && weapon.getShotsFired() > 0) {
+            holder.accuracyWithWeapon.setText(NumberFormatter.percentageFormat(weapon.getAccuracy()));
+            holder.wrapAccuracy.setVisibility(View.VISIBLE);
+        } else if (holder.accuracyWithWeapon != null) {
+            holder.wrapAccuracy.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setupKillPerMinuteView(final Weapon weapon, final WeaponHolder holder) {
+        if (holder.killPerMinute != null && weapon.getKills() > 0 && weapon.getTimeEquipped() > 0) {
+            double killPerMinuteValue = StatsUtils.calculateKillsPerMinute(
+                weapon.getKills(), weapon.getTimeEquipped()
+            );
+            holder.killPerMinute.setText(NumberFormatter.format(killPerMinuteValue));
+            holder.wrapKillPerMinute.setVisibility(View.VISIBLE);
+        } else if (holder.killPerMinute != null) {
+            holder.killPerMinute.setText(R.string.empty);
+            holder.wrapKillPerMinute.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -86,5 +98,18 @@ public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
             }
         }
         return filteredWeapons;
+    }
+
+    static class WeaponHolder {
+        TextView serviceStarCount;
+        TextView itemName;
+        TextView killCount;
+        TextView itemProgressValue;
+        ImageView weaponImage;
+        ProgressBar itemProgress;
+        ViewGroup wrapAccuracy;
+        TextView accuracyWithWeapon;
+        ViewGroup wrapKillPerMinute;
+        TextView killPerMinute;
     }
 }
