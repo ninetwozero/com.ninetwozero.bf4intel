@@ -15,14 +15,18 @@ import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
 import com.ninetwozero.bf4intel.utils.StatsUtils;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
 
+    private Context context;
+
     public WeaponStatsAdapter(final Context context) {
         super(context);
+        this.context = context;
     }
 
     @Override
@@ -50,19 +54,19 @@ public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
             view.setTag(holder);
         } else {
             holder = (WeaponHolder) view.getTag();
-            holder.serviceStarCount.setText(String.valueOf(weapon.getServiceStarsCount()));
-            holder.itemName.setText(textFromResources(R.string.stat_item_title,
-                position + 1,
-                context.getString(WeaponStringMap.get(weapon.getUniqueName()))));
-            holder.killCount.setText(textFromResources(R.string.num_kills, NumberFormatter.format(weapon.getKills())));
-            holder.itemProgressValue.setText(textFromResources(R.string.generic_x_of_y,
-                weapon.getServiceStarsProgress(),
-                100));
-            setImage(holder.weaponImage, WeaponImageMap.get(weapon.getUniqueName()));
-            holder.itemProgress.setProgress(weapon.getServiceStarsProgress());
-            setupAccuracyView(weapon, holder);
-            setupKillPerMinuteView(weapon, holder);
         }
+        holder.serviceStarCount.setText(String.valueOf(weapon.getServiceStarsCount()));
+        holder.itemName.setText(textFromResources(R.string.stat_item_title,
+            position + 1,
+            context.getString(WeaponStringMap.get(weapon.getUniqueName()))));
+        holder.killCount.setText(textFromResources(R.string.num_kills, NumberFormatter.format(weapon.getKills())));
+        holder.itemProgressValue.setText(textFromResources(R.string.generic_x_of_y,
+            weapon.getServiceStarsProgress(),
+            100));
+        setImage(holder.weaponImage, WeaponImageMap.get(weapon.getUniqueName()));
+        holder.itemProgress.setProgress(weapon.getServiceStarsProgress());
+        setupAccuracyView(weapon, holder);
+        setupKillPerMinuteView(weapon, holder);
 
         return view;
     }
@@ -100,7 +104,7 @@ public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
         return filteredWeapons;
     }
 
-    static class WeaponHolder {
+    private static class WeaponHolder {
         TextView serviceStarCount;
         TextView itemName;
         TextView killCount;
