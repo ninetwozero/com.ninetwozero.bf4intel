@@ -36,24 +36,35 @@ public class BattleReportItem implements BaseListItem {
 
     @Override
     public View getView(LayoutInflater inflater, View view) {
+        BattleReportHolder holder;
         if (view == null) {
             view = inflater.inflate(R.layout.list_item_battlereport, null);
+            holder = new BattleReportHolder();
+            holder.reportMapImage = (ImageView) view.findViewById(R.id.battlereport_map_image);
+            holder.mapName = (TextView) view.findViewById(R.id.map_name);
+            holder.gameMode = (TextView) view.findViewById(R.id.game_mode);
+            holder.serverName = (TextView) view.findViewById(R.id.server_name);
+            holder.roundTime = (TextView) view.findViewById(R.id.round_time);
+            holder.date = (TextView) view.findViewById(R.id.date);
+            holder.userMatchResult = (TextView) view.findViewById(R.id.user_match_result);
+
+            view.setTag(holder);
+        } else {
+            holder = (BattleReportHolder) view.getTag();
         }
 
-        ImageView mapImage = (ImageView) view.findViewById(R.id.battlereport_map_image);
-        if(mapImage != null) {
-            Picasso.with(context).load(LevelImageMap.get(report.getMapName())).into(mapImage);
+        if(holder.reportMapImage != null) {
+            Picasso.with(context).load(LevelImageMap.get(report.getMapName())).into(holder.reportMapImage);
         }
 
-        ((TextView) view.findViewById(R.id.map_name)).setText(LevelStringMap.get(report.getMapName()));
-        ((TextView) view.findViewById(R.id.game_mode)).setText(GameModeStringMap.get(report.getGameMode()));
-        ((TextView) view.findViewById(R.id.server_name)).setText(report.getServerName());
+        holder.mapName.setText(LevelStringMap.get(report.getMapName()));
+        holder.gameMode.setText(GameModeStringMap.get(report.getGameMode()));
+        holder.serverName.setText(report.getServerName());
 
-        ((TextView) view.findViewById(R.id.round_time)).setText(DateTimeUtils.toLiteral(report.getDuration()));
-        ((TextView) view.findViewById(R.id.date)).setText(DateTimeUtils.toRelative(report.getCreatedAt()));
-        TextView matchResult = (TextView) view.findViewById(R.id.user_match_result);
-        matchResult.setText(matchResult(report.findMatchResultFor(soldierId)));
-        matchResult.setTextColor(matchResultColour(report.findMatchResultFor(soldierId)));
+        holder.roundTime.setText(DateTimeUtils.toLiteral(report.getDuration()));
+        holder.date.setText(DateTimeUtils.toRelative(report.getCreatedAt()));
+        holder.userMatchResult.setText(matchResult(report.findMatchResultFor(soldierId)));
+        holder.userMatchResult.setTextColor(matchResultColour(report.findMatchResultFor(soldierId)));
         return view;
     }
 
@@ -87,5 +98,16 @@ public class BattleReportItem implements BaseListItem {
                 break;
         }
         return context.getResources().getColor(colour);
+    }
+
+    private static class BattleReportHolder {
+
+        public ImageView reportMapImage;
+        public TextView mapName;
+        public TextView gameMode;
+        public TextView serverName;
+        public TextView roundTime;
+        public TextView date;
+        public TextView userMatchResult;
     }
 }
