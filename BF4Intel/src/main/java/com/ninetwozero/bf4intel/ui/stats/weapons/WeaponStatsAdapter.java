@@ -49,6 +49,8 @@ public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
             holder.itemProgress.setMax(100);
             holder.wrapAccuracy = (ViewGroup) view.findViewById(R.id.wrap_accuracy);
             holder.accuracyWithWeapon = (TextView) view.findViewById(R.id.accuracy_with_weapon);
+            holder.wrapKillPerMinute = (ViewGroup) view.findViewById(R.id.wrap_kill_per_minute);
+            holder.killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
 
             view.setTag(holder);
         } else {
