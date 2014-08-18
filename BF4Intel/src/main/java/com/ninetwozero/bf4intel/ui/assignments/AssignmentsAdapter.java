@@ -13,7 +13,6 @@ import com.ninetwozero.bf4intel.json.assignments.AssignmentAward;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentPrerequisite;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentImageMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.ExpansionIconsImageMap;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,24 +32,48 @@ public class AssignmentsAdapter extends BaseFilterableIntelAdapter<Assignment> {
     public View getView(int position, View view, ViewGroup parent) {
         final Assignment assignment = getItem(position);
         final AssignmentAward award = assignment.getAward();
+        AssignmentHolder holder;
 
         if (view == null) {
             view = layoutInflater.inflate(R.layout.item_assignment, parent, false);
-        }
+            holder = getAssignmentHolder(view);
 
-        showAssignmentImage(view, award, assignment.isCompleted());
-        if (award.hasExpansionPack()) {
-            showExpansionPackIcon(view, award);
+            view.setTag(holder);
         } else {
-            setVisibility(view, R.id.expansion_icon, View.INVISIBLE);
+            holder = (AssignmentHolder) view.getTag();
         }
 
-        populateViewForTracking(view, assignment);
+        holder.assignmentImage.setAlpha(assignment.isCompleted() ? 1f : 0.5f);
+        setImage(holder.assignmentImage, AssignmentImageMap.get(award.getUniqueName()));
+
+        if (award.hasExpansionPack()) {
+            holder.expansionIcon.setVisibility(View.VISIBLE);
+            setImage(holder.expansionIcon, ExpansionIconsImageMap.get(award.getExpansionPack()));
+        } else {
+            holder.expansionIcon.setVisibility(View.INVISIBLE);
+        }
+
+        setImage(holder.assignmentPrerequisite, fetchPrerequisiteImageResource(assignment.getDependencyGroup()));
+        holder.assignmentPrerequisite.setVisibility(View.INVISIBLE);
+
+        holder.assignmentCompletion.setProgress(assignment.getCompletion());
+        holder.assignmentCompletion.setVisibility(View.VISIBLE);
+
         if (!assignment.isTracking()) {
-            setVisibility(view, R.id.img_assignment_prerequisite, View.VISIBLE);
+            holder.assignmentPrerequisite.setVisibility(View.VISIBLE);
         }
 
         return view;
+    }
+
+    private AssignmentHolder getAssignmentHolder(View view) {
+        AssignmentHolder holder = new AssignmentHolder();
+        holder.assignmentImage = (ImageView) view.findViewById(R.id.img_assignment);
+        holder.expansionIcon = (ImageView) view.findViewById(R.id.expansion_icon);
+        holder.assignmentPrerequisite = (ImageView) view.findViewById(R.id.img_assignment_prerequisite);
+        holder.assignmentCompletion = (ProgressBar) view.findViewById(R.id.assignment_completion);
+        holder.assignmentCompletion.setMax(100);
+        return holder;
     }
 
     @Override
@@ -64,29 +87,6 @@ public class AssignmentsAdapter extends BaseFilterableIntelAdapter<Assignment> {
         return filteredAssignments;
     }
 
-    private void showAssignmentImage(final View view, final AssignmentAward award, final boolean completed) {
-        final ImageView imageView = (ImageView) view.findViewById(R.id.img_assignment);
-        imageView.setAlpha(completed ? 1f : 0.5f);
-        Picasso.with(context).load(AssignmentImageMap.get(award.getUniqueName())).into(imageView);
-    }
-
-    private void showExpansionPackIcon(final View view, final AssignmentAward award) {
-        final ImageView expansionIcon = (ImageView) view.findViewById(R.id.expansion_icon);
-        expansionIcon.setVisibility(View.VISIBLE);
-        Picasso.with(context).load(ExpansionIconsImageMap.get(award.getExpansionPack())).into(expansionIcon);
-    }
-
-    private void populateViewForTracking(final View view, final Assignment assignment) {
-        final ImageView imagePrerequisite = (ImageView) view.findViewById(R.id.img_assignment_prerequisite);
-        imagePrerequisite.setImageResource(fetchPrerequisiteImageResource(assignment.getDependencyGroup()));
-        imagePrerequisite.setVisibility(View.INVISIBLE);
-
-        final ProgressBar completionProgress = (ProgressBar) view.findViewById(R.id.assignment_completion);
-        completionProgress.setMax(100);
-        completionProgress.setProgress(assignment.getCompletion());
-        completionProgress.setVisibility(View.VISIBLE);
-    }
-
     private int fetchPrerequisiteImageResource(final String group) {
         if (group.equalsIgnoreCase(AssignmentPrerequisite.Type.RANK.toString())) {
             return R.drawable.ic_stat_rank;
@@ -95,5 +95,13 @@ public class AssignmentsAdapter extends BaseFilterableIntelAdapter<Assignment> {
         } else {
             return R.drawable.empty;
         }
+    }
+
+    private static class AssignmentHolder {
+
+        public ImageView assignmentImage;
+        public ImageView expansionIcon;
+        public ImageView assignmentPrerequisite;
+        public ProgressBar assignmentCompletion;
     }
 }

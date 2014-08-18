@@ -3,6 +3,9 @@ package com.ninetwozero.bf4intel.ui.unlocks.weapons;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
@@ -18,19 +21,6 @@ import java.util.List;
 import java.util.Map;
 
 public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer> {
-    private static final Map<String, Integer> categoryStringMap = new HashMap<String, Integer>() {{
-        put("wA", R.string.category_assault_rifles);
-        put("wC", R.string.category_carbines);
-        put("waS", R.string.category_shotguns);
-        put("wL", R.string.category_lmgs);
-        put("waPDW", R.string.category_pdws);
-        put("wD", R.string.category_dmrs);
-        put("wSR", R.string.category_snipers);
-        put("wH", R.string.category_handguns);
-        put("wG", R.string.category_handgrenades);
-        put("wSPk", R.string.category_knives);
-        put("wX", R.string.category_gadgets);
-    }};
 
     public WeaponUnlockAdapter(final Context context) {
         super(context);
@@ -54,18 +44,39 @@ public class WeaponUnlockAdapter extends BaseUnlockAdapter<WeaponUnlockContainer
     }
 
     @Override
-    public View getView(final int position, View convertView, final ViewGroup parent) {
+    public View getView(final int position, View view, final ViewGroup parent) {
         final WeaponUnlock unlock = getItem(position).getUnlock();
         final UnlockCriteria criteria = unlock.getCriteria();
+        WeaponUnlockHolder holder;
 
-        if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
+        if (view == null) {
+            view = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
+            holder = getWeaponUnlockHolder(view);
+
+            view.setTag(holder);
+        } else {
+            holder = (WeaponUnlockHolder) view.getTag();
         }
 
-        setImage(convertView, R.id.img_unlock, UnlockImageSlugMap.get(unlock.getSlug()));
-        setText(convertView, R.id.unlock_title, WeaponStringSlugMap.get(unlock.getSlug()));
-        displayInformationForCriteria(convertView, criteria);
+        setImage(holder.unlockImage, UnlockImageSlugMap.get(unlock.getSlug()));
+        holder.unlockTitle.setText(WeaponStringSlugMap.get(unlock.getSlug()));
+        displayInformationForCriteria(holder, criteria);
 
-        return convertView;
+        return view;
+    }
+
+    private WeaponUnlockHolder getWeaponUnlockHolder(View view) {
+        WeaponUnlockHolder holder = new WeaponUnlockHolder();
+        holder.unlockImage = (ImageView) view.findViewById(R.id.img_unlock);
+        holder.unlockTitle = (TextView) view.findViewById(R.id.unlock_title);
+        holder.unlockCompletion = (ProgressBar) view.findViewById(R.id.unlock_completion);
+        holder.unlockStatusIcon = (ImageView) view.findViewById(R.id.unlock_status_icon);
+        return holder;
+    }
+
+    private static class WeaponUnlockHolder extends UnlockHolder {
+
+        public ImageView unlockImage;
+        public TextView unlockTitle;
     }
 }
