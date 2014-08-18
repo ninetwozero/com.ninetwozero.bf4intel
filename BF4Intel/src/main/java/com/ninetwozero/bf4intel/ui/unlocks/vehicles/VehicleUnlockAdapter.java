@@ -47,11 +47,7 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
 
         if (view == null) {
             view = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
-            holder = new VehicleUnlockHolder();
-            holder.unlockImage = (ImageView) view.findViewById(R.id.img_unlock);
-            holder.unlockTitle = (TextView) view.findViewById(R.id.unlock_title);
-            holder.unlockCompletion = (ProgressBar) view.findViewById(R.id.unlock_completion);
-            holder.unlockStatusIcon = (ImageView) view.findViewById(R.id.unlock_status_icon);
+            holder = getVehicleUnlockHolder(view);
             view.setTag(holder);
         } else {
             holder = (VehicleUnlockHolder) view.getTag();
@@ -62,6 +58,15 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
         displayInformationForCriteria(holder, criteria);
 
         return view;
+    }
+
+    private VehicleUnlockHolder getVehicleUnlockHolder(View view) {
+        VehicleUnlockHolder holder = new VehicleUnlockHolder();
+        holder.unlockImage = (ImageView) view.findViewById(R.id.img_unlock);
+        holder.unlockTitle = (TextView) view.findViewById(R.id.unlock_title);
+        holder.unlockCompletion = (ProgressBar) view.findViewById(R.id.unlock_completion);
+        holder.unlockStatusIcon = (ImageView) view.findViewById(R.id.unlock_status_icon);
+        return holder;
     }
 
     private static class VehicleUnlockHolder extends UnlockHolder {

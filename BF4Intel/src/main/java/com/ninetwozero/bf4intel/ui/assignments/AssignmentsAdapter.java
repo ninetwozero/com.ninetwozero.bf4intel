@@ -36,12 +36,7 @@ public class AssignmentsAdapter extends BaseFilterableIntelAdapter<Assignment> {
 
         if (view == null) {
             view = layoutInflater.inflate(R.layout.item_assignment, parent, false);
-            holder = new AssignmentHolder();
-            holder.assignmentImage = (ImageView) view.findViewById(R.id.img_assignment);
-            holder.expansionIcon = (ImageView) view.findViewById(R.id.expansion_icon);
-            holder.assignmentPrerequisite = (ImageView) view.findViewById(R.id.img_assignment_prerequisite);
-            holder.assignmentCompletion = (ProgressBar) view.findViewById(R.id.assignment_completion);
-            holder.assignmentCompletion.setMax(100);
+            holder = getAssignmentHolder(view);
 
             view.setTag(holder);
         } else {
@@ -69,6 +64,16 @@ public class AssignmentsAdapter extends BaseFilterableIntelAdapter<Assignment> {
         }
 
         return view;
+    }
+
+    private AssignmentHolder getAssignmentHolder(View view) {
+        AssignmentHolder holder = new AssignmentHolder();
+        holder.assignmentImage = (ImageView) view.findViewById(R.id.img_assignment);
+        holder.expansionIcon = (ImageView) view.findViewById(R.id.expansion_icon);
+        holder.assignmentPrerequisite = (ImageView) view.findViewById(R.id.img_assignment_prerequisite);
+        holder.assignmentCompletion = (ProgressBar) view.findViewById(R.id.assignment_completion);
+        holder.assignmentCompletion.setMax(100);
+        return holder;
     }
 
     @Override

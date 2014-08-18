@@ -39,14 +39,7 @@ public class BattleReportItem implements BaseListItem {
         BattleReportHolder holder;
         if (view == null) {
             view = inflater.inflate(R.layout.list_item_battlereport, null);
-            holder = new BattleReportHolder();
-            holder.reportMapImage = (ImageView) view.findViewById(R.id.battlereport_map_image);
-            holder.mapName = (TextView) view.findViewById(R.id.map_name);
-            holder.gameMode = (TextView) view.findViewById(R.id.game_mode);
-            holder.serverName = (TextView) view.findViewById(R.id.server_name);
-            holder.roundTime = (TextView) view.findViewById(R.id.round_time);
-            holder.date = (TextView) view.findViewById(R.id.date);
-            holder.userMatchResult = (TextView) view.findViewById(R.id.user_match_result);
+            holder = getBattleReportHolder(view);
 
             view.setTag(holder);
         } else {
@@ -66,6 +59,18 @@ public class BattleReportItem implements BaseListItem {
         holder.userMatchResult.setText(matchResult(report.findMatchResultFor(soldierId)));
         holder.userMatchResult.setTextColor(matchResultColour(report.findMatchResultFor(soldierId)));
         return view;
+    }
+
+    private BattleReportHolder getBattleReportHolder(View view) {
+        BattleReportHolder holder = new BattleReportHolder();
+        holder.reportMapImage = (ImageView) view.findViewById(R.id.battlereport_map_image);
+        holder.mapName = (TextView) view.findViewById(R.id.map_name);
+        holder.gameMode = (TextView) view.findViewById(R.id.game_mode);
+        holder.serverName = (TextView) view.findViewById(R.id.server_name);
+        holder.roundTime = (TextView) view.findViewById(R.id.round_time);
+        holder.date = (TextView) view.findViewById(R.id.date);
+        holder.userMatchResult = (TextView) view.findViewById(R.id.user_match_result);
+        return holder;
     }
 
     private int matchResult(MatchResult result) {

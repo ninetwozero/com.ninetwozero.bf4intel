@@ -30,15 +30,7 @@ public class AwardsAdapter extends BaseFilterableIntelAdapter<Award> {
         AwardHolder holder;
         if (view == null) {
             view = layoutInflater.inflate(R.layout.item_award, parent, false);
-            holder = new AwardHolder();
-            holder.awardMedal = (ImageView) view.findViewById(R.id.award_medal);
-            holder.awardCompletion = (ProgressBar) view.findViewById(R.id.award_completion);
-            holder.awardCompletion.setMax(50);
-            holder.medalsCount = (TextView) view.findViewById(R.id.medals_count);
-            holder.awardMedalContainer = (ViewGroup) view.findViewById(R.id.award_medal_container);
-            holder.awardRibbonContainer = (ViewGroup) view.findViewById(R.id.award_ribbon_container);
-            holder.awardRibbon = (ImageView) view.findViewById(R.id.award_ribbon);
-            holder.ribbonsCount = (TextView) view.findViewById(R.id.ribbons_count);
+            holder = getAwardHolder(view);
 
             view.setTag(holder);
         } else {
@@ -62,6 +54,19 @@ public class AwardsAdapter extends BaseFilterableIntelAdapter<Award> {
         holder.ribbonsCount.setText(String.format("x%d", award.getRibbon().getTimesTaken()));
 
         return view;
+    }
+
+    private AwardHolder getAwardHolder(View view) {
+        AwardHolder holder = new AwardHolder();
+        holder.awardMedal = (ImageView) view.findViewById(R.id.award_medal);
+        holder.awardCompletion = (ProgressBar) view.findViewById(R.id.award_completion);
+        holder.awardCompletion.setMax(50);
+        holder.medalsCount = (TextView) view.findViewById(R.id.medals_count);
+        holder.awardMedalContainer = (ViewGroup) view.findViewById(R.id.award_medal_container);
+        holder.awardRibbonContainer = (ViewGroup) view.findViewById(R.id.award_ribbon_container);
+        holder.awardRibbon = (ImageView) view.findViewById(R.id.award_ribbon);
+        holder.ribbonsCount = (TextView) view.findViewById(R.id.ribbons_count);
+        return holder;
     }
 
     @Override

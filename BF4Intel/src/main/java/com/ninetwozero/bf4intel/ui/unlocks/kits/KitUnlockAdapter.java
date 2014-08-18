@@ -36,11 +36,7 @@ public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> 
 
         if (view == null) {
             view = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
-            holder = new KitUnlockHolder();
-            holder.unlockImage = (ImageView) view.findViewById(R.id.img_unlock);
-            holder.unlockTitle = (TextView) view.findViewById(R.id.unlock_title);
-            holder.unlockCompletion = (ProgressBar) view.findViewById(R.id.unlock_completion);
-            holder.unlockStatusIcon = (ImageView) view.findViewById(R.id.unlock_status_icon);
+            holder = getKitUnlockHolder(view);
             view.setTag(holder);
         } else {
             holder = (KitUnlockHolder) view.getTag();
@@ -51,6 +47,15 @@ public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> 
         displayInformationForCriteria(view, criteria);
 
         return view;
+    }
+
+    private KitUnlockHolder getKitUnlockHolder(View view) {
+        KitUnlockHolder holder = new KitUnlockHolder();
+        holder.unlockImage = (ImageView) view.findViewById(R.id.img_unlock);
+        holder.unlockTitle = (TextView) view.findViewById(R.id.unlock_title);
+        holder.unlockCompletion = (ProgressBar) view.findViewById(R.id.unlock_completion);
+        holder.unlockStatusIcon = (ImageView) view.findViewById(R.id.unlock_status_icon);
+        return holder;
     }
 
     @Override

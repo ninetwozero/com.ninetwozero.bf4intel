@@ -37,16 +37,7 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
         WeaponHolder holder;
         if (view == null) {
             view = layoutInflater.inflate(R.layout.list_item_vehicle, parent, false);
-            holder = new WeaponHolder();
-            holder.itemName = (TextView) view.findViewById(R.id.item_name);
-            holder.killCount = (TextView) view.findViewById(R.id.kill_count);
-            holder.vehicleImage = (ImageView) view.findViewById(R.id.vehicle_image);
-            holder.serviceStarCount = (TextView) view.findViewById(R.id.service_star_count);
-            holder.itemProgressValue = (TextView) view.findViewById(R.id.item_progress_value);
-            holder.itemProgress = (ProgressBar) view.findViewById(R.id.item_progress);
-            holder.itemServiceStar = (ImageView) view.findViewById(R.id.item_service_star);
-            holder.wrapKillPerMinute = (ViewGroup) view.findViewById(R.id.wrap_kill_per_minute);
-            holder.killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
+            holder = getVehicleHolder(view);
 
             view.setTag(holder);
         } else {
@@ -87,6 +78,20 @@ public class VehicleStatsAdapter extends BaseIntelAdapter<GroupedVehicleStats> {
         }
 
         return view;
+    }
+
+    private WeaponHolder getVehicleHolder(View view) {
+        WeaponHolder holder = new WeaponHolder();
+        holder.itemName = (TextView) view.findViewById(R.id.item_name);
+        holder.killCount = (TextView) view.findViewById(R.id.kill_count);
+        holder.vehicleImage = (ImageView) view.findViewById(R.id.vehicle_image);
+        holder.serviceStarCount = (TextView) view.findViewById(R.id.service_star_count);
+        holder.itemProgressValue = (TextView) view.findViewById(R.id.item_progress_value);
+        holder.itemProgress = (ProgressBar) view.findViewById(R.id.item_progress);
+        holder.itemServiceStar = (ImageView) view.findViewById(R.id.item_service_star);
+        holder.wrapKillPerMinute = (ViewGroup) view.findViewById(R.id.wrap_kill_per_minute);
+        holder.killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
+        return holder;
     }
 
     private static class WeaponHolder {

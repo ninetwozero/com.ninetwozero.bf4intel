@@ -39,18 +39,7 @@ public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
         WeaponHolder holder;
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.list_item_weapon, parent, false);
-            holder = new WeaponHolder();
-            holder.serviceStarCount = (TextView) view.findViewById(R.id.service_star_count);
-            holder.itemName = (TextView) view.findViewById(R.id.item_name);
-            holder.killCount = (TextView) view.findViewById(R.id.kill_count);
-            holder.itemProgressValue = (TextView) view.findViewById(R.id.item_progress_value);
-            holder.weaponImage = (ImageView) view.findViewById(R.id.weapon_image);
-            holder.itemProgress = (ProgressBar) view.findViewById(R.id.item_progress);
-            holder.itemProgress.setMax(100);
-            holder.wrapAccuracy = (ViewGroup) view.findViewById(R.id.wrap_accuracy);
-            holder.accuracyWithWeapon = (TextView) view.findViewById(R.id.accuracy_with_weapon);
-            holder.wrapKillPerMinute = (ViewGroup) view.findViewById(R.id.wrap_kill_per_minute);
-            holder.killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
+            holder = getWeaponHolder(view);
 
             view.setTag(holder);
         } else {
@@ -70,6 +59,22 @@ public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
         setupKillPerMinuteView(weapon, holder);
 
         return view;
+    }
+
+    private WeaponHolder getWeaponHolder(View view) {
+        WeaponHolder holder = new WeaponHolder();
+        holder.serviceStarCount = (TextView) view.findViewById(R.id.service_star_count);
+        holder.itemName = (TextView) view.findViewById(R.id.item_name);
+        holder.killCount = (TextView) view.findViewById(R.id.kill_count);
+        holder.itemProgressValue = (TextView) view.findViewById(R.id.item_progress_value);
+        holder.weaponImage = (ImageView) view.findViewById(R.id.weapon_image);
+        holder.itemProgress = (ProgressBar) view.findViewById(R.id.item_progress);
+        holder.itemProgress.setMax(100);
+        holder.wrapAccuracy = (ViewGroup) view.findViewById(R.id.wrap_accuracy);
+        holder.accuracyWithWeapon = (TextView) view.findViewById(R.id.accuracy_with_weapon);
+        holder.wrapKillPerMinute = (ViewGroup) view.findViewById(R.id.wrap_kill_per_minute);
+        holder.killPerMinute = (TextView) view.findViewById(R.id.kill_per_minute);
+        return holder;
     }
 
     private void setupAccuracyView(final Weapon weapon, final WeaponHolder holder) {
