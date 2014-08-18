@@ -3,6 +3,9 @@ package com.ninetwozero.bf4intel.ui.unlocks.vehicles;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.json.unlocks.UnlockCriteria;
@@ -37,18 +40,37 @@ public class VehicleUnlockAdapter extends BaseUnlockAdapter<VehicleUnlock> {
     }
 
     @Override
-    public View getView(final int position, View convertView, final ViewGroup parent) {
+    public View getView(final int position, View view, final ViewGroup parent) {
         final VehicleUnlock unlock = getItem(position);
         final UnlockCriteria criteria = unlock.getCriteria();
+        VehicleUnlockHolder holder;
 
-        if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
+        if (view == null) {
+            view = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
+            holder = getVehicleUnlockHolder(view);
+            view.setTag(holder);
+        } else {
+            holder = (VehicleUnlockHolder) view.getTag();
         }
 
-        setImage(convertView, R.id.img_unlock, VehicleUnlockImageMap.get(unlock.getName()));
-        setText(convertView, R.id.unlock_title, VehicleUnlockStringMap.get(unlock.getName()));
-        displayInformationForCriteria(convertView, criteria);
+        setImage(holder.unlockImage, VehicleUnlockImageMap.get(unlock.getName()));
+        holder.unlockTitle.setText(VehicleUnlockStringMap.get(unlock.getName()));
+        displayInformationForCriteria(holder, criteria);
 
-        return convertView;
+        return view;
+    }
+
+    private VehicleUnlockHolder getVehicleUnlockHolder(View view) {
+        VehicleUnlockHolder holder = new VehicleUnlockHolder();
+        holder.unlockImage = (ImageView) view.findViewById(R.id.img_unlock);
+        holder.unlockTitle = (TextView) view.findViewById(R.id.unlock_title);
+        holder.unlockCompletion = (ProgressBar) view.findViewById(R.id.unlock_completion);
+        holder.unlockStatusIcon = (ImageView) view.findViewById(R.id.unlock_status_icon);
+        return holder;
+    }
+
+    private static class VehicleUnlockHolder extends UnlockHolder {
+        public ImageView unlockImage;
+        public TextView unlockTitle;
     }
 }
