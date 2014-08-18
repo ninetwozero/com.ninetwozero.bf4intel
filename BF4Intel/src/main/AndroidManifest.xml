@@ -101,10 +101,10 @@
 
       <meta-data
         android:name="android.app.searchable"
-        android:resource="@xml/searchable"></meta-data>
+        android:resource="@xml/searchable"/>
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ui.activities.MainActivity"></meta-data>
+        android:value=".ui.activities.MainActivity"/>
     </activity>
 
     <meta-data
@@ -169,6 +169,7 @@
       android:name=".services.battlefeed.BattleFeedService"
       android:label="@string/label_service_battlefeed" />
 
+    <meta-data android:name="com.crashlytics.ApiKey" android:value="63f4848ede07ff8a7b21fd3e5efffbd7c0e7f17e"/>
   </application>
 
 </manifest>
