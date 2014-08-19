@@ -397,10 +397,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
             storePositionState(position);
         }
 
-        if (callbacks != null && isFragment) {
-            callbacks.onNavigationDrawerItemSelected(position, shouldCloseDrawer, item.getTitle());
-        }
-
         // This should ensure that the closing animation is smooth
         new Handler().postDelayed(
             new Runnable() {
@@ -410,6 +406,10 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 }
             }, 300
         );
+
+        if (callbacks != null && isFragment) {
+            callbacks.onNavigationDrawerItemSelected(position, shouldCloseDrawer, item.getTitle());
+        }
     }
 
     private void startItem(final SimpleListRow item, final boolean isOnResume) {
