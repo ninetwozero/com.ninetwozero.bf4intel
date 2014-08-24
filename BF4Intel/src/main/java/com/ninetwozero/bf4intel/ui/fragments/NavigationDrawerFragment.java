@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -397,10 +398,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
             storePositionState(position);
         }
 
-        if (callbacks != null && isFragment) {
-            callbacks.onNavigationDrawerItemSelected(position, shouldCloseDrawer, item.getTitle());
-        }
-
         // This should ensure that the closing animation is smooth
         new Handler().postDelayed(
             new Runnable() {
@@ -410,6 +407,10 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 }
             }, 300
         );
+
+        if (callbacks != null && isFragment) {
+            callbacks.onNavigationDrawerItemSelected(position, shouldCloseDrawer, item.getTitle());
+        }
     }
 
     private void startItem(final SimpleListRow item, final boolean isOnResume) {
@@ -427,6 +428,8 @@ public class NavigationDrawerFragment extends BaseListFragment {
                 transaction.commit();
             } catch (TypeNotPresentException ex) {
                 showToast(ex.getMessage());
+            } catch (IllegalStateException ise) {
+                Log.e(NavigationDrawerFragment.class.getSimpleName(), ise.getMessage());
             }
         }
     }
