@@ -172,7 +172,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
                 final boolean isInRoundRequirement = "CriteriaType_IAR_InARound".equals(criteria.getCriteriaType());
 
                 setText(tempView, R.id.task_label, AssignmentCriteriaStringMap.get(criteria.getKey()));
-                setText(tempView, R.id.task_completion, getTaskCompletionString(criteria, isInRoundRequirement));
+                setText(tempView, R.id.task_completion, getTaskCompletionString(criteria));
                 setVisibility(tempView, R.id.task_round, isInRoundRequirement ? View.VISIBLE : View.GONE);
 
                 containerView.addView(tempView);
@@ -197,10 +197,10 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         return "WARSAW_ID_P_SP_AWARD_ASSGN" + number + "_CR1";
     }
 
-    private String getTaskCompletionString(final AssignmentCriteria criteria, boolean isInRoundRequirement) {
+    private String getTaskCompletionString(final AssignmentCriteria criteria) {
         return String.format(
             getString(R.string.generic_x_of_y),
-            isInRoundRequirement ? criteria.getUnlockThreshold() : criteria.getCurrentValue(),
+            criteria.getCurrentValue(),
             criteria.getUnlockThreshold()
         );
     }

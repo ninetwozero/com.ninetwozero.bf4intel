@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.bugsense.trace.BugSenseHandler;
+import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -168,15 +169,17 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
     }
 
     protected void setActionBarSubTitle(String subtitle) {
-        if (getActivity() != null && getActivity().getActionBar() != null && subtitle != null) {
+        try{
             getActivity().getActionBar().setSubtitle(subtitle);
-        } else {
+        } catch (NullPointerException npe) {
             String message = String.format(BaseFragment.class.getSimpleName()
                     + " Some of following objects maybe null getActivity() %b getActivity().getActionBar() %b subtitle %b"
                     , getActivity() == null
                     , getActivity().getActionBar() == null
                     , subtitle == null);
             BugSenseHandler.sendEvent(message);
+            Crashlytics.logException(npe);
+            Crashlytics.log(Log.ERROR, "BF4 Intel", message);
         }
     }
 
