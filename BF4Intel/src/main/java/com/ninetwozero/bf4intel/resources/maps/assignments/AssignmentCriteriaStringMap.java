@@ -183,6 +183,15 @@ public class AssignmentCriteriaStringMap {
             put("WARSAW_ID_P_XP0_AWARD_AS_10_CRIT_2", R.string.xp0_award_as_10_crit_2);
             put("WARSAW_ID_P_XP0_AWARD_AS_10_CRIT_3", R.string.xp0_award_as_10_crit_3);
 
+            // XP0 v2
+            put("WARSAW_ID_P_XP0_AWARD_AS_02_CRIT_1_V2", R.string.xp0_award_as_02_crit_1);
+            put("WARSAW_ID_P_XP0_AWARD_AS_02_CRIT_2_V2", R.string.xp0_award_as_02_crit_2);
+            put("WARSAW_ID_P_XP0_AWARD_AS_03_CRIT_2_V2", R.string.xp0_award_as_03_crit_2);
+            put("WARSAW_ID_P_XP0_AWARD_AS_03_CRIT_3_V2", R.string.xp0_award_as_03_crit_3);
+            put("WARSAW_ID_P_XP0_AWARD_AS_05_CRIT_1_V2", R.string.xp0_award_as_05_crit_1);
+            put("WARSAW_ID_P_XP0_AWARD_AS_06_CRIT_1_V2", R.string.xp0_award_as_06_crit_1);
+            put("WARSAW_ID_P_XP0_AWARD_AS_10_CRIT_3_V2", R.string.xp0_award_as_10_crit_3);
+
             // XP1
             put("WARSAW_ID_P_XP1_AWARD_AS_01_CRIT_1", R.string.xp1_award_as_01_crit_1);
             put("WARSAW_ID_P_XP1_AWARD_AS_02_CRIT_1", R.string.xp1_award_as_02_crit_1);
