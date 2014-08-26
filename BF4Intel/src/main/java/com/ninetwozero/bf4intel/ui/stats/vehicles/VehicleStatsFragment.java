@@ -118,6 +118,8 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
 
         final ListView listView = (ListView) view.findViewById(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        setCustomEmptyText(view, R.string.empty_text_statistics);
     }
 
     private void sendDataToListView(final List<GroupedVehicleStats> vehiclestats) {

@@ -80,6 +80,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         }
 
         showLoadingState(true);
+
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), NewsListingService.class);
@@ -135,6 +136,11 @@ public class NewsListingFragment extends BaseLoadingListFragment {
     private void initialize(final View view) {
         setupErrorMessage(view);
         setupSwipeRefreshLayout(view);
+        setupListView(view);
+    }
+
+    private void setupListView(final View view) {
+        setCustomEmptyText(view, R.string.empty_text_news);
     }
 
     private void sendItemsToListView(final List<NewsArticle> items) {

@@ -13,7 +13,8 @@
     <ScrollView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:fillViewport="true">
+      android:fillViewport="true"
+      android:animateLayoutChanges="true">
 
       <RelativeLayout
         android:layout_width="match_parent"
@@ -292,6 +293,13 @@
       </RelativeLayout>
     </ScrollView>
   </android.support.v4.widget.SwipeRefreshLayout>
+
+  <include
+    layout="@layout/generic_empty_view"
+    android:id="@android:id/empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />
 
   <include layout="@layout/inlined_error_message"/>
 </RelativeLayout>

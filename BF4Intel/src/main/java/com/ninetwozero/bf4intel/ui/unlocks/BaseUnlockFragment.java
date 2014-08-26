@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
@@ -21,7 +20,7 @@ import java.util.Locale;
 
 public abstract class BaseUnlockFragment extends BaseLoadingFragment {
     protected GridView gridView;
-    protected TextView emptyTextView;
+    protected View emptyView;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
@@ -70,12 +69,12 @@ public abstract class BaseUnlockFragment extends BaseLoadingFragment {
     }
 
     private void setupListView(final View view) {
-        emptyTextView = (TextView) view.findViewById(android.R.id.empty);
-        emptyTextView.setText(R.string.msg_no_unlocks);
+        emptyView = view.findViewById(android.R.id.empty);
+        setCustomEmptyText(emptyView, R.string.empty_text_unlocks);
 
         gridView = (GridView) view.findViewById(android.R.id.list);
         gridView.setChoiceMode(AbsListView.CHOICE_MODE_NONE);
-        gridView.setEmptyView(emptyTextView);
+        gridView.setEmptyView(emptyView);
         gridView.setOnItemClickListener(
             new AdapterView.OnItemClickListener() {
                 @Override

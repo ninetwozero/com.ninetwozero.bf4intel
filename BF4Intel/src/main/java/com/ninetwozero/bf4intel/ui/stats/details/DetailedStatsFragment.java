@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
@@ -110,13 +109,15 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
             return;
         }
 
-        final TextView textView = (TextView) view.findViewById(android.R.id.empty);
-        textView.setText(R.string.msg_no_stats_details);
+        final View emptyContainer = view.findViewById(android.R.id.empty);
+        setCustomEmptyText(view, R.string.empty_text_statistics);
 
         final StickyListHeadersListView listView = (StickyListHeadersListView) view.findViewById(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setAreHeadersSticky(false);
-        listView.setEmptyView(textView);
+        listView.setEmptyView(emptyContainer);
+
+        setCustomEmptyText(view, R.string.empty_text_statistics);
     }
 
     private void sendDataToListView(View view, final List<List<DetailedStatsItem>> detailedStats) {

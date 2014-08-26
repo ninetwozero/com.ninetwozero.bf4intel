@@ -6,6 +6,13 @@
   android:background="@color/card_activity_bg"
   >
 
+  <include
+    layout="@layout/generic_empty_view"
+    android:id="@android:id/empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />
+
   <android.support.v4.widget.SwipeRefreshLayout
     android:id="@+id/swipe_container"
     android:layout_width="match_parent"
@@ -18,13 +25,6 @@
       android:dividerHeight="0dp"
       />
   </android.support.v4.widget.SwipeRefreshLayout>
-
-  <TextView
-    style="@style/DefaultEmptyText"
-    android:id="@android:id/empty"
-    android:text="@string/msg_empty_news"
-    android:layout_centerInParent="true"
-    />
 
   <include layout="@layout/inlined_error_message"/>
 </RelativeLayout>

@@ -118,8 +118,13 @@ public class AwardGridFragment
             return;
         }
 
+        final View emptyView = view.findViewById(android.R.id.empty);
+        setCustomEmptyText(emptyView, R.string.empty_text_awards);
+
         final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
         gridView.setOnItemClickListener(this);
+        gridView.setEmptyView(emptyView);
+
     }
 
     private void sendDataToGridView(final View view, List<Award> awards) {

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:bf4intel="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/custom_empty_view"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/card_activity_bg"
+  android:gravity="center"
+  android:orientation="vertical">
+
+  <com.ninetwozero.bf4intel.view.ColorFadingImageView
+    android:id="@+id/logo"
+    android:layout_width="@dimen/home_logo_size"
+    android:layout_height="@dimen/home_logo_size"
+    android:src="@drawable/ic_launcher_big_grey"
+    android:contentDescription="@string/cdesc_logo"
+    android:alpha="0.7"
+    bf4intel:whiteImage="@drawable/ic_launcher_big_light"
+    />
+
+  <TextView
+    style="@style/DefaultEmptyText"
+    android:id="@+id/custom_empty_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    />
+</LinearLayout>
