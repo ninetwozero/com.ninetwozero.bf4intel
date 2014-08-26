@@ -21,6 +21,10 @@ public class NewsArticleComment {
     @SerializedName("hidden")
     private boolean hidden;
 
+    public NewsArticleComment(final String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }

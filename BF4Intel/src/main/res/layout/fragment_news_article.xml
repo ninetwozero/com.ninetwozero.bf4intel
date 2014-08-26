@@ -35,30 +35,28 @@
       />
   </RelativeLayout>
 
-  <ExpandableListView
-    android:id="@android:id/list"
+
+  <android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_above="@id/wrap_form"
-    android:headerDividersEnabled="false"
-    android:groupIndicator="@null"
-    />
+    >
+    <ExpandableListView
+      android:id="@android:id/list"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_above="@id/wrap_form"
+      android:headerDividersEnabled="false"
+      android:groupIndicator="@null"
+      />
+  </android.support.v4.widget.SwipeRefreshLayout>
 
-  <ScrollView
+  <include
+    layout="@layout/generic_empty_view"
     android:id="@android:id/empty"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_above="@id/wrap_form"
-    >
-
-    <include
-      android:id="@+id/header_when_empty"
-      layout="@layout/list_header_news_article"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      />
-  </ScrollView>
+    />
 
   <include layout="@layout/inlined_error_message"/>
 </RelativeLayout>
