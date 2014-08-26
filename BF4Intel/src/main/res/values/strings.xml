@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
   <!-- Instead of 3 dots "..." after some messages please use &#8230; -->
@@ -243,4 +243,11 @@
 
   <string name="settings_title_user_in_crash_report">Send username in crash log</string>
   <string name="settings_summary_user_in_crash_report">By keeping this option checked you are helping us to reproduce and solve reported issues faster.</string>
+
+  <string name="empty_text_overview">Loading overview</string>
+  <string name="empty_text_statistics">Loading statistics</string>
+  <string name="empty_text_unlocks">Loading unlocks</string>
+  <string name="empty_text_assignments">Loading assignments</string>
+  <string name="empty_text_awards">Loading awards</string>
+  <string name="empty_text_news">Loading news</string>
 </resources>
