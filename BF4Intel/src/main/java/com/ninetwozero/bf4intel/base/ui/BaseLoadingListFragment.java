@@ -158,7 +158,6 @@ public abstract class BaseLoadingListFragment
         }
     }
 
-
     protected void setupErrorMessage(final View view) {
         errorMessageView = (TextView) view.findViewById(R.id.inline_error_message);
         if (errorMessageView == null) {
@@ -225,6 +224,13 @@ public abstract class BaseLoadingListFragment
 
     protected String[] getResourceStringArray(int resourceId) {
         return getActivity().getResources().getStringArray(resourceId);
+    }
+
+    protected void setCustomEmptyText(final View container, final int resourceId){
+        final TextView textView = (TextView) container.findViewById(R.id.custom_empty_text);
+        if (textView != null) {
+            textView.setText(resourceId);
+        }
     }
 
     @Override

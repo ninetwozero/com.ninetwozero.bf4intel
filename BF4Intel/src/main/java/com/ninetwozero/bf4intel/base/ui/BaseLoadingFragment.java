@@ -28,6 +28,8 @@ import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
 
+import org.w3c.dom.Text;
+
 import java.util.Arrays;
 
 public abstract class BaseLoadingFragment
@@ -170,6 +172,21 @@ public abstract class BaseLoadingFragment
 
     protected String format(long value) {
         return NumberFormatter.format(value);
+    }
+
+    protected void showEmptyView(final View view) {
+        view.findViewById(android.R.id.empty).setVisibility(View.VISIBLE);
+    }
+
+    protected void hideEmptyView(final View view) {
+        view.findViewById(android.R.id.empty).setVisibility(View.INVISIBLE);
+    }
+
+    protected void setCustomEmptyText(final View container, final int resourceId){
+        final TextView textView = (TextView) container.findViewById(R.id.custom_empty_text);
+        if (textView != null) {
+            textView.setText(resourceId);
+        }
     }
 
     protected abstract void startLoadingData();
