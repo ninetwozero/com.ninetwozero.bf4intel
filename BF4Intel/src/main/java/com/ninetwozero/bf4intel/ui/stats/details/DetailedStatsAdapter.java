@@ -6,20 +6,25 @@ import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
-import com.ninetwozero.bf4intel.json.StickyHeaderItem;
+import com.ninetwozero.bf4intel.json.stats.details.DetailedStatsGroup;
 import com.ninetwozero.bf4intel.json.stats.details.DetailedStatsItem;
 import com.ninetwozero.bf4intel.resources.maps.DetailedStatsTitleMap;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
-
-public class DetailedStatsAdapter
-    extends BaseIntelAdapter<List<DetailedStatsItem>>
-    implements StickyListHeadersAdapter {
-
-    private List<StickyHeaderItem> headers;
+public class DetailedStatsAdapter extends BaseIntelAdapter<DetailedStatsGroup> {
+    private Map<String, Integer> headerMap = new HashMap<String, Integer>() {
+        {
+            put(DetailedStatsGroup.MULTIPLAYER_SCORES, R.string.multiplayer_score);
+            put(DetailedStatsGroup.GENERAL_SCORES, R.string.general_score);
+            put(DetailedStatsGroup.GAME_MODE_SCORES, R.string.game_modes);
+            put(DetailedStatsGroup.TEAM_SCORES, R.string.team_score);
+            put(DetailedStatsGroup.EXTRA_SCORES, R.string.extra_score);
+            put(DetailedStatsGroup.GAME_MODE_EXTRA_SCORES, R.string.game_mode_extra);
+        }
+    };
 
     public DetailedStatsAdapter(final Context context) {
         super(context);
@@ -32,46 +37,26 @@ public class DetailedStatsAdapter
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        final List<DetailedStatsItem> statsGroup = itemsList.get(position);
+        final DetailedStatsGroup group = getItem(position);
 
         if (view == null) {
             view = layoutInflater.inflate(R.layout.list_item_stats_details, parent, false);
-        } else {
-            ((ViewGroup) view).removeAllViews();
         }
 
-        for (DetailedStatsItem statsItem : statsGroup) {
-            final View tempView = layoutInflater.inflate(R.layout.list_item_stats_details_row, null);
+        final ViewGroup cardRoot = (ViewGroup) view.findViewById(R.id.card_root);
+        cardRoot.removeAllViews();
+
+        setText(view, R.id.title, fetchTitleForGroup(group.getKey()));
+        for (DetailedStatsItem statsItem : group.getStats()) {
+            final View tempView = layoutInflater.inflate(R.layout.list_item_stats_details_row, cardRoot, false);
             setText(tempView, R.id.score_label, DetailedStatsTitleMap.get(statsItem.getKey()));
             setText(tempView, R.id.score_value, statsItem.getValue());
-            ((ViewGroup) view).addView(tempView);
+            cardRoot.addView(tempView);
         }
-
         return view;
     }
 
-    @Override
-    public View getHeaderView(int position, View view, ViewGroup viewGroup) {
-        final StickyHeaderItem header = getHeader(position);
-
-        if (view == null) {
-            view = layoutInflater.inflate(R.layout.list_header_details, viewGroup, false);
-        }
-
-        setText(view, R.id.list_header, header.getTitle());
-        return view;
-    }
-
-    private StickyHeaderItem getHeader(int position) {
-        return headers.get(position);
-    }
-
-    @Override
-    public long getHeaderId(int i) {
-        return i;
-    }
-
-    public void setHeaders(List<StickyHeaderItem> headers) {
-        this.headers = headers;
+    private int fetchTitleForGroup(final String key) {
+        return headerMap.containsKey(key) ? headerMap.get(key) : R.string.na;
     }
 }
