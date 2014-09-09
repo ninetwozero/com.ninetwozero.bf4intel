@@ -26,7 +26,7 @@ public class VehicleUnlockService extends BaseDaoService<VehicleUnlockDAO, Vehic
             soldier.getString(Keys.Soldier.ID),
             soldier.getString(Keys.Soldier.NAME),
             soldier.getInt(Keys.Soldier.PLATFORM),
-            VehicleUnlockMapSorter.sort(unlocks.getUnlockMap(), sortMode)
+            new VehicleUnlockMapSorter(unlocks.getUnlockMap()).sort(sortMode)
         );
     }
 

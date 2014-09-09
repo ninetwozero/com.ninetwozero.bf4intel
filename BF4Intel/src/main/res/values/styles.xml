@@ -4,7 +4,7 @@
       Base application theme, dependent on API level. This theme is replaced
       by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
   -->
-  <style name="AppBaseTheme" parent="android:Theme.Light">
+  <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     <!--
         Theme customizations available in newer API levels can go in
         res/values-vXX/styles.xml, while customizations related to
@@ -17,9 +17,22 @@
     <item name="android:icon">@drawable/ic_actionbar_logo</item>
   </style>
 
-  <style name="AppThemeSpecialSpecial" parent="AppTheme">
+  <style name="Bf4IntelTheme" parent="AppTheme">
     <item name="android:homeAsUpIndicator">@drawable/ic_navigation_drawer</item>
     <item name="android:icon">@drawable/ic_actionbar_logo</item>
+  </style>
+
+  <style name="AppTheme.NoActionBar" parent="Theme.AppCompat">
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+
+  <!-- Variant of the holographic (dark) theme that has no title bar and fills
+       the entire screen.  This theme
+       sets {@link android.R.attr#windowFullscreen} to true.  -->
+  <style name="AppTheme.NoActionBar.Fullscreen" parent="AppTheme.NoActionBar">
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowContentOverlay">@null</item>
   </style>
 
   <style name="separator">
@@ -55,6 +68,7 @@
   <style name="TextAppearance.Holo.MediumLarge" parent="@android:style/TextAppearance.Holo.Medium">
     <item name="android:textSize">@dimen/text_ml</item>
   </style>
+
   <style name="TextAppearance.Holo.XLarge" parent="@android:style/TextAppearance.Holo.Large">
     <item name="android:textSize">@dimen/text_xl</item>
   </style>
@@ -84,7 +98,10 @@
   </style>
 
   <style name="RegularCard" parent="BaseWhiteContainer">
-    <item name="android:padding">@dimen/spacing_m</item>
+    <item name="android:paddingTop">@dimen/spacing_m</item>
+    <item name="android:paddingBottom">@dimen/spacing_m</item>
+    <item name="android:paddingLeft">@dimen/side_spacing</item>
+    <item name="android:paddingRight">@dimen/side_spacing</item>
   </style>
 
   <style name="NonListViewCard" parent="RegularCard">
@@ -224,7 +241,7 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
     <item name="android:fontFamily">sans-serif-light</item>
-    <item name="android:textSize">@dimen/text_card_title</item>
+    <item name="android:textSize">@dimen/heading_over_card_size</item>
     <item name="android:textColor">@color/text_on_card_bg</item>
     <item name="android:layout_marginBottom">@dimen/spacing_m</item>
   </style>
@@ -235,6 +252,7 @@
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Large</item>
     <item name="android:fontFamily">sans-serif-light</item>
     <item name="android:textColor">@color/regular_card_title</item>
+    <item name="android:textSize">@dimen/text_l</item>
   </style>
 
   <style name="RegularCardSubtitle">
@@ -242,6 +260,7 @@
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small</item>
     <item name="android:textColor">@color/regular_card_subtitle</item>
+    <item name="android:textSize">@dimen/text_s</item>
   </style>
 
   <style name="DefaultEmptyText">
@@ -268,6 +287,18 @@
     <item name="android:clipToPadding">false</item>
     <item name="android:padding">@dimen/spacing_m</item>
     <item name="android:scrollbarStyle">outsideOverlay</item>
+  </style>
+
+  <style name="NavigationDrawerHeading">
+    <item name="android:paddingTop">@dimen/spacing_m</item>
+    <item name="android:paddingRight">@dimen/spacing_m</item>
+    <item name="android:paddingBottom">@dimen/spacing_s</item>
+    <item name="android:paddingLeft">@dimen/spacing_m</item>
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small.Inverse</item>
+    <item name="android:textAllCaps">true</item>
+    <item name="android:textColor">@color/lightgrey</item>
   </style>
 
 </resources>

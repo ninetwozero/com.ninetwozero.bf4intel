@@ -129,6 +129,16 @@ public class RankImageMap {
             put("WARSAW_ID_P_RANK118_NAME", R.drawable.r118);
             put("WARSAW_ID_P_RANK119_NAME", R.drawable.r119);
             put("WARSAW_ID_P_RANK120_NAME", R.drawable.r120);
+            put("WARSAW_ID_P_RANK121_NAME", R.drawable.r121);
+            put("WARSAW_ID_P_RANK122_NAME", R.drawable.r122);
+            put("WARSAW_ID_P_RANK123_NAME", R.drawable.r123);
+            put("WARSAW_ID_P_RANK124_NAME", R.drawable.r124);
+            put("WARSAW_ID_P_RANK125_NAME", R.drawable.r125);
+            put("WARSAW_ID_P_RANK126_NAME", R.drawable.r126);
+            put("WARSAW_ID_P_RANK127_NAME", R.drawable.r127);
+            put("WARSAW_ID_P_RANK128_NAME", R.drawable.r128);
+            put("WARSAW_ID_P_RANK129_NAME", R.drawable.r129);
+            put("WARSAW_ID_P_RANK130_NAME", R.drawable.r130);
         }
     };
 

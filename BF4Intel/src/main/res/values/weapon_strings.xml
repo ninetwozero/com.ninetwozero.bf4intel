@@ -208,4 +208,13 @@
   <string name="weapon_xm25_airburst">XM25 AIRBURST</string>
   <string name="weapon_c4_explosive">C4 EXPLOSIVE</string>
   <string name="weapon_ucav">UCAV</string>
+
+  <!--DRAGON'S TEETH-->
+  <string name="weapon_un6">UNICA 6</string>
+  <string name="weapon_mpx">MPX</string>
+  <string name="weapon_deagle">DEAGLE 44</string>
+  <string name="weapon_neckknife">NECK</string>
+  <string name="weapon_bulldog">BULLDOG</string>
+  <string name="weapon_cs5">CS5</string>
+  <string name="weapon_shield">BALLISTIC SHIELD</string>
 </resources>

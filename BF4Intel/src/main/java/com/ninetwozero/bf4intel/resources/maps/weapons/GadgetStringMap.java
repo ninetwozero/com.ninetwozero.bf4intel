@@ -75,6 +75,8 @@ public class GadgetStringMap {
             put("WARSAW_ID_P_IDESC_XM25_SMK", R.string.idesc_xm25_smk);
             put("WARSAW_ID_P_XP2_IDESC_40MM_3GL", R.string.xp2_idesc_40mm_3gl);
             put("WARSAW_ID_P_XP2_IDESC_AAMINE", R.string.xp2_idesc_aamine);
+            put("WARSAW_ID_P_IDESC_NECKKNIFE", R.string.idesc_neck);
+            put("WARSAW_ID_P_XP3_WNAME_SHIELD", R.string.idesc_shield);
         }
     };
 

@@ -123,4 +123,14 @@
   <string name="rank118_name">Brigadier General IX</string>
   <string name="rank119_name">Brigadier General X</string>
   <string name="rank120_name">Major General</string>
+  <string name="rank121_name">Major General II</string>
+  <string name="rank122_name">Major General III</string>
+  <string name="rank123_name">Major General IV</string>
+  <string name="rank124_name">Major General V</string>
+  <string name="rank125_name">Major General VI</string>
+  <string name="rank126_name">Major General VII</string>
+  <string name="rank127_name">Major General VIII</string>
+  <string name="rank128_name">Major General IX</string>
+  <string name="rank129_name">Major General X</string>
+  <string name="rank130_name">Lieutenant General</string>
 </resources>

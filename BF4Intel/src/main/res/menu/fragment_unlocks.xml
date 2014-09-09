@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:bf4intel="http://schemas.android.com/apk/res-auto">
   <item
     android:id="@+id/ab_action_sort"
-    android:icon="@drawable/ic_action_sort_1"
+    android:icon="@drawable/ic_action_sort"
     android:title="@string/menu_title_sort"
-    android:showAsAction="always"
+    bf4intel:showAsAction="always"
     >
     <menu>
       <group
@@ -15,13 +16,13 @@
         <item
           android:id="@+id/ab_action_sort_categorized"
           android:title="@string/label_sort_categorized"
-          android:showAsAction="never"
+          bf4intel:showAsAction="never"
           android:icon="@null"
           />
         <item
           android:id="@+id/ab_action_sort_progress"
           android:title="@string/label_sort_progress"
-          android:showAsAction="never"
+          bf4intel:showAsAction="never"
           android:icon="@null"
           />
       </group>

@@ -1,43 +1,87 @@
 package com.ninetwozero.bf4intel.database.dao.assignments;
 
+import android.util.Pair;
+
+import com.ninetwozero.bf4intel.database.dao.AbstractSorter;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AssignmentSorter {
-    private static final List<String> ASSIGNMENT_TYPE = new ArrayList<String>(Arrays.asList("bronze", "silver", "gold", "sp"));
+public class AssignmentSorter extends AbstractSorter<SortedAssignmentContainer> {
+    public static final List<String> ASSIGNMENT_TYPE = new ArrayList<String>(Arrays.asList("bronze", "silver", "gold", "sp"));
+    private final Assignments assignments;
+    private Map<String, List<Assignment>> groupedMap = new HashMap<String, List<Assignment>>();
 
-    public static SortedAssignmentContainer sort(final Assignments assignments) {
-        return assignments != null ? fetchSortedAssignments(assignments) : new SortedAssignmentContainer();
+    public AssignmentSorter(final Assignments assignments) {
+        this.assignments = assignments;
     }
 
-    private static SortedAssignmentContainer fetchSortedAssignments(final Assignments assignments) {
+    @Override
+    protected SortedAssignmentContainer sortByProgress() {
+        if (groupedMap.size() == 0) {
+            sortByCategory();
+        }
+        List<Assignment> uncompleted = new ArrayList<Assignment>();
+        List<Assignment> completed = new ArrayList<Assignment>();
+        for (String group : ASSIGNMENT_TYPE) {
+            Pair<List<Assignment>, List<Assignment>> pair = fetchPairedAssignmentLists(group);
+            uncompleted.addAll(pair.first);
+            completed.addAll(pair.second);
+        }
+        Collections.sort(uncompleted);
+        uncompleted.addAll(completed);
+        return new SortedAssignmentContainer(uncompleted, assignments.getExpansions());
+    }
+
+    @Override
+    protected SortedAssignmentContainer sortByCategory() {
         List<Assignment> orderedAssignments = new ArrayList<Assignment>();
-        Map<String, List<String>> missions = assignments.getAssignmentCategory();
-        for (String assignmentType : ASSIGNMENT_TYPE) {
-            List<String> groupedAssignments = missions.get(assignmentType);
-            orderedAssignments.addAll(
-                fetchGroupedAssignments(
-                    assignments.getAssignments(),
-                    groupedAssignments
-                )
-            );
+        if (groupedMap.size() == 0) {
+            Map<String, List<String>> missions = assignments.getAssignmentCategory();
+            for (String group : ASSIGNMENT_TYPE) {
+                List<String> groupedAssignments = missions.get(group);
+                List<Assignment> assignmentList = fetchGroupedAssignments(groupedAssignments, group);
+                groupedMap.put(group, assignmentList);
+                orderedAssignments.addAll(assignmentList);
+            }
+        } else {
+            for (String group : ASSIGNMENT_TYPE) {
+                orderedAssignments.addAll(groupedMap.get(group));
+            }
         }
         return new SortedAssignmentContainer(orderedAssignments, assignments.getExpansions());
     }
 
-    private static List<Assignment> fetchGroupedAssignments(final Map<String, Assignment> assignments, final List<String> groupedAssignments) {
+    private List<Assignment> fetchGroupedAssignments(final List<String> assignmentsInGroup, final String group) {
         List<Assignment> orderedGroup = new ArrayList<Assignment>();
-        for (String key : groupedAssignments) {
-            if (assignments.containsKey(key)) {
-                orderedGroup.add(assignments.get(key));
+        for (String key : assignmentsInGroup) {
+            if (assignments.getAssignments().containsKey(key)) {
+                Assignment assignment = assignments.getAssignments().get(key);
+                assignment.setGroup(group);
+                orderedGroup.add(assignment);
             }
         }
         return orderedGroup;
+    }
+
+    private Pair<List<Assignment>, List<Assignment>> fetchPairedAssignmentLists(final String group) {
+        List<Assignment> uncompleted = new ArrayList<Assignment>();
+        List<Assignment> completed = new ArrayList<Assignment>();
+        List<Assignment> assignmentsOfGroup = groupedMap.get(group);
+        for (Assignment assignment : assignmentsOfGroup) {
+            if (assignment.getCompletion() != 100) {
+                uncompleted.add(assignment);
+            } else {
+                completed.add(assignment);
+            }
+        }
+        return new Pair<List<Assignment>, List<Assignment>>(uncompleted, completed);
     }
 }

@@ -68,10 +68,14 @@ public class WeaponDetailsFragment extends BaseDialogFragment {
 
     private void populateDescriptionBox(View view) {
         final String nameKey = weapon.getUniqueName();
-        final boolean hasDescription = nameKey.contains("_INAME_");
+        boolean hasDescription = nameKey.contains("_INAME_");
         final String descriptionKey = nameKey.replace("_INAME_", "_IDESC_");
         if (hasDescription) {
             setText(view, R.id.value_description, GadgetStringMap.get(descriptionKey));
+        }
+        if (weapon.getUniqueName().equals("WARSAW_ID_P_XP3_WNAME_SHIELD")){
+            setText(view, R.id.value_description, GadgetStringMap.get(weapon.getUniqueName()));
+            hasDescription = true;
         }
         setVisibility(view, R.id.wrap_description_box, hasDescription ? View.VISIBLE : View.GONE);
     }

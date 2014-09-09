@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.json.stats.weapons;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 public class Weapon implements Comparable<Weapon>, Serializable {
     @SerializedName("name")
@@ -29,6 +30,8 @@ public class Weapon implements Comparable<Weapon>, Serializable {
     private double accuracy;
     @SerializedName("headshots")
     private int headshotCount;
+    @SerializedName("code")
+    private String groupCode;
 
     public String getUniqueName() {
         return uniqueName;
@@ -79,10 +82,35 @@ public class Weapon implements Comparable<Weapon>, Serializable {
     }
 
     public int compareTo(Weapon w) {
-        if (kills == w.kills) {
-            return timeEquipped > w.timeEquipped ? -1 : timeEquipped < w.timeEquipped ? +1 : 0;
-        } else {
-            return kills > w.kills ? -1 : +1;
-        }
+        return Comparators.KILLS.compare(this, w);
+    }
+
+    public String getGroupCode() {
+        return groupCode;
+    }
+
+    public static class Comparators {
+        public static final Comparator<Weapon> KILLS = new Comparator<Weapon>() {
+            @Override
+            public int compare(Weapon w1, Weapon w2) {
+                if (w1.kills == w2.kills) {
+                    return w1.timeEquipped > w2.timeEquipped ? -1 : w1.timeEquipped < w2.timeEquipped ? +1 : 0;
+                } else {
+                    return w1.kills > w2.kills ? -1 : +1;
+                }
+            }
+        };
+        public static Comparator<Weapon> PROGRESS = new Comparator<Weapon>() {
+            @Override
+            public int compare(Weapon w1, Weapon w2) {
+                if ( w1.serviceStarsProgress > w2.getServiceStarsProgress()) {
+                    return -1;
+                } else if (w1.serviceStarsProgress < w2.getServiceStarsProgress()) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        };
     }
 }

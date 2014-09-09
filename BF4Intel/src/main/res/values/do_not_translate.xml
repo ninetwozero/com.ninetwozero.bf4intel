@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--Manifest labels-->
+  <string name="label_activity_single_fragment">@string/app_name</string>
+
+  <string name="label_activity_soldier_statistics">STATISTICS</string>
+  <string name="label_activity_assignments">ASSIGNMENTS</string>
+  <string name="label_activity_awards">AWARDS</string>
+  <string name="label_activity_unlocks">UNLOCKS</string>
+  <string name="label_search">Search</string>
+
+  <string name="label_service_soldieroverview">Soldier Overview Service</string>
+  <string name="label_service_stats_weapons">Weapon Stats Service</string>
+  <string name="label_service_stats_vehicles">Vehicle Stats Service</string>
+  <string name="label_service_stats_reports">Reports Stats Service</string>
+  <string name="label_service_stats_details">Detailed Stats Service</string>
+  <string name="label_service_unlocks_weapons">Weapon Unlocks Service</string>
+  <string name="label_service_unlocks_vehicles">Vehicle Unlocks Service</string>
+  <string name="label_service_unlocks_kits">Kit Unlocks Service</string>
+  <string name="label_service_assignments">Assignment Service</string>
+  <string name="label_service_awards">Award Service</string>
+  <string name="label_service_battlefeed">Battle Feed Service</string>
+  <string name="label_service_news">News Service</string>
+
+  <!--Menu options-->
+  <string name="menu_reset_password">Reset password&#8230;</string>
+  <string name="menu_logout">Logout</string>
+
+  <!-- Login related stuff -->
+  <string name="title_login">Login</string>
+  <string name="action_sign_in_short">Sign in</string>
+  <string name="prompt_email">Origin™ Email</string>
+  <string name="prompt_password">Origin™ Password</string>
+  <string name="login_progress_signing_in">Signing in&#8230;</string>
+  <string name="label_login">Login</string>
+
+  <!--News-->
+  <string name="create_post_header">Post content</string>
+  <string name="create_post_hint">Post message here&#8230;</string>
+  <string name="new_thread_header">Thread title</string>
+  <string name="new_thread_title_hint">When is next patch coming out?</string>
+  <string name="new_thread_content_header">Content</string>
+  <string name="new_thread_content_hint">What is date for new patch</string>
+  <string name="msg_sending">Sending&#8230;</string>
+  <string name="msg_enter_comment">Enter a comment!</string>
+  <string name="msg_comment_ok">Comment posted!</string>
+  <string name="msg_error_gate_redirect">Please login to continue.</string>
+  <string name="msg_error_already_upvoted">You\'ve already hooah\'d this post!</string>
+  <string name="done">Done</string>
+  <string name="label_read">Read</string>
+  <string name="label_discuss">Discuss</string>
+  <string name="label_comment">Comment</string>
+  <string name="hint_comment">Your comment here&#8230;</string>
+  <string name="title_revoke_hooah">Revoke hooah</string>
+  <string name="title_hooah">Hooah</string>
+  <string name="title_unhooah">Un-hooah</string>
+  <string name="msg_user_said_hooah">You said hooah</string>
+  <string name="label_offline_mode">Offline mode</string>
+</resources>

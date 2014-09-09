@@ -45,6 +45,12 @@ public class LevelStringMap {
             put("XP2_002", "Nansha Strike");
             put("XP2_003", "Wave Breaker");
             put("XP2_004", "Operation Mortar");
+
+            //XP3
+            put("XP3_Prpganda", "Propaganda");
+            put("XP3_MarketPl", "Pearl Market");
+            put("XP3_WtrFront", "Sunken Dragon");
+            put("XP3_UrbanGdn", "Lumphini Garden");
         }
     };
 

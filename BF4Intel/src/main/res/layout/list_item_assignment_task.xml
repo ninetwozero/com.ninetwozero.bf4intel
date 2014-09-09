@@ -6,20 +6,7 @@
   android:layout_height="wrap_content"
   android:layout_marginBottom="@dimen/spacing_m"
   >
-  <TextView
-    android:id="@+id/task_label"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    />
-  <TextView
-    android:id="@+id/task_round"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:visibility="gone"
-    android:layout_below="@id/task_label"
-    android:textColor="@color/grey"
-    android:text="@string/label_in_a_round"
-    />
+
   <TextView
     android:id="@+id/task_completion"
     android:layout_width="wrap_content"
@@ -27,4 +14,29 @@
     android:layout_marginLeft="@dimen/spacing_m"
     android:layout_alignParentRight="true"
     />
+
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_alignParentLeft="true"
+    android:layout_toLeftOf="@+id/task_completion"
+    >
+
+    <TextView
+      android:id="@+id/task_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:singleLine="false"
+      />
+
+    <TextView
+      android:id="@+id/task_round"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      android:textColor="@color/grey"
+      android:text="@string/label_in_a_round"
+      />
+  </LinearLayout>
 </RelativeLayout>

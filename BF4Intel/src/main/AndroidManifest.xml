@@ -10,7 +10,7 @@
     android:icon="@drawable/ic_launcher"
     android:label="@string/app_name"
     android:name=".Bf4Intel"
-    android:theme="@style/AppThemeSpecialSpecial">
+    android:theme="@style/AppTheme">
     <activity
       android:name=".ui.activities.MainActivity"
       android:icon="@drawable/ic_launcher">
@@ -25,7 +25,7 @@
     </activity>
 
     <activity
-      android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
+      android:theme="@style/AppTheme.NoActionBar.Fullscreen"
       android:name=".ui.login.LoginActivity"
       android:label="@string/label_login"
       android:launchMode="singleTop"
@@ -70,6 +70,16 @@
     </activity>
 
     <activity
+      android:name=".ui.settings.SettingsActivity"
+      android:label="@string/menu_settings"
+      android:parentActivityName=".ui.activities.MainActivity"
+      android:theme="@style/AppTheme">
+      <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".ui.activities.MainActivity" />
+    </activity>
+
+    <activity
       android:name=".ui.about.AppInfoActivity"
       android:label="@string/label_about"
       android:parentActivityName=".ui.activities.MainActivity"
@@ -91,10 +101,10 @@
 
       <meta-data
         android:name="android.app.searchable"
-        android:resource="@xml/searchable"></meta-data>
+        android:resource="@xml/searchable"/>
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value=".ui.activities.MainActivity"></meta-data>
+        android:value=".ui.activities.MainActivity"/>
     </activity>
 
     <meta-data
@@ -159,6 +169,7 @@
       android:name=".services.battlefeed.BattleFeedService"
       android:label="@string/label_service_battlefeed" />
 
+    <meta-data android:name="com.crashlytics.ApiKey" android:value="63f4848ede07ff8a7b21fd3e5efffbd7c0e7f17e"/>
   </application>
 
 </manifest>

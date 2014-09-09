@@ -203,6 +203,15 @@ public class WeaponStringMap {
             put("WARSAW_ID_P_XP2_WNAME_SW40", R.string.weapon_sw40);
             put("WARSAW_ID_P_INAME_KNIFE2142", R.string.weapon_knife_2142);
             put("WARSAW_ID_P_INAME_KNIFEPRECISION", R.string.weapon_knife_precision);
+
+            /*DRAGON'S TEETH*/
+            put("WARSAW_ID_P_XP3_WNAME_UN6", R.string.weapon_un6);
+            put("WARSAW_ID_P_XP3_WNAME_MPX", R.string.weapon_mpx);
+            put("WARSAW_ID_P_XP3_WNAME_DEAGLE", R.string.weapon_deagle);
+            put("WARSAW_ID_P_INAME_NECKKNIFE", R.string.weapon_neckknife);
+            put("WARSAW_ID_P_XP3_WNAME_BULLDOG", R.string.weapon_bulldog);
+            put("WARSAW_ID_P_XP3_WNAME_CS5", R.string.weapon_cs5);
+            put("WARSAW_ID_P_XP3_WNAME_SHIELD", R.string.weapon_shield);
         }
     };
 

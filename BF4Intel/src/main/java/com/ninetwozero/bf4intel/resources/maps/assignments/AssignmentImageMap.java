@@ -89,6 +89,7 @@ public class AssignmentImageMap {
             /*Unknown award*/
             put("WARSAW_ID_P_XP1_AWARD_GHOST", R.drawable.ghost1);
             put("WARSAW_ID_P_XP2_AWARD_GHOST", R.drawable.ghost2);
+            put("WARSAW_ID_P_XP3_AWARD_GHOST", R.drawable.ghost3);
 
             /*Naval Strike assignments*/
             put("WARSAW_ID_P_XP2_AWARD_AS_01", R.drawable.xp2as01);
@@ -101,10 +102,22 @@ public class AssignmentImageMap {
             put("WARSAW_ID_P_XP2_AWARD_AS_09", R.drawable.xp2as09);
             put("WARSAW_ID_P_XP2_AWARD_AS_10", R.drawable.xp2as10);
             put("WARSAW_ID_P_XP2_AWARD_AS_03", R.drawable.xp23);
+
+            /*Dragon's Teeth assignments*/
+            put("WARSAW_ID_P_XP3_AWARD_AS_01_NAME", R.drawable.xp3as01);
+            put("WARSAW_ID_P_XP3_AWARD_AS_02_NAME", R.drawable.xp3as02);
+            put("WARSAW_ID_P_XP3_AWARD_AS_03_NAME", R.drawable.xp3as03);
+            put("WARSAW_ID_P_XP3_AWARD_AS_04_NAME", R.drawable.xp3as04);
+            put("WARSAW_ID_P_XP3_AWARD_AS_05_NAME", R.drawable.xp3as05);
+            put("WARSAW_ID_P_XP3_AWARD_AS_06_NAME", R.drawable.xp3as06);
+            put("WARSAW_ID_P_XP3_AWARD_AS_07_NAME", R.drawable.xp3as07);
+            put("WARSAW_ID_P_XP3_AWARD_AS_08_NAME", R.drawable.xp3as08);
+            put("WARSAW_ID_P_XP3_AWARD_AS_09_NAME", R.drawable.xp3as09);
+            put("WARSAW_ID_P_XP3_AWARD_AS_10_NAME", R.drawable.xp3as10);
         }
     };
 
     public static int get(final String key) {
-        return map.containsKey(key)? map.get(key) : R.drawable.as_unknown;
+        return map.containsKey(key) ? map.get(key) : R.drawable.as_unknown;
     }
 }

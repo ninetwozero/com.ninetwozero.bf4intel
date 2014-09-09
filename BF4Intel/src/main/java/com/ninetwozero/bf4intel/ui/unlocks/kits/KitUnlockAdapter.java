@@ -3,6 +3,9 @@ package com.ninetwozero.bf4intel.ui.unlocks.kits;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.json.unlocks.KitItemUnlockContainer;
@@ -12,17 +15,10 @@ import com.ninetwozero.bf4intel.resources.maps.unlocks.UnlockImageSlugMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringSlugMap;
 import com.ninetwozero.bf4intel.ui.unlocks.BaseUnlockAdapter;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> {
-    private final Map<String, Integer> categoryStringMap = new HashMap<String, Integer>() {{
-        put("1", R.string.class_assault);
-        put("2", R.string.class_engineer);
-        put("8", R.string.class_recon);
-        put("32", R.string.class_support);
-    }};
-
     public KitUnlockAdapter(final Context context) {
         super(context);
     }
@@ -33,23 +29,50 @@ public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> 
     }
 
     @Override
-    public View getView(final int position, View convertView, final ViewGroup parent) {
+    public View getView(final int position, View view, final ViewGroup parent) {
         final WeaponUnlock unlock = getItem(position).getUnlock();
         final UnlockCriteria criteria = unlock.getCriteria();
+        KitUnlockHolder holder;
 
-        if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
+        if (view == null) {
+            view = layoutInflater.inflate(R.layout.grid_item_unlocks, parent, false);
+            holder = getKitUnlockHolder(view);
+            view.setTag(holder);
+        } else {
+            holder = (KitUnlockHolder) view.getTag();
         }
 
-        setImage(convertView, R.id.img_unlock, UnlockImageSlugMap.get(unlock.getSlug()));
-        setText(convertView, R.id.unlock_title, WeaponStringSlugMap.get(unlock.getSlug()));
-        displayInformationForCriteria(convertView, criteria);
+        setImage(holder.unlockImage, UnlockImageSlugMap.get(unlock.getSlug()));
+        holder.unlockTitle.setText(WeaponStringSlugMap.get(unlock.getSlug()));
+        displayInformationForCriteria(view, criteria);
 
-        return convertView;
+        return view;
+    }
+
+    private KitUnlockHolder getKitUnlockHolder(View view) {
+        KitUnlockHolder holder = new KitUnlockHolder();
+        holder.unlockImage = (ImageView) view.findViewById(R.id.img_unlock);
+        holder.unlockTitle = (TextView) view.findViewById(R.id.unlock_title);
+        holder.unlockCompletion = (ProgressBar) view.findViewById(R.id.unlock_completion);
+        holder.unlockStatusIcon = (ImageView) view.findViewById(R.id.unlock_status_icon);
+        return holder;
     }
 
     @Override
-    protected int getCategoryString(final String key) {
-        return categoryStringMap.containsKey(key) ? categoryStringMap.get(key) : R.string.na;
+    protected List<KitItemUnlockContainer> filterItems(CharSequence constraint) {
+        List<KitItemUnlockContainer> filteredItems = new ArrayList<KitItemUnlockContainer>();
+
+        int kitId = Integer.parseInt(constraint.toString());
+        for (KitItemUnlockContainer item : listWithAllItems) {
+            if (item.getKitId() == kitId) {
+                filteredItems.add(item);
+             }
+        }
+        return filteredItems;
+    }
+
+    private static class KitUnlockHolder extends UnlockHolder {
+        public ImageView unlockImage;
+        public TextView unlockTitle;
     }
 }

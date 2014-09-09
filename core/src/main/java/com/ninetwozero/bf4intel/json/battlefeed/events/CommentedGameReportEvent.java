@@ -13,7 +13,7 @@ public class CommentedGameReportEvent extends BaseEvent {
     @SerializedName("mapVariant")
     private int mapVariant;
     @SerializedName("gameMode")
-    private int gameMode;
+    private long gameMode;
     @SerializedName("gameReportComment")
     private String comment;
 
@@ -33,7 +33,7 @@ public class CommentedGameReportEvent extends BaseEvent {
         return mapVariant;
     }
 
-    public int getGameMode() {
+    public long getGameMode() {
         return gameMode;
     }
 

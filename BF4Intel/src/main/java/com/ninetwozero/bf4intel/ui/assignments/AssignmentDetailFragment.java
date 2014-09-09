@@ -41,6 +41,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     public static final String TAG = "AssignmentDetailFragment";
 
     private static final String KEY_FIRESTARTER = "WARSAW_ID_P_XP0_AS_01";
+    private static final String KEY_PHANTOMINITIATE = "WARSAW_ID_P_XP3_AWARD_GHOST";
 
     private Assignment assignment;
     private AssignmentAward assignmentAward;
@@ -139,7 +140,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     private AssignmentPrerequisite fetchPrerequisiteForExpansion() {
         final String pack = assignmentAward.getExpansionPack().toUpperCase(Locale.getDefault());
         return new AssignmentPrerequisite(
-            "WARSAW_ID_P_AWARD_" + pack,
+            "WARSAW_ID_P_AWARD_PREREQUISITE_" + pack,
             assignmentAward.getExpansionPack(),
             AssignmentPrerequisite.Type.EXPANSION.getGroup(),
             userHasExpansionPack ? 1 : 0
@@ -171,7 +172,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
                 final boolean isInRoundRequirement = "CriteriaType_IAR_InARound".equals(criteria.getCriteriaType());
 
                 setText(tempView, R.id.task_label, AssignmentCriteriaStringMap.get(criteria.getKey()));
-                setText(tempView, R.id.task_completion, getTaskCompletionString(criteria, isInRoundRequirement));
+                setText(tempView, R.id.task_completion, getTaskCompletionString(criteria));
                 setVisibility(tempView, R.id.task_round, isInRoundRequirement ? View.VISIBLE : View.GONE);
 
                 containerView.addView(tempView);
@@ -196,11 +197,10 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         return "WARSAW_ID_P_SP_AWARD_ASSGN" + number + "_CR1";
     }
 
-    private String getTaskCompletionString(final AssignmentCriteria criteria, boolean isInRoundRequirement) {
+    private String getTaskCompletionString(final AssignmentCriteria criteria) {
         return String.format(
-            Locale.getDefault(),
             getString(R.string.generic_x_of_y),
-            isInRoundRequirement ? criteria.getUnlockThreshold() : criteria.getCurrentValue(),
+            criteria.getCurrentValue(),
             criteria.getUnlockThreshold()
         );
     }
@@ -213,6 +213,10 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
         if (assignmentAward.getUniqueName().equals(KEY_FIRESTARTER)) {
             rewards = fetchRewardsForFirestarter();
+        }
+
+        if (assignmentAward.getUniqueName().equals(KEY_PHANTOMINITIATE)) {
+            rewards = fetchRewardsForPhantomInitiate();
         }
 
         if (rewards.size() > 0) {
@@ -244,6 +248,22 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER1",
             "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER2",
             "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER3"
+        };
+
+        for (String name : fakeNames) {
+            rewards.add(new AssignmentReward(name, null, UnlockType.APPEARANCE));
+        }
+
+        return rewards;
+    }
+
+    /*Phantom Initiate hardcoded assignments same as firestarter*/
+    private List<AssignmentReward> fetchRewardsForPhantomInitiate() {
+        final List<AssignmentReward> rewards = new ArrayList<AssignmentReward>();
+        final String[] fakeNames = new String[]{
+            "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE1",
+            "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE2",
+            "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE3"
         };
 
         for (String name : fakeNames) {

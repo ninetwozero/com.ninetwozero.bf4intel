@@ -23,7 +23,7 @@ public class DetailedStatsContainerSerializer implements TypeSerializer<Detailed
 
     @Override
     public String toSql(DetailedStatsContainer detailedStats) {
-        return String.valueOf(detailedStats.getItems().size());
+        return String.valueOf(detailedStats.getGroups().size());
     }
 
     @Override

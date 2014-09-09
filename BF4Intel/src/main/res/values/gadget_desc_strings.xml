@@ -68,4 +68,6 @@
   <string name="idesc_xm25_smk">Fires 25mm grenades that can explode mid-flight creating an airburst smoke effect to block sight and spotting. Aiming down the sights at a cover will lock in that distance, allowing the grenade to explode in the air 3 meters past the cover.</string>
   <string name="xp2_idesc_40mm_3gl">Fires 3 smaller 40mm grenades for attacking several targets with less damage than the HE grenade.</string>
   <string name="xp2_idesc_aamine">Anti-Air Mine which targets air vehicles flying within its radius.</string>
+  <string name="idesc_neck">A small knife usually carried in a sheath worn around the neck on a breakaway chain. Readily available and easy to deploy, use it to steal your enemy\'s dogtags.</string>
+  <string name="idesc_shield">A heavy ballistic shield that will easily stop most small projectiles. The viewport, however, is vulnerable to heavy rounds such us shotgun slugs, sniper fire and explosives.</string>
 </resources>

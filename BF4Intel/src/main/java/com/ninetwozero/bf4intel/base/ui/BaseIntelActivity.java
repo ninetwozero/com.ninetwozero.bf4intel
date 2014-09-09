@@ -3,7 +3,7 @@ package com.ninetwozero.bf4intel.base.ui;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.widget.Toast;
 
@@ -13,7 +13,9 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.resources.Keys;
 
-public abstract class BaseIntelActivity extends FragmentActivity {
+import java.util.HashMap;
+
+public abstract class BaseIntelActivity extends ActionBarActivity {
     private static final String BUGSENSE_TOKEN = "f42265ac";
 
     protected Menu optionsMenu;
@@ -26,13 +28,16 @@ public abstract class BaseIntelActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         BugSenseHandler.I_WANT_TO_DEBUG = BuildConfig.isDebug;
         if (!BugSenseHandler.I_WANT_TO_DEBUG) {
             BugSenseHandler.initAndStartSession(this, BUGSENSE_TOKEN);
         }
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sw600dp = getResources().getBoolean(R.bool.is_sw600dp);
         sw720dp = getResources().getBoolean(R.bool.is_sw720dp);
+
         reloadSession();
     }
 
@@ -69,5 +74,28 @@ public abstract class BaseIntelActivity extends FragmentActivity {
             sharedPreferences.getString(Keys.Profile.USERNAME, null),
             sharedPreferences.getString(Keys.Profile.GRAVATAR_HASH, null)
         );
+
+        if (sharedPreferences.getBoolean(Keys.Settings.USER_IN_CRASH_REPORT, true)) {
+            BugSenseHandler.addCrashExtraMap(fetchExtraInformationForBugsense());
+        } else {
+            BugSenseHandler.addCrashExtraMap(fetchDummyInformationForBugsense());
+        }
+    }
+
+    private HashMap<String, String> fetchExtraInformationForBugsense() {
+        final HashMap<String, String> map = new HashMap<String, String>();
+        map.put("bl_userid", SessionStore.getUserId());
+        map.put("bl_username", SessionStore.getUsername());
+        map.put("bl_soldierid", String.valueOf(sharedPreferences.getLong(Keys.Menu.LATEST_PERSONA, 0)));
+        return map;
+    }
+
+    private HashMap<String, String> fetchDummyInformationForBugsense() {
+        final String notApplicable = getString(R.string.na);
+        final HashMap<String, String> map = new HashMap<String, String>();
+        map.put("bl_userid", notApplicable);
+        map.put("bl_username", notApplicable);
+        map.put("bl_soldierid", notApplicable);
+        return map;
     }
 }

@@ -15,13 +15,14 @@ public class AssignmentCriteriaStringMap {
             put("WARSAW_ID_P_AWARDS_RANK25", R.string.awards_rank25);
             put("WARSAW_ID_P_AWARDS_RANK50", R.string.awards_rank50);
             put("WARSAW_ID_P_XP1_AWARD_PLAY_PREMIUM", R.string.awards_premium);
-            put("WARSAW_ID_P_AWARD_XP0", R.string.expansion_xp0);
-            put("WARSAW_ID_P_AWARD_XP1", R.string.expansion_xp1);
-            put("WARSAW_ID_P_AWARD_XP2", R.string.expansion_xp2);
-            put("WARSAW_ID_P_AWARD_XP3", R.string.expansion_xp3);
-            put("WARSAW_ID_P_AWARD_XP4", R.string.expansion_xp4);
-            put("WARSAW_ID_P_AWARD_GHOST1", R.string.expansion_xp1);
-            put("WARSAW_ID_P_AWARD_GHOST2", R.string.expansion_xp2);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_XP0", R.string.expansion_xp0);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_XP1", R.string.expansion_xp1);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_XP2", R.string.expansion_xp2);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_XP3", R.string.expansion_xp3);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_XP4", R.string.expansion_xp4);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_GHOST1", R.string.expansion_xp1);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_GHOST2", R.string.expansion_xp2);
+            put("WARSAW_ID_P_AWARD_PREREQUISITE_GHOST3", R.string.expansion_xp3);
 
             // Requirements (SP)
             put("WARSAW_ID_P_SP_AWARD_ASSGN01_CR1", R.string.sp_award_assgn01_cr1);
@@ -182,6 +183,15 @@ public class AssignmentCriteriaStringMap {
             put("WARSAW_ID_P_XP0_AWARD_AS_10_CRIT_2", R.string.xp0_award_as_10_crit_2);
             put("WARSAW_ID_P_XP0_AWARD_AS_10_CRIT_3", R.string.xp0_award_as_10_crit_3);
 
+            // XP0 v2
+            put("WARSAW_ID_P_XP0_AWARD_AS_02_CRIT_1_V2", R.string.xp0_award_as_02_crit_1);
+            put("WARSAW_ID_P_XP0_AWARD_AS_02_CRIT_2_V2", R.string.xp0_award_as_02_crit_2);
+            put("WARSAW_ID_P_XP0_AWARD_AS_03_CRIT_2_V2", R.string.xp0_award_as_03_crit_2);
+            put("WARSAW_ID_P_XP0_AWARD_AS_03_CRIT_3_V2", R.string.xp0_award_as_03_crit_3);
+            put("WARSAW_ID_P_XP0_AWARD_AS_05_CRIT_1_V2", R.string.xp0_award_as_05_crit_1);
+            put("WARSAW_ID_P_XP0_AWARD_AS_06_CRIT_1_V2", R.string.xp0_award_as_06_crit_1);
+            put("WARSAW_ID_P_XP0_AWARD_AS_10_CRIT_3_V2", R.string.xp0_award_as_10_crit_3);
+
             // XP1
             put("WARSAW_ID_P_XP1_AWARD_AS_01_CRIT_1", R.string.xp1_award_as_01_crit_1);
             put("WARSAW_ID_P_XP1_AWARD_AS_02_CRIT_1", R.string.xp1_award_as_02_crit_1);
@@ -234,6 +244,39 @@ public class AssignmentCriteriaStringMap {
             put("WARSAW_ID_P_XP2_AWARD_GHOST_CRIT1", R.string.xp2_award_ghost_crit1);
             put("WARSAW_ID_P_XP2_AWARD_GHOST_CRIT2", R.string.xp2_award_ghost_crit2);
             put("WARSAW_ID_P_XP2_AWARD_GHOST_CRIT3", R.string.xp2_award_ghost_crit3);
+
+            //XP3
+            put("WARSAW_ID_P_XP3_AWARD_AS_01_CRIT_1", R.string.xp3_award_as_01_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_AS_01_CRIT_2", R.string.xp3_award_as_01_crit_2);
+            put("WARSAW_ID_P_XP3_AWARD_AS_02_CRIT_1", R.string.xp3_award_as_02_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_AS_02_CRIT_2", R.string.xp3_award_as_02_crit_2);
+            put("WARSAW_ID_P_XP3_AWARD_AS_02_CRIT_3", R.string.xp3_award_as_02_crit_3);
+            put("WARSAW_ID_P_XP3_AWARD_AS_03_CRIT_1", R.string.xp3_award_as_03_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_AS_03_CRIT_2", R.string.xp3_award_as_03_crit_2);
+            put("WARSAW_ID_P_XP3_AWARD_AS_03_CRIT_3", R.string.xp3_award_as_03_crit_3);
+            put("WARSAW_ID_P_XP3_AWARD_AS_04_CRIT_1", R.string.xp3_award_as_04_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_AS_04_CRIT_2", R.string.xp3_award_as_04_crit_2);
+            put("WARSAW_ID_P_XP3_AWARD_AS_04_CRIT_3", R.string.xp3_award_as_04_crit_3);
+            put("WARSAW_ID_P_XP3_AWARD_AS_05_CRIT_1", R.string.xp3_award_as_05_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_AS_05_CRIT_2", R.string.xp3_award_as_05_crit_2);
+            put("WARSAW_ID_P_XP3_AWARD_AS_05_CRIT_3", R.string.xp3_award_as_05_crit_3);
+            put("WARSAW_ID_P_XP3_AWARD_AS_06_CRIT_1", R.string.xp3_award_as_06_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_AS_06_CRIT_2", R.string.xp3_award_as_06_crit_2);
+            put("WARSAW_ID_P_XP3_AWARD_AS_06_CRIT_3", R.string.xp3_award_as_06_crit_3);
+            put("WARSAW_ID_P_XP3_AWARD_AS_07_CRIT_1", R.string.xp3_award_as_07_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_AS_07_CRIT_2", R.string.xp3_award_as_07_crit_2);
+            put("WARSAW_ID_P_XP3_AWARD_AS_07_CRIT_3", R.string.xp3_award_as_07_crit_3);
+            put("WARSAW_ID_P_XP3_AWARD_AS_07_CRIT_4", R.string.xp3_award_as_07_crit_4);
+            put("WARSAW_ID_P_XP3_AWARD_AS_08_CRIT_1", R.string.xp3_award_as_08_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_AS_09_CRIT_1", R.string.xp3_award_as_09_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_AS_09_CRIT_2", R.string.xp3_award_as_09_crit_2);
+            put("WARSAW_ID_P_XP3_AWARD_AS_09_CRIT_3", R.string.xp3_award_as_09_crit_3);
+            put("WARSAW_ID_P_AWARD_GHOST3", R.string.award_ghost_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_AS_10_CRIT_1", R.string.xp3_award_as_10_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_AS_10_CRIT_2", R.string.xp3_award_as_10_crit_2);
+            put("WARSAW_ID_P_XP3_AWARD_GHOST_CRIT1", R.string.xp3_award_ghost_crit_1);
+            put("WARSAW_ID_P_XP3_AWARD_GHOST_CRIT2", R.string.xp3_award_ghost_crit_2);
+            put("WARSAW_ID_P_XP3_AWARD_GHOST_CRIT3", R.string.xp3_award_ghost_crit_3);
         }
     };
 

@@ -30,6 +30,9 @@
   <dimen name="spacing_xl">32dp</dimen>
   <dimen name="spacing_xxl">64dp</dimen>
 
+  <!-- Side spacing DO NOT ADD IT TO OTHER dimens-->
+  <dimen name="side_spacing">8dp</dimen>
+
 
   <dimen name="activity_horizontal_margin">@dimen/spacing_l</dimen>
   <dimen name="activity_vertical_margin">@dimen/spacing_l</dimen>
@@ -98,7 +101,7 @@
   <dimen name="tabfragment_tab_height">48dp</dimen>
 
   <!-- ABout related -->
-  <dimen name="text_card_title">24sp</dimen>
+  <dimen name="heading_over_card_size">24sp</dimen>
   <dimen name="about_title_text">42sp</dimen>
   <dimen name="about_subtitle_text">21sp</dimen>
   <dimen name="changelog_text_size">18sp</dimen>
