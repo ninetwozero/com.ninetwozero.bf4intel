@@ -70,7 +70,7 @@ public abstract class BaseTabActivity extends BaseIntelActivity implements Actio
             new ViewPager.SimpleOnPageChangeListener() {
                 @Override
                 public void onPageSelected(int position) {
-                    getActionBar().setSelectedNavigationItem(position);
+                    getSupportActionBar().setSelectedNavigationItem(position);
                     postToGoogleAnalytics(position);
                 }
             }

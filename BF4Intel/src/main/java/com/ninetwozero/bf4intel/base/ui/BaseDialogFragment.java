@@ -77,7 +77,7 @@ public class BaseDialogFragment extends DialogFragment {
 
     protected void setTitle(String title) {
         if (!isSw720dp() && !isSw600dp()) {
-            getActivity().getActionBar().setTitle(title);
+            ((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(title);
         } else {
             getDialog().setTitle(title);
         }
@@ -150,12 +150,6 @@ public class BaseDialogFragment extends DialogFragment {
 
     protected void setText(final View view, final int resourceId, final String text) {
         ((TextView) view.findViewById(resourceId)).setText(text);
-    }
-
-    protected void setTextWithDrawable(final View view, final int resourceId, final String text, final int drawableId) {
-        TextView textView = (TextView) view.findViewById(resourceId);
-        textView.setText(text);
-        textView.setCompoundDrawablesWithIntrinsicBounds(drawableId, 0, 0, 0);
     }
 
     protected void setProgress(final View view, final int resourceId, final int current) {

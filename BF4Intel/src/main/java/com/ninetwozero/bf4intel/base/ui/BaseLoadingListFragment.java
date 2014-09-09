@@ -170,16 +170,12 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
 
     protected void setActionBarSubTitle(String subtitle) {
         try{
-            getActivity().getActionBar().setSubtitle(subtitle);
+            ((ActionBarActivity)getActivity()).getSupportActionBar().setSubtitle(subtitle);
         } catch (NullPointerException npe) {
             String message = String.format(BaseFragment.class.getSimpleName()
-                    + " Some of following objects maybe null getActivity() %b getActivity().getActionBar() %b subtitle %b"
-                    , getActivity() == null
-                    , getActivity().getActionBar() == null
-                    , subtitle == null);
+                    + " Some of following objects maybe null getActivity() getActivity().getActionBar() subtitle ");
             BugSenseHandler.sendEvent(message);
             Crashlytics.logException(npe);
-            Crashlytics.log(Log.ERROR, "BF4 Intel", message);
         }
     }
 
