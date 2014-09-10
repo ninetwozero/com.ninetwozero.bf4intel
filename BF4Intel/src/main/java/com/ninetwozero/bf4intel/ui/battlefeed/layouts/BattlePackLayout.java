@@ -61,7 +61,7 @@ public class BattlePackLayout extends BaseLayoutPopulator implements EventLayout
                 final String parentKey = items.get(counter).getParentName();
 
                 // TODO: Should getCategory() return an enum so that we can switch() over it instead?
-                final View cell = layoutInflater.inflate(R.layout.list_item_feed_battlepack_item, null, false);
+                final View cell = layoutInflater.inflate(R.layout.list_item_feed_battlepack_item, (ViewGroup)view.getParent(), false);
                 final String category = items.get(counter).getCategory();
                 if (category.equals("weaponaccessory")) {
                     populateCell(

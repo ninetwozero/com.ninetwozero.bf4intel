@@ -56,7 +56,7 @@ public class SharedGameEventLayout extends BaseLayoutPopulator implements EventL
                     break;
                 }
 
-                final View cell = layoutInflater.inflate(R.layout.list_item_feed_award_item, null, false);
+                final View cell = layoutInflater.inflate(R.layout.list_item_feed_award_item, (ViewGroup)view.getParent(), false);
                 final SharedGameEventCategory category = event.getCategory();
                 final String itemKey = items[counter].getName();
                 switch (category) {

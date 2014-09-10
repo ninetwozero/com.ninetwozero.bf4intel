@@ -64,7 +64,7 @@ public class NewsArticleLayout extends BaseLayoutPopulator implements View.OnCli
             final LayoutInflater inflater = LayoutInflater.from(context);
             for (int i = 0, max = parsedContent.getLinks().size(); i < max; i++) {
                 final Link link = parsedContent.getLinks().get(i);
-                final View linkView = inflater.inflate(R.layout.news_link_item, null);
+                final View linkView = inflater.inflate(R.layout.news_link_item, (ViewGroup)container.getParent(), false);
                 final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT

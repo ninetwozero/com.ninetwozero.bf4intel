@@ -426,7 +426,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         if (article.hasComments()) {
             View header = listView.findViewById(R.id.card_root);
             if (header == null) {
-                header = layoutInflater.inflate(R.layout.list_header_news_article, null);
+                header = layoutInflater.inflate(R.layout.list_header_news_article, (ViewGroup)view.getParent(), false);
                 listView.addHeaderView(header, null, false);
             }
             return header;

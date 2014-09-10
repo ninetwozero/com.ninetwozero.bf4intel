@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.stats.reports;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,7 +39,7 @@ public class BattleReportItem implements BaseListItem {
     public View getView(LayoutInflater inflater, View view) {
         BattleReportHolder holder;
         if (view == null) {
-            view = inflater.inflate(R.layout.list_item_battlereport, null);
+            view = inflater.inflate(R.layout.list_item_battlereport, (ViewGroup)view.getParent());
             holder = getBattleReportHolder(view);
 
             view.setTag(holder);
