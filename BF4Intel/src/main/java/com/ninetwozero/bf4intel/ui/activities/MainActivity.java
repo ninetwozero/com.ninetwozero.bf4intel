@@ -216,7 +216,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
                 if (!navigationDrawer.isAdded()) {
                     return;
                 }
-                getActionBar().setTitle(title);
+                getSupportActionBar().setTitle(title);
             }
 
             @Override
