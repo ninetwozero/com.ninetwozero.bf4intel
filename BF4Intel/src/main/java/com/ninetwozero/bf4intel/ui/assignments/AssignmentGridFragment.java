@@ -90,7 +90,7 @@ public class AssignmentGridFragment
 
                     final SortedAssignmentContainer container = assignmentsDAO.getSortedAssignmentContainer();
                     expansionMap = container.getExpansions();
-                    sendDataToGridView(view, container.getItems());
+                    sendDataToGridView(container.getItems());
                     showLoadingState(false);
                     return true;
                 }
@@ -137,7 +137,7 @@ public class AssignmentGridFragment
         gridView.setOnItemClickListener(this);
     }
 
-    private void sendDataToGridView(final View view, List<Assignment> assignments) {
+    private void sendDataToGridView(List<Assignment> assignments) {
         AssignmentsAdapter adapter = (AssignmentsAdapter) gridView.getAdapter();
         if (adapter == null) {
             adapter = new AssignmentsAdapter(getActivity());
@@ -207,7 +207,7 @@ public class AssignmentGridFragment
             .putInt(ASSIGNMENT_SORT_MODE, SortMode.CATEGORIZED.ordinal())
             .putString(ASSIGNMENT_SORT_MODE_CATEGORY, category)
             .putString(ASSIGNMENTS_AB_SUBTITLE, subtitleResString)
-            .commit();
+            .apply();
     }
 
     @Override
@@ -216,7 +216,7 @@ public class AssignmentGridFragment
         sharedPreferences.edit().putInt(ASSIGNMENT_SORT_MODE, sortMode.ordinal())
             .putString(ASSIGNMENTS_AB_SUBTITLE, subtitleResString)
             .putString(ASSIGNMENT_SORT_MODE_CATEGORY, "")
-            .commit();
+            .apply();
         BusProvider.getInstance().post(new RefreshEvent());
     }
 }

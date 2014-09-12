@@ -109,7 +109,7 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
             .putInt(SORT_MODE, SortMode.CATEGORIZED.ordinal())
             .putString(SORT_MODE_CATEGORY, category)
             .putString(AB_SUBTITLE, subtitleResString)
-            .commit();
+            .apply();
     }
 
     @Override
@@ -119,7 +119,7 @@ public class WeaponUnlockFragment extends BaseUnlockFragment {
             .putInt(SORT_MODE, sortMode.ordinal())
             .putString(AB_SUBTITLE, subtitleResString)
             .putString(SORT_MODE_CATEGORY, "")
-            .commit();
+            .apply();
         BusProvider.getInstance().post(new RefreshEvent());
     }
 

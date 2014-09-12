@@ -179,7 +179,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
                 .putString(Keys.Profile.ID, userId)
                 .putString(Keys.Profile.USERNAME, username)
                 .putString(Keys.Profile.GRAVATAR_HASH, gravatarHash)
-                .commit();
+                .apply();
 
             navigationDrawer.onStartedTrackingNewProfile(event);
             BusProvider.getInstance().post(event);

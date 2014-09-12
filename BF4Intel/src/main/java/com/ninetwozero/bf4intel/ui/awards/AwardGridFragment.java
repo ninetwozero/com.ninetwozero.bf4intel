@@ -177,7 +177,7 @@ public class AwardGridFragment
             .putInt(AWARD_SORT_MODE, SortMode.CATEGORIZED.ordinal())
             .putString(AWARD_SORT_MODE_CATEGORY, category)
             .putString(AWARDS_AB_SUBTITLE, subtitleResString)
-            .commit();
+            .apply();
     }
 
     @Override
@@ -186,7 +186,7 @@ public class AwardGridFragment
         sharedPreferences.edit().putInt(AWARD_SORT_MODE, sortMode.ordinal())
             .putString(AWARDS_AB_SUBTITLE, subtitleResString)
             .putString(AWARD_SORT_MODE_CATEGORY, "")
-            .commit();
+            .apply();
         BusProvider.getInstance().post(new RefreshEvent());
     }
 }

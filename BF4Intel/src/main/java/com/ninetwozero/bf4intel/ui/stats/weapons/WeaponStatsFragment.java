@@ -182,7 +182,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
             .putInt(WEAPON_SORT_MODE, SortMode.CATEGORIZED.ordinal())
             .putString(WEAPONT_SORT_MODE_CATEGORY, category)
             .putString(WEAPONS_AB_SUBTITLE, subtitleResString)
-            .commit();
+            .apply();
     }
 
     @Override
@@ -191,7 +191,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
         sharedPreferences.edit().putInt(WEAPON_SORT_MODE, sortMode.ordinal())
             .putString(WEAPONS_AB_SUBTITLE, subtitleResString)
             .putString(WEAPONT_SORT_MODE_CATEGORY, "")
-            .commit();
+            .apply();
         BusProvider.getInstance().post(new RefreshEvent());
     }
 }

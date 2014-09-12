@@ -145,7 +145,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, index);
                     editor.putLong(Keys.Menu.LATEST_PERSONA, soldierStats.get(index).getPersona().getPersonaId());
-                    editor.commit();
+                    editor.apply();
                 }
             }
         );
