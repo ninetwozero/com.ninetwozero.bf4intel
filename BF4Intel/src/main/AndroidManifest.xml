@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.ninetwozero.bf4intel">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.ninetwozero.bf4intel">
 
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
@@ -30,7 +31,8 @@
       android:label="@string/label_login"
       android:launchMode="singleTop"
       android:windowSoftInputMode="adjustPan|stateUnchanged"
-      android:parentActivityName=".ui.activities.MainActivity">
+      android:parentActivityName=".ui.activities.MainActivity"
+      tools:ignore="UnusedAttribute">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity" />
@@ -41,7 +43,8 @@
       android:label="@string/label_activity_soldier_statistics"
       android:parentActivityName=".ui.activities.MainActivity"
       android:theme="@style/AppTheme"
-      android:windowSoftInputMode="stateUnchanged">
+      android:windowSoftInputMode="stateUnchanged"
+      tools:ignore="UnusedAttribute">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity" />
@@ -52,7 +55,8 @@
       android:label="@string/label_activity_assignments"
       android:screenOrientation="portrait"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
+      android:theme="@style/AppTheme"
+      tools:ignore="UnusedAttribute">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity" />
@@ -63,7 +67,8 @@
       android:label="@string/label_activity_awards"
       android:screenOrientation="portrait"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
+      android:theme="@style/AppTheme"
+      tools:ignore="UnusedAttribute">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity" />
@@ -73,7 +78,8 @@
       android:name=".ui.settings.SettingsActivity"
       android:label="@string/menu_settings"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
+      android:theme="@style/AppTheme"
+      tools:ignore="UnusedAttribute">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity" />
@@ -83,7 +89,8 @@
       android:name=".ui.about.AppInfoActivity"
       android:label="@string/label_about"
       android:parentActivityName=".ui.activities.MainActivity"
-      android:theme="@style/AppTheme">
+      android:theme="@style/AppTheme"
+      tools:ignore="UnusedAttribute">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".ui.activities.MainActivity" />
@@ -94,7 +101,8 @@
       android:label="@string/label_search"
       android:parentActivityName=".ui.activities.MainActivity"
       android:launchMode="singleTop"
-      android:theme="@style/AppTheme">
+      android:theme="@style/AppTheme"
+      tools:ignore="UnusedAttribute">
       <intent-filter>
         <action android:name="android.intent.action.SEARCH" />
       </intent-filter>
