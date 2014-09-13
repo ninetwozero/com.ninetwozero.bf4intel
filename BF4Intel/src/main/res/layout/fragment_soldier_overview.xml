@@ -2,7 +2,8 @@
 <RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="match_parent"
+  android:background="@color/card_activity_bg">
 
   <android.support.v4.widget.SwipeRefreshLayout
     android:id="@+id/swipe_container"
@@ -19,10 +20,7 @@
       <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lightgrey"
-        android:paddingTop="@dimen/spacing_m"
-        android:paddingRight="@dimen/spacing_m"
-        android:paddingLeft="@dimen/spacing_m">
+        android:padding="@dimen/spacing_m">
 
         <TextView
           style="@style/RegularHeadingOverCard"
