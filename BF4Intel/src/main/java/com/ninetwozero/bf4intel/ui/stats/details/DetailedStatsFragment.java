@@ -10,24 +10,21 @@ import android.widget.ListView;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
+import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
 import com.ninetwozero.bf4intel.database.dao.stats.details.DetailedStatsDAO;
 import com.ninetwozero.bf4intel.events.stats.details.DetailedStatsRefreshedEvent;
-import com.ninetwozero.bf4intel.json.StickyHeaderItem;
-import com.ninetwozero.bf4intel.json.stats.details.DetailedStatsItem;
+import com.ninetwozero.bf4intel.json.stats.details.DetailedStatsGroup;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.stats.details.DetailedStatsService;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import se.emilsjolander.sprinkles.OneQuery;
 import se.emilsjolander.sprinkles.Query;
-import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
-public class DetailedStatsFragment extends BaseLoadingFragment {
+public class DetailedStatsFragment extends BaseLoadingListFragment {
     public static DetailedStatsFragment newInstance(final Bundle bundle) {
         final DetailedStatsFragment fragment = new DetailedStatsFragment();
         fragment.setArguments(bundle);
@@ -37,7 +34,7 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
-        final View view = inflater.inflate(R.layout.generic_sticky_list, parent, false);
+        final View view = inflater.inflate(R.layout.generic_list, parent, false);
         initialize(view);
         return view;
     }
@@ -65,7 +62,7 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
                         return true;
                     }
 
-                    sendDataToListView(view, detailedStatsDAO.getDetailedStats().getItems());
+                    sendDataToListView(view, detailedStatsDAO.getDetailedStats().getGroups());
                     showLoadingState(false);
                     return true;
                 }
@@ -112,33 +109,18 @@ public class DetailedStatsFragment extends BaseLoadingFragment {
         final View emptyContainer = view.findViewById(android.R.id.empty);
         setCustomEmptyText(view, R.string.empty_text_statistics);
 
-        final StickyListHeadersListView listView = (StickyListHeadersListView) view.findViewById(android.R.id.list);
-        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        listView.setAreHeadersSticky(false);
-        listView.setEmptyView(emptyContainer);
-
-        setCustomEmptyText(view, R.string.empty_text_statistics);
+        final ListView listView = (ListView) view.findViewById(android.R.id.list);
+        listView.setChoiceMode(ListView.CHOICE_MODE_NONE);
+        listView.setSelector(R.drawable.empty);
     }
 
-    private void sendDataToListView(View view, final List<List<DetailedStatsItem>> detailedStats) {
-        final StickyListHeadersListView listView = (StickyListHeadersListView) view.findViewById(android.R.id.list);
+    private void sendDataToListView(View view, final List<DetailedStatsGroup> detailedStats) {
+        final ListView listView = (ListView) view.findViewById(android.R.id.list);
         DetailedStatsAdapter adapter = (DetailedStatsAdapter) listView.getAdapter();
         if (adapter == null) {
             adapter = new DetailedStatsAdapter(getActivity());
             listView.setAdapter(adapter);
         }
-
-        adapter.setHeaders(getHeaders());
         adapter.setItems(detailedStats);
-    }
-    private List<StickyHeaderItem> getHeaders() {
-        final List<StickyHeaderItem> headers = new ArrayList<StickyHeaderItem>();
-        headers.add(new StickyHeaderItem(getString(R.string.multiplayer_score), 10));
-        headers.add(new StickyHeaderItem(getString(R.string.general_score), 9));
-        headers.add(new StickyHeaderItem(getString(R.string.game_modes), 8));
-        headers.add(new StickyHeaderItem(getString(R.string.team_score), 8));
-        headers.add(new StickyHeaderItem(getString(R.string.extra_score), 8));
-        headers.add(new StickyHeaderItem(getString(R.string.game_mode_extra), 2));
-        return headers;
     }
 }

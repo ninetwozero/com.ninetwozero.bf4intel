@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  style="@style/RegularCard"
   android:orientation="vertical"
   >
+
+  <TextView
+    style="@style/RegularHeadingOverCard"
+    android:id="@+id/title"
+    />
+
+  <LinearLayout
+    style="@style/RegularCard"
+    android:id="@+id/card_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+  </LinearLayout>
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.database.dao.stats.details;
 
 import com.ninetwozero.bf4intel.json.stats.details.DetailedStatsContainer;
+import com.ninetwozero.bf4intel.json.stats.details.DetailedStatsGroup;
 import com.ninetwozero.bf4intel.json.stats.details.DetailedStatsItem;
 import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
@@ -16,7 +17,7 @@ public class DetailedStatsGrouper {
     private static final String METERS = "m";
 
     public static DetailedStatsContainer group(StatsDetails.GeneralStats details) {
-        final List<List<DetailedStatsItem>> items = new ArrayList<List<DetailedStatsItem>>();
+        final List<DetailedStatsGroup> items = new ArrayList<DetailedStatsGroup>();
         items.add(generateGroupForMultiplayerScores(details));
         items.add(generateGroupForScores(details));
         items.add(generateGroupForGameModes(details));
@@ -26,7 +27,7 @@ public class DetailedStatsGrouper {
         return new DetailedStatsContainer(items);
     }
 
-    private static List<DetailedStatsItem> generateGroupForMultiplayerScores(final StatsDetails.GeneralStats details) {
+    private static DetailedStatsGroup generateGroupForMultiplayerScores(final StatsDetails.GeneralStats details) {
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
         items.add(new DetailedStatsItem("sc_assault", stringValueOf(details.getAssaultScore())));
         items.add(new DetailedStatsItem("sc_engineer", stringValueOf(details.getEngineerScore())));
@@ -39,10 +40,10 @@ public class DetailedStatsGrouper {
         items.add(new DetailedStatsItem("sc_unlock", stringValueOf(details.getUnlockScore())));
         items.add(new DetailedStatsItem("sc_total", stringValueOf(details.getTotalScore())));
         items.add(new DetailedStatsItem("sc_per_minute", stringValueOf(details.getScorePerMinute())));
-        return items;
+        return new DetailedStatsGroup(DetailedStatsGroup.MULTIPLAYER_SCORES, items);
     }
 
-    private static List<DetailedStatsItem> generateGroupForScores(final StatsDetails.GeneralStats details) {
+    private static DetailedStatsGroup generateGroupForScores(final StatsDetails.GeneralStats details) {
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
         items.add(new DetailedStatsItem("kills", stringValueOf(details.getKills())));
         items.add(new DetailedStatsItem("deaths", stringValueOf(details.getDeaths())));
@@ -54,9 +55,10 @@ public class DetailedStatsGrouper {
         items.add(new DetailedStatsItem("shots_fired", stringValueOf(details.getShotsFired())));
         items.add(new DetailedStatsItem("shots_hits", stringValueOf(details.getShotsHit())));
         items.add(new DetailedStatsItem("accuracy", stringValueOf(details.getAccuracy(), PERCENT_SIGN)));
-        return items;
+        return new DetailedStatsGroup(DetailedStatsGroup.GENERAL_SCORES, items);
     }
-    private static List<DetailedStatsItem> generateGroupForGameModes(StatsDetails.GeneralStats details) {
+
+    private static DetailedStatsGroup generateGroupForGameModes(StatsDetails.GeneralStats details) {
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
         items.add(new DetailedStatsItem("conquest", stringValueOf(details.getConquest())));
         items.add(new DetailedStatsItem("rush", stringValueOf(details.getRush())));
@@ -67,10 +69,10 @@ public class DetailedStatsGrouper {
         items.add(new DetailedStatsItem("air_superiority", stringValueOf(details.getAirSuperiority())));
         items.add(new DetailedStatsItem("defuse", stringValueOf(details.getDefuse())));
         items.add(new DetailedStatsItem("carrier_assault", stringValueOf(details.getCarrieAssault())));
-        return items;
+        return new DetailedStatsGroup(DetailedStatsGroup.GAME_MODE_SCORES, items);
     }
 
-    private static List<DetailedStatsItem> generateGroupForTeamScores(StatsDetails.GeneralStats details) {
+    private static DetailedStatsGroup generateGroupForTeamScores(StatsDetails.GeneralStats details) {
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
         items.add(new DetailedStatsItem("repairs", stringValueOf(details.getRepairs())));
         items.add(new DetailedStatsItem("revives", stringValueOf(details.getRevives())));
@@ -80,11 +82,11 @@ public class DetailedStatsGrouper {
         items.add(new DetailedStatsItem("savior_kills", stringValueOf(details.getSaviorKills())));
         items.add(new DetailedStatsItem("suppression_assists", stringValueOf(details.getSuppresionAssists())));
         items.add(new DetailedStatsItem("quits", stringValueOf(details.getQuits(), PERCENT_SIGN)));
-        return items;
+        return new DetailedStatsGroup(DetailedStatsGroup.TEAM_SCORES, items);
     }
 
-    private static List<DetailedStatsItem> generateGroupForExtras(StatsDetails.GeneralStats details) {
-        final double scorePerShot = ((double)details.getTotalScore()) / details.getShotsFired();
+    private static DetailedStatsGroup generateGroupForExtras(StatsDetails.GeneralStats details) {
+        final double scorePerShot = ((double) details.getTotalScore()) / details.getShotsFired();
 
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
         items.add(new DetailedStatsItem("dogtag_taken", stringValueOf(details.getDogtagTaken())));
@@ -96,14 +98,14 @@ public class DetailedStatsGrouper {
         items.add(new DetailedStatsItem("nemesis_kills", stringValueOf(details.getNemesisKills())));
         items.add(new DetailedStatsItem("highest_nemesis_streak", stringValueOf(details.getHighestNemesisStreak())));
         items.add(new DetailedStatsItem("score_per_shot", stringValueOf(scorePerShot)));
-        return items;
+        return new DetailedStatsGroup(DetailedStatsGroup.EXTRA_SCORES, items);
     }
 
-    private static List<DetailedStatsItem> generateGroupForGameModeExtras(StatsDetails.GeneralStats details) {
+    private static DetailedStatsGroup generateGroupForGameModeExtras(StatsDetails.GeneralStats details) {
         final List<DetailedStatsItem> items = new ArrayList<DetailedStatsItem>();
         items.add(new DetailedStatsItem("flags_captured", stringValueOf(details.getFlagsCaptured())));
         items.add(new DetailedStatsItem("flags_defended", stringValueOf(details.getFlagsDefended())));
-        return items;
+        return new DetailedStatsGroup(DetailedStatsGroup.GAME_MODE_EXTRA_SCORES, items);
     }
 
     private static String stringValueOf(int value) {
