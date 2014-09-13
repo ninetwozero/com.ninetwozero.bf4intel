@@ -96,10 +96,11 @@ public abstract class BaseLoadingListFragment
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
         if (swipeRefreshLayout != null) {
             swipeRefreshLayout.setOnRefreshListener(this);
-            swipeRefreshLayout.setColorScheme(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light
+            swipeRefreshLayout.setColorScheme(
+                R.color.loading_stripe_1,
+                R.color.loading_stripe_2,
+                R.color.loading_stripe_3,
+                R.color.loading_stripe_4
             );
         }
     }
