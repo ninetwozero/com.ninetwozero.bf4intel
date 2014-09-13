@@ -68,7 +68,7 @@ public abstract class BaseLoadingListFragment
 
     @Override
     public void onRefresh() {
-        startLoadingData();
+        startLoadingData(true);
     }
 
     @Override
@@ -109,7 +109,7 @@ public abstract class BaseLoadingListFragment
             showToast(R.string.msg_no_network);
             return;
         }
-        startLoadingData();
+        startLoadingData(true);
     }
 
     protected <T> T fromJson(final String json, final Class<T> outClass) {
@@ -252,5 +252,5 @@ public abstract class BaseLoadingListFragment
 
     protected void handleSortingRequest(SortMode sortMode, final String subtitleResString) {}
 
-    protected abstract void startLoadingData();
+    protected abstract void startLoadingData(boolean showLoading);
 }

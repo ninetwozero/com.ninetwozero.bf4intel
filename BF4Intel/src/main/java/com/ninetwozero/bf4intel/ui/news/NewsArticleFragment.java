@@ -95,17 +95,16 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     @Override
     public void onResume() {
         super.onResume();
-        startLoadingData();
+        startLoadingData(getArguments().getBoolean(FLAG_SHOW_LOADING, true));
     }
 
     @Override
-    protected void startLoadingData() {
-        final Bundle arguments = getArguments();
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(arguments.getBoolean(FLAG_SHOW_LOADING, true));
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), NewsArticleService.class);

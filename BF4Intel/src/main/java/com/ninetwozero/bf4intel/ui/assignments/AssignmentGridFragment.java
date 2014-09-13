@@ -84,7 +84,7 @@ public class AssignmentGridFragment
                 @Override
                 public boolean handleResult(AssignmentsDAO assignmentsDAO) {
                     if (assignmentsDAO == null) {
-                        startLoadingData();
+                        startLoadingData(false);
                         return true;
                     }
 
@@ -99,12 +99,12 @@ public class AssignmentGridFragment
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), AssignmentService.class);

@@ -67,7 +67,7 @@ public abstract class BaseLoadingFragment
 
     @Override
     public void onRefresh() {
-        startLoadingData();
+        startLoadingData(true);
     }
 
     @Override
@@ -108,7 +108,7 @@ public abstract class BaseLoadingFragment
             showToast(R.string.msg_no_network);
             return;
         }
-        startLoadingData();
+        startLoadingData(true);
     }
 
     protected <T extends Object> T fromJson(final String jsonString, final Class<T> outClass) {
@@ -189,7 +189,7 @@ public abstract class BaseLoadingFragment
         }
     }
 
-    protected abstract void startLoadingData();
+    protected abstract void startLoadingData(boolean showLoading);
 
     @Override
     public void onMenuSelected(MenuItem item) {

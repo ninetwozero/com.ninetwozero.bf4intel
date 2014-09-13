@@ -103,7 +103,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
                 @Override
                 public boolean handleResult(SoldierOverviewDAO soldierOverviewDAO) {
                     if (soldierOverviewDAO == null) {
-                        startLoadingData();
+                        startLoadingData(false);
                         return true;
                     }
 
@@ -124,12 +124,12 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), SoldierOverviewService.class);

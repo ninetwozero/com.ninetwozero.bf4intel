@@ -60,7 +60,7 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
                 @Override
                 public boolean handleResult(VehicleStatsDAO vehiclestatsDAO) {
                     if (vehiclestatsDAO == null) {
-                        startLoadingData();
+                        startLoadingData(false);
                         return true;
                     }
 
@@ -73,12 +73,12 @@ public class VehicleStatsFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), VehicleStatsService.class);

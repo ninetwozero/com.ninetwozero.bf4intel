@@ -69,7 +69,7 @@ public class AwardGridFragment
                 @Override
                 public boolean handleResult(AwardsDAO awardsDao) {
                     if (awardsDao == null) {
-                        startLoadingData();
+                        startLoadingData(false);
                         return true;
                     }
 
@@ -83,12 +83,12 @@ public class AwardGridFragment
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), AwardService.class);
