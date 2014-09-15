@@ -39,7 +39,7 @@ public class BattleReportItem implements BaseListItem {
     public View getView(LayoutInflater inflater, View view) {
         BattleReportHolder holder;
         if (view == null) {
-            view = inflater.inflate(R.layout.list_item_battlereport, (ViewGroup)view.getParent());
+            view = inflater.inflate(R.layout.list_item_battlereport, null);
             holder = getBattleReportHolder(view);
 
             view.setTag(holder);
