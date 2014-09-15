@@ -5,16 +5,24 @@
   android:layout_height="match_parent"
   android:background="@color/card_activity_bg">
 
-  <GridView
-    style="@style/MiniCardGridView"
-    android:id="@android:id/list"
-  />
+  <android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
-  <TextView
-    style="@style/DefaultEmptyText"
+    <GridView
+      style="@style/MiniCardGridView"
+      android:id="@android:id/list"
+      />
+  </android.support.v4.widget.SwipeRefreshLayout>
+
+  <include
+    layout="@layout/generic_empty_view"
     android:id="@android:id/empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     />
 
-  <include layout="@layout/loading_progress" />
   <include layout="@layout/inlined_error_message"/>
 </RelativeLayout>

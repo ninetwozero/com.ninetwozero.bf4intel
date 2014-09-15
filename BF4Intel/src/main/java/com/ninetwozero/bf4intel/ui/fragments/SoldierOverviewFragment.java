@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +39,8 @@ import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import se.emilsjolander.sprinkles.OneQuery;
@@ -73,8 +74,14 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         super.onCreateView(inflater, parent, state);
 
         final View view = layoutInflater.inflate(R.layout.fragment_soldier_overview, parent, false);
-        setupErrorMessage(view);
+        initialize(view);
         return view;
+    }
+
+    private void initialize(final View view) {
+        setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
+        setCustomEmptyText(view, R.string.empty_text_overview);
     }
 
     @Override
@@ -96,12 +103,20 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
                 @Override
                 public boolean handleResult(SoldierOverviewDAO soldierOverviewDAO) {
                     if (soldierOverviewDAO == null) {
-                        startLoadingData();
+                        startLoadingData(false);
                         return true;
                     }
 
                     displayInformation(view, soldierOverviewDAO.getSoldierOverview());
                     showLoadingState(false);
+                    new Handler().postDelayed(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                hideEmptyView(view);
+                            }
+                        }, 200
+                    );
                     return true;
                 }
             }
@@ -109,12 +124,12 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), SoldierOverviewService.class);

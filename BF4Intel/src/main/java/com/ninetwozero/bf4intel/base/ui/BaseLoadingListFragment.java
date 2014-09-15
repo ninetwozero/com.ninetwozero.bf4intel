@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.base.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -31,13 +32,19 @@ import com.ninetwozero.bf4intel.utils.BusProvider;
 
 import java.util.Arrays;
 
-public abstract class BaseLoadingListFragment extends BaseListFragment implements Response.ErrorListener, MenuProvider.OnMenuProviderSelectedListener  {
+public abstract class BaseLoadingListFragment
+    extends BaseListFragment
+    implements Response.ErrorListener,
+               MenuProvider.OnMenuProviderSelectedListener,
+               SwipeRefreshLayout.OnRefreshListener {
+
     protected Gson gson = GsonProvider.getInstance();
     protected boolean isReloading;
     protected String[] filterTitleResources;
     protected String[] sortingKeys;
     protected String[] sortTitleResources;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
     private TextView errorMessageView;
 
     @Override
@@ -57,6 +64,11 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
                 Bf4Intel.isConnectedToNetwork() ? null : getString(R.string.label_offline_mode)
             );
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        startLoadingData(true);
     }
 
     @Override
@@ -80,12 +92,25 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         }
     }
 
+    protected void setupSwipeRefreshLayout(final View view) {
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_container);
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setOnRefreshListener(this);
+            swipeRefreshLayout.setColorScheme(
+                R.color.loading_stripe_1,
+                R.color.loading_stripe_2,
+                R.color.loading_stripe_3,
+                R.color.loading_stripe_4
+            );
+        }
+    }
+
     protected void onRefreshEventReceived(RefreshEvent event) {
         if (!Bf4Intel.isConnectedToNetwork()) {
             showToast(R.string.msg_no_network);
             return;
         }
-        startLoadingData();
+        startLoadingData(true);
     }
 
     protected <T> T fromJson(final String json, final Class<T> outClass) {
@@ -120,24 +145,19 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
             return;
         }
 
-        isReloading = isLoading;
-
-        toggleFullScreenProgressBar(activity, isLoading);
+        toggleActionBarProgressBar(activity, isLoading);
     }
 
-    private void toggleFullScreenProgressBar(final Activity activity, final boolean isLoading) {
+    private void toggleActionBarProgressBar(final Activity activity, final boolean isLoading) {
         final View view = getView();
         if (activity == null || view == null) {
             return;
         }
 
-        final View loadingView = view.findViewById(R.id.wrap_loading_progress);
-        if (loadingView == null) {
-            return;
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setRefreshing(isLoading);
         }
-        loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
-
 
     protected void setupErrorMessage(final View view) {
         errorMessageView = (TextView) view.findViewById(R.id.inline_error_message);
@@ -203,6 +223,13 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
         return getActivity().getResources().getStringArray(resourceId);
     }
 
+    protected void setCustomEmptyText(final View container, final int resourceId){
+        final TextView textView = (TextView) container.findViewById(R.id.custom_empty_text);
+        if (textView != null) {
+            textView.setText(resourceId);
+        }
+    }
+
     @Override
     public void onMenuSelected(MenuItem item) {
         int itemId = item.getItemId();
@@ -222,5 +249,5 @@ public abstract class BaseLoadingListFragment extends BaseListFragment implement
 
     protected void handleSortingRequest(SortMode sortMode, final String subtitleResString) {}
 
-    protected abstract void startLoadingData();
+    protected abstract void startLoadingData(boolean showLoading);
 }

@@ -89,7 +89,6 @@
   <dimen name="standard_button_width">240dp</dimen>
 
   <!-- Home -->
-  <dimen name="home_logo_size">128dp</dimen>
   <dimen name="home_logo_margin_top">@dimen/spacing_xl</dimen>
 
   <!-- Login related -->

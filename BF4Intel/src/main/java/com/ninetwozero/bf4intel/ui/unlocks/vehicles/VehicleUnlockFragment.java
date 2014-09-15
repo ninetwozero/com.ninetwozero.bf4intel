@@ -56,7 +56,7 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
                 @Override
                 public boolean handleResult(VehicleUnlockDAO vehicleUnlockDAO) {
                     if (vehicleUnlockDAO == null) {
-                        startLoadingData();
+                        startLoadingData(false);
                         return true;
                     }
 
@@ -69,12 +69,12 @@ public class VehicleUnlockFragment extends BaseUnlockFragment {
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), VehicleUnlockService.class);

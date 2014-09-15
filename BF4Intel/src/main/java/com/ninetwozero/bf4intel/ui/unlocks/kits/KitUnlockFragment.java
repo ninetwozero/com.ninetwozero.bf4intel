@@ -56,7 +56,7 @@ public class KitUnlockFragment extends BaseUnlockFragment {
                 @Override
                 public boolean handleResult(KitUnlockDAO kitUnlockDAO) {
                     if (kitUnlockDAO == null) {
-                        startLoadingData();
+                        startLoadingData(false);
                         return true;
                     }
 
@@ -69,12 +69,12 @@ public class KitUnlockFragment extends BaseUnlockFragment {
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), KitUnlockService.class);

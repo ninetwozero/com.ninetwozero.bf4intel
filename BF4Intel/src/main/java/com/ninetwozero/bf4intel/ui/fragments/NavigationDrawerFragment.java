@@ -393,6 +393,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private void selectItem(final SimpleListRow item, final int position, final boolean shouldCloseDrawer, final boolean isOnResume) {
         final boolean isFragment = !item.hasIntent();
+
         if (listView != null && isFragment) {
             listView.setItemChecked(position, true);
             storePositionState(position);

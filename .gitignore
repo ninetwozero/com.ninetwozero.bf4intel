@@ -33,3 +33,6 @@ gradle/*
 .DS_STORE
 lint-report.xml
 *.log
+
+# Crashlytics
+com_crashlytics_export_strings.xml
