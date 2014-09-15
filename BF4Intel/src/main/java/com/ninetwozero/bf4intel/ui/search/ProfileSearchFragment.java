@@ -55,7 +55,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup parent, final Bundle state) {
         super.onCreateView(inflater, parent, state);
 
-        final View view = layoutInflater.inflate(R.layout.fragment_profile_search, parent, false);
+        final View view = layoutInflater.inflate(R.layout.generic_list, parent, false);
         initialize(view);
         return view;
     }
@@ -84,7 +84,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
                     @Override
                     public boolean onQueryTextSubmit(final String s) {
                         queryString = s;
-                        startLoadingData();
+                        startLoadingData(true);
                         return true;
                     }
                 }
@@ -98,7 +98,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
@@ -112,7 +112,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         postData.putString("query", queryString);
         postData.putString(Keys.CHECKSUM, "0xCAFEBABE");
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         // TODO: Service in the future?
@@ -161,6 +161,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
 
     private void initialize(final View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupListView(view);
     }
 

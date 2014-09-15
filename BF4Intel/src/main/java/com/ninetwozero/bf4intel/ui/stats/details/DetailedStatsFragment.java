@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.BuildConfig;
@@ -59,7 +58,7 @@ public class DetailedStatsFragment extends BaseLoadingListFragment {
                 @Override
                 public boolean handleResult(DetailedStatsDAO detailedStatsDAO) {
                     if (detailedStatsDAO == null) {
-                        startLoadingData();
+                        startLoadingData(false);
                         return true;
                     }
 
@@ -72,12 +71,12 @@ public class DetailedStatsFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), DetailedStatsService.class);
@@ -98,6 +97,7 @@ public class DetailedStatsFragment extends BaseLoadingListFragment {
 
     private void initialize(View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupListView(view);
     }
 
@@ -106,8 +106,8 @@ public class DetailedStatsFragment extends BaseLoadingListFragment {
             return;
         }
 
-        final TextView textView = (TextView) view.findViewById(android.R.id.empty);
-        textView.setText(R.string.msg_no_stats_details);
+        final View emptyContainer = view.findViewById(android.R.id.empty);
+        setCustomEmptyText(view, R.string.empty_text_statistics);
 
         final ListView listView = (ListView) view.findViewById(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_NONE);

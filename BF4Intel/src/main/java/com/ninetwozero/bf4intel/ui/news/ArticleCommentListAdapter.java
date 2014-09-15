@@ -16,6 +16,10 @@ import java.util.List;
 import java.util.Map;
 
 public class ArticleCommentListAdapter extends BaseExpandableIntelAdapter<NewsArticleComment> {
+    public static final String ID_NO_REAL_COMMENTS = "NO_REAL_COMMENTS";
+    private static final int GROUP_TYPE_FAKE = 0;
+    private static final int GROUP_TYPE_REAL = 1;
+
     private List<NewsArticleComment> comments;
     private Map<String, Boolean> hooahs;
 
@@ -31,7 +35,31 @@ public class ArticleCommentListAdapter extends BaseExpandableIntelAdapter<NewsAr
     }
 
     @Override
+    public int getGroupType(final int groupPosition) {
+        if (getGroup(groupPosition).getId().equals(ID_NO_REAL_COMMENTS)) {
+            return GROUP_TYPE_FAKE;
+        } else {
+            return GROUP_TYPE_REAL;
+        }
+    }
+
+    @Override
     public View getGroupView(final int position, final boolean isExpanded, View convertView, final ViewGroup parent) {
+        if (getGroupType(position) == GROUP_TYPE_FAKE) {
+            return getGroupViewForTheFakeEntry(convertView, parent);
+        } else {
+            return getGroupViewForRealEntries(position, isExpanded, convertView, parent);
+        }
+    }
+
+    private View getGroupViewForTheFakeEntry(View convertView, final ViewGroup parent) {
+        if (convertView == null) {
+            convertView = layoutInflater.inflate(R.layout.list_item_news_comment_fake, parent, false);
+        }
+        return convertView;
+    }
+
+    private View getGroupViewForRealEntries(final int position, final boolean isExpanded, View convertView, final ViewGroup parent) {
         final NewsArticleComment comment = getGroup(position);
         final Profile author = comment.getAuthor();
 
@@ -103,5 +131,9 @@ public class ArticleCommentListAdapter extends BaseExpandableIntelAdapter<NewsAr
 
     private int fetchImageResourceForGroup(final boolean isExpanded) {
         return isExpanded ? R.drawable.ic_menu_arrow_up_dark : R.drawable.ic_menu_arrow_down_dark;
+    }
+
+    public boolean hasComments() {
+        return !getGroup(0).getId().equals(ArticleCommentListAdapter.ID_NO_REAL_COMMENTS);
     }
 }

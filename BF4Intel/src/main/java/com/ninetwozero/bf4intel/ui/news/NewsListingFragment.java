@@ -70,16 +70,16 @@ public class NewsListingFragment extends BaseLoadingListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        startLoadingData();
+        startLoadingData(true);
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), NewsListingService.class);
@@ -107,7 +107,7 @@ public class NewsListingFragment extends BaseLoadingListFragment {
 
             @Override
             protected void deliverResponse(Object response) {
-                startLoadingData();
+                startLoadingData(true);
             }
         };
     }
@@ -134,6 +134,12 @@ public class NewsListingFragment extends BaseLoadingListFragment {
 
     private void initialize(final View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
+        setupListView(view);
+    }
+
+    private void setupListView(final View view) {
+        setCustomEmptyText(view, R.string.empty_text_news);
     }
 
     private void sendItemsToListView(final List<NewsArticle> items) {
