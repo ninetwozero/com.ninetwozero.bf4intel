@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
   <!--
       Base application theme, dependent on API level. This theme is replaced
@@ -152,7 +152,6 @@
   </style>
 
   <style name="feed_wrap_user">
-    <item name="android:id">@+id/wrap_user</item>
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:layout_marginTop">@dimen/spacing_m</item>
@@ -163,13 +162,11 @@
 
 
   <style name="feed_avatar">
-    <item name="android:id">@+id/avatar</item>
     <item name="android:layout_width">@dimen/avatar_size_l</item>
     <item name="android:layout_height">@dimen/avatar_size_l</item>
   </style>
 
   <style name="feed_username">
-    <item name="android:id">@+id/username</item>
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
 
@@ -179,7 +176,6 @@
   </style>
 
   <style name="feed_content">
-    <item name="android:id">@+id/content</item>
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
@@ -240,7 +236,7 @@
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
-    <item name="android:fontFamily">sans-serif-light</item>
+    <item name="android:fontFamily" tools:ignore="NewApi">sans-serif-light</item>
     <item name="android:textSize">@dimen/heading_over_card_size</item>
     <item name="android:textColor">@color/text_on_card_bg</item>
     <item name="android:layout_marginBottom">@dimen/spacing_m</item>
@@ -250,7 +246,7 @@
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Large</item>
-    <item name="android:fontFamily">sans-serif-light</item>
+    <item name="android:fontFamily" tools:ignore="NewApi">sans-serif-light</item>
     <item name="android:textColor">@color/regular_card_title</item>
     <item name="android:textSize">@dimen/text_l</item>
   </style>
@@ -269,7 +265,7 @@
     <item name="android:layout_centerInParent">true</item>
     <item name="android:textAppearance">@android:style/TextAppearance.Holo</item>
     <item name="android:textColor">@color/text_on_card_bg</item>
-    <item name="android:fontFamily">sans-serif-light</item>
+    <item name="android:fontFamily" tools:ignore="NewApi">sans-serif-light</item>
     <item name="android:paddingLeft">@dimen/spacing_l</item>
     <item name="android:paddingRight">@dimen/spacing_l</item>
     <item name="android:gravity">center</item>
