@@ -66,6 +66,7 @@ public class VehicleStringMap {
             put("WARSAW_ID_P_XP2_INAME_AAMINE", R.string.weapon_aamine);
             put("WARSAW_ID_P_XP2_VNAME_ACV", R.string.vehicle_xp2_acv);
             put("WARSAW_ID_P_XP2_VNAME_OLDCANNON", R.string.vehicle_xp2_old_canon);
+            put("WARSAW_ID_P_XP3_WNAME_RAWR", R.string.vehicle_xp3_rawr);
         }
     };
 
