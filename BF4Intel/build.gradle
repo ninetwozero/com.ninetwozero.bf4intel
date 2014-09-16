@@ -59,6 +59,7 @@ android {
 
     lintOptions {
         abortOnError false
+        lintConfig file("../ci-configs/lint-ignore.xml")
         xmlReport true
         xmlOutput file("build/lint/lint-report.xml")
         htmlReport false

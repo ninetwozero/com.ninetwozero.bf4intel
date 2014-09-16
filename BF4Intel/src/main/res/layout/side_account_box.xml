@@ -27,7 +27,7 @@
     android:layout_marginLeft="@dimen/spacing_m" />
 
   <ImageView
-    android:id="@+id/gravatar"
+    android:id="@+id/gravatar2"
     android:layout_width="64dp"
     android:layout_height="64dp"
     android:contentDescription="@string/cdesc_gravatar" />

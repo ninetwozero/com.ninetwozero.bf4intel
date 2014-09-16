@@ -25,8 +25,6 @@
   <color name="grey">#848484</color>
   <color name="darkgrey">#555555</color>
   <color name="almostblack">#111111</color>
-  <color name="bg_grid_item">#88212121</color>
-  <color name="bg_grid_item_pressed">#77212121</color>
   <color name="black">#000000</color>
   <color name="translucent_black">#CC000000</color>
 
