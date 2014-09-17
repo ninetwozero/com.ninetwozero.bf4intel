@@ -26,7 +26,6 @@
   <color name="darkgrey">#555555</color>
   <color name="almostblack">#111111</color>
   <color name="black">#000000</color>
-  <color name="translucent_black">#CC000000</color>
 
   <!--Battle report -->
   <color name="battlereport_won">#94cdf3</color>

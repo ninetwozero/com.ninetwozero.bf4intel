@@ -63,9 +63,6 @@
   <!--List index count-->
   <dimen name="list_index_count">70dp</dimen>
 
-  <!-- Service star shape size-->
-  <dimen name="service_star_count_width">@dimen/list_index_count</dimen>
-
   <!-- Feed item rank image size-->
   <dimen name="feed_item_rank_image_height">128dp</dimen>
   <dimen name="feed_item_rank_image_width">@dimen/feed_item_rank_image_height</dimen>
@@ -92,7 +89,6 @@
 
   <!-- Service stars -->
   <dimen name="service_star_m">32dp</dimen>
-  <dimen name="service_star_s">24dp</dimen>
   <dimen name="service_star_xs">16dp</dimen>
 
   <!-- Stats item dimens -->

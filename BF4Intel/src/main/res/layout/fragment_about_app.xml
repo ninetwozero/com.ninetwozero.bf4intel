@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:padding="@dimen/spacing_m"
@@ -30,7 +31,7 @@
         android:textAppearance="@android:style/TextAppearance.Holo.Large"
         android:fontFamily="sans-serif-light"
         android:textSize="@dimen/about_title_text"
-        />
+        tools:ignore="UnusedAttribute"/>
 
       <TextView
         android:id="@+id/version"
@@ -40,7 +41,7 @@
         android:fontFamily="sans-serif-light"
         android:textAppearance="@android:style/TextAppearance.Holo"
         android:text="@string/app_email"
-        />
+        tools:ignore="UnusedAttribute"/>
     </LinearLayout>
     <TextView
       style="@style/RegularCardTitle"
