@@ -56,13 +56,6 @@
   <dimen name="grid_view_image_height">100dp</dimen>
   <dimen name="grid_view_image_width">@dimen/grid_view_image_height</dimen>
 
-  <!--Round corners for service stars background shape-->
-  <dimen name="round_corners">10dp</dimen>
-  <dimen name="round_corners_stroke">2dp</dimen>
-
-  <!--List index count-->
-  <dimen name="list_index_count">70dp</dimen>
-
   <!-- Feed item rank image size-->
   <dimen name="feed_item_rank_image_height">128dp</dimen>
   <dimen name="feed_item_rank_image_width">@dimen/feed_item_rank_image_height</dimen>
