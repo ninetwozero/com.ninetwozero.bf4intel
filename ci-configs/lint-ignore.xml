@@ -5,6 +5,7 @@
         <ignore regexp="res/drawable/ammo_.*[.]png" />
         <ignore regexp="res/drawable/as.[0-9][.]png" />
         <ignore regexp="res/drawable/awards_.*[.]png" />
+        <ignore regexp="res/drawable/battlepack_.*[.]png" />
         <ignore regexp="res/drawable/camo_.*[.]png" />
         <ignore regexp="res/drawable/emblem_.*[.]png" />
         <ignore regexp="res/drawable/ghost.*[.]png" />
