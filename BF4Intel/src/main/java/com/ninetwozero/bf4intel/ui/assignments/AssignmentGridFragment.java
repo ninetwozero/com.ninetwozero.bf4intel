@@ -84,7 +84,7 @@ public class AssignmentGridFragment
                 @Override
                 public boolean handleResult(AssignmentsDAO assignmentsDAO) {
                     if (assignmentsDAO == null) {
-                        startLoadingData();
+                        startLoadingData(false);
                         return true;
                     }
 
@@ -99,12 +99,12 @@ public class AssignmentGridFragment
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), AssignmentService.class);
@@ -125,6 +125,7 @@ public class AssignmentGridFragment
 
     private void initialize(View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupGrid(view);
     }
 
@@ -133,8 +134,14 @@ public class AssignmentGridFragment
             return;
         }
 
+        final View emptyView = view.findViewById(android.R.id.empty);
+        setCustomEmptyText(emptyView, R.string.empty_text_awards);
+
         gridView = (GridView) view.findViewById(R.id.assignments_grid);
         gridView.setOnItemClickListener(this);
+        gridView.setEmptyView(emptyView);
+
+        setCustomEmptyText(emptyView, R.string.empty_text_assignments);
     }
 
     private void sendDataToGridView(final View view, List<Assignment> assignments) {

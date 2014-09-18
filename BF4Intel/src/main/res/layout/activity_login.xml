@@ -30,9 +30,9 @@
 
     <ImageView
       android:id="@+id/logo"
-      android:layout_width="@dimen/home_logo_size"
-      android:layout_height="@dimen/home_logo_size"
-      android:src="@drawable/ic_launcher_big_light"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_launcher_light"
       android:contentDescription="@string/cdesc_logo"
       android:alpha="0.7"
       android:layout_marginBottom="@dimen/spacing_l"

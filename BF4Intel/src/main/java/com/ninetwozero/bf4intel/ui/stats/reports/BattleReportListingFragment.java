@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.ui.stats.reports;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +48,6 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     @Subscribe
     public void onBattleReportsRefreshed(BattleReportsRefreshedEvent event) {
-        showLoadingState(false);
-
         List<BaseListItem> items = event.getItems();
         if (items == null) {
             ((TextView) getView().findViewById(android.R.id.empty)).setText(
@@ -60,22 +59,23 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         } else {
             sendDataToListView(event.getItems());
         }
+        isReloading = false;
         showLoadingState(false);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        startLoadingData();
+        startLoadingData(true);
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), BattleReportService.class);
@@ -106,6 +106,7 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
 
     private void initialize(final View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupListView(view);
     }
 

@@ -1,9 +1,9 @@
 package com.ninetwozero.bf4intel.ui.news;
 
-import android.support.v7.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
@@ -95,17 +95,16 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     @Override
     public void onResume() {
         super.onResume();
-        startLoadingData();
+        startLoadingData(getArguments().getBoolean(FLAG_SHOW_LOADING, true));
     }
 
     @Override
-    protected void startLoadingData() {
-        final Bundle arguments = getArguments();
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(arguments.getBoolean(FLAG_SHOW_LOADING, true));
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), NewsArticleService.class);
@@ -309,6 +308,7 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
     private void initialize(final View view) {
         setupErrorMessage(view);
         setupActionBar();
+        setupSwipeRefreshLayout(view);
         setupListView(view);
         setupForm(view);
     }
@@ -328,6 +328,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
             new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    final ArticleCommentListAdapter adapter = (ArticleCommentListAdapter) listView.getExpandableListAdapter();
+                    if (!adapter.hasComments()) {
+                        return true;
+                    }
+
                     final long packedPosition = listView.getExpandableListPosition(position);
                     final int positionType = ExpandableListView.getPackedPositionType(packedPosition);
                     if (positionType == ExpandableListView.PACKED_POSITION_TYPE_GROUP) {
@@ -344,6 +349,11 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
             new ExpandableListView.OnGroupClickListener() {
                 @Override
                 public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                    final ArticleCommentListAdapter adapter = (ArticleCommentListAdapter) listView.getExpandableListAdapter();
+                    if (!adapter.hasComments()) {
+                        return true;
+                    }
+
                     if (actionMode == null) {
                         return false;
                     }
@@ -364,6 +374,8 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
                 }
             }
         );
+
+        setCustomEmptyText(view, R.string.empty_text_news);
     }
 
     private void setupForm(final View view) {
@@ -418,21 +430,25 @@ public class NewsArticleFragment extends BaseLoadingFragment implements ActionMo
         final NewsArticle article = newsRequest.getArticle();
         final View header = getHeaderView(view, article);
         populateHeaderView(header, article);
-        sendCommentsToListView(article.getComments(), newsRequest.getHooahStatus());
+
+        sendCommentsToListView(prepareCommentsForArticle(article.getComments()), newsRequest.getHooahStatus());
+    }
+
+    private List<NewsArticleComment> prepareCommentsForArticle(final List<NewsArticleComment> comments) {
+        if (comments.size() == 0) {
+            comments.add(new NewsArticleComment(ArticleCommentListAdapter.ID_NO_REAL_COMMENTS));
+        }
+        return comments;
     }
 
     private View getHeaderView(final View view, final NewsArticle article) {
         final ExpandableListView listView = (ExpandableListView) view.findViewById(android.R.id.list);
-        if (article.hasComments()) {
-            View header = listView.findViewById(R.id.card_root);
-            if (header == null) {
-                header = layoutInflater.inflate(R.layout.list_header_news_article, null);
-                listView.addHeaderView(header, null, false);
-            }
-            return header;
-        } else {
-            return view.findViewById(R.id.header_when_empty);
+        View header = listView.findViewById(R.id.card_root);
+        if (header == null) {
+            header = layoutInflater.inflate(R.layout.list_header_news_article, null);
+            listView.addHeaderView(header, null, false);
         }
+        return header;
     }
 
     private void populateHeaderView(final View header, final NewsArticle article) {

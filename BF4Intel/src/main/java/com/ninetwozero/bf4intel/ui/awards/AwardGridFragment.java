@@ -69,7 +69,7 @@ public class AwardGridFragment
                 @Override
                 public boolean handleResult(AwardsDAO awardsDao) {
                     if (awardsDao == null) {
-                        startLoadingData();
+                        startLoadingData(false);
                         return true;
                     }
 
@@ -83,12 +83,12 @@ public class AwardGridFragment
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), AwardService.class);
@@ -109,6 +109,7 @@ public class AwardGridFragment
 
     private void initialize(View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupGrid(view);
     }
 
@@ -117,8 +118,13 @@ public class AwardGridFragment
             return;
         }
 
+        final View emptyView = view.findViewById(android.R.id.empty);
+        setCustomEmptyText(emptyView, R.string.empty_text_awards);
+
         final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
         gridView.setOnItemClickListener(this);
+        gridView.setEmptyView(emptyView);
+
     }
 
     private void sendDataToGridView(final View view, List<Award> awards) {

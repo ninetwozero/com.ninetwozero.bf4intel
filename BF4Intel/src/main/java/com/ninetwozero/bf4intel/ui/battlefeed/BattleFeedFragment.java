@@ -74,7 +74,7 @@ public class BattleFeedFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading) {
             return;
         }

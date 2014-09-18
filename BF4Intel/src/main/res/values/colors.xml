@@ -58,4 +58,10 @@
   <color name="action_item_bg">#99FFFFFF</color>
   <color name="login_activity_bg">#333333</color>
   <color name="card_activity_bg">#DDDDDD</color>
+
+  <!-- Loading stripe colors -->
+  <color name="loading_stripe_1">#52b0df</color>
+  <color name="loading_stripe_2">#9cca80</color>
+  <color name="loading_stripe_3">#ebca2f</color>
+  <color name="loading_stripe_4">#e9a789</color>
 </resources>

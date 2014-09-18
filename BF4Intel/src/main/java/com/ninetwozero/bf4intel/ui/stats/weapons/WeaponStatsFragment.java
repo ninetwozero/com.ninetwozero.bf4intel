@@ -71,7 +71,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
                 @Override
                 public boolean handleResult(WeaponStatsDAO weaponstatsDAO) {
                     if (weaponstatsDAO == null) {
-                        startLoadingData();
+                        startLoadingData(false);
                         return true;
                     }
 
@@ -84,12 +84,12 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
     }
 
     @Override
-    protected void startLoadingData() {
+    protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
         }
 
-        showLoadingState(true);
+        showLoadingState(showLoading);
         isReloading = true;
 
         final Intent intent = new Intent(getActivity(), WeaponStatsService.class);
@@ -119,6 +119,7 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
     private void initialize(View view) {
         setupErrorMessage(view);
+        setupSwipeRefreshLayout(view);
         setupListView(view);
     }
 
@@ -129,6 +130,8 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
 
         listView = (ListView) view.findViewById(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        setCustomEmptyText(view, R.string.empty_text_statistics);
     }
 
     private void sendDataToListView(final List<Weapon> weaponstats) {

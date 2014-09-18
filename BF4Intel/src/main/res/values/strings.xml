@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
   <!-- Instead of 3 dots "..." after some messages please use &#8230; -->
@@ -180,6 +180,7 @@
   <!--News-->
   <string name="msg_error_not_found">Resource not found.</string>
   <string name="msg_empty_news">No news found.</string>
+  <string name="msg_empty_comments">No comments found.</string>
   <string name="text_divider">|</string>
   <string name="num_hooahs">%1$s hooahs</string>
   <string name="num_comments">%1$s comments</string>
@@ -197,5 +198,10 @@
   <string name="toast_unimplemented_functionality">Unimplemented functionality.</string>
   <string name="toast_please_log_in">@string/toast_unimplemented_functionality</string>  <!-- TODO: Will replace with login message once login available-->
 
-
+  <string name="empty_text_overview">Loading overview</string>
+  <string name="empty_text_statistics">Loading statistics</string>
+  <string name="empty_text_unlocks">Loading unlocks</string>
+  <string name="empty_text_assignments">Loading assignments</string>
+  <string name="empty_text_awards">Loading awards</string>
+  <string name="empty_text_news">Loading news</string>
 </resources>
