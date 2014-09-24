@@ -25,15 +25,15 @@
 
     <ImageView
       android:id="@+id/expansion_icon"
-      android:layout_width="@dimen/small_icon_size"
-      android:layout_height="@dimen/small_icon_size"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       android:contentDescription="@string/cdesc_assignment_expansion_icon"
       />
 
     <ImageView
       android:id="@+id/img_assignment_prerequisite"
-      android:layout_height="@dimen/small_icon_size"
-      android:layout_width="@dimen/small_icon_size"
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
       android:contentDescription="@string/cdesc_assignment_prerequisite"
       />
   </LinearLayout>
