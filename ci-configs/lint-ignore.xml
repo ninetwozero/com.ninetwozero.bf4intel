@@ -9,7 +9,6 @@
         <ignore regexp="res/drawable/camo_.*[.]png" />
         <ignore regexp="res/drawable/emblem_.*[.]png" />
         <ignore regexp="res/drawable/ghost.*[.]png" />
-        <ignore regexp="res/drawable/icon_.*[.]png" />
         <ignore regexp="res/drawable/kit_.*[.]png" />
         <ignore regexp="res/drawable/mp_.*[.]png" />
         <ignore regexp="res/drawable/r.*[.]png" />
