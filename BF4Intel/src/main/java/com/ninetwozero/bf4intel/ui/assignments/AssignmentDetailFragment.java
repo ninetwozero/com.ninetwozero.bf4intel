@@ -328,9 +328,9 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     private int fetchPrerequisiteImage(final AssignmentPrerequisite.Type group) {
         switch (group) {
             case RANK:
-                return R.drawable.ic_stat_rank;
+                return R.drawable.ic_statistics_rank;
             case MISSION:
-                return R.drawable.ic_stat_award;
+                return R.drawable.ic_statistics_award;
             case EXPANSION:
                 return fetchExpansionImage();
             default:

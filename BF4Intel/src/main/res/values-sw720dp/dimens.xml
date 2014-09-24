@@ -1,6 +1,4 @@
 <resources>
-  <dimen name="activity_horizontal_margin">128dp</dimen>
-
   <dimen name="text_xs">16sp</dimen>
   <dimen name="text_s">18sp</dimen>
   <dimen name="text_m">22sp</dimen>

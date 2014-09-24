@@ -188,7 +188,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         Collections.sort(keys);
 
         for (int key : keys) {
-            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
+            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, (ViewGroup)baseView.getParent(), false);
             final int serviceStarCount = serviceStars.get(key);
             final int roundedProgress = (int) Math.round(serviceStarProgress.get(key));
 
@@ -207,7 +207,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         root.removeAllViews();
 
         for (GameModeServiceStar serviceStar : basicSoldierStats.getGameModeServiceStars()) {
-            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, null, false);
+            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_service_stars, (ViewGroup)baseView.getParent(), false);
             final int progress = Math.round(serviceStar.getServiceStarProgress());
 
             setProgress(parent, R.id.progressbar, progress);
@@ -244,7 +244,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
             tableRow.setWeightSum(3f);
 
             for (int j = 0, maxCols = 3; j < maxCols; j++, counter++) {
-                final View cell = layoutInflater.inflate(R.layout.list_item_soldier_skills, null, false);
+                final View cell = layoutInflater.inflate(R.layout.list_item_soldier_skills, (ViewGroup)baseView.getParent(), false);
                 setText(cell, R.id.title, skillsList.get(counter).getStringResource());
                 setText(cell, R.id.value, skillsList.get(counter).getValue());
                 tableRow.addView(cell, cellLayoutParams);
@@ -259,7 +259,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         root.removeAllViews();
 
         for (int i = 0, max = 3; i < max; i++) {
-            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_toplist, null, false);
+            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_toplist, (ViewGroup)baseView.getParent(), false);
             final String name = stats.get(i).getName();
             setText(parent, R.id.title, isWeapon ? WeaponStringMap.get(name) : VehicleStringMap.get(name));
             setText(
@@ -282,7 +282,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         Collections.sort(leaderboardItems);
 
         for (TopLeaderboardItem item : leaderboardItems) {
-            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_leaderboard, null, false);
+            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_leaderboard, (ViewGroup)baseView.getParent(), false);
 
             setText(parent, R.id.title, LeaderboardStringMap.Category.get(item.getInformation().getName()));
             setText(parent, R.id.subtitle, fetchSubtitleForLeaderboard(item));
@@ -309,7 +309,7 @@ public class SoldierOverviewFragment extends BaseLoadingFragment {
         root.removeAllViews();
 
         for (CompletionProgress completionProgress : completions) {
-            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_completion, null, false);
+            final View parent = layoutInflater.inflate(R.layout.list_item_soldier_completion, (ViewGroup)baseView.getParent(), false);
 
             setText(parent, R.id.title, CompletionStringMap.get(completionProgress.getName()));
             setText(

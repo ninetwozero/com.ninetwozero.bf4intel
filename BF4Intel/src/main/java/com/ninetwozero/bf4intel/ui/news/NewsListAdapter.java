@@ -23,7 +23,7 @@ public class NewsListAdapter extends BaseIntelAdapter<NewsArticle> {
         final NewsArticle article = getItem(position);
 
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.list_header_news_article, null, false);
+            convertView = layoutInflater.inflate(R.layout.list_header_news_article, parent, false);
         }
 
         new NewsArticleLayout(context, convertView).populate(article, false);

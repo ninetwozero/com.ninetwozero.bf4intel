@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.ui.stats.details;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
@@ -25,7 +26,7 @@ public class DetailedStatsListItem implements BaseListItem {
     @Override
     public View getView(LayoutInflater inflater, View view) {
         if (view == null) {
-            view = inflater.inflate(R.layout.list_item_stats_details_row, null);
+            view = inflater.inflate(R.layout.list_item_stats_details_row, (ViewGroup)view.getParent(), false);
         }
         ((TextView) view.findViewById(R.id.score_label)).setText(resourceId);
         ((TextView) view.findViewById(R.id.score_value)).setText(value);

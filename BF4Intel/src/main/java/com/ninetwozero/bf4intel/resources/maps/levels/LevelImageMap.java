@@ -39,10 +39,16 @@ public class LevelImageMap {
             put("XP2_002", R.drawable.mp_xp2_002);
             put("XP2_003", R.drawable.mp_xp2_003);
             put("XP2_004", R.drawable.mp_xp2_004);
+
+            // XP3
+            put("XP3_MarketPl", R.drawable.mp_xp3_marketpl);
+            put("XP3_Prpganda", R.drawable.mp_xp3_prpganda);
+            put("XP3_urbanGdn", R.drawable.mp_xp3_urbangdn);
+            put("XP3_WtrFront", R.drawable.mp_xp3_wtrfront);
         }
     };
 
     public static Integer get(final String key) {
-        return map.containsKey(key.toUpperCase(Locale.getDefault())) ? map.get(key.toUpperCase()) : R.drawable.acc_none;
+        return map.containsKey(key.toUpperCase(Locale.getDefault())) ? map.get(key.toUpperCase(Locale.getDefault())) : R.drawable.acc_none;
     }
 }

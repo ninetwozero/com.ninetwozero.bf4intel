@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconLocation">
+        <ignore regexp="res/drawable/acc_.*[.]png" />
+        <ignore regexp="res/drawable/ammo_.*[.]png" />
+        <ignore regexp="res/drawable/as.[0-9][.]png" />
+        <ignore regexp="res/drawable/awards_.*[.]png" />
+        <ignore regexp="res/drawable/battlepack_.*[.]png" />
+        <ignore regexp="res/drawable/camo_.*[.]png" />
+        <ignore regexp="res/drawable/emblem_.*[.]png" />
+        <ignore regexp="res/drawable/ghost.*[.]png" />
+        <ignore regexp="res/drawable/kit_.*[.]png" />
+        <ignore regexp="res/drawable/mp_.*[.]png" />
+        <ignore regexp="res/drawable/r.*[.]png" />
+        <ignore regexp="res/drawable/soldier_.*[.]png" />
+        <ignore regexp="res/drawable/sp_.*[.]png" />
+        <ignore regexp="res/drawable/vehicle_.*[.]png" />
+        <ignore regexp="res/drawable/vuname_.*[.]png" />
+        <ignore regexp="res/drawable/w_.*[.]png" />
+        <ignore regexp="res/drawable/xp.*[.]png" />
+    </issue>
+</lint>

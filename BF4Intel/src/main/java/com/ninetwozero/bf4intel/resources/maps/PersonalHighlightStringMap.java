@@ -24,6 +24,6 @@ public class PersonalHighlightStringMap {
         if (key == null) {
             return "N/A";
         }
-        return map.containsKey(key.toUpperCase(Locale.getDefault())) ? map.get(key.toUpperCase()) : key;
+        return map.containsKey(key.toUpperCase(Locale.getDefault())) ? map.get(key.toUpperCase(Locale.getDefault())) : key;
     }
 }

@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.ui.stats.reports;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 

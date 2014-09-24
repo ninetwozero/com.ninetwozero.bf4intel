@@ -224,7 +224,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putLong(Keys.Menu.LATEST_PERSONA, selectedId);
                         editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, position);
-                        editor.commit();
+                        editor.apply();
                     }
 
                     @Override
@@ -244,9 +244,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
     private void storePositionState(final int position) {
         final SharedPreferences.Editor editor = sharedPreferences.edit();
         if (SessionStore.isLoggedIn()) {
-            editor.putInt(STATE_SELECTED_POSITION, position).commit();
+            editor.putInt(STATE_SELECTED_POSITION, position).apply();
         } else if (SessionStore.hasUserId()) {
-            editor.putInt(STATE_SELECTED_POSITION_TRACKING, position).commit();
+            editor.putInt(STATE_SELECTED_POSITION_TRACKING, position).apply();
         }
 
         currentSelectedPosition = position;

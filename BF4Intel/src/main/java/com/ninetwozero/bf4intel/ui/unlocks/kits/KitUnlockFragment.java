@@ -109,7 +109,7 @@ public class KitUnlockFragment extends BaseUnlockFragment {
             .putInt(KIT_SORT_MODE, SortMode.CATEGORIZED.ordinal())
             .putString(KIT_SORT_MODE_CATEGORY, category)
             .putString(KIT_AB_SUBTITLE, subtitleResString)
-            .commit();
+            .apply();
     }
 
     @Override
@@ -119,7 +119,7 @@ public class KitUnlockFragment extends BaseUnlockFragment {
             .putInt(KIT_SORT_MODE, sortMode.ordinal())
             .putString(KIT_AB_SUBTITLE, subtitleResString)
             .putString(KIT_SORT_MODE_CATEGORY, "")
-            .commit();
+            .apply();
         BusProvider.getInstance().post(new RefreshEvent());
     }
 

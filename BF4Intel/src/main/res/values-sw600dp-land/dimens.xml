@@ -1,4 +1,3 @@
 <resources>
   <dimen name="navigation_drawer_width">320dp</dimen>
-  <integer name="num_cols">3</integer>
 </resources>

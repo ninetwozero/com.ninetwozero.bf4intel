@@ -19,8 +19,6 @@
   <dimen name="list_padding">10dp</dimen>
   <dimen name="shadow_width">15dp</dimen>
 
-  <integer name="num_cols">1</integer>
-
   <!-- Spacing -->
   <dimen name="spacing_xxs">1dp</dimen>
   <dimen name="spacing_xs">2dp</dimen>
@@ -32,10 +30,6 @@
 
   <!-- Side spacing DO NOT ADD IT TO OTHER dimens-->
   <dimen name="side_spacing">8dp</dimen>
-
-
-  <dimen name="activity_horizontal_margin">@dimen/spacing_l</dimen>
-  <dimen name="activity_vertical_margin">@dimen/spacing_l</dimen>
 
   <!-- Text related -->
   <dimen name="text_xs">12sp</dimen>
@@ -50,14 +44,9 @@
   <dimen name="avatar_size_xl">64dp</dimen>
   <dimen name="avatar_size_l">32dp</dimen>
   <dimen name="avatar_size_m">24dp</dimen>
-  <dimen name="avatar_size_s">16dp</dimen>
 
   <!-- Sliding menu related -->
   <dimen name="navigation_drawer_width">320dp</dimen>
-
-  <!--Action bar-->
-  <dimen name="action_button_min_width">64dp</dimen>
-  <dimen name="indeterminate_progress_size">32dp</dimen>
 
   <!--Assignments and awards GridView columnWidth-->
   <dimen name="grid_view_column_width">150dp</dimen>
@@ -66,17 +55,6 @@
   <!--Grid view images-->
   <dimen name="grid_view_image_height">100dp</dimen>
   <dimen name="grid_view_image_width">@dimen/grid_view_image_height</dimen>
-
-  <!--Round corners for service stars background shape-->
-  <dimen name="round_corners">10dp</dimen>
-  <dimen name="round_corners_stroke">2dp</dimen>
-
-  <!--List index count-->
-  <dimen name="list_index_count">70dp</dimen>
-
-  <!-- Service star shape size-->
-  <dimen name="service_star_count_width">@dimen/list_index_count</dimen>
-  <dimen name="service_star_count_height">@dimen/list_index_count</dimen>
 
   <!-- Feed item rank image size-->
   <dimen name="feed_item_rank_image_height">128dp</dimen>
@@ -92,9 +70,7 @@
   <dimen name="home_logo_margin_top">@dimen/spacing_xl</dimen>
 
   <!-- Login related -->
-  <dimen name="error_message_size">320dp</dimen>
   <dimen name="login_form_element_width">240dp</dimen>
-  <dimen name="action_item_size">32dp</dimen>
   <dimen name="soldier_image_menu_size">48dp</dimen>
   <dimen name="login_progress_margin_top">48dp</dimen>
   <dimen name="tabfragment_tab_height">48dp</dimen>
@@ -103,12 +79,9 @@
   <dimen name="heading_over_card_size">24sp</dimen>
   <dimen name="about_title_text">42sp</dimen>
   <dimen name="about_subtitle_text">21sp</dimen>
-  <dimen name="changelog_text_size">18sp</dimen>
-  <dimen name="card_big_button_width">-1px</dimen>
 
   <!-- Service stars -->
   <dimen name="service_star_m">32dp</dimen>
-  <dimen name="service_star_s">24dp</dimen>
   <dimen name="service_star_xs">16dp</dimen>
 
   <!-- Stats item dimens -->

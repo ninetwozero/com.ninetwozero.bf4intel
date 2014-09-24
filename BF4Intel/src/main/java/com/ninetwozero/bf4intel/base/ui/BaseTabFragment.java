@@ -98,7 +98,7 @@ public abstract class BaseTabFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 postToGoogleAnalytics(position);
-                sharedPreferences.edit().putInt(fetchKeyForTabState(), position).commit();
+                sharedPreferences.edit().putInt(fetchKeyForTabState(), position).apply();
             }
         });
     }

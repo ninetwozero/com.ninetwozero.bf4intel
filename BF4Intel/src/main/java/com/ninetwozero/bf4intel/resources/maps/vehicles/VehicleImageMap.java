@@ -66,6 +66,7 @@ public class VehicleImageMap {
             put("WARSAW_ID_P_XP2_INAME_AAMINE", R.drawable.w_aamine_fancy);
             put("WARSAW_ID_P_XP2_VNAME_ACV", R.drawable.vehicle_acv_fancy);
             put("WARSAW_ID_P_XP2_VNAME_OLDCANNON", R.drawable.vehicle_oldcannon_fancy);
+            put("WARSAW_ID_P_XP3_WNAME_RAWR", R.drawable.vehicle_rawr_fancy);
         }
     };
 

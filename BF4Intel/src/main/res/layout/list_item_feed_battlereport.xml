@@ -52,7 +52,7 @@
       android:layout_below="@id/heading_results">
 
       <TextView
-        android:id="@+id/team"
+        android:id="@+id/team1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo"
@@ -60,7 +60,7 @@
         />
 
       <TextView
-        android:id="@+id/score"
+        android:id="@+id/score1"
         android:layout_width="28dp"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo"
@@ -71,13 +71,13 @@
 
       <ProgressBar
         style="?android:progressBarStyleHorizontal"
-        android:id="@+id/progress"
+        android:id="@+id/progress1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:indeterminate="false"
-        android:layout_toRightOf="@id/team"
-        android:layout_toLeftOf="@id/score"
-        android:layout_alignBottom="@id/team"
+        android:layout_toRightOf="@id/team1"
+        android:layout_toLeftOf="@id/score1"
+        android:layout_alignBottom="@id/team1"
         android:progress="380"
         android:max="400"
         />
@@ -91,7 +91,7 @@
       >
 
       <TextView
-        android:id="@+id/team"
+        android:id="@+id/team2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo"
@@ -99,7 +99,7 @@
         />
 
       <TextView
-        android:id="@+id/score"
+        android:id="@+id/score2"
         android:layout_width="28dp"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo"
@@ -110,13 +110,13 @@
 
       <ProgressBar
         style="?android:progressBarStyleHorizontal"
-        android:id="@+id/progress"
+        android:id="@+id/progress2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:indeterminate="false"
-        android:layout_toRightOf="@id/team"
-        android:layout_toLeftOf="@id/score"
-        android:layout_alignBottom="@id/team"
+        android:layout_toRightOf="@id/team2"
+        android:layout_toLeftOf="@id/score2"
+        android:layout_alignBottom="@id/team2"
         android:progress="380"
         android:max="400"
         />

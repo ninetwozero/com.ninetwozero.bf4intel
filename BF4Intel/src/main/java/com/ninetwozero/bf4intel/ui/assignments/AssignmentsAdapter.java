@@ -89,9 +89,9 @@ public class AssignmentsAdapter extends BaseFilterableIntelAdapter<Assignment> {
 
     private int fetchPrerequisiteImageResource(final String group) {
         if (group.equalsIgnoreCase(AssignmentPrerequisite.Type.RANK.toString())) {
-            return R.drawable.ic_stat_rank;
+            return R.drawable.ic_statistics_rank;
         } else if (group.equalsIgnoreCase(AssignmentPrerequisite.Type.MISSION.toString())) {
-            return R.drawable.ic_stat_award;
+            return R.drawable.ic_statistics_award;
         } else {
             return R.drawable.empty;
         }

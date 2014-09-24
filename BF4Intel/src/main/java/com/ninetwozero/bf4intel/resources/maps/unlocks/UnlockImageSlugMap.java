@@ -51,7 +51,7 @@ public class UnlockImageSlugMap {
             //put("M200", R.drawable.m20);
             put("M240B", R.drawable.w_lineart_m240b);
             put("M249", R.drawable.w_lineart_m249);
-            put("M39-EMR", R.drawable.w_lineart_m39);
+            put("M39-EMR", R.drawable.w_lineart_m39_emr);
             put("M40A5", R.drawable.w_lineart_m40a5);
             put("M412-REX", R.drawable.w_lineart_m412_rex);
             put("M416", R.drawable.w_lineart_m416);
@@ -175,8 +175,8 @@ public class UnlockImageSlugMap {
             put("UGS", R.drawable.kit_tugs);
             put("V40", R.drawable.w_lineart_v40_mini);
             put("XM25", R.drawable.w_lineart_xm25);
-            put("XM25-DART", R.drawable.w_lineart_xm25);
-            put("XM25-SMOKE", R.drawable.w_lineart_xm25);
+            put("XM25-DART", R.drawable.w_lineart_xm25_dart);
+            put("XM25-SMOKE", R.drawable.w_lineart_xm25_smoke);
             put("ACB-90", R.drawable.w_lineart_acb90);
             put("BAYONET", R.drawable.w_lineart_bayonet);
             put("RADIO-BEACON", R.drawable.kit_radio_beacon);

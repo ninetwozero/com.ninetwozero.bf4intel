@@ -55,6 +55,6 @@ public class LevelStringMap {
     };
 
     public static String get(final String key) {
-        return map.containsKey(key.toUpperCase(Locale.getDefault()))? map.get(key.toUpperCase()) : key;
+        return map.containsKey(key.toUpperCase(Locale.getDefault()))? map.get(key.toUpperCase(Locale.getDefault())) : key;
     }
 }
