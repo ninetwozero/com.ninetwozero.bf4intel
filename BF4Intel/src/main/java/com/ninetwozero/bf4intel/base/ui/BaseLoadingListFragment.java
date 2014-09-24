@@ -180,10 +180,6 @@ public abstract class BaseLoadingListFragment
         errorMessageView.startAnimation(new SimpleFadeInAnimation(errorMessageView));
     }
 
-    protected void showErrorMessage(final int textResource) {
-        showErrorMessage(getString(textResource));
-    }
-
     protected void clearErrorMessage() {
         errorMessageView.startAnimation(new SimpleFadeOutAnimation(errorMessageView));
     }

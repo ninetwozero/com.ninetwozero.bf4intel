@@ -96,5 +96,4 @@
   <dimen name="spacing_none">0dp</dimen>
   <dimen name="reward_image_width">128dp</dimen>
   <dimen name="fire_mode_image_size">32dp</dimen>
-  <dimen name="small_icon_size">16dp</dimen>
 </resources>

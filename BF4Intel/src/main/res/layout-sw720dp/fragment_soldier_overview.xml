@@ -386,5 +386,12 @@
     </ScrollView>
   </android.support.v4.widget.SwipeRefreshLayout>
 
+  <include
+    layout="@layout/generic_empty_view"
+    android:id="@android:id/empty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />
+
   <include layout="@layout/inlined_error_message"/>
 </RelativeLayout>
