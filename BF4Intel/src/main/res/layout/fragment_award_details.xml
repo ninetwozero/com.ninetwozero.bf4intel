@@ -77,8 +77,8 @@
 
       <ImageView
         android:id="@+id/expansion_icon"
-        android:layout_width="@dimen/small_icon_size"
-        android:layout_height="@dimen/small_icon_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/cdesc_expansion_icon"
         android:layout_marginRight="@dimen/spacing_m"
         />
