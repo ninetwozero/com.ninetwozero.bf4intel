@@ -6,10 +6,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -27,8 +25,6 @@ import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.NumberFormatter;
-
-import org.w3c.dom.Text;
 
 import java.util.Arrays;
 
@@ -144,12 +140,12 @@ public abstract class BaseLoadingFragment
         }
 
         errorMessageView.setOnClickListener(
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    clearErrorMessage();
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        clearErrorMessage();
+                    }
                 }
-            }
         );
     }
 
@@ -157,10 +153,6 @@ public abstract class BaseLoadingFragment
         errorMessageView.setText(textResource);
         errorMessageView.startAnimation(new SimpleFadeInAnimation(errorMessageView));
         errorMessageView.setVisibility(View.VISIBLE);
-    }
-
-    protected void showErrorMessage(final int textResource) {
-        showErrorMessage(getString(textResource));
     }
 
     protected void clearErrorMessage() {
@@ -173,10 +165,6 @@ public abstract class BaseLoadingFragment
 
     protected String format(long value) {
         return NumberFormatter.format(value);
-    }
-
-    protected void showEmptyView(final View view) {
-        view.findViewById(android.R.id.empty).setVisibility(View.VISIBLE);
     }
 
     protected void hideEmptyView(final View view) {
