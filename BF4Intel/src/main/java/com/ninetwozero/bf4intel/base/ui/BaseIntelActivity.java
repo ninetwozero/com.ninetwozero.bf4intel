@@ -33,9 +33,6 @@ public abstract class BaseIntelActivity extends ActionBarActivity {
             Mint.initAndStartSession(this, BUGSENSE_TOKEN);
         }
 
-        String a = null;
-        a.toString();
-
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sw600dp = getResources().getBoolean(R.bool.is_sw600dp);
         sw720dp = getResources().getBoolean(R.bool.is_sw720dp);
