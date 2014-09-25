@@ -212,6 +212,7 @@ public class UnlockImageSlugMap {
             put("SRAW", R.drawable.w_lineart_fgm172_sraw);
             put("T-UGS", R.drawable.kit_tugs);
             put("V40-MINI", R.drawable.w_lineart_v40_mini);
+            put("WEAVER", R.drawable.w_lineart_weaver);
 
             put("BJ-2", R.drawable.w_lineart_bj2);
             put("PRECISION", R.drawable.w_lineart_precision);
