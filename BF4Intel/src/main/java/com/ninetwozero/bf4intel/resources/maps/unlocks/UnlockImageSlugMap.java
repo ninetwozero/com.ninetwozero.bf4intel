@@ -241,7 +241,6 @@ public class UnlockImageSlugMap {
 
     public static int get(String slug) {
         final String uppercaseSlug = slug.toUpperCase(Locale.getDefault());
-        if(!map.containsKey(uppercaseSlug)) android.util.Log.e(UnlockImageSlugMap.class.getSimpleName(), uppercaseSlug);
         return map.containsKey(uppercaseSlug) ? map.get(uppercaseSlug) : R.drawable.kit_none;
     }
 }
