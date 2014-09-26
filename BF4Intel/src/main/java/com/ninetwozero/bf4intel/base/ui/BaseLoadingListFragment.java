@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.bugsense.trace.BugSenseHandler;
 import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -29,6 +28,8 @@ import com.ninetwozero.bf4intel.ui.animations.SimpleFadeOutAnimation;
 import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.ninetwozero.bf4intel.utils.BusProvider;
+import com.splunk.mint.Mint;
+import com.splunk.mint.MintLogLevel;
 
 import java.util.Arrays;
 
@@ -190,7 +191,7 @@ public abstract class BaseLoadingListFragment
         } catch (NullPointerException npe) {
             String message = String.format(BaseFragment.class.getSimpleName()
                     + " Some of following objects maybe null getActivity() getActivity().getActionBar() subtitle ");
-            BugSenseHandler.sendEvent(message);
+            Mint.logEvent(message, MintLogLevel.Error);
             Crashlytics.logException(npe);
         }
     }

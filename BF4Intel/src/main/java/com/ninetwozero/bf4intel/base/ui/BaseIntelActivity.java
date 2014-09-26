@@ -7,11 +7,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.widget.Toast;
 
-import com.bugsense.trace.BugSenseHandler;
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.resources.Keys;
+import com.splunk.mint.Mint;
 
 import java.util.HashMap;
 
@@ -29,9 +29,8 @@ public abstract class BaseIntelActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        BugSenseHandler.I_WANT_TO_DEBUG = BuildConfig.isDebug;
-        if (!BugSenseHandler.I_WANT_TO_DEBUG) {
-            BugSenseHandler.initAndStartSession(this, BUGSENSE_TOKEN);
+        if (!BuildConfig.isDebug) {
+            Mint.initAndStartSession(this, BUGSENSE_TOKEN);
         }
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -43,7 +42,7 @@ public abstract class BaseIntelActivity extends ActionBarActivity {
 
     @Override
     protected void onDestroy() {
-        BugSenseHandler.closeSession(this);
+        Mint.closeSession(this);
         super.onDestroy();
     }
 
@@ -76,9 +75,9 @@ public abstract class BaseIntelActivity extends ActionBarActivity {
         );
 
         if (sharedPreferences.getBoolean(Keys.Settings.USER_IN_CRASH_REPORT, true)) {
-            BugSenseHandler.addCrashExtraMap(fetchExtraInformationForBugsense());
+            Mint.addExtraDataMap(fetchExtraInformationForBugsense());
         } else {
-            BugSenseHandler.addCrashExtraMap(fetchDummyInformationForBugsense());
+            Mint.addExtraDataMap(fetchDummyInformationForBugsense());
         }
     }
 
