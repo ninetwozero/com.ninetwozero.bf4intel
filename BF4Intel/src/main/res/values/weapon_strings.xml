@@ -178,6 +178,7 @@
   <string name="weapon_name_acwr">ACW-R</string>
   <string name="weapon_name_uts15">UTS-15</string>
   <string name="weapon_name_u100_mk5">U-100 MK5</string>
+  <string name="weapon_knife_weaver">WEAVER</string>
 
   <!--SECOND ASSAULT-->
   <string name="weapon_dao12_fancy">DAO-12</string>

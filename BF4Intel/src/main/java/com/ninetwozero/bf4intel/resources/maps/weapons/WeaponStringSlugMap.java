@@ -247,6 +247,7 @@ public class WeaponStringSlugMap {
             put("DEAGLE-44", R.string.weapon_deagle);
             put("UNICA-6", R.string.weapon_un6);
             put("NECK", R.string.weapon_neckknife);
+            put("WEAVER", R.string.weapon_knife_weaver);
         }
     };
 

@@ -180,6 +180,7 @@ public class WeaponStringMap {
             put("WARSAW_ID_P_INAME_XM25", R.string.weapon_iname_xm25);
             put("WARSAW_ID_P_INAME_XM25_FLECHETTE", R.string.weapon_iname_xm25_flechette);
             put("WARSAW_ID_P_INAME_XM25_SMK", R.string.weapon_iname_xm25_smk);
+            put("WARSAW_ID_P_XP4_INAME_KNIFEWEAVER", R.string.weapon_knife_weaver);
             /*SECOND ASSAULT*/
             put("WARSAW_ID_P_XP0_WNAME_DAO12", R.string.weapon_dao12_fancy);
             put("WARSAW_ID_P_INAME_BPKNIFE1", R.string.weapon_knife_improvised_fancy);
