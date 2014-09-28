@@ -177,7 +177,6 @@
       android:name=".services.battlefeed.BattleFeedService"
       android:label="@string/label_service_battlefeed" />
 
-    <meta-data android:name="com.crashlytics.ApiKey" android:value="63f4848ede07ff8a7b21fd3e5efffbd7c0e7f17e"/>
   </application>
 
 </manifest>

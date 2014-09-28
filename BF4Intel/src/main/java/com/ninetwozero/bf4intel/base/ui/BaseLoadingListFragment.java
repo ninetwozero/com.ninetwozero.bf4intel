@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -192,7 +191,6 @@ public abstract class BaseLoadingListFragment
             String message = String.format(BaseFragment.class.getSimpleName()
                     + " Some of following objects maybe null getActivity() getActivity().getActionBar() subtitle ");
             Mint.logEvent(message, MintLogLevel.Error);
-            Crashlytics.logException(npe);
         }
     }
 

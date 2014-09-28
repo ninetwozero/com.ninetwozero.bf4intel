@@ -21,7 +21,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.provider.MenuProvider;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -140,7 +139,6 @@ public abstract class BaseFragment extends Fragment implements MenuProvider.OnMe
             String message = String.format(BaseFragment.class.getSimpleName()
                     + " Some of following objects maybe null getActivity() getActivity().getActionBar()  subtitle");
             Mint.logEvent(message, MintLogLevel.Error);
-            Crashlytics.logException(npe);
         }
     }
 
