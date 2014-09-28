@@ -225,6 +225,13 @@ public abstract class BaseLoadingListFragment
         }
     }
 
+    protected void setCustomEmptyText(final View container, final String string){
+        final TextView textView = (TextView) container.findViewById(R.id.custom_empty_text);
+        if (textView != null) {
+            textView.setText(string);
+        }
+    }
+
     @Override
     public void onMenuSelected(MenuItem item) {
         int itemId = item.getItemId();

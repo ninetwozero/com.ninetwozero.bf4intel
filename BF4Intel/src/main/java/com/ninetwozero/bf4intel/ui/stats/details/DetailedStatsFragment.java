@@ -106,7 +106,6 @@ public class DetailedStatsFragment extends BaseLoadingListFragment {
             return;
         }
 
-        final View emptyContainer = view.findViewById(android.R.id.empty);
         setCustomEmptyText(view, R.string.empty_text_statistics);
 
         final ListView listView = (ListView) view.findViewById(android.R.id.list);

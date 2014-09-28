@@ -178,6 +178,13 @@ public abstract class BaseLoadingFragment
         }
     }
 
+    protected void setCustomEmptyText(final View container, final String string){
+        final TextView textView = (TextView) container.findViewById(R.id.custom_empty_text);
+        if (textView != null) {
+            textView.setText(string);
+        }
+    }
+
     protected abstract void startLoadingData(boolean showLoading);
 
     @Override

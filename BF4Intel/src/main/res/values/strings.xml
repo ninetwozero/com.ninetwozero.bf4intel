@@ -200,8 +200,10 @@
 
   <string name="empty_text_overview">Loading overview</string>
   <string name="empty_text_statistics">Loading statistics</string>
+  <string name="empty_text_battle_reports">Loading Battle Reports</string>
   <string name="empty_text_unlocks">Loading unlocks</string>
   <string name="empty_text_assignments">Loading assignments</string>
   <string name="empty_text_awards">Loading awards</string>
   <string name="empty_text_news">Loading news</string>
+  <string name="empty_text_user_search">Loading users</string>
 </resources>
