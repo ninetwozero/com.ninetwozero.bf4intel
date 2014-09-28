@@ -100,10 +100,11 @@ public class Weapon implements Comparable<Weapon>, Serializable {
                 }
             }
         };
+
         public static Comparator<Weapon> PROGRESS = new Comparator<Weapon>() {
             @Override
             public int compare(Weapon w1, Weapon w2) {
-                if ( w1.serviceStarsProgress > w2.getServiceStarsProgress()) {
+                if (w1.serviceStarsProgress > w2.getServiceStarsProgress()) {
                     return -1;
                 } else if (w1.serviceStarsProgress < w2.getServiceStarsProgress()) {
                     return 1;

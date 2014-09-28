@@ -67,7 +67,7 @@ public class Assignment implements Comparable<Assignment>, Serializable {
 
     @Override
     public int compareTo(Assignment assignment) {
-        if ( completion > assignment.getCompletion()) {
+        if (completion > assignment.getCompletion()) {
             return -1;
         } else if (completion < assignment.getCompletion()) {
             return 1;
