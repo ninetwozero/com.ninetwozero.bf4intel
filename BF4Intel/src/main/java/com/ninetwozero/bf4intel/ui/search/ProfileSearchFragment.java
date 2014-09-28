@@ -167,9 +167,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
 
     private void setupListView(final View view) {
         final ListView listView = (ListView) view.findViewById(android.R.id.list);
-        final TextView emptyTextView = (TextView) view.findViewById(android.R.id.empty);
         listView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
-        emptyTextView.setText(R.string.msg_no_users_found);
     }
 
     private Request<List<ProfileSearchResult>> fetchRequestForSearch(Bundle postData) {
@@ -218,6 +216,11 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     private void sendDataToListView(final List<ProfileSearchResult> results) {
         if (getView() == null) {
             return;
+        }
+
+        if (results.isEmpty()) {
+            final TextView emptyTextView = (TextView) getView().findViewById(android.R.id.empty);
+            emptyTextView.setText(R.string.msg_no_users_found);
         }
 
         ProfileSearchAdapter adapter = (ProfileSearchAdapter) getListAdapter();
