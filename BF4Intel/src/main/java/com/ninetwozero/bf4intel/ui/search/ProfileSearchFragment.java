@@ -168,6 +168,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
     private void setupListView(final View view) {
         final ListView listView = (ListView) view.findViewById(android.R.id.list);
         listView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        setCustomEmptyText(view, R.string.empty_text_user_search);
     }
 
     private Request<List<ProfileSearchResult>> fetchRequestForSearch(Bundle postData) {

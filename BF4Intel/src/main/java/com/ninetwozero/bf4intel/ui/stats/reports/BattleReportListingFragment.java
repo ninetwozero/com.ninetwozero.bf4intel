@@ -2,12 +2,10 @@ package com.ninetwozero.bf4intel.ui.stats.reports;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
@@ -50,7 +48,8 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
     public void onBattleReportsRefreshed(BattleReportsRefreshedEvent event) {
         List<BaseListItem> items = event.getItems();
         if (items == null) {
-            ((TextView) getView().findViewById(android.R.id.empty)).setText(
+            setCustomEmptyText(
+                getView(),
                 String.format(
                     getString(R.string.msg_error_private_user),
                     getArguments().getString(Keys.Soldier.NAME)
@@ -116,9 +115,8 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         }
 
         final ListView listView = (ListView) view.findViewById(android.R.id.list);
-        final TextView emptyView = (TextView) view.findViewById(android.R.id.empty);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        emptyView.setText(R.string.msg_no_battlereports);
+        setCustomEmptyText(view, R.string.empty_text_battle_reports);
     }
 
     private void sendDataToListView(final List<BaseListItem> statistics) {

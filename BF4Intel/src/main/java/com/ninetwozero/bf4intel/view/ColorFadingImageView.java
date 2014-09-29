@@ -94,7 +94,7 @@ public class ColorFadingImageView extends ImageView {
                     @Override
                     public void onAnimationEnd(final Animator animation) {
                         if (shouldSwapToWhiteDrawable && customWhiteImage != NO_IMAGE_SELECTED) {
-                            Drawable drawable = getResources().getDrawable(customWhiteImage);
+                            Drawable drawable = getResources().getDrawable(customWhiteImage).mutate();
                             setImageDrawable(drawable);
                             shouldSwapToWhiteDrawable = false;
                         }
