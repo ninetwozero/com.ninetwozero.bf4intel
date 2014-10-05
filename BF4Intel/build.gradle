@@ -23,8 +23,8 @@ android {
 
     defaultConfig {
         applicationId 'com.ninetwozero.bf4intel'
-        versionCode 1614105
-        versionName '1.0.5'
+        versionCode 1614106
+        versionName '1.0.6'
         minSdkVersion 14
         targetSdkVersion 19
     }
