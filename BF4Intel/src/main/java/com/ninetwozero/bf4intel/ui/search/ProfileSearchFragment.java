@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.ninetwozero.bf4intel.Bf4Intel;
@@ -220,8 +219,8 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         }
 
         if (results.isEmpty()) {
-            final TextView emptyTextView = (TextView) getView().findViewById(android.R.id.empty);
-            emptyTextView.setText(R.string.msg_no_users_found);
+            setCustomEmptyText(getView(), R.string.msg_no_users_found);
+            getView().findViewById(R.id.logo).setVisibility(View.GONE);
         }
 
         ProfileSearchAdapter adapter = (ProfileSearchAdapter) getListAdapter();
