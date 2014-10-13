@@ -9,53 +9,59 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Spinner;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
-import com.ninetwozero.bf4intel.base.ui.BaseListFragment;
+import com.ninetwozero.bf4intel.database.dao.login.SoldierAccessComparator;
 import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.events.ActiveSoldierChangedEvent;
 import com.ninetwozero.bf4intel.events.SoldierInformationUpdatedEvent;
 import com.ninetwozero.bf4intel.events.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.factories.BundleFactory;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
-import com.ninetwozero.bf4intel.factories.ListRowFactory;
-import com.ninetwozero.bf4intel.interfaces.ListRowElement;
-import com.ninetwozero.bf4intel.menu.ListRowType;
-import com.ninetwozero.bf4intel.menu.SimpleListRow;
+import com.ninetwozero.bf4intel.menu.NavigationDrawerItem;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.ui.adapters.NavigationDrawerListAdapter;
-import com.ninetwozero.bf4intel.ui.adapters.SoldierSpinnerAdapter;
+import com.ninetwozero.bf4intel.resources.maps.profile.SoldierImageMap;
+import com.ninetwozero.bf4intel.resources.maps.ranks.RankImageMap;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
+import com.ninetwozero.bf4intel.utils.PersonaUtils;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import se.emilsjolander.sprinkles.Query;
 
-public class NavigationDrawerFragment extends BaseListFragment {
-    public static final String BATTLE_CHAT = "BATTLE CHAT";
+public class NavigationDrawerFragment extends BaseFragment {
     public static final String BATTLE_CHAT_PACKAGE = "com.ninetwozero.battlechat";
 
-    private final String STATE_SELECTED_POSITION = "selected_navigation_group_position";
-    private final String STATE_SELECTED_POSITION_TRACKING = "selected_navigation_group_position_tracking";
+    private static final String STATE_SELECTED_POSITION = "selected_navigation_group_position";
+    private static final String STATE_SELECTED_POSITION_TRACKING = "selected_navigation_group_position_tracking";
 
-    private static final int DEFAULT_POSITION_GUEST = 1;
-    private static final int DEFAULT_POSITION_TRACKING = 7;
-    private static final int DEFAULT_POSITION = 7;
+    private static final int INVALID_POSITION = -1;
+    private static final int DEFAULT_POSITION_GUEST = 0;
+    private static final int DEFAULT_POSITION_TRACKING = 6;
+    private static final int DEFAULT_POSITION = 6;
 
     private boolean isRecreated;
-    private ListView listView;
+    private ViewGroup navigationDrawerItemContainer;
     private NavigationDrawerCallbacks callbacks;
 
-    private int currentSelectedPosition;
+    private int currentMenuSelection = INVALID_POSITION;
+
+    private View[] navigationDrawerItemViews;
+    private List<NavigationDrawerItem> navigationDrawerItems = new ArrayList<NavigationDrawerItem>();
+    private List<SummarizedSoldierStatsDAO> soldiers = new ArrayList<SummarizedSoldierStatsDAO>();
+    private boolean shouldShowTheSoldiers = false;
+
+    private String selectedSoldierId;
+    private int selectedSoldierPlatform;
+    private SummarizedSoldierStatsDAO selectedSoldier;
 
     public NavigationDrawerFragment() {
         if (getArguments() == null) {
@@ -68,6 +74,8 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedState) {
+        super.onCreateView(inflater, container, savedState);
+
         final View baseView = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         initialize(baseView);
         return baseView;
@@ -95,7 +103,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         BusProvider.getInstance().register(this);
         if (!isRecreated) {
             isRecreated = true;
-            selectItemFromState(currentSelectedPosition);
+            selectItemFromState(currentMenuSelection);
         }
     }
 
@@ -105,14 +113,6 @@ public class NavigationDrawerFragment extends BaseListFragment {
         super.onPause();
     }
 
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        final ListRowElement item = ((NavigationDrawerListAdapter) getListAdapter()).getItem(position);
-        if (item instanceof SimpleListRow) {
-            selectItem((SimpleListRow) item, position, true, false);
-        }
-    }
-
     @Subscribe
     public void onStartedTrackingNewProfile(final TrackingNewProfileEvent event) {
         final View view = getView();
@@ -120,11 +120,9 @@ public class NavigationDrawerFragment extends BaseListFragment {
             return;
         }
 
-        setupRegularViews(view);
-
-        final int position = getListView().getCheckedItemPosition();
-        ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
-        selectItemFromState(position);
+        final int currentMenuSelection = this.currentMenuSelection;
+        initialize(view);
+        selectItemFromState(currentMenuSelection);
     }
 
     @Subscribe
@@ -135,7 +133,7 @@ public class NavigationDrawerFragment extends BaseListFragment {
         }
 
         setupRegularViews(view);
-        ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
+        setupSoldierBox(view);
     }
 
     @Subscribe
@@ -145,19 +143,51 @@ public class NavigationDrawerFragment extends BaseListFragment {
             return;
         }
 
-        final int position = getCheckedItemPosition();
-        ((NavigationDrawerListAdapter) getListAdapter()).setItems(getItemsForMenu());
-        selectItemFromState(position);
+        // Since we're only changing the selected soldier in the dropdown, no need to refresh via DB
+        final int currentMenuSelection = this.currentMenuSelection;
+        setupRegularViews(view);
+        Collections.sort(soldiers, new SoldierAccessComparator());
+        populateSoldierList(view);
+        selectItemFromState(currentMenuSelection);
     }
 
     private void initialize(final View view) {
-        setupDataFromState();
+        setupDataFromPreferences();
+        loadSoldiersFromDatabaseIfWeHaveAny();
         setupRegularViews(view);
-        setupListView(view);
+        populateNavigationDrawer(view);
+        populateSoldierList(view);
     }
 
-    private void setupDataFromState() {
-        currentSelectedPosition = fetchStartingPositionForSessionState();
+    private void loadSoldiersFromDatabaseIfWeHaveAny() {
+        soldiers = fetchSoldiersForMenu();
+        for (SummarizedSoldierStatsDAO soldier : soldiers) {
+            if (isSelectedSoldier(soldier)) {
+                selectedSoldier = soldier;
+                return;
+            }
+        }
+
+        if (soldiers.isEmpty()) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(Keys.SESSION_ID, null);
+            editor.putString(Keys.Profile.ID, null);
+            editor.putString(Keys.Profile.USERNAME, null);
+            editor.putString(Keys.Profile.GRAVATAR_HASH, null);
+            editor.apply();
+
+            SessionStore.resetSession();
+        } else {
+            selectedSoldier = soldiers.get(0);
+            selectedSoldierId = selectedSoldier.getSoldierId();
+            selectedSoldierPlatform = selectedSoldier.getPlatformId();
+        }
+    }
+
+    private void setupDataFromPreferences() {
+        currentMenuSelection = fetchStartingPositionForSessionState();
+        selectedSoldierId = sharedPreferences.getString(Keys.Menu.LATEST_PERSONA, "");
+        selectedSoldierPlatform = sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_PLATFORM, 0);
     }
 
     public int fetchDefaultPosition() {
@@ -184,61 +214,111 @@ public class NavigationDrawerFragment extends BaseListFragment {
 
     private void setupRegularViews(final View view) {
         final View wrapper = view.findViewById(R.id.wrap_login_info);
-        final TextView loginStatusView = (TextView) wrapper.findViewById(R.id.string_login_status);
-        final TextView loginUsernameView = (TextView) wrapper.findViewById(R.id.login_name);
-
-        if (SessionStore.isLoggedIn()) {
-            loginStatusView.setText(R.string.logged_in_as);
-            loginUsernameView.setText(SessionStore.getUsername());
-            setupSoldierDropdown(view);
-            wrapper.setVisibility(View.VISIBLE);
-        } else if (SessionStore.hasUserId()) {
-            loginStatusView.setText(R.string.tracking_user);
-            loginUsernameView.setText(SessionStore.getUsername());
-            setupSoldierDropdown(view);
+        if (SessionStore.isLoggedIn() || SessionStore.hasUserId()) {
+            setupSoldierBox(view);
             wrapper.setVisibility(View.VISIBLE);
         } else {
-            loginStatusView.setText(R.string.not_logged_in);
-            loginUsernameView.setText(R.string.empty);
             wrapper.setVisibility(View.GONE);
         }
     }
 
-    private void setupSoldierDropdown(final View view) {
-        final SoldierSpinnerAdapter adapter = new SoldierSpinnerAdapter(getActivity(), fetchSoldiersForMenu());
-        final Spinner spinner = (Spinner) view.findViewById(R.id.spinner_soldier);
-        final int position = sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0);
-
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long selectedId) {
-                        if (sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0) != position) {
-                            storeSelectionInPreferences(selectedId, position);
-                            BusProvider.getInstance().post(new ActiveSoldierChangedEvent(selectedId));
-                        }
-                    }
-
-                    private void storeSelectionInPreferences(long selectedId, int position) {
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putLong(Keys.Menu.LATEST_PERSONA, selectedId);
-                        editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, position);
-                        editor.apply();
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                }
-        );
-        spinner.setSelection(position > spinner.getCount() ? 0 : position);
+    private void setupSoldierBox(final View view) {
+        final View soldierItemWrapper = view.findViewById(R.id.wrap_login_info);
+        final View soldierItemView = soldierItemWrapper.findViewById(R.id.selected_soldier_dropdown);
+        populateSoldierItemView(soldierItemView, selectedSoldier);
+        soldierItemWrapper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                onSoldierBoxClick(v);
+            }
+        });
     }
 
-    private void setupListView(final View view) {
-        listView = (ListView) view.findViewById(android.R.id.list);
-        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        setListAdapter(new NavigationDrawerListAdapter(getActivity(), getItemsForMenu()));
+    private void populateSoldierItemView(final View soldierItemView, final SummarizedSoldierStatsDAO soldier) {
+        setImage(soldierItemView, R.id.soldier_image, SoldierImageMap.get(soldier.getPicture()));
+        setText(soldierItemView, R.id.soldier_name, soldier.getSoldierName());
+        setText(soldierItemView, R.id.soldier_platform, PersonaUtils.getPlatformNameFromPlatformId(soldier.getPlatformId()));
+        setImage(soldierItemView, R.id.soldier_rank, RankImageMap.get(soldier.getRank()));
+    }
+
+    private void onSoldierBoxClick(final View view) {
+        setVisibilityOfSoldiersInDrawer(view, !shouldShowTheSoldiers);
+    }
+
+    private void setVisibilityOfSoldiersInDrawer(final View view, boolean shouldShowTheSoldiers) {
+        this.shouldShowTheSoldiers = shouldShowTheSoldiers;
+
+        final View rootView = getView();
+        if (rootView == null) {
+            return;
+        }
+
+        final ImageView indicator = (ImageView) view.findViewById(R.id.soldier_dropdown_arrow);
+        if (this.shouldShowTheSoldiers) {
+            indicator.setImageResource(R.drawable.ic_menu_arrow_up_light);
+            rootView.findViewById(R.id.navigation_drawer_account_list).setVisibility(View.VISIBLE);
+            rootView.findViewById(R.id.navigation_drawer_item_container).setVisibility(View.GONE);
+        } else {
+            indicator.setImageResource(R.drawable.ic_menu_arrow_down_light);
+            rootView.findViewById(R.id.navigation_drawer_account_list).setVisibility(View.GONE);
+            rootView.findViewById(R.id.navigation_drawer_item_container).setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void createNavigationDrawerItemsInLayout(final View view) {
+        navigationDrawerItemContainer = (ViewGroup) view.findViewById(R.id.navigation_drawer_item_container);
+        if (navigationDrawerItemContainer == null) {
+            return;
+        }
+
+        navigationDrawerItemViews = new View[navigationDrawerItems.size()];
+        navigationDrawerItemContainer.removeAllViews();
+        int i = 0;
+        for (NavigationDrawerItem item : navigationDrawerItems) {
+            navigationDrawerItemViews[i] = createNavigationDrawerItem(item, i, navigationDrawerItemContainer);
+            navigationDrawerItemContainer.addView(navigationDrawerItemViews[i]);
+            ++i;
+        }
+    }
+
+    private View createNavigationDrawerItem(final NavigationDrawerItem item, final int itemPosition, ViewGroup container) {
+        boolean selected = currentMenuSelection == itemPosition;
+        int layoutToInflate = 0;
+
+        switch (item.getType()) {
+            case SEPARATOR:
+                layoutToInflate = R.layout.list_item_navdrawer_separator;
+                break;
+            case HEADING:
+                layoutToInflate = R.layout.list_item_navdrawer_heading;
+                break;
+            default:
+                layoutToInflate = R.layout.list_item_navdrawer_normal;
+                break;
+        }
+
+        final View view = layoutInflater.inflate(layoutToInflate, container, false);
+        if (item.getType() == NavigationDrawerItem.Type.SEPARATOR) {
+            return view;
+        }
+
+        TextView textView = (TextView) view.findViewById(R.id.text1);
+        textView.setText(item.getTitle());
+
+        if (item.getType() != NavigationDrawerItem.Type.HEADING) {
+            formatNavigationDrawerItem(view, selected);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectItem(item, itemPosition, true, false);
+                }
+            });
+        }
+        return view;
+    }
+
+    private void formatNavigationDrawerItem(View view, boolean selected) {
+        // TODO: Make the selected item distinguish itself
     }
 
     private void storePositionState(final int position) {
@@ -248,87 +328,102 @@ public class NavigationDrawerFragment extends BaseListFragment {
         } else if (SessionStore.hasUserId()) {
             editor.putInt(STATE_SELECTED_POSITION_TRACKING, position).apply();
         }
-
-        currentSelectedPosition = position;
+        currentMenuSelection = position;
     }
 
-    private List<ListRowElement> getItemsForMenu() {
-        final List<ListRowElement> items = new ArrayList<ListRowElement>();
-
+    private void populateNavigationDrawer(final View view) {
+        navigationDrawerItems.clear();
         if (SessionStore.hasUserId()) {
-            items.addAll(getRowsForSoldier());
+            navigationDrawerItems.addAll(getRowsForSoldier());
         }
-        items.addAll(getRowsForSocial());
-        return items;
+        navigationDrawerItems.addAll(getRowsForSocial());
+
+        createNavigationDrawerItemsInLayout(view);
     }
 
-    private List<ListRowElement> getRowsForSoldier() {
-        final List<SummarizedSoldierStatsDAO> stats = fetchSoldiersForMenu();
-        final List<ListRowElement> items = new ArrayList<ListRowElement>();
-        Bundle soldierBundleForMenu = buildBundleForSoldier(stats);
-        items.add(
-            ListRowFactory.create(
-                ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_my_soldier)
-            )
-        );
-        items.add(
-            ListRowFactory.create(
-                ListRowType.SIDE_REGULAR,
-                getString(R.string.navigationdrawer_overview),
-                soldierBundleForMenu,
-                FragmentFactory.Type.SOLDIER_OVERVIEW
-            )
-        );
-        items.add(
-            ListRowFactory.create(
-                ListRowType.SIDE_REGULAR,
-                getString(R.string.navigationdrawer_statistics),
-                soldierBundleForMenu,
-                FragmentFactory.Type.SOLDIER_STATS
-            )
-        );
-        items.add(
-            ListRowFactory.create(
-                ListRowType.SIDE_REGULAR,
-                getString(R.string.navigationdrawer_unlocks),
-                soldierBundleForMenu,
-                FragmentFactory.Type.SOLDIER_UNLOCKS
-            )
-        );
-        items.add(
-            ListRowFactory.create(
-                ListRowType.SIDE_REGULAR,
-                getString(R.string.assignments),
-                soldierBundleForMenu,
-                FragmentFactory.Type.SOLDIER_ASSIGNMENTS
-            )
-        );
-        items.add(
-            ListRowFactory.create(
-                ListRowType.SIDE_REGULAR,
-                getString(R.string.awards),
-                soldierBundleForMenu,
-                FragmentFactory.Type.SOLDIER_AWARDS
-            )
-        );
-        return items;
+    private void populateSoldierList(final View view) {
+        final ViewGroup container = (ViewGroup) view.findViewById(R.id.navigation_drawer_account_list);
+        container.removeAllViews();
+
+        for (final SummarizedSoldierStatsDAO soldier : soldiers) {
+            if (isSelectedSoldier(soldier)) {
+                continue;
+            }
+
+            View soldierItemView = layoutInflater.inflate(R.layout.list_item_navdrawer_soldier_dropdown, container, false);
+            setVisibility(soldierItemView, R.id.soldier_dropdown_arrow, View.INVISIBLE);
+            populateSoldierItemView(soldierItemView, soldier);
+            soldierItemView.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(final View v) {
+                        onSoldierSelectedInDropdown(soldier);
+                    }
+                }
+            );
+            container.addView(soldierItemView);
+        }
+    }
+
+    private void onSoldierSelectedInDropdown(final SummarizedSoldierStatsDAO soldier) {
+        if (!isSelectedSoldier(soldier)) {
+            selectedSoldierId = soldier.getSoldierId();
+            selectedSoldierPlatform = soldier.getPlatformId();
+            selectedSoldier = soldier;
+
+            soldier.setLastAccess(System.currentTimeMillis());
+            soldier.save();
+
+            storeSelectionInPreferences(soldier);
+            BusProvider.getInstance().post(new ActiveSoldierChangedEvent(selectedSoldierId));
+        }
+
+        final View view = getView();
+        if (view == null) {
+            return;
+        }
+
+        setVisibilityOfSoldiersInDrawer(view, false);
+        callbacks.closeDrawer();
+    }
+
+    private void storeSelectionInPreferences(SummarizedSoldierStatsDAO soldier) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Keys.Menu.LATEST_PERSONA, soldier.getSoldierId());
+        editor.putInt(Keys.Menu.LATEST_PERSONA_PLATFORM, soldier.getPlatformId());
+        editor.apply();
+    }
+
+    private List<NavigationDrawerItem> getRowsForSoldier() {
+        final List<NavigationDrawerItem> rows = new ArrayList<NavigationDrawerItem>();
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.OVERVIEW, R.string.navigationdrawer_overview));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.STATISTICS, R.string.navigationdrawer_statistics));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.UNLOCKS, R.string.navigationdrawer_unlocks));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.ASSIGNMENTS, R.string.assignments));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.AWARDS, R.string.awards));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.SEPARATOR));
+        return rows;
+    }
+
+    private List<NavigationDrawerItem> getRowsForSocial() {
+        final List<NavigationDrawerItem> rows = new ArrayList<NavigationDrawerItem>();
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.HOME, R.string.navigationdrawer_home));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.NEWS, R.string.navigationdrawer_news));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.BATTLE_CHAT, R.string.appname_battlechat));
+        return rows;
     }
 
     private List<SummarizedSoldierStatsDAO> fetchSoldiersForMenu() {
-        final List<SummarizedSoldierStatsDAO> soldiers = Query.many(
+        return Query.many(
             SummarizedSoldierStatsDAO.class,
-            "SELECT * FROM " + SummarizedSoldierStatsDAO.TABLE_NAME + " WHERE userId = ?",
-            SessionStore.getUserId()
+            "SELECT * FROM " + SummarizedSoldierStatsDAO.TABLE_NAME + " ORDER BY lastAccess DESC"
         ).get().asList();
-        return soldiers;
     }
 
-    private Bundle buildBundleForSoldier(final List<SummarizedSoldierStatsDAO> listOfStats) {
-        for (int i = 0, max = listOfStats.size(); i < max; i++) {
-            if (i == sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_POSITION, 0)) {
-                final SummarizedSoldierStatsDAO soldierStats = listOfStats.get(i);
-
-                final Bundle bundle = BundleFactory.createForStats(soldierStats);
+    private Bundle buildBundleForSoldier() {
+        for (SummarizedSoldierStatsDAO soldier : soldiers) {
+            if (isSelectedSoldier(soldier)) {
+                final Bundle bundle = BundleFactory.createForStats(soldier);
                 bundle.putString(Keys.Profile.ID, SessionStore.getUserId());
                 bundle.putString(Keys.Profile.USERNAME, SessionStore.getUsername());
                 bundle.putString(Keys.Profile.GRAVATAR_HASH, SessionStore.getGravatarHash());
@@ -338,39 +433,8 @@ public class NavigationDrawerFragment extends BaseListFragment {
         return new Bundle();
     }
 
-    private List<ListRowElement> getRowsForSocial() {
-        final Bundle data = new Bundle();
-        final List<ListRowElement> items = new ArrayList<ListRowElement>();
-        items.add(
-            ListRowFactory.create(
-                ListRowType.SIDE_HEADING, getString(R.string.navigationdrawer_social)
-            )
-        );
-        items.add(
-            ListRowFactory.create(
-                ListRowType.SIDE_REGULAR,
-                getString(R.string.navigationdrawer_home),
-                data,
-                fetchTypeForHome()
-            )
-        );
-        items.add(
-            ListRowFactory.create(
-                ListRowType.SIDE_REGULAR,
-                getString(R.string.navigationdrawer_news),
-                data,
-                FragmentFactory.Type.NEWS_LISTING
-            )
-        );
-        items.add(
-            ListRowFactory.create(
-                ListRowType.SIDE_REGULAR,
-                BATTLE_CHAT,
-                data,
-                ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE)
-            )
-        );
-        return items;
+    private boolean isSelectedSoldier(final SummarizedSoldierStatsDAO soldier) {
+        return soldier.getSoldierId().equals(selectedSoldierId) && soldier.getPlatformId() == selectedSoldierPlatform;
     }
 
     private FragmentFactory.Type fetchTypeForHome() {
@@ -378,24 +442,22 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     private void selectItemFromState(final int position) {
-        final NavigationDrawerListAdapter adapter = (NavigationDrawerListAdapter) getListAdapter();
         int actualPosition = position;
-
-        if (position >= adapter.getCount() || position == ListView.INVALID_POSITION) {
+        if (position >= navigationDrawerItemViews.length || position == INVALID_POSITION) {
             actualPosition = fetchStartingPositionForSessionState();
         }
-
-        final ListRowElement row = adapter.getItem(actualPosition);
-        if (row instanceof SimpleListRow) {
-            selectItem((SimpleListRow) row, actualPosition, !callbacks.isDrawerOpen(), true);
-        }
+        selectItem(
+            navigationDrawerItems.get(actualPosition),
+            actualPosition,
+            !callbacks.isDrawerOpen(),
+            true
+        );
     }
 
-    private void selectItem(final SimpleListRow item, final int position, final boolean shouldCloseDrawer, final boolean isOnResume) {
-        final boolean isFragment = !item.hasIntent();
-
-        if (listView != null && isFragment) {
-            listView.setItemChecked(position, true);
+    private void selectItem(final NavigationDrawerItem item, final int position, final boolean shouldCloseDrawer, final boolean isOnResume) {
+        final boolean isFragment = willItemDisplayInFragment(item);
+        if (navigationDrawerItemContainer != null && isFragment) {
+            // FIXME: navigationDrawerItemContainer.setItemChecked(position, true);
             storePositionState(position);
         }
 
@@ -414,16 +476,27 @@ public class NavigationDrawerFragment extends BaseListFragment {
         }
     }
 
-    private void startItem(final SimpleListRow item, final boolean isOnResume) {
-        if (item.hasIntent() && !isOnResume) {
-            startActivityForResult(item.getIntent(), 12345);
-        } else if (item.hasFragmentType()) {
+    private boolean willItemDisplayInFragment(final NavigationDrawerItem item) {
+        return item.getType() != NavigationDrawerItem.Type.BATTLE_CHAT;
+    }
+
+    private void startItem(final NavigationDrawerItem item, final boolean isOnResume) {
+        if (!willItemDisplayInFragment(item)) {
+            if (!isOnResume) {
+                startActivityForResult(ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE), 1);
+            }
+            return;
+        }
+
+        FragmentFactory.Type fragmentType = fetchFragmentTypeForItem(item);
+        if (fragmentType != null) {
             try {
+                final Bundle dataBundle = buildBundleForSoldier();
                 final FragmentTransaction transaction = fragmentManager.beginTransaction();
-                final String tag = item.getFragmentType().toString();
+                final String tag = fragmentType.toString();
                 transaction.replace(
                     R.id.activity_root,
-                    FragmentFactory.get(item.getFragmentType(), item.getData()),
+                    FragmentFactory.get(fragmentType, dataBundle),
                     tag
                 );
                 transaction.commit();
@@ -435,8 +508,29 @@ public class NavigationDrawerFragment extends BaseListFragment {
         }
     }
 
+    private FragmentFactory.Type fetchFragmentTypeForItem(final NavigationDrawerItem item) {
+        switch (item.getType()) {
+            case HOME:
+                return fetchTypeForHome();
+            case NEWS:
+                return FragmentFactory.Type.NEWS_LISTING;
+            case OVERVIEW:
+                return FragmentFactory.Type.SOLDIER_OVERVIEW;
+            case STATISTICS:
+                return FragmentFactory.Type.SOLDIER_STATS;
+            case UNLOCKS:
+                return FragmentFactory.Type.SOLDIER_UNLOCKS;
+            case ASSIGNMENTS:
+                return FragmentFactory.Type.SOLDIER_ASSIGNMENTS;
+            case AWARDS:
+                return FragmentFactory.Type.SOLDIER_AWARDS;
+            default:
+                throw new IllegalArgumentException("No fragment found for type: " + item.getType());
+        }
+    }
+
     public int getCheckedItemPosition() {
-        return getListView().getCheckedItemPosition();
+        return currentMenuSelection;
     }
 
     public void checkDefaultItemPosition() {
@@ -444,7 +538,8 @@ public class NavigationDrawerFragment extends BaseListFragment {
     }
 
     public static interface NavigationDrawerCallbacks {
-        void onNavigationDrawerItemSelected(final int position, final boolean shouldClose, final String title);
+        void onNavigationDrawerItemSelected(final int position, final boolean shouldClose, final int titleResource);
         boolean isDrawerOpen();
+        void closeDrawer();
     }
 }

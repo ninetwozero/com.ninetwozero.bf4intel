@@ -31,7 +31,7 @@ public class SoldierSpinnerAdapter extends BaseIntelAdapter<SummarizedSoldierSta
         final SummarizedSoldierStatsDAO item = getItem(position);
 
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.list_item_side_soldier, parent, false);
+            convertView = layoutInflater.inflate(R.layout.list_item_navdrawer_soldier, parent, false);
         }
 
         populateBasicViews(convertView, item);
@@ -43,7 +43,7 @@ public class SoldierSpinnerAdapter extends BaseIntelAdapter<SummarizedSoldierSta
         final SummarizedSoldierStatsDAO item = getItem(position);
 
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.list_item_side_soldier_dropdown, parent, false);
+            convertView = layoutInflater.inflate(R.layout.list_item_navdrawer_soldier_dropdown, parent, false);
         }
 
         populateBasicViews(convertView, item);

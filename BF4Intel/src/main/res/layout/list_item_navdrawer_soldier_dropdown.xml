@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  style="@style/NavigationDrawerRowWithSelector"
+  android:id="@+id/wrap_soldiers"
+  >
+
+  <ImageView
+    android:id="@+id/soldier_image"
+    android:layout_width="@dimen/soldier_image_menu_size"
+    android:layout_height="@dimen/soldier_image_menu_size"
+    android:contentDescription="@string/cdesc_soldier_avatar"
+    tools:src="@drawable/soldier_image_ch_assault_urbanairborne"
+    />
+
+  <TextView
+    android:id="@+id/soldier_platform"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/soldier_name"
+    android:layout_toRightOf="@id/soldier_image"
+    android:layout_marginLeft="@dimen/spacing_m"
+    android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
+    android:textSize="@dimen/text_s"
+    android:textAllCaps="true"
+    tools:text="PS4"
+    />
+
+  <ImageView
+    android:id="@+id/soldier_dropdown_arrow"
+    android:layout_width="32dp"
+    android:layout_height="32dp"
+    android:src="@drawable/ic_menu_arrow_down_light"
+    android:layout_alignParentRight="true"
+    android:layout_centerVertical="true"
+    android:contentDescription="@string/cdesc_arrow"
+    android:alpha="0.7"
+    android:visibility="invisible"
+    />
+
+  <ImageView
+    android:id="@+id/soldier_rank"
+    android:layout_width="@dimen/soldier_image_menu_size"
+    android:layout_height="@dimen/soldier_image_menu_size"
+    android:layout_marginTop="@dimen/spacing_s"
+    android:contentDescription="@string/cdesc_rank_image"
+    tools:src="@drawable/r100"
+    android:layout_toLeftOf="@id/soldier_dropdown_arrow"
+    android:layout_marginRight="@dimen/spacing_m"
+    />
+
+  <TextView
+    android:id="@+id/soldier_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="@android:style/TextAppearance.Holo.Medium.Inverse"
+    android:layout_toLeftOf="@id/soldier_rank"
+    android:layout_toRightOf="@id/soldier_image"
+    android:layout_marginLeft="@dimen/spacing_m"
+    android:layout_marginRight="@dimen/spacing_m"
+    android:layout_marginTop="@dimen/spacing_s"
+    android:ellipsize="end"
+    android:singleLine="true"
+    tools:text="NINETWOZERO"
+    />
+</RelativeLayout>

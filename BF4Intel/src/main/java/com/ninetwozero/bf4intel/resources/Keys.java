@@ -19,8 +19,8 @@ public class Keys {
     }
 
     public static class Menu {
-        public static final String LATEST_PERSONA = "selected_soldier_in_menu";
-        public static final String LATEST_PERSONA_POSITION = "selected_soldier_position_in_menu";
+        public static final String LATEST_PERSONA = "last_selected_soldier_in_menu";
+        public static final String LATEST_PERSONA_PLATFORM = "last_selected_soldier_platform_in_menu";
     }
 
     public class Settings {

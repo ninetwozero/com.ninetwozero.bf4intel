@@ -42,4 +42,11 @@ public class SessionStore {
         SessionStore.username = username;
         SessionStore.gravatarHash = gravatarHash;
     }
+
+    public static void resetSession() {
+        SessionStore.sessionId = null;
+        SessionStore.userId = null;
+        SessionStore.username = null;
+        SessionStore.gravatarHash = null;
+    }
 }

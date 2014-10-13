@@ -1,13 +1,13 @@
 package com.ninetwozero.bf4intel.events;
 
 public class ActiveSoldierChangedEvent {
-    private long id;
+    private String id;
 
-    public ActiveSoldierChangedEvent(final long id) {
+    public ActiveSoldierChangedEvent(final String id) {
         this.id = id;
     }
 
-    public long getId() {
+    public String getId() {
         return this.id;
     }
 }

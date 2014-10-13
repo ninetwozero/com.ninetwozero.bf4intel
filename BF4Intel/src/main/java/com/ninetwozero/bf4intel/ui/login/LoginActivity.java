@@ -98,6 +98,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                 private int bf4SoldierCount;
                 private int selectedSoldierPosition;
 
+                /* TODO 2014-10-29: We should only return one (1) soldier from the search now */
                 @Override
                 protected SoldierListingRequest doParse(String json) {
                     final JsonObject baseObject = extractFromJson(json);
@@ -143,8 +144,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
                 private void storeSelectedPersonaInPreferences(List<SummarizedSoldierStats> soldierStats, final int index) {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putInt(Keys.Menu.LATEST_PERSONA_POSITION, index);
-                    editor.putLong(Keys.Menu.LATEST_PERSONA, soldierStats.get(index).getPersona().getPersonaId());
+                    editor.putString(Keys.Menu.LATEST_PERSONA, String.valueOf(soldierStats.get(index).getPersona().getPersonaId()));
                     editor.apply();
                 }
             }

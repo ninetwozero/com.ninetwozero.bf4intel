@@ -206,4 +206,5 @@
   <string name="empty_text_awards">Loading awards</string>
   <string name="empty_text_news">Loading news</string>
   <string name="empty_text_user_search">Loading users</string>
+  <string name="appname_battlechat">Battle Chat</string>
 </resources>

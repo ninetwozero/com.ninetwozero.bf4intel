@@ -35,7 +35,7 @@
 
   <!-- NavigationDrawer colors -->
   <color name="navigation_drawer_selected_bg">#29FFFFFF</color>
-  <color name="navigation_drawer_bg">#333333</color>
+  <color name="navigation_drawer_bg">#2e3c3e</color>
   <color name="navigation_listview_divider">#444444</color>
 
   <!-- Card related colors -->
@@ -61,4 +61,5 @@
   <color name="loading_stripe_2">#9cca80</color>
   <color name="loading_stripe_3">#ebca2f</color>
   <color name="loading_stripe_4">#e9a789</color>
+  <color name="navigation_drawer_separator">#ff546669</color>
 </resources>

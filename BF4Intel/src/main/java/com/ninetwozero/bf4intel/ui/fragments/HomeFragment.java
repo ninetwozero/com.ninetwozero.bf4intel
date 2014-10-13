@@ -82,6 +82,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
+    // TODO: What to display now? Current soldier that we're tracking?
     private void setupTracker(final View view) {
         view.findViewById(R.id.wrap_guest).setVisibility(View.GONE);
 

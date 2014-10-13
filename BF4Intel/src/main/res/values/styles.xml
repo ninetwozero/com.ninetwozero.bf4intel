@@ -86,8 +86,11 @@
     <item name="android:paddingRight">@dimen/spacing_m</item>
     <item name="android:paddingBottom">@dimen/spacing_m</item>
     <item name="android:paddingLeft">@dimen/spacing_m</item>
-    <item name="android:background">?android:attr/activatedBackgroundIndicator</item>
     <item name="android:textAllCaps">true</item>
+  </style>
+
+  <style name="NavigationDrawerRowWithSelector" parent="NavigationDrawerRow">
+    <item name="android:background">?android:selectableItemBackground</item>
   </style>
 
   <!-- Soldier "card" pseudo style -->

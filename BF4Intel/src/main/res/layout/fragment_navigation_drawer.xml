@@ -1,79 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/navigation_drawer_bg">
+  android:background="@color/navigation_drawer_bg"
+  android:orientation="vertical"
+  >
 
   <LinearLayout
-    android:id="@+id/wrap_login_info"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
-    <LinearLayout
+    <FrameLayout
+      android:id="@+id/wrap_login_info"
       android:layout_width="match_parent"
-      android:layout_height="?android:attr/actionBarSize"
-      android:gravity="center_vertical"
-      android:paddingLeft="@dimen/spacing_m"
-      android:paddingRight="@dimen/spacing_m">
+      android:layout_height="128dp"
+      android:clickable="true"
+      android:foreground="?android:attr/selectableItemBackground"
+      android:background="@drawable/navigationdrawer_banner_image">
 
-      <TextView
-        android:id="@+id/string_login_status"
-        android:layout_width="wrap_content"
+      <include
+        layout="@layout/list_item_navdrawer_soldier"
+        android:id="@+id/selected_soldier_dropdown"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/spacing_xs"
-        android:text="@string/logged_in_as"
-        android:textAllCaps="true"
-        android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
-        android:textColor="@color/grey" />
+        android:layout_gravity="bottom"
+        />
+    </FrameLayout>
 
-      <TextView
-        android:id="@+id/login_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_s"
-        android:textAllCaps="true"
-        android:textAppearance="@android:style/TextAppearance.Holo.Inverse" />
-    </LinearLayout>
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:gravity="start|center_vertical"
+      android:background="@color/navigation_drawer_separator"
+      />
 
     <LinearLayout
-      android:id="@+id/wrap_soldier_dropdown"
+      android:id="@+id/navigation_drawer_account_list"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_gravity="left|bottom"
-      android:orientation="vertical">
+      android:layout_marginTop="8dp"
+      android:orientation="vertical"
+      android:visibility="gone"
+      >
 
       <TextView
-        style="@style/NavigationDrawerHeading"
-        android:text="@string/navigationdrawer_selected_soldier" />
-
-      <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/lightgrey" />
-
-      <Spinner
-        android:id="@+id/spinner_soldier"
-        style="@android:style/Widget.Holo.Spinner"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:spinnerMode="dropdown" />
+        android:textColor="#FFFFFF"/>
     </LinearLayout>
 
+    <LinearLayout
+      android:id="@+id/navigation_drawer_item_container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"/>
   </LinearLayout>
-
-  <ListView
-    android:id="@android:id/list"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@id/wrap_login_info"
-    android:divider="@android:color/transparent"
-    android:dividerHeight="0dp"
-    android:listSelector="@drawable/navigation_drawer_selected_item_bg" />
-
-  <TextView
-    android:id="@android:id/empty"
-    style="@style/DefaultEmptyText"
-    android:text="@string/msg_no_menu_items" />
-</RelativeLayout>
+</ScrollView>

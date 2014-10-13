@@ -1,6 +1,5 @@
 package com.ninetwozero.bf4intel.ui.activities;
 
-import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -8,6 +7,8 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,7 +35,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     private ActionBarDrawerToggle drawerToggle;
     private View fragmentContainerView;
     private NavigationDrawerFragment navigationDrawer;
-    private String title;
+    private int title = R.string.empty;
 
     private boolean shouldShowDualPane = false;
 
@@ -131,7 +132,6 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         }
     }
 
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -144,14 +144,22 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     @Override
-    public void onNavigationDrawerItemSelected(final int position, final boolean shouldClose, final String title) {
-        this.title = title == null? this.title : title;
+    public void closeDrawer() {
+        if (drawerLayout == null) {
+            return;
+        }
+        drawerLayout.closeDrawer(Gravity.START);
+    }
+
+    @Override
+    public void onNavigationDrawerItemSelected(final int position, final boolean shouldClose, final int titleResource) {
+        this.title = titleResource > 0 ? titleResource : this.title;
         if (drawerLayout != null && shouldClose) {
             toggleNavigationDrawer(false);
         }
 
         final ActionBar actionBar = getSupportActionBar();
-        if (shouldShowDualPane || actionBar.getTitle() != this.title) {
+        if (shouldShowDualPane) {
             actionBar.setTitle(this.title);
         }
     }
@@ -202,6 +210,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
+        // TODO: This should be replaced by v7 (+ toolbar? instead of ActionBar)
         drawerToggle = new ActionBarDrawerToggle(
             this,
             drawerLayout,
