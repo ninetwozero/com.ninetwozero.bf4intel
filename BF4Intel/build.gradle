@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.13.1'
+        classpath 'com.android.tools.build:gradle:0.13.2'
     }
 }
 apply plugin: 'com.android.application'
@@ -18,15 +18,15 @@ repositories {
 }
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion '19.1'
+    compileSdkVersion 21
+    buildToolsVersion '21.0.1'
 
     defaultConfig {
         applicationId 'com.ninetwozero.bf4intel'
         versionCode 1614106
         versionName '1.0.6'
         minSdkVersion 14
-        targetSdkVersion 19
+        targetSdkVersion 21
     }
 
     signingConfigs {
