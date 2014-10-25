@@ -9,8 +9,8 @@
 
   <ImageView
     android:id="@+id/img_assignment"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
+    android:layout_height="@dimen/grid_view_image_height"
+    android:layout_width="@dimen/grid_view_image_width"
     android:layout_centerInParent="true"
     android:contentDescription="@string/cdesc_assignment_image"
     />

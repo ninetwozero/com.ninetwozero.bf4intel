@@ -53,7 +53,7 @@
   <dimen name="grid_view_spacing">6dp</dimen>
 
   <!--Grid view images-->
-  <dimen name="grid_view_image_height">100dp</dimen>
+  <dimen name="grid_view_image_height">128dp</dimen>
   <dimen name="grid_view_image_width">@dimen/grid_view_image_height</dimen>
 
   <!-- Feed item rank image size-->
@@ -85,10 +85,10 @@
   <dimen name="service_star_xs">16dp</dimen>
 
   <!-- Stats item dimens -->
-  <dimen name="stats_item_width">142dp</dimen>
-  <dimen name="stats_item_height">77dp</dimen>
+  <dimen name="stats_item_width">144dp</dimen>
+  <dimen name="stats_item_height">80dp</dimen>
   <dimen name="unlock_image_width">128dp</dimen>
-  <dimen name="unlock_image_height">64dp</dimen>
+  <dimen name="unlock_image_height">32dp</dimen>
   <dimen name="unlock_status_icon_size">16dp</dimen>
   <dimen name="rank_image_size">64dp</dimen>
   <dimen name="assignment_details_image_size">192dp</dimen>
