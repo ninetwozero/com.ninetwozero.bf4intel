@@ -40,8 +40,8 @@
 
       <ImageView
         android:id="@+id/weapon_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/stats_item_width"
+        android:layout_height="@dimen/stats_item_height"
         android:contentDescription="@string/cdesc_weapon_image"
         android:adjustViewBounds="true"
         android:layout_marginTop="@dimen/spacing_m"
