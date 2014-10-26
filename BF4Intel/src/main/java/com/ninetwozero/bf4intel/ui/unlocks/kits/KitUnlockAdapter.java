@@ -44,7 +44,7 @@ public class KitUnlockAdapter extends BaseUnlockAdapter<KitItemUnlockContainer> 
 
         setImage(holder.unlockImage, UnlockImageSlugMap.get(unlock.getSlug()));
         holder.unlockTitle.setText(WeaponStringSlugMap.get(unlock.getSlug()));
-        displayInformationForCriteria(view, criteria);
+        displayInformationForCriteria(holder, criteria);
 
         return view;
     }

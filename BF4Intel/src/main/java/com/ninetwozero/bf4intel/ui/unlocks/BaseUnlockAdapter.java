@@ -16,11 +16,11 @@ public abstract class BaseUnlockAdapter<T> extends BaseFilterableIntelAdapter<T>
 
     protected void displayInformationForCriteria(final View view, final UnlockCriteria criteria) {
         setProgress(view, R.id.unlock_completion, criteria.getCompletion(), 100);
-        setVisibility(view, R.id.unlock_status_icon, criteria.isCompleted() ? View.VISIBLE : View.GONE);
+        setVisibility(view, R.id.unlock_status_icon, criteria.isCompleted() ? View.VISIBLE : View.INVISIBLE);
     }
     protected void displayInformationForCriteria(final UnlockHolder holder, final UnlockCriteria criteria) {
         holder.unlockCompletion.setProgress(criteria.getCompletion());
-        holder.unlockStatusIcon.setVisibility(criteria.isCompleted() ? View.VISIBLE : View.GONE);
+        holder.unlockStatusIcon.setVisibility(criteria.isCompleted() ? View.VISIBLE : View.INVISIBLE);
     }
 
     protected static class UnlockHolder {

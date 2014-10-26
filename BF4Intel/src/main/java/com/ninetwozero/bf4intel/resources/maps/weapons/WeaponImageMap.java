@@ -146,7 +146,7 @@ public class WeaponImageMap {
             put("WARSAW_ID_P_WNAME_JS2", R.drawable.w_js2_fancy);
             put("WARSAW_ID_P_INAME_FLARE", R.drawable.w_handflare_fancy);
             put("WARSAW_ID_P_INAME_EOD", R.drawable.vehicle_eodbot);
-            put("WARSAW_ID_P_XP4_INAME_KNIFEWEAVER", R.drawable.w_knife_weaver);
+            put("WARSAW_ID_P_XP4_INAME_KNIFEWEAVER", R.drawable.w_knife_weaver_fancy);
 
             /*SECOND ASSAULT*/
             put("WARSAW_ID_P_XP0_WNAME_DAO12", R.drawable.w_dao12_fancy);
