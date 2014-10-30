@@ -35,7 +35,6 @@ import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.PersonaUtils;
 
-import java.util.List;
 import se.emilsjolander.sprinkles.SqlStatement;
 import se.emilsjolander.sprinkles.Transaction;
 
@@ -96,9 +95,8 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                 this
             ) {
                 private int bf4SoldierCount;
-                private int selectedSoldierPosition;
+                private SummarizedSoldierStats selectedSoldier;
 
-                /* TODO 2014-10-29: We should only return one (1) soldier from the search now */
                 @Override
                 protected SoldierListingRequest doParse(String json) {
                     final JsonObject baseObject = extractFromJson(json);
@@ -113,17 +111,16 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                                 new SqlStatement(
                                     "DELETE FROM " +
                                     SummarizedSoldierStatsDAO.TABLE_NAME + " " +
-                                    "WHERE userId  = ?"
-                                ).execute(stats.getPersona().getUserId());
-
+                                    "WHERE soldierId  = ? AND platformId = ?"
+                                ).execute(stats.getPersona().getPersonaId(), stats.getPlatformId());
                             }
 
                             if (stats.getPlatformId() == selectedSoldierPlatform) {
-                                selectedSoldierPosition = i;
+                                new SummarizedSoldierStatsDAO(stats).save(transaction);
+                                selectedSoldier = stats;
+                                bf4SoldierCount = 1;
+                                break;
                             }
-
-                            new SummarizedSoldierStatsDAO(stats).save(transaction);
-                            bf4SoldierCount++;
                         }
                     }
                     transaction.setSuccessful(true);
@@ -134,7 +131,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                 @Override
                 protected void deliverResponse(SoldierListingRequest response) {
                     if (bf4SoldierCount > 0) {
-                        storeSelectedPersonaInPreferences(response.getSoldiers(), selectedSoldierPosition);
+                        storeSelectedPersonaInPreferences(selectedSoldier);
                         setResult(Activity.RESULT_OK, new Intent().putExtras(profileBundle));
                     } else {
                         setResult(Activity.RESULT_CANCELED);
@@ -142,9 +139,10 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                     finish();
                 }
 
-                private void storeSelectedPersonaInPreferences(List<SummarizedSoldierStats> soldierStats, final int index) {
+                private void storeSelectedPersonaInPreferences(SummarizedSoldierStats soldierStats) {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(Keys.Menu.LATEST_PERSONA, String.valueOf(soldierStats.get(index).getPersona().getPersonaId()));
+                    editor.putString(Keys.Menu.LATEST_PERSONA, String.valueOf(soldierStats.getPersona().getPersonaId()));
+                    editor.putInt(Keys.Menu.LATEST_PERSONA_PLATFORM, soldierStats.getPlatformId());
                     editor.apply();
                 }
             }
@@ -158,7 +156,6 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     }
 
     private void setupFromPreExistingData() {
-        setTitle(R.string.title_login);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (SessionStore.isLoggedIn() && Bf4Intel.isConnectedToNetwork()) {
             startActivity(new Intent(this, MainActivity.class));
