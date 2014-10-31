@@ -226,12 +226,21 @@ public class NavigationDrawerFragment extends BaseFragment {
         final View soldierItemWrapper = view.findViewById(R.id.wrap_login_info);
         final View soldierItemView = soldierItemWrapper.findViewById(R.id.selected_soldier_dropdown);
         populateSoldierItemView(soldierItemView, selectedSoldier);
-        soldierItemWrapper.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                onSoldierBoxClick(v);
-            }
-        });
+
+        if (soldiers.size() > 1) {
+            soldierItemWrapper.setEnabled(true);
+            soldierItemWrapper.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View v) {
+                    onSoldierBoxClick(v);
+                }
+            });
+            setVisibility(soldierItemView, R.id.soldier_dropdown_arrow, View.VISIBLE);
+        } else {
+            soldierItemWrapper.setOnClickListener(null);
+            soldierItemWrapper.setEnabled(false);
+            setVisibility(soldierItemView, R.id.soldier_dropdown_arrow, View.GONE);
+        }
     }
 
     private void populateSoldierItemView(final View soldierItemView, final SummarizedSoldierStatsDAO soldier) {
