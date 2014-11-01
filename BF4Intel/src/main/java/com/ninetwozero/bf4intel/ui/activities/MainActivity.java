@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +32,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     private boolean userLearnedDrawer;
 
     private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
     private ActionBarDrawerToggle drawerToggle;
     private View fragmentContainerView;
     private NavigationDrawerFragment navigationDrawer;
@@ -158,9 +159,8 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
             toggleNavigationDrawer(false);
         }
 
-        final ActionBar actionBar = getSupportActionBar();
         if (shouldShowDualPane) {
-            actionBar.setTitle(this.title);
+            toolbar.setTitle(this.title);
         }
     }
 
@@ -209,12 +209,10 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         fragmentContainerView = findViewById(R.id.navigation_drawer);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-
-        // TODO: This should be replaced by v7 (+ toolbar? instead of ActionBar)
         drawerToggle = new ActionBarDrawerToggle(
             this,
             drawerLayout,
-            R.drawable.ic_navigation_drawer,
+            toolbar,
             R.string.app_name,
             R.string.app_name
         ) {
@@ -223,7 +221,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
                 if (!navigationDrawer.isAdded()) {
                     return;
                 }
-                getSupportActionBar().setTitle(title);
+                toolbar.setTitle(title);
             }
 
             @Override
@@ -255,10 +253,9 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     private void setupActionBar() {
-        final ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setDisplayShowHomeEnabled(true);
-        actionbar.setTitle(title);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(title);
+        setSupportActionBar(toolbar);
     }
 
     private void setupActivityFromState(final Bundle state) {

@@ -82,6 +82,8 @@
       android:maxLines="1"
       android:singleLine="true"
       android:imeOptions="actionSearch"
+      android:textColor="@color/white"
+      android:textColorHint="@color/lightgrey"
       />
 
     <Button
