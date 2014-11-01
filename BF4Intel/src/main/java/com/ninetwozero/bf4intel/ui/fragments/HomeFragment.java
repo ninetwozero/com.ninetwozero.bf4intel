@@ -87,8 +87,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         view.findViewById(R.id.wrap_guest).setVisibility(View.GONE);
 
         final View wrap = view.findViewById(R.id.wrap_tracker);
-        final TextView usernameTextView = (TextView) wrap.findViewById(R.id.selected_user_username);
-        final ImageView gravatarImageView = (ImageView) wrap.findViewById(R.id.selected_user_gravatar);
+        final TextView usernameTextView = (TextView) wrap.findViewById(R.id.selected_soldier_name);
+        final ImageView gravatarImageView = (ImageView) wrap.findViewById(R.id.selected_soldier_image);
 
         usernameTextView.setText(SessionStore.getUsername());
         Picasso.with(getActivity())
@@ -96,7 +96,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             .placeholder(R.drawable.default_gravatar)
             .into(gravatarImageView);
 
-        wrap.findViewById(R.id.button_select_another_account).setOnClickListener(this);
+        wrap.findViewById(R.id.button_select_another_soldier).setOnClickListener(this);
         wrap.setVisibility(View.VISIBLE);
     }
 

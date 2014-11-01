@@ -63,11 +63,11 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
                 logoutItem.setVisible(true);
             } else if (SessionStore.hasUserId()) {
                 userSelectionItem.setVisible(true);
-                userSelectionItem.setTitle(R.string.home_select_another_account);
+                userSelectionItem.setTitle(R.string.home_select_another_soldier);
                 logoutItem.setVisible(false);
             } else {
                 userSelectionItem.setVisible(true);
-                userSelectionItem.setTitle(R.string.home_select_account);
+                userSelectionItem.setTitle(R.string.home_select_soldier);
                 logoutItem.setVisible(false);
             }
         }

@@ -83,7 +83,7 @@
       android:singleLine="true"
       android:imeOptions="actionSearch"
       android:textColor="@color/white"
-      android:textColorHint="@color/lightgrey"
+      android:textColorHint="@color/grey"
       />
 
     <Button

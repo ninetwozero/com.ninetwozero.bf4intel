@@ -59,7 +59,7 @@
     <Button
       style="@style/BlueButton"
       android:id="@+id/button_select_account"
-      android:text="@string/home_select_account"
+      android:text="@string/home_select_soldier"
       android:layout_marginTop="@dimen/spacing_m"
       />
   </LinearLayout>
@@ -81,7 +81,7 @@
       >
 
       <ImageView
-        android:id="@+id/selected_user_gravatar"
+        android:id="@+id/selected_soldier_image"
         android:layout_width="@dimen/avatar_size_l"
         android:layout_height="@dimen/avatar_size_l"
         android:contentDescription="@string/cdesc_gravatar"
@@ -89,18 +89,18 @@
         />
 
       <TextView
-        android:id="@+id/selected_user_username"
+        android:id="@+id/selected_soldier_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/selected_user_gravatar"
+        android:layout_toRightOf="@id/selected_soldier_image"
         android:textSize="@dimen/text_l"
         android:layout_marginLeft="@dimen/spacing_m"
         />
     </RelativeLayout>
     <Button
       style="@style/BlueButton"
-      android:id="@+id/button_select_another_account"
-      android:text="@string/home_select_another_account"
+      android:id="@+id/button_select_another_soldier"
+      android:text="@string/home_select_another_soldier"
       android:layout_marginTop="@dimen/spacing_l"
       />
   </LinearLayout>
