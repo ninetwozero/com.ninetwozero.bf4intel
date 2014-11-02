@@ -29,8 +29,8 @@
 
   <ImageView
     android:id="@+id/soldier_dropdown_arrow"
-    android:layout_width="32dp"
-    android:layout_height="32dp"
+    android:layout_width="@dimen/navdrawer_dropdown_arrow_size"
+    android:layout_height="@dimen/navdrawer_dropdown_arrow_size"
     android:src="@drawable/ic_menu_arrow_down_light"
     android:layout_alignParentRight="true"
     android:layout_centerVertical="true"

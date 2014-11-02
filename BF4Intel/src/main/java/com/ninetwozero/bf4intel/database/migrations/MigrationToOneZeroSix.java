@@ -10,8 +10,6 @@ public class MigrationToOneZeroSix extends BaseMigration {
     protected void doMigration(SQLiteDatabase db) {
         dropTable(db, SummarizedSoldierStatsDAO.TABLE_NAME);
         createNewSummarizedSoldierStatsTable(db);
-        // (SummarizedSoldierStatsDAO);
-
     }
 
     private void createNewSummarizedSoldierStatsTable(SQLiteDatabase db) {

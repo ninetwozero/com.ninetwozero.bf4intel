@@ -87,6 +87,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         } else {
             setupGuestMode(view);
         }
+        setActionBarSubTitle(null);
     }
 
     private void setupTracker(final View view) {
