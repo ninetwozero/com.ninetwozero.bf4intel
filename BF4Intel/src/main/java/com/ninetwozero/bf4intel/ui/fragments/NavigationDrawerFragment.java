@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -315,19 +316,32 @@ public class NavigationDrawerFragment extends BaseFragment {
         textView.setText(item.getTitle());
 
         if (item.getType() != NavigationDrawerItem.Type.HEADING) {
-            formatNavigationDrawerItem(view, selected);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    // Reset the bg of the previously selected view, and select the new one
+                    formatNavigationDrawerItem(navigationDrawerItemViews[currentMenuSelection], false);
                     selectItem(item, itemPosition, true, false);
+                    formatNavigationDrawerItem(view, true);
                 }
             });
+            formatNavigationDrawerItem(view, selected);
         }
         return view;
     }
 
     private void formatNavigationDrawerItem(View view, boolean selected) {
-        // TODO: Make the selected item distinguish itself
+        if (selected) {
+            view.setBackgroundColor(getResources().getColor(R.color.navigation_drawer_selected_bg));
+        } else {
+            TypedValue typedValue = new TypedValue();
+            getActivity().getTheme().resolveAttribute(
+                    android.R.attr.selectableItemBackground,
+                    typedValue,
+                    true
+            );
+            view.setBackgroundResource(typedValue.resourceId);
+        }
     }
 
     private void storePositionState(final int position) {
