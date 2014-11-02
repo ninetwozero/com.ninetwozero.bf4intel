@@ -37,4 +37,5 @@
   <string name="cdesc_completion_indicator">Completion indicator</string>
   <string name="cdesc_expansion_icon">Expansion icon</string>
   <string name="cdesc_arrow">Arrow</string>
+  <string name="cdesc_menu_icon">Menu icon</string>
 </resources>

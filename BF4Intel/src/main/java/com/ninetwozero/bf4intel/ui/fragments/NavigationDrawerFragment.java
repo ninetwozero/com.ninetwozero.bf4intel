@@ -312,8 +312,10 @@ public class NavigationDrawerFragment extends BaseFragment {
             return view;
         }
 
-        TextView textView = (TextView) view.findViewById(R.id.text1);
-        textView.setText(item.getTitle());
+        setText(view, R.id.text, item.getTitle());
+        if (item.getIcon() != NavigationDrawerItem.NO_ICON) {
+            setImage(view, R.id.icon, item.getIcon());
+        }
 
         if (item.getType() != NavigationDrawerItem.Type.HEADING) {
             view.setOnClickListener(new View.OnClickListener() {
@@ -419,20 +421,20 @@ public class NavigationDrawerFragment extends BaseFragment {
 
     private List<NavigationDrawerItem> getRowsForSoldier() {
         final List<NavigationDrawerItem> rows = new ArrayList<NavigationDrawerItem>();
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.OVERVIEW, R.string.navigationdrawer_overview));
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.STATISTICS, R.string.navigationdrawer_statistics));
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.UNLOCKS, R.string.navigationdrawer_unlocks));
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.ASSIGNMENTS, R.string.assignments));
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.AWARDS, R.string.awards));
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.SEPARATOR));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.OVERVIEW, R.string.navigationdrawer_overview, R.drawable.empty));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.STATISTICS, R.string.navigationdrawer_statistics, R.drawable.empty));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.UNLOCKS, R.string.navigationdrawer_unlocks, R.drawable.empty));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.ASSIGNMENTS, R.string.assignments, R.drawable.empty));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.AWARDS, R.string.awards, R.drawable.empty));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.SEPARATOR, R.drawable.empty));
         return rows;
     }
 
     private List<NavigationDrawerItem> getRowsForSocial() {
         final List<NavigationDrawerItem> rows = new ArrayList<NavigationDrawerItem>();
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.HOME, R.string.navigationdrawer_home));
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.NEWS, R.string.navigationdrawer_news));
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.BATTLE_CHAT, R.string.appname_battlechat));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.HOME, R.string.navigationdrawer_home, R.drawable.empty));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.NEWS, R.string.navigationdrawer_news, R.drawable.empty));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.BATTLE_CHAT, R.string.appname_battlechat, R.drawable.empty));
         return rows;
     }
 
@@ -470,10 +472,10 @@ public class NavigationDrawerFragment extends BaseFragment {
             actualPosition = fetchStartingPositionForSessionState();
         }
         selectItem(
-            navigationDrawerItems.get(actualPosition),
-            actualPosition,
-            !callbacks.isDrawerOpen(),
-            true
+                navigationDrawerItems.get(actualPosition),
+                actualPosition,
+                !callbacks.isDrawerOpen(),
+                true
         );
     }
 
@@ -486,12 +488,12 @@ public class NavigationDrawerFragment extends BaseFragment {
 
         // This should ensure that the closing animation is smooth
         new Handler().postDelayed(
-            new Runnable() {
-                @Override
-                public void run() {
-                    startItem(item, isOnResume);
-                }
-            }, 300
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        startItem(item, isOnResume);
+                    }
+                }, 300
         );
 
         if (callbacks != null && isFragment) {

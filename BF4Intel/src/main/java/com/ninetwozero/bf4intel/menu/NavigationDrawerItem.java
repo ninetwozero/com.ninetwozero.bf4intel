@@ -1,17 +1,21 @@
 package com.ninetwozero.bf4intel.menu;
 
 public class NavigationDrawerItem {
+    public static final int NO_ICON = -1;
+
     private Type type;
     private int title;
     private int icon;
 
     public NavigationDrawerItem(final Type type) {
         this.type = type;
+        this.icon = NO_ICON;
     }
 
     public NavigationDrawerItem(final Type type, final int title) {
         this.type = type;
         this.title = title;
+        this.icon = NO_ICON;
     }
 
     // For future purposes, if we want to use icons in the NavigationDrawer

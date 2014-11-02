@@ -2,9 +2,18 @@
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   style="@style/NavigationDrawerRowWithSelector"
+  android:orientation="horizontal"
   >
+  <ImageView
+    android:id="@+id/icon"
+    android:layout_width="@dimen/navdrawer_icon_size"
+    android:layout_height="@dimen/navdrawer_icon_size"
+    android:contentDescription="@string/cdesc_menu_icon"
+    android:layout_gravity="left|center"
+    android:layout_marginRight="@dimen/spacing_m"
+    />
   <TextView
-    android:id="@+id/text1"
+    android:id="@+id/text"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAppearance="@android:style/TextAppearance.Holo.Medium.Inverse"
