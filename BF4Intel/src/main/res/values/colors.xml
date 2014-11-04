@@ -61,12 +61,12 @@
   <color name="loading_stripe_2">#9cca80</color>
   <color name="loading_stripe_3">#ebca2f</color>
   <color name="loading_stripe_4">#e9a789</color>
-  <color name="navigation_drawer_separator">#ff546669</color>
+  <color name="navigation_drawer_separator">#FFFFFF</color>
 
   <!-- Theme colors -->
   <color name="colorPrimary">#ff5722</color>
   <color name="colorPrimaryDark">#e64a19</color>
-  <color name="colorAccent">#18B364</color>
+  <color name="colorAccent">#FFAB40</color>
   <color name="textColorPrimary">#000000</color>
   <color name="navigationBarColor">@color/colorPrimary</color>
   <color name="windowBackground">#FFFFFF</color>

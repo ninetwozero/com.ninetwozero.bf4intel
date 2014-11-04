@@ -314,4 +314,12 @@
     <item name="android:textColor">@color/lightgrey</item>
   </style>
 
+  <style name="NavigationDrawerSeparator">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">@dimen/navdrawer_separator_height</item>
+    <item name="android:gravity">start|center_vertical</item>
+    <item name="android:background">@color/navigation_drawer_separator</item>
+    <item name="android:alpha">0.12</item>
+  </style>
+
 </resources>

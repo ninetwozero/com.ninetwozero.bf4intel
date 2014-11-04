@@ -31,10 +31,7 @@
     </FrameLayout>
 
     <View
-      android:layout_width="match_parent"
-      android:layout_height="1dp"
-      android:gravity="start|center_vertical"
-      android:background="@color/navigation_drawer_separator"
+      style="@style/NavigationDrawerSeparator"
       />
 
     <LinearLayout

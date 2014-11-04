@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <View xmlns:android="http://schemas.android.com/apk/res/android"
+      style="@style/NavigationDrawerSeparator"
       android:layout_marginTop="@dimen/navdrawer_separator_margin_top"
       android:layout_marginBottom="@dimen/navdrawer_separator_margin_bottom"
-      android:gravity="start|center_vertical"
-      android:layout_width="match_parent"
-      android:background="@color/navigation_drawer_separator"
-      android:layout_height="@dimen/navdrawer_separator_height" />
+  />
