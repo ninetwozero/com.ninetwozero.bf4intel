@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
@@ -292,9 +291,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     }
 
     private View createNavigationDrawerItem(final NavigationDrawerItem item, final int itemPosition, ViewGroup container) {
-        boolean selected = currentMenuSelection == itemPosition;
-        int layoutToInflate = 0;
-
+        int layoutToInflate;
         switch (item.getType()) {
             case SEPARATOR:
                 layoutToInflate = R.layout.list_item_navdrawer_separator;
@@ -321,13 +318,9 @@ public class NavigationDrawerFragment extends BaseFragment {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Reset the bg of the previously selected view, and select the new one
-                    formatNavigationDrawerItem(navigationDrawerItemViews[currentMenuSelection], false);
-                    selectItem(item, itemPosition, true, false);
-                    formatNavigationDrawerItem(view, true);
+                selectItem(item, itemPosition, true, false);
                 }
             });
-            formatNavigationDrawerItem(view, selected);
         }
         return view;
     }
@@ -472,28 +465,31 @@ public class NavigationDrawerFragment extends BaseFragment {
             actualPosition = fetchStartingPositionForSessionState();
         }
         selectItem(
-                navigationDrawerItems.get(actualPosition),
-                actualPosition,
-                !callbacks.isDrawerOpen(),
-                true
+            navigationDrawerItems.get(actualPosition),
+            actualPosition,
+            !callbacks.isDrawerOpen(),
+            true
         );
     }
 
     private void selectItem(final NavigationDrawerItem item, final int position, final boolean shouldCloseDrawer, final boolean isOnResume) {
         final boolean isFragment = willItemDisplayInFragment(item);
         if (navigationDrawerItemContainer != null && isFragment) {
-            // FIXME: navigationDrawerItemContainer.setItemChecked(position, true);
+            if (currentMenuSelection != INVALID_POSITION) {
+                formatNavigationDrawerItem(navigationDrawerItemViews[currentMenuSelection], false);
+            }
+            formatNavigationDrawerItem(navigationDrawerItemViews[position], true);
             storePositionState(position);
         }
 
         // This should ensure that the closing animation is smooth
         new Handler().postDelayed(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        startItem(item, isOnResume);
-                    }
-                }, 300
+            new Runnable() {
+                @Override
+                public void run() {
+                    startItem(item, isFragment, isOnResume);
+                }
+            }, 300
         );
 
         if (callbacks != null && isFragment) {
@@ -505,8 +501,8 @@ public class NavigationDrawerFragment extends BaseFragment {
         return item.getType() != NavigationDrawerItem.Type.BATTLE_CHAT;
     }
 
-    private void startItem(final NavigationDrawerItem item, final boolean isOnResume) {
-        if (!willItemDisplayInFragment(item)) {
+    private void startItem(final NavigationDrawerItem item, final boolean displayInFragment, final boolean isOnResume) {
+        if (!displayInFragment) {
             if (!isOnResume) {
                 startActivityForResult(ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE), 1);
             }

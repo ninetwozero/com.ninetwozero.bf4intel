@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -154,12 +154,14 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
 
     @Override
     public void onNavigationDrawerItemSelected(final int position, final boolean shouldClose, final int titleResource) {
-        this.title = titleResource > 0 ? titleResource : this.title;
+        final boolean hasNewTitle = titleResource > 0;
+        this.title = hasNewTitle ? titleResource : this.title;
+
         if (drawerLayout != null && shouldClose) {
             toggleNavigationDrawer(false);
         }
 
-        if (shouldShowDualPane) {
+        if (shouldShowDualPane || hasNewTitle) {
             toolbar.setTitle(this.title);
         }
     }
