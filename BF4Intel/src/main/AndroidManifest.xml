@@ -78,7 +78,7 @@
 
     <activity
       android:name=".ui.settings.SettingsActivity"
-      android:label="@string/menu_settings"
+      android:label="@string/navigationdrawer_settings"
       android:parentActivityName=".ui.activities.MainActivity"
       android:theme="@style/AppTheme"
       tools:ignore="UnusedAttribute">

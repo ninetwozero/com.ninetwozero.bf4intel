@@ -95,10 +95,16 @@
     <item name="android:paddingBottom">@dimen/spacing_m</item>
     <item name="android:paddingLeft">@dimen/spacing_m</item>
     <item name="android:textAllCaps">true</item>
+    <item name="android:orientation">horizontal</item>
+    <item name="android:gravity">left|center_vertical</item>
   </style>
 
   <style name="NavigationDrawerRowWithSelector" parent="NavigationDrawerRow">
     <item name="android:background">?android:selectableItemBackground</item>
+  </style>
+
+  <style name="NavigationDrawerMenuItemRows" parent="NavigationDrawerRowWithSelector">
+    <item name="android:layout_height">?attr/listPreferredItemHeightSmall</item>
   </style>
 
   <!-- Soldier "card" pseudo style -->

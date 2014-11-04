@@ -9,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -18,11 +17,8 @@ import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.events.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.ui.about.AppInfoActivity;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
-import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
-import com.ninetwozero.bf4intel.ui.settings.SettingsActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -49,61 +45,11 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     @Override
-    public boolean onCreateOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
-    }
-    @Override
-    public boolean onPrepareOptionsMenu(final Menu menu) {
-        final MenuItem userSelectionItem = menu.findItem(R.id.ab_action_select_user);
-        final MenuItem logoutItem = menu.findItem(R.id.ab_action_logout);
-        if (userSelectionItem != null && logoutItem != null) {
-            if (SessionStore.isLoggedIn()) {
-                userSelectionItem.setVisible(false);
-                logoutItem.setVisible(true);
-            } else if (SessionStore.hasUserId()) {
-                userSelectionItem.setVisible(true);
-                userSelectionItem.setTitle(R.string.home_select_another_soldier);
-                logoutItem.setVisible(false);
-            } else {
-                userSelectionItem.setVisible(true);
-                userSelectionItem.setTitle(R.string.home_select_soldier);
-                logoutItem.setVisible(false);
-            }
-        }
-
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 toggleNavigationDrawer(!isDrawerOpen());
                 return true;
-
-            case R.id.ab_action_refresh:
-                BusProvider.getInstance().post(new RefreshEvent());
-                return true;
-
-            case R.id.ab_action_select_user:
-                startActivityForResult(
-                    new Intent(this, LoginActivity.class), LoginActivity.REQUEST_PROFILE
-                );
-                return true;
-
-            case R.id.ab_action_about:
-                startActivity(new Intent(this, AppInfoActivity.class));
-                return true;
-
-            case R.id.ab_action_settings:
-                startActivity(new Intent(this, SettingsActivity.class));
-                return true;
-
-            case R.id.ab_action_logout:
-                showToast("TODO: Logout functionality");
-                return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

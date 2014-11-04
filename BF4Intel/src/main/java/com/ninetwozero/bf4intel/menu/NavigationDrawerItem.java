@@ -51,6 +51,9 @@ public class NavigationDrawerItem {
         ASSIGNMENTS,
         AWARDS,
 
+        ABOUT,
+        SETTINGS,
+        SEARCH,
         BATTLE_CHAT
     }
 }

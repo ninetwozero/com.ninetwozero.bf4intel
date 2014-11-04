@@ -1,6 +1,7 @@
 package com.ninetwozero.bf4intel.ui.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,6 +27,9 @@ import com.ninetwozero.bf4intel.menu.NavigationDrawerItem;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.profile.SoldierImageMap;
 import com.ninetwozero.bf4intel.resources.maps.ranks.RankImageMap;
+import com.ninetwozero.bf4intel.ui.about.AppInfoActivity;
+import com.ninetwozero.bf4intel.ui.login.LoginActivity;
+import com.ninetwozero.bf4intel.ui.settings.SettingsActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.ExternalAppLauncher;
 import com.ninetwozero.bf4intel.utils.PersonaUtils;
@@ -49,12 +53,11 @@ public class NavigationDrawerFragment extends BaseFragment {
     private static final int DEFAULT_POSITION = 6;
 
     private boolean isRecreated;
-    private ViewGroup navigationDrawerItemContainer;
     private NavigationDrawerCallbacks callbacks;
+    private ViewGroup navigationDrawerItemContainer;
+    private View[] navigationDrawerItemViews;
 
     private int currentMenuSelection = INVALID_POSITION;
-
-    private View[] navigationDrawerItemViews;
     private List<NavigationDrawerItem> navigationDrawerItems = new ArrayList<NavigationDrawerItem>();
     private List<SummarizedSoldierStatsDAO> soldiers = new ArrayList<SummarizedSoldierStatsDAO>();
     private boolean shouldShowTheSoldiers = false;
@@ -291,19 +294,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     }
 
     private View createNavigationDrawerItem(final NavigationDrawerItem item, final int itemPosition, ViewGroup container) {
-        int layoutToInflate;
-        switch (item.getType()) {
-            case SEPARATOR:
-                layoutToInflate = R.layout.list_item_navdrawer_separator;
-                break;
-            case HEADING:
-                layoutToInflate = R.layout.list_item_navdrawer_heading;
-                break;
-            default:
-                layoutToInflate = R.layout.list_item_navdrawer_normal;
-                break;
-        }
-
+        final int layoutToInflate = fetchLayoutToInflateForItem(item.getType());
         final View view = layoutInflater.inflate(layoutToInflate, container, false);
         if (item.getType() == NavigationDrawerItem.Type.SEPARATOR) {
             return view;
@@ -323,6 +314,22 @@ public class NavigationDrawerFragment extends BaseFragment {
             });
         }
         return view;
+    }
+
+    private int fetchLayoutToInflateForItem(final NavigationDrawerItem.Type type) {
+        switch (type) {
+            case SEPARATOR:
+                return R.layout.list_item_navdrawer_separator;
+            case HEADING:
+                return R.layout.list_item_navdrawer_heading;
+            case ABOUT:
+            case SETTINGS:
+            case BATTLE_CHAT:
+            case NEWS:
+                return R.layout.list_item_navdrawer_smaller;
+            default:
+                return R.layout.list_item_navdrawer_normal;
+        }
     }
 
     private void formatNavigationDrawerItem(View view, boolean selected) {
@@ -425,9 +432,16 @@ public class NavigationDrawerFragment extends BaseFragment {
 
     private List<NavigationDrawerItem> getRowsForSocial() {
         final List<NavigationDrawerItem> rows = new ArrayList<NavigationDrawerItem>();
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.HOME, R.string.navigationdrawer_home, R.drawable.empty));
+        if (selectedSoldier == null) {
+            rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.HOME, R.string.navigationdrawer_home, R.drawable.empty));
+        } else {
+            rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.SEARCH, R.string.navigationdrawer_search, R.drawable.empty));
+            rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.SEPARATOR));
+        }
         rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.NEWS, R.string.navigationdrawer_news, R.drawable.empty));
         rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.BATTLE_CHAT, R.string.appname_battlechat, R.drawable.empty));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.SETTINGS, R.string.navigationdrawer_settings, R.drawable.empty));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.ABOUT, R.string.label_about, R.drawable.empty));
         return rows;
     }
 
@@ -498,13 +512,21 @@ public class NavigationDrawerFragment extends BaseFragment {
     }
 
     private boolean willItemDisplayInFragment(final NavigationDrawerItem item) {
-        return item.getType() != NavigationDrawerItem.Type.BATTLE_CHAT;
+        switch (item.getType()) {
+            case ABOUT:
+            case SETTINGS:
+            case SEARCH:
+            case BATTLE_CHAT:
+                return false;
+            default:
+                return true;
+        }
     }
 
     private void startItem(final NavigationDrawerItem item, final boolean displayInFragment, final boolean isOnResume) {
         if (!displayInFragment) {
             if (!isOnResume) {
-                startActivityForResult(ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE), 1);
+                getActivity().startActivityForResult(fetchIntentForItem(item), LoginActivity.REQUEST_PROFILE);
             }
             return;
         }
@@ -526,6 +548,21 @@ public class NavigationDrawerFragment extends BaseFragment {
             } catch (IllegalStateException ise) {
                 Log.e(NavigationDrawerFragment.class.getSimpleName(), ise.getMessage());
             }
+        }
+    }
+
+    private Intent fetchIntentForItem(final NavigationDrawerItem item) {
+        switch (item.getType()) {
+            case ABOUT:
+                return new Intent(getActivity(), AppInfoActivity.class);
+            case SETTINGS:
+                return new Intent(getActivity(), SettingsActivity.class);
+            case SEARCH:
+                return new Intent(getActivity(), LoginActivity.class);
+            case BATTLE_CHAT:
+                return ExternalAppLauncher.getIntent(getActivity(), BATTLE_CHAT_PACKAGE);
+            default:
+                throw new IllegalArgumentException("No activity found for type: " + item.getType());
         }
     }
 
