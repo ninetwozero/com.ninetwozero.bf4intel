@@ -15,5 +15,6 @@ public class SettingsActivity extends ActionBarActivity {
         transaction.replace(android.R.id.content, SettingsFragment.newInstance(new Bundle()));
         transaction.commit();
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
