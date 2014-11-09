@@ -3,16 +3,13 @@ package com.ninetwozero.bf4intel.ui.login;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.google.gson.JsonObject;
@@ -29,7 +26,6 @@ import com.ninetwozero.bf4intel.json.login.SoldierListingRequest;
 import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.ui.about.AppInfoActivity;
 import com.ninetwozero.bf4intel.ui.activities.MainActivity;
 import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
@@ -40,8 +36,6 @@ import se.emilsjolander.sprinkles.Transaction;
 
 public class LoginActivity extends BaseLoadingIntelActivity {
     public static final int REQUEST_PROFILE = 0;
-
-    private static final String RESET_PASSWORD_LINK = "https://signin.ea.com/p/web/resetPassword";
 
     private Bundle profileBundle;
     private View loginStatusView;
@@ -90,62 +84,62 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     private void loadSoldiers(final Bundle bundle) {
         setLoadingState(true);
         Bf4Intel.getRequestQueue().add(
-            new SimpleGetRequest<SoldierListingRequest>(
-                UrlFactory.buildSoldierListURL(bundle.getString(Keys.Profile.ID)),
-                this
-            ) {
-                private int bf4SoldierCount;
-                private SummarizedSoldierStats selectedSoldier;
+                new SimpleGetRequest<SoldierListingRequest>(
+                        UrlFactory.buildSoldierListURL(bundle.getString(Keys.Profile.ID)),
+                        this
+                ) {
+                    private int bf4SoldierCount;
+                    private SummarizedSoldierStats selectedSoldier;
 
-                @Override
-                protected SoldierListingRequest doParse(String json) {
-                    final JsonObject baseObject = extractFromJson(json);
-                    final SoldierListingRequest request = gson.fromJson(baseObject, SoldierListingRequest.class);
-                    final Transaction transaction = new Transaction();
-                    final int soldierCount = request.getSoldiers().size();
+                    @Override
+                    protected SoldierListingRequest doParse(String json) {
+                        final JsonObject baseObject = extractFromJson(json);
+                        final SoldierListingRequest request = gson.fromJson(baseObject, SoldierListingRequest.class);
+                        final Transaction transaction = new Transaction();
+                        final int soldierCount = request.getSoldiers().size();
 
-                    for (int i = 0; i < soldierCount; i++) {
-                        final SummarizedSoldierStats stats = request.getSoldiers().get(i);
-                        if (PersonaUtils.isBf4Soldier(stats.getGameId())) {
-                            if (bf4SoldierCount == 0) {
-                                new SqlStatement(
-                                    "DELETE FROM " +
-                                    SummarizedSoldierStatsDAO.TABLE_NAME + " " +
-                                    "WHERE soldierId  = ? AND platformId = ?"
-                                ).execute(stats.getPersona().getPersonaId(), stats.getPlatformId());
-                            }
+                        for (int i = 0; i < soldierCount; i++) {
+                            final SummarizedSoldierStats stats = request.getSoldiers().get(i);
+                            if (PersonaUtils.isBf4Soldier(stats.getGameId())) {
+                                if (bf4SoldierCount == 0) {
+                                    new SqlStatement(
+                                            "DELETE FROM " +
+                                                    SummarizedSoldierStatsDAO.TABLE_NAME + " " +
+                                                    "WHERE soldierId  = ? AND platformId = ?"
+                                    ).execute(stats.getPersona().getPersonaId(), stats.getPlatformId());
+                                }
 
-                            if (stats.getPlatformId() == selectedSoldierPlatform) {
-                                new SummarizedSoldierStatsDAO(stats).save(transaction);
-                                selectedSoldier = stats;
-                                bf4SoldierCount = 1;
-                                break;
+                                if (stats.getPlatformId() == selectedSoldierPlatform) {
+                                    new SummarizedSoldierStatsDAO(stats).save(transaction);
+                                    selectedSoldier = stats;
+                                    bf4SoldierCount = 1;
+                                    break;
+                                }
                             }
                         }
+                        transaction.setSuccessful(true);
+                        transaction.finish();
+                        return request;
                     }
-                    transaction.setSuccessful(true);
-                    transaction.finish();
-                    return request;
-                }
 
-                @Override
-                protected void deliverResponse(SoldierListingRequest response) {
-                    if (bf4SoldierCount > 0) {
-                        storeSelectedPersonaInPreferences(selectedSoldier);
-                        setResult(Activity.RESULT_OK, new Intent().putExtras(profileBundle));
-                    } else {
-                        setResult(Activity.RESULT_CANCELED);
+                    @Override
+                    protected void deliverResponse(SoldierListingRequest response) {
+                        if (bf4SoldierCount > 0) {
+                            storeSelectedPersonaInPreferences(selectedSoldier);
+                            setResult(Activity.RESULT_OK, new Intent().putExtras(profileBundle));
+                        } else {
+                            setResult(Activity.RESULT_CANCELED);
+                        }
+                        finish();
                     }
-                    finish();
-                }
 
-                private void storeSelectedPersonaInPreferences(SummarizedSoldierStats soldierStats) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(Keys.Menu.LATEST_PERSONA, String.valueOf(soldierStats.getPersona().getPersonaId()));
-                    editor.putInt(Keys.Menu.LATEST_PERSONA_PLATFORM, soldierStats.getPlatformId());
-                    editor.apply();
+                    private void storeSelectedPersonaInPreferences(SummarizedSoldierStats soldierStats) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(Keys.Menu.LATEST_PERSONA, String.valueOf(soldierStats.getPersona().getPersonaId()));
+                        editor.putInt(Keys.Menu.LATEST_PERSONA_PLATFORM, soldierStats.getPlatformId());
+                        editor.apply();
+                    }
                 }
-            }
         );
     }
 
@@ -164,42 +158,8 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     }
 
     private void setupLayout() {
-        setupMenu();
         setupForm();
         setupButton();
-    }
-
-    private void setupMenu() {
-        findViewById(R.id.button_menu).setOnClickListener(
-            new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    final PopupMenu menu = new PopupMenu(LoginActivity.this, view);
-                    menu.setOnMenuItemClickListener(
-                        new PopupMenu.OnMenuItemClickListener() {
-                            @Override
-                            public boolean onMenuItemClick(MenuItem item) {
-                                Intent intent = null;
-                                if (item.getItemId() == R.id.menu_about) {
-                                    intent = new Intent(LoginActivity.this, AppInfoActivity.class);
-                                } else if (item.getItemId() == R.id.menu_reset_password) {
-                                    intent = new Intent(Intent.ACTION_VIEW).setData(
-                                        Uri.parse(RESET_PASSWORD_LINK)
-                                    );
-                                }
-
-                                if (intent != null) {
-                                    startActivity(intent);
-                                }
-                                return true;
-                            }
-                        }
-                    );
-                    menu.inflate(R.menu.activity_login);
-                    menu.show();
-                }
-            }
-        );
     }
 
     private void setupForm() {

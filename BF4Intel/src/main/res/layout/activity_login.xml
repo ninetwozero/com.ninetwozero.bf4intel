@@ -6,21 +6,6 @@
   android:layout_height="match_parent"
   android:background="@color/login_activity_bg"
   >
-
-  <ImageView
-    android:id="@+id/button_menu"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:contentDescription="@string/cdesc_action_item"
-    android:padding="@dimen/spacing_m"
-    android:src="@drawable/ic_menu_overflow_white"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentRight="true"
-    android:background="@drawable/action_item_background"
-    android:alpha="0.2"
-    android:clickable="true"
-    />
-
   <!-- Login form -->
 
   <LinearLayout
@@ -39,41 +24,6 @@
       android:layout_marginBottom="@dimen/spacing_l"
       />
 
-    <!--
-    <EditText
-      android:id="@+id/email"
-      android:layout_width="@dimen/login_form_element_width"
-      android:layout_height="wrap_content"
-      android:hint="@string/prompt_email"
-      android:inputType="textEmailAddress"
-      android:maxLines="1"
-      android:singleLine="true"
-      />
-
-    <EditText
-      android:id="@+id/password"
-      android:layout_width="@dimen/login_form_element_width"
-      android:layout_height="wrap_content"
-      android:hint="@string/prompt_password"
-      android:imeActionId="@+id/login"
-      android:imeActionLabel="@string/action_sign_in_short"
-      android:imeOptions="actionUnspecified"
-      android:inputType="textPassword"
-      android:maxLines="1"
-      android:singleLine="true"
-      android:text=""/>
-
-    <Button
-      style="@style/RedButton"
-      android:id="@+id/sign_in_button"
-      android:layout_width="@dimen/login_form_element_width"
-      android:layout_gravity="center_horizontal"
-      android:paddingLeft="@dimen/spacing_xl"
-      android:paddingRight="@dimen/spacing_xl"
-      android:layout_marginTop="@dimen/spacing_l"
-      android:text="@string/action_sign_in_short"
-      />
-   -->
     <EditText
       android:id="@+id/search_term"
       android:layout_width="@dimen/login_form_element_width"
