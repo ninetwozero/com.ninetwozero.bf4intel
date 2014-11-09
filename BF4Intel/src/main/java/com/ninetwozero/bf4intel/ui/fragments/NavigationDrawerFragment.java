@@ -421,11 +421,11 @@ public class NavigationDrawerFragment extends BaseFragment {
 
     private List<NavigationDrawerItem> getRowsForSoldier() {
         final List<NavigationDrawerItem> rows = new ArrayList<NavigationDrawerItem>();
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.OVERVIEW, R.string.navigationdrawer_overview, R.drawable.empty));
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.STATISTICS, R.string.navigationdrawer_statistics, R.drawable.empty));
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.UNLOCKS, R.string.navigationdrawer_unlocks, R.drawable.empty));
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.ASSIGNMENTS, R.string.assignments, R.drawable.empty));
-        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.AWARDS, R.string.awards, R.drawable.empty));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.OVERVIEW, R.string.navigationdrawer_overview, R.drawable.menu_icon_overview));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.STATISTICS, R.string.navigationdrawer_statistics, R.drawable.menu_icon_statistics));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.UNLOCKS, R.string.navigationdrawer_unlocks, R.drawable.menu_icon_unlocks));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.ASSIGNMENTS, R.string.assignments, R.drawable.menu_icon_assingnments));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.AWARDS, R.string.awards, R.drawable.menu_icon_awards));
         rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.SEPARATOR, R.drawable.empty));
         return rows;
     }
@@ -435,7 +435,7 @@ public class NavigationDrawerFragment extends BaseFragment {
         if (selectedSoldier == null) {
             rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.HOME, R.string.navigationdrawer_home, R.drawable.empty));
         } else {
-            rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.SEARCH, R.string.navigationdrawer_search, R.drawable.empty));
+            rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.SEARCH, R.string.navigationdrawer_search, R.drawable.menu_icon_search));
             rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.SEPARATOR));
         }
         rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.NEWS, R.string.navigationdrawer_news, R.drawable.empty));
