@@ -49,7 +49,7 @@ public class NavigationDrawerFragment extends BaseFragment {
 
     private static final int INVALID_POSITION = -1;
     private static final int DEFAULT_POSITION_GUEST = 0;
-    private static final int DEFAULT_POSITION_TRACKING = 6;
+    private static final int DEFAULT_POSITION_TRACKING = 0;
     private static final int DEFAULT_POSITION = 6;
 
     private boolean isRecreated;
