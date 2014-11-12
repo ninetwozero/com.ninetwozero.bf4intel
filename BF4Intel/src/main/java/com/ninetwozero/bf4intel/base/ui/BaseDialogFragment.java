@@ -1,5 +1,7 @@
 package com.ninetwozero.bf4intel.base.ui;
 
+import android.content.res.Resources;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
@@ -12,6 +14,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -75,11 +78,30 @@ public class BaseDialogFragment extends DialogFragment {
         }
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+    }
+
+    /*
+    TODO remove before commit
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        TextView dialogTitle = (TextView)getDialog().findViewById(android.R.id.title);
+        dialogTitle.setTextColor(getResources().getColor(android.R.color.white));
+        ((ViewGroup)dialogTitle.getParent()).setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+        int titleDividerId = getResources().getIdentifier("titleDivider", "id", "android");
+        getDialog().getWindow().getDecorView().findViewById(titleDividerId).setBackgroundColor(getResources().getColor(R.color.darkgrey));
+    }*/
+
     protected void setTitle(String title) {
         if (!isSw720dp() && !isSw600dp()) {
             ((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(title);
         } else {
-            getDialog().setTitle(title);
+            ((TextView)getView().findViewById(R.id.title)).setText(title);
         }
     }
 

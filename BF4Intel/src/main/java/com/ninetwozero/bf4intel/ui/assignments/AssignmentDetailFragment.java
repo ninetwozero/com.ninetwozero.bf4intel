@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
@@ -64,7 +65,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void initialize(final View view) {
         setupData(getArguments());
-        setupTitle();
+        //setupTitle();
         populateViews(view, assignmentAward);
     }
 
@@ -80,6 +81,9 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     }
 
     private void populateViews(final View view, final AssignmentAward award) {
+        //TODO move tablet check here
+        final String key = assignmentAward.getUniqueName();
+        ((TextView)view.findViewById(R.id.title)).setText(getString(AssignmentStringMap.get(key)));
         populateOverviewBox(view, award);
         populatePreRequisites(view);
         populateAwardRequirements(view);
