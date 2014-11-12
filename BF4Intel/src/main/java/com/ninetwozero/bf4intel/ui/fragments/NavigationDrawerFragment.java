@@ -489,10 +489,10 @@ public class NavigationDrawerFragment extends BaseFragment {
     private void selectItem(final NavigationDrawerItem item, final int position, final boolean shouldCloseDrawer, final boolean isOnResume) {
         final boolean isFragment = willItemDisplayInFragment(item);
         if (navigationDrawerItemContainer != null && isFragment) {
-            if (currentMenuSelection != INVALID_POSITION) {
-                formatNavigationDrawerItem(navigationDrawerItemViews[currentMenuSelection], false);
+            for(int i = 0; i < navigationDrawerItems.size(); i++) {
+                if(navigationDrawerItems.get(i).getType() != NavigationDrawerItem.Type.SEPARATOR)
+                formatNavigationDrawerItem(navigationDrawerItemViews[i], i == position);
             }
-            formatNavigationDrawerItem(navigationDrawerItemViews[position], true);
             storePositionState(position);
         }
 
