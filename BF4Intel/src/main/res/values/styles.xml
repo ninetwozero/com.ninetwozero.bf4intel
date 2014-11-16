@@ -322,4 +322,15 @@
     <item name="android:alpha">0.12</item>
   </style>
 
+  <style name="DialogFragmentTitle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingTop">@dimen/spacing_l</item>
+    <item name="android:paddingBottom">@dimen/spacing_l</item>
+    <item name="android:paddingLeft">@dimen/side_spacing</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textSize">@dimen/text_l</item>
+    <item name="android:background">@color/colorPrimary</item>
+  </style>
+
 </resources>

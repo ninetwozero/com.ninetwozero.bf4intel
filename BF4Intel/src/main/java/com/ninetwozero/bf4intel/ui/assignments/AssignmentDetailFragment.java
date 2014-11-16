@@ -65,7 +65,6 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void initialize(final View view) {
         setupData(getArguments());
-        //setupTitle();
         populateViews(view, assignmentAward);
     }
 
@@ -75,15 +74,10 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         assignmentAward = assignment.getAward();
     }
 
-    private void setupTitle() {
-        final String key = assignmentAward.getUniqueName();
-        setTitle(getString(AssignmentStringMap.get(key)));
-    }
-
     private void populateViews(final View view, final AssignmentAward award) {
-        //TODO move tablet check here
-        final String key = assignmentAward.getUniqueName();
-        ((TextView)view.findViewById(R.id.title)).setText(getString(AssignmentStringMap.get(key)));
+        final String titleString = getString(AssignmentStringMap.get(assignmentAward.getUniqueName()));
+        TextView titleView = ((TextView)view.findViewById(R.id.title));
+        setTitle(titleView, titleString);
         populateOverviewBox(view, award);
         populatePreRequisites(view);
         populateAwardRequirements(view);

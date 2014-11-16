@@ -8,6 +8,12 @@
   android:padding="@dimen/spacing_m"
   android:background="@color/card_activity_bg">
 
+    <TextView
+      android:id="@+id/title"
+      style="@style/DialogFragmentTitle"
+      tools:text="Assignment"
+      />
+
   <LinearLayout
     style="@style/NonListViewCard"
     android:layout_width="match_parent"

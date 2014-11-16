@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
@@ -41,7 +42,6 @@ public class WeaponDetailsFragment extends BaseDialogFragment {
 
     private void initialize(View view) {
         setupData(getArguments());
-        setupTitle();
         populateViews(view);
     }
 
@@ -54,12 +54,10 @@ public class WeaponDetailsFragment extends BaseDialogFragment {
         return WeaponCategory.from(weapon.getCategorySID());
     }
 
-    private void setupTitle() {
-        final String key = weapon.getUniqueName();
-        setTitle(getString(WeaponStringMap.get(key)));
-    }
-
     private void populateViews(final View view) {
+        final String titleString = getString(WeaponStringMap.get(weapon.getUniqueName()));
+        TextView titleView = ((TextView)view.findViewById(R.id.title));
+        setTitle(titleView, titleString);
         populateOverviewBox(view);
         populateDescriptionBox(view);
         populateInformation(view);

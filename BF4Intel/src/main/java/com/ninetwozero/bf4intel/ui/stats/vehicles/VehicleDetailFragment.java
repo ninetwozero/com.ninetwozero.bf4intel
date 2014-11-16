@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
@@ -44,7 +45,6 @@ public class VehicleDetailFragment extends BaseDialogFragment {
 
     private void initialize(final View view) {
         setupData(getArguments());
-        setupTitle();
         populateViews(view);
     }
 
@@ -54,12 +54,10 @@ public class VehicleDetailFragment extends BaseDialogFragment {
         Collections.sort(vehicleStats);
     }
 
-    private void setupTitle() {
-        final String title = getString(VehiclesGroupStringMap.get(groupedVehicles.getGroupName()));
-        setTitle(title);
-    }
-
     private void populateViews(final View view) {
+        final String titleString = getString(VehiclesGroupStringMap.get(groupedVehicles.getGroupName()));
+        TextView titleView = ((TextView)view.findViewById(R.id.title));
+        setTitle(titleView, titleString);
         populateImageContainer(view, 0);
         populateTotalScore(view);
         populateListView(view);
