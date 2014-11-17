@@ -340,7 +340,15 @@ public class NavigationDrawerFragment extends BaseFragment {
                     typedValue,
                     true
             );
+
+            // Due to some weird padding reset when setting the background, this is needed.
+            // SEE: https://code.google.com/p/android/issues/detail?id=17885
+            final int paddingLeft = view.getPaddingLeft();
+            final int paddingTop = view.getPaddingTop();
+            final int paddingRight = view.getPaddingRight();
+            final int paddingBottom = view.getPaddingBottom();
             view.setBackgroundResource(typedValue.resourceId);
+            view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
         }
     }
 
