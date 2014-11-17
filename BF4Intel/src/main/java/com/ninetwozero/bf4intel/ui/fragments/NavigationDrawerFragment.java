@@ -50,7 +50,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     private static final int INVALID_POSITION = -1;
     private static final int DEFAULT_POSITION_GUEST = 0;
     private static final int DEFAULT_POSITION_TRACKING = 0;
-    private static final int DEFAULT_POSITION = 6;
+    private static final int DEFAULT_POSITION = 0;
 
     private boolean isRecreated;
     private NavigationDrawerCallbacks callbacks;
@@ -205,11 +205,9 @@ public class NavigationDrawerFragment extends BaseFragment {
 
     private int fetchStartingPositionForSessionState() {
         if (SessionStore.isLoggedIn()) {
-            int index = sharedPreferences.getInt(STATE_SELECTED_POSITION, DEFAULT_POSITION);
-            return index <= DEFAULT_POSITION ? index : DEFAULT_POSITION;
+            return sharedPreferences.getInt(STATE_SELECTED_POSITION, DEFAULT_POSITION);
         } else if (SessionStore.hasUserId()) {
-            int index = sharedPreferences.getInt(STATE_SELECTED_POSITION_TRACKING, DEFAULT_POSITION_TRACKING);
-            return index <= DEFAULT_POSITION_TRACKING ? index : DEFAULT_POSITION_TRACKING;
+            return sharedPreferences.getInt(STATE_SELECTED_POSITION_TRACKING, DEFAULT_POSITION_TRACKING);
         } else {
             return DEFAULT_POSITION_GUEST;
         }
