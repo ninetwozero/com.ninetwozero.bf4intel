@@ -35,12 +35,4 @@
   <dimen name="text_xxl">32sp</dimen>
 
   <dimen name="heading_over_card_size">@dimen/text_l</dimen>
-
-  <!-- Spacing -->
-  <dimen name="spacing_xs">1dp</dimen>
-  <dimen name="spacing_s">2dp</dimen>
-  <dimen name="spacing_m">4dp</dimen>
-  <dimen name="spacing_l">8dp</dimen>
-  <dimen name="spacing_xl">16dp</dimen>
-  <dimen name="spacing_xxl">32dp</dimen>
 </resources>
