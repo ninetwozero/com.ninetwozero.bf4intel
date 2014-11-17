@@ -101,4 +101,5 @@
   <dimen name="navdrawer_separator_height">1dp</dimen>
   <dimen name="navdrawer_dropdown_arrow_size">32dp</dimen>
   <dimen name="navdrawer_icon_size">16dp</dimen>
+  <dimen name="navigation_drawer_soldier_box_height">128dp</dimen>
 </resources>

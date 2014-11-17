@@ -16,7 +16,7 @@
     <FrameLayout
       android:id="@+id/wrap_login_info"
       android:layout_width="match_parent"
-      android:layout_height="128dp"
+      android:layout_height="@dimen/navigation_drawer_soldier_box_height"
       android:clickable="true"
       android:foreground="?android:attr/selectableItemBackground"
       android:background="@drawable/navigationdrawer_banner_image">
@@ -38,7 +38,7 @@
       android:id="@+id/navigation_drawer_account_list"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="8dp"
+      android:layout_marginTop="@dimen/spacing_m"
       android:orientation="vertical"
       android:visibility="gone"
       >
