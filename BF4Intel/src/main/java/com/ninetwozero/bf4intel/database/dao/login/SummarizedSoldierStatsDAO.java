@@ -3,8 +3,8 @@ package com.ninetwozero.bf4intel.database.dao.login;
 import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 
 import se.emilsjolander.sprinkles.Model;
-import se.emilsjolander.sprinkles.annotations.AutoIncrement;
 import se.emilsjolander.sprinkles.annotations.Column;
+import se.emilsjolander.sprinkles.annotations.Key;
 import se.emilsjolander.sprinkles.annotations.Table;
 
 
@@ -12,13 +12,9 @@ import se.emilsjolander.sprinkles.annotations.Table;
 public class SummarizedSoldierStatsDAO extends Model {
     public static final String TABLE_NAME = "UserSoldier";
 
-    @AutoIncrement
-    @Column("rowId")
-    private long id;
-
+    @Key
     @Column("soldierId")
     private String soldierId;
-
     @Column("soldierName")
     private String soldierName;
     @Column("tag")
@@ -30,10 +26,14 @@ public class SummarizedSoldierStatsDAO extends Model {
 
     @Column("rank")
     private int rank;
-    @Column("platform")
+    @Key
+    @Column("platformId")
     private int platformId;
     @Column("game")
     private int gameId;
+
+    @Column("lastAccess")
+    private long lastAccess;
 
     public SummarizedSoldierStatsDAO() {}
 
@@ -46,10 +46,7 @@ public class SummarizedSoldierStatsDAO extends Model {
         this.rank = stats.getRank();
         this.platformId = stats.getPlatformId();
         this.gameId = stats.getGameId();
-    }
-
-    public long getId() {
-        return id;
+        this.lastAccess = System.currentTimeMillis();
     }
 
     public String getSoldierId() {
@@ -90,5 +87,13 @@ public class SummarizedSoldierStatsDAO extends Model {
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    public void setLastAccess(final long lastAccess) {
+        this.lastAccess = lastAccess;
+    }
+
+    public long getLastAccess() {
+        return lastAccess;
     }
 }

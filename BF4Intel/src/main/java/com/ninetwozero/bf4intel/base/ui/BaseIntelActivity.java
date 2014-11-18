@@ -85,7 +85,7 @@ public abstract class BaseIntelActivity extends ActionBarActivity {
         final HashMap<String, String> map = new HashMap<String, String>();
         map.put("bl_userid", SessionStore.getUserId());
         map.put("bl_username", SessionStore.getUsername());
-        map.put("bl_soldierid", String.valueOf(sharedPreferences.getLong(Keys.Menu.LATEST_PERSONA, 0)));
+        map.put("bl_soldierid", sharedPreferences.getString(Keys.Menu.LATEST_PERSONA, ""));
         return map;
     }
 

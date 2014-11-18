@@ -219,7 +219,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
         }
 
         if (results.isEmpty()) {
-            setCustomEmptyText(getView(), R.string.msg_no_users_found);
+            setCustomEmptyText(getView(), R.string.msg_no_soldiers_found);
             getView().findViewById(R.id.logo).setVisibility(View.GONE);
         }
 

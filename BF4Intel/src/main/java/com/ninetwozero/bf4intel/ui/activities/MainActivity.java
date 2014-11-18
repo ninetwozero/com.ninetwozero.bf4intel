@@ -1,14 +1,14 @@
 package com.ninetwozero.bf4intel.ui.activities;
 
-import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.view.Menu;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -17,11 +17,8 @@ import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
 import com.ninetwozero.bf4intel.events.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.ui.about.AppInfoActivity;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
-import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
-import com.ninetwozero.bf4intel.ui.settings.SettingsActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 
 public class MainActivity extends BaseIntelActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -31,10 +28,11 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     private boolean userLearnedDrawer;
 
     private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
     private ActionBarDrawerToggle drawerToggle;
     private View fragmentContainerView;
     private NavigationDrawerFragment navigationDrawer;
-    private String title;
+    private int title = R.string.empty;
 
     private boolean shouldShowDualPane = false;
 
@@ -47,61 +45,11 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     @Override
-    public boolean onCreateOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
-    }
-    @Override
-    public boolean onPrepareOptionsMenu(final Menu menu) {
-        final MenuItem userSelectionItem = menu.findItem(R.id.ab_action_select_user);
-        final MenuItem logoutItem = menu.findItem(R.id.ab_action_logout);
-        if (userSelectionItem != null && logoutItem != null) {
-            if (SessionStore.isLoggedIn()) {
-                userSelectionItem.setVisible(false);
-                logoutItem.setVisible(true);
-            } else if (SessionStore.hasUserId()) {
-                userSelectionItem.setVisible(true);
-                userSelectionItem.setTitle(R.string.home_select_another_account);
-                logoutItem.setVisible(false);
-            } else {
-                userSelectionItem.setVisible(true);
-                userSelectionItem.setTitle(R.string.home_select_account);
-                logoutItem.setVisible(false);
-            }
-        }
-
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 toggleNavigationDrawer(!isDrawerOpen());
                 return true;
-
-            case R.id.ab_action_refresh:
-                BusProvider.getInstance().post(new RefreshEvent());
-                return true;
-
-            case R.id.ab_action_select_user:
-                startActivityForResult(
-                    new Intent(this, LoginActivity.class), LoginActivity.REQUEST_PROFILE
-                );
-                return true;
-
-            case R.id.ab_action_about:
-                startActivity(new Intent(this, AppInfoActivity.class));
-                return true;
-
-            case R.id.ab_action_settings:
-                startActivity(new Intent(this, SettingsActivity.class));
-                return true;
-
-            case R.id.ab_action_logout:
-                showToast("TODO: Logout functionality");
-                return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -131,7 +79,6 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         }
     }
 
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -144,15 +91,24 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     @Override
-    public void onNavigationDrawerItemSelected(final int position, final boolean shouldClose, final String title) {
-        this.title = title == null? this.title : title;
+    public void closeDrawer() {
+        if (drawerLayout == null) {
+            return;
+        }
+        drawerLayout.closeDrawer(Gravity.START);
+    }
+
+    @Override
+    public void onNavigationDrawerItemSelected(final int position, final boolean shouldClose, final int titleResource) {
+        final boolean hasNewTitle = titleResource > 0;
+        this.title = hasNewTitle ? titleResource : this.title;
+
         if (drawerLayout != null && shouldClose) {
             toggleNavigationDrawer(false);
         }
 
-        final ActionBar actionBar = getSupportActionBar();
-        if (shouldShowDualPane || actionBar.getTitle() != this.title) {
-            actionBar.setTitle(this.title);
+        if (shouldShowDualPane || hasNewTitle) {
+            toolbar.setTitle(this.title);
         }
     }
 
@@ -188,8 +144,8 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         shouldShowDualPane = getResources().getBoolean(R.bool.main_is_dualpane);
 
         navigationDrawer = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentByTag("NavigationDrawerFragment");
+        setupActionBar();
         if (!shouldShowDualPane) {
-            setupActionBar();
             setupActionBarToggle();
         }
         setupActivityFromState(savedInstanceState);
@@ -201,11 +157,10 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
         fragmentContainerView = findViewById(R.id.navigation_drawer);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-
         drawerToggle = new ActionBarDrawerToggle(
             this,
             drawerLayout,
-            R.drawable.ic_navigation_drawer,
+            toolbar,
             R.string.app_name,
             R.string.app_name
         ) {
@@ -214,7 +169,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
                 if (!navigationDrawer.isAdded()) {
                     return;
                 }
-                getSupportActionBar().setTitle(title);
+                toolbar.setTitle(title);
             }
 
             @Override
@@ -246,10 +201,9 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
     }
 
     private void setupActionBar() {
-        final ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setDisplayShowHomeEnabled(true);
-        actionbar.setTitle(title);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(title);
+        setSupportActionBar(toolbar);
     }
 
     private void setupActivityFromState(final Bundle state) {

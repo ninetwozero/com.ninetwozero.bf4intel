@@ -53,7 +53,7 @@ public class SoldierOverviewService extends BaseApiService {
                             SummarizedSoldierStatsDAO.class,
                             "SELECT * " +
                                 "FROM " + SummarizedSoldierStatsDAO.TABLE_NAME + " " +
-                                "WHERE soldierId = ? AND platform = ?",
+                                "WHERE soldierId = ? AND platformId = ?",
                             soldier.getString(Keys.Soldier.ID),
                             soldier.getInt(Keys.Soldier.PLATFORM)
                         ).get();

@@ -15,6 +15,9 @@
   <!-- Application theme. -->
   <style name="AppTheme" parent="AppBaseTheme">
     <item name="android:icon">@drawable/ic_actionbar_logo</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
   </style>
 
   <style name="Bf4IntelTheme" parent="AppTheme">
@@ -22,14 +25,19 @@
     <item name="android:icon">@drawable/ic_actionbar_logo</item>
   </style>
 
-  <style name="AppTheme.NoActionBar" parent="Theme.AppCompat">
-    <item name="android:windowActionBar">false</item>
-    <item name="android:windowNoTitle">true</item>
+  <style name="ColorfulToolbar" parent="Widget.AppCompat.ActionBar">
+    <item name="android:background">@color/colorPrimary</item>
+    <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
   </style>
 
-  <!-- Variant of the holographic (dark) theme that has no title bar and fills
-       the entire screen.  This theme
-       sets {@link android.R.attr#windowFullscreen} to true.  -->
+  <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/red</item>
+    <item name="android:windowBackground">@color/windowBackground</item>
+  </style>
+
   <style name="AppTheme.NoActionBar.Fullscreen" parent="AppTheme.NoActionBar">
     <item name="android:windowFullscreen">true</item>
     <item name="android:windowContentOverlay">@null</item>
@@ -86,8 +94,17 @@
     <item name="android:paddingRight">@dimen/spacing_m</item>
     <item name="android:paddingBottom">@dimen/spacing_m</item>
     <item name="android:paddingLeft">@dimen/spacing_m</item>
-    <item name="android:background">?android:attr/activatedBackgroundIndicator</item>
     <item name="android:textAllCaps">true</item>
+    <item name="android:orientation">horizontal</item>
+    <item name="android:gravity">left|center_vertical</item>
+  </style>
+
+  <style name="NavigationDrawerRowWithSelector" parent="NavigationDrawerRow">
+    <item name="android:background">?android:selectableItemBackground</item>
+  </style>
+
+  <style name="NavigationDrawerMenuItemRows" parent="NavigationDrawerRowWithSelector">
+    <item name="android:layout_height">?attr/listPreferredItemHeightSmall</item>
   </style>
 
   <!-- Soldier "card" pseudo style -->
@@ -295,6 +312,25 @@
     <item name="android:textAppearance">@android:style/TextAppearance.Holo.Small.Inverse</item>
     <item name="android:textAllCaps">true</item>
     <item name="android:textColor">@color/lightgrey</item>
+  </style>
+
+  <style name="NavigationDrawerSeparator">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">@dimen/navdrawer_separator_height</item>
+    <item name="android:gravity">start|center_vertical</item>
+    <item name="android:background">@color/navigation_drawer_separator</item>
+    <item name="android:alpha">0.12</item>
+  </style>
+
+  <style name="DialogFragmentTitle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingTop">@dimen/spacing_l</item>
+    <item name="android:paddingBottom">@dimen/spacing_l</item>
+    <item name="android:paddingLeft">@dimen/side_spacing</item>
+    <item name="android:textColor">@android:color/white</item>
+    <item name="android:textSize">@dimen/text_l</item>
+    <item name="android:background">@color/colorPrimary</item>
   </style>
 
 </resources>

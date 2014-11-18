@@ -34,9 +34,9 @@
   <color name="table_battlereport_result_bg">#33FFFFFF</color>
 
   <!-- NavigationDrawer colors -->
-  <color name="navigation_drawer_selected_bg">#29FFFFFF</color>
-  <color name="navigation_drawer_bg">#333333</color>
-  <color name="navigation_listview_divider">#444444</color>
+  <color name="navigation_drawer_selected_bg">#696969</color>
+  <color name="navigation_drawer_bg">#424242</color>
+  <color name="navigation_listview_divider">#797979</color>
 
   <!-- Card related colors -->
   <color name="card_action_selected_bg">#CCCCCC</color>
@@ -61,4 +61,13 @@
   <color name="loading_stripe_2">#9cca80</color>
   <color name="loading_stripe_3">#ebca2f</color>
   <color name="loading_stripe_4">#e9a789</color>
+  <color name="navigation_drawer_separator">#FFFFFF</color>
+
+  <!-- Theme colors -->
+  <color name="colorPrimary">#ff5722</color>
+  <color name="colorPrimaryDark">#e64a19</color>
+  <color name="colorAccent">#FFAB40</color>
+  <color name="textColorPrimary">#000000</color>
+  <color name="navigationBarColor">@color/colorPrimary</color>
+  <color name="windowBackground">#FFFFFF</color>
 </resources>

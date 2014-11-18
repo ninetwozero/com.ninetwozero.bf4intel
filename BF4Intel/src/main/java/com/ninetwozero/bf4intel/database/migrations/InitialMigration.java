@@ -6,20 +6,9 @@ import com.ninetwozero.bf4intel.database.dao.ProfileDAO;
 import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.database.dao.soldieroverview.SoldierOverviewDAO;
 
-import se.emilsjolander.sprinkles.Migration;
-
-public class InitialMigration extends Migration {
+public class InitialMigration extends BaseMigration {
     @Override
     protected void doMigration(final SQLiteDatabase db) {
-/*
-        private Migration getInitialMigration() {
-            Migration migration = new Migration();
-            migration.createTable(SummarizedSoldierStatsDAO.class);
-            migration.createTable(ProfileDAO.class);
-            migration.createTable(SoldierOverviewDAO.class);
-            return migration;
-        }*/
-
         createSummarizedSoldierStatsTable(db);
         createProfileTable(db);
         createSoldierOverviewTable(db);

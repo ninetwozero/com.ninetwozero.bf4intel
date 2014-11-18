@@ -17,6 +17,7 @@ import com.ninetwozero.bf4intel.database.dao.unlocks.vehicles.SortedVehicleUnloc
 import com.ninetwozero.bf4intel.database.dao.unlocks.weapons.SortedWeaponUnlocksSerializer;
 import com.ninetwozero.bf4intel.database.migrations.InitialMigration;
 import com.ninetwozero.bf4intel.database.migrations.MigrationToOneZeroOne;
+import com.ninetwozero.bf4intel.database.migrations.MigrationToOneZeroSix;
 import com.ninetwozero.bf4intel.database.migrations.MigrationToZeroNineSix;
 import com.ninetwozero.bf4intel.json.assignments.SortedAssignmentContainer;
 import com.ninetwozero.bf4intel.json.awards.SortedAwardContainer;
@@ -68,6 +69,7 @@ public class Bf4Intel extends Application {
         sprinkles.addMigration(new InitialMigration());
         sprinkles.addMigration(new MigrationToZeroNineSix());
         sprinkles.addMigration(new MigrationToOneZeroOne());
+        sprinkles.addMigration(new MigrationToOneZeroSix());
     }
 
 

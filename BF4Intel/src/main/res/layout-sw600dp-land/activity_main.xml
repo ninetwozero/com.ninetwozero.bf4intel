@@ -1,8 +1,17 @@
-<LinearLayout
+<RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   >
+
+
+  <android.support.v7.widget.Toolbar
+    style="@style/ColorfulToolbar"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/actionBarSize"
+    />
 
   <fragment
     android:id="@+id/fragment_menu"
@@ -11,11 +20,15 @@
     android:layout_gravity="start"
     android:tag="NavigationDrawerFragment"
     android:name="com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment"
+    android:layout_below="@id/toolbar"
     />
 
   <FrameLayout
     android:id="@+id/activity_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_below="@id/toolbar"
+    android:layout_toRightOf="@id/fragment_menu"
+    android:layout_toEndOf="@id/fragment_menu"
     />
-</LinearLayout>
+</RelativeLayout>

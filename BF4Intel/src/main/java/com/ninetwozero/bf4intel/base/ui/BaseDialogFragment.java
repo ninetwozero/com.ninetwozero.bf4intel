@@ -1,6 +1,5 @@
 package com.ninetwozero.bf4intel.base.ui;
 
-import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.SharedPreferences;
@@ -8,10 +7,12 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -75,11 +76,21 @@ public class BaseDialogFragment extends DialogFragment {
         }
     }
 
-    protected void setTitle(String title) {
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(isSw600dp() || isSw720dp()) {
+            //Hide default dialog title that is added on top of our layout
+            getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        }
+    }
+
+    protected void setTitle(TextView view, String title) {
         if (!isSw720dp() && !isSw600dp()) {
             ((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(title);
+            view.setVisibility(View.GONE);
         } else {
-            getDialog().setTitle(title);
+            view.setText(title);
         }
     }
 

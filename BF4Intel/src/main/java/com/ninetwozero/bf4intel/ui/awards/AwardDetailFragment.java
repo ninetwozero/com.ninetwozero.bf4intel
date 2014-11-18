@@ -36,7 +36,6 @@ public class AwardDetailFragment extends BaseDialogFragment {
 
     private void initialize(final View view) {
         setupData(getArguments());
-        setupTitle();
         populateViews(view);
     }
 
@@ -44,12 +43,10 @@ public class AwardDetailFragment extends BaseDialogFragment {
         award = (Award) data.getSerializable(INTENT_AWARD);
     }
 
-    private void setupTitle() {
-        final String title = getString(AwardStringMap.get(award.getMedal().getMedalAward().getUniqueName()));
-        setTitle(title);
-    }
-
     private void populateViews(final View view) {
+        final String titleString = getString(AwardStringMap.get(award.getMedal().getMedalAward().getUniqueName()));
+        TextView titleView = ((TextView)view.findViewById(R.id.title));
+        setTitle(titleView, titleString);
         populateMedalViews(view);
         populateRequiredExpansion(view);
         populateRibbonViews(view);

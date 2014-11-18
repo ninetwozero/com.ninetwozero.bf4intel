@@ -12,12 +12,19 @@ import android.widget.TextView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
+import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.events.TrackingNewProfileEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
+import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.resources.maps.profile.SoldierImageMap;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.squareup.otto.Subscribe;
 import com.squareup.picasso.Picasso;
+
+import se.emilsjolander.sprinkles.OneQuery;
+import se.emilsjolander.sprinkles.Query;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private int clickCount;
@@ -80,23 +87,38 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         } else {
             setupGuestMode(view);
         }
+        setActionBarSubTitle(null);
     }
 
     private void setupTracker(final View view) {
         view.findViewById(R.id.wrap_guest).setVisibility(View.GONE);
+        Query.one(
+            SummarizedSoldierStatsDAO.class,
+            "SELECT * " +
+            "FROM " + SummarizedSoldierStatsDAO.TABLE_NAME + " " +
+            "WHERE soldierId = ? AND platformId = ?",
+            sharedPreferences.getString(Keys.Menu.LATEST_PERSONA, ""),
+            sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_PLATFORM, 0)
+        ).getAsync(
+                getLoaderManager(),
+                new OneQuery.ResultHandler<SummarizedSoldierStatsDAO>() {
+                    @Override
+                    public boolean handleResult(SummarizedSoldierStatsDAO soldier) {
+                        final View wrap = view.findViewById(R.id.wrap_tracker);
+                        final TextView soldierNameView = (TextView) wrap.findViewById(R.id.selected_soldier_name);
+                        final ImageView soldierImageView = (ImageView) wrap.findViewById(R.id.selected_soldier_image);
 
-        final View wrap = view.findViewById(R.id.wrap_tracker);
-        final TextView usernameTextView = (TextView) wrap.findViewById(R.id.selected_user_username);
-        final ImageView gravatarImageView = (ImageView) wrap.findViewById(R.id.selected_user_gravatar);
+                        soldierNameView.setText(soldier.getSoldierName());
+                        Picasso.with(getActivity())
+                                .load(SoldierImageMap.get(soldier.getPicture()))
+                                .into(soldierImageView);
 
-        usernameTextView.setText(SessionStore.getUsername());
-        Picasso.with(getActivity())
-            .load(UrlFactory.buildGravatarUrl(SessionStore.getGravatarHash()))
-            .placeholder(R.drawable.default_gravatar)
-            .into(gravatarImageView);
-
-        wrap.findViewById(R.id.button_select_another_account).setOnClickListener(this);
-        wrap.setVisibility(View.VISIBLE);
+                        wrap.findViewById(R.id.button_select_another_soldier).setOnClickListener(HomeFragment.this);
+                        wrap.setVisibility(View.VISIBLE);
+                        return false;
+                    }
+                }
+        );
     }
 
     private void setupGuestMode(final View view) {

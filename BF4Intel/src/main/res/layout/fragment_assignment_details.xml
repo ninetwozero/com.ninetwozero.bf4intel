@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
   xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@color/card_activity_bg"
@@ -14,6 +15,12 @@
     android:paddingLeft="@dimen/spacing_m"
     android:orientation="vertical"
     >
+
+    <TextView
+      android:id="@+id/title"
+      style="@style/DialogFragmentTitle"
+      tools:text="Assignment"
+      />
 
     <RelativeLayout
       style="@style/NonListViewCard"

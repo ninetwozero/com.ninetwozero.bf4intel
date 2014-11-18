@@ -24,7 +24,6 @@
   <string name="label_service_news">News Service</string>
 
   <!--Menu options-->
-  <string name="menu_reset_password">Reset password&#8230;</string>
   <string name="menu_logout">Logout</string>
 
   <!-- Login related stuff -->

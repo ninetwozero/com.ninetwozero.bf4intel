@@ -11,9 +11,7 @@ import com.ninetwozero.bf4intel.database.dao.unlocks.kits.KitUnlockDAO;
 import com.ninetwozero.bf4intel.database.dao.unlocks.vehicles.VehicleUnlockDAO;
 import com.ninetwozero.bf4intel.database.dao.unlocks.weapons.WeaponUnlockDAO;
 
-import se.emilsjolander.sprinkles.Migration;
-
-public class MigrationToZeroNineSix extends Migration {
+public class MigrationToZeroNineSix extends BaseMigration {
     @Override
     protected void doMigration(final SQLiteDatabase db) {
         createRegularJsonTable(db, WeaponStatsDAO.TABLE_NAME);
@@ -28,18 +26,5 @@ public class MigrationToZeroNineSix extends Migration {
         createRegularJsonTable(db, AssignmentsDAO.TABLE_NAME);
         createRegularJsonTable(db, AwardsDAO.TABLE_NAME);
 
-    }
-
-    protected void createRegularJsonTable(final SQLiteDatabase db, final String tableName) {
-        db.execSQL(
-            "CREATE TABLE " + tableName + "(" +
-                "soldierId TEXT," +
-                "soldierName TEXT," +
-                "platformId INTEGER," +
-                "json TEXT," +
-                "version INTEGER," +
-                "PRIMARY KEY(soldierId, platformId)" +
-                ")"
-        );
     }
 }
