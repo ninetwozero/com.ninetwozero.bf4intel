@@ -8,7 +8,8 @@
 
   <TextView
     android:id="@+id/vehicle_list_item_name"
-    style="@style/TextViewLightGrey" />
+    style="@style/TextViewLightGrey"
+    android:textAllCaps="true"/>
 
   <TextView
     android:id="@+id/vehicle_list_item_score"
