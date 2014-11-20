@@ -236,11 +236,14 @@ public class UnlockImageSlugMap {
             put("DEAGLE-44", R.drawable.w_lineart_deagle_44);
             put("UNICA-6", R.drawable.w_lineart_unica_6);
             put("NECK", R.drawable.w_lineart_neck);
+            put("TANTO", R.drawable.w_lineart_knife_tanto);
+            put("C100", R.drawable.w_lineart_neck);
         }
     };
 
     public static int get(String slug) {
         final String uppercaseSlug = slug.toUpperCase(Locale.getDefault());
+        if(!map.containsKey(uppercaseSlug)) android.util.Log.e("UnlockImageSlug", uppercaseSlug);
         return map.containsKey(uppercaseSlug) ? map.get(uppercaseSlug) : R.drawable.kit_none;
     }
 }
