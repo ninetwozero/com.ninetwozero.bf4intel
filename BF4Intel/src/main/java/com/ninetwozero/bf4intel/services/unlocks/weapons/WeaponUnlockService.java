@@ -31,6 +31,7 @@ public class WeaponUnlockService extends BaseDaoService<WeaponUnlockDAO, WeaponU
             add("75BEDC56-9A79-4013-81EA-1430C97CDDF8"); // m82a3-cqb
             add("4B28E2E7-4F5D-455E-AC2E-C597763F5139"); // m82a3
             add("B21346FC-365F-4BE9-8FE2-A9588A78A4CD"); // m32-mgl
+            add("0B126F24-23D7-4E64-B88E-CD139A2F4D23"); // rorsch-mk-1 not showed in unlocks
         }
     };
 
