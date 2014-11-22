@@ -72,6 +72,7 @@ public class VehicleImageMap {
             put("WARSAW_ID_P_XP4_MP_VNAME_POD", R.drawable.vehicle_pod_fancy);
             put("WARSAW_ID_P_XP4_WNAME_MKV", R.drawable.vehicle_xd1_fancy);
             put("WARSAW_ID_P_XP4_MP_VNAME_METAL", R.drawable.w_sc42_fancy);
+            put("WARSAW_ID_P_XP4_INAME_DECOYGRENADE", R.drawable.w_ds_3_decoy);
         }
     };
 

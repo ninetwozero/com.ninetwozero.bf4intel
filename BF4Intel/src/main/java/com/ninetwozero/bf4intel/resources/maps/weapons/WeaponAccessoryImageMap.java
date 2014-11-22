@@ -87,6 +87,7 @@ public class WeaponAccessoryImageMap {
             put("DATA_MISSING", R.drawable.acc_flash_hider_pistol);
             put("DATA_MISSING", R.drawable.acc_laser_sight_shotgun);
             put("DATA_MISSING", R.drawable.acc_smg_suppressor);
+            put("WARSAW_ID_P_XP4_ANAME_SPOTTER", R.drawable.acc_target_detector);
         }
     };
 

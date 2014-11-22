@@ -353,6 +353,18 @@ public class DogtagStringMap {
             put("WARSAW_ID_P_XP3_DRAS07_NAME", R.string.warsaw_id_xp3_remotecontrol_name);
             put("WARSAW_ID_P_XP3_DRAS09_NAME", R.string.warsaw_id_xp3_killjoy_name);
             put("WARSAW_ID_P_XP3_DRAS10_NAME", R.string.warsaw_id_xp3_cityslicker_name);
+
+            //XP4
+            put("WARSAW_ID_P_XP4_DRXP4AS03_NAME", R.string.warsaw_id_xp4_accipiter_name);
+            put("WARSAW_ID_P_XP4_DRXP4AS04_NAME", R.string.warsaw_id_xp4_snowmobile_name);
+            put("WARSAW_ID_P_XP4_DRXP4AS05_NAME", R.string.warsaw_id_xp4_levkov_name);
+            put("WARSAW_ID_P_XP4_DRXP4AS06_NAME", R.string.warsaw_id_xp4_rorsch_name);
+            put("WARSAW_ID_P_XP4_DRXP4PAS01_NAME", R.string.warsaw_id_pa4_ultimate_assault_name);
+            put("WARSAW_ID_P_XP4_DRXP4PAS02_NAME", R.string.warsaw_id_pa4_ultimate_engineer_name);
+            put("WARSAW_ID_P_XP4_DRXP4PAS03_NAME", R.string.warsaw_id_pa4_ultimate_support_name);
+            put("WARSAW_ID_P_XP4_DRXP4PAS04_NAME", R.string.warsaw_id_pa4_ultimate_recon_name);
+            put("WARSAW_ID_P_XP4_DRXP4PAS05_NAME", R.string.warsaw_id_pa4_ultimate_commander_name);
+
         }
     };
 

@@ -72,6 +72,7 @@ public class VehicleStringMap {
             put("WARSAW_ID_P_XP4_MP_VNAME_POD", R.string.vehicle_pod_fancy);
             put("WARSAW_ID_P_XP4_WNAME_MKV", R.string.vehicle_xd1_fancy);
             put("WARSAW_ID_P_XP4_MP_VNAME_METAL", R.string.w_sc42_fancy);
+            put("WARSAW_ID_P_XP4_INAME_DECOYGRENADE", R.string.w_ds_3_decoy);
         }
     };
 

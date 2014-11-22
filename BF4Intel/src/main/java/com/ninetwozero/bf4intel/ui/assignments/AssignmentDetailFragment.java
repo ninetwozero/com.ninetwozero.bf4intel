@@ -26,6 +26,8 @@ import com.ninetwozero.bf4intel.resources.maps.dogtags.DogtagStringMap;
 import com.ninetwozero.bf4intel.resources.maps.unlocks.VehicleUnlockImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleImageMap;
 import com.ninetwozero.bf4intel.resources.maps.vehicles.VehicleStringMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryImageMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponAccessoryStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
 import com.squareup.picasso.Picasso;
@@ -283,6 +285,8 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
                 return DogtagStringMap.get(reward.getName());
             case KIT_ITEM:
                 return VehicleStringMap.get(reward.getName());
+            case WEAPON_ADDON:
+                return WeaponAccessoryStringMap.get(reward.getName());
             default:
                 return R.string.na;
         }
@@ -305,6 +309,9 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
                 break;
             case DOGTAG:
                 setImageForDogtagReward(view, viewId, reward);
+                break;
+            case WEAPON_ADDON:
+                imageResource = WeaponAccessoryImageMap.get(reward.getName());
                 break;
             default:
                 imageResource = R.drawable.kit_none;

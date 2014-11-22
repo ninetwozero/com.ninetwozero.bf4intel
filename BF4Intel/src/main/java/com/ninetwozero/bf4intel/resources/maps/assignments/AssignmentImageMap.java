@@ -86,10 +86,11 @@ public class AssignmentImageMap {
             put("WARSAW_ID_P_XP1_AWARD_AS_09", R.drawable.xp1as09);
             put("WARSAW_ID_P_XP1_AWARD_AS_10", R.drawable.xp1as10);
 
-            /*Unknown award*/
+            /*Phantom assignments*/
             put("WARSAW_ID_P_XP1_AWARD_GHOST", R.drawable.ghost1);
             put("WARSAW_ID_P_XP2_AWARD_GHOST", R.drawable.ghost2);
             put("WARSAW_ID_P_XP3_AWARD_GHOST", R.drawable.ghost3);
+            put("WARSAW_ID_P_XP4_AWARD_GHOST_NAME", R.drawable.ghost4);
 
             /*Naval Strike assignments*/
             put("WARSAW_ID_P_XP2_AWARD_AS_01", R.drawable.xp2as01);
@@ -114,6 +115,23 @@ public class AssignmentImageMap {
             put("WARSAW_ID_P_XP3_AWARD_AS_08_NAME", R.drawable.xp3as08);
             put("WARSAW_ID_P_XP3_AWARD_AS_09_NAME", R.drawable.xp3as09);
             put("WARSAW_ID_P_XP3_AWARD_AS_10_NAME", R.drawable.xp3as10);
+
+            /*FINAL STAND*/
+            put("WARSAW_ID_P_XP4_AWARD_AS_01_NAME", R.drawable.xp4as01);
+            put("WARSAW_ID_P_XP4_AWARD_AS_02_NAME", R.drawable.xp4as02);
+            put("WARSAW_ID_P_XP4_AWARD_AS_03_NAME", R.drawable.xp4as03);
+            put("WARSAW_ID_P_XP4_AWARD_AS_04_NAME", R.drawable.xp4as04);
+            put("WARSAW_ID_P_XP4_AWARD_AS_05_NAME", R.drawable.xp4as05);
+            put("WARSAW_ID_P_XP4_AWARD_AS_06_NAME", R.drawable.xp4as06);
+            put("WARSAW_ID_P_XP4_AWARD_AS_07_NAME", R.drawable.xp4as07);
+            put("WARSAW_ID_P_XP4_AWARD_AS_08_NAME", R.drawable.xp4as08);
+
+            /*PREMIUM ASSIGNMENTS*/
+            put("WARSAW_ID_P_XP4_AWARD_PAS_01_NAME", R.drawable.pa1);
+            put("WARSAW_ID_P_XP4_AWARD_PAS_02_NAME", R.drawable.pa2);
+            put("WARSAW_ID_P_XP4_AWARD_PAS_03_NAME", R.drawable.pa3);
+            put("WARSAW_ID_P_XP4_AWARD_PAS_04_NAME", R.drawable.pa4);
+            put("WARSAW_ID_P_XP4_AWARD_PAS_05_NAME", R.drawable.pa5);
         }
     };
 

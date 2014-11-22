@@ -22,6 +22,8 @@
     <item>Bronze</item>
     <item>Silver</item>
     <item>Gold</item>
+    <item>Premium</item>
+    <item>Phantom</item>
     <item>Single player</item>
   </string-array>
 

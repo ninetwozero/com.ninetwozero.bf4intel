@@ -60,4 +60,5 @@
   <string name="vehicle_pod_fancy">LAUNCH POD</string>
   <string name="vehicle_xd1_fancy">XD-1 ACCIPITER</string>
   <string name="w_sc42_fancy">SCHIPUNOV 42</string>
+  <string name="w_ds_3_decoy">DS-3 DECOY</string>
 </resources>

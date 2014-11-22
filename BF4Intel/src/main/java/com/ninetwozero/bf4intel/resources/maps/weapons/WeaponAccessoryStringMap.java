@@ -84,6 +84,7 @@ public class WeaponAccessoryStringMap {
             put("WARSAW_ID_P_ANAME_VERTFOR", R.string.aname_vertfor);
             put("WARSAW_ID_P_ANAME_VETERANSCOPE", R.string.aname_veteranscope);
             put("WARSAW_ID_P_XP0_ANAME_F2000OPTIC", R.string.xp0_aname_f2000optic);
+            put("WARSAW_ID_P_XP4_ANAME_SPOTTER", R.string.xp4_target_detector);
         }
     };
 

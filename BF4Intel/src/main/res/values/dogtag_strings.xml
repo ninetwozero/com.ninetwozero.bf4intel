@@ -345,4 +345,15 @@
   <string name="warsaw_id_xp3_remotecontrol_name">Remote Control Dog Tag</string>
   <string name="warsaw_id_xp3_killjoy_name">Killjoy Dog tag</string>
   <string name="warsaw_id_xp3_cityslicker_name">City Slicker Dog Tag</string>
+
+  <!--XP4-->
+  <string name="warsaw_id_xp4_accipiter_name">XD-1 Accipiter Dog Tag</string>
+  <string name="warsaw_id_xp4_snowmobile_name">Snowmobile Dog Tag</string>
+  <string name="warsaw_id_xp4_levkov_name">HT-95 Levkov Dog Tag</string>
+  <string name="warsaw_id_xp4_rorsch_name">Rorsch Mk-1 Dog Tag</string>
+  <string name="warsaw_id_pa4_ultimate_assault_name">Ultimate Assault Dog Tag</string>
+  <string name="warsaw_id_pa4_ultimate_engineer_name">Ultimate Engineer Dog Tag</string>
+  <string name="warsaw_id_pa4_ultimate_support_name">Ultimate Support Dog Tag</string>
+  <string name="warsaw_id_pa4_ultimate_recon_name">Ultimate Recon Dog Tag</string>
+  <string name="warsaw_id_pa4_ultimate_commander_name">Ultimate Commander Dog Tag</string>
 </resources>

@@ -144,4 +144,6 @@
   <string name="xp0_camo_name_firestarter3">FIRE STARTER (US)</string>
   <string name="xp2_camo_name_phantom">Phantom</string>
   <string name="xp3_camo_phantom_initiate">@string/xp2_camo_name_phantom</string>
+  <string name="xp4_camo_tundra">TUNDRA</string>
+  <string name="xp4_camo_frostbite">FROSTBITE</string>
 </resources>
