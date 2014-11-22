@@ -45,6 +45,12 @@ public class LevelImageMap {
             put("XP3_Prpganda", R.drawable.mp_xp3_prpganda);
             put("XP3_urbanGdn", R.drawable.mp_xp3_urbangdn);
             put("XP3_WtrFront", R.drawable.mp_xp3_wtrfront);
+
+            //XP4
+            put("XP4_Titan", R.drawable.mp_xp4_titan);
+            put("XP4_Arctic", R.drawable.mp_xp4_arctic);
+            put("XP4_WlkrFtry", R.drawable.mp_xp4_wlkrftry);
+            put("XP4_SubBase", R.drawable.mp_xp4_subbase);
         }
     };
 
