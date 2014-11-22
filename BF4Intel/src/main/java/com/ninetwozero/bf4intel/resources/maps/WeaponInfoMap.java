@@ -168,6 +168,10 @@ public class WeaponInfoMap {
             put("WARSAW_ID_P_XP2_WNAME_SR2", new WeaponInfo("WARSAW_ID_P_CAT_PDW", 40, 30, 10, 70, 900, true, false, true));
             put("WARSAW_ID_P_XP2_WNAME_SR338", new WeaponInfo("WARSAW_ID_P_CAT_SNIPER", 55, 75, 60, 30, 0, true, false, false));
             put("WARSAW_ID_P_XP2_WNAME_SW40", new WeaponInfo("WARSAW_ID_P_CAT_SIDEARM", 65, 12, 20, 45, 0, true, false, false));
+            /*FINAL STAND*/
+            put("WARSAW_ID_P_XP4_WNAME_RAILGUN", new WeaponInfo("WARSAW_ID_P_CAT_SNIPER", 100, 100, 100, 10, 0, true, false, false));
+            put("WARSAW_ID_P_XP4_INAME_KNIFETANTO", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
+            put("WARSAW_ID_P_XP4_INAME_KNIFEBIPOD", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
         }
     };
 

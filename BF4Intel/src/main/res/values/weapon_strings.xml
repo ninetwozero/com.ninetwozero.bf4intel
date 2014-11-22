@@ -179,8 +179,7 @@
   <string name="weapon_name_uts15">UTS-15</string>
   <string name="weapon_name_u100_mk5">U-100 MK5</string>
   <string name="weapon_knife_weaver">WEAVER</string>
-  <string name="weapon_knife_tanto">TANTO</string>
-  <string name="weapon_knife_c100">C100</string>
+
 
   <!--SECOND ASSAULT-->
   <string name="weapon_dao12_fancy">DAO-12</string>
@@ -220,4 +219,9 @@
   <string name="weapon_bulldog">BULLDOG</string>
   <string name="weapon_cs5">CS5</string>
   <string name="weapon_shield">BALLISTIC SHIELD</string>
+
+  <!--FINAL STAND-->
+  <string name="weapon_railgun">RORSCH MK-1</string>
+  <string name="weapon_knife_tanto">TANTO</string>
+  <string name="weapon_knife_c100">C100</string>
 </resources>

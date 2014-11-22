@@ -249,7 +249,7 @@ public class WeaponStringSlugMap {
             put("NECK", R.string.weapon_neckknife);
             put("WEAVER", R.string.weapon_knife_weaver);
             put("TANTO", R.string.weapon_knife_tanto);
-            put("C100", R.string.weapon_knife_tanto);//TODO provide correct image
+            put("C100", R.string.weapon_knife_c100);
         }
     };
 
