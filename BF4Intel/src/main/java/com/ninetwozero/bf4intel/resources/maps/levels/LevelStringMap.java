@@ -47,16 +47,16 @@ public class LevelStringMap {
             put("XP2_004", "Operation Mortar");
 
             //XP3
-            put("XP3_Prpganda", "Propaganda");
-            put("XP3_MarketPl", "Pearl Market");
-            put("XP3_WtrFront", "Sunken Dragon");
-            put("XP3_UrbanGdn", "Lumphini Garden");
+            put("XP3_PRPGANDA", "Propaganda");
+            put("XP3_MARKETPL", "Pearl Market");
+            put("XP3_WTRFRONT", "Sunken Dragon");
+            put("XP3_URBANGDN", "Lumphini Garden");
 
             //XP4
-            put("XP4_Titan","Hangar 21");
-            put("XP4_Arctic","Operation Whiteout");
-            put("XP4_WlkrFtry","Giants Of Karelia");
-            put("XP4_SubBase","Hammerhead");
+            put("XP4_TITAN","Hangar 21");
+            put("XP4_ARCTIC","Operation Whiteout");
+            put("XP4_WLKRFTRY","Giants Of Karelia");
+            put("XP4_SUBBASE","Hammerhead");
         }
     };
 
