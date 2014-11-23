@@ -55,4 +55,10 @@
   <string name="vehicle_xp2_acv">ACV</string>
   <string name="vehicle_xp2_old_canon">OLD CANON</string>
   <string name="vehicle_xp3_rawr">RAWR</string>
+  <string name="vehicle_ht95_fancy">HT-95 LEVKOV</string>
+  <string name="vehicle_snowmobile_fancy">SNOWMOBILE</string>
+  <string name="vehicle_pod_fancy">LAUNCH POD</string>
+  <string name="vehicle_xd1_fancy">XD-1 ACCIPITER</string>
+  <string name="w_sc42_fancy">SCHIPUNOV 42</string>
+  <string name="w_ds_3_decoy">DS-3 DECOY</string>
 </resources>

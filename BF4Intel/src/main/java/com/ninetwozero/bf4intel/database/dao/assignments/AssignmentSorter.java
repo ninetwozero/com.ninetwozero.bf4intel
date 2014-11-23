@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AssignmentSorter extends AbstractSorter<SortedAssignmentContainer> {
-    public static final List<String> ASSIGNMENT_TYPE = new ArrayList<String>(Arrays.asList("bronze", "silver", "gold", "sp"));
+    public static final List<String> ASSIGNMENT_TYPE = new ArrayList<String>(Arrays.asList("bronze", "silver", "gold", "premium", "phantom", "sp"));
     private final Assignments assignments;
     private Map<String, List<Assignment>> groupedMap = new HashMap<String, List<Assignment>>();
 

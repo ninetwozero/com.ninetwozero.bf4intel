@@ -64,11 +64,12 @@ public class DetailedStatsGrouper {
         items.add(new DetailedStatsItem("rush", stringValueOf(details.getRush())));
         items.add(new DetailedStatsItem("death_match", stringValueOf(details.getDeathMatch())));
         items.add(new DetailedStatsItem("domination", stringValueOf(details.getDomination())));
-        items.add(new DetailedStatsItem("capture_the_flag", stringValueOf(details.getCaptureTheFlag())));
         items.add(new DetailedStatsItem("obliteration", stringValueOf(details.getObliteration())));
-        items.add(new DetailedStatsItem("air_superiority", stringValueOf(details.getAirSuperiority())));
         items.add(new DetailedStatsItem("defuse", stringValueOf(details.getDefuse())));
+        items.add(new DetailedStatsItem("capture_the_flag", stringValueOf(details.getCaptureTheFlag())));
+        items.add(new DetailedStatsItem("air_superiority", stringValueOf(details.getAirSuperiority())));
         items.add(new DetailedStatsItem("carrier_assault", stringValueOf(details.getCarrieAssault())));
+        items.add(new DetailedStatsItem("chain_link", stringValueOf(details.getChainLink())));
         return new DetailedStatsGroup(DetailedStatsGroup.GAME_MODE_SCORES, items);
     }
 

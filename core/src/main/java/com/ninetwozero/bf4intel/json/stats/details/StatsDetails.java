@@ -67,7 +67,7 @@ public class StatsDetails {
         private int deathMatch;
         @SerializedName("domination")
         private int domination;
-        @SerializedName("flagrunner")
+        @SerializedName("capturetheflag")
         private int captureTheFlag;
         @SerializedName("obliteration")
         private int obliteration;
@@ -77,6 +77,9 @@ public class StatsDetails {
         private int defuse;
         @SerializedName("carrierassault")
         private int carrieAssault;
+
+        @SerializedName("chainlink")
+        private int chainLink;
 
         /*Team*/
         @SerializedName("repairs")
@@ -238,6 +241,10 @@ public class StatsDetails {
 
         public int getCarrieAssault() {
             return carrieAssault;
+        }
+
+        public int getChainLink() {
+            return chainLink;
         }
 
         public int getRepairs() {

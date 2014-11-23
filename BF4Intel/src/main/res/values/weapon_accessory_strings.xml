@@ -76,4 +76,5 @@
   <string name="aname_vertfor">VERTICAL GRIP</string>
   <string name="aname_veteranscope">SCOPE [3X]</string>
   <string name="xp0_aname_f2000optic">F2000 [1.6X]</string>
+  <string name="xp4_target_detector">Target Detector</string>
 </resources>

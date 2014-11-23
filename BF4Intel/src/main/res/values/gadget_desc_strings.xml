@@ -71,4 +71,8 @@
   <string name="idesc_neck">A small knife usually carried in a sheath worn around the neck on a breakaway chain. Readily available and easy to deploy, use it to steal your enemy\'s dogtags.</string>
   <string name="idesc_shield">A heavy ballistic shield that will easily stop most small projectiles. The viewport, however, is vulnerable to heavy rounds such us shotgun slugs, sniper fire and explosives.</string>
   <string name="idesc_weaver">Forged using experimental 3D weave technology. Use it to steal an opponent\'s dog tags.</string>
+
+  <!--FINAL STAND-->
+  <string name="idesc_tanto">A heavy tanto style blade. The angled tip excels at puncturing hard targets. Use it to steal dog tags from your enemy.</string>
+  <string name="idesc_c100">Your very own bipod knife, no bucket required. Rumored to be the favorite weapon of the greatest soldier on the battlefield.</string>
 </resources>

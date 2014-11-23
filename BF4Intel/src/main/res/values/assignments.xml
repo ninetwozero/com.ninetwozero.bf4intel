@@ -129,4 +129,23 @@
   <string name="assignments_xp1_name_ghost1">Phantom Prospect</string>
   <string name="assignments_xp2_name_ghost2">Phantom Trainee</string>
   <string name="assignments_xp3_name_ghost3">Phantom Initiate</string>
+  <string name="assignments_xp4_name_ghost4">Phantom Operative</string>
+
+  /*FINAL STAND*/
+  <string name="assignments_xp4as01">Disinformation</string>
+  <string name="assignments_xp4as02">Eye Spy</string>
+  <string name="assignments_xp4as03">XD-1 Deathbringer</string>
+  <string name="assignments_xp4as04">Snowmobile Slayer</string>
+  <string name="assignments_xp4as05">Hover Tank Harbinger</string>
+  <string name="assignments_xp4as06">Railgun Rampage</string>
+  <string name="assignments_xp4as07">Mechanized Mayhen</string>
+  <string name="assignments_xp4as08">Frostbite</string>
+  <string name="assignments_xp4_play_xp4">Play a Final Stand map</string>
+
+  /*PREMIUM ASSIGNMENTS*/
+  <string name="assignments_pa1">Ultimate Assault</string>
+  <string name="assignments_pa2">Ultimate Engineer</string>
+  <string name="assignments_pa3">Ultimate Support</string>
+  <string name="assignments_pa4">Ultimate Recon</string>
+  <string name="assignments_pa5">Ultimate Commander</string>
 </resources>

@@ -162,6 +162,10 @@ public class CamoImageMap {
             put("WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE3", R.drawable.camo_phantominitiate3);
 
             put("DATA_MISSING", R.drawable.camo_slice_90);
+
+            //XP4
+            put("WARSAW_ID_P_XP4_CAMO_NAME_TUNDRA", R.drawable.camo_xp4_tundra);
+            put("WARSAW_ID_P_XP4_CAMO_NAME_FROSTBITE", R.drawable.camo_xp4_frostbite);
         }
     };
 

@@ -236,6 +236,8 @@ public class UnlockImageSlugMap {
             put("DEAGLE-44", R.drawable.w_lineart_deagle_44);
             put("UNICA-6", R.drawable.w_lineart_unica_6);
             put("NECK", R.drawable.w_lineart_neck);
+            put("TANTO", R.drawable.w_lineart_knife_tanto);
+            put("C100", R.drawable.w_lineart_c100);
         }
     };
 
