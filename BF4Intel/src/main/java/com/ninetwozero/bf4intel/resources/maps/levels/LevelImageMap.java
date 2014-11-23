@@ -41,16 +41,16 @@ public class LevelImageMap {
             put("XP2_004", R.drawable.mp_xp2_004);
 
             // XP3
-            put("XP3_MarketPl", R.drawable.mp_xp3_marketpl);
-            put("XP3_Prpganda", R.drawable.mp_xp3_prpganda);
-            put("XP3_urbanGdn", R.drawable.mp_xp3_urbangdn);
-            put("XP3_WtrFront", R.drawable.mp_xp3_wtrfront);
+            put("XP3_MARKETPL", R.drawable.mp_xp3_marketpl);
+            put("XP3_PRPGANDA", R.drawable.mp_xp3_prpganda);
+            put("XP3_URBANGDN", R.drawable.mp_xp3_urbangdn);
+            put("XP3_WTRFRONT", R.drawable.mp_xp3_wtrfront);
 
             //XP4
-            put("XP4_Titan", R.drawable.mp_xp4_titan);
-            put("XP4_Arctic", R.drawable.mp_xp4_arctic);
-            put("XP4_WlkrFtry", R.drawable.mp_xp4_wlkrftry);
-            put("XP4_SubBase", R.drawable.mp_xp4_subbase);
+            put("XP4_TITAN", R.drawable.mp_xp4_titan);
+            put("XP4_ARCTIC", R.drawable.mp_xp4_arctic);
+            put("XP4_WLKRFTRY", R.drawable.mp_xp4_wlkrftry);
+            put("XP4_SUBBASE", R.drawable.mp_xp4_subbase);
         }
     };
 
