@@ -8,8 +8,4 @@ public class DensityUtils {
     public static int toPixels(final float dp) {
         return (int) (dp * SCALE + 0.5f);
     }
-
-    public static float toDips(final int pixels) {
-        return (pixels / SCALE + 0.5f);
-    }
 }
