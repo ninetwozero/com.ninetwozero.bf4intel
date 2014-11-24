@@ -4,8 +4,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +12,7 @@ import android.view.ViewGroup;
 import com.astuetz.PagerSlidingTabStrip;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.ui.adapters.ViewPagerAdapter;
+import com.ninetwozero.bf4intel.utils.DensityUtils;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 
 import java.util.List;
@@ -101,6 +100,12 @@ public abstract class BaseTabFragment extends BaseFragment {
                 sharedPreferences.edit().putInt(fetchKeyForTabState(), position).apply();
             }
         });
+        tabStrip.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        tabStrip.setIndicatorColorResource(R.color.colorAccent);
+        tabStrip.setIndicatorHeight(DensityUtils.toPixels(2.5f));
+        tabStrip.setTextColorResource(android.R.color.white);
+        tabStrip.setUnderlineHeight(0);
+        tabStrip.setDividerColor(0x33FFFFFF);
     }
 
     private void postToGoogleAnalytics(int position) {
