@@ -75,6 +75,7 @@
       android:layout_marginBottom="@dimen/spacing_l"
       android:fontFamily="sans-serif-light"
       android:text="@string/msg_downloading"
+      android:textColor="@color/lightgrey"
       tools:ignore="UnusedAttribute"/>
   </LinearLayout>
 
