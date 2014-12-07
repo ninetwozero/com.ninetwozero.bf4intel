@@ -172,6 +172,7 @@ public class WeaponInfoMap {
             put("WARSAW_ID_P_XP4_WNAME_RAILGUN", new WeaponInfo("WARSAW_ID_P_CAT_SNIPER", 100, 100, 100, 10, 0, true, false, false));
             put("WARSAW_ID_P_XP4_INAME_KNIFETANTO", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_XP4_INAME_KNIFEBIPOD", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
+            put("WARSAW_ID_P_XP4_WNAME_SPYDER", new WeaponInfo("WARSAW_ID_P_CAT_CARBINE", 100, 75, 15, 0, 1, true, false, false));
         }
     };
 

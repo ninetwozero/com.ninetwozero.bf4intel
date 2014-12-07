@@ -218,6 +218,7 @@ public class WeaponStringMap {
             put("WARSAW_ID_P_XP4_WNAME_RAILGUN", R.string.weapon_railgun);
             put("WARSAW_ID_P_XP4_INAME_KNIFETANTO", R.string.weapon_knife_tanto);
             put("WARSAW_ID_P_XP4_INAME_KNIFEBIPOD", R.string.weapon_knife_c100);
+            put("WARSAW_ID_P_XP4_WNAME_SPYDER", R.string.weapon_spyder);
         }
     };
 
