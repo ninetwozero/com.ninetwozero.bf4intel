@@ -184,7 +184,7 @@ public class WeaponImageMap {
             put("WARSAW_ID_P_XP4_WNAME_RAILGUN", R.drawable.w_railgun_fancy);
             put("WARSAW_ID_P_XP4_INAME_KNIFETANTO", R.drawable.w_knife_tanto_fancy);
             put("WARSAW_ID_P_XP4_INAME_KNIFEBIPOD", R.drawable.v_knife_c100_fancy);
-            //TODO put("WARSAW_ID_P_XP4_WNAME_SPYDER", R.drawable.);
+            put("WARSAW_ID_P_XP4_WNAME_SPYDER", R.drawable.w_sh_fancy);
         }
     };
 
