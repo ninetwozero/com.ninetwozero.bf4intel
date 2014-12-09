@@ -184,10 +184,12 @@ public class WeaponImageMap {
             put("WARSAW_ID_P_XP4_WNAME_RAILGUN", R.drawable.w_railgun_fancy);
             put("WARSAW_ID_P_XP4_INAME_KNIFETANTO", R.drawable.w_knife_tanto_fancy);
             put("WARSAW_ID_P_XP4_INAME_KNIFEBIPOD", R.drawable.v_knife_c100_fancy);
+            put("WARSAW_ID_P_XP4_WNAME_SPYDER", R.drawable.w_sh_fancy);
         }
     };
 
     public static int get(final String key) {
+        if(!map.containsKey(key))android.util.Log.e("WeaponImageMap", key);
         return map.containsKey(key) ? map.get(key) : R.drawable.acc_none;
     }
 }
