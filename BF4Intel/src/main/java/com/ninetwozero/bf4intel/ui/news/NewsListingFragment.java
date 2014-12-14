@@ -7,19 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
-import com.ninetwozero.bf4intel.events.HooahToggleRequest;
 import com.ninetwozero.bf4intel.events.news.NewsListingRefreshedEvent;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
-import com.ninetwozero.bf4intel.network.SimplePostRequest;
-import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.WebsiteErrorMessageMap;
 import com.ninetwozero.bf4intel.services.news.NewsListingService;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
@@ -88,48 +82,17 @@ public class NewsListingFragment extends BaseLoadingListFragment {
     }
 
     @Subscribe
+    @SuppressWarnings("unused")
     public void onNewsRefreshed(NewsListingRefreshedEvent response) {
         sendItemsToListView(response.getRequest().getArticles());
         showLoadingState(false);
         isReloading = false;
     }
 
-    private Request<Object> fetchRequestForHooah(Bundle bundle) {
-        return new SimplePostRequest<Object>(
-            UrlFactory.buildNewsArticleHooahURL(bundle.getString(ID)),
-            bundle,
-            this
-        ) {
-            @Override
-            protected Object doParse(String json) {
-                return json;
-            }
-
-            @Override
-            protected void deliverResponse(Object response) {
-                startLoadingData(true);
-            }
-        };
-    }
-
     @Override
     public void onErrorResponse(VolleyError error) {
         super.onErrorResponse(error);
         showToast(WebsiteErrorMessageMap.get(error.getMessage()));
-    }
-
-    @Subscribe
-    public void onUserPressedHooah(final HooahToggleRequest request) {
-        if (!SessionStore.isLoggedIn()) {
-            showToast(R.string.toast_please_log_in);
-            return;
-        }
-
-        final Bundle data = new Bundle();
-        data.putString(Keys.CHECKSUM, SessionStore.getChecksum());
-        data.putString(ID, request.getId());
-
-        Bf4Intel.getRequestQueue().add(fetchRequestForHooah(data));
     }
 
     private void initialize(final View view) {

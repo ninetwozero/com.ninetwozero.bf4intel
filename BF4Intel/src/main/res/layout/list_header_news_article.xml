@@ -69,6 +69,7 @@
         android:orientation="vertical"
         android:gravity="center_vertical"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         >
 
         <TextView
@@ -90,30 +91,16 @@
           />
       </LinearLayout>
 
-      <LinearLayout
-        android:id="@+id/wrap_meta_bottom_right"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
+
+      <ImageView
+        style="@style/card_action_button"
+        android:id="@+id/button_overflow"
+        android:contentDescription="@string/cdesc_overflow_menu"
+        android:src="@drawable/ic_menu_overflow"
         android:layout_alignParentRight="true"
-        android:orientation="horizontal"
-        >
-
-        <ImageView
-          style="@style/card_action_button"
-          android:id="@+id/button_hooah"
-          android:contentDescription="@string/cdesc_hooah"
-          android:src="@drawable/ic_menu_hooah"
-          />
-
-        <ImageView
-          style="@style/card_action_button"
-          android:id="@+id/button_overflow"
-          android:contentDescription="@string/cdesc_overflow_menu"
-          android:src="@drawable/ic_menu_overflow"
-          />
-      </LinearLayout>
-
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        />
     </RelativeLayout>
   </LinearLayout>
 </FrameLayout>

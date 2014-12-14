@@ -9,19 +9,16 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLayoutPopulator;
-import com.ninetwozero.bf4intel.events.HooahToggleRequest;
 import com.ninetwozero.bf4intel.datatypes.Link;
 import com.ninetwozero.bf4intel.datatypes.ParsedArticleContent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
-import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.NewsUtils;
 
@@ -100,17 +97,6 @@ public class NewsArticleLayout extends BaseLayoutPopulator implements View.OnCli
     }
 
     private void populateActionItems(final NewsArticle article) {
-        final ImageView buttonHooah = (ImageView) container.findViewById(R.id.button_hooah);
-        buttonHooah.setImageResource(fetchImageForHooah(article.hasUserSaidHooah()));
-        buttonHooah.setOnClickListener(
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    BusProvider.getInstance().post(new HooahToggleRequest(article.getId()));
-                }
-            }
-        );
-
         container.findViewById(R.id.button_overflow).setOnClickListener(
             new View.OnClickListener() {
                 @Override
@@ -119,10 +105,6 @@ public class NewsArticleLayout extends BaseLayoutPopulator implements View.OnCli
                 }
             }
         );
-    }
-
-    private int fetchImageForHooah(final boolean hasSaidHooah) {
-        return hasSaidHooah ? R.drawable.ic_menu_hooah_ok : R.drawable.ic_menu_hooah;
     }
 
     private void setupPopupMenuForActionItems(final View view, final NewsArticle article) {
@@ -152,18 +134,6 @@ public class NewsArticleLayout extends BaseLayoutPopulator implements View.OnCli
             }
         );
         menu.show();
-    }
-
-    public void updateHooahForArticle(final int count, final boolean voted) {
-        ((ImageView) container.findViewById(R.id.button_hooah)).setImageResource(
-            voted ? R.drawable.ic_menu_hooah_ok : R.drawable.ic_menu_hooah
-        );
-        ((TextView) container.findViewById(R.id.num_hooahs)).setText(
-            String.format(
-                context.getString(R.string.num_hooahs),
-                count
-            )
-        );
     }
 
     @Override

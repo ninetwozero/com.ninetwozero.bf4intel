@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.splunk.mint.Mint;
 
@@ -67,13 +66,6 @@ public abstract class BaseIntelActivity extends ActionBarActivity {
     }
 
     private void reloadSession() {
-        SessionStore.load(
-            sharedPreferences.getString(Keys.SESSION_ID, null),
-            sharedPreferences.getString(Keys.Profile.ID, null),
-            sharedPreferences.getString(Keys.Profile.USERNAME, null),
-            sharedPreferences.getString(Keys.Profile.GRAVATAR_HASH, null)
-        );
-
         if (sharedPreferences.getBoolean(Keys.Settings.USER_IN_CRASH_REPORT, true)) {
             Mint.addExtraDataMap(fetchExtraInformationForBugsense());
         } else {
@@ -83,18 +75,16 @@ public abstract class BaseIntelActivity extends ActionBarActivity {
 
     private HashMap<String, String> fetchExtraInformationForBugsense() {
         final HashMap<String, String> map = new HashMap<String, String>();
-        map.put("bl_userid", SessionStore.getUserId());
-        map.put("bl_username", SessionStore.getUsername());
-        map.put("bl_soldierid", sharedPreferences.getString(Keys.Menu.LATEST_PERSONA, ""));
+        map.put(Keys.Splunk.SOLDIER, sharedPreferences.getString(Keys.Menu.LATEST_PERSONA, ""));
+        map.put(Keys.Splunk.PLATFORM, String.valueOf(sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_PLATFORM, 0)));
         return map;
     }
 
     private HashMap<String, String> fetchDummyInformationForBugsense() {
         final String notApplicable = getString(R.string.na);
         final HashMap<String, String> map = new HashMap<String, String>();
-        map.put("bl_userid", notApplicable);
-        map.put("bl_username", notApplicable);
-        map.put("bl_soldierid", notApplicable);
+        map.put(Keys.Splunk.SOLDIER, notApplicable);
+        map.put(Keys.Splunk.PLATFORM, notApplicable);
         return map;
     }
 }

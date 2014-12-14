@@ -26,4 +26,9 @@ public class Keys {
     public class Settings {
         public static final String USER_IN_CRASH_REPORT = "user_in_crash_report";
     }
+
+    public class Splunk {
+        public static final String SOLDIER = "bl_soldierid";
+        public static final String PLATFORM = "bl_soldier_platform";
+    }
 }

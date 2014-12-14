@@ -17,15 +17,12 @@ import com.android.volley.Request;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
-import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResult;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResults;
 import com.ninetwozero.bf4intel.network.SimplePostRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.profile.PlatformStringMap;
-import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.PersonaUtils;
 
@@ -126,11 +123,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
 
         // Calling activity will be NULL when triggered from ActionBar
         if (activity.getCallingActivity() == null) {
-            if (activity instanceof SearchActivity) {
-                handleSelectionWhenCalledFromSearchActivity(result);
-            } else {
-                BusProvider.getInstance().post(result);
-            }
+            BusProvider.getInstance().post(result);
         } else {
             activity.setResult(
                 Activity.RESULT_OK,
@@ -140,22 +133,6 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
             );
             activity.finish();
         }
-    }
-
-    private void handleSelectionWhenCalledFromSearchActivity(final ProfileSearchResult result) {
-        final Profile profile = result.getProfile();
-        final Bundle dataBundle = new Bundle();
-        dataBundle.putString(Keys.Profile.ID, profile.getId());
-        dataBundle.putString(Keys.Profile.USERNAME, profile.getUsername());
-        dataBundle.putString(Keys.Profile.GRAVATAR_HASH, profile.getGravatarHash());
-
-        final Intent intent = new Intent(getActivity(), SingleFragmentActivity.class)
-            .putExtra(SingleFragmentActivity.INTENT_FRAGMENT_DATA, dataBundle)
-            .putExtra(
-                SingleFragmentActivity.INTENT_FRAGMENT_TYPE,
-                FragmentFactory.Type.ACCOUNT_PROFILE.ordinal()
-            );
-        startActivity(intent);
     }
 
     private void initialize(final View view) {

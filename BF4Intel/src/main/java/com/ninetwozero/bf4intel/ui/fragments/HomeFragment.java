@@ -10,12 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
-import com.ninetwozero.bf4intel.events.TrackingNewProfileEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
-import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
+import com.ninetwozero.bf4intel.events.TrackingNewSoldierEvent;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.resources.maps.profile.SoldierImageMap;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
@@ -27,8 +24,6 @@ import se.emilsjolander.sprinkles.OneQuery;
 import se.emilsjolander.sprinkles.Query;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
-    private int clickCount;
-
     public static HomeFragment newInstance(final Bundle data) {
         final HomeFragment fragment = new HomeFragment();
         fragment.setArguments(data);
@@ -73,7 +68,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     @Subscribe
-    public void onStartedTrackingNewProfile(final TrackingNewProfileEvent event) {
+    @SuppressWarnings("unused")
+    public void onStartedTrackingNewProfile(final TrackingNewSoldierEvent event) {
         final View view = getView();
         if (view == null) {
             return;
@@ -82,7 +78,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void initialize(final View view) {
-        if (SessionStore.hasUserId()) {
+        if (!"".equals(sharedPreferences.getString(Keys.Menu.LATEST_PERSONA, ""))) {
             setupTracker(view);
         } else {
             setupGuestMode(view);
