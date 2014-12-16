@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
-import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.factories.GsonProvider;
 import com.ninetwozero.bf4intel.utils.exception.Failure;
 
@@ -49,12 +48,9 @@ public abstract class BaseSimpleRequest<T> extends Request<T> {
     public Map<String, String> getHeaders() throws AuthFailureError {
         final Map<String, String> map = new HashMap<String, String>();
         map.put("X-Requested-With", "XMLHttpRequest");
-        map.put("Cookie", "beaker.session.id=" + SessionStore.getSessionId());
-
         if (requestType == RequestType.FROM_NAVIGATION) {
             map.put("X-AjaxNavigation", "1");
         }
-
         return map;
     }
 

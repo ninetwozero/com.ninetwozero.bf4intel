@@ -13,10 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseIntelActivity;
-import com.ninetwozero.bf4intel.events.TrackingNewProfileEvent;
-import com.ninetwozero.bf4intel.resources.Keys;
+import com.ninetwozero.bf4intel.events.TrackingNewSoldierEvent;
 import com.ninetwozero.bf4intel.ui.fragments.NavigationDrawerFragment;
 import com.ninetwozero.bf4intel.ui.login.LoginActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
@@ -122,19 +120,7 @@ public class MainActivity extends BaseIntelActivity implements NavigationDrawerF
                 return;
             }
 
-            final String userId = bundle.getString(Keys.Profile.ID);
-            final String username = bundle.getString(Keys.Profile.USERNAME);
-            final String gravatarHash = bundle.getString(Keys.Profile.GRAVATAR_HASH);
-            final TrackingNewProfileEvent event = new TrackingNewProfileEvent(userId, username, gravatarHash);
-
-            SessionStore.load(null, userId, username, gravatarHash);
-            sharedPreferences
-                .edit()
-                .putString(Keys.Profile.ID, userId)
-                .putString(Keys.Profile.USERNAME, username)
-                .putString(Keys.Profile.GRAVATAR_HASH, gravatarHash)
-                .apply();
-
+            final TrackingNewSoldierEvent event = new TrackingNewSoldierEvent(data.getExtras());
             navigationDrawer.onStartedTrackingNewProfile(event);
             BusProvider.getInstance().post(event);
         }

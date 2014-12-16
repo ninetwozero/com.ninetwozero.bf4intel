@@ -7,13 +7,11 @@ import com.ninetwozero.bf4intel.ui.assignments.AssignmentDetailFragment;
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentGridFragment;
 import com.ninetwozero.bf4intel.ui.awards.AwardDetailFragment;
 import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
-import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedFragment;
-import com.ninetwozero.bf4intel.ui.battlefeed.BattleFeedPostingFragment;
-import com.ninetwozero.bf4intel.ui.fragments.*;
+import com.ninetwozero.bf4intel.ui.fragments.HomeFragment;
+import com.ninetwozero.bf4intel.ui.fragments.SoldierOverviewFragment;
 import com.ninetwozero.bf4intel.ui.news.NewsArticleFragment;
 import com.ninetwozero.bf4intel.ui.news.NewsListingFragment;
 import com.ninetwozero.bf4intel.ui.search.ProfileSearchFragment;
-import com.ninetwozero.bf4intel.ui.settings.SettingsFragment;
 import com.ninetwozero.bf4intel.ui.stats.SoldierStatisticsTabFragment;
 import com.ninetwozero.bf4intel.ui.stats.details.DetailedStatsFragment;
 import com.ninetwozero.bf4intel.ui.stats.reports.BattleReportFragment;
@@ -36,10 +34,6 @@ public class FragmentFactory {
         switch (type) {
             case HOME:
                 return HomeFragment.newInstance(data);
-            case ACCOUNT_PROFILE:
-                return AccountProfileFragment.newInstance(data);
-            case BATTLE_FEED:
-                return BattleFeedFragment.newInstance(data);
             case SOLDIER_OVERVIEW:
                 return SoldierOverviewFragment.newInstance(data);
             case SOLDIER_STATS:
@@ -66,20 +60,6 @@ public class FragmentFactory {
                 return NewsListingFragment.newInstance(data);
             case NEWS_ITEM:
                 return NewsArticleFragment.newInstance(data);
-            case BATTLE_FEED_POSTING:
-                return BattleFeedPostingFragment.newInstance(data);
-            case FORUM_LISTING:
-                return ForumListingFragment.newInstance(data);
-            case THREAD_LISTING:
-                return ThreadListingFragment.newInstance(data);
-            case THREAD_CREATING:
-                return ThreadCreationFragment.newInstance(data);
-            case POST_LISTING:
-                return PostListingFragment.newInstance(data);
-            case POST_CREATING:
-                return PostCreationFragment.newInstance(data);
-            case NOTIFICATION:
-                return NotificationFragment.newInstance(data);
             case BATTLE_REPORT:
                 return BattleReportFragment.newInstance(data);
             case BATTLE_REPORT_LISTING:
@@ -99,10 +79,6 @@ public class FragmentFactory {
         }
     }
 
-    public static Fragment fromOrdinal(final int ordinal) {
-        return fromOrdinal(ordinal, null);
-    }
-
     public static Fragment fromOrdinal(final int ordinal, final Bundle data) {
         for (Type type : Type.values()) {
             if (type.ordinal() == ordinal) {
@@ -115,8 +91,6 @@ public class FragmentFactory {
 
     public enum Type {
         HOME,
-
-        ACCOUNT_PROFILE,
 
         SOLDIER_OVERVIEW,
         SOLDIER_STATS,
@@ -137,23 +111,12 @@ public class FragmentFactory {
         SOLDIER_AWARDS,
         SOLDIER_AWARD_DETAILS,
 
-        BATTLE_FEED,
-        BATTLE_FEED_POSTING,
-
         NEWS_LISTING,
         NEWS_ITEM,
 
         BATTLE_REPORT_LISTING,
         BATTLE_REPORT,
 
-        FORUM_LISTING,
-        FORUM_SEARCH,
-        THREAD_LISTING,
-        THREAD_CREATING,
-        POST_LISTING,
-        POST_CREATING,
-
-        NOTIFICATION,
         PROFILE_SEARCH
     }
 }

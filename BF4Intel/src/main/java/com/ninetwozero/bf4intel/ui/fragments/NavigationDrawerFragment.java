@@ -14,13 +14,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseFragment;
 import com.ninetwozero.bf4intel.database.dao.login.SoldierAccessComparator;
 import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.events.ActiveSoldierChangedEvent;
 import com.ninetwozero.bf4intel.events.SoldierInformationUpdatedEvent;
-import com.ninetwozero.bf4intel.events.TrackingNewProfileEvent;
+import com.ninetwozero.bf4intel.events.TrackingNewSoldierEvent;
 import com.ninetwozero.bf4intel.factories.BundleFactory;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.menu.NavigationDrawerItem;
@@ -44,13 +43,10 @@ import se.emilsjolander.sprinkles.Query;
 public class NavigationDrawerFragment extends BaseFragment {
     public static final String BATTLE_CHAT_PACKAGE = "com.ninetwozero.battlechat";
 
-    private static final String STATE_SELECTED_POSITION = "selected_navigation_group_position";
     private static final String STATE_SELECTED_POSITION_TRACKING = "selected_navigation_group_position_tracking";
-
     private static final int INVALID_POSITION = -1;
     private static final int DEFAULT_POSITION_GUEST = 0;
     private static final int DEFAULT_POSITION_TRACKING = 0;
-    private static final int DEFAULT_POSITION = 0;
 
     private boolean isRecreated;
     private NavigationDrawerCallbacks callbacks;
@@ -58,8 +54,8 @@ public class NavigationDrawerFragment extends BaseFragment {
     private View[] navigationDrawerItemViews;
 
     private int currentMenuSelection = INVALID_POSITION;
-    private List<NavigationDrawerItem> navigationDrawerItems = new ArrayList<NavigationDrawerItem>();
-    private List<SummarizedSoldierStatsDAO> soldiers = new ArrayList<SummarizedSoldierStatsDAO>();
+    private List<NavigationDrawerItem> navigationDrawerItems = new ArrayList<>();
+    private List<SummarizedSoldierStatsDAO> soldiers = new ArrayList<>();
     private boolean shouldShowTheSoldiers = false;
 
     private String selectedSoldierId;
@@ -117,7 +113,8 @@ public class NavigationDrawerFragment extends BaseFragment {
     }
 
     @Subscribe
-    public void onStartedTrackingNewProfile(final TrackingNewProfileEvent event) {
+    @SuppressWarnings("unused")
+    public void onStartedTrackingNewProfile(final TrackingNewSoldierEvent event) {
         final View view = getView();
         if (view == null) {
             return;
@@ -129,6 +126,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     }
 
     @Subscribe
+    @SuppressWarnings("unused")
     public void onSoldierInformationUpdated(final SoldierInformationUpdatedEvent event) {
         final View view = getView();
         if (view == null) {
@@ -140,6 +138,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     }
 
     @Subscribe
+    @SuppressWarnings("unused")
     public void onActiveSoldierChanged(final ActiveSoldierChangedEvent event) {
         final View view = getView();
         if (view == null) {
@@ -171,16 +170,7 @@ public class NavigationDrawerFragment extends BaseFragment {
             }
         }
 
-        if (soldiers.isEmpty()) {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(Keys.SESSION_ID, null);
-            editor.putString(Keys.Profile.ID, null);
-            editor.putString(Keys.Profile.USERNAME, null);
-            editor.putString(Keys.Profile.GRAVATAR_HASH, null);
-            editor.apply();
-
-            SessionStore.resetSession();
-        } else {
+        if (!soldiers.isEmpty()) {
             selectedSoldier = soldiers.get(0);
             selectedSoldierId = selectedSoldier.getSoldierId();
             selectedSoldierPlatform = selectedSoldier.getPlatformId();
@@ -194,19 +184,19 @@ public class NavigationDrawerFragment extends BaseFragment {
     }
 
     public int fetchDefaultPosition() {
-        if (SessionStore.isLoggedIn()) {
-            return DEFAULT_POSITION;
-        } else if (SessionStore.hasUserId()) {
+        if (hasSoldier()) {
             return DEFAULT_POSITION_TRACKING;
         } else {
             return DEFAULT_POSITION_GUEST;
         }
     }
 
+    private boolean hasSoldier() {
+        return !"".equals(sharedPreferences.getString(Keys.Menu.LATEST_PERSONA, ""));
+    }
+
     private int fetchStartingPositionForSessionState() {
-        if (SessionStore.isLoggedIn()) {
-            return sharedPreferences.getInt(STATE_SELECTED_POSITION, DEFAULT_POSITION);
-        } else if (SessionStore.hasUserId()) {
+        if (hasSoldier()) {
             return sharedPreferences.getInt(STATE_SELECTED_POSITION_TRACKING, DEFAULT_POSITION_TRACKING);
         } else {
             return DEFAULT_POSITION_GUEST;
@@ -215,7 +205,7 @@ public class NavigationDrawerFragment extends BaseFragment {
 
     private void setupRegularViews(final View view) {
         final View wrapper = view.findViewById(R.id.wrap_login_info);
-        if (SessionStore.isLoggedIn() || SessionStore.hasUserId()) {
+        if (hasSoldier()) {
             setupSoldierBox(view);
             wrapper.setVisibility(View.VISIBLE);
         } else {
@@ -354,9 +344,7 @@ public class NavigationDrawerFragment extends BaseFragment {
 
     private void storePositionState(final int position) {
         final SharedPreferences.Editor editor = sharedPreferences.edit();
-        if (SessionStore.isLoggedIn()) {
-            editor.putInt(STATE_SELECTED_POSITION, position).apply();
-        } else if (SessionStore.hasUserId()) {
+        if (hasSoldier()) {
             editor.putInt(STATE_SELECTED_POSITION_TRACKING, position).apply();
         }
         currentMenuSelection = position;
@@ -364,7 +352,7 @@ public class NavigationDrawerFragment extends BaseFragment {
 
     private void populateNavigationDrawer(final View view) {
         navigationDrawerItems.clear();
-        if (SessionStore.hasUserId()) {
+        if (hasSoldier()) {
             navigationDrawerItems.addAll(getRowsForSoldier());
         }
         navigationDrawerItems.addAll(getRowsForSocial());
@@ -426,7 +414,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     }
 
     private List<NavigationDrawerItem> getRowsForSoldier() {
-        final List<NavigationDrawerItem> rows = new ArrayList<NavigationDrawerItem>();
+        final List<NavigationDrawerItem> rows = new ArrayList<>();
         rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.OVERVIEW, R.string.navigationdrawer_overview, R.drawable.menu_icon_overview));
         rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.STATISTICS, R.string.navigationdrawer_statistics, R.drawable.menu_icon_statistics));
         rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.UNLOCKS, R.string.navigationdrawer_unlocks, R.drawable.menu_icon_unlocks));
@@ -437,7 +425,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     }
 
     private List<NavigationDrawerItem> getRowsForSocial() {
-        final List<NavigationDrawerItem> rows = new ArrayList<NavigationDrawerItem>();
+        final List<NavigationDrawerItem> rows = new ArrayList<>();
         if (selectedSoldier == null) {
             rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.HOME, R.string.navigationdrawer_home, R.drawable.empty));
         } else {
@@ -461,11 +449,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     private Bundle buildBundleForSoldier() {
         for (SummarizedSoldierStatsDAO soldier : soldiers) {
             if (isSelectedSoldier(soldier)) {
-                final Bundle bundle = BundleFactory.createForStats(soldier);
-                bundle.putString(Keys.Profile.ID, SessionStore.getUserId());
-                bundle.putString(Keys.Profile.USERNAME, SessionStore.getUsername());
-                bundle.putString(Keys.Profile.GRAVATAR_HASH, SessionStore.getGravatarHash());
-                return bundle;
+                return BundleFactory.createForStats(soldier);
             }
         }
         return new Bundle();
@@ -473,10 +457,6 @@ public class NavigationDrawerFragment extends BaseFragment {
 
     private boolean isSelectedSoldier(final SummarizedSoldierStatsDAO soldier) {
         return soldier.getSoldierId().equals(selectedSoldierId) && soldier.getPlatformId() == selectedSoldierPlatform;
-    }
-
-    private FragmentFactory.Type fetchTypeForHome() {
-        return SessionStore.isLoggedIn() ? FragmentFactory.Type.BATTLE_FEED : FragmentFactory.Type.HOME;
     }
 
     private void selectItemFromState(final int position) {
@@ -576,7 +556,7 @@ public class NavigationDrawerFragment extends BaseFragment {
     private FragmentFactory.Type fetchFragmentTypeForItem(final NavigationDrawerItem item) {
         switch (item.getType()) {
             case HOME:
-                return fetchTypeForHome();
+                return FragmentFactory.Type.HOME;
             case NEWS:
                 return FragmentFactory.Type.NEWS_LISTING;
             case OVERVIEW:

@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.SessionStore;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingIntelActivity;
 import com.ninetwozero.bf4intel.database.dao.ProfileDAO;
 import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
@@ -26,7 +25,6 @@ import com.ninetwozero.bf4intel.json.login.SoldierListingRequest;
 import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
-import com.ninetwozero.bf4intel.ui.activities.MainActivity;
 import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.PersonaUtils;
@@ -103,9 +101,9 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                             if (PersonaUtils.isBf4Soldier(stats.getGameId())) {
                                 if (bf4SoldierCount == 0) {
                                     new SqlStatement(
-                                            "DELETE FROM " +
-                                                    SummarizedSoldierStatsDAO.TABLE_NAME + " " +
-                                                    "WHERE soldierId  = ? AND platformId = ?"
+                                        "DELETE FROM " +
+                                        SummarizedSoldierStatsDAO.TABLE_NAME + " " +
+                                        "WHERE soldierId  = ? AND platformId = ?"
                                     ).execute(stats.getPersona().getPersonaId(), stats.getPlatformId());
                                 }
 
@@ -144,17 +142,9 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     }
 
     private void initialize() {
-        setupFromPreExistingData();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         setupErrorMessage();
         setupLayout();
-    }
-
-    private void setupFromPreExistingData() {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        if (SessionStore.isLoggedIn() && Bf4Intel.isConnectedToNetwork()) {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
-        }
     }
 
     private void setupLayout() {
