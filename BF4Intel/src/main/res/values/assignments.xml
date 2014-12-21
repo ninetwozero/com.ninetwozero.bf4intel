@@ -148,4 +148,7 @@
   <string name="assignments_pa3">Ultimate Support</string>
   <string name="assignments_pa4">Ultimate Recon</string>
   <string name="assignments_pa5">Ultimate Commander</string>
+
+  <!--PHANTOM OPERATIVE-->
+  <string name="assignments_op">Operative orders received</string>
 </resources>

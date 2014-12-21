@@ -78,12 +78,21 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void populateViews(final View view, final AssignmentAward award) {
         final String titleString = getString(AssignmentStringMap.get(assignmentAward.getUniqueName()));
-        TextView titleView = ((TextView)view.findViewById(R.id.title));
+        TextView titleView = ((TextView) view.findViewById(R.id.title));
         setTitle(titleView, titleString);
         populateOverviewBox(view, award);
-        populatePreRequisites(view);
-        populateAwardRequirements(view);
-        populateRewardBox(view);
+        if (assignment.getPrerequisites().size() > 0) {
+            populatePreRequisites(view);
+            populateAwardRequirements(view);
+            populateRewardBox(view);
+        } else {
+            final ViewGroup containerView = (ViewGroup) view.findViewById(R.id.assignment_prereq_container);
+            containerView.removeAllViews();
+            final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_prereq, containerView, false);
+            containerView.addView(populatePreRequisite(tempView, fetchPrerequisiteForExpansion()));
+            view.findViewById(R.id.wrap_assignment_tasks).setVisibility(View.GONE);
+            view.findViewById(R.id.wrap_assignment_rewards).setVisibility(View.GONE);
+        }
     }
 
     private void populateOverviewBox(final View view, final AssignmentAward award) {
@@ -91,9 +100,9 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         setProgress(view, R.id.assignment_completion, assignment.getCompletion());
         setText(view, R.id.assignment_completion_text, assignment.getCompletion() + "%");
         setVisibility(
-            view,
-            R.id.wrap_assignment_completion,
-            assignment.isCompleted() ? View.GONE : View.VISIBLE
+                view,
+                R.id.wrap_assignment_completion,
+                assignment.isCompleted() ? View.GONE : View.VISIBLE
         );
     }
 
@@ -105,21 +114,17 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void populatePreRequisites(final View view) {
         final View cardWrapperView = view.findViewById(R.id.wrap_assignment_prereq);
-        if (assignment.getPrerequisites().size() > 0) {
-            final ViewGroup containerView = (ViewGroup) cardWrapperView.findViewById(R.id.assignment_prereq_container);
-            containerView.removeAllViews();
+        final ViewGroup containerView = (ViewGroup) cardWrapperView.findViewById(R.id.assignment_prereq_container);
+        containerView.removeAllViews();
 
-            for (AssignmentPrerequisite prerequisite : assignment.getPrerequisites()) {
-                final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_prereq, containerView, false);
-                containerView.addView(populatePreRequisite(tempView, prerequisite));
-            }
+        for (AssignmentPrerequisite prerequisite : assignment.getPrerequisites()) {
+            final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_prereq, containerView, false);
+            containerView.addView(populatePreRequisite(tempView, prerequisite));
+        }
 
-            if (assignmentAward.hasExpansionPack()) {
-                final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_prereq, containerView, false);
-                containerView.addView(populatePreRequisite(tempView, fetchPrerequisiteForExpansion()));
-            }
-        } else {
-            cardWrapperView.setVisibility(View.GONE);
+        if (assignmentAward.hasExpansionPack() && assignment.getCriterias().size() == 0) {
+            final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_prereq, containerView, false);
+            containerView.addView(populatePreRequisite(tempView, fetchPrerequisiteForExpansion()));
         }
     }
 
@@ -129,9 +134,9 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         setImage(view, R.id.image_prereq_icon, fetchPrerequisiteImage(groupType));
         setText(view, R.id.assignment_prerequisite, fetchPrerequisiteTitle(prerequisite.getKey(), groupType));
         setVisibility(
-            view,
-            R.id.assignment_prereq_completed,
-            prerequisite.getTimesTaken() > 0 ? View.VISIBLE : View.GONE
+                view,
+                R.id.assignment_prereq_completed,
+                prerequisite.getTimesTaken() > 0 ? View.VISIBLE : View.GONE
         );
 
         return view;
@@ -140,10 +145,10 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     private AssignmentPrerequisite fetchPrerequisiteForExpansion() {
         final String pack = assignmentAward.getExpansionPack().toUpperCase(Locale.getDefault());
         return new AssignmentPrerequisite(
-            "WARSAW_ID_P_AWARD_PREREQUISITE_" + pack,
-            assignmentAward.getExpansionPack(),
-            AssignmentPrerequisite.Type.EXPANSION.getGroup(),
-            userHasExpansionPack ? 1 : 0
+                "WARSAW_ID_P_AWARD_PREREQUISITE_" + pack,
+                assignmentAward.getExpansionPack(),
+                AssignmentPrerequisite.Type.EXPANSION.getGroup(),
+                userHasExpansionPack ? 1 : 0
         );
     }
 
@@ -163,22 +168,18 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             criterias = fetchCriteriaForSinglePlayer();
         }
 
-        if (criterias.size() > 0) {
-            final ViewGroup containerView = (ViewGroup) cardWrapperView.findViewById(R.id.assignment_tasks_container);
-            containerView.removeAllViews();
+        final ViewGroup containerView = (ViewGroup) cardWrapperView.findViewById(R.id.assignment_tasks_container);
+        containerView.removeAllViews();
 
-            for (AssignmentCriteria criteria : criterias) {
-                final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_task, containerView, false);
-                final boolean isInRoundRequirement = "CriteriaType_IAR_InARound".equals(criteria.getCriteriaType());
+        for (AssignmentCriteria criteria : criterias) {
+            final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_task, containerView, false);
+            final boolean isInRoundRequirement = "CriteriaType_IAR_InARound".equals(criteria.getCriteriaType());
 
-                setText(tempView, R.id.task_label, AssignmentCriteriaStringMap.get(criteria.getKey()));
-                setText(tempView, R.id.task_completion, getTaskCompletionString(criteria));
-                setVisibility(tempView, R.id.task_round, isInRoundRequirement ? View.VISIBLE : View.GONE);
+            setText(tempView, R.id.task_label, AssignmentCriteriaStringMap.get(criteria.getKey()));
+            setText(tempView, R.id.task_completion, getTaskCompletionString(criteria));
+            setVisibility(tempView, R.id.task_round, isInRoundRequirement ? View.VISIBLE : View.GONE);
 
-                containerView.addView(tempView);
-            }
-        } else {
-            cardWrapperView.setVisibility(View.GONE);
+            containerView.addView(tempView);
         }
     }
 
@@ -199,16 +200,15 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private String getTaskCompletionString(final AssignmentCriteria criteria) {
         return String.format(
-            getString(R.string.generic_x_of_y),
-            criteria.getCurrentValue(),
-            criteria.getUnlockThreshold()
+                getString(R.string.generic_x_of_y),
+                criteria.getCurrentValue(),
+                criteria.getUnlockThreshold()
         );
     }
 
     private void populateRewardBox(final View view) {
         final Set<String> usedNames = new HashSet<String>();
 
-        final View cardWrapperView = view.findViewById(R.id.wrap_assignment_rewards);
         List<AssignmentReward> rewards = assignment.getRewards();
 
         if (assignmentAward.getUniqueName().equals(KEY_FIRESTARTER)) {
@@ -219,25 +219,21 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             rewards = fetchRewardsForPhantomInitiate();
         }
 
-        if (rewards.size() > 0) {
-            final ViewGroup containerView = (ViewGroup) view.findViewById(R.id.assignment_reward_container);
-            containerView.removeAllViews();
+        final ViewGroup containerView = (ViewGroup) view.findViewById(R.id.assignment_reward_container);
+        containerView.removeAllViews();
 
-            for (AssignmentReward reward : rewards) {
-                if (usedNames.contains(reward.getName())) {
-                    continue;
-                }
-
-                final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_reward, containerView, false);
-
-                setText(tempView, R.id.reward_title, fetchRewardTitle(reward));
-                setImageForReward(tempView, R.id.reward_image, reward);
-
-                usedNames.add(reward.getName());
-                containerView.addView(tempView);
+        for (AssignmentReward reward : rewards) {
+            if (usedNames.contains(reward.getName())) {
+                continue;
             }
-        } else {
-            cardWrapperView.setVisibility(View.GONE);
+
+            final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_reward, containerView, false);
+
+            setText(tempView, R.id.reward_title, fetchRewardTitle(reward));
+            setImageForReward(tempView, R.id.reward_image, reward);
+
+            usedNames.add(reward.getName());
+            containerView.addView(tempView);
         }
     }
 
@@ -245,9 +241,9 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     private List<AssignmentReward> fetchRewardsForFirestarter() {
         final List<AssignmentReward> rewards = new ArrayList<AssignmentReward>();
         final String[] fakeNames = new String[]{
-            "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER1",
-            "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER2",
-            "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER3"
+                "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER1",
+                "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER2",
+                "WARSAW_ID_P_XP0_CAMO_NAME_FIRESTARTER3"
         };
 
         for (String name : fakeNames) {
@@ -261,9 +257,9 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
     private List<AssignmentReward> fetchRewardsForPhantomInitiate() {
         final List<AssignmentReward> rewards = new ArrayList<AssignmentReward>();
         final String[] fakeNames = new String[]{
-            "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE1",
-            "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE2",
-            "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE3"
+                "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE1",
+                "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE2",
+                "WARSAW_ID_P_XP0_CAMO_NAME_PHANTOMINITIATE3"
         };
 
         for (String name : fakeNames) {
@@ -325,9 +321,9 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void setImageForDogtagReward(View view, int viewId, AssignmentReward reward) {
         Picasso.with(getActivity())
-            .load(UrlFactory.buildDogtagImageURL(reward.getImageIndex(), reward.isAdvanced()))
-            .placeholder(R.drawable.dogtag_plain)
-            .into((ImageView) view.findViewById(viewId));
+                .load(UrlFactory.buildDogtagImageURL(reward.getImageIndex(), reward.isAdvanced()))
+                .placeholder(R.drawable.dogtag_plain)
+                .into((ImageView) view.findViewById(viewId));
     }
 
     private int fetchPrerequisiteImage(final AssignmentPrerequisite.Type group) {

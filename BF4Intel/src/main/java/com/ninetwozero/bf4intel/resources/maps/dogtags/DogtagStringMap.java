@@ -365,6 +365,8 @@ public class DogtagStringMap {
             put("WARSAW_ID_P_XP4_DRXP4PAS04_NAME", R.string.warsaw_id_pa4_ultimate_recon_name);
             put("WARSAW_ID_P_XP4_DRXP4PAS05_NAME", R.string.warsaw_id_pa4_ultimate_commander_name);
 
+            //PHANTOM
+            put("WARSAW_ID_DLPR_NAME", R.string.warsaw_id_dlpr_name);
         }
     };
 

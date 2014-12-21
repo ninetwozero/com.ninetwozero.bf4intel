@@ -323,6 +323,8 @@ public class AssignmentCriteriaStringMap {
             put("WARSAW_ID_P_XP4_AWARD_PAS_05_CRIT_4", R.string.xp4_award_pas_05_crit_4);
             put("WARSAW_ID_P_XP4_AWARD_PAS_05_CRIT_5", R.string.xp4_award_pas_05_crit_5);
             put("WARSAW_ID_P_AWARD_PREREQUISITE_GHOST4", R.string.award_ghost_crit_1);
+            put("WARSAW_ID_P_XP4_AWARD_GHOST_CRIT_1",R.string.xp4_award_ghost_crit_1);
+            put("WARSAW_ID_P_XP4_AWARD_GHOST_CRIT_2",R.string.xp4_award_ghost_crit_2);
         }
     };
 

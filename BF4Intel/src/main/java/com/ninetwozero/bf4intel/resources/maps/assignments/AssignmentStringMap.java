@@ -156,10 +156,13 @@ public class AssignmentStringMap {
             put("WARSAW_ID_P_XP4_AWARD_PAS_03_NAME", R.string.assignments_pa3);
             put("WARSAW_ID_P_XP4_AWARD_PAS_04_NAME", R.string.assignments_pa4);
             put("WARSAW_ID_P_XP4_AWARD_PAS_05_NAME", R.string.assignments_pa5);
+
+            /*PHANTOM OPERATIVE*/
+            put("WARSAW_ID_P_XP4_OP_NAME", R.string.assignments_op);
         }
     };
 
-    public static int get(final String key) {
+    public static int get(final String key) {if(!map.containsKey(key)) android.util.Log.e("AssignmentString", key);
         return map.containsKey(key) ? map.get(key) : R.string.na;
     }
 }

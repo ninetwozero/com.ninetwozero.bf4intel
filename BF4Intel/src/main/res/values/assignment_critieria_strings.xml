@@ -299,4 +299,6 @@
   <string name="xp4_award_pas_05_crit_3">Promote 75 Squads</string>
   <string name="xp4_award_pas_05_crit_4">Get 50 Ammo Drops Used</string>
   <string name="xp4_award_pas_05_crit_5">Get 25 Vehicle Drops Used</string>
+  <string name="xp4_award_ghost_crit_1">Get 200 kills with the Phantom</string>
+  <string name="xp4_award_ghost_crit_2">Get 50 headshots with the Phantom</string>
 </resources>

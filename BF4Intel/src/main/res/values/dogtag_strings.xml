@@ -356,4 +356,7 @@
   <string name="warsaw_id_pa4_ultimate_support_name">Ultimate Support Dog Tag</string>
   <string name="warsaw_id_pa4_ultimate_recon_name">Ultimate Recon Dog Tag</string>
   <string name="warsaw_id_pa4_ultimate_commander_name">Ultimate Commander Dog Tag</string>
+
+  <!--PHANTOM OPERATIVE-->
+  <string name="warsaw_id_dlpr_name">Premium Dog Tag</string>
 </resources>
