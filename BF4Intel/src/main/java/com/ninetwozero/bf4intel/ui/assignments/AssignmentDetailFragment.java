@@ -85,6 +85,10 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             populatePreRequisites(view);
             populateAwardRequirements(view);
             populateRewardBox(view);
+        } else if(assignmentAward.getCode().startsWith("SP_")) {
+            view.findViewById(R.id.wrap_assignment_prereq).setVisibility(View.GONE);
+            populateAwardRequirements(view);
+            populateRewardBox(view);
         } else {
             final ViewGroup containerView = (ViewGroup) view.findViewById(R.id.assignment_prereq_container);
             containerView.removeAllViews();
