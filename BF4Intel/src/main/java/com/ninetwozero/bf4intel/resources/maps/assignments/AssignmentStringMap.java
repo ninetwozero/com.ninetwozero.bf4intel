@@ -162,7 +162,7 @@ public class AssignmentStringMap {
         }
     };
 
-    public static int get(final String key) {if(!map.containsKey(key)) android.util.Log.e("AssignmentString", key);
+    public static int get(final String key) {
         return map.containsKey(key) ? map.get(key) : R.string.na;
     }
 }
