@@ -19,6 +19,7 @@ public class BundleFactory {
         final Bundle bundle = new Bundle();
         bundle.putString(Keys.Soldier.NAME, soldierStats.getSoldierName());
         bundle.putString(Keys.Soldier.ID, soldierStats.getSoldierId());
+        bundle.putString(Keys.Profile.ID, soldierStats.getUserId());
         bundle.putInt(Keys.Soldier.PLATFORM, soldierStats.getPlatformId());
         return bundle;
     }

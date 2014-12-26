@@ -103,7 +103,7 @@ public class WeaponStatsAdapter extends BaseFilterableIntelAdapter<Weapon> {
     protected List<Weapon> filterItems(CharSequence constraint) {
         List<Weapon> filteredWeapons = new ArrayList<Weapon>();
         for (Weapon weapon : listWithAllItems) {
-            if (weapon.getGroupCode().equals(constraint)) {
+            if (weapon.getCategorySID().equals(constraint)) {
                 filteredWeapons.add(weapon);
             }
         }

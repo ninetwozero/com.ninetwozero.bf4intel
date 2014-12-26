@@ -11,7 +11,10 @@ import java.util.List;
 public class WeaponSorter extends AbstractSorter<List<Weapon>> {
 
     public static final List<String> WEAPON_GROUP_CODE =
-        new ArrayList<String>(Arrays.asList("wA", "wC", "waS", "wL", "waPDW", "wD", "wSR", "wH", "wG", "wSP", "wX"));
+        new ArrayList<String>(
+            Arrays.asList("WARSAW_ID_P_CAT_ASSAULTRIFLE", "WARSAW_ID_P_CAT_CARBINE", "WARSAW_ID_P_CAT_SHOTGUN",
+                "WARSAW_ID_P_CAT_LMG", "WARSAW_ID_P_CAT_PDW", "WARSAW_ID_P_CAT_DMR", "WARSAW_ID_P_CAT_SNIPER",
+                "WARSAW_ID_P_CAT_SIDEARM", "WARSAW_ID_P_CAT_GRENADE", "WARSAW_ID_P_CAT_KNIFE", "WARSAW_ID_P_CAT_GADGET"));
     private List<Weapon> weaponList;
 
 

@@ -85,10 +85,6 @@ public class Weapon implements Comparable<Weapon>, Serializable {
         return Comparators.KILLS.compare(this, w);
     }
 
-    public String getGroupCode() {
-        return groupCode;
-    }
-
     public static class Comparators {
         public static final Comparator<Weapon> KILLS = new Comparator<Weapon>() {
             @Override
