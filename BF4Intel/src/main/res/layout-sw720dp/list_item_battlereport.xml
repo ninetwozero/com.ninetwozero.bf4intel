@@ -1,97 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  style="@style/RegularCard"
+<android.support.v7.widget.CardView
+  xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:orientation="horizontal"
-  android:weightSum="1">
-
-  <FrameLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <ImageView
-      android:id="@+id/battlereport_map_image"
-      android:layout_width="@dimen/w_battlereport_list_img"
-      android:layout_height="@dimen/h_battlereport_list_img"
-      android:contentDescription="@string/cdesc_battlereport_map_image" />
-
-    <TextView
-      android:id="@+id/user_match_result"
-      android:layout_width="@dimen/w_battlereport_list_img"
-      android:layout_height="wrap_content"
-      android:textSize="@dimen/text_xxl"
-      android:textStyle="bold"
-      android:background="@color/table_battlereport_result_bg"
-      android:layout_gravity="center"
-      android:gravity="center_horizontal"
-      android:padding="@dimen/spacing_m"
-      />
-  </FrameLayout>
+  android:layout_height="wrap_content">
 
   <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/spacing_xl"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spacing_m"
+    android:orientation="horizontal"
     android:weightSum="1">
 
-    <TextView
-      android:id="@+id/map_name"
+    <FrameLayout
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textAppearance="@style/TextAppearance.Holo.XLarge"
-      android:textColor="@android:color/holo_blue_light"
-      android:layout_weight="0.2"
-      />
+      android:layout_height="wrap_content">
 
-    <TextView
-      android:id="@+id/game_mode"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
-      android:textColor="@color/darkgrey"
-      android:layout_weight="0.2"
-      />
+      <ImageView
+        android:id="@+id/battlereport_map_image"
+        android:layout_width="@dimen/w_battlereport_list_img"
+        android:layout_height="@dimen/h_battlereport_list_img"
+        android:contentDescription="@string/cdesc_battlereport_map_image"/>
 
-    <TextView
-      android:id="@+id/server_name"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:textAppearance="@android:style/TextAppearance.Holo"
-      android:textColor="@color/darkgrey"
-      android:layout_weight="0.2"
-      />
+      <TextView
+        android:id="@+id/user_match_result"
+        android:layout_width="@dimen/w_battlereport_list_img"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_xxl"
+        android:textStyle="bold"
+        android:background="@color/table_battlereport_result_bg"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/spacing_m"
+        />
+    </FrameLayout>
 
     <LinearLayout
-      android:id="@+id/match_result"
-      android:orientation="horizontal"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_weight="0.2">
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:paddingLeft="@dimen/spacing_xl"
+      android:weightSum="1">
 
       <TextView
-        android:id="@+id/label_round_time"
+        android:id="@+id/map_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/battlereport_time" />
+        android:textAppearance="@style/TextAppearance.Holo.XLarge"
+        android:textColor="@android:color/holo_blue_light"
+        android:layout_weight="0.2"
+        />
 
       <TextView
-        android:id="@+id/round_time"
+        android:id="@+id/game_mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_s"
+        android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
+        android:textColor="@color/darkgrey"
+        android:layout_weight="0.2"
+        />
+
+      <TextView
+        android:id="@+id/server_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo"
+        android:textColor="@color/darkgrey"
+        android:layout_weight="0.2"
+        />
+
+      <LinearLayout
+        android:id="@+id/match_result"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2">
+
+        <TextView
+          android:id="@+id/label_round_time"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/battlereport_time"/>
+
+        <TextView
+          android:id="@+id/round_time"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/spacing_s"
+          />
+      </LinearLayout>
+
+      <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
+        android:layout_weight="0.2"
         />
     </LinearLayout>
-
-    <TextView
-      android:id="@+id/date"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
-      android:layout_weight="0.2"
-      />
   </LinearLayout>
-
-</LinearLayout>
+</android.support.v7.widget.CardView>

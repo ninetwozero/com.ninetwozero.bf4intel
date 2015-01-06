@@ -1,78 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  style="@style/RegularCard"
-  android:orientation="vertical"
+<android.support.v7.widget.CardView
+  xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="wrap_content">
 
-  <TextView
-    android:id="@+id/map_name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="@style/TextAppearance.Holo.XLarge"
-    android:textColor="@android:color/holo_blue_light"
-    />
-
-  <TextView
-    android:id="@+id/game_mode"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
-    android:textColor="@color/darkgrey"
-    />
-
-  <TextView
-    android:id="@+id/server_name"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textAppearance="@android:style/TextAppearance.Holo"
-    android:textColor="@color/darkgrey"
-    />
-
   <LinearLayout
-    android:id="@+id/match_result"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <RelativeLayout
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:layout_gravity="center_vertical">
-
-      <TextView
-        android:id="@+id/label_round_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/battlereport_time"
-        />
-
-      <TextView
-        android:id="@+id/round_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/label_round_time"
-        android:layout_marginLeft="@dimen/spacing_s" />
-
-      <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
-        android:layout_below="@id/label_round_time"
-        />
-    </RelativeLayout>
+    android:layout_height="wrap_content"
+    android:padding="@dimen/spacing_m"
+    android:orientation="vertical"
+    >
 
     <TextView
-      android:id="@+id/user_match_result"
+      android:id="@+id/map_name"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:textSize="@dimen/text_xxl"
-      android:textStyle="bold"
-      android:layout_marginLeft="@dimen/spacing_l"
+      android:textAppearance="@style/TextAppearance.Holo.XLarge"
+      android:textColor="@android:color/holo_blue_light"
       />
-  </LinearLayout>
 
-</LinearLayout>
+    <TextView
+      android:id="@+id/game_mode"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="@style/TextAppearance.Holo.MediumLarge"
+      android:textColor="@color/darkgrey"
+      />
+
+    <TextView
+      android:id="@+id/server_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textAppearance="@android:style/TextAppearance.Holo"
+      android:textColor="@color/darkgrey"
+      />
+
+    <LinearLayout
+      android:id="@+id/match_result"
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical">
+
+        <TextView
+          android:id="@+id/label_round_time"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/battlereport_time"
+          />
+
+        <TextView
+          android:id="@+id/round_time"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/label_round_time"
+          android:layout_marginLeft="@dimen/spacing_s"/>
+
+        <TextView
+          android:id="@+id/date"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAppearance="@android:style/TextAppearance.Holo.Small.Inverse"
+          android:layout_below="@id/label_round_time"
+          />
+      </RelativeLayout>
+
+      <TextView
+        android:id="@+id/user_match_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_xxl"
+        android:textStyle="bold"
+        android:layout_marginLeft="@dimen/spacing_l"
+        />
+    </LinearLayout>
+
+  </LinearLayout>
+</android.support.v7.widget.CardView>

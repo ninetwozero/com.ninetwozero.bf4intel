@@ -1,96 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/RegularCard">
+<android.support.v7.widget.CardView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
 
   <RelativeLayout
-    android:id="@+id/wrap_top"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:padding="@dimen/spacing_m"
+    >
 
-    <TextView
-      style="@style/RegularCardTitle"
-      android:id="@+id/item_name"
-      android:singleLine="true" />
-
-    <TextView
-      style="@style/RegularCardTitle"
-      android:id="@+id/service_star_count"
-      android:layout_alignParentRight="true"
-      android:gravity="center" />
-
-    <ImageView
-      android:id="@+id/item_service_star"
-      android:layout_width="@dimen/service_star_m"
-      android:layout_height="@dimen/service_star_m"
-      android:src="@drawable/ic_menu_star_dark"
-      android:layout_toLeftOf="@id/service_star_count"
-      android:layout_alignTop="@id/service_star_count"
-      android:layout_alignBottom="@id/service_star_count"
-      android:contentDescription="@string/cdesc_service_star" />
-
-    <LinearLayout
-      android:id="@+id/wrap_image"
+    <RelativeLayout
+      android:id="@+id/wrap_top"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_below="@id/item_name"
-      android:gravity="center"
-      android:weightSum="1">
-
-      <ImageView
-        android:id="@+id/vehicle_image"
-        android:layout_width="@dimen/stats_item_width"
-        android:layout_height="@dimen/stats_item_height"
-        android:contentDescription="@string/cdesc_vehicle_image"
-        android:adjustViewBounds="true"
-        android:layout_marginTop="@dimen/spacing_m"
-        android:layout_marginBottom="@dimen/spacing_m"
-        android:layout_weight="0.4" />
-
-      <LinearLayout
-        android:id="@+id/wrap_kill_per_minute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.3"
-        android:orientation="vertical">
-
-        <TextView
-          android:id="@+id/kill_per_minute"
-          style="@style/RegularCardTitle"
-          android:textColor="@color/regular_card_title" />
-
-        <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textColor="@color/regular_card_title"
-          android:text="@string/kill_a_minute" />
-
-      </LinearLayout>
+      android:layout_height="wrap_content">
 
       <TextView
-        android:id="@+id/kill_count"
         style="@style/RegularCardTitle"
-        android:textColor="@color/regular_card_title"
-        android:layout_weight="0.3" />
-    </LinearLayout>
+        android:id="@+id/item_name"
+        android:singleLine="true"/>
+
+      <TextView
+        style="@style/RegularCardTitle"
+        android:id="@+id/service_star_count"
+        android:layout_alignParentRight="true"
+        android:gravity="center"/>
+
+      <ImageView
+        android:id="@+id/item_service_star"
+        android:layout_width="@dimen/service_star_m"
+        android:layout_height="@dimen/service_star_m"
+        android:src="@drawable/ic_menu_star_dark"
+        android:layout_toLeftOf="@id/service_star_count"
+        android:layout_alignTop="@id/service_star_count"
+        android:layout_alignBottom="@id/service_star_count"
+        android:contentDescription="@string/cdesc_service_star"/>
+
+      <LinearLayout
+        android:id="@+id/wrap_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_name"
+        android:gravity="center"
+        android:weightSum="1">
+
+        <ImageView
+          android:id="@+id/vehicle_image"
+          android:layout_width="@dimen/stats_item_width"
+          android:layout_height="@dimen/stats_item_height"
+          android:contentDescription="@string/cdesc_vehicle_image"
+          android:adjustViewBounds="true"
+          android:layout_marginTop="@dimen/spacing_m"
+          android:layout_marginBottom="@dimen/spacing_m"
+          android:layout_weight="0.4"/>
+
+        <LinearLayout
+          android:id="@+id/wrap_kill_per_minute"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="0.3"
+          android:orientation="vertical">
+
+          <TextView
+            android:id="@+id/kill_per_minute"
+            style="@style/RegularCardTitle"
+            android:textColor="@color/regular_card_title"/>
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/regular_card_title"
+            android:text="@string/kill_a_minute"/>
+
+        </LinearLayout>
+
+        <TextView
+          android:id="@+id/kill_count"
+          style="@style/RegularCardTitle"
+          android:textColor="@color/regular_card_title"
+          android:layout_weight="0.3"/>
+      </LinearLayout>
+    </RelativeLayout>
+
+
+    <TextView
+      android:id="@+id/item_progress_value"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/regular_card_title"
+      android:layout_alignParentRight="true"
+      android:layout_below="@id/wrap_top"/>
+
+    <ProgressBar
+      style="?android:attr/progressBarStyleHorizontal"
+      android:id="@+id/item_progress"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:max="100"
+      android:layout_below="@id/item_progress_value"/>
+
   </RelativeLayout>
-
-
-  <TextView
-    android:id="@+id/item_progress_value"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textColor="@color/regular_card_title"
-    android:layout_alignParentRight="true"
-    android:layout_below="@id/wrap_top" />
-
-  <ProgressBar
-    style="?android:attr/progressBarStyleHorizontal"
-    android:id="@+id/item_progress"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:max="100"
-    android:layout_below="@id/item_progress_value" />
-
-</RelativeLayout>
+</android.support.v7.widget.CardView>

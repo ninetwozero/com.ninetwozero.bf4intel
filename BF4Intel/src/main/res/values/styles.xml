@@ -107,41 +107,6 @@
     <item name="android:layout_height">?attr/listPreferredItemHeightSmall</item>
   </style>
 
-  <!-- Soldier "card" pseudo style -->
-  <style name="BaseWhiteContainer">
-    <item name="android:layout_width">match_parent</item>
-    <item name="android:layout_height">wrap_content</item>
-    <item name="android:background">@drawable/card_bg_selector</item>
-  </style>
-
-  <style name="RegularCard" parent="BaseWhiteContainer">
-    <item name="android:paddingTop">@dimen/spacing_m</item>
-    <item name="android:paddingBottom">@dimen/spacing_m</item>
-    <item name="android:paddingLeft">@dimen/side_spacing</item>
-    <item name="android:paddingRight">@dimen/side_spacing</item>
-  </style>
-
-  <style name="NonListViewCard" parent="RegularCard">
-    <item name="android:layout_marginBottom">@dimen/spacing_m</item>
-    <item name="android:orientation">vertical</item>
-  </style>
-
-  <style name="WhiteContainerFeed" parent="BaseWhiteContainer">
-    <item name="android:paddingTop">@dimen/spacing_s</item>
-    <item name="android:paddingRight">0dp</item>
-    <item name="android:paddingBottom">@dimen/spacing_s</item>
-    <item name="android:paddingLeft">@dimen/spacing_s</item>
-    <item name="android:minHeight">100dp</item>
-    <item name="android:orientation">vertical</item>
-  </style>
-
-  <style name="WhiteContainerContentAreaWrapper">
-    <item name="android:paddingTop">0dp</item>
-    <item name="android:paddingRight">@dimen/spacing_s</item>
-    <item name="android:paddingBottom">@dimen/spacing_s</item>
-    <item name="android:paddingLeft">@dimen/spacing_s</item>
-  </style>
-
   <style name="CardListView">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">match_parent</item>

@@ -20,426 +20,493 @@
       tools:text="Weapons"
       />
 
-    <RelativeLayout style="@style/NonListViewCard">
+    <android.support.v7.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/spacing_m">
 
-      <TextView
-        style="@style/RegularCardTitle"
-        android:id="@+id/service_star_count"
-        android:layout_alignParentRight="true"
-        android:gravity="center"
-        />
-
-      <ImageView
-        android:layout_width="@dimen/service_star_m"
-        android:layout_height="@dimen/service_star_m"
-        android:src="@drawable/ic_menu_star_dark"
-        android:layout_toLeftOf="@id/service_star_count"
-        android:layout_alignTop="@id/service_star_count"
-        android:layout_alignBottom="@id/service_star_count"
-        android:contentDescription="@string/cdesc_service_star"
-        />
-
-      <ImageView
-        android:id="@+id/item_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/cdesc_item_image"
-        android:adjustViewBounds="true"
-        android:layout_marginTop="@dimen/spacing_m"
-        android:layout_marginBottom="@dimen/spacing_m"
-        android:layout_below="@id/service_star_count"
-        android:layout_centerHorizontal="true"
-        />
-
-      <TextView
-        android:id="@+id/item_progress_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/item_image"
-        android:layout_alignParentRight="true"
-        />
-      <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:id="@+id/item_progress"
+      <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="100"
-        android:layout_alignTop="@id/item_progress_value"
-        android:layout_alignBottom="@id/item_progress_value"
-        android:layout_toLeftOf="@id/item_progress_value"
-        android:layout_below="@id/item_image"
-        android:layout_marginRight="@dimen/spacing_m"
-        />
-    </RelativeLayout>
+        android:padding="@dimen/spacing_m"
+        >
 
-    <LinearLayout
-      style="@style/NonListViewCard"
+        <TextView
+          style="@style/RegularCardTitle"
+          android:id="@+id/service_star_count"
+          android:layout_alignParentRight="true"
+          android:gravity="center"
+          />
+
+        <ImageView
+          android:layout_width="@dimen/service_star_m"
+          android:layout_height="@dimen/service_star_m"
+          android:src="@drawable/ic_menu_star_dark"
+          android:layout_toLeftOf="@id/service_star_count"
+          android:layout_alignTop="@id/service_star_count"
+          android:layout_alignBottom="@id/service_star_count"
+          android:contentDescription="@string/cdesc_service_star"
+          />
+
+        <ImageView
+          android:id="@+id/item_image"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:contentDescription="@string/cdesc_item_image"
+          android:adjustViewBounds="true"
+          android:layout_marginTop="@dimen/spacing_m"
+          android:layout_marginBottom="@dimen/spacing_m"
+          android:layout_below="@id/service_star_count"
+          android:layout_centerHorizontal="true"
+          />
+
+        <TextView
+          android:id="@+id/item_progress_value"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/item_image"
+          android:layout_alignParentRight="true"
+          />
+
+        <ProgressBar
+          style="?android:attr/progressBarStyleHorizontal"
+          android:id="@+id/item_progress"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:max="100"
+          android:layout_alignTop="@id/item_progress_value"
+          android:layout_alignBottom="@id/item_progress_value"
+          android:layout_toLeftOf="@id/item_progress_value"
+          android:layout_below="@id/item_image"
+          android:layout_marginRight="@dimen/spacing_m"
+          />
+      </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
       android:id="@+id/wrap_description_box"
-      android:orientation="vertical"
-      >
-      <TextView
-        style="@style/RegularCardTitle"
-        android:id="@+id/string_description"
-        android:text="@string/label_description"
-        android:layout_marginBottom="@dimen/spacing_s"
-        />
-      <TextView
-        android:id="@+id/value_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-    </LinearLayout>
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/spacing_m">
 
-    <LinearLayout
-      style="@style/NonListViewCard"
-      android:id="@+id/wrap_information_box"
-      android:orientation="vertical"
-      >
-      <TextView
-        style="@style/RegularCardTitle"
-        android:id="@+id/string_info"
-        android:text="@string/label_information"
-        />
-
-      <RelativeLayout
-        android:id="@+id/wrap_damage"
+      <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_m"
+        android:padding="@dimen/spacing_m"
+        android:orientation="vertical"
         >
+
         <TextView
-          android:id="@+id/string_damage"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/damage"
+          style="@style/RegularCardTitle"
+          android:id="@+id/string_description"
+          android:text="@string/label_description"
+          android:layout_marginBottom="@dimen/spacing_s"
           />
 
         <TextView
-          android:id="@+id/value_damage"
+          android:id="@+id/value_description"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
+          />
+      </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/spacing_m">
+
+      <LinearLayout
+        android:id="@+id/wrap_information_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_m"
+        android:orientation="vertical"
+        >
+
+        <TextView
+          style="@style/RegularCardTitle"
+          android:id="@+id/string_info"
+          android:text="@string/label_information"
           />
 
-        <ProgressBar
-          style="?android:attr/progressBarStyleHorizontal"
-          android:id="@+id/progress_damage"
+        <RelativeLayout
+          android:id="@+id/wrap_damage"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_below="@id/value_damage"
-          />
-      </RelativeLayout>
-      <RelativeLayout
-        android:id="@+id/wrap_weapon_accuracy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_m"
-        >
-        <TextView
-          android:id="@+id/string_weapon_accuracy"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/accuracy"
-          />
+          android:layout_marginTop="@dimen/spacing_m"
+          >
 
-        <TextView
-          android:id="@+id/value_weapon_accuracy"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
-          />
+          <TextView
+            android:id="@+id/string_damage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/damage"
+            />
 
-        <ProgressBar
-          style="?android:attr/progressBarStyleHorizontal"
-          android:id="@+id/progress_weapon_accuracy"
+          <TextView
+            android:id="@+id/value_damage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            />
+
+          <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:id="@+id/progress_damage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/value_damage"
+            />
+        </RelativeLayout>
+
+        <RelativeLayout
+          android:id="@+id/wrap_weapon_accuracy"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_below="@id/value_weapon_accuracy"
-          />
-      </RelativeLayout>
-      <RelativeLayout
-        android:id="@+id/wrap_hip_fire"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_m"
-        >
-        <TextView
-          android:id="@+id/string_hip_fire"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/hip_fire"
-          />
+          android:layout_marginTop="@dimen/spacing_m"
+          >
 
-        <TextView
-          android:id="@+id/value_hip_fire"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
-          />
+          <TextView
+            android:id="@+id/string_weapon_accuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/accuracy"
+            />
 
-        <ProgressBar
-          style="?android:attr/progressBarStyleHorizontal"
-          android:id="@+id/progress_hip_fire"
+          <TextView
+            android:id="@+id/value_weapon_accuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            />
+
+          <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:id="@+id/progress_weapon_accuracy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/value_weapon_accuracy"
+            />
+        </RelativeLayout>
+
+        <RelativeLayout
+          android:id="@+id/wrap_hip_fire"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_below="@id/value_hip_fire"
-          />
-      </RelativeLayout>
-      <RelativeLayout
-        android:id="@+id/wrap_range"
+          android:layout_marginTop="@dimen/spacing_m"
+          >
+
+          <TextView
+            android:id="@+id/string_hip_fire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hip_fire"
+            />
+
+          <TextView
+            android:id="@+id/value_hip_fire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            />
+
+          <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:id="@+id/progress_hip_fire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/value_hip_fire"
+            />
+        </RelativeLayout>
+
+        <RelativeLayout
+          android:id="@+id/wrap_range"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/spacing_m"
+          >
+
+          <TextView
+            android:id="@+id/string_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/range"
+            />
+
+          <TextView
+            android:id="@+id/value_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            />
+
+          <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:id="@+id/progress_range"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/value_range"
+            />
+        </RelativeLayout>
+
+        <RelativeLayout
+          android:id="@+id/wrap_rate_of_fire"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/spacing_m"
+          >
+
+          <TextView
+            android:id="@+id/string_rate_of_fire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rate_of_fire"
+            />
+
+          <TextView
+            android:id="@+id/value_rate_of_fire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            />
+
+          <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:id="@+id/progress_rate_of_fire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/value_rate_of_fire"
+            />
+        </RelativeLayout>
+
+        <RelativeLayout
+          android:id="@+id/wrap_fire_modes"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/spacing_m"
+          >
+
+          <TextView
+            android:id="@+id/string_fire_modes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fire_modes"
+            android:layout_centerVertical="true"
+            />
+
+          <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            >
+
+            <ImageView
+              android:id="@+id/fire_mode_single"
+              android:layout_width="@dimen/fire_mode_image_size"
+              android:layout_height="@dimen/fire_mode_image_size"
+              android:layout_marginRight="@dimen/spacing_m"
+              android:contentDescription="@string/fire_mode_single"
+              android:src="@drawable/ammo_single"
+              />
+
+            <ImageView
+              android:id="@+id/fire_mode_burst"
+              android:layout_width="@dimen/fire_mode_image_size"
+              android:layout_height="@dimen/fire_mode_image_size"
+              android:layout_marginRight="@dimen/spacing_m"
+              android:contentDescription="@string/fire_mode_burst"
+              android:src="@drawable/ammo_burst"
+              />
+
+            <ImageView
+              android:id="@+id/fire_mode_auto"
+              android:layout_width="@dimen/fire_mode_image_size"
+              android:layout_height="@dimen/fire_mode_image_size"
+              android:contentDescription="@string/fire_mode_auto"
+              android:src="@drawable/ammo_auto"
+              />
+          </LinearLayout>
+        </RelativeLayout>
+      </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/spacing_m">
+
+      <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_m"
-        >
-        <TextView
-          android:id="@+id/string_range"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/range"
-          />
+        android:padding="@dimen/spacing_m"
+        android:orientation="vertical">
 
         <TextView
-          android:id="@+id/value_range"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
-          />
-        <ProgressBar
-          style="?android:attr/progressBarStyleHorizontal"
-          android:id="@+id/progress_range"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/value_range"
-          />
-      </RelativeLayout>
-      <RelativeLayout
-        android:id="@+id/wrap_rate_of_fire"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_m"
-        >
-        <TextView
-          android:id="@+id/string_rate_of_fire"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/rate_of_fire"
-          />
-        <TextView
-          android:id="@+id/value_rate_of_fire"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
-          />
-        <ProgressBar
-          style="?android:attr/progressBarStyleHorizontal"
-          android:id="@+id/progress_rate_of_fire"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/value_rate_of_fire"
-          />
-      </RelativeLayout>
-      <RelativeLayout
-        android:id="@+id/wrap_fire_modes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_m"
-        >
-        <TextView
-          android:id="@+id/string_fire_modes"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/fire_modes"
-          android:layout_centerVertical="true"
+          style="@style/RegularCardTitle"
+          android:id="@+id/string_stats"
+          android:text="@string/navigationdrawer_statistics"
           />
 
         <LinearLayout
-          android:layout_width="wrap_content"
+          android:id="@+id/wrap_kills"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:layout_alignParentRight="true"
+          android:weightSum="1"
+          android:layout_marginTop="@dimen/spacing_m"
           >
-          <ImageView
-            android:id="@+id/fire_mode_single"
-            android:layout_width="@dimen/fire_mode_image_size"
-            android:layout_height="@dimen/fire_mode_image_size"
-            android:layout_marginRight="@dimen/spacing_m"
-            android:contentDescription="@string/fire_mode_single"
-            android:src="@drawable/ammo_single"
+
+          <TextView
+            android:id="@+id/string_kills"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/kills"
+            android:layout_weight="0.5"
             />
-          <ImageView
-            android:id="@+id/fire_mode_burst"
-            android:layout_width="@dimen/fire_mode_image_size"
-            android:layout_height="@dimen/fire_mode_image_size"
-            android:layout_marginRight="@dimen/spacing_m"
-            android:contentDescription="@string/fire_mode_burst"
-            android:src="@drawable/ammo_burst"
+
+          <TextView
+            android:id="@+id/value_kills"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="right"
             />
-          <ImageView
-            android:id="@+id/fire_mode_auto"
-            android:layout_width="@dimen/fire_mode_image_size"
-            android:layout_height="@dimen/fire_mode_image_size"
-            android:contentDescription="@string/fire_mode_auto"
-            android:src="@drawable/ammo_auto"
+
+        </LinearLayout>
+
+        <LinearLayout
+          android:id="@+id/wrap_headshots"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:weightSum="1"
+          android:layout_marginTop="@dimen/spacing_m"
+          android:visibility="gone"
+          >
+
+          <TextView
+            android:id="@+id/string_headshots"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/headshots"
+            android:layout_weight="0.5"
+            />
+
+          <TextView
+            android:id="@+id/value_headshots"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="right"
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+          android:id="@+id/wrap_shots_fired"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:weightSum="1"
+          android:layout_marginTop="@dimen/spacing_m"
+          android:visibility="gone"
+          >
+
+          <TextView
+            android:id="@+id/string_shots_fired"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/shots_fired"
+            android:layout_weight="0.5"
+            />
+
+          <TextView
+            android:id="@+id/value_shots_fired"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="right"
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+          android:id="@+id/wrap_time_equipped"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:weightSum="1"
+          android:layout_marginTop="@dimen/spacing_m"
+          android:visibility="gone"
+          >
+
+          <TextView
+            android:id="@+id/string_time_equipped"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_equipped"
+            android:layout_weight="0.5"
+            />
+
+          <TextView
+            android:id="@+id/value_time_equipped"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="right"
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+          android:id="@+id/wrap_accuracy"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:weightSum="1"
+          android:layout_marginTop="@dimen/spacing_m"
+          android:visibility="gone"
+          >
+
+          <TextView
+            android:id="@+id/string_accuracy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/accuracy"
+            android:layout_weight="0.5"
+            />
+
+          <TextView
+            android:id="@+id/value_accuracy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="right"
             />
         </LinearLayout>
-      </RelativeLayout>
-    </LinearLayout>
 
-    <LinearLayout
-      style="@style/RegularCard"
-      android:orientation="vertical"
-      >
-      <TextView
-        style="@style/RegularCardTitle"
-        android:id="@+id/string_stats"
-        android:text="@string/navigationdrawer_statistics"
-        />
-
-      <LinearLayout
-        android:id="@+id/wrap_kills"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:layout_marginTop="@dimen/spacing_m"
-        >
-        <TextView
-          android:id="@+id/string_kills"
-          android:layout_width="0dp"
+        <LinearLayout
+          android:id="@+id/wrap_kills_per_shot"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="@string/kills"
-          android:layout_weight="0.5"
-          />
+          android:weightSum="1"
+          android:layout_marginTop="@dimen/spacing_m"
+          >
 
-        <TextView
-          android:id="@+id/value_kills"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="0.5"
-          android:gravity="right"
-          />
+          <TextView
+            android:id="@+id/string_kills_per_shot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/kills_per_shot"
+            android:layout_weight="0.5"
+            />
 
+          <TextView
+            android:id="@+id/value_kills_per_shot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="right"
+            />
+        </LinearLayout>
       </LinearLayout>
-      <LinearLayout
-        android:id="@+id/wrap_headshots"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:layout_marginTop="@dimen/spacing_m"
-        android:visibility="gone"
-        >
-        <TextView
-          android:id="@+id/string_headshots"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:text="@string/headshots"
-          android:layout_weight="0.5"
-          />
-
-        <TextView
-          android:id="@+id/value_headshots"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="0.5"
-          android:gravity="right"
-          />
-
-      </LinearLayout>
-      <LinearLayout
-        android:id="@+id/wrap_shots_fired"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:layout_marginTop="@dimen/spacing_m"
-        android:visibility="gone"
-        >
-        <TextView
-          android:id="@+id/string_shots_fired"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:text="@string/shots_fired"
-          android:layout_weight="0.5"
-          />
-
-        <TextView
-          android:id="@+id/value_shots_fired"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="0.5"
-          android:gravity="right"
-          />
-
-      </LinearLayout>
-      <LinearLayout
-        android:id="@+id/wrap_time_equipped"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:layout_marginTop="@dimen/spacing_m"
-        android:visibility="gone"
-        >
-        <TextView
-          android:id="@+id/string_time_equipped"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:text="@string/time_equipped"
-          android:layout_weight="0.5"
-          />
-
-        <TextView
-          android:id="@+id/value_time_equipped"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="0.5"
-          android:gravity="right"
-          />
-
-      </LinearLayout>
-      <LinearLayout
-        android:id="@+id/wrap_accuracy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:layout_marginTop="@dimen/spacing_m"
-        android:visibility="gone"
-        >
-        <TextView
-          android:id="@+id/string_accuracy"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:text="@string/accuracy"
-          android:layout_weight="0.5"
-          />
-        <TextView
-          android:id="@+id/value_accuracy"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="0.5"
-          android:gravity="right"
-          />
-      </LinearLayout>
-      <LinearLayout
-        android:id="@+id/wrap_kills_per_shot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:layout_marginTop="@dimen/spacing_m"
-        >
-        <TextView
-          android:id="@+id/string_kills_per_shot"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:text="@string/kills_per_shot"
-          android:layout_weight="0.5"
-          />
-
-        <TextView
-          android:id="@+id/value_kills_per_shot"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:layout_weight="0.5"
-          android:gravity="right"
-          />
-      </LinearLayout>
-    </LinearLayout>
+    </android.support.v7.widget.CardView>
   </LinearLayout>
 </ScrollView>
