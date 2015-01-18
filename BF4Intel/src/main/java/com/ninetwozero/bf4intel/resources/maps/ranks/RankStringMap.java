@@ -139,6 +139,16 @@ public class RankStringMap {
             put("WARSAW_ID_P_RANK128_NAME", R.string.rank128_name);
             put("WARSAW_ID_P_RANK129_NAME", R.string.rank129_name);
             put("WARSAW_ID_P_RANK130_NAME", R.string.rank130_name);
+            put("WARSAW_ID_P_RANK131_NAME", R.string.rank131_name);
+            put("WARSAW_ID_P_RANK132_NAME", R.string.rank132_name);
+            put("WARSAW_ID_P_RANK133_NAME", R.string.rank133_name);
+            put("WARSAW_ID_P_RANK134_NAME", R.string.rank134_name);
+            put("WARSAW_ID_P_RANK135_NAME", R.string.rank135_name);
+            put("WARSAW_ID_P_RANK136_NAME", R.string.rank136_name);
+            put("WARSAW_ID_P_RANK137_NAME", R.string.rank137_name);
+            put("WARSAW_ID_P_RANK138_NAME", R.string.rank138_name);
+            put("WARSAW_ID_P_RANK139_NAME", R.string.rank139_name);
+            put("WARSAW_ID_P_RANK140_NAME", R.string.rank140_name);
         }
     };
 

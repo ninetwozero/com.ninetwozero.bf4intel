@@ -133,4 +133,14 @@
   <string name="rank128_name">Major General IX</string>
   <string name="rank129_name">Major General X</string>
   <string name="rank130_name">Lieutenant General</string>
+  <string name="rank131_name">Lieutenant General II</string>
+  <string name="rank132_name">Lieutenant General III</string>
+  <string name="rank133_name">Lieutenant General IV</string>
+  <string name="rank134_name">Lieutenant General V</string>
+  <string name="rank135_name">Lieutenant General VI</string>
+  <string name="rank136_name">Lieutenant General VII</string>
+  <string name="rank137_name">Lieutenant General VIII</string>
+  <string name="rank138_name">Lieutenant General IX</string>
+  <string name="rank139_name">Lieutenant General X</string>
+  <string name="rank140_name">General</string>
 </resources>
