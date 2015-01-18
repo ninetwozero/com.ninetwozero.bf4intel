@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  style="@style/RegularCard"
-  xmlns:android="http://schemas.android.com/apk/res/android">
+<android.support.v7.widget.CardView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content">
 
-  <ImageView
-    android:id="@+id/gravatar"
-    android:layout_width="@dimen/avatar_size_xl"
-    android:layout_height="@dimen/avatar_size_xl"
-    android:contentDescription="@string/cdesc_user_gravatar"/>
-
-  <LinearLayout
-    android:layout_width="match_parent"
+  <RelativeLayout
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_toRightOf="@id/gravatar"
-    android:layout_centerVertical="true"
-    android:layout_marginLeft="@dimen/spacing_l"
+    android:padding="@dimen/spacing_m"
     >
 
-    <TextView
-      style="@style/RegularCardTitle"
-      android:id="@+id/username"
-      android:textColor="@color/lighter_blue"
-      />
+    <ImageView
+      android:id="@+id/gravatar"
+      android:layout_width="@dimen/avatar_size_xl"
+      android:layout_height="@dimen/avatar_size_xl"
+      android:contentDescription="@string/cdesc_user_gravatar"/>
 
-    <TextView
-      style="@style/RegularCardSubtitle"
-      android:id="@+id/persona"
-      />
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:layout_toRightOf="@id/gravatar"
+      android:layout_centerVertical="true"
+      android:layout_marginLeft="@dimen/spacing_l"
+      >
 
-  </LinearLayout>
-</RelativeLayout>
+      <TextView
+        style="@style/RegularCardTitle"
+        android:id="@+id/username"
+        android:textColor="@color/lighter_blue"
+        />
+
+      <TextView
+        style="@style/RegularCardSubtitle"
+        android:id="@+id/persona"
+        />
+
+    </LinearLayout>
+  </RelativeLayout>
+</android.support.v7.widget.CardView>
