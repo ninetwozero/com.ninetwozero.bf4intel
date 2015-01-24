@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -43,6 +44,7 @@ public abstract class BaseLoadingListFragment
     protected String[] filterTitleResources;
     protected String[] sortingKeys;
     protected String[] sortTitleResources;
+    protected ListView listView;
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView errorMessageView;
@@ -216,6 +218,17 @@ public abstract class BaseLoadingListFragment
 
     protected String[] getResourceStringArray(int resourceId) {
         return getActivity().getResources().getStringArray(resourceId);
+    }
+
+    protected void setupListView(final View view) {
+        if (view == null) {
+            return;
+        }
+
+        listView = (ListView) view.findViewById(android.R.id.list);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        setCustomEmptyText(view, R.string.empty_text_statistics);
     }
 
     protected void setCustomEmptyText(final View container, final int resourceId){

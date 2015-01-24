@@ -101,7 +101,8 @@ public class NewsListingFragment extends BaseLoadingListFragment {
         setupListView(view);
     }
 
-    private void setupListView(final View view) {
+    @Override
+    protected void setupListView(final View view) {
         setCustomEmptyText(view, R.string.empty_text_news);
     }
 

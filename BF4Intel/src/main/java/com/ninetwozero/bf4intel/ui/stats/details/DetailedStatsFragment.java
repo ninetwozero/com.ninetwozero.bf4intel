@@ -101,14 +101,9 @@ public class DetailedStatsFragment extends BaseLoadingListFragment {
         setupListView(view);
     }
 
-    private void setupListView(final View view) {
-        if (view == null) {
-            return;
-        }
-
-        setCustomEmptyText(view, R.string.empty_text_statistics);
-
-        final ListView listView = (ListView) view.findViewById(android.R.id.list);
+    @Override
+    protected void setupListView(final View view) {
+        super.setupListView(view);
         listView.setChoiceMode(ListView.CHOICE_MODE_NONE);
         listView.setSelector(R.drawable.empty);
     }

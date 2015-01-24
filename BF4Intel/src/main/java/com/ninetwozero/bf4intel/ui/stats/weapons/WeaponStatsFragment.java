@@ -31,7 +31,6 @@ import se.emilsjolander.sprinkles.OneQuery;
 import se.emilsjolander.sprinkles.Query;
 
 public class WeaponStatsFragment extends BaseLoadingListFragment {
-    private ListView listView;
 
     public static final String WEAPON_SORT_MODE = "weaponSortMode";
     private static final String WEAPONS_AB_SUBTITLE = "weapons_ab_subtitle";
@@ -121,17 +120,6 @@ public class WeaponStatsFragment extends BaseLoadingListFragment {
         setupErrorMessage(view);
         setupSwipeRefreshLayout(view);
         setupListView(view);
-    }
-
-    private void setupListView(final View view) {
-        if (view == null) {
-            return;
-        }
-
-        listView = (ListView) view.findViewById(android.R.id.list);
-        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-
-        setCustomEmptyText(view, R.string.empty_text_statistics);
     }
 
     private void sendDataToListView(final List<Weapon> weaponstats) {

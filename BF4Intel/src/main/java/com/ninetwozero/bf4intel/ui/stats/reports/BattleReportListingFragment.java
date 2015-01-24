@@ -109,13 +109,9 @@ public class BattleReportListingFragment extends BaseLoadingListFragment {
         setupListView(view);
     }
 
-    private void setupListView(final View view) {
-        if (view == null) {
-            return;
-        }
-
-        final ListView listView = (ListView) view.findViewById(android.R.id.list);
-        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+    @Override
+    protected void setupListView(final View view) {
+        super.setupListView(view);
         setCustomEmptyText(view, R.string.empty_text_battle_reports);
     }
 
