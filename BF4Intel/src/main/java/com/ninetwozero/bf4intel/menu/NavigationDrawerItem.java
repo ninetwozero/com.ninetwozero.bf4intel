@@ -50,6 +50,7 @@ public class NavigationDrawerItem {
         UNLOCKS,
         ASSIGNMENTS,
         AWARDS,
+        BATTLEPACKS,
 
         ABOUT,
         SETTINGS,

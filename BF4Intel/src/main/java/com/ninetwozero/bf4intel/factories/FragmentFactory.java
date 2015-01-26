@@ -7,6 +7,7 @@ import com.ninetwozero.bf4intel.ui.assignments.AssignmentDetailFragment;
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentGridFragment;
 import com.ninetwozero.bf4intel.ui.awards.AwardDetailFragment;
 import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
+import com.ninetwozero.bf4intel.ui.battlepacks.BattlepacksFragment;
 import com.ninetwozero.bf4intel.ui.fragments.HomeFragment;
 import com.ninetwozero.bf4intel.ui.fragments.SoldierOverviewFragment;
 import com.ninetwozero.bf4intel.ui.news.NewsArticleFragment;
@@ -74,6 +75,8 @@ public class FragmentFactory {
                 return VehicleUnlockFragment.newInstance(data);
             case KIT_UNLOCKS:
                 return KitUnlockFragment.newInstance(data);
+            case BATTLEPACKS:
+                return BattlepacksFragment.newInstance(data);
             default:
                 throw new TypeNotPresentException("" + type, null);
         }
@@ -110,6 +113,8 @@ public class FragmentFactory {
 
         SOLDIER_AWARDS,
         SOLDIER_AWARD_DETAILS,
+
+        BATTLEPACKS,
 
         NEWS_LISTING,
         NEWS_ITEM,

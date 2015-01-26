@@ -420,6 +420,7 @@ public class NavigationDrawerFragment extends BaseFragment {
         rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.UNLOCKS, R.string.navigationdrawer_unlocks, R.drawable.menu_icon_unlocks));
         rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.ASSIGNMENTS, R.string.assignments, R.drawable.menu_icon_assingnments));
         rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.AWARDS, R.string.awards, R.drawable.menu_icon_awards));
+        rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.BATTLEPACKS, R.string.battlepacks, R.drawable.empty));
         rows.add(new NavigationDrawerItem(NavigationDrawerItem.Type.SEPARATOR, R.drawable.empty));
         return rows;
     }
@@ -569,6 +570,8 @@ public class NavigationDrawerFragment extends BaseFragment {
                 return FragmentFactory.Type.SOLDIER_ASSIGNMENTS;
             case AWARDS:
                 return FragmentFactory.Type.SOLDIER_AWARDS;
+            case BATTLEPACKS:
+                return FragmentFactory.Type.BATTLEPACKS;
             default:
                 throw new IllegalArgumentException("No fragment found for type: " + item.getType());
         }
