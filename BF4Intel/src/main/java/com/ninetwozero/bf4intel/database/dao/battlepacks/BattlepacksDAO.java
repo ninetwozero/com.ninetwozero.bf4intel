@@ -4,15 +4,32 @@ import com.ninetwozero.bf4intel.BuildConfig;
 import com.ninetwozero.bf4intel.json.battlepacks.Battlepacks;
 
 import se.emilsjolander.sprinkles.Model;
+import se.emilsjolander.sprinkles.annotations.Column;
+import se.emilsjolander.sprinkles.annotations.Key;
+import se.emilsjolander.sprinkles.annotations.Table;
 
+@Table("Battlepacks")
 public class BattlepacksDAO extends Model {
     public static final String TABLE_NAME = "Battlepacks";
 
-    private final String soldierId;
-    private final String soldierName;
-    private final int version;
-    private final int platformId;
-    private final Battlepacks battlepacks;
+    @Key
+    @Column("soldierId")
+    private String soldierId;
+
+    @Column("soldierName")
+    private String soldierName;
+
+    @Key
+    @Column("platformId")
+    private int platformId;
+
+    @Column("json")
+    private Battlepacks battlepacks;
+
+    @Column("version")
+    private int version;
+
+    public BattlepacksDAO(){}
 
     public BattlepacksDAO(String soldierId, String soldierName, int platformId, Battlepacks json) {
         this.soldierId = soldierId;
@@ -20,10 +37,6 @@ public class BattlepacksDAO extends Model {
         this.platformId = platformId;
         this.battlepacks = json;
         this.version = BuildConfig.VERSION_CODE;
-    }
-
-    public static String getTableName() {
-        return TABLE_NAME;
     }
 
     public String getSoldierId() {
