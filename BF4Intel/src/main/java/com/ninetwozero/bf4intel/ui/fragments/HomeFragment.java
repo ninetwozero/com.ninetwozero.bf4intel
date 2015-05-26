@@ -47,7 +47,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void onPause() {
-        BusProvider.getInstance().register(this);
+        BusProvider.getInstance().unregister(this);
         super.onPause();
     }
 
