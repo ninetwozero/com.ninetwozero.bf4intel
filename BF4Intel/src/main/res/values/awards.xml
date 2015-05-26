@@ -220,4 +220,9 @@
   <string name="award_xp3mlm_desc">Obtain 50 Link Maker Ribbons</string>
   <string name="award_xp3rlm_name">LINK MAKER RIBBON</string>
   <string name="award_xp3rlm_desc">Create 5 links in a round of Chainlink</string>
+
+  <string name="award_gmw_name">GUN MASTER MEDAL</string>
+  <string name="award_gmw_desc">Receive 50 Gun Master Ribbons</string>
+  <string name="award_rgmw_name">GUN MASTER RIBBON</string>
+  <string name="award_rgmw_desc">Win a round of Gun Master</string>
 </resources>

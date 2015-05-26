@@ -228,6 +228,11 @@ public class AwardStringMap {
             put("WARSAW_ID_P_XP3_AWARD_M_LINKMAKER_DESC", R.string.award_xp3mlm_desc);
             put("WARSAW_ID_P_XP3_AWARD_R_LINKMAKER_NAME", R.string.award_xp3rlm_name);
             put("WARSAW_ID_P_XP3_AWARD_R_LINKMAKER_DESC", R.string.award_xp3rlm_desc);
+
+            put("WARSAW_ID_P_AWARD_M_GUNMWINNER_NAME", R.string.award_gmw_name);
+            put("WARSAW_ID_P_AWARD_M_GUNMWINNER_DESC", R.string.award_gmw_desc);
+            put("WARSAW_ID_P_AWARD_R_GUNMWINNER_NAME", R.string.award_rgmw_name);
+            put("WARSAW_ID_P_AWARD_R_GUNMWINNER_DESC", R.string.award_rgmw_desc);
         }
     };
 

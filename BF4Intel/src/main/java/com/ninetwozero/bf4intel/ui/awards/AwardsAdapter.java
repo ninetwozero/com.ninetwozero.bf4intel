@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseFilterableIntelAdapter;
 import com.ninetwozero.bf4intel.json.awards.Award;
+import com.ninetwozero.bf4intel.resources.maps.awards.MedalImagesMap;
+import com.ninetwozero.bf4intel.resources.maps.awards.RibbonImagesMap;
 
 import java.util.ArrayList;
 import java.util.List;

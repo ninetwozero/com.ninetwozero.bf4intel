@@ -70,6 +70,7 @@ public class DetailedStatsGrouper {
         items.add(new DetailedStatsItem("air_superiority", stringValueOf(details.getAirSuperiority())));
         items.add(new DetailedStatsItem("carrier_assault", stringValueOf(details.getCarrieAssault())));
         items.add(new DetailedStatsItem("chain_link", stringValueOf(details.getChainLink())));
+        items.add(new DetailedStatsItem("gunmaster", stringValueOf(details.getGunMaster())));
         return new DetailedStatsGroup(DetailedStatsGroup.GAME_MODE_SCORES, items);
     }
 

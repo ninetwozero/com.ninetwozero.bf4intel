@@ -10,6 +10,7 @@ public class GameModeStringMap {
         put(8L, "Squad Deathmatch");
         put(32L, "Team Deathmatch");
         put(64L, "Conquest Large");
+        put(512L, "Gun Master");
         put(1024L, "Domination");
         put(2048L, "Hardcore Team Deathmatch");
         put(524288L, "Capture the Flag");

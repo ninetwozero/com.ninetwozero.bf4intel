@@ -41,6 +41,7 @@ public class DetailedStatsTitleMap {
             put("defuse", R.string.defuse);
             put("carrier_assault", R.string.carrier_assault);
             put("chain_link", R.string.chain_link);
+            put("gunmaster", R.string.gunmaster);
 
             put("repairs", R.string.repairs);
             put("revives", R.string.revives);

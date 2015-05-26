@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.awards;
+package com.ninetwozero.bf4intel.resources.maps.awards;
 
 import com.ninetwozero.bf4intel.R;
 
@@ -61,6 +61,7 @@ public class MedalImagesMap {
             put("xp3mCW", R.drawable.awards_mxp3mcw);
             put("xp3mLB", R.drawable.awards_mxp3mlb);
             put("xp3mLM", R.drawable.awards_mxp3mlm);
+            put("mGMW", R.drawable.awards_mgmw);
         }
     };
 

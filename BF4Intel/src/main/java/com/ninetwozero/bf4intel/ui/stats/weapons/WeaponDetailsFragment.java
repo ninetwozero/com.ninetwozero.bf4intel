@@ -10,7 +10,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
 import com.ninetwozero.bf4intel.datatypes.WeaponInfo;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
-import com.ninetwozero.bf4intel.resources.maps.WeaponInfoMap;
+import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponInfoMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.GadgetStringMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponImageMap;
 import com.ninetwozero.bf4intel.resources.maps.weapons.WeaponStringMap;
