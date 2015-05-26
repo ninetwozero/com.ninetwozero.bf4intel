@@ -77,6 +77,8 @@ public class StatsDetails {
         private int defuse;
         @SerializedName("carrierassault")
         private int carrieAssault;
+        @SerializedName("gunmaster")
+        private int gunMaster;
 
         @SerializedName("chainlink")
         private int chainLink;
@@ -319,5 +321,8 @@ public class StatsDetails {
             return flagsDefended;
         }
 
+        public int getGunMaster() {
+            return gunMaster;
+        }
     }
 }

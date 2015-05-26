@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.ui.awards;
+package com.ninetwozero.bf4intel.resources.maps.awards;
 
 import com.ninetwozero.bf4intel.R;
 
@@ -61,6 +61,7 @@ public class RibbonImagesMap {
             put("xp3rCW", R.drawable.awards_ribbon_xp3rcw);
             put("xp3rLB", R.drawable.awards_ribbon_xp3rlb);
             put("xp3rLM", R.drawable.awards_ribbon_xp3rlm);
+            put("rGMW", R.drawable.awards_ribbon_rgmw);
         }
     };
 

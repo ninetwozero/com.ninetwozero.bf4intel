@@ -12,6 +12,8 @@ import com.ninetwozero.bf4intel.json.awards.Award;
 import com.ninetwozero.bf4intel.resources.maps.assignments.AssignmentCriteriaStringMap;
 import com.ninetwozero.bf4intel.resources.maps.assignments.ExpansionIconsImageMap;
 import com.ninetwozero.bf4intel.resources.maps.awards.AwardStringMap;
+import com.ninetwozero.bf4intel.resources.maps.awards.MedalImagesMap;
+import com.ninetwozero.bf4intel.resources.maps.awards.RibbonImagesMap;
 
 public class AwardDetailFragment extends BaseDialogFragment {
     public static final String INTENT_AWARD = "award";

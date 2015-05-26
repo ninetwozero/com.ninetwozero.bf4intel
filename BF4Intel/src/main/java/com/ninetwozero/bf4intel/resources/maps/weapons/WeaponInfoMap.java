@@ -1,4 +1,4 @@
-package com.ninetwozero.bf4intel.resources.maps;
+package com.ninetwozero.bf4intel.resources.maps.weapons;
 
 import com.ninetwozero.bf4intel.datatypes.WeaponInfo;
 
@@ -173,6 +173,12 @@ public class WeaponInfoMap {
             put("WARSAW_ID_P_XP4_INAME_KNIFETANTO", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_XP4_INAME_KNIFEBIPOD", new WeaponInfo("WARSAW_ID_P_CAT_KNIFE"));
             put("WARSAW_ID_P_XP4_WNAME_SPYDER", new WeaponInfo("WARSAW_ID_P_CAT_CARBINE", 100, 75, 15, 0, 1, true, false, false));
+
+            put("WARSAW_ID_P_WNAME_AN94", new WeaponInfo("WARSAW_ID_P_CAT_ASSAULTRIFLE", 24, 67, 45, 78, 600, true, true, true));
+            put("WARSAW_ID_P_WNAME_GROZA1", new WeaponInfo("WARSAW_ID_P_CAT_CARBINE", 26, 47, 37, 57, 725, true, false, true));
+            put("WARSAW_ID_P_WNAME_L86A1", new WeaponInfo("WARSAW_ID_P_CAT_LMG", 24, 55, 45, 67, 700, false, false, true));
+            put("WARSAW_ID_P_WNAME_GROZA4", new WeaponInfo("WARSAW_ID_P_CAT_PDW", 23, 65, 32, 84, 700, true, false, true));
+            put("WARSAW_ID_P_WNAME_SADDLEGUN", new WeaponInfo("WARSAW_ID_P_CAT_SIDEARM", 52, 15, 37, 23, 0, true, false, false));
         }
     };
 
