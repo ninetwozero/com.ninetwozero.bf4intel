@@ -1,8 +1,10 @@
 package com.ninetwozero.bf4intel;
 
 import android.app.Application;
+import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.StrictMode;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -28,6 +30,8 @@ import com.ninetwozero.bf4intel.json.stats.weapons.WeaponStatistics;
 import com.ninetwozero.bf4intel.json.unlocks.kits.SortedKitUnlocks;
 import com.ninetwozero.bf4intel.json.unlocks.vehicles.SortedVehicleUnlocks;
 import com.ninetwozero.bf4intel.json.unlocks.weapons.SortedWeaponUnlocks;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import se.emilsjolander.sprinkles.Sprinkles;
 
@@ -36,17 +40,39 @@ public class Bf4Intel extends Application {
     private static final String DB_NAME = "bf4intel.db";
     private static Bf4Intel instance;
     private static RequestQueue requestQueue;
+    private RefWatcher refWatcher;
 
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
 
+        if(BuildConfig.DEBUG) {
+            refWatcher = LeakCanary.install(this);
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectDiskReads()
+                    .detectDiskWrites()
+                    .detectAll()
+                    .penaltyLog()
+                    .build());
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                    .detectLeakedSqlLiteObjects()
+                    .detectLeakedClosableObjects()
+                    .penaltyLog()
+                    .penaltyDeath()
+                    .build());
+        }
+
         requestQueue = Volley.newRequestQueue(this);
 
         Sprinkles sprinkles = Sprinkles.init(getApplicationContext(), DB_NAME, 0);
         setupSerializers(sprinkles);
         setupMigrations(sprinkles);
+    }
+
+    public static RefWatcher getRefWatcher(Context context) {
+        Bf4Intel application = (Bf4Intel) context.getApplicationContext();
+        return application.refWatcher;
     }
 
     private void setupSerializers(Sprinkles sprinkles) {

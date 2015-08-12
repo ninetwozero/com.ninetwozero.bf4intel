@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import se.emilsjolander.sprinkles.CursorList;
 import se.emilsjolander.sprinkles.Query;
 
 public class NavigationDrawerFragment extends BaseFragment {
@@ -440,10 +441,13 @@ public class NavigationDrawerFragment extends BaseFragment {
     }
 
     private List<SummarizedSoldierStatsDAO> fetchSoldiersForMenu() {
-        return Query.many(
+        CursorList cursorList = Query.many(
             SummarizedSoldierStatsDAO.class,
             "SELECT * FROM " + SummarizedSoldierStatsDAO.TABLE_NAME + " ORDER BY lastAccess DESC"
-        ).get().asList();
+        ).get();
+        List<SummarizedSoldierStatsDAO> list = cursorList.asList();
+        cursorList.close();
+        return list;
     }
 
     private Bundle buildBundleForSoldier() {

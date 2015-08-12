@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.provider.MenuProvider;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
@@ -28,6 +29,7 @@ import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
 import com.splunk.mint.Mint;
 import com.splunk.mint.MintLogLevel;
+import com.squareup.leakcanary.RefWatcher;
 import com.squareup.picasso.Picasso;
 
 public abstract class BaseFragment extends Fragment implements MenuProvider.OnMenuProviderSelectedListener {
@@ -76,6 +78,13 @@ public abstract class BaseFragment extends Fragment implements MenuProvider.OnMe
         if (!bundle.getBoolean(FLAG_DISABLE_AUTOMATIC_ANALYTICS, false)) {
             postGoogleAnalytics();
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = Bf4Intel.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 
     protected boolean isSw600dp() {
