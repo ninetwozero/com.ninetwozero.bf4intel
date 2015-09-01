@@ -13,7 +13,7 @@ public class LeaderboardStringMap {
                 put("ID_WEB_GEOLB_ASSAULT", R.string.lb_name_assault);
                 put("ID_WEB_GEOLB_ASSAULT_RIFLES", R.string.lb_name_assault_rifles);
                 put("ID_WEB_GEOLB_CARBINES", R.string.lb_name_carbine_rifles);
-                put("ID_WEB_GEOLB_COMMANDER_SCORE", R.string.lb_name_commander);
+                put("ID_WEB_GEOLB_HACKER_SCORE", R.string.lb_name_commander);
                 put("ID_WEB_GEOLB_DMRS", R.string.lb_name_marksman_rifles);
                 put("ID_WEB_GEOLB_ENGINEER", R.string.lb_name_engineer);
                 put("ID_WEB_GEOLB_FAST_ATTACK_CRAFTS", R.string.lb_name_fast_attack_crafts);

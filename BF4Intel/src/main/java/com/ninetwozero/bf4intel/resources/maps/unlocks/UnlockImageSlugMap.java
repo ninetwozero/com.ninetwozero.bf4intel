@@ -106,10 +106,10 @@ public class UnlockImageSlugMap {
             put("GOL-MAGNUM", R.drawable.w_lineart_gol_magnum);
             put("M60-E4", R.drawable.w_lineart_m60_e4);
             put("L85A2", R.drawable.w_lineart_l85a2);
-            put("L96A1", R.drawable.w_lineart_l96a1);
+            put("L115", R.drawable.w_lineart_l96a1);
             put("MP7", R.drawable.w_lineart_mp7);
             put("MTAR-21", R.drawable.w_lineart_mtar21);
-            put("RPK-74M", R.drawable.w_lineart_rpk74m);
+            put("RPK", R.drawable.w_lineart_rpk74m);
             put("44-MAGNUM", R.drawable.w_lineart_44_magnum);
             put("UTS-15", R.drawable.w_lineart_uts15);
             put("U-100-MK5", R.drawable.w_lineart_u100_mk5);
@@ -238,6 +238,12 @@ public class UnlockImageSlugMap {
             put("NECK", R.drawable.w_lineart_neck);
             put("TANTO", R.drawable.w_lineart_knife_tanto);
             put("C100", R.drawable.w_lineart_c100);
+
+            put("AN-94", R.drawable.w_lineart_an_94);
+            put("GROZA-1", R.drawable.w_lineart_groza_1);
+            put("L86A2", R.drawable.w_lineart_l86a2);
+            put("GROZA-4", R.drawable.w_lineart_groza_4);
+            put("MARE-S-LEG", R.drawable.w_lineart_mare_s_leg);
         }
     };
 

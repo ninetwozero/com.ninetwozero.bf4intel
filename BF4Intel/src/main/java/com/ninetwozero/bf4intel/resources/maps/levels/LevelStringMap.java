@@ -57,6 +57,9 @@ public class LevelStringMap {
             put("XP4_ARCTIC","Operation Whiteout");
             put("XP4_WLKRFTRY","Giants Of Karelia");
             put("XP4_SUBBASE","Hammerhead");
+
+            //XP5
+            put("XP5_NIGHT_01", "Zavod: Graveyard Shift");
         }
     };
 

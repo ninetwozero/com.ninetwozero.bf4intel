@@ -51,6 +51,9 @@ public class LevelImageMap {
             put("XP4_ARCTIC", R.drawable.mp_xp4_arctic);
             put("XP4_WLKRFTRY", R.drawable.mp_xp4_wlkrftry);
             put("XP4_SUBBASE", R.drawable.mp_xp4_subbase);
+
+            //XP5
+            put("XP5_NIGHT_01", R.drawable.mp_xp5_night_01);
         }
     };
 

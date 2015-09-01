@@ -108,10 +108,10 @@ public class WeaponStringSlugMap {
             put("GOL-MAGNUM", R.string.weapon_xp0_name_gol);
             put("M60-E4", R.string.weapon_xp0_name_m60e4);
             put("L85A2", R.string.weapon_xp1_name_l85a2);
-            put("L96A1", R.string.weapon_xp1_name_l96a1);
+            put("L115", R.string.weapon_xp1_name_l96a1);
             put("MP7", R.string.weapon_xp1_name_mp7);
             put("MTAR-21", R.string.weapon_xp1_name_mtar21);
-            put("RPK-74M", R.string.weapon_xp1_name_rpk74);
+            put("RPK", R.string.weapon_xp1_name_rpk74);
             put("44-MAGNUM", R.string.weapon_name_44_magnum);
             put("UTS-15", R.string.weapon_name_uts15);
             put("U-100-MK5", R.string.weapon_name_u100_mk5);
@@ -250,6 +250,12 @@ public class WeaponStringSlugMap {
             put("WEAVER", R.string.weapon_knife_weaver);
             put("TANTO", R.string.weapon_knife_tanto);
             put("C100", R.string.weapon_knife_c100);
+
+            put("AN-94", R.string.weapon_an94);
+            put("GROZA-1", R.string.weapon_groza1);
+            put("L86A2", R.string.weapon_l86a2);
+            put("GROZA-4", R.string.weapon_groza4);
+            put("MARE-S-LEG", R.string.weapon_saddlegun);
         }
     };
 
