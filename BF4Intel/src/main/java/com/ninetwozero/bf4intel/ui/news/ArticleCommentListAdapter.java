@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseExpandableIntelAdapter;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.news.NewsArticleComment;
 import com.ninetwozero.bf4intel.json.news.NewsArticleCommentReply;
@@ -31,7 +31,7 @@ public class ArticleCommentListAdapter extends BaseExpandableIntelAdapter<NewsAr
         setText(view, R.id.username, author.getUsername());
         setText(view, R.id.content, content);
         setText(view, R.id.timestamp, DateTimeUtils.toRelative(timestamp));
-        loadImage(view, R.id.gravatar, UrlFactory.buildGravatarUrl(author.getGravatarHash()));
+        loadImage(view, R.id.gravatar, Bf4IntelService.buildGravatarUrl(author.getGravatarHash()));
     }
 
     @Override

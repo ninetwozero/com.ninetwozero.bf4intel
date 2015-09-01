@@ -8,7 +8,7 @@ import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.database.dao.soldieroverview.SoldierOverviewDAO;
 import com.ninetwozero.bf4intel.events.SoldierInformationUpdatedEvent;
 import com.ninetwozero.bf4intel.events.soldieroverview.SoldierOverviewRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.soldieroverview.SoldierOverview;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.resources.Keys;
@@ -26,7 +26,7 @@ public class SoldierOverviewService extends BaseApiService {
         if (intentCount == 1) {
             Bf4Intel.getRequestQueue().add(
                 new SimpleGetRequest<Boolean>(
-                    UrlFactory.buildSoldierOverviewURL(
+                    Bf4IntelService.buildSoldierOverviewURL(
                         soldier.getString(Keys.Soldier.ID, ""),
                         soldier.getInt(Keys.Soldier.PLATFORM, 0)
                     ),

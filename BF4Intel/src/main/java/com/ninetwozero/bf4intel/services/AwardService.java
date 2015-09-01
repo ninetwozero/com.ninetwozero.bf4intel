@@ -4,7 +4,7 @@ import com.ninetwozero.bf4intel.database.dao.awards.AwardSorter;
 import com.ninetwozero.bf4intel.database.dao.awards.AwardsDAO;
 import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.events.awards.AwardsRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.awards.Awards;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.awards.AwardGridFragment;
@@ -31,7 +31,7 @@ public class AwardService extends BaseDaoService<AwardsDAO, AwardsRefreshedEvent
 
     @Override
     protected URL getUrlForService() {
-        return UrlFactory.buildAwardsURL(
+        return Bf4IntelService.buildAwardsURL(
             soldier.getString(Keys.Soldier.ID),
             soldier.getInt(Keys.Soldier.PLATFORM)
         );

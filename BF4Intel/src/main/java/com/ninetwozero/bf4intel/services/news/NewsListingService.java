@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.google.gson.JsonElement;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.events.news.NewsListingRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.news.NewsListRequest;
 import com.ninetwozero.bf4intel.network.BaseSimpleRequest;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
@@ -24,7 +24,7 @@ public class NewsListingService extends BaseApiService {
             final int pageId = intent.getIntExtra(INTENT_PAGE_ID, 0);
             Bf4Intel.getRequestQueue().add(
                 new SimpleGetRequest<NewsListRequest>(
-                    UrlFactory.buildNewsListingURL(pageId),
+                    Bf4IntelService.buildNewsListingURL(pageId),
                     BaseSimpleRequest.RequestType.FROM_NAVIGATION,
                     this
                 ) {

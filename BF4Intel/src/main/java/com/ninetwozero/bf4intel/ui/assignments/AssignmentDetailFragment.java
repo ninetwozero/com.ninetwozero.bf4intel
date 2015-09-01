@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseDialogFragment;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.UnlockType;
 import com.ninetwozero.bf4intel.json.assignments.Assignment;
 import com.ninetwozero.bf4intel.json.assignments.AssignmentAward;
@@ -325,7 +325,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
 
     private void setImageForDogtagReward(View view, int viewId, AssignmentReward reward) {
         Picasso.with(getActivity())
-                .load(UrlFactory.buildDogtagImageURL(reward.getImageIndex(), reward.isAdvanced()))
+                .load(Bf4IntelService.buildDogtagImageURL(reward.getImageIndex(), reward.isAdvanced()))
                 .placeholder(R.drawable.dogtag_plain)
                 .into((ImageView) view.findViewById(viewId));
     }

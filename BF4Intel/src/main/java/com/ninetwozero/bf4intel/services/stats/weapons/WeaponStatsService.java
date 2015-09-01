@@ -4,7 +4,7 @@ import com.ninetwozero.bf4intel.database.dao.stats.weapons.WeaponSorter;
 import com.ninetwozero.bf4intel.database.dao.stats.weapons.WeaponStatsDAO;
 import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.events.stats.weapons.WeaponStatsRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.stats.weapons.Weapon;
 import com.ninetwozero.bf4intel.json.stats.weapons.WeaponStatistics;
 import com.ninetwozero.bf4intel.resources.Keys;
@@ -38,7 +38,7 @@ public class WeaponStatsService extends BaseDaoService<WeaponStatsDAO, WeaponSta
 
     @Override
     protected URL getUrlForService() {
-        return UrlFactory.buildWeaponStatsURL(
+        return Bf4IntelService.buildWeaponStatsURL(
             soldier.getString(Keys.Soldier.ID, ""),
             soldier.getInt(Keys.Soldier.PLATFORM, 0)
         );

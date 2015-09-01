@@ -4,7 +4,7 @@ import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.database.dao.unlocks.vehicles.VehicleUnlockDAO;
 import com.ninetwozero.bf4intel.database.dao.unlocks.vehicles.VehicleUnlockMapSorter;
 import com.ninetwozero.bf4intel.events.unlocks.vehicles.VehicleUnlocksRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.unlocks.VehicleUnlocks;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.BaseDaoService;
@@ -32,7 +32,7 @@ public class VehicleUnlockService extends BaseDaoService<VehicleUnlockDAO, Vehic
 
     @Override
     protected URL getUrlForService() {
-        return UrlFactory.buildVehicleUnlocksURL(
+        return Bf4IntelService.buildVehicleUnlocksURL(
             soldier.getString(Keys.Soldier.ID),
             soldier.getInt(Keys.Soldier.PLATFORM)
         );

@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.google.gson.JsonElement;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.events.news.NewsArticleRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.news.NewsArticleRequest;
 import com.ninetwozero.bf4intel.network.BaseSimpleRequest;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
@@ -23,7 +23,7 @@ public class NewsArticleService extends BaseApiService {
         super.onStartCommand(intent, flags, startId);
 
         if (intentCount == 1) {
-            final URL url = UrlFactory.buildNewsArticleURL(intent.getStringExtra(INTENT_ARTICLE_ID));
+            final URL url = Bf4IntelService.buildNewsArticleURL(intent.getStringExtra(INTENT_ARTICLE_ID));
             Bf4Intel.getRequestQueue().add(
                 new SimpleGetRequest<NewsArticleRequest>(
                     url,

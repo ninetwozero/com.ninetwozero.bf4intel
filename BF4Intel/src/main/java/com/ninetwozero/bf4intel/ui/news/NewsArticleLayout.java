@@ -17,7 +17,7 @@ import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLayoutPopulator;
 import com.ninetwozero.bf4intel.datatypes.Link;
 import com.ninetwozero.bf4intel.datatypes.ParsedArticleContent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
 import com.ninetwozero.bf4intel.utils.DateTimeUtils;
 import com.ninetwozero.bf4intel.utils.NewsUtils;
@@ -119,7 +119,7 @@ public class NewsArticleLayout extends BaseLayoutPopulator implements View.OnCli
                         intent.setType("text/plain");
                         intent.putExtra(
                             Intent.EXTRA_TEXT,
-                            UrlFactory.buildNewsArticleWebURL(article.getUrlSlug()).toString()
+                            Bf4IntelService.buildNewsArticleWebURL(article.getUrlSlug()).toString()
                         );
                         intent.putExtra(Intent.EXTRA_SUBJECT, article.getTitle());
                         context.startActivity(

@@ -7,7 +7,7 @@ import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.events.stats.reports.BattleReportsRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.stats.reports.BattleReportStatistics;
 import com.ninetwozero.bf4intel.json.stats.reports.GameReport;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
@@ -30,7 +30,7 @@ public class BattleReportService extends BaseApiService {
         if (intentCount == 1) {
             Bf4Intel.getRequestQueue().add(
                 new SimpleGetRequest<List<BaseListItem>>(
-                    UrlFactory.buildBattleReportsURL(
+                    Bf4IntelService.buildBattleReportsURL(
                         soldier.getString(Keys.Soldier.ID, ""),
                         soldier.getInt(Keys.Soldier.PLATFORM, 0)
                     ),

@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.events.battlefeed.BattleFeedRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.battlefeed.BattleFeed;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
 import com.ninetwozero.bf4intel.services.BaseApiService;
@@ -26,7 +26,7 @@ public class BattleFeedService extends BaseApiService {
 
             Bf4Intel.getRequestQueue().add(
                 new SimpleGetRequest<BattleFeed>(
-                    fetchGlobalFeed ? UrlFactory.buildGlobalFeedURL(count) : UrlFactory.buildUserFeedURL(userId, count),
+                    fetchGlobalFeed ? Bf4IntelService.buildGlobalFeedURL(count) : Bf4IntelService.buildUserFeedURL(userId, count),
                     this
                 ) {
                     @Override

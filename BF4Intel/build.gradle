@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:1.3.1'
     }
 }
 apply plugin: 'com.android.application'
@@ -18,15 +18,15 @@ repositories {
 }
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    compileSdkVersion 23
+    buildToolsVersion '23.0.0'
 
     defaultConfig {
         applicationId 'com.ninetwozero.bf4intel'
         versionCode 1614114
         versionName '1.1.4'
         minSdkVersion 14
-        targetSdkVersion 21
+        targetSdkVersion 23
     }
 
     signingConfigs {
@@ -64,10 +64,10 @@ android {
 
 dependencies {
     compile project(':core')
-    compile 'com.android.support:support-v4:22.2.1',
-            'com.android.support:appcompat-v7:22.2.1',
-            'com.android.support:cardview-v7:22.2.1',
-            'com.mcxiaoke.volley:library:1.0.16', /*TODO change for retrofit*/
+    compile 'com.android.support:support-v4:23.0.0',
+            'com.android.support:appcompat-v7:23.0.0',
+            'com.android.support:cardview-v7:23.0.0',
+            'com.squareup.retrofit:retrofit:1.9.0',
             'com.squareup:otto:1.3.8',
             'com.google.code.gson:gson:2.3.1',
             'com.squareup.picasso:picasso:2.5.2', /*TODO change for glide*/

@@ -2,7 +2,7 @@ package com.ninetwozero.bf4intel.services.stats.vehicles;
 
 import com.ninetwozero.bf4intel.database.dao.stats.vehicles.VehicleStatsDAO;
 import com.ninetwozero.bf4intel.events.stats.vehicles.VehicleStatsRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.stats.vehicles.GroupedVehicleStatsContainer;
 import com.ninetwozero.bf4intel.json.stats.vehicles.VehicleStatistics;
 import com.ninetwozero.bf4intel.resources.Keys;
@@ -29,7 +29,7 @@ public class VehicleStatsService extends BaseDaoService<VehicleStatsDAO, Vehicle
 
     @Override
     protected URL getUrlForService() {
-        return UrlFactory.buildVehicleStatsURL(
+        return Bf4IntelService.buildVehicleStatsURL(
             soldier.getString(Keys.Soldier.ID, ""),
             soldier.getInt(Keys.Soldier.PLATFORM, 0)
         );

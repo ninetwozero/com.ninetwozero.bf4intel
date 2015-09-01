@@ -20,7 +20,7 @@ import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingFragment;
 import com.ninetwozero.bf4intel.events.news.NewsArticleRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.news.NewsArticle;
 import com.ninetwozero.bf4intel.json.news.NewsArticleComment;
 import com.ninetwozero.bf4intel.json.news.NewsArticleRequest;
@@ -52,7 +52,7 @@ public class NewsArticleFragment extends BaseLoadingFragment {
     @Override
     public void onCreate(Bundle icicle) {
         articleId = getArguments().getString(ID, "");
-        articleUrl = UrlFactory.buildNewsArticleURL(articleId);
+        articleUrl = Bf4IntelService.buildNewsArticleURL(articleId);
 
         super.onCreate(icicle);
     }

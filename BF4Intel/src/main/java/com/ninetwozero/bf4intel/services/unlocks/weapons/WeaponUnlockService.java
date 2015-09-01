@@ -4,7 +4,7 @@ import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.database.dao.unlocks.weapons.WeaponUnlockDAO;
 import com.ninetwozero.bf4intel.database.dao.unlocks.weapons.WeaponUnlockSorter;
 import com.ninetwozero.bf4intel.events.unlocks.weapons.WeaponUnlocksRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlockContainer;
 import com.ninetwozero.bf4intel.json.unlocks.WeaponUnlocks;
 import com.ninetwozero.bf4intel.resources.Keys;
@@ -55,7 +55,7 @@ public class WeaponUnlockService extends BaseDaoService<WeaponUnlockDAO, WeaponU
 
     @Override
     protected URL getUrlForService() {
-        return UrlFactory.buildWeaponUnlocksURL(
+        return Bf4IntelService.buildWeaponUnlocksURL(
             soldier.getString(Keys.Soldier.ID),
             soldier.getInt(Keys.Soldier.PLATFORM)
         );

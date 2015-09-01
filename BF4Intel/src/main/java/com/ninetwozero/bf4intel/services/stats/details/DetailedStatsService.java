@@ -3,7 +3,7 @@ package com.ninetwozero.bf4intel.services.stats.details;
 import com.ninetwozero.bf4intel.database.dao.stats.details.DetailedStatsDAO;
 import com.ninetwozero.bf4intel.database.dao.stats.details.DetailedStatsGrouper;
 import com.ninetwozero.bf4intel.events.stats.details.DetailedStatsRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.stats.details.StatsDetails;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.BaseDaoService;
@@ -29,7 +29,7 @@ public class DetailedStatsService extends BaseDaoService<DetailedStatsDAO, Detai
 
     @Override
     protected URL getUrlForService() {
-        return UrlFactory.buildDetailsURL(
+        return Bf4IntelService.buildDetailsURL(
             soldier.getString(Keys.Soldier.ID, ""),
             soldier.getInt(Keys.Soldier.PLATFORM, 0)
         );

@@ -4,7 +4,7 @@ import com.ninetwozero.bf4intel.database.dao.assignments.AssignmentSorter;
 import com.ninetwozero.bf4intel.database.dao.assignments.AssignmentsDAO;
 import com.ninetwozero.bf4intel.database.dao.unlocks.SortMode;
 import com.ninetwozero.bf4intel.events.assignments.AssignmentsRefreshedEvent;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.assignments.Assignments;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.assignments.AssignmentGridFragment;
@@ -32,7 +32,7 @@ public class AssignmentService extends BaseDaoService<AssignmentsDAO, Assignment
 
     @Override
     protected URL getUrlForService() {
-        return UrlFactory.buildAssignmentsURL(
+        return Bf4IntelService.buildAssignmentsURL(
             soldier.getString(Keys.Soldier.NAME, ""),
             soldier.getString(Keys.Soldier.ID, ""),
             soldier.getString(Keys.Profile.ID, ""),

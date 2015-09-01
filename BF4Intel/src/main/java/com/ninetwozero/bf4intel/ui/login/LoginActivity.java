@@ -19,7 +19,7 @@ import com.ninetwozero.bf4intel.base.ui.BaseLoadingIntelActivity;
 import com.ninetwozero.bf4intel.database.dao.ProfileDAO;
 import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.factories.BundleFactory;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.login.SoldierListingRequest;
 import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
@@ -83,7 +83,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
         setLoadingState(true);
         Bf4Intel.getRequestQueue().add(
                 new SimpleGetRequest<SoldierListingRequest>(
-                        UrlFactory.buildSoldierListURL(bundle.getString(Keys.Profile.ID)),
+                        Bf4IntelService.buildSoldierListURL(bundle.getString(Keys.Profile.ID)),
                         this
                 ) {
                     private int bf4SoldierCount;

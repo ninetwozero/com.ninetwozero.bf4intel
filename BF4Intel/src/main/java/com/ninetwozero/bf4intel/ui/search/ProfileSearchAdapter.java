@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.adapter.BaseIntelAdapter;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResult;
 import com.squareup.picasso.Picasso;
@@ -45,7 +45,7 @@ public class ProfileSearchAdapter extends BaseIntelAdapter<ProfileSearchResult> 
         );
 
         Picasso.with(context).load(
-            UrlFactory.buildGravatarUrl(profile.getGravatarHash())
+            Bf4IntelService.buildGravatarUrl(profile.getGravatarHash())
         ).placeholder(R.drawable.default_gravatar).into(imageView);
         return view;
     }

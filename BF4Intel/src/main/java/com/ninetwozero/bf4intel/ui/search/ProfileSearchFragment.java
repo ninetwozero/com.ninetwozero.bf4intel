@@ -17,7 +17,7 @@ import com.android.volley.Request;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingListFragment;
-import com.ninetwozero.bf4intel.factories.UrlFactory;
+import com.ninetwozero.bf4intel.network.Bf4IntelService;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResult;
 import com.ninetwozero.bf4intel.json.search.ProfileSearchResults;
 import com.ninetwozero.bf4intel.network.SimplePostRequest;
@@ -149,7 +149,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
 
     private Request<List<ProfileSearchResult>> fetchRequestForSearch(Bundle postData) {
         return new SimplePostRequest<List<ProfileSearchResult>>(
-            UrlFactory.buildUserSearchURL(),
+            Bf4IntelService.buildUserSearchURL(),
             postData,
             this
         ) {
