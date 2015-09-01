@@ -91,10 +91,10 @@
   <string name="weapon_xp0_name_gol">GOL Magnum</string>
   <string name="weapon_xp0_name_m60e4">M60&#8211;E4</string>
   <string name="weapon_xp1_name_l85a2">L85A2</string>
-  <string name="weapon_xp1_name_l96a1">L96A1</string>
+  <string name="weapon_xp1_name_l96a1">L115</string>
   <string name="weapon_xp1_name_mp7">MP7</string>
   <string name="weapon_xp1_name_mtar21">MTAR&#8211;21</string>
-  <string name="weapon_xp1_name_rpk74">RPK&#8211;74M</string>
+  <string name="weapon_xp1_name_rpk74">RPK</string>
   <string name="weapon_iname_40mm">M320 HE</string>
   <string name="weapon_iname_40mm_flash">M320 FB</string>
   <string name="weapon_iname_40mm_lvg">M320 LVG</string>
@@ -227,7 +227,7 @@
   <string name="weapon_spyder">PHANTOM</string>
 
   <string name="weapon_saddlegun">MARE\'S LEG</string>
-  <string name="weapon_l86a1">L86A2</string>
+  <string name="weapon_l86a2">L86A2</string>
   <string name="weapon_an94">AN-94</string>
   <string name="weapon_groza1">GROZA-1</string>
   <string name="weapon_groza4">GROZA-4</string>
