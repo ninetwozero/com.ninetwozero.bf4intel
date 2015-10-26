@@ -22,6 +22,7 @@
   <string name="label_service_awards">Award Service</string>
   <string name="label_service_battlefeed">Battle Feed Service</string>
   <string name="label_service_news">News Service</string>
+  <string name="label_service_battlepacks">Battlepacks Service</string>
 
   <!--Menu options-->
   <string name="menu_logout">Logout</string>

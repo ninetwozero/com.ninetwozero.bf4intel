@@ -1,7 +1,17 @@
 package com.ninetwozero.bf4intel.database.dao.battlepacks;
 
+import android.content.Context;
+
 import com.ninetwozero.bf4intel.BuildConfig;
+import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.json.battlepacks.Battlepacks;
+import com.ninetwozero.bf4intel.json.battlepacks.WeaponPack;
+import com.ninetwozero.bf4intel.ui.BaseListItem;
+import com.ninetwozero.bf4intel.ui.SimpleListHeader;
+import com.ninetwozero.bf4intel.ui.battlepacks.WeaponBattlepackItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import se.emilsjolander.sprinkles.Model;
 import se.emilsjolander.sprinkles.annotations.Column;
@@ -55,7 +65,21 @@ public class BattlepacksDAO extends Model {
         return platformId;
     }
 
-    public Battlepacks getBattlepacks() {
-        return battlepacks;
+    public List<BaseListItem> getBattlepacks(Context context) {
+        List<BaseListItem> listItems = new ArrayList<>();
+        if(battlepacks.getWeaponPackList() != null && battlepacks.getWeaponPackList().size() > 0) {
+            listItems.add(new SimpleListHeader(R.string.upcoming_rank_battlepacks));
+            listItems.addAll(buildWeaponPacks(battlepacks.getWeaponPackList(), context));
+        }
+
+        return listItems;
+    }
+
+    private List<BaseListItem> buildWeaponPacks(List<WeaponPack> weaponPackList, Context context) {
+        List<BaseListItem> weaponPacks = new ArrayList<>();
+        for (WeaponPack pack : weaponPackList) {
+            weaponPacks.add(new WeaponBattlepackItem(pack, context));
+        }
+        return weaponPacks;
     }
 }

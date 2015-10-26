@@ -7,6 +7,7 @@ import java.util.List;
 public class Battlepacks {
 
     //@SerializedName("upcomingRankPacks")
+    private List<RankPack> upcomingRanks;
     @SerializedName("upcomingWeaponPacks")
     private List<WeaponPack> weaponPackList;
     //@SerializedName("suggestions")

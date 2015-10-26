@@ -2,6 +2,7 @@ package com.ninetwozero.bf4intel.services.battlepacks;
 
 import com.ninetwozero.bf4intel.database.dao.battlepacks.BattlepacksDAO;
 import com.ninetwozero.bf4intel.events.RefreshCompletedEvent;
+import com.ninetwozero.bf4intel.events.battlepacks.BattlepacksRefreshEvent;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.battlepacks.Battlepacks;
 import com.ninetwozero.bf4intel.resources.Keys;
@@ -29,7 +30,7 @@ public class BattlepacksService extends BaseDaoService<BattlepacksDAO,RefreshCom
     }
 
     @Override
-    protected RefreshCompletedEvent getEventToBroadcast(boolean result) {
-        return new RefreshCompletedEvent(result);
+    protected BattlepacksRefreshEvent getEventToBroadcast(boolean result) {
+        return new BattlepacksRefreshEvent(result);
     }
 }

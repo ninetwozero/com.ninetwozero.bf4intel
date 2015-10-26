@@ -67,7 +67,7 @@ public class UrlFactory {
     }
 
     public static URL buildBattlepacksURL(final String soldierId, final int platformId) {
-        return createURL(String.format(Locale.getDefault(), "warsawbattlepackspopulate/%d/2048/%d/", soldierId, platformId));
+        return createURL(String.format(Locale.getDefault(), "warsawbattlepackspopulate/%s/2048/%d/", soldierId, platformId));
     }
 
     public static URL buildGlobalFeedURL(final int offset) {

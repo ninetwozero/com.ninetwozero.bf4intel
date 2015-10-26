@@ -13,6 +13,8 @@ public class WeaponPack {
     public static class WeaponBattlepackInfo {
         @SerializedName("nameSID")
         private String uniqueId;
+        @SerializedName("completionPercentage")
+        private int completion;
         @SerializedName("actualValue")
         private int currentValue;
         @SerializedName("valueNeeded")
@@ -20,6 +22,10 @@ public class WeaponPack {
 
         public String getUniqueId() {
             return uniqueId;
+        }
+
+        public int getCompletion() {
+            return completion;
         }
 
         public int getCurrentValue() {

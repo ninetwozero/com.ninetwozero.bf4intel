@@ -15,6 +15,7 @@ import com.ninetwozero.bf4intel.events.battlefeed.BattleFeedRefreshedEvent;
 import com.ninetwozero.bf4intel.json.battlepacks.Battlepacks;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.services.battlepacks.BattlepacksService;
+import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
 import com.ninetwozero.bf4intel.ui.menu.RefreshEvent;
 import com.squareup.otto.Subscribe;
 
@@ -80,6 +81,12 @@ public class BattlepacksFragment extends BaseLoadingListFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        startLoadingData(true);
+    }
+
+    @Override
     protected void startLoadingData(boolean showLoading) {
         if (isReloading || !Bf4Intel.isConnectedToNetwork()) {
             return;
@@ -94,6 +101,6 @@ public class BattlepacksFragment extends BaseLoadingListFragment {
     }
 
     private void sendDataToListView(final BattlepacksDAO battlepacksDAO){
-
+        setListAdapter(new SimpleListAdapter(getActivity(), battlepacksDAO.getBattlepacks(getActivity())));
     }
 }

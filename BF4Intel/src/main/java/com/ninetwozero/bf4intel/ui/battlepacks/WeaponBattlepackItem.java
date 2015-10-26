@@ -12,12 +12,12 @@ import com.ninetwozero.bf4intel.ui.BaseListItem;
 import com.ninetwozero.bf4intel.ui.SimpleListAdapter;
 import com.squareup.picasso.Picasso;
 
-public class WeaponBattlepack implements BaseListItem {
+public class WeaponBattlepackItem implements BaseListItem {
 
     private WeaponPack weaponPack;
     private Context context;
 
-    public WeaponBattlepack(WeaponPack weaponPack, Context context) {
+    public WeaponBattlepackItem(WeaponPack weaponPack, Context context) {
         this.weaponPack = weaponPack;
         this.context = context;
     }

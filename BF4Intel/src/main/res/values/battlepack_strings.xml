@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="upcoming_rank_battlepacks">Upcoming Rank Battlepacks</string>
+  <string name="upcoming_weapon_battlepacks">Upcoming Weapon Battlepacks</string>
+
   <string name="battlepack_bronze">Bronze Battlepack</string>
   <string name="battlepack_bronze_axe">Axe Bronze Battlepack</string>
   <string name="battlepack_bronze_gem">Keep Fighting Bronze Battlepack</string>

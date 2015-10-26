@@ -179,6 +179,10 @@
       android:name=".services.battlefeed.BattleFeedService"
       android:label="@string/label_service_battlefeed"/>
 
+    <!-- Battlepacks-->
+    <service android:name=".services.battlepacks.BattlepacksService"
+             android:label="@string/label_service_battlepacks" />
+
   </application>
 
 </manifest>

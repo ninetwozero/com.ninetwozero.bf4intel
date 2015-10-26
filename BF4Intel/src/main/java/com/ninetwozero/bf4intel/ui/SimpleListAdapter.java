@@ -12,7 +12,7 @@ public class SimpleListAdapter extends ArrayAdapter<BaseListItem> {
     final LayoutInflater layoutInflater;
 
     public enum RowType {
-        GROUP, ITEM, HEADER;
+        GROUP, ITEM, HEADER
     }
 
     public SimpleListAdapter(final Context context, List<BaseListItem> items) {
