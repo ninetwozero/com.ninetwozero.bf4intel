@@ -14,7 +14,6 @@ public class ParseAccountTest {
     public void should_parse_Json() throws IOException {
         final SoldierListingRequest request = IntelJsonParser.parse("/json/soldier_listing.json", SoldierListingRequest.class);
 
-        assertNotNull(request.getGameExpansions());
         assertNotNull(request.getGames());
         assertNotNull(request.getSoldiers());
 

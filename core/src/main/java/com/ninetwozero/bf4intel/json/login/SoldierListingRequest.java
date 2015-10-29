@@ -9,18 +9,11 @@ public class SoldierListingRequest {
     @SerializedName("soldiersBox")
     private List<SummarizedSoldierStats> soldiers;
 
-    @SerializedName("userGameExpansions")
-    private Map<Integer, Integer[]> gameExpansions;
-
     @SerializedName("userGames")
     private Map<Integer, Integer[]> games;
 
     public List<SummarizedSoldierStats> getSoldiers() {
         return soldiers;
-    }
-
-    public Map<Integer, Integer[]> getGameExpansions() {
-        return gameExpansions;
     }
 
     public Map<Integer, Integer[]> getGames() {
