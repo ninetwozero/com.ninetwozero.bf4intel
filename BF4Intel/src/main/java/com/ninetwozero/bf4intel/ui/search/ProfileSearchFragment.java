@@ -130,6 +130,7 @@ public class ProfileSearchFragment extends BaseLoadingListFragment {
                 new Intent()
                     .putExtra(SearchActivity.RESULT_SEARCH_RESULT, result.getProfile())
                     .putExtra(SearchActivity.RESULT_SEARCH_RESULT_PLATFORM, PlatformStringMap.getIdFromName(result.getPlatform()))
+                    .putExtra(SearchActivity.RESULT_SEARCH_RESULT_PERSONA_ID, result.getPersonaId())
             );
             activity.finish();
         }
