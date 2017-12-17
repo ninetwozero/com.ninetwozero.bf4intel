@@ -231,4 +231,7 @@
   <string name="weapon_an94">AN-94</string>
   <string name="weapon_groza1">GROZA-1</string>
   <string name="weapon_groza4">GROZA-4</string>
+
+  <!--XP6-->
+  <string name="weapon_m60ult">M60 ULT</string>
 </resources>

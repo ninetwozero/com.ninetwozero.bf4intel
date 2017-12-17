@@ -225,6 +225,8 @@ public class WeaponStringMap {
             put("WARSAW_ID_P_WNAME_AN94",R.string.weapon_an94);
             put("WARSAW_ID_P_WNAME_GROZA1",R.string.weapon_groza1);
             put("WARSAW_ID_P_WNAME_GROZA4",R.string.weapon_groza4);
+
+            put("WARSAW_ID_P_XP6_INAME_M60ULT", R.string.weapon_m60ult);
         }
     };
 

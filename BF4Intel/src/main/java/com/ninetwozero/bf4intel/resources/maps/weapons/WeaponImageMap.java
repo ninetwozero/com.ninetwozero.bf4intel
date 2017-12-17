@@ -191,6 +191,9 @@ public class WeaponImageMap {
             put("WARSAW_ID_P_WNAME_AN94", R.drawable.w_an94_fancy);
             put("WARSAW_ID_P_WNAME_GROZA1", R.drawable.w_groza1_fancy);
             put("WARSAW_ID_P_WNAME_GROZA4", R.drawable.w_groza4_fancy);
+
+            /*XP6*/
+            put("WARSAW_ID_P_XP6_INAME_M60ULT", R.drawable.w_m60e4_fancy);
         }
     };
 

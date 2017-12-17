@@ -75,6 +75,9 @@ public class WeaponDetailsFragment extends BaseDialogFragment {
             setText(view, R.id.value_description, GadgetStringMap.get(weapon.getUniqueName()));
             hasDescription = true;
         }
+        if(weapon.getUniqueName().equals("WARSAW_ID_P_XP6_INAME_M60ULT")) {
+            hasDescription = false;
+        }
         setVisibility(view, R.id.wrap_description_box, hasDescription ? View.VISIBLE : View.GONE);
     }
 
@@ -147,6 +150,11 @@ public class WeaponDetailsFragment extends BaseDialogFragment {
             default:
                 break;
 
+        }
+        if(weapon.getUniqueName().equals("WARSAW_ID_P_XP6_INAME_M60ULT")) {
+            setVisibility(view, R.id.wrap_headshots, View.VISIBLE);
+            setVisibility(view, R.id.wrap_shots_fired, View.VISIBLE);
+            setVisibility(view, R.id.wrap_accuracy, View.VISIBLE);
         }
     }
 

@@ -179,6 +179,9 @@ public class WeaponInfoMap {
             put("WARSAW_ID_P_WNAME_L86A1", new WeaponInfo("WARSAW_ID_P_CAT_LMG", 24, 55, 45, 67, 700, false, false, true));
             put("WARSAW_ID_P_WNAME_GROZA4", new WeaponInfo("WARSAW_ID_P_CAT_PDW", 23, 65, 32, 84, 700, true, false, true));
             put("WARSAW_ID_P_WNAME_SADDLEGUN", new WeaponInfo("WARSAW_ID_P_CAT_SIDEARM", 52, 15, 37, 23, 0, true, false, false));
+
+            /*XP6*/
+            put("WARSAW_ID_P_XP6_INAME_M60ULT", new WeaponInfo("WARSAW_ID_P_CAT_LMG", 43, 28, 45, 50, 570, false, false, true));
         }
     };
 
