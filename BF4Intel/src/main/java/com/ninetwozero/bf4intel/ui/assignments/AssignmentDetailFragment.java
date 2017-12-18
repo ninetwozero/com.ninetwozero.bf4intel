@@ -126,7 +126,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             containerView.addView(populatePreRequisite(tempView, prerequisite));
         }
 
-        if (assignmentAward.hasExpansionPack() && assignment.getCriterias().size() == 0) {
+        if (assignmentAward.hasExpansionPack()) {
             final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_prereq, containerView, false);
             containerView.addView(populatePreRequisite(tempView, fetchPrerequisiteForExpansion()));
         }
@@ -175,12 +175,17 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
         final ViewGroup containerView = (ViewGroup) cardWrapperView.findViewById(R.id.assignment_tasks_container);
         containerView.removeAllViews();
 
-        for (AssignmentCriteria criteria : criterias) {
+        for (int i = 0; i < criterias.size(); i++) {
+            AssignmentCriteria criteria = criterias.get(i);
             final View tempView = layoutInflater.inflate(R.layout.list_item_assignment_task, containerView, false);
             final boolean isInRoundRequirement = "CriteriaType_IAR_InARound".equals(criteria.getCriteriaType());
 
             setText(tempView, R.id.task_label, AssignmentCriteriaStringMap.get(criteria.getKey()));
-            setText(tempView, R.id.task_completion, getTaskCompletionString(criteria));
+            if(assignment.getAward().getAwardCriterias() != null) { //User updated data nad have new AwardsCriterias object
+                setText(tempView, R.id.task_completion, getTaskCompletionString(criteria.getCurrentValue(), assignment.getAward().getAwardCriterias().get(i).getCompletionValue()));
+            } else {//User is still on old data so use old format
+                setText(tempView, R.id.task_completion, getTaskCompletionString(criteria));
+            }
             setVisibility(tempView, R.id.task_round, isInRoundRequirement ? View.VISIBLE : View.GONE);
 
             containerView.addView(tempView);
@@ -207,6 +212,14 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
                 getString(R.string.generic_x_of_y),
                 criteria.getCurrentValue(),
                 criteria.getUnlockThreshold()
+        );
+    }
+
+    private String getTaskCompletionString(final int actualValue, final int completionValue) {
+        return String.format(
+                getString(R.string.generic_x_of_y),
+                actualValue,
+                completionValue
         );
     }
 
