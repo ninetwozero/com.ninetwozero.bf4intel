@@ -8,7 +8,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,7 +87,7 @@ public class BaseDialogFragment extends DialogFragment {
 
     protected void setTitle(TextView view, String title) {
         if (!isSw720dp() && !isSw600dp()) {
-            ((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(title);
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(title);
             view.setVisibility(View.GONE);
         } else {
             view.setText(title);
@@ -110,7 +110,7 @@ public class BaseDialogFragment extends DialogFragment {
         GoogleAnalytics.post(getActivity(), getClass().getSimpleName());
     }
 
-    protected void updateActionBar(final ActionBarActivity activity, final String text) {
+    protected void updateActionBar(final AppCompatActivity activity, final String text) {
         if (activity == null) {
             return;
         }
@@ -119,7 +119,7 @@ public class BaseDialogFragment extends DialogFragment {
         actionBar.setTitle(text);
     }
 
-    protected void updateActionBar(final ActionBarActivity activity, final String text, final int icon) {
+    protected void updateActionBar(final AppCompatActivity activity, final String text, final int icon) {
         if (activity == null) {
             return;
         }

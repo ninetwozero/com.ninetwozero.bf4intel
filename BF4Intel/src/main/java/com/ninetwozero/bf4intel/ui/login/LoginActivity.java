@@ -40,6 +40,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
     private EditText searchField;
     private SharedPreferences sharedPreferences;
     private int selectedSoldierPlatform;
+    private String selectedPersonaId;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -70,6 +71,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
         if (requestCode == SearchActivity.REQUEST_SEARCH && resultCode == Activity.RESULT_OK) {
             final Profile profile = (Profile) data.getSerializableExtra(SearchActivity.RESULT_SEARCH_RESULT);
             selectedSoldierPlatform = data.getIntExtra(SearchActivity.RESULT_SEARCH_RESULT_PLATFORM, 0);
+            selectedPersonaId = data.getStringExtra(SearchActivity.RESULT_SEARCH_RESULT_PERSONA_ID);
 
             new ProfileDAO(profile).saveAsync();
 
@@ -84,8 +86,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
         Bf4Intel.getRequestQueue().add(
                 new SimpleGetRequest<SoldierListingRequest>(
                         UrlFactory.buildSoldierListURL(bundle.getString(Keys.Profile.ID)),
-                        this
-                ) {
+                        this) {
                     private int bf4SoldierCount;
                     private SummarizedSoldierStats selectedSoldier;
 
@@ -107,7 +108,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                                     ).execute(stats.getPersona().getPersonaId(), stats.getPlatformId());
                                 }
 
-                                if (stats.getPlatformId() == selectedSoldierPlatform) {
+                                if (stats.getPlatformId() == selectedSoldierPlatform && Long.toString(stats.getPersona().getPersonaId()).equals(selectedPersonaId)) {
                                     new SummarizedSoldierStatsDAO(stats).save(transaction);
                                     selectedSoldier = stats;
                                     bf4SoldierCount = 1;

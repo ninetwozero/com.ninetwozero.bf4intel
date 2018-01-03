@@ -9,7 +9,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ListFragment;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,7 +111,7 @@ public abstract class BaseListFragment extends ListFragment {
             return;
         }
 
-        final ActionBar actionBar = ((ActionBarActivity)activity).getSupportActionBar();
+        final ActionBar actionBar = ((AppCompatActivity)activity).getSupportActionBar();
         actionBar.setTitle(text.toUpperCase(Locale.getDefault()));
     }
 
@@ -120,7 +120,7 @@ public abstract class BaseListFragment extends ListFragment {
             return;
         }
 
-        final ActionBar actionBar = ((ActionBarActivity) activity).getSupportActionBar();
+        final ActionBar actionBar = ((AppCompatActivity) activity).getSupportActionBar();
         actionBar.setTitle(getString(resource));
     }
 
@@ -129,7 +129,7 @@ public abstract class BaseListFragment extends ListFragment {
             return;
         }
 
-        final ActionBar actionBar = ((ActionBarActivity) activity).getSupportActionBar();
+        final ActionBar actionBar = ((AppCompatActivity) activity).getSupportActionBar();
         actionBar.setTitle(text.toUpperCase(Locale.getDefault()));
         actionBar.setIcon(icon);
     }
@@ -139,7 +139,7 @@ public abstract class BaseListFragment extends ListFragment {
             return;
         }
 
-        final ActionBar actionBar = ((ActionBarActivity) activity).getSupportActionBar();
+        final ActionBar actionBar = ((AppCompatActivity) activity).getSupportActionBar();
         actionBar.setTitle(getString(text).toUpperCase(Locale.getDefault()));
         actionBar.setIcon(icon);
     }

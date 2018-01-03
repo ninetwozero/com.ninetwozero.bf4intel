@@ -10,7 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -118,7 +118,7 @@ public abstract class BaseFragment extends Fragment implements MenuProvider.OnMe
             return;
         }
 
-        final ActionBar actionBar = ((ActionBarActivity) activity).getSupportActionBar();
+        final ActionBar actionBar = ((AppCompatActivity) activity).getSupportActionBar();
         actionBar.setTitle(text);
     }
 
@@ -127,14 +127,14 @@ public abstract class BaseFragment extends Fragment implements MenuProvider.OnMe
             return;
         }
 
-        final ActionBar actionBar = ((ActionBarActivity) activity).getSupportActionBar();
+        final ActionBar actionBar = ((AppCompatActivity) activity).getSupportActionBar();
         actionBar.setTitle(text);
         actionBar.setIcon(icon);
     }
 
     protected void setActionBarSubTitle(String subtitle) {
         try {
-            ((ActionBarActivity)getActivity()).getSupportActionBar().setSubtitle(subtitle);
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setSubtitle(subtitle);
         } catch (NullPointerException npe){
             String message = String.format(BaseFragment.class.getSimpleName()
                     + " Some of following objects maybe null getActivity() getActivity().getActionBar()  subtitle");

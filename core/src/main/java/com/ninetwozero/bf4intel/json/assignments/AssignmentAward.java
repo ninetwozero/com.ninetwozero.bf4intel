@@ -3,6 +3,7 @@ package com.ninetwozero.bf4intel.json.assignments;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class AssignmentAward implements Serializable {
 
@@ -12,6 +13,9 @@ public class AssignmentAward implements Serializable {
     private String code;
     @SerializedName("license")
     private String expansionPack;
+
+    @SerializedName("criterias")
+    private List<AwardCriterias> awardCriterias;
 
     public String getUniqueName() {
         return uniqueName;
@@ -27,5 +31,9 @@ public class AssignmentAward implements Serializable {
 
     public boolean hasExpansionPack() {
         return expansionPack != null;
+    }
+
+    public List<AwardCriterias> getAwardCriterias() {
+        return awardCriterias;
     }
 }

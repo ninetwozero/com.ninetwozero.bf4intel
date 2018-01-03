@@ -3,7 +3,7 @@ package com.ninetwozero.bf4intel.base.ui;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.widget.Toast;
 
@@ -14,7 +14,7 @@ import com.splunk.mint.Mint;
 
 import java.util.HashMap;
 
-public abstract class BaseIntelActivity extends ActionBarActivity {
+public abstract class BaseIntelActivity extends AppCompatActivity {
     private static final String BUGSENSE_TOKEN = "f42265ac";
 
     protected Menu optionsMenu;
@@ -67,24 +67,20 @@ public abstract class BaseIntelActivity extends ActionBarActivity {
 
     private void reloadSession() {
         if (sharedPreferences.getBoolean(Keys.Settings.USER_IN_CRASH_REPORT, true)) {
-            Mint.addExtraDataMap(fetchExtraInformationForBugsense());
+            setExtraInformationForBugsense();
         } else {
-            Mint.addExtraDataMap(fetchDummyInformationForBugsense());
+            setDummyInformationForBugsense();
         }
     }
 
-    private HashMap<String, String> fetchExtraInformationForBugsense() {
-        final HashMap<String, String> map = new HashMap<String, String>();
-        map.put(Keys.Splunk.SOLDIER, sharedPreferences.getString(Keys.Menu.LATEST_PERSONA, ""));
-        map.put(Keys.Splunk.PLATFORM, String.valueOf(sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_PLATFORM, 0)));
-        return map;
+    private void setExtraInformationForBugsense() {
+        Mint.addExtraData(Keys.Splunk.SOLDIER, sharedPreferences.getString(Keys.Menu.LATEST_PERSONA, ""));
+        Mint.addExtraData(Keys.Splunk.PLATFORM, String.valueOf(sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_PLATFORM, 0)));
     }
 
-    private HashMap<String, String> fetchDummyInformationForBugsense() {
+    private void setDummyInformationForBugsense() {
         final String notApplicable = getString(R.string.na);
-        final HashMap<String, String> map = new HashMap<String, String>();
-        map.put(Keys.Splunk.SOLDIER, notApplicable);
-        map.put(Keys.Splunk.PLATFORM, notApplicable);
-        return map;
+        Mint.addExtraData(Keys.Splunk.SOLDIER, notApplicable);
+        Mint.addExtraData(Keys.Splunk.PLATFORM, notApplicable);
     }
 }
