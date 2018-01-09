@@ -121,14 +121,16 @@ public class AwardGridFragment
         final View emptyView = view.findViewById(android.R.id.empty);
         setCustomEmptyText(emptyView, R.string.empty_text_awards);
 
-        final GridView gridView = (GridView) view.findViewById(R.id.assignments_grid);
+        gridView = (GridView) view.findViewById(R.id.assignments_grid);
         gridView.setOnItemClickListener(this);
         gridView.setEmptyView(emptyView);
 
     }
 
     private void sendDataToGridView(final View view, List<Award> awards) {
-        gridView = (GridView) view.findViewById(R.id.assignments_grid);
+        if(gridView == null) {
+            gridView = (GridView) view.findViewById(R.id.assignments_grid);
+        }
         AwardsAdapter adapter = (AwardsAdapter) gridView.getAdapter();
         if (adapter == null) {
             adapter = new AwardsAdapter(getActivity());
