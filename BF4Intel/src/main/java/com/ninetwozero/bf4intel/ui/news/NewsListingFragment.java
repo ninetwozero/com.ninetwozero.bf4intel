@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.ninetwozero.bf4intel.Bf4Intel;
@@ -84,7 +85,11 @@ public class NewsListingFragment extends BaseLoadingListFragment {
     @Subscribe
     @SuppressWarnings("unused")
     public void onNewsRefreshed(NewsListingRefreshedEvent response) {
-        sendItemsToListView(response.getRequest().getArticles());
+        if (response.getRequest() != null && response.getRequest().getArticles() != null) {
+            sendItemsToListView(response.getRequest().getArticles());
+        } else {
+            Toast.makeText(getContext(), "Failed to load latest new, please try later.", Toast.LENGTH_LONG).show();
+        }
         showLoadingState(false);
         isReloading = false;
     }

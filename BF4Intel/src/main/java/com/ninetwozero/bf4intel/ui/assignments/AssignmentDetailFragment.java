@@ -181,7 +181,7 @@ public class AssignmentDetailFragment extends BaseDialogFragment {
             final boolean isInRoundRequirement = "CriteriaType_IAR_InARound".equals(criteria.getCriteriaType());
 
             setText(tempView, R.id.task_label, AssignmentCriteriaStringMap.get(criteria.getKey()));
-            if(assignment.getAward().getAwardCriterias() != null) { //User updated data nad have new AwardsCriterias object
+            if(assignment.getAward().getAwardCriterias() != null && !assignment.getAward().getAwardCriterias().isEmpty()) { //User updated data nad have new AwardsCriterias object
                 setText(tempView, R.id.task_completion, getTaskCompletionString(criteria.getCurrentValue(), assignment.getAward().getAwardCriterias().get(i).getCompletionValue()));
             } else {//User is still on old data so use old format
                 setText(tempView, R.id.task_completion, getTaskCompletionString(criteria));
