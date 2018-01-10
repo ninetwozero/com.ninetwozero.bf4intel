@@ -23,8 +23,6 @@ import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
-import javax.xml.datatype.Duration;
-
 public class NewsListingFragment extends BaseLoadingListFragment {
     public static final String ID = "articleId";
 
