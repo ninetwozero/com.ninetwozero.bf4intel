@@ -73,10 +73,24 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             selectedSoldierPlatform = data.getIntExtra(SearchActivity.RESULT_SEARCH_RESULT_PLATFORM, 0);
             selectedPersonaId = data.getStringExtra(SearchActivity.RESULT_SEARCH_RESULT_PERSONA_ID);
 
-            new ProfileDAO(profile).saveAsync();
+            saveProfile(profile);
+            /*Transaction transaction = new Transaction();
+            new ProfileDAO(profile).save(transaction);*/
 
             profileBundle = BundleFactory.createForProfile(profile);
             loadSoldiers(profileBundle);
+        }
+    }
+
+    private void saveProfile(Profile profile) {
+        Transaction transaction = new Transaction();
+        try {
+            new ProfileDAO(profile).save(transaction);
+            transaction.setSuccessful(true);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            transaction.finish();
         }
     }
 
@@ -186,7 +200,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private void onFormSubmitted() {
         final EditText searchField = (EditText) findViewById(R.id.search_term);
-        final String searchTerm = searchField.getText().toString();
+        final String searchTerm = searchField.getText().toString().trim();
         if ("".equals(searchTerm) || searchTerm.length() < 3) {
             searchField.setError(getString(R.string.msg_search_error_length));
             return;
