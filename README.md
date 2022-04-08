@@ -1,5 +1,3 @@
-[![Build Status](http://ci.peterscorner.co.uk/buildStatus/icon?job=BF4-Intel)](http://ci.peterscorner.co.uk/job/BF4-Intel/)
-
 BF4 Intel
 =========================
 
@@ -20,4 +18,3 @@ Important links / Contact details
 * E-mail: [help@bf4intel.com](mailto:help@bf4intel.com) 
 * Website: [www.bf4intel.com](http://www.bf4intel.com) 
 * Twitter: [@karllindmark](http://www.twitter.com/karllindmark) | [@peter_budo](http://www.twitter.com/peter_budo)
-* Issue tracker: [BF4 Intel on Pivotal Tracker](https://www.pivotaltracker.com/s/projects/874131)
