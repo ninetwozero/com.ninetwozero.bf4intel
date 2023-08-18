@@ -23,7 +23,7 @@
       tools:text="Assignment"
       />
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
       android:id="@+id/wrap_top"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -72,9 +72,9 @@
             />
         </RelativeLayout>
       </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
       android:id="@+id/wrap_assignment_prereq"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -101,9 +101,9 @@
           android:orientation="vertical"
           />
       </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
       android:id="@+id/wrap_assignment_tasks"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -130,10 +130,10 @@
           android:orientation="vertical"
           />
       </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
       android:id="@+id/wrap_assignment_rewards"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -159,6 +159,6 @@
           android:layout_below="@id/string_reward"
           />
       </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
   </LinearLayout>
 </ScrollView>

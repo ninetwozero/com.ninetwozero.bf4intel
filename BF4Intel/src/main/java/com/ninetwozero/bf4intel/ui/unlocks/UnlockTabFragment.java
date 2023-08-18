@@ -1,7 +1,8 @@
 package com.ninetwozero.bf4intel.ui.unlocks;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseTabFragment;

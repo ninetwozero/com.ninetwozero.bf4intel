@@ -3,20 +3,15 @@ package com.ninetwozero.bf4intel.base.ui;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.widget.Toast;
 
-import com.ninetwozero.bf4intel.BuildConfig;
-import com.ninetwozero.bf4intel.R;
-import com.ninetwozero.bf4intel.resources.Keys;
-import com.splunk.mint.Mint;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.HashMap;
+import com.ninetwozero.bf4intel.R;
+
 
 public abstract class BaseIntelActivity extends AppCompatActivity {
-    private static final String BUGSENSE_TOKEN = "f42265ac";
-
     protected Menu optionsMenu;
     protected SharedPreferences sharedPreferences;
     private Toast toast;
@@ -28,20 +23,13 @@ public abstract class BaseIntelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (!BuildConfig.isDebug) {
-            Mint.initAndStartSession(this, BUGSENSE_TOKEN);
-        }
-
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sw600dp = getResources().getBoolean(R.bool.is_sw600dp);
         sw720dp = getResources().getBoolean(R.bool.is_sw720dp);
-
-        reloadSession();
     }
 
     @Override
     protected void onDestroy() {
-        Mint.closeSession(this);
         super.onDestroy();
     }
 
@@ -65,22 +53,4 @@ public abstract class BaseIntelActivity extends AppCompatActivity {
         showToast(getString(stringResource));
     }
 
-    private void reloadSession() {
-        if (sharedPreferences.getBoolean(Keys.Settings.USER_IN_CRASH_REPORT, true)) {
-            setExtraInformationForBugsense();
-        } else {
-            setDummyInformationForBugsense();
-        }
-    }
-
-    private void setExtraInformationForBugsense() {
-        Mint.addExtraData(Keys.Splunk.SOLDIER, sharedPreferences.getString(Keys.Menu.LATEST_PERSONA, ""));
-        Mint.addExtraData(Keys.Splunk.PLATFORM, String.valueOf(sharedPreferences.getInt(Keys.Menu.LATEST_PERSONA_PLATFORM, 0)));
-    }
-
-    private void setDummyInformationForBugsense() {
-        final String notApplicable = getString(R.string.na);
-        Mint.addExtraData(Keys.Splunk.SOLDIER, notApplicable);
-        Mint.addExtraData(Keys.Splunk.PLATFORM, notApplicable);
-    }
 }

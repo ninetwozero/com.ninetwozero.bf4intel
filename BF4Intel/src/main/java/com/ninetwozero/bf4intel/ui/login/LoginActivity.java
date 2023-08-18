@@ -37,7 +37,6 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private Bundle profileBundle;
     private View loginStatusView;
-    private EditText searchField;
     private SharedPreferences sharedPreferences;
     private int selectedSoldierPlatform;
     private String selectedPersonaId;
@@ -73,24 +72,23 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             selectedSoldierPlatform = data.getIntExtra(SearchActivity.RESULT_SEARCH_RESULT_PLATFORM, 0);
             selectedPersonaId = data.getStringExtra(SearchActivity.RESULT_SEARCH_RESULT_PERSONA_ID);
 
-            saveProfile(profile);
-            /*Transaction transaction = new Transaction();
-            new ProfileDAO(profile).save(transaction);*/
+            //new ProfileDAO(profile).saveAsync();
+            doTransaction(new ProfileDAO(profile));
 
             profileBundle = BundleFactory.createForProfile(profile);
             loadSoldiers(profileBundle);
         }
     }
 
-    private void saveProfile(Profile profile) {
-        Transaction transaction = new Transaction();
+    private void doTransaction(ProfileDAO profileDAO) {
+        Transaction t = new Transaction();
         try {
-            new ProfileDAO(profile).save(transaction);
-            transaction.setSuccessful(true);
-        } catch (RuntimeException e) {
-            e.printStackTrace();
+            if (!profileDAO.save(t)) {
+                return;
+            }
+            t.setSuccessful(true);
         } finally {
-            transaction.finish();
+            t.finish();
         }
     }
 
@@ -169,7 +167,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private void setupForm() {
         loginStatusView = findViewById(R.id.login_status);
-        searchField = (EditText) findViewById(R.id.search_term);
+        EditText searchField = (EditText) findViewById(R.id.search_term);
 
         searchField.setOnEditorActionListener(
             new EditText.OnEditorActionListener() {

@@ -5,12 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,13 +15,18 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.provider.MenuProvider;
 import com.ninetwozero.bf4intel.factories.FragmentFactory;
 import com.ninetwozero.bf4intel.ui.activities.SingleFragmentActivity;
 import com.ninetwozero.bf4intel.utils.GoogleAnalytics;
-import com.splunk.mint.Mint;
-import com.splunk.mint.MintLogLevel;
 import com.squareup.picasso.Picasso;
 
 public abstract class BaseFragment extends Fragment implements MenuProvider.OnMenuProviderSelectedListener {
@@ -138,7 +137,6 @@ public abstract class BaseFragment extends Fragment implements MenuProvider.OnMe
         } catch (NullPointerException npe){
             String message = String.format(BaseFragment.class.getSimpleName()
                     + " Some of following objects maybe null getActivity() getActivity().getActionBar()  subtitle");
-            Mint.logEvent(message, MintLogLevel.Error);
         }
     }
 

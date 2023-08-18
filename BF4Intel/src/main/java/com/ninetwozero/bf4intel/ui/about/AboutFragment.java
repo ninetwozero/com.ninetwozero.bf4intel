@@ -1,6 +1,7 @@
 
 package com.ninetwozero.bf4intel.ui.about;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -65,21 +66,19 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
     }
 
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         Intent intent = null;
-        switch (v.getId()) {
-            case R.id.button_email:
-                intent = new Intent(Intent.ACTION_SENDTO).setData(
+        int viewId = v.getId();
+        if (viewId == R.id.button_email) {
+            intent = new Intent(Intent.ACTION_SENDTO).setData(
                     Uri.parse("mailto:" + getString(R.string.app_email))
-                );
-                break;
-            case R.id.button_gplus:
-                intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(URL_GPLUS));
-                break;
-            case R.id.button_tweet:
-                intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(URL_TWITTER));
-                break;
+            );
+        } else if (viewId == R.id.button_gplus) {
+            intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(URL_GPLUS));
+        } else if (viewId == R.id.button_tweet) {
+            intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(URL_TWITTER));
         }
         if (null != intent) {
             getActivity().startActivity(intent);

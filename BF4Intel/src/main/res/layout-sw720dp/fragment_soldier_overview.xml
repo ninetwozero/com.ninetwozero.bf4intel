@@ -4,7 +4,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <android.support.v4.widget.SwipeRefreshLayout
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     android:id="@+id/swipe_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -43,7 +43,7 @@
               android:id="@+id/heading_progress"
               android:text="@string/navigationdrawer_overview"/>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginBottom="@dimen/spacing_m">
@@ -122,7 +122,7 @@
                   android:indeterminate="false"/>
 
               </RelativeLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
           </LinearLayout>
 
           <LinearLayout
@@ -137,7 +137,7 @@
               android:id="@+id/heading_average_scores"
               android:text="@string/soldier_skill"/>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginBottom="@dimen/spacing_m">
@@ -221,7 +221,7 @@
                   </LinearLayout>
                 </TableLayout>
               </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
           </LinearLayout>
         </LinearLayout>
 
@@ -244,7 +244,7 @@
               android:id="@+id/heading_service_stars"
               android:text="@string/service_stars"/>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginBottom="@dimen/spacing_m">
@@ -281,7 +281,7 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"/>
               </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
           </LinearLayout>
 
           <LinearLayout
@@ -296,7 +296,7 @@
               style="@style/RegularHeadingOverCard"
               android:text="@string/soldier_top_game_modes"/>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginBottom="@dimen/spacing_m">
@@ -307,7 +307,7 @@
                 android:layout_height="match_parent"
                 android:padding="@dimen/spacing_m"
                 android:orientation="vertical"/>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
           </LinearLayout>
         </LinearLayout>
 
@@ -330,7 +330,7 @@
               android:id="@+id/heading_top3_weapons"
               android:text="@string/soldier_top_weapons"/>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginBottom="@dimen/spacing_m">
@@ -341,7 +341,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spacing_m"
                 android:orientation="vertical"/>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
           </LinearLayout>
 
           <LinearLayout
@@ -356,7 +356,7 @@
               style="@style/RegularHeadingOverCard"
               android:text="@string/soldier_top_vehicles"/>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginBottom="@dimen/spacing_m">
@@ -367,7 +367,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spacing_m"
                 android:orientation="vertical"/>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
           </LinearLayout>
         </LinearLayout>
 
@@ -390,7 +390,7 @@
               android:id="@+id/heading_detailed_scores"
               android:text="@string/soldier_completion"/>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginBottom="@dimen/spacing_m">
@@ -401,7 +401,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spacing_m"
                 android:orientation="vertical"/>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
           </LinearLayout>
 
           <LinearLayout
@@ -416,7 +416,7 @@
               style="@style/RegularHeadingOverCard"
               android:text="@string/soldier_top_leaderboards"/>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginBottom="@dimen/spacing_m">
@@ -427,12 +427,12 @@
                 android:layout_height="match_parent"
                 android:padding="@dimen/spacing_m"
                 android:orientation="vertical"/>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
           </LinearLayout>
         </LinearLayout>
       </LinearLayout>
     </ScrollView>
-  </android.support.v4.widget.SwipeRefreshLayout>
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
   <include
     layout="@layout/generic_empty_view"
