@@ -11,6 +11,7 @@ import com.ninetwozero.bf4intel.database.dao.unlocks.kits.KitUnlockDAO;
 import com.ninetwozero.bf4intel.database.dao.unlocks.vehicles.VehicleUnlockDAO;
 import com.ninetwozero.bf4intel.database.dao.unlocks.weapons.WeaponUnlockDAO;
 
+@Deprecated
 public class MigrationToZeroNineSix extends BaseMigration {
     @Override
     protected void doMigration(final SQLiteDatabase db) {

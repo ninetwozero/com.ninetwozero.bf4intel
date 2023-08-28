@@ -1,8 +1,10 @@
 package com.ninetwozero.bf4intel.ui.login;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
@@ -11,23 +13,27 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 import com.ninetwozero.bf4intel.Bf4Intel;
 import com.ninetwozero.bf4intel.R;
 import com.ninetwozero.bf4intel.base.ui.BaseLoadingIntelActivity;
-import com.ninetwozero.bf4intel.database.dao.ProfileDAO;
 import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
+import com.ninetwozero.bf4intel.database.entities.ProfileEntity;
 import com.ninetwozero.bf4intel.factories.BundleFactory;
 import com.ninetwozero.bf4intel.factories.UrlFactory;
 import com.ninetwozero.bf4intel.json.Profile;
 import com.ninetwozero.bf4intel.json.login.SoldierListingRequest;
 import com.ninetwozero.bf4intel.json.login.SummarizedSoldierStats;
 import com.ninetwozero.bf4intel.network.SimpleGetRequest;
+import com.ninetwozero.bf4intel.repository.ProfileRepository;
 import com.ninetwozero.bf4intel.resources.Keys;
 import com.ninetwozero.bf4intel.ui.search.SearchActivity;
 import com.ninetwozero.bf4intel.utils.BusProvider;
 import com.ninetwozero.bf4intel.utils.PersonaUtils;
+
+import java.lang.ref.WeakReference;
 
 import se.emilsjolander.sprinkles.SqlStatement;
 import se.emilsjolander.sprinkles.Transaction;
@@ -73,22 +79,10 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             selectedPersonaId = data.getStringExtra(SearchActivity.RESULT_SEARCH_RESULT_PERSONA_ID);
 
             //new ProfileDAO(profile).saveAsync();
-            doTransaction(new ProfileDAO(profile));
+            new AgentAsyncTask(this, profile).execute();
 
             profileBundle = BundleFactory.createForProfile(profile);
             loadSoldiers(profileBundle);
-        }
-    }
-
-    private void doTransaction(ProfileDAO profileDAO) {
-        Transaction t = new Transaction();
-        try {
-            if (!profileDAO.save(t)) {
-                return;
-            }
-            t.setSuccessful(true);
-        } finally {
-            t.finish();
         }
     }
 
@@ -121,6 +115,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
                                 }
 
                                 if (stats.getPlatformId() == selectedSoldierPlatform && Long.toString(stats.getPersona().getPersonaId()).equals(selectedPersonaId)) {
+                                    //save to room
                                     new SummarizedSoldierStatsDAO(stats).save(transaction);
                                     selectedSoldier = stats;
                                     bf4SoldierCount = 1;
@@ -222,5 +217,33 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private void setLoadingState(final boolean show) {
         loginStatusView.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    private static class AgentAsyncTask extends AsyncTask<Void, Void, Integer> {
+
+        private WeakReference<Activity> weakActivity;
+        private Profile profile;
+        public AgentAsyncTask(Activity activity, Profile profile) {
+            weakActivity = new WeakReference<>(activity);
+            this.profile = profile;
+        }
+
+        @Override
+        protected Integer doInBackground(Void... voids) {
+            Application app = weakActivity.get().getApplication();
+            ProfileRepository repository = ((Bf4Intel) app).getProfileRepository();
+            repository.insert(new ProfileEntity(profile));
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            Activity activity = weakActivity.get();
+            if(activity == null) {
+                return;
+            } else {
+                Toast.makeText(activity, "Profile saved", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

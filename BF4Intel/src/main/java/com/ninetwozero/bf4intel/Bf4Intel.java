@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.ninetwozero.bf4intel.database.BF4RoomDatabase;
 import com.ninetwozero.bf4intel.database.dao.assignments.SortedAssignmentContainerSerializer;
 import com.ninetwozero.bf4intel.database.dao.awards.SortedAwardContainerSerializer;
 import com.ninetwozero.bf4intel.database.dao.soldieroverview.SoldierOverviewSerializer;
@@ -28,11 +29,13 @@ import com.ninetwozero.bf4intel.json.stats.weapons.WeaponStatistics;
 import com.ninetwozero.bf4intel.json.unlocks.kits.SortedKitUnlocks;
 import com.ninetwozero.bf4intel.json.unlocks.vehicles.SortedVehicleUnlocks;
 import com.ninetwozero.bf4intel.json.unlocks.weapons.SortedWeaponUnlocks;
+import com.ninetwozero.bf4intel.repository.ProfileRepository;
 
 import se.emilsjolander.sprinkles.Sprinkles;
 
 
 public class Bf4Intel extends Application {
+    @Deprecated
     private static final String DB_NAME = "bf4intel.db";
     private static Bf4Intel instance;
     private static RequestQueue requestQueue;
@@ -44,11 +47,21 @@ public class Bf4Intel extends Application {
 
         requestQueue = Volley.newRequestQueue(this);
 
+        @Deprecated
         Sprinkles sprinkles = Sprinkles.init(getApplicationContext(), DB_NAME, 0);
         setupSerializers(sprinkles);
         setupMigrations(sprinkles);
     }
 
+    public BF4RoomDatabase getDatabase() {
+        return BF4RoomDatabase.getDatabase(this);
+    }
+
+    public ProfileRepository getProfileRepository() {
+        return ProfileRepository.getInstance(getDatabase());
+    }
+
+    @Deprecated
     private void setupSerializers(Sprinkles sprinkles) {
         sprinkles.registerType(SoldierOverview.class, new SoldierOverviewSerializer());
 
@@ -65,6 +78,7 @@ public class Bf4Intel extends Application {
         sprinkles.registerType(SortedAwardContainer.class, new SortedAwardContainerSerializer());
     }
 
+    @Deprecated
     private void setupMigrations(Sprinkles sprinkles) {
         sprinkles.addMigration(new InitialMigration());
         sprinkles.addMigration(new MigrationToZeroNineSix());

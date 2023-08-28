@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import se.emilsjolander.sprinkles.Migration;
 
+@Deprecated
 public class BaseMigration extends Migration {
     @Override
     protected void doMigration(final SQLiteDatabase sqLiteDatabase) {

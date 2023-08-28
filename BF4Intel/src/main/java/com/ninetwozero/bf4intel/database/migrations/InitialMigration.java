@@ -6,11 +6,12 @@ import com.ninetwozero.bf4intel.database.dao.ProfileDAO;
 import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 import com.ninetwozero.bf4intel.database.dao.soldieroverview.SoldierOverviewDAO;
 
+@Deprecated()
 public class InitialMigration extends BaseMigration {
     @Override
     protected void doMigration(final SQLiteDatabase db) {
         createSummarizedSoldierStatsTable(db);
-        createProfileTable(db);
+        //createProfileTable(db);
         createSoldierOverviewTable(db);
     }
 
@@ -30,7 +31,7 @@ public class InitialMigration extends BaseMigration {
         );
     }
 
-    private void createProfileTable(final SQLiteDatabase db) {
+    /*private void createProfileTable(final SQLiteDatabase db) {
         db.execSQL(
             "CREATE TABLE " + ProfileDAO.TABLE_NAME + "(" +
                 "userId TEXT PRIMARY KEY," +
@@ -38,7 +39,7 @@ public class InitialMigration extends BaseMigration {
                 "gravatarMd5 TEXT" +
             ")"
         );
-    }
+    }*/
 
     private void createSoldierOverviewTable(final SQLiteDatabase db) {
         db.execSQL(

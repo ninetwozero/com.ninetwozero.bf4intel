@@ -1,44 +1,28 @@
 package com.ninetwozero.bf4intel.database.dao;
 
-import com.ninetwozero.bf4intel.json.Profile;
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
 
-import se.emilsjolander.sprinkles.Model;
-import se.emilsjolander.sprinkles.annotations.Column;
-import se.emilsjolander.sprinkles.annotations.Key;
-import se.emilsjolander.sprinkles.annotations.Table;
+import com.ninetwozero.bf4intel.database.entities.ProfileEntity;
 
+import java.util.List;
 
-@Table("UserProfile")
-public class ProfileDAO extends Model {
-    public static final String TABLE_NAME = "UserProfile";
+@Dao
+public interface ProfileDAO {
 
-    @Key
-    @Column("userId")
-    private String userId;
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    public void insert(ProfileEntity profileEntity);
 
-    @Column("username")
-    private String username;
+    //TODO may not need it at all
+    @Query("SELECT * FROM user_profile")
+    LiveData<List<ProfileEntity>> getAllProfiles();
 
-    @Column("gravatarMd5")
-    private String gravatarHash;
+    @Query("SELECT userId FROM user_profile WHERE username = :playername")
+    LiveData<String> getId(String playername);
 
-    public ProfileDAO() {}
-
-    public ProfileDAO(Profile profile) {
-        this.userId = profile.getId();
-        this.username = profile.getUsername();
-        this.gravatarHash = profile.getGravatarHash();
-    }
-
-    public String getId() {
-        return this.userId;
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public String getGravatarHash() {
-        return this.gravatarHash;
-    }
+    @Query("SELECT username FROM user_profile WHERE userId = :id")
+    LiveData<String> getUsername(String id);
 }

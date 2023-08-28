@@ -6,6 +6,7 @@ import com.ninetwozero.bf4intel.database.dao.assignments.AssignmentsDAO;
 import com.ninetwozero.bf4intel.database.dao.awards.AwardsDAO;
 import com.ninetwozero.bf4intel.database.dao.stats.weapons.WeaponStatsDAO;
 
+@Deprecated
 public class MigrationToOneZeroOne extends BaseMigration {
     @Override
     protected void doMigration(SQLiteDatabase db) {

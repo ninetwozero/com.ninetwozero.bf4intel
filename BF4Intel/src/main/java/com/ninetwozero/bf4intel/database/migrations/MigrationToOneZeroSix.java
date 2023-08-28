@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.ninetwozero.bf4intel.database.dao.login.SummarizedSoldierStatsDAO;
 
+@Deprecated
 public class MigrationToOneZeroSix extends BaseMigration {
 
     @Override

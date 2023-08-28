@@ -5,7 +5,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:8.1.0"
+        classpath "com.android.tools.build:gradle:8.1.1"
     }
 }
 
@@ -27,9 +27,4 @@ subprojects {
         configFile = new File(ciDir, "checkstyle.xml")
         configProperties.checkstyleConfigDir = checkstyleConfigDir
     }
-
-    /*apply plugin: 'findbugs'
-    findbugs {
-        ignoreFailures = true
-    }*/
 }

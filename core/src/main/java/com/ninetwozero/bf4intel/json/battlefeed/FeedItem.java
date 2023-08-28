@@ -16,10 +16,10 @@ public class FeedItem {
 
 
     public FeedItem(
-        final String id, final BaseEvent event, final String eventString,
-        final String ownerId, final Profile owner, final Profile owner2,
-        final int likeCount, final int commentCount, final long date,
-        final String itemId
+            final String id, final BaseEvent event, final String eventString,
+            final String ownerId, final Profile owner, final Profile owner2,
+            final int likeCount, final int commentCount, final long date,
+            final String itemId
     ) {
         this.id = id;
         this.event = event;
