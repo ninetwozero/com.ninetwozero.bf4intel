@@ -82,7 +82,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             new AgentAsyncTask(this, profile).execute();
 
             profileBundle = BundleFactory.createForProfile(profile);
-            loadSoldiers(profileBundle);
+            //loadSoldiers(profileBundle);
         }
     }
 
