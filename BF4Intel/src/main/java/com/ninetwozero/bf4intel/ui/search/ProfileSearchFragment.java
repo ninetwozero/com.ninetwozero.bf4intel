@@ -3,7 +3,6 @@ package com.ninetwozero.bf4intel.ui.search;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
+
+import androidx.appcompat.widget.SearchView;
 
 import com.android.volley.Request;
 import com.ninetwozero.bf4intel.Bf4Intel;

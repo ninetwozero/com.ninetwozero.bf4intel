@@ -22,13 +22,4 @@ public class Keys {
         public static final String LATEST_PERSONA = "last_selected_soldier_in_menu";
         public static final String LATEST_PERSONA_PLATFORM = "last_selected_soldier_platform_in_menu";
     }
-
-    public class Settings {
-        public static final String USER_IN_CRASH_REPORT = "user_in_crash_report";
-    }
-
-    public class Splunk {
-        public static final String SOLDIER = "bl_soldierid";
-        public static final String PLATFORM = "bl_soldier_platform";
-    }
 }

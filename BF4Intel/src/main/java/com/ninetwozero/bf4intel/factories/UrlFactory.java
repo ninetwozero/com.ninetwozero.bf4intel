@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.Locale;
 
 public class UrlFactory {
-    private static final String SCHEME = "http";
+    private static final String SCHEME = "https";
     private static final String HOST = "battlelog.battlefield.com/bf4";
     private static final int DEFAULT_PORT = -1;
     private static final String GRAVATAR_URL = "http://www.gravatar.com/avatar/%s/?s=320&d=%s";

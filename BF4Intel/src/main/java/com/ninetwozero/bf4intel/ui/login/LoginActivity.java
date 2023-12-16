@@ -37,7 +37,6 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private Bundle profileBundle;
     private View loginStatusView;
-    private EditText searchField;
     private SharedPreferences sharedPreferences;
     private int selectedSoldierPlatform;
     private String selectedPersonaId;
@@ -73,10 +72,23 @@ public class LoginActivity extends BaseLoadingIntelActivity {
             selectedSoldierPlatform = data.getIntExtra(SearchActivity.RESULT_SEARCH_RESULT_PLATFORM, 0);
             selectedPersonaId = data.getStringExtra(SearchActivity.RESULT_SEARCH_RESULT_PERSONA_ID);
 
-            new ProfileDAO(profile).saveAsync();
+            //new ProfileDAO(profile).saveAsync();
+            doTransaction(new ProfileDAO(profile));
 
             profileBundle = BundleFactory.createForProfile(profile);
             loadSoldiers(profileBundle);
+        }
+    }
+
+    private void doTransaction(ProfileDAO profileDAO) {
+        Transaction t = new Transaction();
+        try {
+            if (!profileDAO.save(t)) {
+                return;
+            }
+            t.setSuccessful(true);
+        } finally {
+            t.finish();
         }
     }
 
@@ -155,7 +167,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private void setupForm() {
         loginStatusView = findViewById(R.id.login_status);
-        searchField = (EditText) findViewById(R.id.search_term);
+        EditText searchField = (EditText) findViewById(R.id.search_term);
 
         searchField.setOnEditorActionListener(
             new EditText.OnEditorActionListener() {
@@ -186,7 +198,7 @@ public class LoginActivity extends BaseLoadingIntelActivity {
 
     private void onFormSubmitted() {
         final EditText searchField = (EditText) findViewById(R.id.search_term);
-        final String searchTerm = searchField.getText().toString();
+        final String searchTerm = searchField.getText().toString().trim();
         if ("".equals(searchTerm) || searchTerm.length() < 3) {
             searchField.setError(getString(R.string.msg_search_error_length));
             return;

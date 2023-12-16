@@ -5,7 +5,7 @@
   android:layout_height="match_parent"
   android:background="@color/card_activity_bg">
 
-  <android.support.v4.widget.SwipeRefreshLayout
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     android:id="@+id/swipe_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +15,7 @@
       style="@style/MiniCardGridView"
       android:id="@android:id/list"
       />
-  </android.support.v4.widget.SwipeRefreshLayout>
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
   <include
     layout="@layout/generic_empty_view"
