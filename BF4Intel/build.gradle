@@ -52,14 +52,14 @@ android {
     buildFeatures {
         buildConfig true
     }
-
-    lintOptions {
+    lint {
         abortOnError false
-        lintConfig file("../ci-configs/lint-ignore.xml")
-        xmlReport true
-        xmlOutput file("build/lint/lint-report.xml")
         htmlReport false
+        lintConfig file('../ci-configs/lint-ignore.xml')
+        xmlOutput file('build/lint/lint-report.xml')
+        xmlReport true
     }
+
 }
 
 dependencies {

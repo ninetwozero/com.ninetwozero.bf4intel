@@ -1,13 +1,13 @@
 apply plugin: 'java'
 
 dependencies{
-    implementation 'com.google.code.gson:gson:2.3',
-            'org.jsoup:jsoup:1.7.3'
+    implementation('com.google.code.gson:gson:2.3')
+    implementation('org.jsoup:jsoup:1.7.3')
 
-    testImplementation 'junit:junit:4.11'
+    testImplementation('junit:junit:4.11')
 }
 
-compileJava {
-    sourceCompatibility JavaVersion.VERSION_17
-    targetCompatibility JavaVersion.VERSION_17
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
